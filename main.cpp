@@ -130,6 +130,16 @@ int main() {
 				.collect<std::vector>();
 		std::cout << output.size() << std::endl;
 	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		size_t output = CIter::from(input).count();
+		std::cout << "count: " << output << std::endl;
+	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		int output = CIter::from(input).sum();
+		std::cout << "sum: " << output << std::endl;
+	}
 }
 
 //int main() {

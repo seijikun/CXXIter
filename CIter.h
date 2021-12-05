@@ -454,6 +454,23 @@ public:
 		return Collector<TSelf, TTargetContainer, TTargetContainerArgs...>::template collect<Item, ItemOwned>(*self());
 	}
 
+	template<typename TResult, std::invocable<TResult&, Item&&> FoldFn>
+	TResult fold(TResult startValue, FoldFn foldFn) {
+		TResult result = startValue;
+		forEach([&result, &foldFn](Item&& item) { foldFn(result, std::forward<Item>(item)); });
+		return result;
+	}
+
+	size_t count() {
+		return fold((size_t)0, [](size_t& cnt, auto&&) { cnt += 1; });
+	}
+
+	template<typename TResult = ItemOwned>
+	requires requires(TResult res, Item item) { { res += item }; }
+	TResult sum(TResult startValue = TResult()) {
+		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
+	}
+
 
 	// ###################
 	// CHAINERS
