@@ -115,6 +115,13 @@ int main() {
 				.collect<std::basic_string>();
 		std::cout << "count: " << output.size() << std::endl;
 	}
+	{
+		std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
+		std::vector<int> output = CIter::from(std::move(input))
+				.flatMap([](auto&& item) { return std::get<1>(item); })
+				.collect<std::vector>();
+		std::cout << output.size() << std::endl;
+	}
 }
 
 //int main() {

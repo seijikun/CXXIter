@@ -29,31 +29,6 @@ namespace std {
 namespace CIter {
 
 // ################################################################################################
-// CONCEPTS & CONSTRAINTS
-// ################################################################################################
-
-template<typename T>
-concept BackInsertable = requires(T v, typename T::value_type item) {
-	{ v.push_back(item) };
-};
-
-template<typename T>
-concept Insertable = requires(T v, typename T::value_type item) {
-	{ v.insert(item) };
-};
-
-
-
-template<typename T>
-struct is_pair { static constexpr bool value = false; };
-template<typename TKey, typename TValue>
-struct is_pair<std::pair<TKey, TValue>> { static constexpr bool value = true; };
-template <typename T>
-inline constexpr bool is_pair_v = is_pair<T>::value;
-
-
-
-// ################################################################################################
 // FORWARD DECLARATIONS
 // ################################################################################################
 
@@ -269,6 +244,50 @@ struct IteratorTrait <Map<TChainInput, TItem>> {
 
 
 // ################################################################################################
+// FLATMAP
+// ################################################################################################
+template<typename TChainInput, typename TItemContainer>
+requires (!std::is_reference_v<TItemContainer>)
+class FlatMap : public IterApi<FlatMap<TChainInput, TItemContainer>> {
+	friend struct IteratorTrait<FlatMap<TChainInput, TItemContainer>>;
+private:
+	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using FlatMapFn = std::function<TItemContainer(InputItem&& item)>;
+
+	TChainInput input;
+	std::optional<SrcMov<TItemContainer>> current;
+	FlatMapFn mapFn;
+public:
+	FlatMap(TChainInput&& input, FlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+};
+// ------------------------------------------------------------------------------------------------
+template<typename TChainInput, typename TItemContainer>
+struct IteratorTrait <FlatMap<TChainInput, TItemContainer>> {
+	using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
+	// LINQ Interface
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using Self = FlatMap<TChainInput, TItemContainer>;
+	using Item = typename TItemContainer::value_type;
+
+	static inline Item next(FlatMap<TChainInput, TItemContainer>& self) {
+		while(true) {
+			if(!self.current) { // pull new collection from the outer iterator
+				self.current = SrcMov(std::move(
+					self.mapFn(std::forward<typename ChainInputIterator::Item>( ChainInputIterator::next(self.input) ))
+				));
+			}
+			try { // if the outer iterator yielded a collection, take from it until we reach the end
+				return NestedChainIterator::next(*self.current);
+			} catch (LINQIteratorEnd) { // inner collection ended, unset current cache
+				self.current.reset();
+			}
+		}
+	}
+};
+
+
+
+// ################################################################################################
 // FILTERMAP
 // ################################################################################################
 template<typename TChainInput, typename TItem>
@@ -417,6 +436,11 @@ public:
 		return Map<TSelf, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
 	}
 
+	template<std::invocable<Item&&> TFlatMapFn = std::function<Item(Item&&)>>
+	auto flatMap(TFlatMapFn mapFn = [](Item&& item) { return item; }) {
+		return FlatMap<TSelf, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
+	}
+
 	template<std::invocable<Item&> TModifierFn>
 	InplaceModifier<TSelf> modify(TModifierFn modifierFn) {
 		return InplaceModifier<TSelf>(std::move(*self()), modifierFn);
@@ -461,7 +485,6 @@ public:
 			return !takeDone;
 		});
 	}
-
 };
 
 
