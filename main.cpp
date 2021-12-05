@@ -140,6 +140,11 @@ int main() {
 		int output = CIter::from(input).sum();
 		std::cout << "sum: " << output << std::endl;
 	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<int> output = CIter::from(input).copied().last();
+		std::cout << "last: " << output.value() << std::endl;
+	}
 }
 
 //int main() {

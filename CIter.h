@@ -471,6 +471,14 @@ public:
 		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
 	}
 
+	template<typename _unused = Item>
+	requires (!IS_REFERENCE)
+	std::optional<Item> last() {
+		std::optional<Item> tmp;
+		forEach([&tmp](Item&& item) { tmp = item; });
+		return tmp;
+	}
+
 
 	// ###################
 	// CHAINERS
@@ -548,7 +556,7 @@ public:
 	}
 
 	template<typename TOtherIterator>
-	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !std::is_reference_v<Item>)
+	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !IS_REFERENCE)
 	Zipper<TSelf, TOtherIterator> zip(TOtherIterator&& otherIterator) {
 		return Zipper<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
