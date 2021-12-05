@@ -1,12 +1,29 @@
 #pragma once
 
-#include <iostream>
-#include <cstddef>
-#include <cstdint>
+#include <utility>
 #include <optional>
 #include <functional>
 #include <concepts>
-#include <variant>
+
+/**
+ * std container forward declarations, so we don't have to include everything, blowing up compile-time.
+ */
+namespace std {
+	template<typename, typename> class vector;
+	template<typename, typename> class list;
+	template<typename, typename> class forward_list;
+	template<typename, typename> class deque;
+
+	template<typename, typename, typename> struct set;
+	template<typename, typename, typename> struct multiset;
+	template<typename, typename, typename, typename> struct unordered_set;
+	template<typename, typename, typename, typename> struct unordered_multiset;
+
+	template<typename, typename, typename, typename> struct map;
+	template<typename, typename, typename, typename> struct multimap;
+	template<typename, typename, typename, typename, typename> struct unordered_map;
+	template<typename, typename, typename, typename, typename> struct unordered_multimap;
+}
 
 namespace CIter {
 
@@ -36,7 +53,7 @@ inline constexpr bool is_pair_v = is_pair<T>::value;
 
 
 // ################################################################################################
-// PRE-DEFINITIONS
+// FORWARD DECLARATIONS
 // ################################################################################################
 
 struct LINQIteratorEnd {};
@@ -45,14 +62,14 @@ template<typename T>
 struct IteratorTrait {};
 
 template<typename TSelf>
-class LINQAPI;
+class IterApi;
 
 
 // ################################################################################################
 // SOURCE (MOVE / CONSUME)
 // ################################################################################################
 template<typename TContainer>
-class SrcMov : public LINQAPI<SrcMov<TContainer>> {
+class SrcMov : public IterApi<SrcMov<TContainer>> {
 	friend struct IteratorTrait<SrcMov<TContainer>>;
 private:
 	TContainer container;
@@ -78,7 +95,7 @@ struct IteratorTrait <SrcMov<TContainer>> {
 // SOURCE (MUTABLE REFERENCE)
 // ################################################################################################
 template<typename TContainer>
-class SrcRef : public LINQAPI<SrcRef<TContainer>> {
+class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
 private:
 	TContainer& container;
@@ -104,7 +121,7 @@ struct IteratorTrait <SrcRef<TContainer>> {
 // SOURCE (CONST REFERENCE)
 // ################################################################################################
 template<typename TContainer>
-class SrcCRef : public LINQAPI<SrcCRef<TContainer>> {
+class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
 private:
 	const TContainer& container;
@@ -131,7 +148,7 @@ struct IteratorTrait <SrcCRef<TContainer>> {
 // ################################################################################################
 template<typename TChainInput, typename TItem>
 requires std::is_object_v<TItem>
-class Caster : public LINQAPI<Caster<TChainInput, TItem>> {
+class Caster : public IterApi<Caster<TChainInput, TItem>> {
 	friend struct IteratorTrait<Caster<TChainInput, TItem>>;
 private:
 	TChainInput input;
@@ -158,7 +175,7 @@ struct IteratorTrait <Caster<TChainInput, TItem>> {
 // FILTER
 // ################################################################################################
 template<typename TChainInput>
-class Filter : public LINQAPI<Filter<TChainInput>> {
+class Filter : public IterApi<Filter<TChainInput>> {
 	friend struct IteratorTrait<Filter<TChainInput>>;
 private:
 	using InputItem = typename IteratorTrait<TChainInput>::Item;
@@ -192,7 +209,7 @@ struct IteratorTrait <Filter<TChainInput>> {
 // ################################################################################################
 template<typename TChainInput>
 requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
-class InplaceModifier : public LINQAPI<InplaceModifier<TChainInput>> {
+class InplaceModifier : public IterApi<InplaceModifier<TChainInput>> {
 	friend struct IteratorTrait<InplaceModifier<TChainInput>>;
 private:
 	using InputItem = typename IteratorTrait<TChainInput>::Item;
@@ -224,7 +241,7 @@ struct IteratorTrait <InplaceModifier<TChainInput>> {
 // MAP
 // ################################################################################################
 template<typename TChainInput, typename TItem>
-class Map : public LINQAPI<Map<TChainInput, TItem>> {
+class Map : public IterApi<Map<TChainInput, TItem>> {
 	friend struct IteratorTrait<Map<TChainInput, TItem>>;
 private:
 	using InputItem = typename IteratorTrait<TChainInput>::Item;
@@ -254,7 +271,7 @@ struct IteratorTrait <Map<TChainInput, TItem>> {
 // FILTERMAP
 // ################################################################################################
 template<typename TChainInput, typename TItem>
-class FilterMap : public LINQAPI<FilterMap<TChainInput, TItem>> {
+class FilterMap : public IterApi<FilterMap<TChainInput, TItem>> {
 	friend struct IteratorTrait<FilterMap<TChainInput, TItem>>;
 private:
 	using InputItem = typename IteratorTrait<TChainInput>::Item;
@@ -287,43 +304,69 @@ struct IteratorTrait <FilterMap<TChainInput, TItem>> {
 // ################################################################################################
 // COLLECTOR
 // ################################################################################################
-template<typename TChainInput, template <typename... TContainerArgs> typename TContainer>
-struct Collector {
-	template<typename Item, typename ItemOwned>
-	requires BackInsertable<TContainer<ItemOwned>> || Insertable<TContainer<ItemOwned>>
-	static auto collect(TChainInput& input) {}
+namespace collectors {
+	template<typename TChainInput, template<typename...> typename TContainer>
+	struct BackInsertCollector {
+		template<typename Item, typename ItemOwned>
+		static TContainer<ItemOwned> collect(TChainInput& input) {
+			TContainer<ItemOwned> container;
+			auto inserter = std::back_inserter(container);
+			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
+			return container;
+		}
+	};
 
-	template<typename Item, typename ItemOwned>
-	requires BackInsertable<TContainer<ItemOwned>>
-	static auto collect(TChainInput& input) {
-		TContainer<ItemOwned> container;
-		auto inserter = std::back_inserter(container);
-		input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
-		return container;
-	}
+	template<typename TChainInput, template<typename...> typename TContainer>
+	struct InsertCollector {
+		template<typename Item, typename ItemOwned>
+		static TContainer<ItemOwned> collect(TChainInput& input) {
+			TContainer<ItemOwned> container;
+			auto inserter = std::inserter(container, container.end());
+			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
+			return container;
+		}
+	};
 
-	template<typename Item, typename ItemOwned>
-	requires Insertable<TContainer<ItemOwned>>
-	auto collect(TChainInput& input) {
-		TContainer<ItemOwned> container;
-		auto inserter = std::inserter(container, container.end());
-		input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
-		return container;
-	}
+	template<typename TChainInput, template<typename...> typename TContainer>
+	struct AssocCollector {
+		template<typename Item, typename ItemOwned>
+		static auto collect(TChainInput& input) {
+			TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type> container;
+			input.forEach([&container](Item&& item) { container[item.first] = item.second; });
+			return container;
+		}
+	};
+}
 
-	template<typename Item, typename ItemOwned>
-	std::unordered_map<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type> collect(TChainInput& input) {
-		std::unordered_map<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type> container;
-		input.forEach([&container](Item&& item) { container[item.first] = item.second; });
-		return container;
-	}
-};
+template<typename TChainInput, template <typename...> typename TContainer>
+struct Collector {};
+
+#define DEFINE_COLLECTOR_IMPL(_CONTAINER_, _COLLECTOR_) \
+	template<typename TChainInput> \
+	struct Collector<TChainInput, _CONTAINER_> : public collectors::_COLLECTOR_<TChainInput, _CONTAINER_> {}
+
+DEFINE_COLLECTOR_IMPL(std::vector, BackInsertCollector);
+DEFINE_COLLECTOR_IMPL(std::list, BackInsertCollector);
+DEFINE_COLLECTOR_IMPL(std::deque, BackInsertCollector);
+
+DEFINE_COLLECTOR_IMPL(std::set, BackInsertCollector);
+DEFINE_COLLECTOR_IMPL(std::multiset, BackInsertCollector);
+DEFINE_COLLECTOR_IMPL(std::unordered_set, InsertCollector);
+DEFINE_COLLECTOR_IMPL(std::unordered_multiset, InsertCollector);
+
+DEFINE_COLLECTOR_IMPL(std::map, AssocCollector);
+DEFINE_COLLECTOR_IMPL(std::multimap, AssocCollector);
+DEFINE_COLLECTOR_IMPL(std::unordered_map, AssocCollector);
+DEFINE_COLLECTOR_IMPL(std::unordered_multimap, AssocCollector);
 
 
 
+// ################################################################################################
+// SURFACE-API
+// ################################################################################################
 
 template<typename TSelf>
-class LINQAPI {
+class IterApi {
 	TSelf* self() { return dynamic_cast<TSelf*>(this); }
 
 public:
@@ -332,7 +375,7 @@ public:
 	using ItemOwned = typename std::remove_reference<Item>::type;
 	static constexpr bool IS_REFERENCE = std::is_reference<Item>::value;
 
-	virtual ~LINQAPI() {}
+	virtual ~IterApi() {}
 
 	// ###################
 	// CONSUMERS
@@ -346,7 +389,7 @@ public:
 		} catch (LINQIteratorEnd) {}
 	}
 
-	template<template <typename... TTargetContainerArgs> typename TTargetContainer>
+	template<template <typename...> typename TTargetContainer>
 	auto collect() {
 		Collector<TSelf, TTargetContainer> collector;
 		return collector.template collect<Item, ItemOwned>(*self());
