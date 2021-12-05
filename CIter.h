@@ -471,10 +471,43 @@ public:
 		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
 	}
 
-	template<typename _unused = Item>
-	requires (!IS_REFERENCE)
-	std::optional<Item> last() {
-		std::optional<Item> tmp;
+	template<typename TResult = ItemOwned>
+	requires requires(TResult res, ItemOwned item) {
+		{ item < res };
+		{ res = item };
+	}
+	std::optional<TResult> min() {
+		try {
+			TResult result = Iterator::next(*self());
+			forEach([&result](Item&& item) {
+				if(item < result) { result = item; }
+			});
+			return result;
+		} catch (LINQIteratorEnd) {
+			return {};
+		}
+	}
+
+	template<typename TResult = ItemOwned>
+	requires requires(TResult res, ItemOwned item) {
+		{ item > res };
+		{ res = item };
+	}
+	std::optional<TResult> max() {
+		try {
+			TResult result = Iterator::next(*self());
+			forEach([&result](Item&& item) {
+				if(item > result) { result = item; }
+			});
+			return result;
+		} catch (LINQIteratorEnd) {
+			return {};
+		}
+	}
+
+	template<typename _unused = ItemOwned>
+	std::optional<ItemOwned> last() {
+		std::optional<ItemOwned> tmp;
 		forEach([&tmp](Item&& item) { tmp = item; });
 		return tmp;
 	}

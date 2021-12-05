@@ -142,8 +142,28 @@ int main() {
 	}
 	{
 		std::vector<int> input = {42, 1337, 52};
-		std::optional<int> output = CIter::from(input).copied().last();
+		std::optional<int> output = CIter::from(input).last();
 		std::cout << "last: " << output.value() << std::endl;
+	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<int> output = CIter::from(input).min();
+		std::cout << "min: " << output.value() << std::endl;
+	}
+	{
+		std::vector<int> input = {};
+		std::optional<int> output = CIter::from(input).min();
+		std::cout << "hasmin: " << output.has_value() << std::endl;
+	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<int> output = CIter::from(input).max();
+		std::cout << "max: " << output.value() << std::endl;
+	}
+	{
+		std::vector<int> input = {};
+		std::optional<int> output = CIter::from(input).max();
+		std::cout << "hasmax: " << output.has_value() << std::endl;
 	}
 }
 
