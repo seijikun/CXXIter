@@ -4,6 +4,7 @@
 #include <optional>
 #include <functional>
 #include <concepts>
+#include <string>
 
 /**
  * std container forward declarations, so we don't have to include everything, blowing up compile-time.
@@ -348,6 +349,7 @@ struct Collector {};
 DEFINE_COLLECTOR_IMPL(std::vector, BackInsertCollector);
 DEFINE_COLLECTOR_IMPL(std::list, BackInsertCollector);
 DEFINE_COLLECTOR_IMPL(std::deque, BackInsertCollector);
+DEFINE_COLLECTOR_IMPL(std::basic_string, BackInsertCollector);
 
 DEFINE_COLLECTOR_IMPL(std::set, BackInsertCollector);
 DEFINE_COLLECTOR_IMPL(std::multiset, BackInsertCollector);
@@ -389,7 +391,7 @@ public:
 		} catch (LINQIteratorEnd) {}
 	}
 
-	template<template <typename...> typename TTargetContainer>
+	template<template <typename...> typename TTargetContainer, typename... TTargetContainerArgs>
 	auto collect() {
 		Collector<TSelf, TTargetContainer> collector;
 		return collector.template collect<Item, ItemOwned>(*self());

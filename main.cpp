@@ -1,3 +1,4 @@
+
 #include "CIter.h"
 
 #include <iostream>
@@ -7,7 +8,6 @@
 #include <optional>
 #include <unordered_set>
 #include <unordered_map>
-
 
 struct DebugLogger {
 	std::string heapTest;
@@ -82,7 +82,8 @@ int main() {
 	}
 	{
 		std::vector<int> input = {42, 42, 42, 42, 1337};
-		std::vector<int> output = CIter::from(input).skip(2).collect<std::vector>();
+		std::vector<int> output = CIter::from(input)
+				.skip(3).collect<std::vector>(); // skip first 3 values
 		std::cout << "count: " << output.size() << std::endl;
 	}
 	{
@@ -93,10 +94,25 @@ int main() {
 		std::cout << "count: " << output.size() << std::endl;
 	}
 	{
-		std::vector<int> input = {1337, 42, 42, 42, 42, 1337, 42};
+		std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+		std::vector<int> output = CIter::from(input)
+				.take(3) // take first 3 values
+				.collect<std::vector>();
+		std::cout << "count: " << output.size() << std::endl;
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 42};
 		std::vector<int> output = CIter::from(input)
 				.takeWhile([](const int value) { return (value == 42); }) // take only leading 42s
 				.collect<std::vector>();
+		std::cout << "count: " << output.size() << std::endl;
+	}
+
+	{
+		std::string input = "test";
+		std::string output = CIter::from(input)
+				.take(3)
+				.collect<std::basic_string>();
 		std::cout << "count: " << output.size() << std::endl;
 	}
 }
