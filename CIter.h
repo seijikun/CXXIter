@@ -364,45 +364,45 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 // COLLECTOR
 // ################################################################################################
 namespace collectors {
-	template<typename TChainInput, template<typename...> typename TContainer>
+	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
 	struct BackInsertCollector {
 		template<typename Item, typename ItemOwned>
-		static TContainer<ItemOwned> collect(TChainInput& input) {
-			TContainer<ItemOwned> container;
+		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
+			TContainer<ItemOwned, TContainerArgs...> container;
 			auto inserter = std::back_inserter(container);
 			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
 			return container;
 		}
 	};
 
-	template<typename TChainInput, template<typename...> typename TContainer>
+	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
 	struct InsertCollector {
 		template<typename Item, typename ItemOwned>
-		static TContainer<ItemOwned> collect(TChainInput& input) {
-			TContainer<ItemOwned> container;
+		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
+			TContainer<ItemOwned, TContainerArgs...> container;
 			auto inserter = std::inserter(container, container.end());
 			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
 			return container;
 		}
 	};
 
-	template<typename TChainInput, template<typename...> typename TContainer>
+	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
 	struct AssocCollector {
 		template<typename Item, typename ItemOwned>
 		static auto collect(TChainInput& input) {
-			TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type> container;
+			TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type, TContainerArgs...> container;
 			input.forEach([&container](Item&& item) { container[item.first] = item.second; });
 			return container;
 		}
 	};
 }
 
-template<typename TChainInput, template <typename...> typename TContainer>
+template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
 struct Collector {};
 
 #define DEFINE_COLLECTOR_IMPL(_CONTAINER_, _COLLECTOR_) \
-	template<typename TChainInput> \
-	struct Collector<TChainInput, _CONTAINER_> : public collectors::_COLLECTOR_<TChainInput, _CONTAINER_> {}
+	template<typename TChainInput, typename... TContainerArgs> \
+	struct Collector<TChainInput, _CONTAINER_, TContainerArgs...> : public collectors::_COLLECTOR_<TChainInput, _CONTAINER_, TContainerArgs...> {}
 
 DEFINE_COLLECTOR_IMPL(std::vector, BackInsertCollector);
 DEFINE_COLLECTOR_IMPL(std::list, BackInsertCollector);
@@ -451,8 +451,7 @@ public:
 
 	template<template <typename...> typename TTargetContainer, typename... TTargetContainerArgs>
 	auto collect() {
-		Collector<TSelf, TTargetContainer> collector;
-		return collector.template collect<Item, ItemOwned>(*self());
+		return Collector<TSelf, TTargetContainer, TTargetContainerArgs...>::template collect<Item, ItemOwned>(*self());
 	}
 
 
