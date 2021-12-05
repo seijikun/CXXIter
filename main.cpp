@@ -122,6 +122,14 @@ int main() {
 				.collect<std::vector>();
 		std::cout << output.size() << std::endl;
 	}
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<int> input2 = {1337, 42};
+		std::vector<std::pair<std::string, int>> output = CIter::from(input1).copied()
+				.zip(CIter::from(input2).copied())
+				.collect<std::vector>();
+		std::cout << output.size() << std::endl;
+	}
 }
 
 //int main() {

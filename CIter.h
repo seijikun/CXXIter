@@ -29,15 +29,20 @@ namespace std {
 namespace CIter {
 
 // ################################################################################################
-// FORWARD DECLARATIONS
+// FORWARD DECLARATIONS & CONCEPTS
 // ################################################################################################
 
 struct LINQIteratorEnd {};
 
+
 template<typename T>
 struct IteratorTrait {};
 
-template<typename TSelf>
+template<typename T>
+concept CIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
+
+
+template<CIterIterator TSelf>
 class IterApi;
 
 
@@ -55,11 +60,11 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
-struct IteratorTrait <SrcMov<TContainer>> {
+struct IteratorTrait<SrcMov<TContainer>> {
 	using Self = SrcMov<TContainer>;
 	using Item = typename TContainer::value_type;
 
-	static inline Item next(SrcMov<TContainer>& self) {
+	static inline Item next(Self& self) {
 		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
 		return std::move(*self.ptr++);
 	}
@@ -81,11 +86,11 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
-struct IteratorTrait <SrcRef<TContainer>> {
+struct IteratorTrait<SrcRef<TContainer>> {
 	using Self = SrcRef<TContainer>;
 	using Item = typename TContainer::reference;
 
-	static inline Item next(SrcRef<TContainer>& self) {
+	static inline Item next(Self& self) {
 		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
 		return *self.ptr++;
 	}
@@ -107,11 +112,11 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
-struct IteratorTrait <SrcCRef<TContainer>> {
+struct IteratorTrait<SrcCRef<TContainer>> {
 	using Self = SrcCRef<TContainer>;
 	using Item = typename TContainer::const_reference;
 
-	static inline Item next(SrcCRef<TContainer>& self) {
+	static inline Item next(Self& self) {
 		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
 		return *self.ptr++;
 	}
@@ -134,13 +139,13 @@ public:
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput, typename TItem>
 requires std::is_object_v<TItem>
-struct IteratorTrait <Caster<TChainInput, TItem>> {
-	// LINQ Interface
+struct IteratorTrait<Caster<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = Caster<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(Caster<TChainInput, Item>& self) {
+	static inline Item next(Self& self) {
 		return static_cast<Item>( ChainInputIterator::next(self.input) );
 	}
 };
@@ -164,13 +169,13 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput>
-struct IteratorTrait <Filter<TChainInput>> {
-	// LINQ Interface
+struct IteratorTrait<Filter<TChainInput>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = Filter<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
-	static inline Item next(Filter<TChainInput>& self) {
+	static inline Item next(Self& self) {
 		while(true) {
 			Item value = ChainInputIterator::next(self.input);
 			if(self.filterFn(value)) { return value; }
@@ -198,13 +203,13 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput>
-struct IteratorTrait <InplaceModifier<TChainInput>> {
-	// LINQ Interface
+struct IteratorTrait<InplaceModifier<TChainInput>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = InplaceModifier<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
-	static inline Item next(InplaceModifier<TChainInput>& self) {
+	static inline Item next(Self& self) {
 		Item value = ChainInputIterator::next(self.input);
 		self.modifierFn(value);
 		return value;
@@ -230,13 +235,13 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput, typename TItem>
-struct IteratorTrait <Map<TChainInput, TItem>> {
-	// LINQ Interface
+struct IteratorTrait<Map<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = Map<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(Map<TChainInput, TItem>& self) {
+	static inline Item next(Self& self) {
 		return self.mapFn(std::forward<typename ChainInputIterator::Item>( ChainInputIterator::next(self.input) ));
 	}
 };
@@ -262,14 +267,14 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput, typename TItemContainer>
-struct IteratorTrait <FlatMap<TChainInput, TItemContainer>> {
+struct IteratorTrait<FlatMap<TChainInput, TItemContainer>> {
 	using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
-	// LINQ Interface
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = FlatMap<TChainInput, TItemContainer>;
 	using Item = typename TItemContainer::value_type;
 
-	static inline Item next(FlatMap<TChainInput, TItemContainer>& self) {
+	static inline Item next(Self& self) {
 		while(true) {
 			if(!self.current) { // pull new collection from the outer iterator
 				self.current = SrcMov(std::move(
@@ -304,18 +309,52 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TChainInput, typename TItem>
-struct IteratorTrait <FilterMap<TChainInput, TItem>> {
-	// LINQ Interface
+struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	// LINQ Interface
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(FilterMap<TChainInput, TItem>& self) {
+	static inline Item next(Self& self) {
 		while(true) {
 			std::optional<Item> value(self.filterMapFn(std::move( ChainInputIterator::next(self.input) )));
 			if(!value) { continue; }
 			return *value;
 		}
+	}
+};
+
+
+
+
+// ################################################################################################
+// ZIPPER
+// ################################################################################################
+template<typename TChainInput1, typename TChainInput2>
+class Zipper : public IterApi<Zipper<TChainInput1, TChainInput2>> {
+	friend struct IteratorTrait<Zipper<TChainInput1, TChainInput2>>;
+private:
+	TChainInput1 input1;
+	TChainInput2 input2;
+public:
+	Zipper(TChainInput1&& input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}
+};
+// ------------------------------------------------------------------------------------------------
+template<typename TChainInput1, typename TChainInput2>
+struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
+	using ChainInputIterator1 = IteratorTrait<TChainInput1>;
+	using ChainInputIterator2 = IteratorTrait<TChainInput2>;
+	using InputItem1 = typename IteratorTrait<TChainInput1>::Item;
+	using InputItem2 = typename IteratorTrait<TChainInput2>::Item;
+	// LINQ Interface
+	using Self = Zipper<TChainInput1, TChainInput2>;
+	using Item = std::pair<InputItem1, InputItem2>;
+
+	static inline Item next(Self& self) {
+		return {
+			ChainInputIterator1::next(self.input1),
+			ChainInputIterator2::next(self.input2)
+		};
 	}
 };
 
@@ -386,7 +425,7 @@ DEFINE_COLLECTOR_IMPL(std::unordered_multimap, AssocCollector);
 // SURFACE-API
 // ################################################################################################
 
-template<typename TSelf>
+template<CIterIterator TSelf>
 class IterApi {
 	TSelf* self() { return dynamic_cast<TSelf*>(this); }
 
@@ -417,13 +456,19 @@ public:
 	}
 
 
-
 	// ###################
 	// CHAINERS
 	// ###################
 	template<typename TItemOutput>
 	Caster<TSelf, TItemOutput> cast() {
 		return Caster<TSelf, TItemOutput>(std::move(*self()));
+	}
+
+	Map<TSelf, ItemOwned> copied() {
+		return Map<TSelf, ItemOwned>(std::move(*self()), [](Item&& item) -> ItemOwned {
+			ItemOwned copy = item;
+			return copy;
+		});
 	}
 
 	template<std::invocable<const Item&> TFilterFn>
@@ -485,6 +530,12 @@ public:
 			return !takeDone;
 		});
 	}
+
+	template<typename TOtherIterator>
+	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !std::is_reference_v<Item>)
+	Zipper<TSelf, TOtherIterator> zip(TOtherIterator&& otherIterator) {
+		return Zipper<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	}
 };
 
 
@@ -492,6 +543,7 @@ public:
 // ################################################################################################
 // CONVENIENT ENTRY POINTS
 // ################################################################################################
+
 template<typename TContainer> SrcMov<TContainer> from(TContainer&& container) {
 	return SrcMov<TContainer>(std::forward<TContainer>(container));
 }
