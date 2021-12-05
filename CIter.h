@@ -443,6 +443,23 @@ public:
 		});
 	}
 
+	Filter<TSelf> take(size_t cnt) {
+		return filter([cnt](const Item&) mutable {
+			if(cnt != 0) { cnt -= 1; return true; }
+			return false;
+		});
+	}
+
+	template<std::invocable<const Item&> TTakePredicate>
+	Filter<TSelf> takeWhile(TTakePredicate takePredicate) {
+		bool takeDone = false;
+		return filter([takePredicate, takeDone](const Item& value) mutable {
+			if(takeDone) { return false; }
+			takeDone = !takePredicate(value);
+			return !takeDone;
+		});
+	}
+
 };
 
 

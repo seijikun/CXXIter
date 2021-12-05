@@ -92,6 +92,13 @@ int main() {
 				.collect<std::vector>();
 		std::cout << "count: " << output.size() << std::endl;
 	}
+	{
+		std::vector<int> input = {1337, 42, 42, 42, 42, 1337, 42};
+		std::vector<int> output = CIter::from(input)
+				.takeWhile([](const int value) { return (value == 42); }) // take only leading 42s
+				.collect<std::vector>();
+		std::cout << "count: " << output.size() << std::endl;
+	}
 }
 
 //int main() {
