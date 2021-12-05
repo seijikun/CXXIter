@@ -32,3 +32,4 @@
 *.out
 *.app
 
+CMakeLists.txt.user
