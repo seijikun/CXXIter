@@ -396,6 +396,7 @@ public:
 	}
 
 
+
 	// ###################
 	// CHAINERS
 	// ###################
@@ -423,6 +424,23 @@ public:
 	auto filterMap(TFilterMapFn filterMapFn) {
 		using ResultType = typename decltype ( filterMapFn( std::declval<Item&&>() ) )::value_type;
 		return FilterMap<TSelf, ResultType>(std::move(*self()), filterMapFn);
+	}
+
+	Filter<TSelf> skip(size_t cnt) {
+		return filter([cnt](const Item&) mutable {
+			if(cnt != 0) { cnt -= 1; return false; }
+			return true;
+		});
+	}
+
+	template<std::invocable<const Item&> TSkipPredicate>
+	Filter<TSelf> skipWhile(TSkipPredicate skipPredicate) {
+		bool skipDone = false;
+		return filter([skipPredicate, skipDone](const Item& value) mutable {
+			if(skipDone) { return true; }
+			skipDone = !skipPredicate(value);
+			return skipDone;
+		});
 	}
 
 };
