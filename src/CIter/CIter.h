@@ -311,13 +311,14 @@ public:
 template<typename TChainInput, typename TItem>
 struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename IteratorTrait<TChainInput>::Item;
 	// LINQ Interface
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;
 
 	static inline Item next(Self& self) {
 		while(true) {
-			std::optional<Item> value(self.filterMapFn(std::move( ChainInputIterator::next(self.input) )));
+			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( ChainInputIterator::next(self.input) )));
 			if(!value) { continue; }
 			return *value;
 		}
@@ -433,7 +434,7 @@ public:
 	using Iterator = IteratorTrait<TSelf>;
 	using Item = typename Iterator::Item;
 	using ItemOwned = typename std::remove_reference<Item>::type;
-	static constexpr bool IS_REFERENCE = std::is_reference<Item>::value;
+	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
 
 	virtual ~IterApi() {}
 

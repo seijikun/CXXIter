@@ -5,6 +5,13 @@ project(CIter LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(CIter main.cpp CIter.h)
+option(CITER_WITH_TESTS "Compile the CIter tests" OFF)
 
-target_compile_options(CIter PUBLIC -Wall -Wextra -Werror -Wno-error=unused-parameter -Wno-error=unused-variable)
+
+FILE(GLOB_RECURSE CITER_SOURCES "*.h")
+add_library(${PROJECT_NAME} INTERFACE ${CITER_SOURCES})
+target_include_directories(${PROJECT_NAME} INTERFACE "src/")
+
+if(${CITER_WITH_TESTS})
+	add_subdirectory(tests)
+endif()
