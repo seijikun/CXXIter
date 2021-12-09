@@ -1,4 +1,4 @@
-#include <CIter/CIter.h>
+#include <CXXIter/CXXIter.h>
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
@@ -60,7 +60,7 @@ struct LifecycleDebugger {
 // SOURCES
 // ################################################################################################
 
-TEST(CIter, srcMove) {
+TEST(CXXIter, srcMove) {
 	LifecycleEvents evtLog;
 
 	{ // move
@@ -68,7 +68,7 @@ TEST(CIter, srcMove) {
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
 
-			auto outVec = CIter::SrcMov(std::move(input))
+			auto outVec = CXXIter::SrcMov(std::move(input))
 				.filter([&evtLog](const LifecycleDebugger&) {
 					if(evtLog.size() != 2) { throw std::runtime_error("filter()"); }
 					return true;
@@ -98,14 +98,14 @@ TEST(CIter, srcMove) {
 	}
 }
 
-TEST(CIter, srcConstRef) {
+TEST(CXXIter, srcConstRef) {
 	LifecycleEvents evtLog;
 	{ // const references
 		{
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
 
-			std::vector<std::string> outVec = CIter::SrcCRef(input)
+			std::vector<std::string> outVec = CXXIter::SrcCRef(input)
 					.filter([](const LifecycleDebugger&){ return true; })
 					.map([](const LifecycleDebugger& o) { return o.heapTest; })
 					.collect<std::vector>();
@@ -122,7 +122,7 @@ TEST(CIter, srcConstRef) {
 	}
 }
 
-TEST(CIter, srcRef) {
+TEST(CXXIter, srcRef) {
 	LifecycleEvents evtLog;
 
 	{ // mutable references (move out of heapTest)
@@ -130,7 +130,7 @@ TEST(CIter, srcRef) {
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
 
-			std::vector<std::string> outVec = CIter::SrcRef(input)
+			std::vector<std::string> outVec = CXXIter::SrcRef(input)
 					.filter([](const LifecycleDebugger& o){ return true; })
 					.map([](LifecycleDebugger& o) { return std::move(o.heapTest); })
 					.collect<std::vector>();
@@ -154,19 +154,19 @@ TEST(CIter, srcRef) {
 // CHAINERS
 // ################################################################################################
 
-TEST(CIter, cast) {
+TEST(CXXIter, cast) {
 	std::vector<float> input = {1.35, 56.123};
-	std::vector<double> output = CIter::from(input)
+	std::vector<double> output = CXXIter::from(input)
 			.cast<double>()
 			.collect<std::vector>();
 	ASSERT_EQ(input.size(), output.size());
 	for(size_t i = 0; i < input.size(); ++i) { ASSERT_NEAR(input[i], output[i], 0.000005); }
 }
 
-TEST(CIter, filter) {
+TEST(CXXIter, filter) {
 	{
 		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
-		std::vector<int> output = CIter::from(input)
+		std::vector<int> output = CXXIter::from(input)
 				.filter([](int item) { return (item % 2) == 0; })
 				.collect<std::vector>();
 		ASSERT_EQ(4, output.size());
@@ -174,7 +174,7 @@ TEST(CIter, filter) {
 	}
 	{
 		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
-		std::vector<int> output = CIter::SrcMov(std::move(input))
+		std::vector<int> output = CXXIter::SrcMov(std::move(input))
 				.filter([](int item) { return (item % 2) == 0; })
 				.collect<std::vector>();
 		ASSERT_EQ(4, output.size());
@@ -182,17 +182,17 @@ TEST(CIter, filter) {
 	}
 }
 
-TEST(CIter, map) {
+TEST(CXXIter, map) {
 	{
 		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
-		std::unordered_set<int> output = CIter::from(input)
+		std::unordered_set<int> output = CXXIter::from(input)
 				.map([](const auto& pair) { return pair.first; })
 				.collect<std::unordered_set>();
 		for(const int& item : output) { ASSERT_TRUE(input.contains(item)); }
 	}
 	{
 		std::vector<int> input = {1337, 42};
-		std::unordered_map<int, std::string> output = CIter::from(input)
+		std::unordered_map<int, std::string> output = CXXIter::from(input)
 				.map([](int i) { return std::make_pair(i, std::to_string(i)); }) // construct pair
 				.collect<std::unordered_map>(); // collect into map
 		for(const int& item : input) {
@@ -202,9 +202,9 @@ TEST(CIter, map) {
 	}
 }
 
-TEST(CIter, modify) {
+TEST(CXXIter, modify) {
 	std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
-	std::unordered_map<int, std::string> output = CIter::from(input)
+	std::unordered_map<int, std::string> output = CXXIter::from(input)
 			.modify([](auto& keyValue) { keyValue.second = "-" + keyValue.second; }) // modify input
 			.collect<std::unordered_map>(); // copy to output
 	for(const auto& item : input) {
@@ -214,28 +214,28 @@ TEST(CIter, modify) {
 	}
 }
 
-TEST(CIter, skip) {
+TEST(CXXIter, skip) {
 	std::vector<int> input = {42, 42, 42, 42, 1337};
-	std::vector<int> output = CIter::from(input)
+	std::vector<int> output = CXXIter::from(input)
 			.skip(3) // skip first 3 values
 			.collect<std::vector>();
 	ASSERT_EQ(output.size(), 2);
 	ASSERT_THAT(output, ElementsAre(42, 1337));
 }
 
-TEST(CIter, skipWhile) {
+TEST(CXXIter, skipWhile) {
 	std::vector<int> input = {42, 42, 42, 42, 1337, 42};
-	std::vector<int> output = CIter::from(input)
+	std::vector<int> output = CXXIter::from(input)
 			.skipWhile([](const int value) { return (value == 42); }) // skip leading 42s
 			.collect<std::vector>();
 	ASSERT_EQ(output.size(), 2);
 	ASSERT_THAT(output, ElementsAre(1337, 42));
 }
 
-TEST(CIter, take) {
+TEST(CXXIter, take) {
 	{
 		std::vector<int> input = {42, 57, 64, 128, 1337, 10};
-		std::vector<int> output = CIter::from(input)
+		std::vector<int> output = CXXIter::from(input)
 				.take(3) // take first 3 values
 				.collect<std::vector>();
 		ASSERT_EQ(output.size(), 3);
@@ -243,7 +243,7 @@ TEST(CIter, take) {
 	}
 	{
 		std::string input = "test";
-		std::string output = CIter::from(input)
+		std::string output = CXXIter::from(input)
 				.take(3)
 				.collect<std::basic_string>();
 		ASSERT_EQ(output.size(), 3);
@@ -251,30 +251,30 @@ TEST(CIter, take) {
 	}
 }
 
-TEST(CIter, takeWhile) {
+TEST(CXXIter, takeWhile) {
 	std::vector<int> input = {42, 57, 64, 128, 1337, 10};
-	std::vector<int> output = CIter::from(input)
+	std::vector<int> output = CXXIter::from(input)
 			.takeWhile([](const int value) { return (value < 1000); }) // take until first item > 1000
 			.collect<std::vector>();
 	ASSERT_EQ(output.size(), 4);
 	ASSERT_THAT(output, ElementsAre(42, 57, 64, 128));
 }
 
-TEST(CIter, flatMap) {
+TEST(CXXIter, flatMap) {
 	std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
-	std::vector<int> output = CIter::from(std::move(input))
+	std::vector<int> output = CXXIter::from(std::move(input))
 			.flatMap([](auto&& item) { return std::get<1>(item); })
 			.collect<std::vector>();
 	ASSERT_EQ(output.size(), 5);
 	ASSERT_THAT(output, ElementsAre(1337, 42, 6, 123, 7888));
 }
 
-TEST(CIter, zip) {
+TEST(CXXIter, zip) {
 	{
 		std::vector<std::string> input1 = {"1337", "42"};
 		std::vector<int> input2 = {1337, 42};
-		std::vector<std::pair<std::string, int>> output = CIter::from(input1).copied()
-				.zip(CIter::from(input2).copied())
+		std::vector<std::pair<std::string, int>> output = CXXIter::from(input1).copied()
+				.zip(CXXIter::from(input2).copied())
 				.collect<std::vector>();
 		ASSERT_EQ(output.size(), input1.size());
 		ASSERT_THAT(output, ElementsAre(Pair("1337", 1337), Pair("42", 42)));
@@ -282,8 +282,8 @@ TEST(CIter, zip) {
 	{
 		std::vector<std::string> input1 = {"1337", "42"};
 		std::vector<int> input2 = {1337, 42, 80};
-		std::vector<std::pair<std::string, int>> output = CIter::from(input1).copied()
-				.zip(CIter::from(input2).copied())
+		std::vector<std::pair<std::string, int>> output = CXXIter::from(input1).copied()
+				.zip(CXXIter::from(input2).copied())
 				.collect<std::vector>();
 		ASSERT_EQ(output.size(), 2);
 		ASSERT_THAT(output, ElementsAre(Pair("1337", 1337), Pair("42", 42)));
@@ -291,78 +291,78 @@ TEST(CIter, zip) {
 	{
 		std::vector<std::string> input1 = {"1337", "42", "80"};
 		std::vector<int> input2 = {1337, 42};
-		std::vector<std::pair<std::string, int>> output = CIter::from(input1).copied()
-				.zip(CIter::from(input2).copied())
+		std::vector<std::pair<std::string, int>> output = CXXIter::from(input1).copied()
+				.zip(CXXIter::from(input2).copied())
 				.collect<std::vector>();
 		ASSERT_EQ(output.size(), 2);
 		ASSERT_THAT(output, ElementsAre(Pair("1337", 1337), Pair("42", 42)));
 	}
 }
 
-TEST(CIter, count) {
+TEST(CXXIter, count) {
 	{
 		std::vector<int> input = {42, 1337, 52};
-		size_t output = CIter::from(input).count();
+		size_t output = CXXIter::from(input).count();
 		ASSERT_EQ(output, 3);
 	}
 	{
 		std::vector<int> input = {};
-		size_t output = CIter::from(input).count();
+		size_t output = CXXIter::from(input).count();
 		ASSERT_EQ(output, 0);
 	}
 }
 
-TEST(CIter, sum) {
+TEST(CXXIter, sum) {
 	{
 		std::vector<int> input = {42, 1337, 52};
-		int output = CIter::from(input).sum();
+		int output = CXXIter::from(input).sum();
 		ASSERT_EQ(output, 1431);
 	}
 	{
 		std::vector<int> input = {};
-		int output = CIter::from(input).sum();
+		int output = CXXIter::from(input).sum();
 		ASSERT_EQ(output, 0);
 	}
 }
 
-TEST(CIter, last) {
+TEST(CXXIter, last) {
 	{
 		std::vector<int> input = {42, 1337, 52};
-		std::optional<int> output = CIter::from(input).last();
+		std::optional<int> output = CXXIter::from(input).last();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 52);
 	}
 	{
 		std::vector<int> input = {};
-		std::optional<int> output = CIter::from(input).last();
+		std::optional<int> output = CXXIter::from(input).last();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
-TEST(CIter, min) {
+TEST(CXXIter, min) {
 	{
 		std::vector<int> input = {42, 1337, 52};
-		std::optional<int> output = CIter::from(input).min();
+		std::optional<int> output = CXXIter::from(input).min();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 42);
 	}
 	{
 		std::vector<int> input = {};
-		std::optional<int> output = CIter::from(input).min();
+		std::optional<int> output = CXXIter::from(input).min();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
-TEST(CIter, max) {
+TEST(CXXIter, max) {
 	{
 		std::vector<int> input = {42, 1337, 52};
-		std::optional<int> output = CIter::from(input).max();
+		std::optional<int> output = CXXIter::from(input).max();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 1337);
 	}
 	{
 		std::vector<int> input = {};
-		std::optional<int> output = CIter::from(input).max();
+		std::optional<int> output = CXXIter::from(input).max();
 		ASSERT_FALSE(output.has_value());
 	}
 }

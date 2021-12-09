@@ -1,3 +1,3 @@
-# CIter
+# CXXIter
 
-C++ Iterator interface
+Ergonomic C++ Iterator interface for STL containers 

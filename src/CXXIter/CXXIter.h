@@ -26,7 +26,7 @@ namespace std {
 	template<typename, typename, typename, typename, typename> struct unordered_multimap;
 }
 
-namespace CIter {
+namespace CXXIter {
 
 // ################################################################################################
 // ITERATOR OPTIONAL (supports references)
