@@ -29,11 +29,77 @@ namespace std {
 namespace CIter {
 
 // ################################################################################################
+// ITERATOR OPTIONAL (supports references)
+// ################################################################################################
+template<typename TValue>
+class IterValue {};
+
+template<typename TValue>
+requires (!std::is_reference_v<TValue>)
+class IterValue<TValue> {
+	std::optional<TValue> inner;
+public:
+	IterValue() {}
+	IterValue(const TValue& value) : inner(value) {}
+	IterValue(TValue&& value) : inner(std::forward<TValue>(value)) {}
+	IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
+	IterValue(IterValue<TValue>&& o) = default;
+
+	const TValue& value() const { return inner.value(); }
+	TValue& value() { return inner.value(); }
+	const TValue& value(TValue&& def) const { return inner.value_or(def); }
+	TValue& value(TValue&& def) { return inner.value_or(def); }
+
+	bool hasValue() const { return inner.has_value(); }
+
+	IterValue<TValue>& operator=(TValue&& o) {
+		inner = std::forward<TValue>(o);
+		return *this;
+	}
+
+	template<typename TOutValue>
+	IterValue<TOutValue> map(std::function<TOutValue(TValue&& value)> mapFn) {
+		if(!hasValue()) { return {}; }
+		return mapFn(std::forward<TValue>(value()));
+	}
+};
+
+template<typename TValue>
+requires std::is_reference_v<TValue>
+class IterValue<TValue> {
+	using TValueDeref = typename std::remove_reference<TValue>::type;
+	std::optional<std::reference_wrapper<TValueDeref>> inner;
+public:
+	IterValue() {}
+	IterValue(TValue&& value) : inner(std::forward<TValue>(value)) {}
+	IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
+	IterValue(IterValue<TValue>&& o) = default;
+
+	const TValue& value() const { return inner.value(); }
+	TValue& value() { return inner.value(); }
+	const TValue& value(TValue&& def) const { return inner.value_or(def); }
+	TValue& value(TValue&& def) { return inner.value_or(def); }
+
+	bool hasValue() const { return inner.has_value(); }
+
+	IterValue<TValue>& operator=(TValue&& o) {
+		inner = std::forward<TValue>(o);
+		return *this;
+	}
+
+	template<typename TOutValue>
+	IterValue<TOutValue> map(std::function<TOutValue(TValue&& value)> mapFn) {
+		if(!hasValue()) { return {}; }
+		return mapFn(std::forward<TValue>(value()));
+	}
+};
+
+
+
+
+// ################################################################################################
 // FORWARD DECLARATIONS & CONCEPTS
 // ################################################################################################
-
-struct LINQIteratorEnd {};
-
 
 template<typename T>
 struct IteratorTrait {};
@@ -64,8 +130,8 @@ struct IteratorTrait<SrcMov<TContainer>> {
 	using Self = SrcMov<TContainer>;
 	using Item = typename TContainer::value_type;
 
-	static inline Item next(Self& self) {
-		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
+	static inline IterValue<Item> next(Self& self) {
+		if(self.ptr == self.container.end()) { return {}; }
 		return std::move(*self.ptr++);
 	}
 };
@@ -90,8 +156,8 @@ struct IteratorTrait<SrcRef<TContainer>> {
 	using Self = SrcRef<TContainer>;
 	using Item = typename TContainer::reference;
 
-	static inline Item next(Self& self) {
-		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
+	static inline IterValue<Item> next(Self& self) {
+		if(self.ptr == self.container.end()) { return {}; }
 		return *self.ptr++;
 	}
 };
@@ -116,8 +182,8 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 	using Self = SrcCRef<TContainer>;
 	using Item = typename TContainer::const_reference;
 
-	static inline Item next(Self& self) {
-		if(self.ptr == self.container.end()) { throw LINQIteratorEnd(); }
+	static inline IterValue<Item> next(Self& self) {
+		if(self.ptr == self.container.end()) { return {}; }
 		return *self.ptr++;
 	}
 };
@@ -145,8 +211,9 @@ struct IteratorTrait<Caster<TChainInput, TItem>> {
 	using Self = Caster<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(Self& self) {
-		return static_cast<Item>( ChainInputIterator::next(self.input) );
+	static inline IterValue<Item> next(Self& self) {
+		auto item = ChainInputIterator::next(self.input);
+		return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
 	}
 };
 
@@ -175,10 +242,11 @@ struct IteratorTrait<Filter<TChainInput>> {
 	using Self = Filter<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
-	static inline Item next(Self& self) {
+	static inline IterValue<Item> next(Self& self) {
 		while(true) {
-			Item value = ChainInputIterator::next(self.input);
-			if(self.filterFn(value)) { return value; }
+			auto item = ChainInputIterator::next(self.input);
+			if(!item.hasValue()) { return {}; }
+			if(self.filterFn(item.value())) { return item; }
 		}
 	}
 };
@@ -209,10 +277,11 @@ struct IteratorTrait<InplaceModifier<TChainInput>> {
 	using Self = InplaceModifier<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
-	static inline Item next(Self& self) {
-		Item value = ChainInputIterator::next(self.input);
-		self.modifierFn(value);
-		return value;
+	static inline IterValue<Item> next(Self& self) {
+		auto item = ChainInputIterator::next(self.input);
+		if(!item.hasValue()) { return {}; }
+		self.modifierFn(item.value());
+		return item;
 	}
 };
 
@@ -237,12 +306,14 @@ public:
 template<typename TChainInput, typename TItem>
 struct IteratorTrait<Map<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename ChainInputIterator::Item;
 	// LINQ Interface
 	using Self = Map<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(Self& self) {
-		return self.mapFn(std::forward<typename ChainInputIterator::Item>( ChainInputIterator::next(self.input) ));
+	static inline IterValue<Item> next(Self& self) {
+		auto item = ChainInputIterator::next(self.input);
+		return item.template map<Item>(self.mapFn);
 	}
 };
 
@@ -270,21 +341,27 @@ template<typename TChainInput, typename TItemContainer>
 struct IteratorTrait<FlatMap<TChainInput, TItemContainer>> {
 	using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
 	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename ChainInputIterator::Item;
 	// LINQ Interface
 	using Self = FlatMap<TChainInput, TItemContainer>;
 	using Item = typename TItemContainer::value_type;
 
-	static inline Item next(Self& self) {
+	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			if(!self.current) { // pull new collection from the outer iterator
+				auto item = ChainInputIterator::next(self.input);
+				if(!item.hasValue()) { return {}; } // end of iteration
 				self.current = SrcMov(std::move(
-					self.mapFn(std::forward<typename ChainInputIterator::Item>( ChainInputIterator::next(self.input) ))
+					self.mapFn(std::forward<InputItem>( item.value() ))
 				));
 			}
-			try { // if the outer iterator yielded a collection, take from it until we reach the end
-				return NestedChainIterator::next(*self.current);
-			} catch (LINQIteratorEnd) { // inner collection ended, unset current cache
-				self.current.reset();
+
+			// if the outer iterator yielded a collection, take from it until we reach the end
+			auto item = NestedChainIterator::next(*self.current);
+			if(item.hasValue()) { // inner yielded a usable item
+				return item.value();
+			} else {
+				self.current.reset(); // inner collection ended, unset current cache
 			}
 		}
 	}
@@ -316,9 +393,11 @@ struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;
 
-	static inline Item next(Self& self) {
+	static inline IterValue<Item> next(Self& self) {
 		while(true) {
-			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( ChainInputIterator::next(self.input) )));
+			auto item = ChainInputIterator::next(self.input);
+			if(!item.hasValue()) { return {}; }
+			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
 			if(!value) { continue; }
 			return *value;
 		}
@@ -351,11 +430,12 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 	using Self = Zipper<TChainInput1, TChainInput2>;
 	using Item = std::pair<InputItem1, InputItem2>;
 
-	static inline Item next(Self& self) {
-		return {
-			ChainInputIterator1::next(self.input1),
-			ChainInputIterator2::next(self.input2)
-		};
+	static inline IterValue<Item> next(Self& self) {
+		auto item1 = ChainInputIterator1::next(self.input1);
+		auto item2 = ChainInputIterator2::next(self.input2);
+		if(!item1.hasValue()) { return {}; }
+		if(!item2.hasValue()) { return {}; }
+		return std::make_pair(item1.value(), item2.value());
 	}
 };
 
@@ -443,11 +523,11 @@ public:
 	// ###################
 	template<typename TUseFn>
 	void forEach(TUseFn useFn) {
-		try {
-			while(true) {
-				useFn(std::forward<Item>( Iterator::next(*self()) ));
-			}
-		} catch (LINQIteratorEnd) {}
+		while(true) {
+			auto item = Iterator::next(*self());
+			if(!item.hasValue()) { return; }
+			useFn(std::forward<Item>( item.value() ));
+		}
 	}
 
 	template<template <typename...> typename TTargetContainer, typename... TTargetContainerArgs>
@@ -478,15 +558,13 @@ public:
 		{ res = item };
 	}
 	std::optional<TResult> min() {
-		try {
-			TResult result = Iterator::next(*self());
-			forEach([&result](Item&& item) {
-				if(item < result) { result = item; }
-			});
-			return result;
-		} catch (LINQIteratorEnd) {
-			return {};
-		}
+		auto item = Iterator::next(*self());
+		if(!item.hasValue()) { return {}; }
+		TResult result = item.value();
+		forEach([&result](Item&& item) {
+			if(item < result) { result = item; }
+		});
+		return result;
 	}
 
 	template<typename TResult = ItemOwned>
@@ -495,15 +573,13 @@ public:
 		{ res = item };
 	}
 	std::optional<TResult> max() {
-		try {
-			TResult result = Iterator::next(*self());
-			forEach([&result](Item&& item) {
-				if(item > result) { result = item; }
-			});
-			return result;
-		} catch (LINQIteratorEnd) {
-			return {};
-		}
+		auto item = Iterator::next(*self());
+		if(!item.hasValue()) { return {}; }
+		TResult result = item.value();
+		forEach([&result](Item&& item) {
+			if(item > result) { result = item; }
+		});
+		return result;
 	}
 
 	template<typename _unused = ItemOwned>

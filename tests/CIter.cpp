@@ -163,6 +163,25 @@ TEST(CIter, cast) {
 	for(size_t i = 0; i < input.size(); ++i) { ASSERT_NEAR(input[i], output[i], 0.000005); }
 }
 
+TEST(CIter, filter) {
+	{
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+		std::vector<int> output = CIter::from(input)
+				.filter([](int item) { return (item % 2) == 0; })
+				.collect<std::vector>();
+		ASSERT_EQ(4, output.size());
+		ASSERT_THAT(output, ElementsAre(2, 4, 6, 8));
+	}
+	{
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+		std::vector<int> output = CIter::SrcMov(std::move(input))
+				.filter([](int item) { return (item % 2) == 0; })
+				.collect<std::vector>();
+		ASSERT_EQ(4, output.size());
+		ASSERT_THAT(output, ElementsAre(2, 4, 6, 8));
+	}
+}
+
 TEST(CIter, map) {
 	{
 		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
