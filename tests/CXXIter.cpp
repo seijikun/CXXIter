@@ -273,6 +273,28 @@ TEST(CXXIter, cast) {
 	for(size_t i = 0; i < input.size(); ++i) { ASSERT_NEAR(input[i], output[i], 0.000005); }
 }
 
+TEST(CXXIter, copied) {
+	{ // copied
+		std::vector<std::string> input = {"inputString1", "inputString2"};
+		std::vector<std::string> output = CXXIter::from(input)
+				.copied() // clone values, now working with owned copies instead of references to input
+				.modify([](std::string& item) { item[item.size() - 1] += 1; }) // modify copies, input untouched
+				.collect<std::vector>();
+		ASSERT_EQ(2, output.size());
+		ASSERT_THAT(input, ElementsAre("inputString1", "inputString2"));
+		ASSERT_THAT(output, ElementsAre("inputString2", "inputString3"));
+	}
+	{ // uncopied
+		std::vector<std::string> input = {"inputString1", "inputString2"};
+		std::vector<std::string> output = CXXIter::from(input)
+				.modify([](std::string& item) { item[item.size() - 1] += 1; }) // modify
+				.collect<std::vector>();
+		ASSERT_EQ(2, output.size());
+		ASSERT_THAT(input, ElementsAre("inputString2", "inputString3"));
+		ASSERT_THAT(output, ElementsAre("inputString2", "inputString3"));
+	}
+}
+
 TEST(CXXIter, filter) {
 	{
 		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
