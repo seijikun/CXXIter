@@ -263,7 +263,6 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 // ################################################################################################
 // CHAINERS
 // ################################################################################################
-
 TEST(CXXIter, cast) {
 	std::vector<float> input = {1.35, 56.123};
 	std::vector<double> output = CXXIter::from(input)
@@ -443,6 +442,41 @@ TEST(CXXIter, zip) {
 	}
 }
 
+
+
+// ################################################################################################
+// CONSUMERS
+// ################################################################################################
+TEST(CXXIter, forEach) {
+	// additional container type parameters
+	std::vector<std::string> input = {"1337", "42", "64"};
+	std::vector<std::string> output;
+	CXXIter::from(input)
+			.forEach([&output](std::string& item) {
+				output.push_back(std::forward<std::string>(item));
+			});
+	ASSERT_EQ(output.size(), 3);
+	ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+}
+
+TEST(CXXIter, collect) {
+	// additional container type parameters
+	std::vector<std::string> input = {"1337", "42", "64"};
+	std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
+			.collect<std::vector, std::allocator<std::string>>();
+	ASSERT_EQ(output.size(), 3);
+	ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+}
+
+TEST(CXXIter, fold) {
+	std::vector<double> input = {1.331335363800390, 1.331335363800390, 1.331335363800390, 1.331335363800390};
+	double output = CXXIter::from(input)
+			.fold(1.0, [](double& workingValue, double item) {
+				workingValue *= item;
+			});
+	ASSERT_NEAR(output, 3.141592653589793, 0.0000000005);
+}
+
 TEST(CXXIter, count) {
 	{
 		std::vector<int> input = {42, 1337, 52};
@@ -457,15 +491,25 @@ TEST(CXXIter, count) {
 }
 
 TEST(CXXIter, sum) {
-	{
+	{ // default startValue
 		std::vector<int> input = {42, 1337, 52};
 		int output = CXXIter::from(input).sum();
 		ASSERT_EQ(output, 1431);
 	}
-	{
+	{ // custom startValue
+		std::vector<int> input = {42, 1337, 52};
+		int output = CXXIter::from(input).sum(29906);
+		ASSERT_EQ(output, 31337);
+	}
+	{ // default startValue, empty iterator
 		std::vector<int> input = {};
 		int output = CXXIter::from(input).sum();
 		ASSERT_EQ(output, 0);
+	}
+	{ // custom startValue, empty iterator
+		std::vector<int> input = {};
+		int output = CXXIter::from(input).sum(31337);
+		ASSERT_EQ(output, 31337);
 	}
 }
 

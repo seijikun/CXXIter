@@ -558,8 +558,17 @@ DEFINE_COLLECTOR_IMPL(std::unordered_multimap, AssocCollector);
 template<CXXIterIterator TSelf>
 class IterApi {
 public: // Associated types
+	/**
+	 * @brief Type of the IteratorTrait implemenation for this.
+	 */
 	using Iterator = IteratorTrait<TSelf>;
+	/**
+	 * @brief Type of the elements of this iterator. (Can be references)
+	 */
 	using Item = typename Iterator::Item;
+	/**
+	 * @brief Owned Type of the elements of this iterator. (References removed).
+	 */
 	using ItemOwned = typename std::remove_reference<Item>::type;
 
 private:
@@ -572,6 +581,21 @@ public:
 	// ###################
 	// CONSUMERS
 	// ###################
+	/**
+	 * @brief Consumer that calls the given function @p useFn for each of the elements in this iterator.
+	 * @note This consumes the iterator.
+	 * @param useFn Function called for each of the elements in this iterator.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string> output;
+	 * 	CXXIter::from(input)
+	 * 			.forEach([&output](std::string& item) {
+	 * 				output.push_back(std::forward<std::string>(item));
+	 * 			});
+	 * @endcode
+	 */
 	template<typename TUseFn>
 	void forEach(TUseFn useFn) {
 		while(true) {
@@ -581,11 +605,53 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Consumer that collects all elements from this iterator in a new collection of type @p TTargetContainer
+	 * @note This consumes the iterator.
+	 * @tparam TTargetContainer Type-Template for the target container that the elements from this iterator should
+	 * be collected into. The first template parameter of this Type-Template has to take the type of the elements.
+	 * @tparam TTargetContainerArgs... Optional additional type attributes to pass on to the target container. These
+	 * are appended to the item value type, which is automatically supplied.
+	 * @return An instance of @p TTargetContainer with all the elements of this iterator collected into.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 *
+	 * With Additional container type parameters:
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
+	 * 		.collect<std::vector, std::allocator<std::string>>();
+	 * @endcode
+	 */
 	template<template <typename...> typename TTargetContainer, typename... TTargetContainerArgs>
 	auto collect() {
 		return Collector<TSelf, TTargetContainer, TTargetContainerArgs...>::template collect<Item, ItemOwned>(*self());
 	}
 
+	/**
+	 * @brief Consumer that executes the given @p foldFn for each item in this iterator, to apply
+	 * to a working value, which is passed on and passed as second argument to the next call to @p foldFn.
+	 * @note This consumes the iterator.
+	 * @param startValue The initial value of the working value passed to @p foldFn.
+	 * @param foldFn Function called for each element in this iterator, passed the current workingValue and
+	 * an element from this iterator.
+	 * @return The workingValue from the last call to @p foldFn for the last element from this iterator.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<double> input = {1.331335363800390, 1.331335363800390, 1.331335363800390, 1.331335363800390};
+	 * 	double output = CXXIter::from(input)
+	 * 		.fold(1.0, [](double& workingValue, double item) {
+	 * 			workingValue *= item;
+	 * 		});
+	 *	// output ~ 3.141592653589793
+	 * @endcode
+	 */
 	template<typename TResult, std::invocable<TResult&, Item&&> FoldFn>
 	TResult fold(TResult startValue, FoldFn foldFn) {
 		TResult result = startValue;
@@ -593,16 +659,83 @@ public:
 		return result;
 	}
 
+	/**
+	 * @brief Consumer that counts the elements in this iterator.
+	 * @note This consumes the iterator.
+	 * @return The amount of elements in this iterator
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	size_t output = CXXIter::from(input).count();
+	 * 	// output == 3
+	 * 	std::vector<int> input2 = {};
+	 * 	size_t output2 = CXXIter::from(input2).count();
+	 * 	// output == 0
+	 * @endcode
+	 */
 	size_t count() {
 		return fold((size_t)0, [](size_t& cnt, auto&&) { cnt += 1; });
 	}
 
+	/**
+	 * @brief Consumer that calculates the sum of all elements from this iterator.
+	 * @note This consumes the iterator.
+	 * @param startValue Starting value from which to start the sum.
+	 * @return The sum of all elements from this iterator, or @p startValue if this
+	 * iterator had no elements.
+	 *
+	 * Usage Example:
+	 * - Non-empty iterator with default startValue
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	int output = CXXIter::from(input).sum();
+	 * 	// output == 1431
+	 * @endcode
+	 * - Non-Empty iterator with custom startValue of 29906
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	int output = CXXIter::from(input).sum(29906);
+	 * 	// output == 31337
+	 * @endcode
+	 * - Empty iterator with default startValue
+	 * @code
+	 * 	std::vector<int> input = {};
+	 * 	int output = CXXIter::from(input).sum();
+	 * 	// output == 0
+	 * @endcode
+	 * - Empty iterator with custom startValue
+	 * @code
+	 * 	std::vector<int> input = {};
+	 * 	int output = CXXIter::from(input).sum(31337);
+	 * 	// output == 31337
+	 * @endcode
+	 */
 	template<typename TResult = ItemOwned>
 	requires requires(TResult res, Item item) { { res += item }; }
 	TResult sum(TResult startValue = TResult()) {
 		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
 	}
 
+	/**
+	 * @brief Consumer that yields the smallest element from this iterator.
+	 * @note This consumes the iterator.
+	 * @return The smallest element of this iterator (if any).
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<int> input = {42, 1337, 52};
+	 *	std::optional<int> output = CXXIter::from(input).min();
+	 *	// output == Some(42)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<int> input = {};
+	 *	std::optional<int> output = CXXIter::from(input).min();
+	 *	// output == None
+	 * @endcode
+	 */
 	template<typename TResult = ItemOwned>
 	requires requires(TResult res, ItemOwned item) {
 		{ item < res };
@@ -618,6 +751,25 @@ public:
 		return result;
 	}
 
+	/**
+	 * @brief Consumer that yields the largest element from this iterator.
+	 * @note This consumes the iterator.
+	 * @return The largest element of this iterator (if any).
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<int> input = {42, 1337, 52};
+	 *	std::optional<int> output = CXXIter::from(input).max();
+	 *	// output == Some(1337)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<int> input = {};
+	 *	std::optional<int> output = CXXIter::from(input).max();
+	 *	// output == None
+	 * @endcode
+	 */
 	template<typename TResult = ItemOwned>
 	requires requires(TResult res, ItemOwned item) {
 		{ item > res };
@@ -633,6 +785,25 @@ public:
 		return result;
 	}
 
+	/**
+	 * @brief Consumer that yields the last element of this iterator.
+	 * @note This consumes the iterator.
+	 * @return The last element of this iterator (if any).
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<int> input = {42, 1337, 52};
+	 *	std::optional<int> output = CXXIter::from(input).last();
+	 *	// output == Some(52)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<int> input = {};
+	 *	std::optional<int> output = CXXIter::from(input).last();
+	 *	// output == None
+	 * @endcode
+	 */
 	template<typename _unused = ItemOwned>
 	std::optional<ItemOwned> last() {
 		std::optional<ItemOwned> tmp;
@@ -644,11 +815,40 @@ public:
 	// ###################
 	// CHAINERS
 	// ###################
+	/**
+	 * @brief Constructs a new iterator that casts the elements of this iterator to the type requested by @p TItemOutput.
+	 * @details This iterator applies the requested type cast to @p TItemOutput using @c static_cast<>.
+	 * @tparam TItemOutput Type to cast the elements of this iterator to.
+	 * @return A new iterator that casts all elements from this iterator to the requested type @p TItemOutput.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<float> input = {1.35, 56.123};
+	 * 	std::vector<double> output = CXXIter::from(input)
+	 * 			.cast<double>()
+	 * 			.collect<std::vector>();
+	 * @endcode
+	 */
 	template<typename TItemOutput>
 	Caster<TSelf, TItemOutput> cast() {
 		return Caster<TSelf, TItemOutput>(std::move(*self()));
 	}
 
+	/**
+	 * @brief Constructs a new iterator that copies the elements of this iterator.
+	 * @details This function essentially converts an iterator that is passing elements by
+	 * reference, to an iterator that is passing elements by value midway.
+	 * @return A new iterator that is passing copies of the original input elements by value.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input = {"inputString1", "inputString2"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 		.copied() // clone values, now working with owned copies instead of references to input
+	 * 		.modify([](std::string& item) { item[item.size() - 1] += 1; }) // modify copies, input untouched
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 */
 	Map<TSelf, ItemOwned> copied() {
 		return Map<TSelf, ItemOwned>(std::move(*self()), [](Item&& item) -> ItemOwned {
 			ItemOwned copy = item;
@@ -656,11 +856,44 @@ public:
 		});
 	}
 
+	/**
+	 * @brief Constructs a new iterator that only contains the elements from this iterator, for
+	 * which the given @p filterFn returned @c true.
+	 * @param filterFn Function that decides which element of this iterator to yield in the
+	 * newly created iterator.
+	 * @return Iterator that only returns the elements for which the @p filterFn returns @c true.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+	 * 	std::vector<int> output = CXXIter::from(input)
+	 * 		.filter([](int item) { return (item % 2) == 0; })
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 */
 	template<std::invocable<const Item&> TFilterFn>
 	Filter<TSelf> filter(TFilterFn filterFn) {
 		return Filter<TSelf>(std::move(*self()), filterFn);
 	}
 
+	/**
+	 * @brief Creates an iterator that uses the given @p mapFn to map each element from this
+	 * iterator to elements of the new iterator.
+	 * @details This pulls a new value from this iterator, maps it to a new value (can have
+	 * a completely new type) using the given @p mapFn and then yields that as new item for
+	 * thew newly created iterator.
+	 * @param mapFn Function that maps items from this iterator to a new value.
+	 * @return New iterator that maps the values from this iterator to new values, using the
+	 * given @p mapFn.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input = {1337, 42};
+	 * 	std::unordered_map<int, std::string> output = CXXIter::from(input)
+	 * 		.map([](int i) { return std::make_pair(i, std::to_string(i)); }) // construct pair
+	 * 		.collect<std::unordered_map>(); // collect into map
+	 * @endcode
+	 */
 	template<std::invocable<Item&&> TMapFn>
 	auto map(TMapFn mapFn) {
 		return Map<TSelf, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
