@@ -678,14 +678,35 @@ public:
 // CONVENIENT ENTRY POINTS
 // ################################################################################################
 
+/**
+ * @brief Construct a CXXIter move source from the given container.
+ * @details This constructs a move source, which will move the items from the
+ * container into the iterator.
+ * @param container Container to construct a CXXIter source from.
+ * @return CXXIter move source from the given container.
+ */
 template<typename TContainer> SrcMov<TContainer> from(TContainer&& container) {
 	return SrcMov<TContainer>(std::forward<TContainer>(container));
 }
 
+/**
+ * @brief Construct a CXXIter mutable-reference source from the given container.
+ * @details This constructs a mutable-reference source. This allows the iterator
+ * to modify the elements in the array.
+ * @param container Container to construct a CXXIter source from.
+ * @return CXXIter mutable-reference source from the given container.
+ */
 template<typename TContainer> SrcRef<TContainer> from(TContainer& container) {
 	return SrcRef<TContainer>(container);
 }
 
+/**
+ * @brief Construct a CXXIter const-reference source from the given container.
+ * @details This constructs a const-reference source. This guarantees the
+ * given container to stay untouched.
+ * @param container Container to construct a CXXIter source from.
+ * @return CXXIter const-reference source from the given container.
+ */
 template<typename TContainer> SrcCRef<TContainer> from(const TContainer& container) {
 	return SrcMov<TContainer>(container);
 }
