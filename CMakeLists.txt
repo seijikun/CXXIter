@@ -9,7 +9,7 @@ option(CXXITER_WITH_TESTS "Compile the CIter tests" OFF)
 
 
 FILE(GLOB_RECURSE CXXITER_SOURCES "*.h")
-add_library(${PROJECT_NAME} INTERFACE ${CITER_SOURCES})
+add_library(${PROJECT_NAME} INTERFACE ${CXXITER_SOURCES})
 target_include_directories(${PROJECT_NAME} INTERFACE "src/")
 
 if(${CXXITER_WITH_TESTS})
