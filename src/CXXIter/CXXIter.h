@@ -127,6 +127,7 @@ public:
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcMov<TContainer>> {
+	// CXXIter Interface
 	using Self = SrcMov<TContainer>;
 	using Item = typename TContainer::value_type;
 
@@ -153,6 +154,7 @@ public:
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcRef<TContainer>> {
+	// CXXIter Interface
 	using Self = SrcRef<TContainer>;
 	using Item = typename TContainer::reference;
 
@@ -179,6 +181,7 @@ public:
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcCRef<TContainer>> {
+	// CXXIter Interface
 	using Self = SrcCRef<TContainer>;
 	using Item = typename TContainer::const_reference;
 
@@ -207,7 +210,7 @@ template<typename TChainInput, typename TItem>
 requires std::is_object_v<TItem>
 struct IteratorTrait<Caster<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = Caster<TChainInput, TItem>;
 	using Item = TItem;
 
@@ -238,7 +241,7 @@ public:
 template<typename TChainInput>
 struct IteratorTrait<Filter<TChainInput>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = Filter<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
@@ -273,7 +276,7 @@ public:
 template<typename TChainInput>
 struct IteratorTrait<InplaceModifier<TChainInput>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = InplaceModifier<TChainInput>;
 	using Item = typename ChainInputIterator::Item;
 
@@ -307,7 +310,7 @@ template<typename TChainInput, typename TItem>
 struct IteratorTrait<Map<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItem = typename ChainInputIterator::Item;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = Map<TChainInput, TItem>;
 	using Item = TItem;
 
@@ -342,7 +345,7 @@ struct IteratorTrait<FlatMap<TChainInput, TItemContainer>> {
 	using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItem = typename ChainInputIterator::Item;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = FlatMap<TChainInput, TItemContainer>;
 	using Item = typename TItemContainer::value_type;
 
@@ -389,7 +392,7 @@ template<typename TChainInput, typename TItem>
 struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItem = typename IteratorTrait<TChainInput>::Item;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;
 
@@ -426,7 +429,7 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 	using ChainInputIterator2 = IteratorTrait<TChainInput2>;
 	using InputItem1 = typename IteratorTrait<TChainInput1>::Item;
 	using InputItem2 = typename IteratorTrait<TChainInput2>::Item;
-	// LINQ Interface
+	// CXXIter Interface
 	using Self = Zipper<TChainInput1, TChainInput2>;
 	using Item = std::pair<InputItem1, InputItem2>;
 
