@@ -497,7 +497,7 @@ namespace collectors {
 		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
 			TContainer<ItemOwned, TContainerArgs...> container;
 			auto inserter = std::back_inserter(container);
-			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
+			input.forEach([&inserter](Item&& item) { *inserter = item; });
 			return container;
 		}
 	};
@@ -509,7 +509,7 @@ namespace collectors {
 		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
 			TContainer<ItemOwned, TContainerArgs...> container;
 			auto inserter = std::inserter(container, container.end());
-			input.forEach([&inserter](Item&& item) { *inserter = std::forward<ItemOwned>(item); });
+			input.forEach([&inserter](Item&& item) { *inserter = item; });
 			return container;
 		}
 	};
