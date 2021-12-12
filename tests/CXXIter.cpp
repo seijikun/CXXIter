@@ -59,11 +59,37 @@ struct LifecycleDebugger {
 // ################################################################################################
 // SOURCES
 // ################################################################################################
+template<typename TItem, const size_t COUNT> struct CustomContainer {
+	using CustomContainerItem = TItem;
+	std::unique_ptr<std::array<CustomContainerItem, COUNT>> input = nullptr;
 
-TEST(CXXIter, srcMove) {
-	LifecycleEvents evtLog;
+	CustomContainer(std::array<CustomContainerItem, COUNT>&& initial) : input(new std::array<CustomContainerItem, COUNT>(std::move(initial))) {}
 
-	{ // move
+	size_t size() const { return input->size(); }
+	CustomContainerItem& get(size_t idx) { return input->at(idx); }
+	const CustomContainerItem& get(size_t idx) const { return input->at(idx); }
+};
+
+namespace CXXIter { // SourceTrait implementation for the CustomContainer
+	template<typename TItem, const size_t COUNT> struct SourceTrait<CustomContainer<TItem, COUNT>> {
+		using Item = typename CustomContainer<TItem, COUNT>::CustomContainerItem;
+		using IteratorState = size_t;
+		using ConstIteratorState = size_t;
+
+		static inline IteratorState initIterator(CustomContainer<TItem, COUNT>&) { return 0; }
+		static inline ConstIteratorState initIterator(const CustomContainer<TItem, COUNT>&) { return 0; }
+
+		static inline bool hasNext(CustomContainer<TItem, COUNT>& container, IteratorState& iter) { return iter < container.size(); }
+		static inline bool hasNext(const CustomContainer<TItem, COUNT>& container, ConstIteratorState& iter) { return iter < container.size(); }
+
+		static inline Item& next(CustomContainer<TItem, COUNT>& container, IteratorState& iter) { return container.get(iter++); }
+		static inline const Item& next(const CustomContainer<TItem, COUNT>& container, ConstIteratorState& iter) { return container.get(iter++); }
+	};
+};
+
+TEST(CXXIter, srcMove) { // move
+	{ // std::vector
+		LifecycleEvents evtLog;
 		{
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
@@ -96,11 +122,48 @@ TEST(CXXIter, srcMove) {
 		ASSERT_EQ(evtLog[5].event, LifecycleEventType::DTOR); // dtor of original input (stored in SrcMov)
 		ASSERT_EQ(evtLog[0].ptr, evtLog[5].ptr);
 	}
+	{ // CustomContainer
+		LifecycleEvents evtLog;
+		{
+			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+
+			auto outVec = CXXIter::SrcMov(std::move(input))
+				.filter([&evtLog](const LifecycleDebugger&) {
+					if(evtLog.size() != 4) { throw std::runtime_error("filter()"); }
+					return true;
+				})
+				.filterMap([&evtLog](LifecycleDebugger&& o) -> std::optional<std::string> {
+					if(evtLog.size() != 6) { throw std::runtime_error("filterMap()"); }
+					return std::move(o.heapTest);
+				})
+				.collect<std::vector>();
+			ASSERT_EQ(outVec.size(), 1);
+			ASSERT_EQ(outVec[0], "heapTestString");
+		}
+
+		ASSERT_EQ(evtLog.size(), 8);
+		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
+		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
+
+		ASSERT_EQ(evtLog[3].event, LifecycleEventType::MOVECTOR); // move SrcMov -> Filter (tmp1)
+		ASSERT_EQ(evtLog[4].event, LifecycleEventType::MOVECTOR); // move Filter -> FilterMap (tmp2)
+
+		ASSERT_EQ(evtLog[5].event, LifecycleEventType::DTOR); // dtor of tmp2
+		ASSERT_EQ(evtLog[3].ptr, evtLog[5].ptr);
+
+		ASSERT_EQ(evtLog[6].event, LifecycleEventType::DTOR); // dtor of tmp1
+		ASSERT_EQ(evtLog[4].ptr, evtLog[6].ptr);
+
+		ASSERT_EQ(evtLog[7].event, LifecycleEventType::DTOR); // dtor of original input (stored in SrcMov)
+		ASSERT_EQ(evtLog[1].ptr, evtLog[7].ptr);
+	}
 }
 
-TEST(CXXIter, srcConstRef) {
-	LifecycleEvents evtLog;
-	{ // const references
+TEST(CXXIter, srcConstRef) { // const references
+	{ // std::vector
+		LifecycleEvents evtLog;
 		{
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
@@ -120,18 +183,41 @@ TEST(CXXIter, srcConstRef) {
 		ASSERT_EQ(evtLog[1].event, LifecycleEventType::DTOR);
 		ASSERT_EQ(evtLog[0].ptr, evtLog[1].ptr);
 	}
+	{ // CustomContainer
+		LifecycleEvents evtLog;
+		{
+			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+
+			std::vector<std::string> outVec = CXXIter::SrcCRef(input)
+					.filter([](const LifecycleDebugger&){ return true; })
+					.map([](const LifecycleDebugger& o) { return o.heapTest; })
+					.collect<std::vector>();
+			ASSERT_EQ(outVec.size(), 1);
+			ASSERT_EQ(outVec[0], "heapTestString");
+			ASSERT_EQ(input.get(0).heapTest, "heapTestString");
+			ASSERT_TRUE(input.get(0).alive);
+		}
+
+		ASSERT_EQ(evtLog.size(), 4);
+		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
+		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
+
+		ASSERT_EQ(evtLog[3].event, LifecycleEventType::DTOR); // dtor in CustomContainer
+		ASSERT_EQ(evtLog[1].ptr, evtLog[3].ptr);
+	}
 }
 
-TEST(CXXIter, srcRef) {
-	LifecycleEvents evtLog;
-
-	{ // mutable references (move out of heapTest)
+TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
+	{ // std::vector
+		LifecycleEvents evtLog;
 		{
 			std::vector<LifecycleDebugger> input;
 			input.emplace_back("heapTestString", evtLog);
 
 			std::vector<std::string> outVec = CXXIter::SrcRef(input)
-					.filter([](const LifecycleDebugger& o){ return true; })
+					.filter([](const LifecycleDebugger&){ return true; })
 					.map([](LifecycleDebugger& o) { return std::move(o.heapTest); })
 					.collect<std::vector>();
 			ASSERT_EQ(outVec.size(), 1);
@@ -144,6 +230,30 @@ TEST(CXXIter, srcRef) {
 		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR);
 		ASSERT_EQ(evtLog[1].event, LifecycleEventType::DTOR);
 		ASSERT_EQ(evtLog[0].ptr, evtLog[1].ptr);
+	}
+	{ // std::vector
+		LifecycleEvents evtLog;
+		{
+			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+
+			std::vector<std::string> outVec = CXXIter::SrcRef(input)
+					.filter([](const LifecycleDebugger&){ return true; })
+					.map([](LifecycleDebugger& o) { return std::move(o.heapTest); })
+					.collect<std::vector>();
+			ASSERT_EQ(outVec.size(), 1);
+			ASSERT_EQ(outVec[0], "heapTestString");
+			ASSERT_EQ(input.get(0).heapTest, ""); // we only moved out of the string
+			ASSERT_TRUE(input.get(0).alive); // ^
+		}
+
+		ASSERT_EQ(evtLog.size(), 4);
+		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
+		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
+
+		ASSERT_EQ(evtLog[3].event, LifecycleEventType::DTOR); // dtor in CustomContainer
+		ASSERT_EQ(evtLog[1].ptr, evtLog[3].ptr);
 	}
 }
 

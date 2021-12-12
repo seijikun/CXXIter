@@ -111,6 +111,20 @@ concept CIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
 template<CIterIterator TSelf>
 class IterApi;
 
+template<typename TContainer> struct SourceTrait {
+	using Item = typename TContainer::value_type;
+	using IteratorState = typename TContainer::iterator;
+	using ConstIteratorState = typename TContainer::const_iterator;
+
+	static inline IteratorState initIterator(TContainer& container) { return container.begin(); }
+	static inline ConstIteratorState initIterator(const TContainer& container) { return container.begin(); }
+
+	static inline bool hasNext(TContainer& container, IteratorState& iter) { return (iter != container.end()); }
+	static inline bool hasNext(const TContainer& container, ConstIteratorState& iter) { return (iter != container.end()); }
+
+	static inline Item& next(TContainer&, IteratorState& iter) { return (*iter++); }
+	static inline const Item& next(const TContainer&, ConstIteratorState& iter) { return (*iter++); }
+};
 
 // ################################################################################################
 // SOURCE (MOVE / CONSUME)
@@ -118,22 +132,24 @@ class IterApi;
 template<typename TContainer>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
 	friend struct IteratorTrait<SrcMov<TContainer>>;
+	using Src = SourceTrait<TContainer>;
 private:
 	TContainer container;
-	typename TContainer::iterator ptr;
+	typename Src::IteratorState iter;
 public:
-	SrcMov(TContainer&& container) : container(std::move(container)), ptr(this->container.begin()) {}
+	SrcMov(TContainer&& container) : container(std::move(container)), iter(Src::initIterator(this->container)) {}
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcMov<TContainer>> {
+	using Src = SourceTrait<TContainer>;
 	// CXXIter Interface
 	using Self = SrcMov<TContainer>;
-	using Item = typename TContainer::value_type;
+	using Item = typename Src::Item;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.ptr == self.container.end()) { return {}; }
-		return std::move(*self.ptr++);
+		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		return std::move(Src::next(self.container, self.iter));
 	}
 };
 
@@ -145,22 +161,24 @@ struct IteratorTrait<SrcMov<TContainer>> {
 template<typename TContainer>
 class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
+	using Src = SourceTrait<TContainer>;
 private:
 	TContainer& container;
-	typename TContainer::iterator ptr;
+	typename Src::IteratorState iter;
 public:
-	SrcRef(TContainer& container) : container(container), ptr(this->container.begin()) {}
+	SrcRef(TContainer& container) : container(container), iter(Src::initIterator(this->container)) {}
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcRef<TContainer>> {
+	using Src = SourceTrait<TContainer>;
 	// CXXIter Interface
 	using Self = SrcRef<TContainer>;
-	using Item = typename TContainer::reference;
+	using Item = typename Src::Item&;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.ptr == self.container.end()) { return {}; }
-		return *self.ptr++;
+		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		return Src::next(self.container, self.iter);
 	}
 };
 
@@ -172,22 +190,24 @@ struct IteratorTrait<SrcRef<TContainer>> {
 template<typename TContainer>
 class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
+	using Src = SourceTrait<TContainer>;
 private:
 	const TContainer& container;
-	typename TContainer::const_iterator ptr;
+	typename Src::ConstIteratorState iter;
 public:
-	SrcCRef(const TContainer& container) : container(container), ptr(this->container.begin()) {}
+	SrcCRef(const TContainer& container) : container(container), iter(Src::initIterator(this->container)) {}
 };
 // ------------------------------------------------------------------------------------------------
 template<typename TContainer>
 struct IteratorTrait<SrcCRef<TContainer>> {
+	using Src = SourceTrait<TContainer>;
 	// CXXIter Interface
 	using Self = SrcCRef<TContainer>;
-	using Item = typename TContainer::const_reference;
+	using Item = const typename Src::Item&;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.ptr == self.container.end()) { return {}; }
-		return *self.ptr++;
+		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		return Src::next(self.container, self.iter);
 	}
 };
 
