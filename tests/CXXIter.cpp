@@ -292,6 +292,18 @@ TEST(CXXIter, filter) {
 	}
 }
 
+TEST(CXXIter, filterMap) {
+	std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+	std::vector<int> output = CXXIter::from(input)
+			.filterMap([](int item) -> std::optional<int> {
+				if(item % 2 == 0) { return (item + 3); }
+				return {};
+			})
+			.collect<std::vector>();
+	ASSERT_EQ(4, output.size());
+	ASSERT_THAT(output, ElementsAre(2+3, 4+3, 6+3, 8+3));
+}
+
 TEST(CXXIter, map) {
 	{
 		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
@@ -373,8 +385,8 @@ TEST(CXXIter, takeWhile) {
 TEST(CXXIter, flatMap) {
 	std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
 	std::vector<int> output = CXXIter::from(std::move(input))
-			.flatMap([](auto&& item) { return std::get<1>(item); })
-			.collect<std::vector>();
+			.flatMap([](auto&& item) { return std::get<1>(item); }) // flatten the std::vector<int> from the pair
+			.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
 	ASSERT_EQ(output.size(), 5);
 	ASSERT_THAT(output, ElementsAre(1337, 42, 6, 123, 7888));
 }
