@@ -442,6 +442,43 @@ TEST(CXXIter, zip) {
 	}
 }
 
+TEST(CXXIter, groupBy) {
+	struct CakeMeasurement {
+		std::string cakeType;
+		float cakeWeight;
+		bool operator==(const CakeMeasurement& o) const {
+			return cakeType == o.cakeType && cakeWeight == o.cakeWeight;
+		}
+	};
+	std::vector<CakeMeasurement> input = { {"ApplePie", 1.3f}, {"Sacher", 0.5f}, {"ApplePie", 1.8f} };
+
+	{
+		auto output = CXXIter::from(input)
+				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+				.collect<std::unordered_map>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_EQ(output["ApplePie"].size(), 2);
+		ASSERT_EQ(output["ApplePie"][0], input[0]);
+		ASSERT_EQ(output["ApplePie"][1], input[2]);
+		ASSERT_EQ(output["Sacher"].size(), 1);
+		ASSERT_EQ(output["Sacher"][0], input[1]);
+	}
+	{
+		auto output = CXXIter::from(std::move(input))
+				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+				.collect<std::unordered_map>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_EQ(output["ApplePie"].size(), 2);
+		ASSERT_EQ(output["ApplePie"][0].cakeType, "ApplePie");
+		ASSERT_EQ(output["ApplePie"][0].cakeWeight, 1.3f);
+		ASSERT_EQ(output["ApplePie"][1].cakeType, "ApplePie");
+		ASSERT_EQ(output["ApplePie"][1].cakeWeight, 1.8f);
+		ASSERT_EQ(output["Sacher"].size(), 1);
+		ASSERT_EQ(output["Sacher"][0].cakeType, "Sacher");
+		ASSERT_EQ(output["Sacher"][0].cakeWeight, 0.5f);
+	}
+}
+
 
 
 // ################################################################################################

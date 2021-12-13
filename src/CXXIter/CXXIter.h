@@ -486,6 +486,60 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 
 
 // ################################################################################################
+// GROUP BY
+// ################################################################################################
+/** @private */
+template<typename TChainInput, typename TGroupIdent>
+class GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdent>> {
+	friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdent>>;
+private:
+	using OwnedInputItem = typename TChainInput::ItemOwned;
+	using GroupIdentFn = std::function<TGroupIdent(const OwnedInputItem& item)>;
+	using GroupCache = SrcMov<std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>>>;
+
+	TChainInput input;
+	GroupIdentFn groupIdentFn;
+	std::optional<GroupCache> groupCache;
+public:
+	GroupBy(TChainInput&& input, GroupIdentFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput, typename TGroupIdent>
+struct IteratorTrait<GroupBy<TChainInput, TGroupIdent>> {
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using OwnedInputItem = typename TChainInput::ItemOwned;
+	// CXXIter Interface
+	using Self = GroupBy<TChainInput, TGroupIdent>;
+	using Item = std::pair<const TGroupIdent, std::vector<OwnedInputItem>>;
+
+	static inline IterValue<Item> next(Self& self) {
+		// we have to drain the input in order to be able to calculate the groups
+		// so we do that on the first invocation, and then yield from the calculated result.
+		if(!self.groupCache.has_value()) [[unlikely]] {
+			std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>> groupCache;
+			while(true) {
+				auto item = ChainInputIterator::next(self.input);
+				if(!item.hasValue()) { break; } // group cache building complete
+				TGroupIdent itemGroup = self.groupIdentFn(item.value());
+				if(groupCache.contains(itemGroup)) {
+					groupCache[itemGroup].push_back(item.value());
+				} else {
+					groupCache[itemGroup] = { item.value() };
+				}
+			}
+			self.groupCache.emplace(std::move(groupCache));
+		}
+
+		using GroupCacheIterator = IteratorTrait<typename Self::GroupCache>;
+		typename Self::GroupCache& groupedItems = self.groupCache.value();
+		return GroupCacheIterator::next(groupedItems);
+	}
+};
+
+
+
+// ################################################################################################
 // COLLECTOR
 // ################################################################################################
 /** @private */
@@ -1090,6 +1144,37 @@ public:
 	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !IS_REFERENCE)
 	Zipper<TSelf, TOtherIterator> zip(TOtherIterator&& otherIterator) {
 		return Zipper<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	}
+
+	/**
+	 * @brief Groups the elements of this iterator according to the values returned by the given @p groupidentFn.
+	 * @param groupIdentFn Function called for each element from this iterator, to determine the grouping value,
+	 * that is then used to identify the group an item belongs to.
+	 * @return New iterator whose elements are the calculated groups from the values of this iterator, in the form
+	 * of a @c std::pair<> with the group identifier as first value, and a @c std::vector of all values in the group
+	 * as second value.
+	 * @attention GroupBy requires to first drain the input iterator, before being able to supply a single element.
+	 * This leads to additional memory usage.
+	 *
+	 * Usage Example:
+	 * @code
+	 *	struct CakeMeasurement {
+	 *		std::string cakeType;
+	 *		float cakeWeight;
+	 *		bool operator==(const CakeMeasurement& o) const {
+	 *			return cakeType == o.cakeType && cakeWeight == o.cakeWeight;
+	 *		}
+	 *	};
+	 *	std::vector<CakeMeasurement> input = { {"ApplePie", 1.3f}, {"Sacher", 0.5f}, {"ApplePie", 1.8f} };
+	 *	std::unordered_map<std::string, std::vector<CakeMeasurement>>  output = CXXIter::from(input)
+	 *		.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+	 *		.collect<std::unordered_map>();
+	 * @endcode
+	 */
+	template<std::invocable<const Item&> TGroupIdentifierFn>
+	auto groupBy(TGroupIdentifierFn groupIdentFn) {
+		using TGroupIdent = typename std::remove_reference<decltype ( groupIdentFn( std::declval<const ItemOwned&>() ) )>::type;
+		return GroupBy<TSelf, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
 };
 
