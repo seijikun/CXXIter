@@ -8,11 +8,28 @@
 #include <functional>
 #include <string>
 #include <optional>
+#include <set>
+#include <map>
+#include <list>
+#include <deque>
 #include <unordered_set>
 #include <unordered_map>
 
 using ::testing::ElementsAre;
 using ::testing::Pair;
+
+using TestPair = std::pair<std::string, int>;
+// define hash for TestPair
+namespace std {
+	template<>
+	struct hash<TestPair> {
+		inline std::size_t operator()(const TestPair& v) const {
+			std::hash<std::string> firstHash;
+			std::hash<int> secondHash;
+			return firstHash(v.first) ^ secondHash(v.second);
+		}
+	};
+}
 
 enum class LifecycleEventType {
 	CTOR,
@@ -496,15 +513,6 @@ TEST(CXXIter, forEach) {
 	ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
 }
 
-TEST(CXXIter, collect) {
-	// additional container type parameters
-	std::vector<std::string> input = {"1337", "42", "64"};
-	std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
-			.collect<std::vector, std::allocator<std::string>>();
-	ASSERT_EQ(output.size(), 3);
-	ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
-}
-
 TEST(CXXIter, fold) {
 	std::vector<double> input = {1.331335363800390, 1.331335363800390, 1.331335363800390, 1.331335363800390};
 	double output = CXXIter::from(input)
@@ -590,4 +598,51 @@ TEST(CXXIter, max) {
 		std::optional<int> output = CXXIter::from(input).max();
 		ASSERT_FALSE(output.has_value());
 	}
+}
+
+TEST(CXXIter, collect) {
+	{
+		// additional container type parameters
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
+				.collect<std::vector, std::allocator<std::string>>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+	}
+
+	// test as many permutations of items to target collections
+
+	#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
+	{ \
+		std::vector<std::string> input = {"1337", "42", "64"}; \
+		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
+		ASSERT_EQ(output.size(), 3); \
+	} \
+
+	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
+	{ \
+		std::vector<TestPair> input = {{"1337", 1337}, {"42", 42}, {"64", 64}}; \
+		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
+		ASSERT_EQ(output.size(), 3); \
+	}
+
+	// back-inserter containers
+	COLLECTOR_TEST_FOR_CONTAINER(std::vector); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::vector);
+	COLLECTOR_TEST_FOR_CONTAINER(std::list); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::list);
+	COLLECTOR_TEST_FOR_CONTAINER(std::deque); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::deque);
+
+	// insert containers
+	COLLECTOR_TEST_FOR_CONTAINER(std::set); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::set);
+	COLLECTOR_TEST_FOR_CONTAINER(std::multiset); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multiset);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset);
+
+	// associative containers
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::map);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multimap);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_map);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multimap);
+
+	#undef COLLECTOR_TEST_FOR_CONTAINER
+	#undef PAIR_COLLECTOR_TEST_FOR_CONTAINER
 }

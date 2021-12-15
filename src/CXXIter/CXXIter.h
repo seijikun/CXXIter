@@ -6,26 +6,6 @@
 #include <concepts>
 #include <string>
 
-/**
- * std container forward declarations, so we don't have to include everything, blowing up compile-time.
- */
-namespace std {
-	template<typename, typename> class vector;
-	template<typename, typename> class list;
-	template<typename, typename> class forward_list;
-	template<typename, typename> class deque;
-
-	template<typename, typename, typename> struct set;
-	template<typename, typename, typename> struct multiset;
-	template<typename, typename, typename, typename> struct unordered_set;
-	template<typename, typename, typename, typename> struct unordered_multiset;
-
-	template<typename, typename, typename, typename> struct map;
-	template<typename, typename, typename, typename> struct multimap;
-	template<typename, typename, typename, typename, typename> struct unordered_map;
-	template<typename, typename, typename, typename, typename> struct unordered_multimap;
-}
-
 namespace CXXIter {
 
 // ################################################################################################
@@ -112,9 +92,44 @@ struct IteratorTrait {};
 template<typename T>
 concept CXXIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
 
-template<CXXIterIterator TSelf>
-class IterApi;
+/** @private */
+template<CXXIterIterator TSelf> class IterApi;
 
+/** @private */
+template<typename T> concept is_pair = requires(T pair) {
+	typename T::first_type;
+	typename T::second_type;
+	{std::get<typename T::first_type>(pair)} -> std::convertible_to<typename T::first_type>;
+	{std::get<typename T::second_type>(pair)} -> std::convertible_to<typename T::second_type>;
+};
+/** @private */
+template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
+concept BackInsertableCollection = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+	typename decltype(container)::value_type;
+	container.push_back(item);
+};
+/** @private */
+template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
+concept InsertableCollection = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+	typename decltype(container)::value_type;
+	container.insert(item);
+};
+/** @private */
+template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
+concept AssocCollection = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
+	typename decltype(container)::value_type;
+	typename decltype(container)::key_type;
+	typename decltype(container)::mapped_type;
+	container.insert(item);
+};
+
+/**
+ * @brief SourceTrait, that all containers supported as CXXIter source has to be specialized for.
+ * @details If you want to add support for your own containers, create a template specialization
+ * for this SourceTrait, for your container class.
+ *
+ * This is the default implementation supporting all STL containers.
+ */
 template<typename TContainer> struct SourceTrait {
 	using Item = typename TContainer::value_type;
 	using IteratorState = typename TContainer::iterator;
@@ -130,10 +145,32 @@ template<typename TContainer> struct SourceTrait {
 	static inline const Item& next(const TContainer&, ConstIteratorState& iter) { return (*iter++); }
 };
 
+template<typename TContainer>
+concept SourceContainer = requires(
+		TContainer& container,
+		const TContainer& constContainer,
+		typename SourceTrait<TContainer>::IteratorState& iterState,
+		typename SourceTrait<TContainer>::ConstIteratorState& constIterState
+	) {
+	typename SourceTrait<TContainer>::Item;
+	typename SourceTrait<TContainer>::IteratorState;
+	typename SourceTrait<TContainer>::ConstIteratorState;
+
+	{SourceTrait<TContainer>::initIterator(container)} -> std::same_as<typename SourceTrait<TContainer>::IteratorState>;
+	{SourceTrait<TContainer>::initIterator(constContainer)} -> std::same_as<typename SourceTrait<TContainer>::ConstIteratorState>;
+
+	{SourceTrait<TContainer>::hasNext(container, iterState)} -> std::same_as<bool>;
+	{SourceTrait<TContainer>::hasNext(constContainer, constIterState)} -> std::same_as<bool>;
+
+	{SourceTrait<TContainer>::next(container, iterState)} -> std::same_as<typename SourceTrait<TContainer>::Item&>;
+	{SourceTrait<TContainer>::next(constContainer, constIterState)} -> std::same_as<const typename SourceTrait<TContainer>::Item&>;
+};
+
 // ################################################################################################
 // SOURCE (MOVE / CONSUME)
 // ################################################################################################
 template<typename TContainer>
+requires SourceContainer<typename std::remove_reference<TContainer>::type>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
 	friend struct IteratorTrait<SrcMov<TContainer>>;
 	using Src = SourceTrait<TContainer>;
@@ -543,66 +580,47 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdent>> {
 // COLLECTOR
 // ################################################################################################
 /** @private */
-namespace collectors {
-	/** @private */
-	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
-	struct BackInsertCollector {
-		template<typename Item, typename ItemOwned>
-		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
-			TContainer<ItemOwned, TContainerArgs...> container;
-			auto inserter = std::back_inserter(container);
-			input.forEach([&inserter](Item&& item) { *inserter = item; });
-			return container;
-		}
-	};
-
-	/** @private */
-	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
-	struct InsertCollector {
-		template<typename Item, typename ItemOwned>
-		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
-			TContainer<ItemOwned, TContainerArgs...> container;
-			auto inserter = std::inserter(container, container.end());
-			input.forEach([&inserter](Item&& item) { *inserter = item; });
-			return container;
-		}
-	};
-
-	/** @private */
-	template<typename TChainInput, template<typename...> typename TContainer, typename... TContainerArgs>
-	struct AssocCollector {
-		template<typename Item, typename ItemOwned>
-		static auto collect(TChainInput& input) {
-			TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type, TContainerArgs...> container;
-			input.forEach([&container](Item&& item) { container[item.first] = item.second; });
-			return container;
-		}
-	};
-}
-
-/** @private */
 template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
 struct Collector {};
-
-#define DEFINE_COLLECTOR_IMPL(_CONTAINER_, _COLLECTOR_) \
-	template<typename TChainInput, typename... TContainerArgs> \
-	struct Collector<TChainInput, _CONTAINER_, TContainerArgs...> : public collectors::_COLLECTOR_<TChainInput, _CONTAINER_, TContainerArgs...> {}
-
-DEFINE_COLLECTOR_IMPL(std::vector, BackInsertCollector);
-DEFINE_COLLECTOR_IMPL(std::list, BackInsertCollector);
-DEFINE_COLLECTOR_IMPL(std::deque, BackInsertCollector);
-DEFINE_COLLECTOR_IMPL(std::basic_string, BackInsertCollector);
-
-DEFINE_COLLECTOR_IMPL(std::set, BackInsertCollector);
-DEFINE_COLLECTOR_IMPL(std::multiset, BackInsertCollector);
-DEFINE_COLLECTOR_IMPL(std::unordered_set, InsertCollector);
-DEFINE_COLLECTOR_IMPL(std::unordered_multiset, InsertCollector);
-
-DEFINE_COLLECTOR_IMPL(std::map, AssocCollector);
-DEFINE_COLLECTOR_IMPL(std::multimap, AssocCollector);
-DEFINE_COLLECTOR_IMPL(std::unordered_map, AssocCollector);
-DEFINE_COLLECTOR_IMPL(std::unordered_multimap, AssocCollector);
-
+/** @private */
+template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
+requires BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+struct Collector<TChainInput, TContainer, TContainerArgs...> {
+	template<typename Item, typename ItemOwned>
+	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
+		TContainer<ItemOwned, TContainerArgs...> container;
+		auto inserter = std::back_inserter(container);
+		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		return container;
+	}
+};
+/** @private */
+template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
+requires (!BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
+	&& is_pair<typename TChainInput::ItemOwned>
+	&& AssocCollection<TContainer, typename TChainInput::ItemOwned::first_type, typename TChainInput::ItemOwned::second_type, TContainerArgs...>
+struct Collector<TChainInput, TContainer, TContainerArgs...> {
+	template<typename Item, typename ItemOwned>
+	static auto collect(TChainInput& input) {
+		TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type, TContainerArgs...> container;
+		auto inserter = std::inserter(container, container.end());
+		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		return container;
+	}
+};
+/** @private */
+template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
+requires (!BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
+	&& InsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+struct Collector<TChainInput, TContainer, TContainerArgs...> {
+	template<typename Item, typename ItemOwned>
+	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
+		TContainer<ItemOwned, TContainerArgs...> container;
+		auto inserter = std::inserter(container, container.end());
+		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		return container;
+	}
+};
 
 
 // ################################################################################################
@@ -1191,7 +1209,9 @@ public:
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter move source from the given container.
  */
-template<typename TContainer> SrcMov<TContainer> from(TContainer&& container) {
+template<typename TContainer>
+requires SourceContainer<typename std::remove_reference<TContainer>::type>
+SrcMov<TContainer> from(TContainer&& container) {
 	return SrcMov<TContainer>(std::forward<TContainer>(container));
 }
 
@@ -1202,7 +1222,9 @@ template<typename TContainer> SrcMov<TContainer> from(TContainer&& container) {
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter mutable-reference source from the given container.
  */
-template<typename TContainer> SrcRef<TContainer> from(TContainer& container) {
+template<typename TContainer>
+requires SourceContainer<typename std::remove_reference<TContainer>::type>
+SrcRef<TContainer> from(TContainer& container) {
 	return SrcRef<TContainer>(container);
 }
 
@@ -1213,7 +1235,9 @@ template<typename TContainer> SrcRef<TContainer> from(TContainer& container) {
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter const-reference source from the given container.
  */
-template<typename TContainer> SrcCRef<TContainer> from(const TContainer& container) {
+template<typename TContainer>
+requires SourceContainer<typename std::remove_reference<TContainer>::type>
+SrcCRef<TContainer> from(const TContainer& container) {
 	return SrcMov<TContainer>(container);
 }
 
