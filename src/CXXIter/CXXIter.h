@@ -296,7 +296,7 @@ template<typename TChainInput>
 class Filter : public IterApi<Filter<TChainInput>> {
 	friend struct IteratorTrait<Filter<TChainInput>>;
 private:
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	using FilterFn = std::function<bool(const InputItem& item)>;
 
 	TChainInput input;
@@ -333,7 +333,7 @@ requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::i
 class InplaceModifier : public IterApi<InplaceModifier<TChainInput>> {
 	friend struct IteratorTrait<InplaceModifier<TChainInput>>;
 private:
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	using ModifierFn = std::function<void(InputItem& item)>;
 
 	TChainInput input;
@@ -368,7 +368,7 @@ template<typename TChainInput, typename TItem>
 class Map : public IterApi<Map<TChainInput, TItem>> {
 	friend struct IteratorTrait<Map<TChainInput, TItem>>;
 private:
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	using MapFn = std::function<TItem(InputItem&& item)>;
 
 	TChainInput input;
@@ -403,7 +403,7 @@ requires (!std::is_reference_v<TItemContainer>)
 class FlatMap : public IterApi<FlatMap<TChainInput, TItemContainer>> {
 	friend struct IteratorTrait<FlatMap<TChainInput, TItemContainer>>;
 private:
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	using FlatMapFn = std::function<TItemContainer(InputItem&& item)>;
 
 	TChainInput input;
@@ -454,7 +454,7 @@ template<typename TChainInput, typename TItem>
 class FilterMap : public IterApi<FilterMap<TChainInput, TItem>> {
 	friend struct IteratorTrait<FilterMap<TChainInput, TItem>>;
 private:
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	using FilterMapFn = std::function<std::optional<TItem>(InputItem&& item)>;
 
 	TChainInput input;
@@ -467,7 +467,7 @@ public:
 template<typename TChainInput, typename TItem>
 struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	using InputItem = typename IteratorTrait<TChainInput>::Item;
+	using InputItem = typename TChainInput::Item;
 	// CXXIter Interface
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;

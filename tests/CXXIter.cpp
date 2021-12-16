@@ -18,6 +18,10 @@
 using ::testing::ElementsAre;
 using ::testing::Pair;
 
+// ################################################################################################
+// TEST STRUCTURES
+// ################################################################################################
+
 using TestPair = std::pair<std::string, int>;
 // define hash for TestPair
 namespace std {
@@ -72,38 +76,59 @@ struct LifecycleDebugger {
 };
 
 
+// ################################################################################################
+// CUSTOM CONTAINER
+// ################################################################################################
+
+template<typename TItem> struct CustomContainer {
+	using CustomContainerItem = TItem;
+	std::vector<CustomContainerItem> input;
+	size_t cnt = 0;
+
+	CustomContainer() {}
+	CustomContainer(std::initializer_list<TItem>&& initialItems) : input(std::move(initialItems)) {}
+
+	size_t size() const { return input.size(); }
+	CustomContainerItem& get(size_t idx) { return input.at(idx); }
+	const CustomContainerItem& get(size_t idx) const { return input.at(idx); }
+	void append(CustomContainerItem&& item) {
+		input.push_back(std::forward<CustomContainerItem>(item));
+	}
+};
+
+namespace CXXIter {
+	// SourceTrait implementation for the CustomContainer
+	template<typename TItem> struct SourceTrait<CustomContainer<TItem>> {
+		using Item = typename CustomContainer<TItem>::CustomContainerItem;
+		using IteratorState = size_t;
+		using ConstIteratorState = size_t;
+
+		static inline IteratorState initIterator(CustomContainer<TItem>&) { return 0; }
+		static inline ConstIteratorState initIterator(const CustomContainer<TItem>&) { return 0; }
+
+		static inline bool hasNext(CustomContainer<TItem>& container, IteratorState& iter) { return iter < container.size(); }
+		static inline bool hasNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return iter < container.size(); }
+
+		static inline Item& next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
+		static inline const Item& next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
+	};
+
+	// Collector implementation for the CustomContainer
+	template<typename TChainInput>
+	struct Collector<TChainInput, CustomContainer> {
+		template<typename Item, typename ItemOwned>
+		static CustomContainer<ItemOwned> collect(TChainInput& input) {
+			CustomContainer<ItemOwned> container;
+			input.forEach([&container](Item&& item) { container.append(std::forward<ItemOwned>(item)); });
+			return container;
+		}
+	};
+};
+
 
 // ################################################################################################
 // SOURCES
 // ################################################################################################
-template<typename TItem, const size_t COUNT> struct CustomContainer {
-	using CustomContainerItem = TItem;
-	std::unique_ptr<std::array<CustomContainerItem, COUNT>> input = nullptr;
-
-	CustomContainer(std::array<CustomContainerItem, COUNT>&& initial) : input(new std::array<CustomContainerItem, COUNT>(std::move(initial))) {}
-
-	size_t size() const { return input->size(); }
-	CustomContainerItem& get(size_t idx) { return input->at(idx); }
-	const CustomContainerItem& get(size_t idx) const { return input->at(idx); }
-};
-
-namespace CXXIter { // SourceTrait implementation for the CustomContainer
-	template<typename TItem, const size_t COUNT> struct SourceTrait<CustomContainer<TItem, COUNT>> {
-		using Item = typename CustomContainer<TItem, COUNT>::CustomContainerItem;
-		using IteratorState = size_t;
-		using ConstIteratorState = size_t;
-
-		static inline IteratorState initIterator(CustomContainer<TItem, COUNT>&) { return 0; }
-		static inline ConstIteratorState initIterator(const CustomContainer<TItem, COUNT>&) { return 0; }
-
-		static inline bool hasNext(CustomContainer<TItem, COUNT>& container, IteratorState& iter) { return iter < container.size(); }
-		static inline bool hasNext(const CustomContainer<TItem, COUNT>& container, ConstIteratorState& iter) { return iter < container.size(); }
-
-		static inline Item& next(CustomContainer<TItem, COUNT>& container, IteratorState& iter) { return container.get(iter++); }
-		static inline const Item& next(const CustomContainer<TItem, COUNT>& container, ConstIteratorState& iter) { return container.get(iter++); }
-	};
-};
-
 TEST(CXXIter, srcMove) { // move
 	{ // std::vector
 		LifecycleEvents evtLog;
@@ -142,7 +167,7 @@ TEST(CXXIter, srcMove) { // move
 	{ // CustomContainer
 		LifecycleEvents evtLog;
 		{
-			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+			CustomContainer<LifecycleDebugger> input({ LifecycleDebugger("heapTestString", evtLog) });
 
 			auto outVec = CXXIter::SrcMov(std::move(input))
 				.filter([&evtLog](const LifecycleDebugger&) {
@@ -160,7 +185,7 @@ TEST(CXXIter, srcMove) { // move
 
 		ASSERT_EQ(evtLog.size(), 8);
 		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
-		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::CPYCTOR); // initializer list -> CustomContainer
 		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
 		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
 
@@ -203,7 +228,7 @@ TEST(CXXIter, srcConstRef) { // const references
 	{ // CustomContainer
 		LifecycleEvents evtLog;
 		{
-			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+			CustomContainer<LifecycleDebugger> input({ LifecycleDebugger("heapTestString", evtLog) });
 
 			std::vector<std::string> outVec = CXXIter::SrcCRef(input)
 					.filter([](const LifecycleDebugger&){ return true; })
@@ -217,7 +242,7 @@ TEST(CXXIter, srcConstRef) { // const references
 
 		ASSERT_EQ(evtLog.size(), 4);
 		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
-		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::CPYCTOR); // initializer list -> CustomContainer
 		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
 		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
 
@@ -251,7 +276,7 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 	{ // std::vector
 		LifecycleEvents evtLog;
 		{
-			CustomContainer<LifecycleDebugger, 1> input({ LifecycleDebugger("heapTestString", evtLog) });
+			CustomContainer<LifecycleDebugger> input({ LifecycleDebugger("heapTestString", evtLog) });
 
 			std::vector<std::string> outVec = CXXIter::SrcRef(input)
 					.filter([](const LifecycleDebugger&){ return true; })
@@ -265,7 +290,7 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 
 		ASSERT_EQ(evtLog.size(), 4);
 		ASSERT_EQ(evtLog[0].event, LifecycleEventType::CTOR); // ctor in initializer list
-		ASSERT_EQ(evtLog[1].event, LifecycleEventType::MOVECTOR); // move initializer list -> CustomContainer
+		ASSERT_EQ(evtLog[1].event, LifecycleEventType::CPYCTOR); // initializer list -> CustomContainer
 		ASSERT_EQ(evtLog[2].event, LifecycleEventType::DTOR); // dtor in initializer list
 		ASSERT_EQ(evtLog[0].ptr, evtLog[2].ptr);
 
@@ -625,6 +650,9 @@ TEST(CXXIter, collect) {
 		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
 		ASSERT_EQ(output.size(), 3); \
 	}
+
+	// CustomContainer
+	COLLECTOR_TEST_FOR_CONTAINER(CustomContainer); PAIR_COLLECTOR_TEST_FOR_CONTAINER(CustomContainer);
 
 	// back-inserter containers
 	COLLECTOR_TEST_FOR_CONTAINER(std::vector); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::vector);
