@@ -260,7 +260,7 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 
 			std::vector<std::string> outVec = CXXIter::SrcRef(input)
 					.filter([](const LifecycleDebugger&){ return true; })
-					.map([](LifecycleDebugger& o) { return std::move(o.heapTest); })
+					.map([](LifecycleDebugger&& o) { return std::move(o.heapTest); })
 					.collect<std::vector>();
 			ASSERT_EQ(outVec.size(), 1);
 			ASSERT_EQ(outVec[0], "heapTestString");
@@ -280,7 +280,7 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 
 			std::vector<std::string> outVec = CXXIter::SrcRef(input)
 					.filter([](const LifecycleDebugger&){ return true; })
-					.map([](LifecycleDebugger& o) { return std::move(o.heapTest); })
+					.map([](LifecycleDebugger&& o) { return std::move(o.heapTest); })
 					.collect<std::vector>();
 			ASSERT_EQ(outVec.size(), 1);
 			ASSERT_EQ(outVec[0], "heapTestString");

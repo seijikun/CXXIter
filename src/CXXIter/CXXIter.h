@@ -54,7 +54,7 @@ class IterValue<TValue> {
 	std::optional<std::reference_wrapper<TValueDeref>> inner;
 public:
 	IterValue() {}
-	IterValue(TValue&& value) : inner(std::forward<TValue>(value)) {}
+	IterValue(TValue value) : inner(value) {}
 	IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
 	IterValue(IterValue<TValue>&& o) = default;
 
@@ -71,9 +71,9 @@ public:
 	}
 
 	template<typename TOutValue>
-	IterValue<TOutValue> map(std::function<TOutValue(TValue&& value)> mapFn) {
+	IterValue<TOutValue> map(std::function<TOutValue(TValueDeref&& value)> mapFn) {
 		if(!hasValue()) { return {}; }
-		return mapFn(std::forward<TValue>(value()));
+		return mapFn(std::forward<TValueDeref>(value()));
 	}
 };
 
@@ -368,8 +368,8 @@ template<typename TChainInput, typename TItem>
 class Map : public IterApi<Map<TChainInput, TItem>> {
 	friend struct IteratorTrait<Map<TChainInput, TItem>>;
 private:
-	using InputItem = typename TChainInput::Item;
-	using MapFn = std::function<TItem(InputItem&& item)>;
+	using InputItemOwned = typename TChainInput::ItemOwned;
+	using MapFn = std::function<TItem(InputItemOwned&& item)>;
 
 	TChainInput input;
 	MapFn mapFn;
@@ -381,7 +381,7 @@ public:
 template<typename TChainInput, typename TItem>
 struct IteratorTrait<Map<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	using InputItem = typename ChainInputIterator::Item;
+	using InputItemOwned = typename TChainInput::ItemOwned;
 	// CXXIter Interface
 	using Self = Map<TChainInput, TItem>;
 	using Item = TItem;
@@ -454,8 +454,8 @@ template<typename TChainInput, typename TItem>
 class FilterMap : public IterApi<FilterMap<TChainInput, TItem>> {
 	friend struct IteratorTrait<FilterMap<TChainInput, TItem>>;
 private:
-	using InputItem = typename TChainInput::Item;
-	using FilterMapFn = std::function<std::optional<TItem>(InputItem&& item)>;
+	using InputItemOwned = typename TChainInput::ItemOwned;
+	using FilterMapFn = std::function<std::optional<TItem>(InputItemOwned&& item)>;
 
 	TChainInput input;
 	FilterMapFn filterMapFn;
@@ -467,7 +467,7 @@ public:
 template<typename TChainInput, typename TItem>
 struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	using InputItem = typename TChainInput::Item;
+	using InputItemOwned = typename TChainInput::ItemOwned;
 	// CXXIter Interface
 	using Self = FilterMap<TChainInput, TItem>;
 	using Item = TItem;
@@ -476,7 +476,7 @@ struct IteratorTrait<FilterMap<TChainInput, TItem>> {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
 			if(!item.hasValue()) { return {}; }
-			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
+			std::optional<Item> value(self.filterMapFn(std::forward<InputItemOwned>( item.value() )));
 			if(!value) { continue; }
 			return *value;
 		}
@@ -922,7 +922,7 @@ public:
 	 * @endcode
 	 */
 	Map<TSelf, ItemOwned> copied() {
-		return Map<TSelf, ItemOwned>(std::move(*self()), [](Item&& item) -> ItemOwned {
+		return Map<TSelf, ItemOwned>(std::move(*self()), [](ItemOwned&& item) -> ItemOwned {
 			ItemOwned copy = item;
 			return copy;
 		});
@@ -943,7 +943,7 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	template<std::invocable<const Item&> TFilterFn>
+	template<std::invocable<const ItemOwned&> TFilterFn>
 	Filter<TSelf> filter(TFilterFn filterFn) {
 		return Filter<TSelf>(std::move(*self()), filterFn);
 	}
@@ -966,9 +966,9 @@ public:
 	 * 		.collect<std::unordered_map>(); // collect into map
 	 * @endcode
 	 */
-	template<std::invocable<Item&&> TMapFn>
+	template<std::invocable<ItemOwned&&> TMapFn>
 	auto map(TMapFn mapFn) {
-		return Map<TSelf, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
+		return Map<TSelf, decltype(mapFn( std::declval<ItemOwned&&>() ))>(std::move(*self()), mapFn);
 	}
 
 	/**
@@ -1035,9 +1035,9 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	template<std::invocable<Item&&> TFilterMapFn>
+	template<std::invocable<ItemOwned&&> TFilterMapFn>
 	auto filterMap(TFilterMapFn filterMapFn) {
-		using ResultType = typename decltype ( filterMapFn( std::declval<Item&&>() ) )::value_type;
+		using ResultType = typename decltype ( filterMapFn( std::declval<ItemOwned&&>() ) )::value_type;
 		return FilterMap<TSelf, ResultType>(std::move(*self()), filterMapFn);
 	}
 
@@ -1056,7 +1056,7 @@ public:
 	 * @endcode
 	 */
 	Filter<TSelf> skip(size_t cnt) {
-		return filter([cnt](const Item&) mutable {
+		return filter([cnt](const ItemOwned&) mutable {
 			if(cnt != 0) { cnt -= 1; return false; }
 			return true;
 		});
@@ -1085,7 +1085,7 @@ public:
 	template<std::invocable<const Item&> TSkipPredicate>
 	Filter<TSelf> skipWhile(TSkipPredicate skipPredicate) {
 		bool skipDone = false;
-		return filter([skipPredicate, skipDone](const Item& value) mutable {
+		return filter([skipPredicate, skipDone](const ItemOwned& value) mutable {
 			if(skipDone) { return true; }
 			skipDone = !skipPredicate(value);
 			return skipDone;
@@ -1106,7 +1106,7 @@ public:
 	 * @endcode
 	 */
 	Filter<TSelf> take(size_t cnt) {
-		return filter([cnt](const Item&) mutable {
+		return filter([cnt](const ItemOwned&) mutable {
 			if(cnt != 0) { cnt -= 1; return true; }
 			return false;
 		});
@@ -1133,7 +1133,7 @@ public:
 	template<std::invocable<const Item&> TTakePredicate>
 	Filter<TSelf> takeWhile(TTakePredicate takePredicate) {
 		bool takeDone = false;
-		return filter([takePredicate, takeDone](const Item& value) mutable {
+		return filter([takePredicate, takeDone](const ItemOwned& value) mutable {
 			if(takeDone) { return false; }
 			takeDone = !takePredicate(value);
 			return !takeDone;
