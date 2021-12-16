@@ -644,7 +644,7 @@ public: // Associated types
 	using ItemOwned = typename std::remove_reference<Item>::type;
 
 private:
-	TSelf* self() { return dynamic_cast<TSelf*>(this); }
+	TSelf* self() { return static_cast<TSelf*>(this); }
 	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
 
 public:
