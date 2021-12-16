@@ -27,10 +27,10 @@ public:
 	IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
 	IterValue(IterValue<TValue>&& o) = default;
 
-	const TValue& value() const { return inner.value(); }
-	TValue& value() { return inner.value(); }
-	const TValue& value(TValue&& def) const { return inner.value_or(def); }
-	TValue& value(TValue&& def) { return inner.value_or(def); }
+	inline const TValue& value() const { return inner.value(); }
+	inline TValue& value() { return inner.value(); }
+	inline const TValue& value(TValue&& def) const { return inner.value_or(def); }
+	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 	bool hasValue() const { return inner.has_value(); }
 
@@ -58,10 +58,10 @@ public:
 	IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
 	IterValue(IterValue<TValue>&& o) = default;
 
-	const TValue& value() const { return inner.value(); }
-	TValue& value() { return inner.value(); }
-	const TValue& value(TValue&& def) const { return inner.value_or(def); }
-	TValue& value(TValue&& def) { return inner.value_or(def); }
+	inline const TValue& value() const { return inner.value(); }
+	inline TValue& value() { return inner.value(); }
+	inline const TValue& value(TValue&& def) const { return inner.value_or(def); }
+	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 	bool hasValue() const { return inner.has_value(); }
 
