@@ -10,4 +10,4 @@ target_compile_options(CXXIterTests PRIVATE -Wall -Wextra -Werror -Wno-error=unu
 
 add_executable(CXXIterBenchmark Benchmark.cpp)
 target_link_libraries(CXXIterBenchmark benchmark::benchmark CXXIter)
-target_compile_options(CXXIterBenchmark PRIVATE -Wall -Wextra -Werror -Wno-error=unused-parameter -Wno-error=unused-variable)
+target_compile_options(CXXIterBenchmark PRIVATE -Wall -Wextra -Werror -Wno-error=unused-parameter -Wno-error=unused-variable -Ofast -march=native)
