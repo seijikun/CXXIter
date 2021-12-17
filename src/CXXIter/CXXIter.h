@@ -2,9 +2,10 @@
 
 #include <utility>
 #include <optional>
-#include <functional>
 #include <concepts>
-#include <string>
+
+#include <unordered_map>
+#include <vector>
 
 namespace CXXIter {
 
@@ -39,8 +40,8 @@ public:
 		return *this;
 	}
 
-	template<typename TOutValue>
-	IterValue<TOutValue> map(std::function<TOutValue(TValue&& value)> mapFn) {
+	template<typename TOutValue, std::invocable<TValue&&> TMapFn>
+	IterValue<TOutValue> map(TMapFn mapFn) {
 		if(!hasValue()) { return {}; }
 		return mapFn(std::forward<TValue>(value()));
 	}
@@ -70,8 +71,8 @@ public:
 		return *this;
 	}
 
-	template<typename TOutValue>
-	IterValue<TOutValue> map(std::function<TOutValue(TValueDeref&& value)> mapFn) {
+	template<typename TOutValue, std::invocable<TValueDeref&&> TMapFn>
+	IterValue<TOutValue> map(TMapFn mapFn) {
 		if(!hasValue()) { return {}; }
 		return mapFn(std::forward<TValueDeref>(value()));
 	}
@@ -292,25 +293,24 @@ struct IteratorTrait<Caster<TChainInput, TItem>> {
 // FILTER
 // ################################################################################################
 /** @private */
-template<typename TChainInput>
-class Filter : public IterApi<Filter<TChainInput>> {
-	friend struct IteratorTrait<Filter<TChainInput>>;
+template<typename TChainInput, typename TFilterFn>
+class Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
+	friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;
 private:
 	using InputItem = typename TChainInput::Item;
-	using FilterFn = std::function<bool(const InputItem& item)>;
 
 	TChainInput input;
-	FilterFn filterFn;
+	TFilterFn filterFn;
 public:
-	Filter(TChainInput&& input, FilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
+	Filter(TChainInput&& input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput>
-struct IteratorTrait<Filter<TChainInput>> {
+template<typename TChainInput, typename TFilterFn>
+struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	// CXXIter Interface
-	using Self = Filter<TChainInput>;
+	using Self = Filter<TChainInput, TFilterFn>;
 	using Item = typename ChainInputIterator::Item;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -328,26 +328,25 @@ struct IteratorTrait<Filter<TChainInput>> {
 // INPLACE MODIFIER
 // ################################################################################################
 /** @private */
-template<typename TChainInput>
+template<typename TChainInput, typename TModifierFn>
 requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
-class InplaceModifier : public IterApi<InplaceModifier<TChainInput>> {
-	friend struct IteratorTrait<InplaceModifier<TChainInput>>;
+class InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
+	friend struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
 private:
 	using InputItem = typename TChainInput::Item;
-	using ModifierFn = std::function<void(InputItem& item)>;
 
 	TChainInput input;
-	ModifierFn modifierFn;
+	TModifierFn modifierFn;
 public:
-	InplaceModifier(TChainInput&& input, ModifierFn modifierFn) : input(std::move(input)), modifierFn(modifierFn) {}
+	InplaceModifier(TChainInput&& input, TModifierFn modifierFn) : input(std::move(input)), modifierFn(modifierFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput>
-struct IteratorTrait<InplaceModifier<TChainInput>> {
+template<typename TChainInput, typename TModifierFn>
+struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	// CXXIter Interface
-	using Self = InplaceModifier<TChainInput>;
+	using Self = InplaceModifier<TChainInput, TModifierFn>;
 	using Item = typename ChainInputIterator::Item;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -364,26 +363,23 @@ struct IteratorTrait<InplaceModifier<TChainInput>> {
 // MAP
 // ################################################################################################
 /** @private */
-template<typename TChainInput, typename TItem>
-class Map : public IterApi<Map<TChainInput, TItem>> {
-	friend struct IteratorTrait<Map<TChainInput, TItem>>;
+template<typename TChainInput, typename TMapFn, typename TItem>
+class Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
+	friend struct IteratorTrait<Map<TChainInput, TMapFn, TItem>>;
 private:
-	using InputItemOwned = typename TChainInput::ItemOwned;
-	using MapFn = std::function<TItem(InputItemOwned&& item)>;
-
 	TChainInput input;
-	MapFn mapFn;
+	TMapFn mapFn;
 public:
-	Map(TChainInput&& input, MapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+	Map(TChainInput&& input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput, typename TItem>
-struct IteratorTrait<Map<TChainInput, TItem>> {
+template<typename TChainInput, typename TMapFn, typename TItem>
+struct IteratorTrait<Map<TChainInput, TMapFn, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItemOwned = typename TChainInput::ItemOwned;
 	// CXXIter Interface
-	using Self = Map<TChainInput, TItem>;
+	using Self = Map<TChainInput, TMapFn, TItem>;
 	using Item = TItem;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -398,29 +394,26 @@ struct IteratorTrait<Map<TChainInput, TItem>> {
 // FLATMAP
 // ################################################################################################
 /** @private */
-template<typename TChainInput, typename TItemContainer>
+template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
 requires (!std::is_reference_v<TItemContainer>)
-class FlatMap : public IterApi<FlatMap<TChainInput, TItemContainer>> {
-	friend struct IteratorTrait<FlatMap<TChainInput, TItemContainer>>;
+class FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
+	friend struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
 private:
-	using InputItem = typename TChainInput::Item;
-	using FlatMapFn = std::function<TItemContainer(InputItem&& item)>;
-
 	TChainInput input;
 	std::optional<SrcMov<TItemContainer>> current;
-	FlatMapFn mapFn;
+	TFlatMapFn mapFn;
 public:
-	FlatMap(TChainInput&& input, FlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+	FlatMap(TChainInput&& input, TFlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput, typename TItemContainer>
-struct IteratorTrait<FlatMap<TChainInput, TItemContainer>> {
+template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
+struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 	using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItem = typename ChainInputIterator::Item;
 	// CXXIter Interface
-	using Self = FlatMap<TChainInput, TItemContainer>;
+	using Self = FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
 	using Item = typename TItemContainer::value_type;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -450,26 +443,25 @@ struct IteratorTrait<FlatMap<TChainInput, TItemContainer>> {
 // FILTERMAP
 // ################################################################################################
 /** @private */
-template<typename TChainInput, typename TItem>
-class FilterMap : public IterApi<FilterMap<TChainInput, TItem>> {
-	friend struct IteratorTrait<FilterMap<TChainInput, TItem>>;
+template<typename TChainInput, typename TFilterMapFn, typename TItem>
+class FilterMap : public IterApi<FilterMap<TChainInput, TFilterMapFn, TItem>> {
+	friend struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>>;
 private:
 	using InputItemOwned = typename TChainInput::ItemOwned;
-	using FilterMapFn = std::function<std::optional<TItem>(InputItemOwned&& item)>;
 
 	TChainInput input;
-	FilterMapFn filterMapFn;
+	TFilterMapFn filterMapFn;
 public:
-	FilterMap(TChainInput&& input, FilterMapFn filterMapFn) : input(std::move(input)), filterMapFn(filterMapFn) {}
+	FilterMap(TChainInput&& input, TFilterMapFn filterMapFn) : input(std::move(input)), filterMapFn(filterMapFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput, typename TItem>
-struct IteratorTrait<FilterMap<TChainInput, TItem>> {
+template<typename TChainInput, typename TFilterMapFn, typename TItem>
+struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using InputItemOwned = typename TChainInput::ItemOwned;
 	// CXXIter Interface
-	using Self = FilterMap<TChainInput, TItem>;
+	using Self = FilterMap<TChainInput, TFilterMapFn, TItem>;
 	using Item = TItem;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -526,28 +518,27 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 // GROUP BY
 // ################################################################################################
 /** @private */
-template<typename TChainInput, typename TGroupIdent>
-class GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdent>> {
-	friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdent>>;
+template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
+class GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
+	friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
 private:
 	using OwnedInputItem = typename TChainInput::ItemOwned;
-	using GroupIdentFn = std::function<TGroupIdent(const OwnedInputItem& item)>;
 	using GroupCache = SrcMov<std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>>>;
 
 	TChainInput input;
-	GroupIdentFn groupIdentFn;
+	TGroupIdentifierFn groupIdentFn;
 	std::optional<GroupCache> groupCache;
 public:
-	GroupBy(TChainInput&& input, GroupIdentFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
+	GroupBy(TChainInput&& input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput, typename TGroupIdent>
-struct IteratorTrait<GroupBy<TChainInput, TGroupIdent>> {
+template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
+struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
 	using OwnedInputItem = typename TChainInput::ItemOwned;
 	// CXXIter Interface
-	using Self = GroupBy<TChainInput, TGroupIdent>;
+	using Self = GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>;
 	using Item = std::pair<const TGroupIdent, std::vector<OwnedInputItem>>;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -921,8 +912,8 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	Map<TSelf, ItemOwned> copied() {
-		return Map<TSelf, ItemOwned>(std::move(*self()), [](ItemOwned&& item) -> ItemOwned {
+	auto copied() {
+		return map([](ItemOwned&& item) -> ItemOwned {
 			ItemOwned copy = item;
 			return copy;
 		});
@@ -944,8 +935,8 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TFilterFn>
-	Filter<TSelf> filter(TFilterFn filterFn) {
-		return Filter<TSelf>(std::move(*self()), filterFn);
+	Filter<TSelf, TFilterFn> filter(TFilterFn filterFn) {
+		return Filter<TSelf, TFilterFn>(std::move(*self()), filterFn);
 	}
 
 	/**
@@ -968,7 +959,7 @@ public:
 	 */
 	template<std::invocable<ItemOwned&&> TMapFn>
 	auto map(TMapFn mapFn) {
-		return Map<TSelf, decltype(mapFn( std::declval<ItemOwned&&>() ))>(std::move(*self()), mapFn);
+		return Map<TSelf, TMapFn, decltype(mapFn( std::declval<ItemOwned&&>() ))>(std::move(*self()), mapFn);
 	}
 
 	/**
@@ -991,9 +982,9 @@ public:
 	 * 		.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
 	 * @endcode
 	 */
-	template<std::invocable<Item&&> TFlatMapFn = std::function<Item(Item&&)>>
+	template<std::invocable<Item&&> TFlatMapFn>
 	auto flatMap(TFlatMapFn mapFn = [](Item&& item) { return item; }) {
-		return FlatMap<TSelf, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
+		return FlatMap<TSelf, TFlatMapFn, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
 	}
 
 	/**
@@ -1012,8 +1003,8 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<Item&> TModifierFn>
-	InplaceModifier<TSelf> modify(TModifierFn modifierFn) {
-		return InplaceModifier<TSelf>(std::move(*self()), modifierFn);
+	InplaceModifier<TSelf, TModifierFn> modify(TModifierFn modifierFn) {
+		return InplaceModifier<TSelf, TModifierFn>(std::move(*self()), modifierFn);
 	}
 
 	/**
@@ -1038,7 +1029,7 @@ public:
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
 	auto filterMap(TFilterMapFn filterMapFn) {
 		using ResultType = typename decltype ( filterMapFn( std::declval<ItemOwned&&>() ) )::value_type;
-		return FilterMap<TSelf, ResultType>(std::move(*self()), filterMapFn);
+		return FilterMap<TSelf, TFilterMapFn, ResultType>(std::move(*self()), filterMapFn);
 	}
 
 	/**
@@ -1055,7 +1046,7 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	Filter<TSelf> skip(size_t cnt) {
+	auto skip(size_t cnt) {
 		return filter([cnt](const ItemOwned&) mutable {
 			if(cnt != 0) { cnt -= 1; return false; }
 			return true;
@@ -1083,7 +1074,7 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TSkipPredicate>
-	Filter<TSelf> skipWhile(TSkipPredicate skipPredicate) {
+	auto skipWhile(TSkipPredicate skipPredicate) {
 		bool skipDone = false;
 		return filter([skipPredicate, skipDone](const ItemOwned& value) mutable {
 			if(skipDone) { return true; }
@@ -1105,7 +1096,7 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	Filter<TSelf> take(size_t cnt) {
+	auto take(size_t cnt) {
 		return filter([cnt](const ItemOwned&) mutable {
 			if(cnt != 0) { cnt -= 1; return true; }
 			return false;
@@ -1131,7 +1122,7 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TTakePredicate>
-	Filter<TSelf> takeWhile(TTakePredicate takePredicate) {
+	auto takeWhile(TTakePredicate takePredicate) {
 		bool takeDone = false;
 		return filter([takePredicate, takeDone](const ItemOwned& value) mutable {
 			if(takeDone) { return false; }
@@ -1192,7 +1183,7 @@ public:
 	template<std::invocable<const Item&> TGroupIdentifierFn>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
 		using TGroupIdent = typename std::remove_reference<decltype ( groupIdentFn( std::declval<const ItemOwned&>() ) )>::type;
-		return GroupBy<TSelf, TGroupIdent>(std::move(*self()), groupIdentFn);
+		return GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
 };
 
