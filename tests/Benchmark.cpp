@@ -38,19 +38,18 @@ static std::vector<double> makeInput2() {
 
 #define MAP_FN std::sqrt
 
+static std::vector<std::string> INPUT1 = makeInput1();
+static std::vector<double> INPUT2 = makeInput2();
 
 // ################################################################################################
 // BENCHMARKS
 // ################################################################################################
 static void BM_NativeUsingLambdas(benchmark::State& state) {
-	auto input1 = makeInput1();
-	auto input2 = makeInput2();
-
-	for(auto _ : state) { //TODO: output sizeHint
+	for (auto _ : state) { //TODO: output sizeHint
 		{ // filterMap
 			std::vector<std::string> output;
-			for(size_t i = 0; i < input1.size(); ++i) {
-				auto res = FILTERMAP_FN(std::forward<std::string>(input1[i]));
+			for(size_t i = 0; i < INPUT1.size(); ++i) {
+				auto res = FILTERMAP_FN(std::forward<std::string>(INPUT1[i]));
 				if(res) {
 					output.push_back(res.value());
 				}
@@ -59,70 +58,67 @@ static void BM_NativeUsingLambdas(benchmark::State& state) {
 		{ // filter
 			std::vector<double> output;
 			auto outputInserter = std::back_inserter(output);
-			std::copy_if(input2.begin(), input2.end(), outputInserter, FILTER_FN);
+			std::copy_if(INPUT2.begin(), INPUT2.end(), outputInserter, FILTER_FN);
 		}
 		{ // map
 			std::vector<double> output;
-			for(size_t i = 0; i < input2.size(); ++i) {
-				output.push_back(MAP_FN(input2[i]));
+			for(size_t i = 0; i < INPUT2.size(); ++i) {
+				output.push_back(MAP_FN(INPUT2[i]));
 			}
 		}
 		{ // cast
 			std::vector<float> output;
-			for(size_t i = 0; i < input2.size(); ++i) {
-				output.push_back(static_cast<float>(input2[i]));
+			for(size_t i = 0; i < INPUT2.size(); ++i) {
+				output.push_back(static_cast<float>(INPUT2[i]));
 			}
 		}
 		{ // groupBy
 			std::unordered_map<size_t, std::vector<std::string>> output;
-			for(size_t i = 0; i < input1.size(); ++i) {
-				size_t groupIdent = input1[i].size();
+			for(size_t i = 0; i < INPUT1.size(); ++i) {
+				size_t groupIdent = INPUT1[i].size();
 				if(output.find(groupIdent) == output.end()) {
-					output[groupIdent] = { input1[i] };
+					output[groupIdent] = { INPUT1[i] };
 				} else {
-					output[groupIdent].push_back(input1[i]);
+					output[groupIdent].push_back(INPUT1[i]);
 				}
 			}
 		}
 	}
 }
-BENCHMARK(BM_NativeUsingLambdas);
+BENCHMARK(BM_NativeUsingLambdas)->MinTime(60);
 
 
 
 
 // Define another benchmark
 static void BM_CXXIter(benchmark::State& state) {
-	auto input1 = makeInput1();
-	auto input2 = makeInput2();
-
-	for(auto _ : state) {
+	for (auto _ : state) {
 		{ // filterMap
-			std::vector<std::string> output = CXXIter::from(input1)
+			std::vector<std::string> output = CXXIter::from(INPUT1)
 				.filterMap(FILTERMAP_FN)
 				.collect<std::vector>();
 		}
 		{ // filter
-			std::vector<double> output = CXXIter::from(input2)
+			std::vector<double> output = CXXIter::from(INPUT2)
 					.filter(FILTER_FN)
 					.collect<std::vector>();
 		}
 		{ // map
-			std::vector<double> output = CXXIter::from(input2)
+			std::vector<double> output = CXXIter::from(INPUT2)
 					.map([](double val) { return std::sqrt(val); })
 					.collect<std::vector>();
 		}
 		{ // cast
-			std::vector<float> output = CXXIter::from(input2).cast<float>().collect<std::vector>();
+			std::vector<float> output = CXXIter::from(INPUT2).cast<float>().collect<std::vector>();
 		}
 		{ // groupBy
-			std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(input1)
+			std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(INPUT1)
 					.groupBy([](const std::string& item) { return item.size(); })
 					.collect<std::unordered_map>();
 		}
 	}
 }
-BENCHMARK(BM_CXXIter);
+BENCHMARK(BM_CXXIter)->MinTime(60);
 
 
 
