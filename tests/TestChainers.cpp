@@ -230,4 +230,50 @@ TEST(CXXIter, groupBy) {
 		ASSERT_EQ(output["Sacher"][0].cakeType, "Sacher");
 		ASSERT_EQ(output["Sacher"][0].cakeWeight, 0.5f);
 	}
+	{
+		std::vector<CakeMeasurement> emptyInput;
+		auto output = CXXIter::from(std::move(emptyInput))
+				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+				.collect<std::unordered_map>();
+		ASSERT_EQ(output.size(), 0);
+	}
+}
+
+TEST(CXXIter, sorted) {
+	{ // ASCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		std::vector<float> output = CXXIter::from(input)
+			.sorted<false>([](const float& a, const float& b) {
+				return (a < b);
+			})
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(-42.0f, 0.5f, 1.0f, 2.0f, 3.0f));
+	}
+	{ // DESCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		std::vector<float> output = CXXIter::from(input)
+			.sorted<false>([](const float& a, const float& b) {
+				return (a > b);
+			})
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(3.0f, 2.0f, 1.0f, 0.5f, -42.0f));
+	}
+	{ // ASCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		std::vector<float> output = CXXIter::from(input)
+			.sorted<CXXIter::ASCENDING, false>()
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(-42.0f, 0.5f, 1.0f, 2.0f, 3.0f));
+	}
+	{ // DESCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		std::vector<float> output = CXXIter::from(input)
+			.sorted<CXXIter::DESCENDING, false>()
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(3.0f, 2.0f, 1.0f, 0.5f, -42.0f));
+	}
 }

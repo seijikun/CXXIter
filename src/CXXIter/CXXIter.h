@@ -85,6 +85,19 @@ public:
 // FORWARD DECLARATIONS & CONCEPTS
 // ################################################################################################
 
+/**
+ * @brief SortOrder for the item sorting methods.
+ */
+enum class SortOrder {
+	ASCENDING,
+	DESCENDING
+};
+/** Shortcut for SortOrder::ASCENDING in the CXXIter namespace */
+static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
+/** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
+static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
+
+
 /** @private */
 template<typename T>
 struct IteratorTrait {};
@@ -568,6 +581,60 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 
 
 // ################################################################################################
+// SORTER
+// ################################################################################################
+/** @private */
+template<typename TChainInput, typename TCompareFn, bool STABLE>
+class Sorter : public IterApi<Sorter<TChainInput, TCompareFn, STABLE>> {
+	friend struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;
+private:
+	using OwnedInputItem = typename TChainInput::ItemOwned;
+	using SortCache = SrcMov<std::vector<OwnedInputItem>>;
+
+	TChainInput input;
+	TCompareFn compareFn;
+	std::optional<SortCache> sortCache;
+public:
+	Sorter(TChainInput&& input, TCompareFn compareFn) : input(std::move(input)), compareFn(compareFn) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput, typename TCompareFn, bool STABLE>
+struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename TChainInput::Item;
+	using OwnedInputItem = typename TChainInput::ItemOwned;
+	// CXXIter Interface
+	using Self = Sorter<TChainInput, TCompareFn, STABLE>;
+	using Item = OwnedInputItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		if(!self.sortCache.has_value()) {
+			// drain input iterator into sortCache
+			std::vector<OwnedInputItem> sortCache;
+			while(true) {
+				auto item = ChainInputIterator::next(self.input);
+				if(!item.hasValue()) { break; }
+				sortCache.push_back(std::forward<InputItem>( item.value() ));
+			}
+			// sort the cache
+			if constexpr(STABLE) {
+				std::stable_sort(sortCache.begin(), sortCache.end(), self.compareFn);
+			} else {
+				std::sort(sortCache.begin(), sortCache.end(), self.compareFn);
+			}
+			self.sortCache.emplace(std::move(sortCache));
+		}
+
+		using SortCacheIterator = IteratorTrait<typename Self::SortCache>;
+		typename Self::SortCache& sortedItems = self.sortCache.value();
+		return SortCacheIterator::next(sortedItems);
+	}
+};
+
+
+
+// ################################################################################################
 // COLLECTOR
 // ################################################################################################
 /** @private */
@@ -618,6 +685,9 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 // SURFACE-API
 // ################################################################################################
 
+/**
+ * @brief Public Iterator API surface.
+ */
 template<CXXIterIterator TSelf>
 class IterApi {
 public: // Associated types
@@ -1185,6 +1255,81 @@ public:
 		using TGroupIdent = typename std::remove_reference<decltype ( groupIdentFn( std::declval<const ItemOwned&>() ) )>::type;
 		return GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
+
+	/**
+	 * @brief Creates a new iterator that takes the items from this iterator, and passes them on sorted, using
+	 * the supplied @p compareFn.
+	 * @param compareFn Compare function used for the sorting of items.
+	 * @return New iterator that returns the items of this iterator sorted using the given @p compareFn.
+	 * @attention Sorter requires to first drain the input iterator, before being able to supply a single element.
+	 * This leads to additional memory usage.
+	 * @tparam STABLE If @c true, uses @c std::stable_sort internally, if @c false uses @c std::sort
+	 *
+	 * Usage Example:
+	 * - Sorting in ascending order using a custom comparer:
+	 * @code
+	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+	 * 	std::vector<float> output = CXXIter::from(input)
+	 * 		.sorted<false>([](const float& a, const float& b) {
+	 * 			return (a < b);
+	 * 		})
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 * - Sorting in descending order using a custom comparer:
+	 * @code
+	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+	 * 	std::vector<float> output = CXXIter::from(input)
+	 * 		.sorted<false>([](const float& a, const float& b) {
+	 * 			return (a > b);
+	 * 		})
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 */
+	template<bool STABLE, std::invocable<const ItemOwned&, const ItemOwned&> TCompareFn>
+	auto sorted(TCompareFn compareFn) {
+		return Sorter<TSelf, TCompareFn, STABLE>(std::move(*self()), compareFn);
+	}
+
+	/**
+	 * @brief Creates a new iterator that takes the items from this iterator, and passes them on sorted.
+	 * @note This variant of sorted() requires the items to support comparison operators.
+	 * @return New iterator that returns the items of this iterator sorted.
+	 * @attention Sorter requires to first drain the input iterator, before being able to supply a single element.
+	 * This leads to additional memory usage.
+	 * @tparam ORDER Decides the sort order of the resulting iterator.
+	 * @tparam STABLE If @c true, uses @c std::stable_sort internally, if @c false uses @c std::sort
+	 *
+	 * Usage Example:
+	 * - Sorting in ascending order using a custom comparer:
+	 * @code
+	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+	 * 	std::vector<float> output = CXXIter::from(input)
+	 * 		.sorted<CXXIter::ASCENDING, false>()
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 * - Sorting in descending order using a custom comparer:
+	 * @code
+	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+	 * 	std::vector<float> output = CXXIter::from(input)
+	 * 		.sorted<CXXIter::DESCENDING, false>()
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 */
+	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false>
+	requires requires(const ItemOwned& a, const ItemOwned& b) {
+		{ a < b }; { a > b };
+	}
+	auto sorted() {
+		return sorted<STABLE>([](const ItemOwned& a, const ItemOwned& b) {
+			if constexpr(ORDER == SortOrder::ASCENDING) {
+				return (a < b);
+			} else {
+				return (a > b);
+			}
+		});
+	}
+
+	//TODO: sortedBy() with functor that returns the part of the item after which should be sorted
 };
 
 
