@@ -277,3 +277,22 @@ TEST(CXXIter, sorted) {
 		ASSERT_THAT(output, ElementsAre(3.0f, 2.0f, 1.0f, 0.5f, -42.0f));
 	}
 }
+
+TEST(CXXIter, sortedBy) {
+	{ // ASCENDING
+		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
+		std::vector<std::string> output = CXXIter::from(input)
+			.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre("tes", "test", "test1", "test2", "test23"));
+	}
+	{ // DESCENDING
+		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
+		std::vector<std::string> output = CXXIter::from(input)
+			.sortedBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
+			.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre("test23", "test1", "test2", "test", "tes"));
+	}
+}

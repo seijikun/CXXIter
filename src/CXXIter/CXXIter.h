@@ -1337,7 +1337,46 @@ public:
 		});
 	}
 
-	//TODO: sortedBy() with functor that returns the part of the item after which should be sorted
+	/**
+	 * @brief Creates a new iterator that takes the items from this iterator, and passes them on sorted.
+	 * @details In comparison to sorted(), which either uses a custom comparator or the items themselves
+	 * for the sort operation, this variant takes a @p sortValueExtractFn, which extracts a value for
+	 * each item in this iterator, that should be used for sorting comparisons.
+	 * @return New iterator that returns the items of this iterator sorted.
+	 * @attention Sorter requires to first drain the input iterator, before being able to supply a single element.
+	 * This leads to additional memory usage.
+	 * @tparam ORDER Decides the sort order of the resulting iterator.
+	 * @tparam STABLE If @c true, uses @c std::stable_sort internally, if @c false uses @c std::sort
+	 *
+	 * Usage Example:
+	 * - Sorting the items(strings) in ascending order of their length:
+	 * @code
+	 * 	std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 		.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 * - Sorting the items(strings) in descending order of their length:
+	 * @code
+	 * 	std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 		.sortedBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
+	 * 		.collect<std::vector>();
+	 * @endcode
+	 */
+	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false, std::invocable<const ItemOwned&> TSortValueExtractFn>
+	requires requires(const result_of_invoke_t<TSortValueExtractFn, const ItemOwned&>& a) {
+		{ a < a }; { a > a };
+	}
+	auto sortedBy(TSortValueExtractFn sortValueExtractFn) {
+		return sorted<STABLE>([&sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
+			if constexpr(ORDER == SortOrder::ASCENDING) {
+				return (sortValueExtractFn(a) < sortValueExtractFn(b));
+			} else {
+				return (sortValueExtractFn(a) > sortValueExtractFn(b));
+			}
+		});
+	}
 };
 
 
