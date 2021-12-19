@@ -97,6 +97,14 @@ static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
 /** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
 static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
+template<typename T, typename... TArgs>
+requires std::invocable<T, TArgs...>
+struct result_of_invoke {
+	using type = decltype( std::declval<T>()(std::declval<TArgs>()...) );
+};
+template<typename T, typename... TArgs>
+using result_of_invoke_t = typename result_of_invoke<T, TArgs...>::type;
+
 
 /** @private */
 template<typename T>
@@ -1029,7 +1037,8 @@ public:
 	 */
 	template<std::invocable<ItemOwned&&> TMapFn>
 	auto map(TMapFn mapFn) {
-		return Map<TSelf, TMapFn, decltype(mapFn( std::declval<ItemOwned&&>() ))>(std::move(*self()), mapFn);
+		using TMapFnResult = result_of_invoke_t<TMapFn, ItemOwned&&>;
+		return Map<TSelf, TMapFn, TMapFnResult>(std::move(*self()), mapFn);
 	}
 
 	/**
@@ -1054,7 +1063,8 @@ public:
 	 */
 	template<std::invocable<Item&&> TFlatMapFn>
 	auto flatMap(TFlatMapFn mapFn = [](Item&& item) { return item; }) {
-		return FlatMap<TSelf, TFlatMapFn, decltype(mapFn( std::declval<Item&&>() ))>(std::move(*self()), mapFn);
+		using TFlatMapFnResult = result_of_invoke_t<TFlatMapFn, Item&&>;
+		return FlatMap<TSelf, TFlatMapFn, TFlatMapFnResult>(std::move(*self()), mapFn);
 	}
 
 	/**
@@ -1098,8 +1108,8 @@ public:
 	 */
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
 	auto filterMap(TFilterMapFn filterMapFn) {
-		using ResultType = typename decltype ( filterMapFn( std::declval<ItemOwned&&>() ) )::value_type;
-		return FilterMap<TSelf, TFilterMapFn, ResultType>(std::move(*self()), filterMapFn);
+		using TFilterMapFnResult = typename result_of_invoke_t<TFilterMapFn, ItemOwned&&>::value_type;
+		return FilterMap<TSelf, TFilterMapFn, TFilterMapFnResult>(std::move(*self()), filterMapFn);
 	}
 
 	/**
@@ -1252,7 +1262,7 @@ public:
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
-		using TGroupIdent = typename std::remove_reference<decltype ( groupIdentFn( std::declval<const ItemOwned&>() ) )>::type;
+		using TGroupIdent = std::remove_reference_t<result_of_invoke_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
 
@@ -1316,9 +1326,7 @@ public:
 	 * @endcode
 	 */
 	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false>
-	requires requires(const ItemOwned& a, const ItemOwned& b) {
-		{ a < b }; { a > b };
-	}
+	requires requires(const ItemOwned& a) { { a < a }; { a > a }; }
 	auto sorted() {
 		return sorted<STABLE>([](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
