@@ -216,6 +216,19 @@ TEST(CXXIter, groupBy) {
 		ASSERT_EQ(output["Sacher"].size(), 1);
 		ASSERT_EQ(output["Sacher"][0], input[1]);
 	}
+	{ // mapping of groupIdentifier to first value of each group
+		auto output = CXXIter::from(input)
+				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+				.map([](std::pair<std::string, std::vector<CakeMeasurement>>&& itemGroup) {
+					return std::make_pair(itemGroup.first, itemGroup.second[0]);
+				})
+				.collect<std::unordered_map>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_EQ(output["ApplePie"].cakeType, "ApplePie");
+		ASSERT_EQ(output["ApplePie"].cakeWeight, 1.3f);
+		ASSERT_EQ(output["Sacher"].cakeType, "Sacher");
+		ASSERT_EQ(output["Sacher"].cakeWeight, 0.5f);
+	}
 	{
 		auto output = CXXIter::from(std::move(input))
 				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
