@@ -100,6 +100,22 @@ TEST(CXXIter, min) {
 	}
 }
 
+TEST(CXXIter, minBy) {
+	{
+		std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::optional<std::string> output = CXXIter::from(input)
+				.minBy([](const std::string& str) { return str.size(); });
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), "smol");
+	}
+	{
+		std::vector<std::string> input = {};
+		std::optional<std::string> output = CXXIter::from(input)
+				.minBy([](const std::string& str) { return str.size(); });
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, max) {
 	{
 		std::vector<int> input = {42, 1337, 52};
@@ -110,6 +126,22 @@ TEST(CXXIter, max) {
 	{
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).max();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
+TEST(CXXIter, maxBy) {
+	{
+		std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::optional<std::string> output = CXXIter::from(input)
+				.maxBy([](const std::string& str) { return str.size(); });
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), "largeString");
+	}
+	{
+		std::vector<std::string> input = {};
+		std::optional<std::string> output = CXXIter::from(input)
+				.maxBy([](const std::string& str) { return str.size(); });
 		ASSERT_FALSE(output.has_value());
 	}
 }
