@@ -72,6 +72,23 @@ TEST(CXXIter, sum) {
 	}
 }
 
+TEST(CXXIter, stringJoin) {
+	{ // non-empty input
+		std::vector<int> input = {42, 1337, 64};
+		std::string output = CXXIter::from(input)
+				.map([](const auto& item) { return std::to_string(item); })
+				.stringJoin(", ");
+		ASSERT_EQ(output, "42, 1337, 64");
+	}
+	{ // empty input
+		std::vector<int> input = {};
+		std::string output = CXXIter::from(input)
+				.map([](const auto& item) { return std::to_string(item); })
+				.stringJoin(", ");
+		ASSERT_EQ(output, "");
+	}
+}
+
 TEST(CXXIter, mean) {
 	{ // non-empty input
 		std::vector<float> input = {1.0f, 2.0f, 3.0f};

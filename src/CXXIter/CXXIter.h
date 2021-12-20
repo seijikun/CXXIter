@@ -3,6 +3,7 @@
 #include <utility>
 #include <optional>
 #include <concepts>
+#include <string>
 
 #include <unordered_map>
 #include <vector>
@@ -856,6 +857,49 @@ public:
 	requires requires(TResult res, Item item) { { res += item }; }
 	TResult sum(TResult startValue = TResult()) {
 		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
+	}
+
+	/**
+	 * @brief Consumer that concatenates the elements of this iterator to a large @c std::string , where
+	 * each element is separated by the specified @p separator.
+	 * @note This consumes the iterator.
+	 * @note This method is only available for iterators whose elements are @c std::string . If that is not
+	 * the case, convert your items to @c std::string s first, using a method like @c map().
+	 * @return The resulting string concatenation of all items of this iterator.
+	 *
+	 * Usage Example:
+	 * - Non-empty iterator with default startValue
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	int output = CXXIter::from(input).sum();
+	 * 	// output == 1431
+	 * @endcode
+	 * - Non-Empty iterator with custom startValue of 29906
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	int output = CXXIter::from(input).sum(29906);
+	 * 	// output == 31337
+	 * @endcode
+	 * - Empty iterator with default startValue
+	 * @code
+	 * 	std::vector<int> input = {};
+	 * 	int output = CXXIter::from(input).sum();
+	 * 	// output == 0
+	 * @endcode
+	 * - Empty iterator with custom startValue
+	 * @code
+	 * 	std::vector<int> input = {};
+	 * 	int output = CXXIter::from(input).sum(31337);
+	 * 	// output == 31337
+	 * @endcode
+	 */
+	std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
+		std::string result;
+		forEach([&result, &separator](const std::string& item) {
+			if(result.size() > 0) { result += separator + item; }
+			else { result = item; }
+		});
+		return result;
 	}
 
 	/**
