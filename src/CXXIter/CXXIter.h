@@ -859,6 +859,43 @@ public:
 	}
 
 	/**
+	 * @brief Consumer that calculates the mean of all elements of this iterator.
+	 * @details The mean is calculated by first summing up all elements, and then
+	 * dividing through the number of elements counted while summing.
+	 * @note This consumes the iterator.
+	 * @return The mean of all elements of this iterator.
+	 * @tparam TResult Type of the mean-calculation's result. This is also the type used
+	 * for the sum of all elements.
+	 * @tparam TCount Type the element counter is converted into, before dividing the sum
+	 * by. This can be necessary, if TResult is a complex object that only supports the
+	 * division operator for e.g. double.
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<float> input = {1.0f, 2.0f, 3.0f};
+	 *	std::optional<float> output = CXXIter::from(input).mean();
+	 *	// output == Some(2.0f)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<float> input = {};
+	 *	std::optional<float> output = CXXIter::from(input).mean();
+	 *	// output == None
+	 * @endcode
+	 */
+	template<typename TResult = ItemOwned, typename TCount = ItemOwned>
+	std::optional<TResult> mean() {
+		size_t cnt = 0;
+		TResult result = fold(TResult(), [&cnt](TResult& res, Item&& item) {
+			cnt += 1;
+			res += item;
+		});
+		if(cnt > 0) { return result / static_cast<TCount>(cnt); }
+		return {};
+	}
+
+	/**
 	 * @brief Consumer that yields the smallest element from this iterator.
 	 * @note This consumes the iterator.
 	 * @return The smallest element of this iterator (if any).

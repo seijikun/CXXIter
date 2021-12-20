@@ -72,6 +72,20 @@ TEST(CXXIter, sum) {
 	}
 }
 
+TEST(CXXIter, mean) {
+	{ // non-empty input
+		std::vector<float> input = {1.0f, 2.0f, 3.0f};
+		std::optional<float> output = CXXIter::from(input).mean();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value(), 2.0f, 0.0000000005);
+	}
+	{ // empty input
+		std::vector<float> input = {};
+		std::optional<float> output = CXXIter::from(input).mean();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, last) {
 	{
 		std::vector<int> input = {42, 1337, 52};
