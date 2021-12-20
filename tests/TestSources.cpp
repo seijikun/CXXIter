@@ -135,6 +135,14 @@ TEST(CXXIter, srcConstRef) { // const references
 		ASSERT_EQ(evtLog[3].event, LifecycleEventType::DTOR); // dtor in CustomContainer
 		ASSERT_EQ(evtLog[1].ptr, evtLog[3].ptr);
 	}
+	{
+		std::vector<int> input = {1, 2, 3};
+		const std::vector<int>& inputCRef = input;
+		int output = CXXIter::from(inputCRef)
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 6);
+	}
 }
 
 TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
