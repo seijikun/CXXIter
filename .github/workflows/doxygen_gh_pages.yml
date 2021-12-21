@@ -1,0 +1,33 @@
+name: Generate Docs
+
+on: [push, pull_request]
+
+jobs:
+  generate_docs:
+    name: "Generate Docs"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -yq cmake doxygen graphviz
+      
+    - name: Configure
+      run: |
+        if [ -d "build" ]; then rm -rf ./build; fi
+        mkdir -p build
+        cd build
+        cmake ../ -DCXXITER_WITH_TESTS=OFF -DCXXITER_WITH_DOCS=ON
+    
+    - name: Build Docs
+      run: |
+        cd build/
+        cmake --build .
+        
+    - name: Deploy Docs to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: build/html
