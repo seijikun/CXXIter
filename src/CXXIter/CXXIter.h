@@ -107,6 +107,9 @@ template<typename T, typename... TArgs>
 using result_of_invoke_t = typename result_of_invoke<T, TArgs...>::type;
 
 template<typename T>
+using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
+
+template<typename T>
 inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
 
 
@@ -1562,8 +1565,8 @@ public:
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcMov<TContainer> from(TContainer&& container) {
-	return SrcMov<TContainer>(std::forward<TContainer>(container));
+SrcMov<owned_t<TContainer>> from(TContainer&& container) {
+	return SrcMov<owned_t<TContainer>>(std::forward<TContainer>(container));
 }
 
 /**
@@ -1575,8 +1578,8 @@ SrcMov<TContainer> from(TContainer&& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcRef<TContainer> from(TContainer& container) {
-	return SrcRef<TContainer>(container);
+SrcRef<owned_t<TContainer>> from(TContainer& container) {
+	return SrcRef<owned_t<TContainer>>(container);
 }
 
 /**
@@ -1588,8 +1591,8 @@ SrcRef<TContainer> from(TContainer& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcCRef<TContainer> from(const TContainer& container) {
-	return SrcCRef<TContainer>(container);
+SrcCRef<owned_t<TContainer>> from(const TContainer& container) {
+	return SrcCRef<owned_t<TContainer>>(container);
 }
 
 }

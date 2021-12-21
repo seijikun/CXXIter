@@ -45,6 +45,19 @@ TEST(CXXIter, is_const_reference_v) {
 	ASSERT_TRUE(CXXIter::is_const_reference_v<const TestType&>);
 }
 
+TEST(CXXIter, owned_t) {
+	using TestType = std::vector<int>;
+
+	static_assert(std::is_same_v<TestType, CXXIter::owned_t<TestType>>);
+	static_assert(std::is_same_v<TestType, CXXIter::owned_t<TestType&>>);
+	static_assert(std::is_same_v<TestType, CXXIter::owned_t<TestType&&>>);
+	static_assert(std::is_same_v<TestType, CXXIter::owned_t<const TestType&>>);
+
+	static_assert(!std::is_same_v<TestType, TestType&>);
+	static_assert(!std::is_same_v<TestType, TestType&&>);
+	static_assert(!std::is_same_v<TestType, const TestType&>);
+}
+
 TEST(CXXIter, stlCollections) {
 	using TestKey = int;
 	using TestValue = std::string;
