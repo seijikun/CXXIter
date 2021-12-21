@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['descending_4',['DESCENDING',['../namespaceCXXIter.html#a6712be40151467bc67d23a0bbfea157d',1,'CXXIter::DESCENDING()'],['../namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53',1,'CXXIter::DESCENDING()']]]
+  ['constiteratorstate_3',['ConstIteratorState',['../structCXXIter_1_1SourceTrait.html#a69fb0aa212eec3a3691130f2101418b0',1,'CXXIter::SourceTrait']]],
+  ['cxxiter_4',['CXXIter',['../namespaceCXXIter.html',1,'']]],
+  ['cxxiter_2eh_5',['CXXIter.h',['../CXXIter_8h.html',1,'']]]
 ];

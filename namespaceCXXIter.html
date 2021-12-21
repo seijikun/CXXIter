@@ -136,6 +136,18 @@ Variables</h2></td></tr>
 <tr class="separator:a28ff7cdfac8e9ecaa4c25b3a04713a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6712be40151467bc67d23a0bbfea157d"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a6712be40151467bc67d23a0bbfea157d">DESCENDING</a> = SortOrder::DESCENDING</td></tr>
 <tr class="separator:a6712be40151467bc67d23a0bbfea157d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28a82a99fd19d9059b8879b3eac9404"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename TContainer, typename TItem , typename... TContainerArgs&gt; </td></tr>
+<tr class="memitem:ad28a82a99fd19d9059b8879b3eac9404"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#ad28a82a99fd19d9059b8879b3eac9404">BackInsertableContainer</a></td></tr>
+<tr class="memdesc:ad28a82a99fd19d9059b8879b3eac9404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept enforcing a back-insertible container like <code>std::vector</code>.  <a href="namespaceCXXIter.html#ad28a82a99fd19d9059b8879b3eac9404">More...</a><br /></td></tr>
+<tr class="separator:ad28a82a99fd19d9059b8879b3eac9404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07bca2979ebda3e9f8bedc4c80b7da2d"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename TContainer, typename TItem , typename... TContainerArgs&gt; </td></tr>
+<tr class="memitem:a07bca2979ebda3e9f8bedc4c80b7da2d"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a07bca2979ebda3e9f8bedc4c80b7da2d">InsertableContainer</a></td></tr>
+<tr class="memdesc:a07bca2979ebda3e9f8bedc4c80b7da2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept enforcing an insertible container like <code>std::set</code>.  <a href="namespaceCXXIter.html#a07bca2979ebda3e9f8bedc4c80b7da2d">More...</a><br /></td></tr>
+<tr class="separator:a07bca2979ebda3e9f8bedc4c80b7da2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f875331e06b58588607a920fc61f058"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename TContainer, typename TItemKey , typename TItemValue , typename... TContainerArgs&gt; </td></tr>
+<tr class="memitem:a7f875331e06b58588607a920fc61f058"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a7f875331e06b58588607a920fc61f058">AssocContainer</a></td></tr>
+<tr class="memdesc:a7f875331e06b58588607a920fc61f058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept enforcing an associative container like <code>std::map</code>.  <a href="namespaceCXXIter.html#a7f875331e06b58588607a920fc61f058">More...</a><br /></td></tr>
+<tr class="separator:a7f875331e06b58588607a920fc61f058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4638cdb97ddf7fb7c9f2d85104f092a2"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; </td></tr>
 <tr class="memitem:a4638cdb97ddf7fb7c9f2d85104f092a2"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4638cdb97ddf7fb7c9f2d85104f092a2">SourceContainer</a></td></tr>
 <tr class="memdesc:a4638cdb97ddf7fb7c9f2d85104f092a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept that checks whether the given <code>TContainer</code> is supported by <a class="el" href="namespaceCXXIter.html">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html">CXXIter::SrcCRef</a></code>.  <a href="namespaceCXXIter.html#a4638cdb97ddf7fb7c9f2d85104f092a2">More...</a><br /></td></tr>
@@ -228,7 +240,7 @@ template&lt;typename TValue &gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01779">1779</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01794">1794</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +287,7 @@ template&lt;typename TItem &gt; </div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01751">1751</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01766">1766</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -306,7 +318,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html">CXXIter</a> move source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01704">1704</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01719">1719</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -345,7 +357,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html">CXXIter</a> const-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01717">1717</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01732">1732</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -375,6 +387,56 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
+<a id="a7f875331e06b58588607a920fc61f058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f875331e06b58588607a920fc61f058">&#9670;&nbsp;</a></span>AssocContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename... &gt; typename TContainer, typename TItemKey , typename TItemValue , typename... TContainerArgs&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept CXXIter::AssocContainer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a">requires</a>(TContainer&lt;TItemKey, TItemValue, TContainerArgs...&gt; container, std::pair&lt;TItemKey, TItemValue&gt; item) {</div>
+<div class="line">    <span class="keyword">typename</span> decltype(container)::value_type;</div>
+<div class="line">    <span class="keyword">typename</span> decltype(container)::key_type;</div>
+<div class="line">    <span class="keyword">typename</span> decltype(container)::mapped_type;</div>
+<div class="line">    container.insert(item);</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Concept enforcing an associative container like <code>std::map</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00151">151</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
+<a id="ad28a82a99fd19d9059b8879b3eac9404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28a82a99fd19d9059b8879b3eac9404">&#9670;&nbsp;</a></span>BackInsertableContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename... &gt; typename TContainer, typename TItem , typename... TContainerArgs&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept CXXIter::BackInsertableContainer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a">requires</a>(TContainer&lt;TItem, TContainerArgs...&gt; container, TItem item) {</div>
+<div class="line">    <span class="keyword">typename</span> decltype(container)::value_type;</div>
+<div class="line">    container.push_back(item);</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Concept enforcing a back-insertible container like <code>std::vector</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00133">133</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
 <a id="a6712be40151467bc67d23a0bbfea157d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6712be40151467bc67d23a0bbfea157d">&#9670;&nbsp;</a></span>DESCENDING</h2>
 
@@ -397,6 +459,30 @@ template&lt;typename TContainer &gt; </div>
 <p>Shortcut for <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53">SortOrder::DESCENDING</a> in the <a class="el" href="namespaceCXXIter.html">CXXIter</a> namespace </p>
 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00099">99</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
+<a id="a07bca2979ebda3e9f8bedc4c80b7da2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07bca2979ebda3e9f8bedc4c80b7da2d">&#9670;&nbsp;</a></span>InsertableContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename... &gt; typename TContainer, typename TItem , typename... TContainerArgs&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept CXXIter::InsertableContainer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a">requires</a>(TContainer&lt;TItem, TContainerArgs...&gt; container, TItem item) {</div>
+<div class="line">    <span class="keyword">typename</span> decltype(container)::value_type;</div>
+<div class="line">    container.insert(item);</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Concept enforcing an insertible container like <code>std::set</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00142">142</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -437,15 +523,15 @@ template&lt;typename TContainer &gt; </div>
 <p>The concept does these checks by testing whether the <code><a class="el" href="structCXXIter_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">CXXIter::SourceTrait</a></code> was properly specialized for the given <code>TContainer</code> type.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structCXXIter_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">CXXIter::SourceTrait</a> for further details on this. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00233">233</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00242">242</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceCXXIter_html_ac12e93483017f57b599ffdac901fd57e"><div class="ttname"><a href="namespaceCXXIter.html#ac12e93483017f57b599ffdac901fd57e">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01751">CXXIter.h:1751</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html_aa2fa6b8cbebf819e94c68dd5333a09ea"><div class="ttname"><a href="namespaceCXXIter.html#aa2fa6b8cbebf819e94c68dd5333a09ea">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01779">CXXIter.h:1779</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html_ad6c39d352ab7cef6acb963fed702a11a"><div class="ttname"><a href="namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a">CXXIter::requires</a></div><div class="ttdeci">requires(!std::is_reference_v&lt; TContainer &gt; &amp;&amp;!is_const_reference_v&lt; TContainer &gt; &amp;&amp;SourceContainer&lt; TContainer &gt;) SrcRef&lt; owned_t&lt; TContainer &gt;&gt; from(TContainer &amp;container)</div><div class="ttdoc">Construct a CXXIter mutable-reference source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01717">CXXIter.h:1717</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ac12e93483017f57b599ffdac901fd57e"><div class="ttname"><a href="namespaceCXXIter.html#ac12e93483017f57b599ffdac901fd57e">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01766">CXXIter.h:1766</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_aa2fa6b8cbebf819e94c68dd5333a09ea"><div class="ttname"><a href="namespaceCXXIter.html#aa2fa6b8cbebf819e94c68dd5333a09ea">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01794">CXXIter.h:1794</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ad6c39d352ab7cef6acb963fed702a11a"><div class="ttname"><a href="namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a">CXXIter::requires</a></div><div class="ttdeci">requires(!std::is_reference_v&lt; TContainer &gt; &amp;&amp;!is_const_reference_v&lt; TContainer &gt; &amp;&amp;SourceContainer&lt; TContainer &gt;) SrcRef&lt; owned_t&lt; TContainer &gt;&gt; from(TContainer &amp;container)</div><div class="ttdoc">Construct a CXXIter mutable-reference source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01732">CXXIter.h:1732</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
