@@ -87,6 +87,15 @@ TEST(CXXIter, srcMove) { // move
 		ASSERT_EQ(evtLog[7].event, LifecycleEventType::DTOR); // dtor of original input (stored in SrcMov)
 		ASSERT_EQ(evtLog[1].ptr, evtLog[7].ptr);
 	}
+	{
+		std::vector<int> input = {1, 2, 3};
+		auto iter = CXXIter::from(std::move(input));
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcMov<std::vector<int>>>);
+		int output = iter
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 4);
+	}
 }
 
 TEST(CXXIter, srcConstRef) { // const references
@@ -138,10 +147,12 @@ TEST(CXXIter, srcConstRef) { // const references
 	{
 		std::vector<int> input = {1, 2, 3};
 		const std::vector<int>& inputCRef = input;
-		int output = CXXIter::from(inputCRef)
+		auto iter = CXXIter::from(inputCRef);
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcCRef<std::vector<int>>>);
+		int output = iter
 				.map([](int item) { return item * 2; })
 				.mean().value();
-		ASSERT_EQ(output, 6);
+		ASSERT_EQ(output, 4);
 	}
 }
 
@@ -190,5 +201,15 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 
 		ASSERT_EQ(evtLog[3].event, LifecycleEventType::DTOR); // dtor in CustomContainer
 		ASSERT_EQ(evtLog[1].ptr, evtLog[3].ptr);
+	}
+	{
+		std::vector<int> input = {1, 2, 3};
+		std::vector<int>& inputRef = input;
+		auto iter = CXXIter::from(inputRef);
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcRef<std::vector<int>>>);
+		int output = iter
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 4);
 	}
 }

@@ -106,6 +106,9 @@ struct result_of_invoke {
 template<typename T, typename... TArgs>
 using result_of_invoke_t = typename result_of_invoke<T, TArgs...>::type;
 
+template<typename T>
+inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
+
 
 /** @private */
 template<typename T>
@@ -1558,7 +1561,7 @@ public:
  * @return CXXIter move source from the given container.
  */
 template<typename TContainer>
-requires SourceContainer<typename std::remove_reference<TContainer>::type>
+requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcMov<TContainer> from(TContainer&& container) {
 	return SrcMov<TContainer>(std::forward<TContainer>(container));
 }
@@ -1571,7 +1574,7 @@ SrcMov<TContainer> from(TContainer&& container) {
  * @return CXXIter mutable-reference source from the given container.
  */
 template<typename TContainer>
-requires SourceContainer<typename std::remove_reference<TContainer>::type>
+requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcRef<TContainer> from(TContainer& container) {
 	return SrcRef<TContainer>(container);
 }
@@ -1584,9 +1587,9 @@ SrcRef<TContainer> from(TContainer& container) {
  * @return CXXIter const-reference source from the given container.
  */
 template<typename TContainer>
-requires SourceContainer<typename std::remove_reference<TContainer>::type>
+requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcCRef<TContainer> from(const TContainer& container) {
-	return SrcMov<TContainer>(container);
+	return SrcCRef<TContainer>(container);
 }
 
 }
