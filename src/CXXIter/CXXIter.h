@@ -98,14 +98,6 @@ static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
 /** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
 static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
-template<typename T, typename... TArgs>
-requires std::invocable<T, TArgs...>
-struct result_of_invoke {
-	using type = decltype( std::declval<T>()(std::declval<TArgs>()...) );
-};
-template<typename T, typename... TArgs>
-using result_of_invoke_t = typename result_of_invoke<T, TArgs...>::type;
-
 template<typename T>
 using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
 
@@ -1037,7 +1029,7 @@ public:
 	 * @endcode
 	 */
 	template<typename TMinValueExtractFn>
-	requires requires(const result_of_invoke_t<TMinValueExtractFn, const ItemOwned&>& a) {
+	requires requires(const std::invoke_result_t<TMinValueExtractFn, const ItemOwned&>& a) {
 		{ a < a };
 	}
 	std::optional<ItemOwned> minBy(TMinValueExtractFn minValueExtractFn) {
@@ -1079,7 +1071,7 @@ public:
 	 * @endcode
 	 */
 	template<typename TMaxValueExtractFn>
-	requires requires(const result_of_invoke_t<TMaxValueExtractFn, const ItemOwned&>& a) {
+	requires requires(const std::invoke_result_t<TMaxValueExtractFn, const ItemOwned&>& a) {
 		{ a > a };
 	}
 	std::optional<ItemOwned> maxBy(TMaxValueExtractFn minValueExtractFn) {
@@ -1208,7 +1200,7 @@ public:
 	 */
 	template<std::invocable<ItemOwned&&> TMapFn>
 	auto map(TMapFn mapFn) {
-		using TMapFnResult = result_of_invoke_t<TMapFn, ItemOwned&&>;
+		using TMapFnResult = std::invoke_result_t<TMapFn, ItemOwned&&>;
 		return Map<TSelf, TMapFn, TMapFnResult>(std::move(*self()), mapFn);
 	}
 
@@ -1234,7 +1226,7 @@ public:
 	 */
 	template<std::invocable<Item&&> TFlatMapFn>
 	auto flatMap(TFlatMapFn mapFn = [](Item&& item) { return item; }) {
-		using TFlatMapFnResult = result_of_invoke_t<TFlatMapFn, Item&&>;
+		using TFlatMapFnResult = std::invoke_result_t<TFlatMapFn, Item&&>;
 		return FlatMap<TSelf, TFlatMapFn, TFlatMapFnResult>(std::move(*self()), mapFn);
 	}
 
@@ -1279,7 +1271,7 @@ public:
 	 */
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
 	auto filterMap(TFilterMapFn filterMapFn) {
-		using TFilterMapFnResult = typename result_of_invoke_t<TFilterMapFn, ItemOwned&&>::value_type;
+		using TFilterMapFnResult = typename std::invoke_result_t<TFilterMapFn, ItemOwned&&>::value_type;
 		return FilterMap<TSelf, TFilterMapFn, TFilterMapFnResult>(std::move(*self()), filterMapFn);
 	}
 
@@ -1433,7 +1425,7 @@ public:
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
-		using TGroupIdent = std::remove_reference_t<result_of_invoke_t<TGroupIdentifierFn, const ItemOwned&>>;
+		using TGroupIdent = std::remove_reference_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
 
@@ -1536,7 +1528,7 @@ public:
 	 * @endcode
 	 */
 	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false, std::invocable<const ItemOwned&> TSortValueExtractFn>
-	requires requires(const result_of_invoke_t<TSortValueExtractFn, const ItemOwned&>& a) {
+	requires requires(const std::invoke_result_t<TSortValueExtractFn, const ItemOwned&>& a) {
 		{ a < a }; { a > a };
 	}
 	auto sortedBy(TSortValueExtractFn sortValueExtractFn) {

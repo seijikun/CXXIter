@@ -13,28 +13,6 @@
 // CONCEPTS & TYPE CONSTRAINTS & TYPE HELPERS
 // ################################################################################################
 
-TEST(CXXIter, result_of_invoke_t) {
-	using TestParameter = std::vector<int>;
-
-	auto fn1 = [](const TestParameter& a) { return a[0]; };
-	static_assert(std::is_same_v<
-		CXXIter::result_of_invoke_t<decltype(fn1), const TestParameter&>,
-		int
-	>);
-
-	auto fn2 = [](TestParameter&& a) { return a; };
-	static_assert(std::is_same_v<
-		CXXIter::result_of_invoke_t<decltype(fn2), TestParameter&&>,
-		TestParameter
-	>);
-
-	auto fn3 = [](TestParameter&) { };
-	static_assert(std::is_same_v<
-		CXXIter::result_of_invoke_t<decltype(fn3), TestParameter&>,
-		void
-	>);
-}
-
 TEST(CXXIter, is_const_reference_v) {
 	using TestType = std::vector<int>;
 
