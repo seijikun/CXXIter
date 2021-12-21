@@ -5,6 +5,9 @@ It supports passing values by (const) reference or by using move semantics, whic
 
 ## The API
 
+A full API-Documentation can be found [here](https://seijikun.github.io/CXXIter/).
+(due to Doxygen C++20 limitations, this is currently very broken)
+
 ### Entry
 The `CXXIter` interface is entered by instantiating one of the possible source classes.
 The type of the source determines how the values from the container are passed (const reference / reference / move semantics).
