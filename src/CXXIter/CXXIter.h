@@ -125,21 +125,30 @@ template<typename T> concept is_pair = requires(T pair) {
 	{std::get<typename T::first_type>(pair)} -> std::convertible_to<typename T::first_type>;
 	{std::get<typename T::second_type>(pair)} -> std::convertible_to<typename T::second_type>;
 };
-/** @private */
+
+/**
+ * @brief Concept enforcing a back-insertible container like @c std::vector.
+ */
 template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-concept BackInsertableCollection = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+concept BackInsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
 	typename decltype(container)::value_type;
 	container.push_back(item);
 };
-/** @private */
+
+/**
+ * @brief Concept enforcing an insertible container like @c std::set.
+ */
 template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-concept InsertableCollection = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+concept InsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
 	typename decltype(container)::value_type;
 	container.insert(item);
 };
-/** @private */
+
+/**
+ * @brief Concept enforcing an associative container like @c std::map.
+ */
 template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
-concept AssocCollection = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
+concept AssocContainer = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
 	typename decltype(container)::value_type;
 	typename decltype(container)::key_type;
 	typename decltype(container)::mapped_type;
@@ -253,6 +262,8 @@ concept SourceContainer = requires(
 // ################################################################################################
 // SOURCE (MOVE / CONSUME)
 // ################################################################################################
+
+//TODO: documentation
 template<typename TContainer>
 requires SourceContainer<typename std::remove_reference<TContainer>::type>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
@@ -284,6 +295,8 @@ struct IteratorTrait<SrcMov<TContainer>> {
 // ################################################################################################
 // SOURCE (MUTABLE REFERENCE)
 // ################################################################################################
+
+//TODO: documentation
 template<typename TContainer>
 class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
@@ -314,6 +327,8 @@ struct IteratorTrait<SrcRef<TContainer>> {
 // ################################################################################################
 // SOURCE (CONST REFERENCE)
 // ################################################################################################
+
+//TODO: documentation
 template<typename TContainer>
 class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
@@ -564,7 +579,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
-			if(!self.current) { // pull new collection from the outer iterator
+			if(!self.current) { // pull new container from the outer iterator
 				auto item = ChainInputIterator::next(self.input);
 				if(!item.hasValue()) { return {}; } // end of iteration
 				self.current = SrcMov(std::move(
@@ -572,12 +587,12 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 				));
 			}
 
-			// if the outer iterator yielded a collection, take from it until we reach the end
+			// if the outer iterator yielded a container, take from it until we reach the end
 			auto item = NestedChainIterator::next(*self.current);
 			if(item.hasValue()) { // inner yielded a usable item
 				return item.value();
 			} else {
-				self.current.reset(); // inner collection ended, unset current cache
+				self.current.reset(); // inner container ended, unset current cache
 			}
 		}
 	}
@@ -775,7 +790,7 @@ template<typename TChainInput, template <typename...> typename TContainer, typen
 struct Collector {};
 /** @private */
 template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
-requires BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+requires BackInsertableContainer<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
 struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
@@ -787,9 +802,9 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 };
 /** @private */
 template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
-requires (!BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
+requires (!BackInsertableContainer<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
 	&& is_pair<typename TChainInput::ItemOwned>
-	&& AssocCollection<TContainer, typename TChainInput::ItemOwned::first_type, typename TChainInput::ItemOwned::second_type, TContainerArgs...>
+	&& AssocContainer<TContainer, typename TChainInput::ItemOwned::first_type, typename TChainInput::ItemOwned::second_type, TContainerArgs...>
 struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static auto collect(TChainInput& input) {
@@ -801,8 +816,8 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 };
 /** @private */
 template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
-requires (!BackInsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
-	&& InsertableCollection<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+requires (!BackInsertableContainer<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
+	&& InsertableContainer<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
 struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
@@ -872,7 +887,7 @@ public:
 	}
 
 	/**
-	 * @brief Consumer that collects all elements from this iterator in a new collection of type @p TTargetContainer
+	 * @brief Consumer that collects all elements from this iterator in a new container of type @p TTargetContainer
 	 * @note This consumes the iterator.
 	 * @tparam TTargetContainer Type-Template for the target container that the elements from this iterator should
 	 * be collected into. The first template parameter of this Type-Template has to take the type of the elements.
