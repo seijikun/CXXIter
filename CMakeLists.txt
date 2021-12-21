@@ -14,6 +14,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE "src/")
 
 # UNIT-TESTS
 if(${CXXITER_WITH_TESTS})
+	enable_testing() # has to be done in main CMakeLists file
 	add_subdirectory(tests)
 endif()
 

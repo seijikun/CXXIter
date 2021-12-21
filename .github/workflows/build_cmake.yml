@@ -1,0 +1,55 @@
+name: CMake Build Matrix
+
+on: [push, pull_request]
+
+jobs:
+  build_and_test:
+    name: ${{ matrix.config.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name: "GCC",
+            cc: "gcc", cxx: "g++"
+          }
+        - {
+            name: "CLANG",
+            cc: "clang", cxx: "clang++"
+          }
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -yq libgtest-dev libgmock-dev libbenchmark-dev cmake ninja-build
+    - name: Setup GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: 11
+        platform: x64
+    - name: Setup CLANG
+      uses: egor-tensin/setup-clang@v1
+      with:
+        version: 13
+        platform: x64
+      
+    - name: Configure
+      run: |
+        export CC=${{ matrix.config.cc }}
+        export CXX=${{ matrix.config.cxx }}
+        if [ -d "build" ]; then rm -rf ./build; fi
+        mkdir -p build
+        cd build
+        cmake -GNinja ../ -DCXXITER_WITH_TESTS=ON
+    
+    - name: Build
+      run: |
+        cd build/
+        cmake --build .
+        
+    - name: Test
+      run: |
+        cd build/
+        ctest -j4 --output-on-failure
