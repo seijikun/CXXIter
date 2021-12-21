@@ -279,6 +279,35 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 
 
 // ################################################################################################
+// GENERATOR REPEAT
+// ################################################################################################
+template<typename TItem>
+class Repeater : public IterApi<Repeater<TItem>> {
+	friend struct IteratorTrait<Repeater<TItem>>;
+private:
+	TItem item;
+	size_t repetitionsRemaining;
+public:
+	Repeater(const TItem& item, size_t repetitions) : item(item), repetitionsRemaining(repetitions) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TItem>
+struct IteratorTrait<Repeater<TItem>> {
+	// CXXIter Interface
+	using Self = Repeater<TItem>;
+	using Item = TItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		if(self.repetitionsRemaining == 0) { return {}; }
+		self.repetitionsRemaining -= 1;
+		return self.item;
+	}
+};
+
+
+
+// ################################################################################################
 // CASTER
 // ################################################################################################
 /** @private */
@@ -1606,6 +1635,26 @@ template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcCRef<owned_t<TContainer>> from(const TContainer& container) {
 	return SrcCRef<owned_t<TContainer>>(container);
+}
+
+/**
+ * @brief Construct a CXXIter iterator, by repeating the given @p item @p cnt times.
+ * @param item Item to use as repeated element of the generated element.
+ * @param cnt Amount of repetitions of @p item the generated iterator should consist of.
+ * @return CXXIter iterator that returns the given @p item @p cnt times.
+ *
+ * Usage Example:
+ * @code
+ * 	std::vector<int> item = {1, 3, 3, 7};
+ * 	std::vector<int> output = CXXIter::repeat(item, 3)
+ * 			.flatMap()
+ * 			.collect<std::vector>();
+ *	// output = {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
+ * @endcode
+ */
+template<typename TItem>
+Repeater<TItem> repeat(const TItem& item, size_t cnt) {
+	return Repeater<TItem>(item, cnt);
 }
 
 }

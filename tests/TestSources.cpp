@@ -213,3 +213,12 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 		ASSERT_EQ(output, 4);
 	}
 }
+
+TEST(CXXIter, repeat) {
+	std::vector<int> item = {1, 3, 3, 7};
+	std::vector<int> output = CXXIter::repeat(item, 3)
+			.flatMap()
+			.collect<std::vector>();
+	ASSERT_EQ(output.size(), 3 * 4);
+	ASSERT_THAT(output, ElementsAre(1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7));
+}
