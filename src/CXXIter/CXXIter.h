@@ -1633,7 +1633,7 @@ public:
 /**
  * @brief Construct a CXXIter move source from the given container.
  * @details This constructs a move source, which will move the items from the
- * container into the iterator.
+ * given @p container into the iterator.
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter move source from the given container.
  */
@@ -1646,7 +1646,7 @@ SrcMov<owned_t<TContainer>> from(TContainer&& container) {
 /**
  * @brief Construct a CXXIter mutable-reference source from the given container.
  * @details This constructs a mutable-reference source. This allows the iterator
- * to modify the elements in the array.
+ * to modify the elements in the given @p container.
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter mutable-reference source from the given container.
  */
@@ -1659,7 +1659,7 @@ SrcRef<owned_t<TContainer>> from(TContainer& container) {
 /**
  * @brief Construct a CXXIter const-reference source from the given container.
  * @details This constructs a const-reference source. This guarantees the
- * given container to stay untouched.
+ * given @p container to stay untouched.
  * @param container Container to construct a CXXIter source from.
  * @return CXXIter const-reference source from the given container.
  */
