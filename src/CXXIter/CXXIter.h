@@ -98,9 +98,11 @@ static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
 /** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
 static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
+/** @private */
 template<typename T>
 using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
 
+/** @private */
 template<typename T>
 inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
 
@@ -145,27 +147,88 @@ concept AssocCollection = requires(TContainer<TItemKey, TItemValue, TContainerAr
 };
 
 /**
- * @brief SourceTrait, that all containers supported as CXXIter source has to be specialized for.
- * @details If you want to add support for your own containers, create a template specialization
- * for this SourceTrait, for your container class.
+ * @brief SourceTrait, that is used by CXXIter's standard source classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.
+ * @details If you want to add support for your own containers to these sources, and thus to @c CXXIter::from() calls,
+ * create a template specialization of @c CXXIter::SourceTrait, for your container class.
  *
  * This is the default implementation supporting all STL containers.
  */
 template<typename TContainer> struct SourceTrait {
+	/**
+	 * @brief Type of the item @p TContainer holds and provides for the iterator.
+	 */
 	using Item = typename TContainer::value_type;
+	/**
+	 * @brief Type of the state structure stored in CXXIter's source classes, used to keep track of the iteration progress.
+	 * @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+	 */
 	using IteratorState = typename TContainer::iterator;
+	/**
+	 * @brief Type of the state structure stored in CXXIter's source classes, used to keep track of the iteration progress.
+	 * @details This is used for @c CXXIter::SrcCRef
+	 */
 	using ConstIteratorState = typename TContainer::const_iterator;
 
+	/**
+	 * @brief Return an initial @c IteratorState instance for iteration on the given @p container.
+	 * @details This is stored within CXXIter's source classes, to hold the iteration's state.
+	 * This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+	 * @param container Container on which the source runs.
+	 * @return Instance of @c IteratorState
+	 */
 	static inline IteratorState initIterator(TContainer& container) { return container.begin(); }
+	/**
+	 * @brief Return an initial @c IteratorState instance for iteration on the given @p container.
+	 * @details This is stored within CXXIter's source classes, to hold the iteration's state.
+	 * This is used for @c CXXIter::SrcCRef
+	 * @param container Container on which the source runs.
+	 * @return Instance of @c ConstIteratorState
+	 */
 	static inline ConstIteratorState initIterator(const TContainer& container) { return container.begin(); }
 
+	/**
+	 * @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
+	 * @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+	 * @param container Container on which the current iteration is running.
+	 * @param iter The current iteration's state structure.
+	 * @return @c true when there is another item available, @c false otherwise.
+	 */
 	static inline bool hasNext(TContainer& container, IteratorState& iter) { return (iter != container.end()); }
+	/**
+	 * @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
+	 * @details This is used for @c CXXIter::SrcCRef
+	 * @param container Container on which the current iteration is running.
+	 * @param iter The current iteration's state structure.
+	 * @return @c true when there is another item available, @c false otherwise.
+	 */
 	static inline bool hasNext(const TContainer& container, ConstIteratorState& iter) { return (iter != container.end()); }
 
-	static inline Item& next(TContainer&, IteratorState& iter) { return (*iter++); }
-	static inline const Item& next(const TContainer&, ConstIteratorState& iter) { return (*iter++); }
+	/**
+	 * @brief Return the next item in the iteration with the given @p iter state on the given @p container.
+	 * @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+	 * @param container Container on which the current iteration is running.
+	 * @param iter The current iteration's state structure.
+	 * @return The next item from the current iteration.
+	 */
+	static inline Item& next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter++); }
+	/**
+	 * @brief Return the next item in the iteration with the given @p iter state on the given @p container.
+	 * @details This is used for @c CXXIter::SrcCRef
+	 * @param container Container on which the current iteration is running.
+	 * @param iter The current iteration's state structure.
+	 * @return The next item from the current iteration.
+	 */
+	static inline const Item& next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter++); }
 };
 
+/**
+ * @brief Concept that checks whether the given @p TContainer is supported by CXXIter's standard source
+ * classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.
+ * @details The concept does these checks by testing whether the @c CXXIter::SourceTrait was properly specialized
+ * for the given @p TContainer type.
+ *
+ * @see CXXIter::SourceTrait for further details on this.
+ */
 template<typename TContainer>
 concept SourceContainer = requires(
 		TContainer& container,
@@ -281,6 +344,7 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 // ################################################################################################
 // GENERATOR REPEAT
 // ################################################################################################
+/** @private */
 template<typename TItem>
 class Repeater : public IterApi<Repeater<TItem>> {
 	friend struct IteratorTrait<Repeater<TItem>>;
@@ -310,6 +374,7 @@ struct IteratorTrait<Repeater<TItem>> {
 // ################################################################################################
 // GENERATOR RAMGE
 // ################################################################################################
+/** @private */
 template<typename TValue>
 class Range : public IterApi<Range<TValue>> {
 	friend struct IteratorTrait<Range<TValue>>;
