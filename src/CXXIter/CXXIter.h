@@ -1225,9 +1225,30 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<Item&&> TFlatMapFn>
-	auto flatMap(TFlatMapFn mapFn = [](Item&& item) { return item; }) {
+	auto flatMap(TFlatMapFn mapFn) {
 		using TFlatMapFnResult = std::invoke_result_t<TFlatMapFn, Item&&>;
 		return FlatMap<TSelf, TFlatMapFn, TFlatMapFnResult>(std::move(*self()), mapFn);
+	}
+
+	/**
+	 * @brief Creates an iterator that flattens the iterable elements of this iterator.
+	 * @details This works by pulling elements from this iterator, turning them into iterators
+	 * themselves, and merging them into the stream of the resulting iterator.
+	 * This only resolves one layer of nesting, and the elements of this iterator have to
+	 * be supported by CXXIter (by a fitting @c SourceTrait implementation).
+	 * @return New iterator that pulls values from this iterator, and flattens the contained
+	 * iterable into the new iterator's stream.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::vector<int>> input = {{1337, 42}, {6, 123, 7888}};
+	 * 	std::vector<int> output = CXXIter::from(std::move(input))
+	 * 		.flatMap()
+	 * 		.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
+	 * @endcode
+	 */
+	auto flatMap() {
+		return flatMap([](Item&& item) { return item; });
 	}
 
 	/**

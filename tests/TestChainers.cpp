@@ -157,12 +157,22 @@ TEST(CXXIter, takeWhile) {
 }
 
 TEST(CXXIter, flatMap) {
-	std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
-	std::vector<int> output = CXXIter::from(std::move(input))
-			.flatMap([](auto&& item) { return std::get<1>(item); }) // flatten the std::vector<int> from the pair
-			.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
-	ASSERT_EQ(output.size(), 5);
-	ASSERT_THAT(output, ElementsAre(1337, 42, 6, 123, 7888));
+	{
+		std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
+		std::vector<int> output = CXXIter::from(std::move(input))
+				.flatMap([](auto&& item) { return std::get<1>(item); }) // flatten the std::vector<int> from the pair
+				.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
+		ASSERT_EQ(output.size(), 5);
+		ASSERT_THAT(output, ElementsAre(1337, 42, 6, 123, 7888));
+	}
+	{
+		std::vector<std::vector<int>> input = {{1337, 42}, {6, 123, 7888}};
+		std::vector<int> output = CXXIter::from(std::move(input))
+				.flatMap()
+				.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
+		ASSERT_EQ(output.size(), 5);
+		ASSERT_THAT(output, ElementsAre(1337, 42, 6, 123, 7888));
+	}
 }
 
 TEST(CXXIter, zip) {
