@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['range_17',['Range',['../classCXXIter_1_1Range.html',1,'CXXIter::Range&lt; TValue &gt;'],['../classCXXIter_1_1Range.html#a4b899b354efb0a8784682ef03a4f3608',1,'CXXIter::Range::Range()'],['../namespaceCXXIter.html#aa2fa6b8cbebf819e94c68dd5333a09ea',1,'CXXIter::range()']]],
-  ['repeat_18',['repeat',['../namespaceCXXIter.html#ac12e93483017f57b599ffdac901fd57e',1,'CXXIter']]],
-  ['repeater_19',['Repeater',['../classCXXIter_1_1Repeater.html',1,'CXXIter::Repeater&lt; TItem &gt;'],['../classCXXIter_1_1Repeater.html#aa7e91f58c7606f87ab7c9ad45cfb5abd',1,'CXXIter::Repeater::Repeater()']]],
-  ['requires_20',['requires',['../namespaceCXXIter.html#a443ed78cb3aadbc328218935b90abd54',1,'CXXIter::requires(!std::is_reference_v&lt; TContainer &gt; &amp;&amp;!is_const_reference_v&lt; TContainer &gt; &amp;&amp;SourceContainer&lt; TContainer &gt;) SrcMov&lt; owned_t&lt; TContainer &gt;&gt; from(TContainer &amp;&amp;container)'],['../namespaceCXXIter.html#ad6c39d352ab7cef6acb963fed702a11a',1,'CXXIter::requires(!std::is_reference_v&lt; TContainer &gt; &amp;&amp;!is_const_reference_v&lt; TContainer &gt; &amp;&amp;SourceContainer&lt; TContainer &gt;) SrcRef&lt; owned_t&lt; TContainer &gt;&gt; from(TContainer &amp;container)']]]
+  ['sortorder_16',['SortOrder',['../namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c',1,'CXXIter']]],
+  ['sourcecontainer_17',['SourceContainer',['../namespaceCXXIter.html#a4638cdb97ddf7fb7c9f2d85104f092a2',1,'CXXIter']]],
+  ['sourcetrait_18',['SourceTrait',['../structCXXIter_1_1SourceTrait.html',1,'CXXIter']]],
+  ['srccref_19',['SrcCRef',['../classCXXIter_1_1SrcCRef.html',1,'CXXIter::SrcCRef&lt; TContainer &gt;'],['../classCXXIter_1_1SrcCRef.html#a5f15b0e49d59291121a88b93c2a3139e',1,'CXXIter::SrcCRef::SrcCRef()']]],
+  ['srcmov_20',['SrcMov',['../classCXXIter_1_1SrcMov.html',1,'CXXIter::SrcMov&lt; TContainer &gt;'],['../classCXXIter_1_1SrcMov.html#ab6c977c5567eb868a569df7f2538bb92',1,'CXXIter::SrcMov::SrcMov()']]],
+  ['srcref_21',['SrcRef',['../classCXXIter_1_1SrcRef.html',1,'CXXIter::SrcRef&lt; TContainer &gt;'],['../classCXXIter_1_1SrcRef.html#ae12c6c2430fbfcee5996bc0d34efea01',1,'CXXIter::SrcRef::SrcRef()']]]
 ];

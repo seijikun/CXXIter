@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['range_27',['Range',['../classCXXIter_1_1Range.html',1,'CXXIter']]],
-  ['repeater_28',['Repeater',['../classCXXIter_1_1Repeater.html',1,'CXXIter']]]
+  ['sourcetrait_22',['SourceTrait',['../structCXXIter_1_1SourceTrait.html',1,'CXXIter']]],
+  ['srccref_23',['SrcCRef',['../classCXXIter_1_1SrcCRef.html',1,'CXXIter']]],
+  ['srcmov_24',['SrcMov',['../classCXXIter_1_1SrcMov.html',1,'CXXIter']]],
+  ['srcref_25',['SrcRef',['../classCXXIter_1_1SrcRef.html',1,'CXXIter']]]
 ];
