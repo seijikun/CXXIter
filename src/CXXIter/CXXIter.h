@@ -308,6 +308,38 @@ struct IteratorTrait<Repeater<TItem>> {
 
 
 // ################################################################################################
+// GENERATOR RAMGE
+// ################################################################################################
+template<typename TValue>
+class Range : public IterApi<Range<TValue>> {
+	friend struct IteratorTrait<Range<TValue>>;
+private:
+	TValue current;
+	TValue to;
+	TValue step;
+public:
+	Range(TValue from, TValue to, TValue step) : current(from), to(to), step(step) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TValue>
+struct IteratorTrait<Range<TValue>> {
+	// CXXIter Interface
+	using Self = Range<TValue>;
+	using Item = TValue;
+
+	static inline IterValue<Item> next(Self& self) {
+		if(self.current > self.to) { return {}; }
+		TValue current = self.current;
+		self.current += self.step;
+		return current;
+	}
+};
+
+
+
+
+// ################################################################################################
 // CASTER
 // ################################################################################################
 /** @private */
@@ -1649,12 +1681,40 @@ SrcCRef<owned_t<TContainer>> from(const TContainer& container) {
  * 	std::vector<int> output = CXXIter::repeat(item, 3)
  * 			.flatMap()
  * 			.collect<std::vector>();
- *	// output = {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
+ *	// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
  * @endcode
  */
 template<typename TItem>
 Repeater<TItem> repeat(const TItem& item, size_t cnt) {
 	return Repeater<TItem>(item, cnt);
+}
+
+/**
+ * @brief Construct a CXXIter iterator that yields all elements in the range between
+ * [@p from, @p to] (inclusive both edges), using the given @p step between elements.
+ * @param from Start of the range of elements to generate.
+ * @param to End of the range of elements to generate.
+ * @param step Stepwidth to use between the generated elements.
+ * @return CXXIter iterator returning elements from the requested range [@p from, @p to]
+ * using the given @p step width.
+ *
+ * Usage Example:
+ * - For an integer type:
+ * @code
+ * 	std::vector<int> output = CXXIter::range(1, 7, 2)
+ * 		.collect<std::vector>();
+ * 	// output == {1, 3, 5, 7}
+ * @endcode
+ * - For a float type
+ * @code
+ * 	std::vector<float> output = CXXIter::range(0.0f, 1.1f, 0.25f)
+ * 		.collect<std::vector>();
+ * 	// output == {0.0f, 0.25f, 0.5f, 0.75f, 1.0f}
+ * @endcode
+ */
+template<typename TValue>
+Range<TValue> range(TValue from, TValue to, TValue step = 1) {
+	return Range<TValue>(from, to, step);
 }
 
 }

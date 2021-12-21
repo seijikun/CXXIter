@@ -222,3 +222,24 @@ TEST(CXXIter, repeat) {
 	ASSERT_EQ(output.size(), 3 * 4);
 	ASSERT_THAT(output, ElementsAre(1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7));
 }
+
+TEST(CXXIter, range) {
+	{
+		std::vector<int> output = CXXIter::range(0, 7, 2)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(0, 2, 4, 6));
+	}
+	{
+		std::vector<int> output = CXXIter::range(1, 7, 2)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(1, 3, 5, 7));
+	}
+	{
+		std::vector<float> output = CXXIter::range(0.0f, 1.1f, 0.25f)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 5);
+		ASSERT_THAT(output, ElementsAre(0.0f, 0.25f, 0.5f, 0.75f, 1.0f));
+	}
+}
