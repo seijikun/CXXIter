@@ -116,6 +116,12 @@ struct SizeHint {
 		if(!upperBound2.has_value()) { return upperBound1; }
 		return std::min(upperBound1.value(), upperBound2.value());
 	}
+	void subtract(size_t cnt) {
+		lowerBound = (lowerBound > cnt) ? (lowerBound - cnt) : 0;
+		if(upperBound) {
+			upperBound = (upperBound.value() > cnt) ? (upperBound.value() - cnt) : 0;
+		}
+	}
 };
 
 /** @private */
@@ -780,6 +786,56 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 			std::min(input.lowerBound, self.cntRequest.value_or(0)),
 			SizeHint::upperBoundMin(input.upperBound, self.cntRequest)
 		);
+	}
+};
+
+
+
+// ################################################################################################
+// SKIP WHILE
+// ################################################################################################
+/** @private */
+template<typename TChainInput, typename TSkipPredicate>
+class SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
+	friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
+private:
+	TChainInput input;
+	TSkipPredicate skipPredicate;
+	bool skipEnded = false;
+	std::optional<size_t> cntRequest;
+public:
+	SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate, std::optional<size_t> cntRequest = {})
+		: input(std::move(input)), skipPredicate(skipPredicate), cntRequest(cntRequest) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput, typename TSkipPredicate>
+struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename TChainInput::Item;
+	// CXXIter Interface
+	using Self = SkipWhile<TChainInput, TSkipPredicate>;
+	using Item = InputItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		while(true) {
+			auto item = ChainInputIterator::next(self.input);
+			if(!item.hasValue()) { return {}; }
+			if(self.skipEnded) { return item; }
+			if(!self.skipPredicate(item.value())) {
+				self.skipEnded = true;
+				return item;
+			}
+		}
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint result = ChainInputIterator::sizeHint(self.input);
+		if(self.cntRequest.has_value()) {
+			result.subtract(self.cntRequest.value());
+		} else {
+			result.lowerBound = 0;
+		}
+		return result;
 	}
 };
 
@@ -1617,11 +1673,12 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto skip(size_t cnt) { //TODO: using filter here causing us to loose the possibility of supplying a sizeHint
-		return filter([cnt](const ItemOwned&) mutable {
-			if(cnt != 0) { cnt -= 1; return false; }
-			return true;
-		});
+	auto skip(size_t cnt) {
+		auto skipPredicate = [cnt](const ItemOwned&) mutable {
+			if(cnt != 0) { cnt -= 1; return true; }
+			return false;
+		};
+		return SkipWhile<TSelf, decltype(skipPredicate)>(std::move(*self()), skipPredicate, cnt);
 	}
 
 	/**
@@ -1645,13 +1702,8 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TSkipPredicate>
-	auto skipWhile(TSkipPredicate skipPredicate) {
-		bool skipDone = false;
-		return filter([skipPredicate, skipDone](const ItemOwned& value) mutable {
-			if(skipDone) { return true; }
-			skipDone = !skipPredicate(value);
-			return skipDone;
-		});
+	SkipWhile<TSelf, TSkipPredicate> skipWhile(TSkipPredicate skipPredicate) {
+		return SkipWhile<TSelf, TSkipPredicate>(std::move(*self()), skipPredicate);
 	}
 
 	/**

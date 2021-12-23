@@ -164,13 +164,33 @@ TEST(CXXIter, modify) {
 	}
 }
 
-TEST(CXXIter, skip) { // TODO sizeHint
-	std::vector<int> input = {42, 42, 42, 42, 1337};
-	std::vector<int> output = CXXIter::from(input)
-			.skip(3) // skip first 3 values
-			.collect<std::vector>();
-	ASSERT_EQ(output.size(), 2);
-	ASSERT_THAT(output, ElementsAre(42, 1337));
+TEST(CXXIter, skip) {
+	{ // sizeHint
+		{
+			std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+			SizeHint sizeHint = CXXIter::from(input)
+					.skip(3)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), 3);
+		}
+		{
+			std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+			SizeHint sizeHint = CXXIter::from(input)
+					.skip(10)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), 0);
+		}
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(3) // skip first 3 values
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre(42, 1337));
+	}
 }
 
 TEST(CXXIter, skipWhile) {
