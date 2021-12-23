@@ -1,0 +1,12 @@
+digraph "CXXIter::IterApi::copied"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="CXXIter::IterApi::copied",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Constructs a new iterator that copies the elements of this iterator."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="CXXIter::IterApi::map",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6",tooltip="Creates an iterator that uses the given mapFn to map each element from this iterator to elements of t..."];
+}

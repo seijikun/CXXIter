@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['from_0',['from',['../namespaceCXXIter.html#af434a00cfbd2627ea113f6b9286b378f',1,'CXXIter::from(TContainer &amp;&amp;container)'],['../namespaceCXXIter.html#a2f573d6432ad33628aa71004d2ec75fd',1,'CXXIter::from(TContainer &amp;container)'],['../namespaceCXXIter.html#ae80da2d0e8a56536c4293414ae6975aa',1,'CXXIter::from(const TContainer &amp;container)']]],
-  ['fromfn_1',['fromFn',['../namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9',1,'CXXIter']]]
+  ['cast_0',['cast',['../classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7',1,'CXXIter::IterApi']]],
+  ['collect_1',['collect',['../classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89',1,'CXXIter::IterApi']]],
+  ['copied_2',['copied',['../classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f',1,'CXXIter::IterApi']]],
+  ['count_3',['count',['../classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815',1,'CXXIter::IterApi']]]
 ];

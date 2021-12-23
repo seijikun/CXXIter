@@ -4,6 +4,7 @@ var CXXIter_8h =
     [ "CXXIter::SrcMov< TContainer >", "classCXXIter_1_1SrcMov.html", "classCXXIter_1_1SrcMov" ],
     [ "CXXIter::SrcRef< TContainer >", "classCXXIter_1_1SrcRef.html", "classCXXIter_1_1SrcRef" ],
     [ "CXXIter::SrcCRef< TContainer >", "classCXXIter_1_1SrcCRef.html", "classCXXIter_1_1SrcCRef" ],
+    [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
     [ "CXXIter::is_pair", "conceptCXXIter_1_1is__pair.html", null ],
     [ "CXXIter::is_optional", "conceptCXXIter_1_1is__optional.html", null ],
     [ "CXXIter::CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
