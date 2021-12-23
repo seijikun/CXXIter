@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['backinsertablecontainer_44',['BackInsertableContainer',['../namespaceCXXIter.html#ad28a82a99fd19d9059b8879b3eac9404',1,'CXXIter']]]
+  ['descending_0',['DESCENDING',['../namespaceCXXIter.html#a6712be40151467bc67d23a0bbfea157d',1,'CXXIter']]]
 ];
