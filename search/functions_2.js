@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['next_33',['next',['../structCXXIter_1_1SourceTrait.html#ab9b26472cef3dfcb5c91d5ed0a7636a3',1,'CXXIter::SourceTrait::next([[maybe_unused]] TContainer &amp;container, IteratorState &amp;iter)'],['../structCXXIter_1_1SourceTrait.html#ac247ee9c4dc3bafd3862d142194250a7',1,'CXXIter::SourceTrait::next([[maybe_unused]] const TContainer &amp;container, ConstIteratorState &amp;iter)']]]
+  ['inititerator_34',['initIterator',['../structCXXIter_1_1SourceTrait.html#ae01444bb2e4994ac858747a9aff48fc4',1,'CXXIter::SourceTrait::initIterator(TContainer &amp;container)'],['../structCXXIter_1_1SourceTrait.html#a505ae3ced497a1848473bf4593a23aa3',1,'CXXIter::SourceTrait::initIterator(const TContainer &amp;container)']]]
 ];

@@ -9,6 +9,7 @@ var CXXIter_8h =
       [ "ASCENDING", "CXXIter_8h.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],
       [ "DESCENDING", "CXXIter_8h.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53", null ]
     ] ],
+    [ "fromFn", "CXXIter_8h.html#a86d35e771911df1b2f70f17ca860c95d", null ],
     [ "range", "CXXIter_8h.html#aa2fa6b8cbebf819e94c68dd5333a09ea", null ],
     [ "repeat", "CXXIter_8h.html#ac12e93483017f57b599ffdac901fd57e", null ],
     [ "requires", "CXXIter_8h.html#acfe98afbb4170affaccdeefb49ce5e1a", null ],
@@ -22,6 +23,7 @@ var CXXIter_8h =
     [ "DESCENDING", "CXXIter_8h.html#a6712be40151467bc67d23a0bbfea157d", null ],
     [ "InsertableContainer", "CXXIter_8h.html#a07bca2979ebda3e9f8bedc4c80b7da2d", null ],
     [ "is_const_reference_v", "CXXIter_8h.html#a2177b4d16808555f992d7224af8d26cf", null ],
+    [ "is_optional", "CXXIter_8h.html#a32de1b95f48243ad9142fa002c41b3b9", null ],
     [ "is_pair", "CXXIter_8h.html#abd23ce2be6792d33ff7abd9dc266519d", null ],
     [ "SourceContainer", "CXXIter_8h.html#a4638cdb97ddf7fb7c9f2d85104f092a2", null ]
 ];
