@@ -11,14 +11,23 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -yq cmake doxygen graphviz
+      run: sudo apt-get update && sudo apt-get install -yq cmake graphviz ninja-build
+      
+    - name: Download and Build Doxygen from source
+      run: |
+        cd ../
+        git clone https://github.com/doxygen/doxygen.git
+        mkdir -p doxygen/build
+        cd doxygen/build
+        cmake -GNinja ..
+        cmake --build . --target install
       
     - name: Configure
       run: |
         if [ -d "build" ]; then rm -rf ./build; fi
         mkdir -p build
         cd build
-        cmake ../ -DCXXITER_WITH_TESTS=OFF -DCXXITER_WITH_DOCS=ON
+        cmake ../ -DCXXITER_WITH_TESTS=OFF -DCXXITER_WITH_DOCS=ON -DDOXYGEN_DOT_PATH=/usr/bin
     
     - name: Build Docs
       run: |
