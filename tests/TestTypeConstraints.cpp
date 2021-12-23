@@ -76,3 +76,15 @@ TEST(CXXIter, stlCollections) {
 	static_assert( CXXIter::AssocContainer<std::unordered_map		,TestKey, TestValue>);
 	static_assert( CXXIter::AssocContainer<std::unordered_multimap	,TestKey, TestValue>);
 }
+
+TEST(CXXIter, is_pair) {
+	static_assert(!CXXIter::is_pair< int >);
+	static_assert(!CXXIter::is_pair< float >);
+	static_assert(!CXXIter::is_pair< std::vector<int> >);
+	static_assert(!CXXIter::is_pair< std::vector<std::pair<int, int>> >);
+
+	static_assert( CXXIter::is_pair< std::pair<int, int> >);
+	static_assert( CXXIter::is_pair< std::pair<float, float> >);
+	static_assert( CXXIter::is_pair< std::pair<float, int> >);
+	static_assert( CXXIter::is_pair< std::pair<int, std::vector<int>> >);
+}

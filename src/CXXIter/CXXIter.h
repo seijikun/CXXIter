@@ -106,6 +106,14 @@ using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
 template<typename T>
 inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
 
+/** @private */
+template<typename T> concept is_pair = requires(T pair) {
+	typename T::first_type;
+	typename T::second_type;
+	{std::get<0>(pair)} -> std::convertible_to<typename T::first_type>;
+	{std::get<1>(pair)} -> std::convertible_to<typename T::second_type>;
+};
+
 
 /** @private */
 template<typename T>
@@ -117,14 +125,6 @@ concept CXXIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
 
 /** @private */
 template<CXXIterIterator TSelf> class IterApi;
-
-/** @private */
-template<typename T> concept is_pair = requires(T pair) {
-	typename T::first_type;
-	typename T::second_type;
-	{std::get<typename T::first_type>(pair)} -> std::convertible_to<typename T::first_type>;
-	{std::get<typename T::second_type>(pair)} -> std::convertible_to<typename T::second_type>;
-};
 
 /**
  * @brief Concept enforcing a back-insertible container like @c std::vector.
