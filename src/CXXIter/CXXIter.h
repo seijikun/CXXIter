@@ -8,6 +8,9 @@
 #include <unordered_map>
 #include <vector>
 
+/**
+ * @brief CXXIter
+ */
 namespace CXXIter {
 
 // ################################################################################################
@@ -97,6 +100,14 @@ static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
 /** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
 static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
+//TODO: document
+struct SizeHint {
+	size_t lowerBound;
+	std::optional<size_t> upperBound;
+
+	SizeHint(size_t lowerBound = 0, std::optional<size_t> upperBound = {}) : lowerBound(lowerBound), upperBound(upperBound) {}
+};
+
 /** @private */
 template<typename T>
 using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
@@ -128,7 +139,14 @@ struct IteratorTrait {};
 
 /** @private */
 template<typename T>
-concept CXXIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
+concept CXXIterIterator =
+	(std::is_same_v<typename IteratorTrait<T>::Self, T>) &&
+	requires(typename IteratorTrait<T>::Self& self, const typename IteratorTrait<T>::Self& constSelf) {
+		typename IteratorTrait<T>::Self;
+		typename IteratorTrait<T>::Item;
+		{IteratorTrait<T>::next(self)} -> std::same_as<IterValue<typename IteratorTrait<T>::Item>>;
+		{IteratorTrait<T>::sizeHint(constSelf)} -> std::same_as<SizeHint>;
+};
 
 template<CXXIterIterator TSelf> class IterApi;
 
@@ -183,6 +201,14 @@ template<typename TContainer> struct SourceTrait {
 	 * @details This is used for @c CXXIter::SrcCRef
 	 */
 	using ConstIteratorState = typename TContainer::const_iterator;
+
+	/**
+	 * @brief Report a size hint for a source on the given @p container.
+	 * @details This injects information about the source's size (element count) into the iterator API.
+	 * @param container Container for which to generate a size hint.
+	 * @return A size hint for the given @p container.
+	 */
+	static inline SizeHint sizeHint(const TContainer& container) { return SizeHint(container.size(), container.size()); }
 
 	/**
 	 * @brief Return an initial @c IteratorState instance for iteration on the given @p container.
@@ -269,7 +295,10 @@ concept SourceContainer = requires(
 // SOURCE (MOVE / CONSUME)
 // ################################################################################################
 
-//TODO: documentation
+/**
+ * @brief CXXIter iterator source that takes over the input item source, and moves its items
+ * through the element stream, essentially "consuming" them.
+ */
 template<typename TContainer>
 requires SourceContainer<typename std::remove_reference<TContainer>::type>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
@@ -294,6 +323,7 @@ struct IteratorTrait<SrcMov<TContainer>> {
 		if(!Src::hasNext(self.container, self.iter)) { return {}; }
 		return std::move(Src::next(self.container, self.iter));
 	}
+	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
 
 
@@ -302,7 +332,12 @@ struct IteratorTrait<SrcMov<TContainer>> {
 // SOURCE (MUTABLE REFERENCE)
 // ################################################################################################
 
-//TODO: documentation
+/**
+ * @brief CXXIter iterator source that mutably borrows the input item source, and passes mutable
+ * references to the items of the source through the iterator.
+ * @details This allows the iterator to modify the items while leaving them in the original
+ * item source.
+ */
 template<typename TContainer>
 class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
@@ -326,6 +361,7 @@ struct IteratorTrait<SrcRef<TContainer>> {
 		if(!Src::hasNext(self.container, self.iter)) { return {}; }
 		return Src::next(self.container, self.iter);
 	}
+	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
 
 
@@ -334,7 +370,11 @@ struct IteratorTrait<SrcRef<TContainer>> {
 // SOURCE (CONST REFERENCE)
 // ################################################################################################
 
-//TODO: documentation
+/**
+ * @brief CXXIter iterator source that immutably borrows the input item source, and passes immutable
+ * references to the items of the source through the iterator.
+ * @details This guarantees the original source to stay untouched & unmodified.
+ */
 template<typename TContainer>
 class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
@@ -358,6 +398,7 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 		if(!Src::hasNext(self.container, self.iter)) { return {}; }
 		return Src::next(self.container, self.iter);
 	}
+	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
 
 
@@ -387,6 +428,7 @@ struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
 		if(!item.has_value()) { return {}; }
 		return item.value();
 	}
+	static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
 };
 
 
@@ -400,9 +442,10 @@ class Repeater : public IterApi<Repeater<TItem>> {
 	friend struct IteratorTrait<Repeater<TItem>>;
 private:
 	TItem item;
+	size_t repetitions;
 	size_t repetitionsRemaining;
 public:
-	Repeater(const TItem& item, size_t repetitions) : item(item), repetitionsRemaining(repetitions) {}
+	Repeater(const TItem& item, size_t repetitions) : item(item), repetitions(repetitions), repetitionsRemaining(repetitions) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
@@ -417,6 +460,7 @@ struct IteratorTrait<Repeater<TItem>> {
 		self.repetitionsRemaining -= 1;
 		return self.item;
 	}
+	static inline SizeHint sizeHint(const Self& self) { return SizeHint(self.repetitions, self.repetitions); }
 };
 
 
@@ -430,10 +474,11 @@ class Range : public IterApi<Range<TValue>> {
 	friend struct IteratorTrait<Range<TValue>>;
 private:
 	TValue current;
+	TValue from;
 	TValue to;
 	TValue step;
 public:
-	Range(TValue from, TValue to, TValue step) : current(from), to(to), step(step) {}
+	Range(TValue from, TValue to, TValue step) : current(from), from(from), to(to), step(step) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
@@ -448,6 +493,10 @@ struct IteratorTrait<Range<TValue>> {
 		TValue current = self.current;
 		self.current += self.step;
 		return current;
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		size_t cnt = static_cast<size_t>((self.to - self.from) / self.step) + 1;
+		return SizeHint(cnt, cnt);
 	}
 };
 
@@ -481,6 +530,7 @@ struct IteratorTrait<Caster<TChainInput, TItem>> {
 		auto item = ChainInputIterator::next(self.input);
 		return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
 	}
+	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
 
 
@@ -515,6 +565,10 @@ struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
 			if(!item.hasValue()) { return {}; }
 			if(self.filterFn(item.value())) { return item; }
 		}
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input = ChainInputIterator::sizeHint(self.input);
+		return SizeHint(0, input.upperBound);
 	}
 };
 
@@ -551,6 +605,7 @@ struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 		self.modifierFn(item.value());
 		return item;
 	}
+	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
 
 
@@ -582,6 +637,7 @@ struct IteratorTrait<Map<TChainInput, TMapFn, TItem>> {
 		auto item = ChainInputIterator::next(self.input);
 		return item.template map<Item>(self.mapFn);
 	}
+	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
 
 
@@ -631,6 +687,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 			}
 		}
 	}
+	static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
 };
 
 
@@ -667,6 +724,10 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 			return *value;
 		}
 	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input = ChainInputIterator::sizeHint(self.input);
+		return SizeHint(0, input.upperBound);
+	}
 };
 
 
@@ -700,6 +761,10 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 		// end iterator directly after takePredicate returned false the first time
 		if(self.takePredicate(item.value()) == false) { return {}; }
 		return item;
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input = ChainInputIterator::sizeHint(self.input);
+		return SizeHint(0, input.upperBound);
 	}
 };
 
@@ -736,6 +801,15 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 		if(!item1.hasValue()) { return {}; }
 		if(!item2.hasValue()) { return {}; }
 		return std::make_pair(item1.value(), item2.value());
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input1 = ChainInputIterator1::sizeHint(self.input1);
+		SizeHint input2 = ChainInputIterator2::sizeHint(self.input2);
+		std::optional<size_t> upperBound = {};
+		if(input1.upperBound.has_value() && input2.upperBound.has_value()) {
+			upperBound = std::min(input1.upperBound.value(), input2.upperBound.value());
+		}
+		return SizeHint(std::min(input1.lowerBound, input2.lowerBound), upperBound);
 	}
 };
 
@@ -789,6 +863,10 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 		using GroupCacheIterator = IteratorTrait<typename Self::GroupCache>;
 		typename Self::GroupCache& groupedItems = self.groupCache.value();
 		return GroupCacheIterator::next(groupedItems);
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input = ChainInputIterator::sizeHint(self.input);
+		return SizeHint(1, input.upperBound);
 	}
 };
 
@@ -844,6 +922,7 @@ struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
 		typename Self::SortCache& sortedItems = self.sortCache.value();
 		return SortCacheIterator::next(sortedItems);
 	}
+	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
 
 
@@ -920,10 +999,16 @@ public: // Associated types
 
 private:
 	TSelf* self() { return static_cast<TSelf*>(this); }
+	const TSelf* self() const { return static_cast<const TSelf*>(this); }
 	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
 
 public:
 	virtual ~IterApi() {}
+
+	//TODO: document
+	SizeHint sizeHint() const {
+		return Iterator::sizeHint(*self());
+	}
 
 	// ###################
 	// CONSUMERS
@@ -1518,7 +1603,7 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto skip(size_t cnt) {
+	auto skip(size_t cnt) { //TODO: using filter here causing us to loose the possibility of supplying a sizeHint
 		return filter([cnt](const ItemOwned&) mutable {
 			if(cnt != 0) { cnt -= 1; return false; }
 			return true;
@@ -1568,7 +1653,8 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto take(size_t cnt) { //FIXME: broken!!! has to run through the entire iterator, just filters remaining items
+	auto take(size_t cnt) {
+		//TODO: using takeWhile here means we have no proper SizeHint even though we could provide it
 		return takeWhile([cnt](const Item&) mutable {
 			return ((cnt--) != 0);
 		});

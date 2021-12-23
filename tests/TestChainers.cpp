@@ -12,20 +12,35 @@
 
 #include "TestCommon.h"
 
+using CXXIter::SizeHint;
 
 // ################################################################################################
 // CHAINERS
 // ################################################################################################
 TEST(CXXIter, cast) {
-	std::vector<float> input = {1.35, 56.123};
-	std::vector<double> output = CXXIter::from(input)
-			.cast<double>()
-			.collect<std::vector>();
-	ASSERT_EQ(input.size(), output.size());
-	for(size_t i = 0; i < input.size(); ++i) { ASSERT_NEAR(input[i], output[i], 0.000005); }
+	{ // sizeHint
+		std::vector<float> input = {1.35, 56.123};
+		SizeHint sizeHint = CXXIter::from(input).cast<double>().sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{
+		std::vector<float> input = {1.35, 56.123};
+		std::vector<double> output = CXXIter::from(input)
+				.cast<double>()
+				.collect<std::vector>();
+		ASSERT_EQ(input.size(), output.size());
+		for(size_t i = 0; i < input.size(); ++i) { ASSERT_NEAR(input[i], output[i], 0.000005); }
+	}
 }
 
 TEST(CXXIter, copied) {
+	{ // sizeHint
+		std::vector<float> input = {1.35, 56.123};
+		SizeHint sizeHint = CXXIter::from(input).copied().sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // copied
 		std::vector<std::string> input = {"inputString1", "inputString2"};
 		std::vector<std::string> output = CXXIter::from(input)
@@ -48,6 +63,14 @@ TEST(CXXIter, copied) {
 }
 
 TEST(CXXIter, filter) {
+	{ // sizeHint
+		std::vector<float> input = {1.35, 56.123};
+		SizeHint sizeHint = CXXIter::from(input)
+				.filter([](int item) { return (item % 2) == 0; })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{
 		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
 		std::vector<int> output = CXXIter::from(input)
@@ -67,18 +90,39 @@ TEST(CXXIter, filter) {
 }
 
 TEST(CXXIter, filterMap) {
-	std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
-	std::vector<int> output = CXXIter::from(input)
-			.filterMap([](int item) -> std::optional<int> {
-				if(item % 2 == 0) { return (item + 3); }
-				return {};
-			})
-			.collect<std::vector>();
-	ASSERT_EQ(4, output.size());
-	ASSERT_THAT(output, ElementsAre(2+3, 4+3, 6+3, 8+3));
+	{ // sizeHint
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+		SizeHint sizeHint = CXXIter::from(input)
+				.filterMap([](int item) -> std::optional<int> {
+					if(item % 2 == 0) { return (item + 3); }
+					return {};
+				})
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
+		std::vector<int> output = CXXIter::from(input)
+				.filterMap([](int item) -> std::optional<int> {
+					if(item % 2 == 0) { return (item + 3); }
+					return {};
+				})
+				.collect<std::vector>();
+		ASSERT_EQ(4, output.size());
+		ASSERT_THAT(output, ElementsAre(2+3, 4+3, 6+3, 8+3));
+	}
 }
 
 TEST(CXXIter, map) {
+	{ // sizeHint
+		std::vector<int> input = {1337, 42};
+		SizeHint sizeHint = CXXIter::from(input)
+				.map([](int i) { return std::make_pair(i, std::to_string(i)); })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{
 		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
 		std::unordered_set<int> output = CXXIter::from(input)
@@ -99,18 +143,28 @@ TEST(CXXIter, map) {
 }
 
 TEST(CXXIter, modify) {
-	std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
-	std::unordered_map<int, std::string> output = CXXIter::from(input)
-			.modify([](auto& keyValue) { keyValue.second = "-" + keyValue.second; }) // modify input
-			.collect<std::unordered_map>(); // copy to output
-	for(const auto& item : input) {
-		ASSERT_TRUE(output.contains(item.first));
-		ASSERT_EQ(item.second, input[item.first]);
-		ASSERT_TRUE(item.second.starts_with("-"));
+	{ // sizeHint
+		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
+		SizeHint sizeHint = CXXIter::from(input)
+				.modify([](auto& keyValue) { keyValue.second = "-" + keyValue.second; })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{
+		std::unordered_map<int, std::string> input = { {1337, "1337"}, {42, "42"} };
+		std::unordered_map<int, std::string> output = CXXIter::from(input)
+				.modify([](auto& keyValue) { keyValue.second = "-" + keyValue.second; }) // modify input
+				.collect<std::unordered_map>(); // copy to output
+		for(const auto& item : input) {
+			ASSERT_TRUE(output.contains(item.first));
+			ASSERT_EQ(item.second, input[item.first]);
+			ASSERT_TRUE(item.second.starts_with("-"));
+		}
 	}
 }
 
-TEST(CXXIter, skip) {
+TEST(CXXIter, skip) { // TODO sizeHint
 	std::vector<int> input = {42, 42, 42, 42, 1337};
 	std::vector<int> output = CXXIter::from(input)
 			.skip(3) // skip first 3 values
@@ -120,15 +174,26 @@ TEST(CXXIter, skip) {
 }
 
 TEST(CXXIter, skipWhile) {
-	std::vector<int> input = {42, 42, 42, 42, 1337, 42};
-	std::vector<int> output = CXXIter::from(input)
-			.skipWhile([](const int value) { return (value == 42); }) // skip leading 42s
-			.collect<std::vector>();
-	ASSERT_EQ(output.size(), 2);
-	ASSERT_THAT(output, ElementsAre(1337, 42));
+	{ // sizeHint
+		std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+		SizeHint sizeHint = CXXIter::from(input)
+				.skipWhile([](const int value) { return (value == 42); })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+		std::vector<int> output = CXXIter::from(input)
+				.skipWhile([](const int value) { return (value == 42); }) // skip leading 42s
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre(1337, 42));
+		ASSERT_THAT(output, ElementsAre(1337, 42));
+	}
 }
 
-TEST(CXXIter, take) {
+TEST(CXXIter, take) { // TODO sizeHint
 	{
 		std::vector<int> input = {42, 57, 64, 128, 1337, 10};
 		std::vector<int> output = CXXIter::from(input)
@@ -148,15 +213,33 @@ TEST(CXXIter, take) {
 }
 
 TEST(CXXIter, takeWhile) {
-	std::vector<int> input = {42, 57, 64, 128, 1337, 10};
-	std::vector<int> output = CXXIter::from(input)
-			.takeWhile([](const int value) { return (value < 1000); }) // take until first item > 1000
-			.collect<std::vector>();
-	ASSERT_EQ(output.size(), 4);
-	ASSERT_THAT(output, ElementsAre(42, 57, 64, 128));
+	{ // sizeHint
+		std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+		SizeHint sizeHint = CXXIter::from(input)
+				.takeWhile([](const int value) { return (value < 1000); })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{
+		std::vector<int> input = {42, 57, 64, 128, 1337, 10};
+		std::vector<int> output = CXXIter::from(input)
+				.takeWhile([](const int value) { return (value < 1000); }) // take until first item > 1000
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(42, 57, 64, 128));
+	}
 }
 
 TEST(CXXIter, flatMap) {
+	{ // sizeHint
+		std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
+		SizeHint sizeHint = CXXIter::from(std::move(input))
+				.flatMap([](auto&& item) { return std::get<1>(item); })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_FALSE(sizeHint.upperBound.has_value());
+	}
 	{
 		std::vector<std::pair<std::string, std::vector<int>>> input = {{"first pair", {1337, 42}}, {"second pair", {6, 123, 7888}}};
 		std::vector<int> output = CXXIter::from(std::move(input))
@@ -176,6 +259,35 @@ TEST(CXXIter, flatMap) {
 }
 
 TEST(CXXIter, zip) {
+	{ // sizeHint
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.zip(CXXIter::from(input2).copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input1.size());
+			ASSERT_EQ(sizeHint.upperBound.value(), input1.size());
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.zip(CXXIter::from(input2).copied().filter([](const auto&) { return true; }))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), input1.size());
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			SizeHint sizeHint = CXXIter::from(input1).copied().filter([](const auto&) { return true; })
+					.zip(CXXIter::from(input2).copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), input1.size());
+		}
+	}
 	{
 		std::vector<std::string> input1 = {"1337", "42"};
 		std::vector<int> input2 = {1337, 42};
@@ -215,6 +327,13 @@ TEST(CXXIter, groupBy) {
 	};
 	std::vector<CakeMeasurement> input = { {"ApplePie", 1.3f}, {"Sacher", 0.5f}, {"ApplePie", 1.8f} };
 
+	{ // sizeHint
+		SizeHint sizeHint = CXXIter::from(input)
+				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 1);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{
 		auto output = CXXIter::from(input)
 				.groupBy([](const CakeMeasurement& item) { return item.cakeType; })
@@ -263,6 +382,16 @@ TEST(CXXIter, groupBy) {
 }
 
 TEST(CXXIter, sorted) {
+	{ // sizeHint
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		SizeHint sizeHint = CXXIter::from(input)
+				.sorted<false>([](const float& a, const float& b) {
+					return (a < b);
+				})
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // ASCENDING
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		std::vector<float> output = CXXIter::from(input)
@@ -302,6 +431,14 @@ TEST(CXXIter, sorted) {
 }
 
 TEST(CXXIter, sortedBy) {
+	{ // sizeHint
+		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
+		SizeHint sizeHint = CXXIter::from(input)
+				.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // ASCENDING
 		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 		std::vector<std::string> output = CXXIter::from(input)

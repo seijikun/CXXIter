@@ -16,6 +16,12 @@
 // SOURCES
 // ################################################################################################
 TEST(CXXIter, srcMove) { // move
+	{ // sizeHint
+		std::vector<int> input = {1, 3, 3, 7};
+		auto sizeHint = CXXIter::from(input).sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // std::vector
 		LifecycleEvents evtLog;
 		{
@@ -99,6 +105,12 @@ TEST(CXXIter, srcMove) { // move
 }
 
 TEST(CXXIter, srcConstRef) { // const references
+	{ // sizeHint
+		std::vector<int> input = {1, 3, 3, 7};
+		auto sizeHint = CXXIter::from(input).sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // std::vector
 		LifecycleEvents evtLog;
 		{
@@ -157,6 +169,12 @@ TEST(CXXIter, srcConstRef) { // const references
 }
 
 TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
+	{ // sizeHint
+		std::vector<int> input = {1, 3, 3, 7};
+		auto sizeHint = CXXIter::from(input).sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
 	{ // std::vector
 		LifecycleEvents evtLog;
 		{
@@ -227,15 +245,34 @@ TEST(CXXIter, fromFn) {
 }
 
 TEST(CXXIter, repeat) {
-	std::vector<int> item = {1, 3, 3, 7};
-	std::vector<int> output = CXXIter::repeat(item, 3)
-			.flatMap()
-			.collect<std::vector>();
-	ASSERT_EQ(output.size(), 3 * 4);
-	ASSERT_THAT(output, ElementsAre(1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7));
+	{ // sizeHint
+		auto sizeHint = CXXIter::repeat(5.0f, 3).sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 3);
+		ASSERT_EQ(sizeHint.upperBound.value(), 3);
+	}
+	{
+		std::vector<int> item = {1, 3, 3, 7};
+		std::vector<int> output = CXXIter::repeat(item, 3)
+				.flatMap()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3 * 4);
+		ASSERT_THAT(output, ElementsAre(1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7));
+	}
 }
 
 TEST(CXXIter, range) {
+	{ // sizeHint
+		{
+			auto sizeHint = CXXIter::range(0, 7, 2).sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 4);
+			ASSERT_EQ(sizeHint.upperBound.value(), 4);
+		}
+		{
+			auto sizeHint = CXXIter::range(0.0f, 1.1f, 0.25f).sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 5);
+			ASSERT_EQ(sizeHint.upperBound.value(), 5);
+		}
+	}
 	{
 		std::vector<int> output = CXXIter::range(0, 7, 2)
 				.collect<std::vector>();
