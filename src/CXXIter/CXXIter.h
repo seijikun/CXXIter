@@ -106,6 +106,16 @@ struct SizeHint {
 	std::optional<size_t> upperBound;
 
 	SizeHint(size_t lowerBound = 0, std::optional<size_t> upperBound = {}) : lowerBound(lowerBound), upperBound(upperBound) {}
+
+	static std::optional<size_t> upperBoundMax(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
+		if(!upperBound1.has_value() || !upperBound2.has_value()) { return {}; } // no upperbound is like Infinity -> higher
+		return std::max(upperBound1.value(), upperBound2.value());
+	}
+	static std::optional<size_t> upperBoundMin(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
+		if(!upperBound1.has_value()) { return upperBound2; }
+		if(!upperBound2.has_value()) { return upperBound1; }
+		return std::min(upperBound1.value(), upperBound2.value());
+	}
 };
 
 /** @private */
@@ -742,8 +752,10 @@ class TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
 private:
 	TChainInput input;
 	TTakePredicate takePredicate;
+	std::optional<size_t> cntRequest;
 public:
-	TakeWhile(TChainInput&& input, TTakePredicate takePredicate) : input(std::move(input)), takePredicate(takePredicate) {}
+	TakeWhile(TChainInput&& input, TTakePredicate takePredicate, std::optional<size_t> cntRequest = {})
+		: input(std::move(input)), takePredicate(takePredicate), cntRequest(cntRequest) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
@@ -764,7 +776,10 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) {
 		SizeHint input = ChainInputIterator::sizeHint(self.input);
-		return SizeHint(0, input.upperBound);
+		return SizeHint(
+			std::min(input.lowerBound, self.cntRequest.value_or(0)),
+			SizeHint::upperBoundMin(input.upperBound, self.cntRequest)
+		);
 	}
 };
 
@@ -805,11 +820,10 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 	static inline SizeHint sizeHint(const Self& self) {
 		SizeHint input1 = ChainInputIterator1::sizeHint(self.input1);
 		SizeHint input2 = ChainInputIterator2::sizeHint(self.input2);
-		std::optional<size_t> upperBound = {};
-		if(input1.upperBound.has_value() && input2.upperBound.has_value()) {
-			upperBound = std::min(input1.upperBound.value(), input2.upperBound.value());
-		}
-		return SizeHint(std::min(input1.lowerBound, input2.lowerBound), upperBound);
+		return SizeHint(
+			std::min(input1.lowerBound, input2.lowerBound),
+			SizeHint::upperBoundMin(input1.upperBound, input2.upperBound)
+		);
 	}
 };
 
@@ -1654,10 +1668,10 @@ public:
 	 * @endcode
 	 */
 	auto take(size_t cnt) {
-		//TODO: using takeWhile here means we have no proper SizeHint even though we could provide it
-		return takeWhile([cnt](const Item&) mutable {
+		auto takePredicate = [cnt](const Item&) mutable {
 			return ((cnt--) != 0);
-		});
+		};
+		return TakeWhile<TSelf, decltype(takePredicate)>(std::move(*self()), takePredicate, cnt);
 	}
 
 	/**

@@ -193,7 +193,25 @@ TEST(CXXIter, skipWhile) {
 	}
 }
 
-TEST(CXXIter, take) { // TODO sizeHint
+TEST(CXXIter, take) {
+	{ // sizeHint
+		{
+			std::vector<int> input = {42, 57, 64, 128, 1337, 10};
+			SizeHint sizeHint = CXXIter::from(input)
+					.take(3)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), 3);
+		}
+		{
+			std::vector<int> input = {42, 57, 64, 128, 1337, 10};
+			SizeHint sizeHint = CXXIter::from(input)
+					.take(32)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input.size());
+			ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+		}
+	}
 	{
 		std::vector<int> input = {42, 57, 64, 128, 1337, 10};
 		std::vector<int> output = CXXIter::from(input)
