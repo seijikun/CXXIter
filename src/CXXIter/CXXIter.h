@@ -100,7 +100,12 @@ static constexpr SortOrder ASCENDING = SortOrder::ASCENDING;
 /** Shortcut for SortOrder::DESCENDING in the CXXIter namespace */
 static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
-//TODO: document
+/**
+ * @brief Structure holding the bounds of a CXXIter iterator's estimated length.
+ * @details This structure contains a lowerBound and an optional upper bound.
+ * Both are initialized from the source's length (if any), and subsequently edited
+ * by chained iteration accordingly.
+ */
 struct SizeHint {
 	size_t lowerBound;
 	std::optional<size_t> upperBound;
@@ -1089,7 +1094,11 @@ private:
 public:
 	virtual ~IterApi() {}
 
-	//TODO: document
+	/**
+	 * @brief Get the bounds on the remaining length of this iterator, estimated from the source
+	 * and all of the chained iterations on it.
+	 * @return The estimated bounds on the remaining length of this iterator.
+	 */
 	SizeHint sizeHint() const {
 		return Iterator::sizeHint(*self());
 	}
