@@ -81,7 +81,6 @@ public:
 
 
 
-
 // ################################################################################################
 // FORWARD DECLARATIONS & CONCEPTS
 // ################################################################################################
@@ -112,6 +111,14 @@ template<typename T> concept is_pair = requires(T pair) {
 	typename T::second_type;
 	{std::get<0>(pair)} -> std::convertible_to<typename T::first_type>;
 	{std::get<1>(pair)} -> std::convertible_to<typename T::second_type>;
+};
+
+/** @private */
+template<typename T> concept is_optional = requires(T optional, typename T::value_type value) {
+	typename T::value_type;
+	{optional.value()} -> std::convertible_to<typename T::value_type>;
+	{optional.value_or(value)} -> std::convertible_to<typename T::value_type>;
+	{optional = value};
 };
 
 
@@ -351,6 +358,35 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 	static inline IterValue<Item> next(Self& self) {
 		if(!Src::hasNext(self.container, self.iter)) { return {}; }
 		return Src::next(self.container, self.iter);
+	}
+};
+
+
+
+// ################################################################################################
+// GENERATOR FUNCTION
+// ################################################################################################
+/** @private */
+template<typename TItem, typename TGeneratorFn>
+class FunctionGenerator : public IterApi<FunctionGenerator<TItem, TGeneratorFn>> {
+	friend struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
+private:
+	TGeneratorFn generatorFn;
+public:
+	FunctionGenerator(TGeneratorFn generatorFn) : generatorFn(generatorFn) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TItem, typename TGeneratorFn>
+struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
+	// CXXIter Interface
+	using Self = FunctionGenerator<TItem, TGeneratorFn>;
+	using Item = TItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		auto item = self.generatorFn();
+		if(!item.has_value()) { return {}; }
+		return item.value();
 	}
 };
 
@@ -608,8 +644,6 @@ template<typename TChainInput, typename TFilterMapFn, typename TItem>
 class FilterMap : public IterApi<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	friend struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>>;
 private:
-	using InputItemOwned = typename TChainInput::ItemOwned;
-
 	TChainInput input;
 	TFilterMapFn filterMapFn;
 public:
@@ -1465,6 +1499,7 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
+	requires is_optional<std::invoke_result_t<TFilterMapFn, ItemOwned&&>>
 	auto filterMap(TFilterMapFn filterMapFn) {
 		using TFilterMapFnResult = typename std::invoke_result_t<TFilterMapFn, ItemOwned&&>::value_type;
 		return FilterMap<TSelf, TFilterMapFn, TFilterMapFnResult>(std::move(*self()), filterMapFn);
@@ -1775,6 +1810,34 @@ template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcCRef<owned_t<TContainer>> from(const TContainer& container) {
 	return SrcCRef<owned_t<TContainer>>(container);
+}
+
+/**
+ * @brief Generator source that takes a @p generatorFn, each invocation of which produces one
+ * element for the resulting iterator.
+ * @param generatorFn Generator that returns an optional value. If the optional is None, the resulting
+ * iterator ends.
+ * @return CXXIter iterator whose elements are produced by the calls to the given @p generatorFn.
+ * @details You could for example also use this to pull messages from a socket.
+ *
+ * Usage Example:
+ * - Simple endless generator producing monotonically increasing numbers
+ * @code
+ * 	size_t generatorState = 0;
+ * 	std::function<std::optional<size_t>()> generatorFn = [generatorState]() mutable {
+ * 		return (generatorState++);
+ * 	};
+ * 	std::vector<size_t> output = CXXIter::fromFn(generatorFn)
+ * 			.take(100)
+ * 			.collect<std::vector>();
+ *	// output == {0, 1, 2, 3, ..., 99}
+ * @endcode
+ */
+template<std::invocable<> TGeneratorFn>
+requires is_optional<std::invoke_result_t<TGeneratorFn>>
+auto fromFn(TGeneratorFn generatorFn) {
+	using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
+	return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);
 }
 
 /**

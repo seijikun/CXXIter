@@ -6,6 +6,7 @@
 #include <deque>
 #include <unordered_set>
 #include <unordered_map>
+#include <optional>
 
 #include "TestCommon.h"
 
@@ -87,4 +88,17 @@ TEST(CXXIter, is_pair) {
 	static_assert( CXXIter::is_pair< std::pair<float, float> >);
 	static_assert( CXXIter::is_pair< std::pair<float, int> >);
 	static_assert( CXXIter::is_pair< std::pair<int, std::vector<int>> >);
+}
+
+TEST(CXXIter, is_optional) {
+	static_assert(!CXXIter::is_optional< int >);
+	static_assert(!CXXIter::is_optional< float >);
+	static_assert(!CXXIter::is_optional< std::vector<int> >);
+	static_assert(!CXXIter::is_optional< std::vector<std::optional<int>> >);
+
+	static_assert( CXXIter::is_optional< std::optional<int> >);
+	static_assert( CXXIter::is_optional< std::optional<float> >);
+	static_assert( CXXIter::is_optional< std::optional<std::string> >);
+	static_assert( CXXIter::is_optional< std::optional<std::pair<float, int>> >);
+	static_assert( CXXIter::is_optional< std::optional<std::vector<int>> >);
 }

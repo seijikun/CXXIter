@@ -214,6 +214,18 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 	}
 }
 
+TEST(CXXIter, fromFn) {
+	size_t generatorState = 0;
+	std::function<std::optional<size_t>()> generatorFn = [generatorState]() mutable {
+		return (generatorState++);
+	};
+	std::vector<size_t> output = CXXIter::fromFn(generatorFn)
+			.take(100)
+			.collect<std::vector>();
+	ASSERT_EQ(output.size(), 100);
+	for(size_t i = 0; i < 100; ++i) { ASSERT_EQ(output[i], i); }
+}
+
 TEST(CXXIter, repeat) {
 	std::vector<int> item = {1, 3, 3, 7};
 	std::vector<int> output = CXXIter::repeat(item, 3)
