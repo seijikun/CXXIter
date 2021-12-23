@@ -20,7 +20,5 @@ var CXXIter_8h =
     [ "from", "CXXIter_8h.html#a2f573d6432ad33628aa71004d2ec75fd", null ],
     [ "fromFn", "CXXIter_8h.html#ad452805bba5ba1b2e03b4a13fa99c4a9", null ],
     [ "range", "CXXIter_8h.html#a4b4d837f5716b2f5fd7c3098268c582c", null ],
-    [ "repeat", "CXXIter_8h.html#a6c70b42717b251ca9c9bf4e065c29e47", null ],
-    [ "ASCENDING", "CXXIter_8h.html#a28ff7cdfac8e9ecaa4c25b3a04713a44", null ],
-    [ "DESCENDING", "CXXIter_8h.html#a6712be40151467bc67d23a0bbfea157d", null ]
+    [ "repeat", "CXXIter_8h.html#a6c70b42717b251ca9c9bf4e065c29e47", null ]
 ];

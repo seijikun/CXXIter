@@ -86,8 +86,7 @@ $(document).ready(function(){initNavTree('namespaceCXXIter.html',''); initResiza
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#concepts">Concepts</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">CXXIter Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -163,13 +162,6 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td></tr>
 <tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplItemLeft" align="right" valign="top">Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">range</a> (TValue <a class="el" href="namespaceCXXIter.html#af434a00cfbd2627ea113f6b9286b378f">from</a>, TValue to, TValue step=1)</td></tr>
 <tr class="memdesc:a4b4d837f5716b2f5fd7c3098268c582c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">More...</a><br /></td></tr>
 <tr class="separator:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a28ff7cdfac8e9ecaa4c25b3a04713a44"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a28ff7cdfac8e9ecaa4c25b3a04713a44">ASCENDING</a> = SortOrder::ASCENDING</td></tr>
-<tr class="separator:a28ff7cdfac8e9ecaa4c25b3a04713a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6712be40151467bc67d23a0bbfea157d"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a6712be40151467bc67d23a0bbfea157d">DESCENDING</a> = SortOrder::DESCENDING</td></tr>
-<tr class="separator:a6712be40151467bc67d23a0bbfea157d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a36594d1d501e0f5fc7d80174fc82e42c" name="a36594d1d501e0f5fc7d80174fc82e42c"></a>
@@ -455,57 +447,6 @@ template&lt;typename TItem &gt; </div>
 <div class="ttc" id="anamespaceCXXIter_html_a6c70b42717b251ca9c9bf4e065c29e47"><div class="ttname"><a href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01859">CXXIter.h:1859</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01859">1859</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a28ff7cdfac8e9ecaa4c25b3a04713a44" name="a28ff7cdfac8e9ecaa4c25b3a04713a44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28ff7cdfac8e9ecaa4c25b3a04713a44">&#9670;&nbsp;</a></span>ASCENDING</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> CXXIter::ASCENDING = SortOrder::ASCENDING</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Shortcut for <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32">SortOrder::ASCENDING</a> in the <a class="el" href="namespaceCXXIter.html">CXXIter</a> namespace </p>
-
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00096">96</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
-
-</div>
-</div>
-<a id="a6712be40151467bc67d23a0bbfea157d" name="a6712be40151467bc67d23a0bbfea157d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6712be40151467bc67d23a0bbfea157d">&#9670;&nbsp;</a></span>DESCENDING</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> CXXIter::DESCENDING = SortOrder::DESCENDING</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Shortcut for <a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53">SortOrder::DESCENDING</a> in the <a class="el" href="namespaceCXXIter.html">CXXIter</a> namespace </p>
-
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00098">98</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
