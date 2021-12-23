@@ -130,7 +130,6 @@ struct IteratorTrait {};
 template<typename T>
 concept CXXIterIterator = (std::is_same_v<typename IteratorTrait<T>::Self, T>);
 
-/** @private */
 template<CXXIterIterator TSelf> class IterApi;
 
 /**
