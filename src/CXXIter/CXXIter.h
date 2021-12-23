@@ -105,6 +105,8 @@ struct SizeHint {
 	size_t lowerBound;
 	std::optional<size_t> upperBound;
 
+	size_t expectedResultSize(size_t min = 0) const { return std::min(min, upperBound.value_or(lowerBound)); }
+
 	SizeHint(size_t lowerBound = 0, std::optional<size_t> upperBound = {}) : lowerBound(lowerBound), upperBound(upperBound) {}
 
 	static std::optional<size_t> upperBoundMax(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
@@ -165,6 +167,12 @@ concept CXXIterIterator =
 };
 
 template<CXXIterIterator TSelf> class IterApi;
+
+/** @private */
+template<typename TContainer>
+concept ReservableContainer = requires(TContainer container, size_t newSize) {
+	container.reserve(newSize);
+};
 
 /**
  * @brief Concept enforcing a back-insertible container like @c std::vector.
@@ -1010,6 +1018,9 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
 		TContainer<ItemOwned, TContainerArgs...> container;
+		if constexpr(ReservableContainer<TContainer<ItemOwned, TContainerArgs...>>) {
+			container.reserve( input.sizeHint().expectedResultSize() );
+		}
 		auto inserter = std::back_inserter(container);
 		input.forEach([&inserter](Item&& item) { *inserter = item; });
 		return container;
@@ -1037,6 +1048,9 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
 		TContainer<ItemOwned, TContainerArgs...> container;
+		if constexpr(ReservableContainer<TContainer<ItemOwned, TContainerArgs...>>) {
+			container.reserve( input.sizeHint().expectedResultSize() );
+		}
 		auto inserter = std::inserter(container, container.end());
 		input.forEach([&inserter](Item&& item) { *inserter = item; });
 		return container;

@@ -94,6 +94,8 @@ namespace CXXIter {
 		using IteratorState = size_t;
 		using ConstIteratorState = size_t;
 
+		static inline SizeHint sizeHint(const CustomContainer<TItem>& container) { return SizeHint(container.size(), container.size()); }
+
 		static inline IteratorState initIterator(CustomContainer<TItem>&) { return 0; }
 		static inline ConstIteratorState initIterator(const CustomContainer<TItem>&) { return 0; }
 
