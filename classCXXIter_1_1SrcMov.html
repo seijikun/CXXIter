@@ -177,9 +177,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad616d50fe5b01eb2fdbfe02ced9cc2a1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1">skip</a> (size_t cnt)</td></tr>
 <tr class="memdesc:ad616d50fe5b01eb2fdbfe02ced9cc2a1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first <code>cnt</code> elements from this iterator, before it yields the remaining items.  <a href="classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1">More...</a><br /></td></tr>
 <tr class="separator:ad616d50fe5b01eb2fdbfe02ced9cc2a1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a1dd807159a44e481ee31df2e7f76b9 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a4a1dd807159a44e481ee31df2e7f76b9">skipWhile</a> (TSkipPredicate skipPredicate)</td></tr>
-<tr class="memdesc:a4a1dd807159a44e481ee31df2e7f76b9 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first elements of this iterator, for which the given <code>skipPredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#a4a1dd807159a44e481ee31df2e7f76b9">More...</a><br /></td></tr>
-<tr class="separator:a4a1dd807159a44e481ee31df2e7f76b9 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6a0f58078b8797c3ede1e6ec3896ce inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">SkipWhile&lt; TSelf, TSkipPredicate &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce">skipWhile</a> (TSkipPredicate skipPredicate)</td></tr>
+<tr class="memdesc:a2a6a0f58078b8797c3ede1e6ec3896ce inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first elements of this iterator, for which the given <code>skipPredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce">More...</a><br /></td></tr>
+<tr class="separator:a2a6a0f58078b8797c3ede1e6ec3896ce inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36ee6ce2e84839b2e353bb83b07a64c2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a36ee6ce2e84839b2e353bb83b07a64c2">take</a> (size_t cnt)</td></tr>
 <tr class="memdesc:a36ee6ce2e84839b2e353bb83b07a64c2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that yields at most the first <code>cnt</code> elements from this iterator.  <a href="classCXXIter_1_1IterApi.html#a36ee6ce2e84839b2e353bb83b07a64c2">More...</a><br /></td></tr>
 <tr class="separator:a36ee6ce2e84839b2e353bb83b07a64c2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,7 +225,7 @@ Additional Inherited Members</h2></td></tr>
 requires SourceContainer&lt;typename std::remove_reference&lt;TContainer&gt;::type&gt;<br />
 class CXXIter::SrcMov&lt; TContainer &gt;</div><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator source that takes over the input item source, and moves its items through the element stream, essentially "consuming" them. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00314">314</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00320">320</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab6c977c5567eb868a569df7f2538bb92" name="ab6c977c5567eb868a569df7f2538bb92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6c977c5567eb868a569df7f2538bb92">&#9670;&nbsp;</a></span>SrcMov()</h2>
@@ -253,7 +253,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00321">321</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00327">327</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -280,7 +280,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00272">272</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00278">278</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

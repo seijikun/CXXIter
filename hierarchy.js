@@ -11,6 +11,7 @@ var hierarchy =
     [ "CXXIter::IterApi< Map< TChainInput, TMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Range< TValue > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Repeater< TItem > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< SkipWhile< TChainInput, TSkipPredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Sorter< TChainInput, TCompareFn, STABLE > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< SrcCRef< TContainer > >", "classCXXIter_1_1IterApi.html", [
       [ "CXXIter::SrcCRef< TContainer >", "classCXXIter_1_1SrcCRef.html", null ]

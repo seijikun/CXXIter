@@ -23,7 +23,7 @@ var classCXXIter_1_1IterApi =
     [ "minBy", "classCXXIter_1_1IterApi.html#af11b6d97680a8e6a080261b51ff67fe6", null ],
     [ "modify", "classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3", null ],
     [ "skip", "classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1", null ],
-    [ "skipWhile", "classCXXIter_1_1IterApi.html#a4a1dd807159a44e481ee31df2e7f76b9", null ],
+    [ "skipWhile", "classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce", null ],
     [ "sorted", "classCXXIter_1_1IterApi.html#a6c92644bc9fdae0fdc0795e0cfbda883", null ],
     [ "sorted", "classCXXIter_1_1IterApi.html#a25568f12125a97a9579508a5cf5e7bd6", null ],
     [ "sortedBy", "classCXXIter_1_1IterApi.html#a90fcf438abe534c819b846b6a3fbf8c1", null ],
