@@ -3,7 +3,6 @@ var classCXXIter_1_1IterApi =
     [ "Item", "classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8", null ],
     [ "ItemOwned", "classCXXIter_1_1IterApi.html#a8242394d80dd375319dda6bc0872d07d", null ],
     [ "Iterator", "classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32", null ],
-    [ "~IterApi", "classCXXIter_1_1IterApi.html#ae0545d71c1c8f38bd42e712c3a2e1e96", null ],
     [ "cast", "classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],

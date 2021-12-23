@@ -41,8 +41,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Typedefs", "functions_type.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -53,7 +52,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"CXXIter_8h.html"
+"CXXIter_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

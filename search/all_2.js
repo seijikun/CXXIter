@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['descending_0',['DESCENDING',['../namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53',1,'CXXIter']]]
+  ['groupby_0',['groupBy',['../classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5',1,'CXXIter::IterApi']]]
 ];

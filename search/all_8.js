@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['map_0',['map',['../classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6',1,'CXXIter::IterApi']]],
-  ['max_1',['max',['../classCXXIter_1_1IterApi.html#a7704878b20d80e80a913911314e095b1',1,'CXXIter::IterApi']]],
-  ['maxby_2',['maxBy',['../classCXXIter_1_1IterApi.html#a793d9ebfadf1f1266605bff81b98fd33',1,'CXXIter::IterApi']]],
-  ['mean_3',['mean',['../classCXXIter_1_1IterApi.html#ab96a0fdc7efba2f4bddfa013429bc6bc',1,'CXXIter::IterApi']]],
-  ['min_4',['min',['../classCXXIter_1_1IterApi.html#a9f98bcc96bc3b93477045dabc085c733',1,'CXXIter::IterApi']]],
-  ['minby_5',['minBy',['../classCXXIter_1_1IterApi.html#af11b6d97680a8e6a080261b51ff67fe6',1,'CXXIter::IterApi']]],
-  ['modify_6',['modify',['../classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3',1,'CXXIter::IterApi']]]
+  ['range_0',['range',['../namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c',1,'CXXIter']]],
+  ['repeat_1',['repeat',['../namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47',1,'CXXIter']]]
 ];

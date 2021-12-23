@@ -8,5 +8,5 @@ digraph "Graphical Class Hierarchy"
   rankdir="LR";
   Node0 [label="CXXIter::IterApi\< SrcRef\l\< TContainer \> \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip=" "];
   Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="CXXIter::SrcRef\< TContainer \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1SrcRef.html",tooltip=" "];
+  Node1 [label="CXXIter::SrcRef\< TContainer \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1SrcRef.html",tooltip="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ..."];
 }
