@@ -638,6 +638,39 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 
 
 
+// ################################################################################################
+// TAKE WHILE
+// ################################################################################################
+/** @private */
+template<typename TChainInput, typename TTakePredicate>
+class TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
+	friend struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;
+private:
+	TChainInput input;
+	TTakePredicate takePredicate;
+public:
+	TakeWhile(TChainInput&& input, TTakePredicate takePredicate) : input(std::move(input)), takePredicate(takePredicate) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput, typename TTakePredicate>
+struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using InputItem = typename TChainInput::Item;
+	// CXXIter Interface
+	using Self = TakeWhile<TChainInput, TTakePredicate>;
+	using Item = InputItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		auto item = ChainInputIterator::next(self.input);
+		if(!item.hasValue()) { return {}; }
+		// end iterator directly after takePredicate returned false the first time
+		if(self.takePredicate(item.value()) == false) { return {}; }
+		return item;
+	}
+};
+
+
 
 // ################################################################################################
 // ZIPPER
@@ -1501,10 +1534,9 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto take(size_t cnt) {
-		return filter([cnt](const ItemOwned&) mutable {
-			if(cnt != 0) { cnt -= 1; return true; }
-			return false;
+	auto take(size_t cnt) { //FIXME: broken!!! has to run through the entire iterator, just filters remaining items
+		return takeWhile([cnt](const Item&) mutable {
+			return ((cnt--) != 0);
 		});
 	}
 
@@ -1527,13 +1559,9 @@ public:
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TTakePredicate>
+	requires std::is_same_v<std::invoke_result_t<TTakePredicate, const Item&>, bool>
 	auto takeWhile(TTakePredicate takePredicate) {
-		bool takeDone = false;
-		return filter([takePredicate, takeDone](const ItemOwned& value) mutable {
-			if(takeDone) { return false; }
-			takeDone = !takePredicate(value);
-			return !takeDone;
-		});
+		return TakeWhile<TSelf, TTakePredicate>(std::move(*self()), takePredicate);
 	}
 
 	/**
