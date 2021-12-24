@@ -10,6 +10,7 @@ var classCXXIter_1_1IterApi =
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
     [ "filter", "classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db", null ],
     [ "filterMap", "classCXXIter_1_1IterApi.html#a009154287504a68df72425093ee90851", null ],
+    [ "findIdx", "classCXXIter_1_1IterApi.html#a8842d23b1b30accf123e096fb7aae099", null ],
     [ "flatMap", "classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482", null ],
     [ "flatMap", "classCXXIter_1_1IterApi.html#a165695af4dc2acf1cf6eadd3ae6c2fc2", null ],
     [ "fold", "classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e", null ],
