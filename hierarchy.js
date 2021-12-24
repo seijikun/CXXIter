@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Caster< TChainInput, TItem > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< Chainer< TChainInput1, TChainInput2 > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Filter< TChainInput, TFilterFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< FilterMap< TChainInput, TFilterMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< FlatMap< TChainInput, TFlatMapFn, TItemContainer > >", "classCXXIter_1_1IterApi.html", null ],

@@ -4,6 +4,7 @@ var classCXXIter_1_1IterApi =
     [ "ItemOwned", "classCXXIter_1_1IterApi.html#a8242394d80dd375319dda6bc0872d07d", null ],
     [ "Iterator", "classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32", null ],
     [ "cast", "classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7", null ],
+    [ "chain", "classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],

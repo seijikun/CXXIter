@@ -5,5 +5,5 @@ digraph "CXXIter::IterApi&lt; TSelf &gt;"
   bgcolor="transparent";
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{CXXIter::IterApi\< TSelf \>\n||+ ~IterApi()\l+ sizeHint()\l+ forEach()\l+ collect()\l+ fold()\l+ count()\l+ sum()\l+ stringJoin()\l+ mean()\l+ min()\land 21 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Public Iterator API surface."];
+  Node1 [label="{CXXIter::IterApi\< TSelf \>\n||+ ~IterApi()\l+ sizeHint()\l+ forEach()\l+ collect()\l+ fold()\l+ count()\l+ sum()\l+ stringJoin()\l+ mean()\l+ min()\land 22 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Public Iterator API surface."];
 }
