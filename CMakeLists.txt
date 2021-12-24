@@ -12,6 +12,9 @@ FILE(GLOB_RECURSE CXXITER_SOURCES "src/*.h")
 add_library(${PROJECT_NAME} INTERFACE ${CXXITER_SOURCES})
 target_include_directories(${PROJECT_NAME} INTERFACE "src/")
 
+# INSTALL
+install(DIRECTORY src/CXXIter TYPE INCLUDE)
+
 # UNIT-TESTS
 if(${CXXITER_WITH_TESTS})
 	enable_testing() # has to be done in main CMakeLists file
