@@ -355,6 +355,74 @@ TEST(CXXIter, zip) {
 	}
 }
 
+TEST(CXXIter, chain) {
+	{ // sizeHint
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<std::string> input2 = {"31337", "64"};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.chain(CXXIter::from(input2).copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 4);
+			ASSERT_EQ(sizeHint.upperBound.value(), 4);
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<std::string> input2 = {"31337", "64"};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.chain(CXXIter::from(input2).copied().filter([](const auto&) { return true; }))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 2);
+			ASSERT_EQ(sizeHint.upperBound.value(), 4);
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			std::vector<std::string> input2 = {"31337", "64"};
+			SizeHint sizeHint = CXXIter::from(input1).copied().filter([](const auto&) { return true; })
+					.chain(CXXIter::from(input2).copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 2);
+			ASSERT_EQ(sizeHint.upperBound.value(), 4);
+		}
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<std::string> input2 = {"31337", "64"};
+		std::vector<std::string> output = CXXIter::from(input1).copied()
+				.chain(CXXIter::from(input2).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size() + input2.size());
+		ASSERT_THAT(output, ElementsAre("1337", "42", "31337", "64"));
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<std::string> input2 = {};
+		std::vector<std::string> output = CXXIter::from(input1).copied()
+				.chain(CXXIter::from(input2).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size() + input2.size());
+		ASSERT_THAT(output, ElementsAre("1337", "42"));
+	}
+	{
+		std::vector<std::string> input1 = {};
+		std::vector<std::string> input2 = {"31337", "64", "80"};
+		std::vector<std::string> output = CXXIter::from(input1).copied()
+				.chain(CXXIter::from(input2).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size() + input2.size());
+		ASSERT_THAT(output, ElementsAre("31337", "64", "80"));
+	}
+	{
+		std::vector<std::string> input1 = {"asdf"};
+		std::vector<std::string> input2 = {"31337", "64", "80"};
+		std::vector<std::string> output = CXXIter::from(input1).copied()
+				.chain(CXXIter::from(std::move(input2)))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre("asdf", "31337", "64", "80"));
+	}
+}
+
 TEST(CXXIter, groupBy) {
 	struct CakeMeasurement {
 		std::string cakeType;

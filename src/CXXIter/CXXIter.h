@@ -129,6 +129,14 @@ struct SizeHint {
 			upperBound = (upperBound.value() > cnt) ? (upperBound.value() - cnt) : 0;
 		}
 	}
+	void add(const SizeHint& o) {
+		lowerBound += o.lowerBound;
+		if(upperBound.has_value() && o.upperBound.has_value()) {
+			upperBound = upperBound.value() + o.upperBound.value();
+		} else {
+			upperBound = {};
+		}
+	}
 };
 
 /** @private */
@@ -893,6 +901,55 @@ struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
 			std::min(input1.lowerBound, input2.lowerBound),
 			SizeHint::upperBoundMin(input1.upperBound, input2.upperBound)
 		);
+	}
+};
+
+
+
+// ################################################################################################
+// CHAINER
+// ################################################################################################
+/** @private */
+template<typename TChainInput1, typename TChainInput2>
+class Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
+	friend struct IteratorTrait<Chainer<TChainInput1, TChainInput2>>;
+private:
+	TChainInput1 input1;
+	TChainInput2 input2;
+	size_t inputIdx = 0;
+public:
+	Chainer(TChainInput1&& input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput1, typename TChainInput2>
+struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
+	using ChainInputIterator1 = IteratorTrait<TChainInput1>;
+	using ChainInputIterator2 = IteratorTrait<TChainInput2>;
+	using InputItem = typename IteratorTrait<TChainInput1>::Item;
+	// CXXIter Interface
+	using Self = Chainer<TChainInput1, TChainInput2>;
+	using Item = InputItem;
+
+	static inline IterValue<Item> next(Self& self) {
+		while(true) {
+			if(self.inputIdx == 0) {
+				auto item = ChainInputIterator1::next(self.input1);
+				if(!item.hasValue()) {
+					self.inputIdx = 1;
+					continue;
+				}
+				return item;
+			} else {
+				auto item = ChainInputIterator2::next(self.input2);
+				return item;
+			}
+		}
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint result = ChainInputIterator1::sizeHint(self.input1);
+		result.add(ChainInputIterator2::sizeHint(self.input2));
+		return result;
 	}
 };
 
@@ -1795,6 +1852,29 @@ public:
 	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !IS_REFERENCE)
 	Zipper<TSelf, TOtherIterator> zip(TOtherIterator&& otherIterator) {
 		return Zipper<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	}
+
+	/**
+	 * @brief Chains this iterator with the given @p otherIterator, resulting in a new iterator that first yields
+	 * the elements of this iterator, and then the ones from the @p otherIterator.
+	 * @param otherIterator Other iterator whose elements should be "appended" to the elements of this iterator.
+	 * @return New iterator that consists of a chain of this iterator with the given @p otherIterator.
+	 * @note For this to work, the elements' types of this iterator and the given @p otherIterator have to be identical.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input1 = {"1337", "42"};
+	 * 	std::vector<std::string> input2 = {"31337", "64"};
+	 * 	std::vector<std::string> output = CXXIter::from(input1).copied()
+	 * 			.chain(CXXIter::from(input2).copied())
+	 * 			.collect<std::vector>();
+	 *	// output == {"1337", "42", "31337", "64"}
+	 * @endcode
+	 */
+	template<typename TOtherIterator>
+	requires std::is_same_v<Item, typename TOtherIterator::Item>
+	Chainer<TSelf, TOtherIterator> chain(TOtherIterator&& otherIterator) {
+		return Chainer<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
 
 	/**
