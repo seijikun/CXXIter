@@ -36,6 +36,26 @@ TEST(CXXIter, fold) {
 	ASSERT_NEAR(output, 3.141592653589793, 0.0000000005);
 }
 
+TEST(CXXIter, findIdx) {
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<size_t> output = CXXIter::from(input).findIdx(1337);
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), 1);
+	}
+	{
+		std::vector<std::string> input = {"42", "1337", "52"};
+		std::optional<size_t> output = CXXIter::from(input).findIdx("42");
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), 0);
+	}
+	{
+		std::vector<std::string> input = {"42", "1337", "52"};
+		std::optional<size_t> output = CXXIter::from(input).findIdx("not found");
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, count) {
 	{
 		std::vector<int> input = {42, 1337, 52};

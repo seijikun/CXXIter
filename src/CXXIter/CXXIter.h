@@ -3,6 +3,7 @@
 #include <utility>
 #include <optional>
 #include <concepts>
+#include <functional>
 #include <string>
 
 #include <unordered_map>
@@ -1239,6 +1240,38 @@ public:
 		TResult result = startValue;
 		forEach([&result, &foldFn](Item&& item) { foldFn(result, std::forward<Item>(item)); });
 		return result;
+	}
+
+	/**
+	 * @brief Search for the given @p searchItem within the items of this iterator, and return the index of the first item
+	 * from the iterator that is equal to the given @p searchItem.
+	 * @param searchItem Item to search for in the iterator.
+	 * @return Index of the given @p searchItem in the iterator, if found.
+	 *
+	 * Usage Example:
+	 * - When item is found in the iterator:
+	 * @code
+	 *	std::vector<int> input = {42, 1337, 52};
+	 *	std::optional<size_t> output = CXXIter::from(input).findIdx(1337);
+	 *	// output == Some(1)
+	 * @endcode
+	 * - When item is not found in the iterator:
+	 * @code
+	 *	std::vector<int> input = {"42", "1337", "52"};
+	 *	std::optional<size_t> output = CXXIter::from(input).findIdx("not found");
+	 *	// output == None
+	 * @endcode
+	 */
+	std::optional<size_t> findIdx(const ItemOwned& searchItem) 	requires requires(const ItemOwned& searchItem, const Item& item) {
+		{searchItem == item} -> std::same_as<bool>;
+	} {
+		size_t idx = 0;
+		while(true) {
+			auto item = Iterator::next(*self());
+			if(!item.hasValue()) { return {}; }
+			if(item.value() == searchItem) { return idx; }
+			idx += 1;
+		}
 	}
 
 	/**
