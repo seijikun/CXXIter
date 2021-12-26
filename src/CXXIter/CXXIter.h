@@ -150,11 +150,9 @@ inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_referen
 
 /** @private */
 template<typename T> concept is_pair = requires(T pair) {
-	typename T::first_type;
-	typename T::second_type;
-	{std::get<0>(pair)} -> std::convertible_to<typename T::first_type>;
-	{std::get<1>(pair)} -> std::convertible_to<typename T::second_type>;
-};
+	{std::get<0>(pair)} -> std::convertible_to< std::tuple_element_t<0, T> >;
+	{std::get<1>(pair)} -> std::convertible_to< std::tuple_element_t<1, T> >;
+} && std::tuple_size_v<T> == 2;
 
 /** @private */
 template<typename T> concept is_optional = requires(T optional, typename T::value_type value) {
@@ -867,9 +865,9 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 // ZIPPER
 // ################################################################################################
 /** @private */
-template<typename TChainInput1, typename TChainInput2>
-class Zipper : public IterApi<Zipper<TChainInput1, TChainInput2>> {
-	friend struct IteratorTrait<Zipper<TChainInput1, TChainInput2>>;
+template<typename TChainInput1, template<typename...> typename TZipContainer, typename TChainInput2>
+class Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInput2>> {
+	friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInput2>>;
 private:
 	TChainInput1 input1;
 	TChainInput2 input2;
@@ -878,22 +876,22 @@ public:
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput1, typename TChainInput2>
-struct IteratorTrait<Zipper<TChainInput1, TChainInput2>> {
+template<typename TChainInput1, template<typename...> typename TZipContainer, typename TChainInput2>
+struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInput2>> {
 	using ChainInputIterator1 = IteratorTrait<TChainInput1>;
 	using ChainInputIterator2 = IteratorTrait<TChainInput2>;
 	using InputItem1 = typename IteratorTrait<TChainInput1>::Item;
 	using InputItem2 = typename IteratorTrait<TChainInput2>::Item;
 	// CXXIter Interface
-	using Self = Zipper<TChainInput1, TChainInput2>;
-	using Item = std::pair<InputItem1, InputItem2>;
+	using Self = Zipper<TChainInput1, TZipContainer, TChainInput2>;
+	using Item = TZipContainer<InputItem1, InputItem2>;
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item1 = ChainInputIterator1::next(self.input1);
 		auto item2 = ChainInputIterator2::next(self.input2);
 		if(!item1.hasValue()) { return {}; }
 		if(!item2.hasValue()) { return {}; }
-		return std::make_pair(item1.value(), item2.value());
+		return TZipContainer<InputItem1, InputItem2>(item1.value(), item2.value());
 	}
 	static inline SizeHint sizeHint(const Self& self) {
 		SizeHint input1 = ChainInputIterator1::sizeHint(self.input1);
@@ -1093,11 +1091,13 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
 requires (!BackInsertableContainer<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
 	&& is_pair<typename TChainInput::ItemOwned>
-	&& AssocContainer<TContainer, typename TChainInput::ItemOwned::first_type, typename TChainInput::ItemOwned::second_type, TContainerArgs...>
+	&& AssocContainer<TContainer, std::tuple_element_t<0, typename TChainInput::ItemOwned>, std::tuple_element_t<1, typename TChainInput::ItemOwned>, TContainerArgs...>
 struct Collector<TChainInput, TContainer, TContainerArgs...> {
 	template<typename Item, typename ItemOwned>
 	static auto collect(TChainInput& input) {
-		TContainer<typename std::remove_const<typename ItemOwned::first_type>::type, typename ItemOwned::second_type, TContainerArgs...> container;
+		using TKey = std::remove_const_t<std::tuple_element_t<0, typename TChainInput::ItemOwned>>;
+		using TValue = std::tuple_element_t<1, typename TChainInput::ItemOwned>;
+		TContainer<TKey, TValue, TContainerArgs...> container;
 		auto inserter = std::inserter(container, container.end());
 		input.forEach([&inserter](Item&& item) { *inserter = item; });
 		return container;
@@ -1883,9 +1883,15 @@ public:
 	 */
 	template<typename TOtherIterator>
 	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !IS_REFERENCE)
-	Zipper<TSelf, TOtherIterator> zip(TOtherIterator&& otherIterator) {
-		return Zipper<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	Zipper<TSelf, std::pair, TOtherIterator> zip(TOtherIterator&& otherIterator) {
+		return Zipper<TSelf, std::pair, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
+
+//	template<typename... TOtherIterators>
+//	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterators...>::Item> && !IS_REFERENCE)
+//	void zipper(TOtherIterators&&... otherIterator) {
+
+//	}
 
 	/**
 	 * @brief Chains this iterator with the given @p otherIterator, resulting in a new iterator that first yields
