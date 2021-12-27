@@ -355,6 +355,90 @@ TEST(CXXIter, zip) {
 	}
 }
 
+TEST(CXXIter, zipTuple) {
+	{ // sizeHint
+		{
+			std::vector<std::string> input1 = {"1337", "42", "80"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			std::vector<float> input3 = {1337.0f, 42.0f};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.zipTuple(
+						CXXIter::from(input2).copied(),
+						CXXIter::from(input3).copied()
+					)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input3.size());
+			ASSERT_EQ(sizeHint.upperBound.value(), input3.size());
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42", "80"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			std::vector<float> input3 = {1337.0f, 42.0f};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.zipTuple(
+						CXXIter::from(input2).copied().filter([](const auto&) { return true; }),
+						CXXIter::from(input3).copied()
+					)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), input3.size());
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42", "80"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			std::vector<float> input3 = {1337.0f, 42.0f};
+			SizeHint sizeHint = CXXIter::from(input1).copied()
+					.zipTuple(
+						CXXIter::from(input2).copied(),
+						CXXIter::from(input3).copied().filter([](const auto&) { return true; })
+					)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), input3.size());
+		}
+		{
+			std::vector<std::string> input1 = {"1337", "42", "80"};
+			std::vector<int> input2 = {1337, 42, 64, 31337};
+			std::vector<float> input3 = {1337.0f, 42.0f};
+			SizeHint sizeHint = CXXIter::from(input1).copied().filter([](const auto&) { return true; })
+					.zipTuple(CXXIter::from(input2).copied(), CXXIter::from(input3).copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), input3.size());
+		}
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42", "31337"};
+		std::vector<int> input2 = {1337, 42};
+		std::vector<float> input3 = {1337.0f, 42.0f, 64.0f};
+		std::vector<std::tuple<std::string, int, float>> output = CXXIter::from(input1).copied()
+				.zipTuple(CXXIter::from(input2).copied(), CXXIter::from(input3).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input2.size());
+		ASSERT_THAT(output, ElementsAre(std::make_tuple("1337", 1337, 1337.0f), std::make_tuple("42", 42, 42.0f)));
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<int> input2 = {1337, 42, 80};
+		std::vector<float> input3 = {1337.0f, 42.0f, 64.0f};
+		std::vector<std::tuple<std::string, int, float>> output = CXXIter::from(input1).copied()
+				.zipTuple(CXXIter::from(input2).copied(), CXXIter::from(input3).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size());
+		ASSERT_THAT(output, ElementsAre(std::make_tuple("1337", 1337, 1337.0f), std::make_tuple("42", 42, 42.0f)));
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42", "80"};
+		std::vector<int> input2 = {1337, 42};
+		std::vector<float> input3 = {1337.0f};
+		std::vector<std::tuple<std::string, int, float>> output = CXXIter::from(input1).copied()
+				.zipTuple(CXXIter::from(input2).copied(), CXXIter::from(input3).copied())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input3.size());
+		ASSERT_THAT(output, ElementsAre(std::make_tuple("1337", 1337, 1337.0f)));
+	}
+}
+
 TEST(CXXIter, chain) {
 	{ // sizeHint
 		{

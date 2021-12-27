@@ -5,6 +5,7 @@
 #include <concepts>
 #include <functional>
 #include <string>
+#include <limits>
 
 #include <unordered_map>
 #include <vector>
@@ -139,6 +140,17 @@ struct SizeHint {
 		}
 	}
 };
+
+
+template<size_t START, size_t END, typename F>
+constexpr bool constexpr_for(F&& f) {
+	if constexpr (START < END) {
+		if(f(std::integral_constant<size_t, START>()) == false) { return false; }
+		if(constexpr_for<START + 1, END>(f) == false) { return false; }
+	}
+	return true;
+}
+
 
 /** @private */
 template<typename T>
@@ -865,41 +877,45 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 // ZIPPER
 // ################################################################################################
 /** @private */
-template<typename TChainInput1, template<typename...> typename TZipContainer, typename TChainInput2>
-class Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInput2>> {
-	friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInput2>>;
+template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
+class Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+	friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 private:
-	TChainInput1 input1;
-	TChainInput2 input2;
+	std::tuple<TChainInput1, TChainInputs...> inputs;
 public:
-	Zipper(TChainInput1&& input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}
+	Zipper(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
-template<typename TChainInput1, template<typename...> typename TZipContainer, typename TChainInput2>
-struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInput2>> {
-	using ChainInputIterator1 = IteratorTrait<TChainInput1>;
-	using ChainInputIterator2 = IteratorTrait<TChainInput2>;
-	using InputItem1 = typename IteratorTrait<TChainInput1>::Item;
-	using InputItem2 = typename IteratorTrait<TChainInput2>::Item;
+template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
+struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+	using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, IteratorTrait<TChainInputs>...>;
+	static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 	// CXXIter Interface
-	using Self = Zipper<TChainInput1, TZipContainer, TChainInput2>;
-	using Item = TZipContainer<InputItem1, InputItem2>;
+	using Self = Zipper<TChainInput1, TZipContainer, TChainInputs...>;
+	using Item = TZipContainer<typename TChainInput1::Item, typename TChainInputs::Item...>;
 
 	static inline IterValue<Item> next(Self& self) {
-		auto item1 = ChainInputIterator1::next(self.input1);
-		auto item2 = ChainInputIterator2::next(self.input2);
-		if(!item1.hasValue()) { return {}; }
-		if(!item2.hasValue()) { return {}; }
-		return TZipContainer<InputItem1, InputItem2>(item1.value(), item2.value());
+		Item item;
+		bool hasNext = constexpr_for<0, INPUT_CNT>([&](auto idx) {
+			auto input = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
+			if(!input.hasValue()) { return false; }
+			std::get<idx>(item) = input.value();
+			return true;
+		});
+		if(!hasNext) { return {}; }
+		return item;
 	}
 	static inline SizeHint sizeHint(const Self& self) {
-		SizeHint input1 = ChainInputIterator1::sizeHint(self.input1);
-		SizeHint input2 = ChainInputIterator2::sizeHint(self.input2);
-		return SizeHint(
-			std::min(input1.lowerBound, input2.lowerBound),
-			SizeHint::upperBoundMin(input1.upperBound, input2.upperBound)
-		);
+		size_t lowerBoundMin = std::numeric_limits<size_t>::max();
+		std::optional<size_t> upperBoundMin = {};
+		constexpr_for<0, INPUT_CNT>([&](auto idx) {
+			SizeHint tmp = std::tuple_element_t<idx, ChainInputIterators>::sizeHint( std::get<idx>(self.inputs) );
+			lowerBoundMin = std::min(lowerBoundMin, tmp.lowerBound);
+			upperBoundMin = SizeHint::upperBoundMin(upperBoundMin, tmp.upperBound);
+			return true;
+		});
+		return SizeHint(lowerBoundMin, upperBoundMin);
 	}
 };
 
@@ -1887,11 +1903,31 @@ public:
 		return Zipper<TSelf, std::pair, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
 
-//	template<typename... TOtherIterators>
-//	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterators...>::Item> && !IS_REFERENCE)
-//	void zipper(TOtherIterators&&... otherIterator) {
-
-//	}
+	/**
+	 * @brief "Zips up" an arbitrary amount of CXXIter iterators into a single iterator over @c std::tuple<> from both iterators.
+	 * @details Constructs new iterator that iterates over @c std::tuple<> instances where values from this
+	 * iterator are put in the first value, and values from the given @p otherIterators are stored after that in order.
+	 * The resulting iterator is only as long as the shortest of all iterators part of the zip.
+	 * @param otherIterators Other iterators zipped against this iterator.
+	 * @return New iterator that zips together this iteratore and the given @p otherIterators into a new iterator
+	 * over @c std::tuple<> for all of the zipped iterator's values.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input1 = {"1337", "42"};
+	 * 	std::vector<int> input2 = {1337, 42, 80};
+	 * 	std::vector<float> input3 = {1337.0f, 42.0f, 64.0f};
+	 * 	std::vector<std::tuple<std::string, int, float>> output = CXXIter::from(input1).copied()
+	 * 			.zipTuple(CXXIter::from(input2).copied(), CXXIter::from(input3).copied())
+	 * 			.collect<std::vector>();
+	 *	// output == { {"1337", 1337, 1337.0f}, {"42", 42, 42.0f} }
+	 * @endcode
+	 */
+	template<typename... TOtherIterators>
+	requires (!std::disjunction_v< std::is_reference<typename IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
+	Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
+		return Zipper<TSelf, std::tuple, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
+	}
 
 	/**
 	 * @brief Chains this iterator with the given @p otherIterator, resulting in a new iterator that first yields
