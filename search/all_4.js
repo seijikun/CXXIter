@@ -21,7 +21,7 @@ var searchData=
   ['iterapi_3c_20srcmov_3c_20tcontainer_20_3e_20_3e_18',['IterApi&lt; SrcMov&lt; TContainer &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20srcref_3c_20tcontainer_20_3e_20_3e_19',['IterApi&lt; SrcRef&lt; TContainer &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20takewhile_3c_20tchaininput_2c_20ttakepredicate_20_3e_20_3e_20',['IterApi&lt; TakeWhile&lt; TChainInput, TTakePredicate &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tchaininput2_20_3e_20_3e_21',['IterApi&lt; Zipper&lt; TChainInput1, TChainInput2 &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
+  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_21',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterator_22',['Iterator',['../classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32',1,'CXXIter::IterApi']]],
   ['iteratorstate_23',['IteratorState',['../structCXXIter_1_1SourceTrait.html#a99953aec531457dcf045aff276aba775',1,'CXXIter::SourceTrait']]]
 ];

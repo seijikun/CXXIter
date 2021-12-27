@@ -18,5 +18,5 @@ var searchData=
   ['iterapi_3c_20srcmov_3c_20tcontainer_20_3e_20_3e_15',['IterApi&lt; SrcMov&lt; TContainer &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20srcref_3c_20tcontainer_20_3e_20_3e_16',['IterApi&lt; SrcRef&lt; TContainer &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20takewhile_3c_20tchaininput_2c_20ttakepredicate_20_3e_20_3e_17',['IterApi&lt; TakeWhile&lt; TChainInput, TTakePredicate &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tchaininput2_20_3e_20_3e_18',['IterApi&lt; Zipper&lt; TChainInput1, TChainInput2 &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]]
+  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_18',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]]
 ];

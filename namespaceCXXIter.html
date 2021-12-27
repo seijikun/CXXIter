@@ -140,6 +140,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a92ee0ece1fe3975dc8e2636ee6fa75af"><td class="memTemplParams" colspan="2">template&lt;size_t START, size_t END, typename F &gt; </td></tr>
+<tr class="memitem:a92ee0ece1fe3975dc8e2636ee6fa75af"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a92ee0ece1fe3975dc8e2636ee6fa75af">constexpr_for</a> (F &amp;&amp;f)</td></tr>
+<tr class="separator:a92ee0ece1fe3975dc8e2636ee6fa75af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af434a00cfbd2627ea113f6b9286b378f"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</td></tr>
 <tr class="memitem:af434a00cfbd2627ea113f6b9286b378f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; owned_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#af434a00cfbd2627ea113f6b9286b378f">from</a> (TContainer &amp;&amp;container)</td></tr>
@@ -194,11 +197,41 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td></tr>
 
 <p>SortOrder for the item sorting methods. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00095">95</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00096">96</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a92ee0ece1fe3975dc8e2636ee6fa75af" name="a92ee0ece1fe3975dc8e2636ee6fa75af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ee0ece1fe3975dc8e2636ee6fa75af">&#9670;&nbsp;</a></span>constexpr_for()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t START, size_t END, typename F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool CXXIter::constexpr_for </td>
+          <td>(</td>
+          <td class="paramtype">F &amp;&amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00146">146</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
 <a id="ae80da2d0e8a56536c4293414ae6975aa" name="ae80da2d0e8a56536c4293414ae6975aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae80da2d0e8a56536c4293414ae6975aa">&#9670;&nbsp;</a></span>from() <span class="overload">[1/3]</span></h2>
 
@@ -227,7 +260,13 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02098">2098</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02140">2140</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 -->
+</div>
+</div>
 
 </div>
 </div>
@@ -259,7 +298,13 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02072">2072</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02114">2114</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 -->
+</div>
+</div>
 
 </div>
 </div>
@@ -291,7 +336,13 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02085">2085</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02127">2127</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 -->
+</div>
+</div>
 
 </div>
 </div>
@@ -332,11 +383,17 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</div>
 <div class="line">           .take(100)</div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, 3, ..., 99}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02125">CXXIter.h:2125</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02167">CXXIter.h:2167</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02125">2125</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02167">2167</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 -->
+</div>
+</div>
 
 </div>
 </div>
@@ -388,7 +445,7 @@ template&lt;typename TValue &gt; </div>
 <li>For an integer type: <div class="fragment"><div class="line">std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(1, 7, 2)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 5, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02174">CXXIter.h:2174</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02216">CXXIter.h:2216</a></div></div>
 </div><!-- fragment --></li>
 <li>For a float type <div class="fragment"><div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(0.0f, 1.1f, 0.25f)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
@@ -396,11 +453,11 @@ template&lt;typename TValue &gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02174">2174</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02216">2216</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 0 -->
+<div class="center"><!-- SVG 4 -->
 </div>
 </div>
 
@@ -448,9 +505,15 @@ template&lt;typename TItem &gt; </div>
 <div class="line">           .flatMap()</div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a6c70b42717b251ca9c9bf4e065c29e47"><div class="ttname"><a href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02146">CXXIter.h:2146</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a6c70b42717b251ca9c9bf4e065c29e47"><div class="ttname"><a href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02188">CXXIter.h:2188</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02146">2146</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02188">2188</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 -->
+</div>
+</div>
 
 </div>
 </div>

@@ -190,9 +190,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab16a10f60f2eddc85f29974d04672ba4 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4">takeWhile</a> (TTakePredicate takePredicate)</td></tr>
 <tr class="memdesc:ab16a10f60f2eddc85f29974d04672ba4 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that yields the first elements of this iterator, for which the given <code>takePredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4">More...</a><br /></td></tr>
 <tr class="separator:ab16a10f60f2eddc85f29974d04672ba4 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae49eef0f6493a206d6db38c05e36dbed inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">Zipper&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ae49eef0f6493a206d6db38c05e36dbed">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
-<tr class="memdesc:ae49eef0f6493a206d6db38c05e36dbed inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" two <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over pairs from both iterators.  <a href="classCXXIter_1_1IterApi.html#ae49eef0f6493a206d6db38c05e36dbed">More...</a><br /></td></tr>
-<tr class="separator:ae49eef0f6493a206d6db38c05e36dbed inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2711ded9c0ed244f3a0c364eb4b252d1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">Zipper&lt; TSelf, std::pair, TOtherIterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
+<tr class="memdesc:a2711ded9c0ed244f3a0c364eb4b252d1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" two <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over pairs from both iterators.  <a href="classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1">More...</a><br /></td></tr>
+<tr class="separator:a2711ded9c0ed244f3a0c364eb4b252d1 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb6c49c21b3689757b8d7a61269e0eda inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">Zipper&lt; TSelf, std::tuple, TOtherIterators... &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#abb6c49c21b3689757b8d7a61269e0eda">zipTuple</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
+<tr class="memdesc:abb6c49c21b3689757b8d7a61269e0eda inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" an arbitrary amount of <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over <code>std::tuple&lt;&gt;</code> from both iterators.  <a href="classCXXIter_1_1IterApi.html#abb6c49c21b3689757b8d7a61269e0eda">More...</a><br /></td></tr>
+<tr class="separator:abb6c49c21b3689757b8d7a61269e0eda inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a659825e0e603f7671f3077fb019a1951 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">Chainer&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">chain</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
 <tr class="memdesc:a659825e0e603f7671f3077fb019a1951 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains this iterator with the given <code>otherIterator</code>, resulting in a new iterator that first yields the elements of this iterator, and then the ones from the <code>otherIterator</code>.  <a href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">More...</a><br /></td></tr>
 <tr class="separator:a659825e0e603f7671f3077fb019a1951 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,7 +235,7 @@ Additional Inherited Members</h2></td></tr>
 class CXXIter::SrcRef&lt; TContainer &gt;</div><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator source that mutably borrows the input item source, and passes mutable references to the items of the source through the iterator. </p>
 <p >This allows the iterator to modify the items while leaving them in the original item source. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00380">380</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00390">390</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae12c6c2430fbfcee5996bc0d34efea01" name="ae12c6c2430fbfcee5996bc0d34efea01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae12c6c2430fbfcee5996bc0d34efea01">&#9670;&nbsp;</a></span>SrcRef()</h2>
@@ -260,7 +263,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00387">387</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00397">397</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -287,7 +290,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00364">364</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00374">374</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
