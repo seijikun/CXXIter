@@ -109,6 +109,8 @@ static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
  * by chained iteration accordingly.
  */
 struct SizeHint {
+	constexpr static size_t INFINITE = std::numeric_limits<size_t>::max();
+
 	size_t lowerBound;
 	std::optional<size_t> upperBound;
 
@@ -490,10 +492,10 @@ class Repeater : public IterApi<Repeater<TItem>> {
 	friend struct IteratorTrait<Repeater<TItem>>;
 private:
 	TItem item;
-	size_t repetitions;
+	std::optional<size_t> repetitions;
 	size_t repetitionsRemaining;
 public:
-	Repeater(const TItem& item, size_t repetitions) : item(item), repetitions(repetitions), repetitionsRemaining(repetitions) {}
+	Repeater(const TItem& item, std::optional<size_t> repetitions) : item(item), repetitions(repetitions), repetitionsRemaining(repetitions.value_or(0)) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
@@ -504,11 +506,18 @@ struct IteratorTrait<Repeater<TItem>> {
 	using Item = TItem;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.repetitionsRemaining == 0) { return {}; }
-		self.repetitionsRemaining -= 1;
+		if(self.repetitions.has_value()) {
+			if(self.repetitionsRemaining == 0) { return {}; }
+			self.repetitionsRemaining -= 1;
+		}
 		return self.item;
 	}
-	static inline SizeHint sizeHint(const Self& self) { return SizeHint(self.repetitions, self.repetitions); }
+	static inline SizeHint sizeHint(const Self& self) {
+		return SizeHint(
+			self.repetitions.value_or(SizeHint::INFINITE),
+			self.repetitions
+		);
+	}
 };
 
 
@@ -2248,7 +2257,8 @@ auto fromFn(TGeneratorFn generatorFn) {
 /**
  * @brief Construct a CXXIter iterator, by repeating the given @p item @p cnt times.
  * @param item Item to use as repeated element of the generated element.
- * @param cnt Amount of repetitions of @p item the generated iterator should consist of.
+ * @param cnt Optional amount of repetitions of @p item the generated iterator should consist of.
+ * If none, the iterator will repeat the item forever.
  * @return CXXIter iterator that returns the given @p item @p cnt times.
  *
  * Usage Example:
@@ -2261,7 +2271,7 @@ auto fromFn(TGeneratorFn generatorFn) {
  * @endcode
  */
 template<typename TItem>
-Repeater<TItem> repeat(const TItem& item, size_t cnt) {
+Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
 	return Repeater<TItem>(item, cnt);
 }
 

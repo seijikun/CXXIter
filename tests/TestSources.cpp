@@ -246,9 +246,16 @@ TEST(CXXIter, fromFn) {
 
 TEST(CXXIter, repeat) {
 	{ // sizeHint
-		auto sizeHint = CXXIter::repeat(5.0f, 3).sizeHint();
-		ASSERT_EQ(sizeHint.lowerBound, 3);
-		ASSERT_EQ(sizeHint.upperBound.value(), 3);
+		{
+			auto sizeHint = CXXIter::repeat(5.0f, 3).sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), 3);
+		}
+		{
+			auto sizeHint = CXXIter::repeat(5.0f).sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, CXXIter::SizeHint::INFINITE);
+			ASSERT_FALSE(sizeHint.upperBound.has_value());
+		}
 	}
 	{
 		std::vector<int> item = {1, 3, 3, 7};
