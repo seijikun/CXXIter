@@ -40,6 +40,9 @@ public:
 	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 	bool hasValue() const { return inner.has_value(); }
+	std::optional<TValue> toStdOptional() {
+		return std::optional<TValue>(std::move(inner));
+	}
 
 	IterValue<TValue>& operator=(TValue&& o) {
 		inner = std::forward<TValue>(o);
@@ -71,6 +74,10 @@ public:
 	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 	bool hasValue() const { return inner.has_value(); }
+	std::optional<TValueDeref> toStdOptional() {
+		if(inner.has_value()) { return inner.value(); }
+		return {};
+	}
 
 	IterValue<TValue>& operator=(TValue&& o) {
 		inner = std::forward<TValue>(o);
@@ -1585,22 +1592,24 @@ public:
 	 * @brief Consumer that yields the smallest element from this iterator. Comparison of items is done
 	 * using the comparison values returned by invoking the given @p minValueExtractFn on each element.
 	 * @note This consumes the iterator.
-	 * @return The smallest element of this iterator (if any), compared by the comparison value returned
-	 * by @p minValueExtractFn.
+	 * @return A CXXIter::IterValue optional either containing the smallest element of this iterator (if any),
+	 * or empty otherwise.
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator
 	 * @code
 	 * 	std::vector<std::string> input = {"smol", "middle", "largeString"};
 	 * 	std::optional<std::string> output = CXXIter::from(input)
-	 * 			.minBy([](const std::string& str) { return str.size(); });
+	 * 		.minBy([](const std::string& str) { return str.size(); })
+	 *		.toStdOptional();
 	 *	// output == Some("smol")
 	 * @endcode
 	 * - For an empty iterator:
 	 * @code
 	 * 	std::vector<std::string> input = {};
 	 * 	std::optional<std::string> output = CXXIter::from(input)
-	 * 			.minBy([](const std::string& str) { return str.size(); });
+	 * 		.minBy([](const std::string& str) { return str.size(); })
+	 *		.toStdOptional();
 	 *	// output == None
 	 * @endcode
 	 */
@@ -1608,11 +1617,10 @@ public:
 	requires requires(const std::invoke_result_t<TMinValueExtractFn, const ItemOwned&>& a) {
 		{ a < a };
 	}
-	std::optional<ItemOwned> minBy(TMinValueExtractFn minValueExtractFn) {
-		auto item = Iterator::next(*self());
-		if(!item.hasValue()) { return {}; }
-		ItemOwned result = item.value();
-		auto resultValue = minValueExtractFn(result);
+	IterValue<Item> minBy(TMinValueExtractFn minValueExtractFn) {
+		IterValue<Item> result = Iterator::next(*self());
+		if(!result.hasValue()) { return {}; }
+		auto resultValue = minValueExtractFn(result.value());
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
 			auto itemValue = minValueExtractFn(item);
 			if(itemValue < resultValue) {
@@ -1627,22 +1635,24 @@ public:
 	 * @brief Consumer that yields the largest element from this iterator. Comparison of items is done
 	 * using the comparison values returned by invoking the given @p minValueExtractFn on each element.
 	 * @note This consumes the iterator.
-	 * @return The largest element of this iterator (if any), compared by the comparison value returned
-	 * by @p minValueExtractFn.
+	 * @return A CXXIter::IterValue optional either containing the largest element of this iterator (if any),
+	 * or empty otherwise.
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator
 	 * @code
 	 * 	std::vector<std::string> input = {"smol", "middle", "largeString"};
 	 * 	std::optional<std::string> output = CXXIter::from(input)
-	 * 			.maxBy([](const std::string& str) { return str.size(); });
+	 * 		.maxBy([](const std::string& str) { return str.size(); })
+	 *		.toStdOptional();
 	 *	// output == Some("largeString")
 	 * @endcode
 	 * - For an empty iterator:
 	 * @code
 	 * 	std::vector<std::string> input = {};
 	 * 	std::optional<std::string> output = CXXIter::from(input)
-	 * 			.maxBy([](const std::string& str) { return str.size(); });
+	 * 		.maxBy([](const std::string& str) { return str.size(); })
+	 *		.toStdOptional();
 	 *	// output == None
 	 * @endcode
 	 */
@@ -1650,11 +1660,10 @@ public:
 	requires requires(const std::invoke_result_t<TMaxValueExtractFn, const ItemOwned&>& a) {
 		{ a > a };
 	}
-	std::optional<ItemOwned> maxBy(TMaxValueExtractFn minValueExtractFn) {
-		auto item = Iterator::next(*self());
-		if(!item.hasValue()) { return {}; }
-		ItemOwned result = item.value();
-		auto resultValue = minValueExtractFn(result);
+	IterValue<Item> maxBy(TMaxValueExtractFn minValueExtractFn) {
+		IterValue<Item> result = Iterator::next(*self());
+		if(!result.hasValue()) { return {}; }
+		auto resultValue = minValueExtractFn(result.value());
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
 			auto itemValue = minValueExtractFn(item);
 			if(itemValue > resultValue) {
@@ -1674,19 +1683,23 @@ public:
 	 * - For a non-empty iterator
 	 * @code
 	 *	std::vector<int> input = {42, 1337, 52};
-	 *	std::optional<int> output = CXXIter::from(input).last();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.last()
+	 *		.toStdOptional();
 	 *	// output == Some(52)
 	 * @endcode
 	 * - For an empty iterator:
 	 * @code
 	 *	std::vector<int> input = {};
-	 *	std::optional<int> output = CXXIter::from(input).last();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.last()
+	 *		.toStdOptional();
 	 *	// output == None
 	 * @endcode
 	 */
 	template<typename _unused = ItemOwned>
-	std::optional<ItemOwned> last() {
-		std::optional<ItemOwned> tmp;
+	IterValue<Item> last() {
+		IterValue<Item> tmp;
 		forEach([&tmp](Item&& item) { tmp = item; });
 		return tmp;
 	}
