@@ -163,10 +163,10 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td></tr>
 <tr class="memitem:ad452805bba5ba1b2e03b4a13fa99c4a9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">fromFn</a> (TGeneratorFn generatorFn)</td></tr>
 <tr class="memdesc:ad452805bba5ba1b2e03b4a13fa99c4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generator source that takes a <code>generatorFn</code>, each invocation of which produces one element for the resulting iterator.  <a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">More...</a><br /></td></tr>
 <tr class="separator:ad452805bba5ba1b2e03b4a13fa99c4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c70b42717b251ca9c9bf4e065c29e47"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
-<tr class="memitem:a6c70b42717b251ca9c9bf4e065c29e47"><td class="memTemplItemLeft" align="right" valign="top">Repeater&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">repeat</a> (const TItem &amp;item, size_t cnt)</td></tr>
-<tr class="memdesc:a6c70b42717b251ca9c9bf4e065c29e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator, by repeating the given <code>item</code> <code>cnt</code> times.  <a href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">More...</a><br /></td></tr>
-<tr class="separator:a6c70b42717b251ca9c9bf4e065c29e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
+<tr class="memitem:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memTemplItemLeft" align="right" valign="top">Repeater&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">repeat</a> (const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</td></tr>
+<tr class="memdesc:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator, by repeating the given <code>item</code> <code>cnt</code> times.  <a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">More...</a><br /></td></tr>
+<tr class="separator:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplParams" colspan="2">template&lt;typename TValue &gt; </td></tr>
 <tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplItemLeft" align="right" valign="top">Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">range</a> (TValue <a class="el" href="namespaceCXXIter.html#af434a00cfbd2627ea113f6b9286b378f">from</a>, TValue to, TValue step=1)</td></tr>
 <tr class="memdesc:a4b4d837f5716b2f5fd7c3098268c582c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">More...</a><br /></td></tr>
@@ -228,7 +228,7 @@ template&lt;size_t START, size_t END, typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00146">146</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00148">148</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +260,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02216">2216</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02225">2225</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -298,7 +298,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02190">2190</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02199">2199</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -336,7 +336,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02203">2203</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02212">2212</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -383,11 +383,11 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</div>
 <div class="line">           .take(100)</div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, 3, ..., 99}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02243">CXXIter.h:2243</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02252">CXXIter.h:2252</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02243">2243</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02252">2252</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -445,7 +445,7 @@ template&lt;typename TValue &gt; </div>
 <li>For an integer type: <div class="fragment"><div class="line">std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(1, 7, 2)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 5, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02292">CXXIter.h:2292</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02302">CXXIter.h:2302</a></div></div>
 </div><!-- fragment --></li>
 <li>For a float type <div class="fragment"><div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(0.0f, 1.1f, 0.25f)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
@@ -453,7 +453,7 @@ template&lt;typename TValue &gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02292">2292</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02302">2302</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -463,8 +463,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a6c70b42717b251ca9c9bf4e065c29e47" name="a6c70b42717b251ca9c9bf4e065c29e47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c70b42717b251ca9c9bf4e065c29e47">&#9670;&nbsp;</a></span>repeat()</h2>
+<a id="a8db3d258c4fa18c3a122fd13b916f4e0" name="a8db3d258c4fa18c3a122fd13b916f4e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db3d258c4fa18c3a122fd13b916f4e0">&#9670;&nbsp;</a></span>repeat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -480,8 +480,8 @@ template&lt;typename TItem &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>cnt</em>&#160;</td>
+          <td class="paramtype">std::optional&lt; size_t &gt;&#160;</td>
+          <td class="paramname"><em>cnt</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -495,19 +495,19 @@ template&lt;typename TItem &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">item</td><td>Item to use as repeated element of the generated element. </td></tr>
-    <tr><td class="paramname">cnt</td><td>Amount of repetitions of <code>item</code> the generated iterator should consist of. </td></tr>
+    <tr><td class="paramname">cnt</td><td>Optional amount of repetitions of <code>item</code> the generated iterator should consist of. If none, the iterator will repeat the item forever. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that returns the given <code>item</code> <code>cnt</code> times.</dd></dl>
 <p>Usage Example: </p><div class="fragment"><div class="line">   std::vector&lt;int&gt; item = {1, 3, 3, 7};</div>
-<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">CXXIter::repeat</a>(item, 3)</div>
+<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a>(item, 3)</div>
 <div class="line">           .flatMap()</div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a6c70b42717b251ca9c9bf4e065c29e47"><div class="ttname"><a href="namespaceCXXIter.html#a6c70b42717b251ca9c9bf4e065c29e47">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, size_t cnt)</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02264">CXXIter.h:2264</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02274">CXXIter.h:2274</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02264">2264</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02274">2274</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
