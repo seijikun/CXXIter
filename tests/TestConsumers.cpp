@@ -37,7 +37,7 @@ TEST(CXXIter, fold) {
 }
 
 TEST(CXXIter, findIdx) {
-	{
+	{ // item
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<size_t> output = CXXIter::from(input).findIdx(1337);
 		ASSERT_TRUE(output.has_value());
@@ -53,6 +53,39 @@ TEST(CXXIter, findIdx) {
 		std::vector<std::string> input = {"42", "1337", "52"};
 		std::optional<size_t> output = CXXIter::from(input).findIdx("not found");
 		ASSERT_FALSE(output.has_value());
+	}
+	{ // searchFn
+		std::vector<int> input = {1337, 31337, 41, 43, 42, 64};
+		std::optional<size_t> output = CXXIter::from(input)
+				.findIdx([](int item) { return (item % 2 == 0); });
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), 4);
+	}
+	{
+		std::vector<int> input = {1337, 31337, 41, 43};
+		std::optional<size_t> output = CXXIter::from(input)
+				.findIdx([](int item) { return (item % 2 == 0); });
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
+TEST(CXXIter, find) {
+	{
+		std::vector<std::string> input = {"42", "1337", "52"};
+		CXXIter::IterValue<std::string&> output = CXXIter::from(input)
+				.find([](const std::string& item) {
+					return item.size() == 4;
+				});
+		ASSERT_TRUE(output.hasValue());
+		ASSERT_EQ(output.value(), "1337");
+	}
+	{
+		std::vector<std::string> input = {"42", "1337", "52"};
+		CXXIter::IterValue<std::string&> output = CXXIter::from(input)
+				.find([](const std::string& item) {
+					return item.size() == 3;
+				});
+		ASSERT_FALSE(output.hasValue());
 	}
 }
 

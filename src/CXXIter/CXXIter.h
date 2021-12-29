@@ -1296,13 +1296,74 @@ public:
 	std::optional<size_t> findIdx(const ItemOwned& searchItem) 	requires requires(const ItemOwned& searchItem, const Item& item) {
 		{searchItem == item} -> std::same_as<bool>;
 	} {
+		return findIdx([&searchItem](const ItemOwned& item) {
+			return (searchItem == item);
+		});
+	}
+
+
+	/**
+	 * @brief Search for the iterator with the given @p findFn, and return the index of the element from this iterator,
+	 * for which the @p findFn returned @c true the first time.
+	 * @param findFn Lambda invoked for each element of this stream, to determined whether it is the item that is searched for.
+	 * @return Index of the first element from this stream, for which the invocation to the given @p findFn returned @c true.
+	 *
+	 * Usage Example:
+	 * - When item is found in the iterator:
+	 * @code
+	 * 	std::vector<int> input = {1337, 31337, 41, 43, 42, 64};
+	 * 	std::optional<size_t> output = CXXIter::from(input)
+	 * 		.findIdx([](int item) { return (item % 2 == 0); });
+	 * 	// output == Some(4)
+	 * @endcode
+	 * - When item is not found in the iterator:
+	 * @code
+	 * 	std::vector<int> input = {1337, 31337, 41, 43};
+	 * 	std::optional<size_t> output = CXXIter::from(input)
+	 * 		.findIdx([](int item) { return (item % 2 == 0); });
+	 * 	// output == None
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TFindFn>
+	std::optional<size_t> findIdx(TFindFn findFn) {
 		size_t idx = 0;
 		while(true) {
 			auto item = Iterator::next(*self());
 			if(!item.hasValue()) { return {}; }
-			if(item.value() == searchItem) { return idx; }
+			if(findFn(item.value())) { return idx; }
 			idx += 1;
 		}
+	}
+
+	/**
+	 * @brief Searches for an element of this iterator, that satisfies the given @p findFn predicate.
+	 * @param findFn Predicate used to search for an element in this iterator.
+	 * @return An CXXIter::IterValue containing the first element, for which the @p findFn predicate
+	 * returned @c true (if any), otherwise empty.
+	 *
+	 * Usage Example:
+	 * - When item is found in the iterator:
+	 * @code
+	 * 	std::vector<std::string> input = {"42", "1337", "52"};
+	 * 	CXXIter::IterValue<std::string&> output = CXXIter::from(input)
+	 * 			.find([](const std::string& item) {
+	 * 				return item.size() == 4;
+	 * 			});
+	 * 	// output == Some("1337"&)
+	 * @endcode
+	 * - When item is not found in the iterator:
+	 * @code
+	 * 	std::vector<std::string> input = {"42", "1337", "52"};
+	 * 	CXXIter::IterValue<std::string&> output = CXXIter::from(input)
+	 * 			.find([](const std::string& item) {
+	 * 				return item.size() == 3;
+	 * 			});
+	 * 	// output == None
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TFindFn>
+	IterValue<Item> find(TFindFn findFn) {
+		return filter(findFn).next();
 	}
 
 	/**
