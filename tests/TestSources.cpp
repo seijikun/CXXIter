@@ -292,3 +292,16 @@ TEST(CXXIter, range) {
 		ASSERT_THAT(output, ElementsAre(0.0f, 0.25f, 0.5f, 0.75f, 1.0f));
 	}
 }
+
+TEST(CXXIter, next) {
+	std::vector<std::string> input = {"42", "1337"};
+	auto iter = CXXIter::from(input);
+	auto output0 = iter.next();
+	ASSERT_TRUE(output0.hasValue());
+	ASSERT_EQ(output0.value(), "42");
+	auto output1 = iter.next();
+	ASSERT_TRUE(output1.hasValue());
+	ASSERT_EQ(output1.value(), "1337");
+	auto output2 = iter.next();
+	ASSERT_FALSE(output2.hasValue());
+}

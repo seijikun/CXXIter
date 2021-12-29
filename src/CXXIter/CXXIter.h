@@ -1177,6 +1177,21 @@ public:
 		return Iterator::sizeHint(*self());
 	}
 
+	/**
+	 * @brief Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue<>.
+	 * @note If the returned CXXIter::IterValue is empty, there are no elements left in this iterator.
+	 * Calling @c next() again after that is undefined behavior.
+	 * @return The next element from this iterator (if any), wrapped in a CXXIter::IterValue<>
+	 *
+	 * Usage Example:
+	 * @code
+	 *
+	 * @endcode
+	 */
+	IterValue<Item> next() {
+		return Iterator::next(*self());
+	}
+
 	// ###################
 	// CONSUMERS
 	// ###################
