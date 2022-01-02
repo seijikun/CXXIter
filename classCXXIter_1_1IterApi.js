@@ -18,6 +18,7 @@ var classCXXIter_1_1IterApi =
     [ "fold", "classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e", null ],
     [ "forEach", "classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066", null ],
     [ "groupBy", "classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5", null ],
+    [ "intersperse", "classCXXIter_1_1IterApi.html#aaa22a33d90569980c6fa514adc4cd509", null ],
     [ "last", "classCXXIter_1_1IterApi.html#a769a4d91a2afac1c3a99e9ad2227bb4a", null ],
     [ "map", "classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6", null ],
     [ "max", "classCXXIter_1_1IterApi.html#a7704878b20d80e80a913911314e095b1", null ],
@@ -38,5 +39,5 @@ var classCXXIter_1_1IterApi =
     [ "take", "classCXXIter_1_1IterApi.html#a36ee6ce2e84839b2e353bb83b07a64c2", null ],
     [ "takeWhile", "classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4", null ],
     [ "zip", "classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1", null ],
-    [ "zipTuple", "classCXXIter_1_1IterApi.html#abb6c49c21b3689757b8d7a61269e0eda", null ]
+    [ "zipTuple", "classCXXIter_1_1IterApi.html#ac15b4914c7360e5d9fc5afe38e2469ab", null ]
 ];

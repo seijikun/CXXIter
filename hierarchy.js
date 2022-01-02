@@ -9,6 +9,7 @@ var hierarchy =
     [ "CXXIter::IterApi< FunctionGenerator< TItem, TGeneratorFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< GroupBy< TChainInput, TGroupIdentifierFn, TGroupIdent > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< InplaceModifier< TChainInput, TModifierFn > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< Intersperser< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Map< TChainInput, TMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Range< TValue > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Repeater< TItem > >", "classCXXIter_1_1IterApi.html", null ],
