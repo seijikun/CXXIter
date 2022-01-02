@@ -172,9 +172,6 @@ namespace {
 	}
 
 	template<typename T>
-	using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
-
-	template<typename T>
 	inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
 
 	template<typename T> concept is_pair = requires(T pair) {
@@ -2243,8 +2240,8 @@ public:
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcMov<owned_t<TContainer>> from(TContainer&& container) {
-	return SrcMov<owned_t<TContainer>>(std::forward<TContainer>(container));
+SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
+	return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
 }
 
 /**
@@ -2256,8 +2253,8 @@ SrcMov<owned_t<TContainer>> from(TContainer&& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcRef<owned_t<TContainer>> from(TContainer& container) {
-	return SrcRef<owned_t<TContainer>>(container);
+SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
+	return SrcRef<std::remove_cvref_t<TContainer>>(container);
 }
 
 /**
@@ -2269,8 +2266,8 @@ SrcRef<owned_t<TContainer>> from(TContainer& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcCRef<owned_t<TContainer>> from(const TContainer& container) {
-	return SrcCRef<owned_t<TContainer>>(container);
+SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
+	return SrcCRef<std::remove_cvref_t<TContainer>>(container);
 }
 
 /**
