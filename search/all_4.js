@@ -1,7 +1,7 @@
 var searchData=
 [
   ['inititerator_0',['initIterator',['../structCXXIter_1_1SourceTrait.html#ae01444bb2e4994ac858747a9aff48fc4',1,'CXXIter::SourceTrait::initIterator(TContainer &amp;container)'],['../structCXXIter_1_1SourceTrait.html#a505ae3ced497a1848473bf4593a23aa3',1,'CXXIter::SourceTrait::initIterator(const TContainer &amp;container)']]],
-  ['item_1',['Item',['../structCXXIter_1_1SourceTrait.html#a3c72a215716e05df10d79738dd74eab3',1,'CXXIter::SourceTrait::Item()'],['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()']]],
+  ['item_1',['Item',['../structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93',1,'CXXIter::IteratorTrait::Item()'],['../structCXXIter_1_1SourceTrait.html#a3c72a215716e05df10d79738dd74eab3',1,'CXXIter::SourceTrait::Item()'],['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()']]],
   ['itemowned_2',['ItemOwned',['../classCXXIter_1_1IterApi.html#a8242394d80dd375319dda6bc0872d07d',1,'CXXIter::IterApi']]],
   ['iterapi_3',['IterApi',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20caster_3c_20tchaininput_2c_20titem_20_3e_20_3e_4',['IterApi&lt; Caster&lt; TChainInput, TItem &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
@@ -25,5 +25,5 @@ var searchData=
   ['iterator_22',['Iterator',['../classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32',1,'CXXIter::IterApi']]],
   ['iteratorstate_23',['IteratorState',['../structCXXIter_1_1SourceTrait.html#a99953aec531457dcf045aff276aba775',1,'CXXIter::SourceTrait']]],
   ['iteratortrait_24',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
-  ['itervalue_25',['IterValue',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]]
+  ['itervalue_3c_20tvalue_20_3e_25',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
 ];

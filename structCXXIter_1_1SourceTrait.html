@@ -140,10 +140,10 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TContainer&gt;<br />
 struct CXXIter::SourceTrait&lt; TContainer &gt;</div><p ><a class="el" href="structCXXIter_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">SourceTrait</a>, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>. </p>
-<p >If you want to add support for your own containers to these sources, and thus to <code><a class="el" href="namespaceCXXIter.html#af434a00cfbd2627ea113f6b9286b378f" title="Construct a CXXIter move source from the given container.">CXXIter::from()</a></code> calls, create a template specialization of <code><a class="el" href="structCXXIter_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">CXXIter::SourceTrait</a></code>, for your container class.</p>
+<p >If you want to add support for your own containers to these sources, and thus to <code><a class="el" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310" title="Construct a CXXIter move source from the given container.">CXXIter::from()</a></code> calls, create a template specialization of <code><a class="el" href="structCXXIter_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">CXXIter::SourceTrait</a></code>, for your container class.</p>
 <p >This is the default implementation supporting all STL containers. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00251">251</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00277">277</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a69fb0aa212eec3a3691130f2101418b0" name="a69fb0aa212eec3a3691130f2101418b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69fb0aa212eec3a3691130f2101418b0">&#9670;&nbsp;</a></span>ConstIteratorState</h2>
@@ -162,7 +162,7 @@ template&lt;typename TContainer &gt; </div>
 <p>Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress. </p>
 <p >This is used for <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code> </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00265">265</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00291">291</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -182,7 +182,7 @@ template&lt;typename TContainer &gt; </div>
 
 <p>Type of the item <code>TContainer</code> holds and provides for the iterator. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00255">255</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00281">281</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -203,7 +203,7 @@ template&lt;typename TContainer &gt; </div>
 <p>Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress. </p>
 <p >This is used for <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code> and <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00260">260</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00286">286</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when there is another item available, <code>false</code> otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00307">307</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00333">333</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -304,7 +304,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when there is another item available, <code>false</code> otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00299">299</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00325">325</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -343,7 +343,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instance of <code>ConstIteratorState</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00290">290</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00316">316</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -382,7 +382,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instance of <code>IteratorState</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00282">282</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00308">308</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -432,7 +432,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00324">324</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00350">350</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -482,7 +482,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00316">316</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00342">342</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -521,7 +521,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A size hint for the given <code>container</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00273">273</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00299">299</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "CXXIter", "index.html", [
     [ "Entry", "index.html#sec_entry", null ],
+    [ "Chaining", "index.html#sec_chaining", null ],
     [ "Sources & Generators", "sourcesAndGenerators.html", [
       [ "Sources", "sourcesAndGenerators.html#sec_sources", [
         [ "Supporting Custom Containers", "sourcesAndGenerators.html#subsec_custom_sources", null ]
