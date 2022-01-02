@@ -18,7 +18,12 @@ namespace CXXIter {
 // ################################################################################################
 // ITERATOR OPTIONAL (supports references)
 // ################################################################################################
-/** @private */
+
+/**
+ * @brief Container that is used to pass elements throught CXXIter iterator pipelines.
+ * @details This is essentially a @c std::optional<> that also supports references (in comparison
+ * to the original).
+ */
 template<typename TValue>
 class IterValue {};
 
@@ -94,7 +99,7 @@ public:
 
 
 // ################################################################################################
-// FORWARD DECLARATIONS & CONCEPTS
+// PUBLIC STRUCTURES AND DEFINITIONS
 // ################################################################################################
 
 /**
@@ -151,44 +156,79 @@ struct SizeHint {
 };
 
 
-template<size_t START, size_t END, typename F>
-constexpr bool constexpr_for(F&& f) {
-	if constexpr (START < END) {
-		if(f(std::integral_constant<size_t, START>()) == false) { return false; }
-		if(constexpr_for<START + 1, END>(f) == false) { return false; }
+
+// ################################################################################################
+// INTERNALS
+// ################################################################################################
+
+/** @private */
+namespace {
+	template<size_t START, size_t END, typename F>
+	constexpr bool constexpr_for(F&& f) {
+		if constexpr (START < END) {
+			if(f(std::integral_constant<size_t, START>()) == false) { return false; }
+			if(constexpr_for<START + 1, END>(f) == false) { return false; }
+		}
+		return true;
 	}
-	return true;
+
+	template<typename T>
+	using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
+
+	template<typename T>
+	inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
+
+	template<typename T> concept is_pair = requires(T pair) {
+		{std::get<0>(pair)} -> std::convertible_to< std::tuple_element_t<0, T> >;
+		{std::get<1>(pair)} -> std::convertible_to< std::tuple_element_t<1, T> >;
+	} && std::tuple_size_v<T> == 2;
+
+	template<typename T> concept is_optional = requires(T optional, typename T::value_type value) {
+		typename T::value_type;
+		{optional.value()} -> std::convertible_to<typename T::value_type>;
+		{optional.value_or(value)} -> std::convertible_to<typename T::value_type>;
+		{optional = value};
+	};
+
+	template<typename TContainer>
+	concept ReservableContainer = requires(TContainer container, size_t newSize) {
+		container.reserve(newSize);
+	};
+
+	/**
+	 * @brief Concept enforcing a back-insertible container like @c std::vector.
+	 */
+	template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
+	concept BackInsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+		typename decltype(container)::value_type;
+		container.push_back(item);
+	};
+
+	/**
+	 * @brief Concept enforcing an insertible container like @c std::set.
+	 */
+	template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
+	concept InsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
+		typename decltype(container)::value_type;
+		container.insert(item);
+	};
+
+	/**
+	 * @brief Concept enforcing an associative container like @c std::map.
+	 */
+	template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
+	concept AssocContainer = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
+		typename decltype(container)::value_type;
+		typename decltype(container)::key_type;
+		typename decltype(container)::mapped_type;
+		container.insert(item);
+	};
 }
 
-
-/** @private */
-template<typename T>
-using owned_t = std::remove_const_t<std::remove_reference_t<T>>;
-
-/** @private */
-template<typename T>
-inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
-
-/** @private */
-template<typename T> concept is_pair = requires(T pair) {
-	{std::get<0>(pair)} -> std::convertible_to< std::tuple_element_t<0, T> >;
-	{std::get<1>(pair)} -> std::convertible_to< std::tuple_element_t<1, T> >;
-} && std::tuple_size_v<T> == 2;
-
-/** @private */
-template<typename T> concept is_optional = requires(T optional, typename T::value_type value) {
-	typename T::value_type;
-	{optional.value()} -> std::convertible_to<typename T::value_type>;
-	{optional.value_or(value)} -> std::convertible_to<typename T::value_type>;
-	{optional = value};
-};
-
-
-/** @private */
+//TODO: document
 template<typename T>
 struct IteratorTrait {};
 
-/** @private */
 template<typename T>
 concept CXXIterIterator =
 	(std::is_same_v<typename IteratorTrait<T>::Self, T>) &&
@@ -200,41 +240,6 @@ concept CXXIterIterator =
 };
 
 template<CXXIterIterator TSelf> class IterApi;
-
-/** @private */
-template<typename TContainer>
-concept ReservableContainer = requires(TContainer container, size_t newSize) {
-	container.reserve(newSize);
-};
-
-/**
- * @brief Concept enforcing a back-insertible container like @c std::vector.
- */
-template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-concept BackInsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
-	typename decltype(container)::value_type;
-	container.push_back(item);
-};
-
-/**
- * @brief Concept enforcing an insertible container like @c std::set.
- */
-template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-concept InsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
-	typename decltype(container)::value_type;
-	container.insert(item);
-};
-
-/**
- * @brief Concept enforcing an associative container like @c std::map.
- */
-template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
-concept AssocContainer = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
-	typename decltype(container)::value_type;
-	typename decltype(container)::key_type;
-	typename decltype(container)::mapped_type;
-	container.insert(item);
-};
 
 /**
  * @brief SourceTrait, that is used by CXXIter's standard source classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.

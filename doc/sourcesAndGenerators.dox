@@ -1,0 +1,93 @@
+/**
+ * @page sourcesAndGenerators Sources & Generators
+ * Sources and Generators are the entry points to CXXIter's interface.
+ *
+ * @section sec_sources Sources
+ * Sources take a given container with elements, from which a CXXIter iterator should be created.
+ * CXXIter supports three different modes of transporting elements through the iterator. (const reference / reference / move semantics).
+ * The type of the source determines which of the three options is used.
+ * For that, there exist the three sources `CXXIter::SrcCRef`, `CXXIter::SrcRef`, and `CXXIter::SrcMov` respectively.
+ * @code
+ *	std::vector<float> input = {1.34f, 1.37f};
+ *	CXXIter::SrcCRef constRefIter(input);
+ *	CXXIter::SrcRef  mutableRefIter(input);
+ *	CXXIter::SrcMov  moveIter(std::move(input));
+ * @endcode
+ *
+ * There is also the shortcut using `CXXIter::from()`, which tries to determine the type of the source class to use, depending on the type of the given input parameter:
+ * @code
+ *	const std::vector<float> constInput = {1.34f, 1.37f};
+ *	std::vector<float> input = {1.34f, 1.37f};
+ *
+ *	auto constRefIter   = CXXIter::from(constInput);
+ *	auto mutableRefIter = CXXIter::from(input);
+ *	auto moveIter       = CXXIter::from(std::move(input));
+ * @endcode
+ *
+ * @subsection subsec_custom_sources Supporting Custom Containers
+ * To add support for your own container, or another container that is not yet supported, to CXXIter's sources, you need to specialize the CXXIter::SourceTrait
+ * for the container type in question.
+ * The following exemplarily shows how one would do this for the following custom container type:
+ * @code
+ *	template<typename TItem> struct CustomContainer {
+ *		using CustomContainerItem = TItem;
+ *		std::vector<CustomContainerItem> input;
+ *		size_t cnt = 0;
+ *
+ *		CustomContainer() {}
+ *		CustomContainer(std::initializer_list<TItem>&& initialItems) : input(std::move(initialItems)) {}
+ *
+ *		size_t size() const { return input.size(); }
+ *		CustomContainerItem& get(size_t idx) { return input.at(idx); }
+ *		const CustomContainerItem& get(size_t idx) const { return input.at(idx); }
+ *		void append(CustomContainerItem&& item) {
+ *			input.push_back(std::forward<CustomContainerItem>(item));
+ *		}
+ *	};
+ * @endcode
+ * Specializing the CXXIter::SourceTrait for this @c CustomContainer then would look like this:
+ * @code
+ *	namespace CXXIter {
+ *		// SourceTrait implementation for the CustomContainer
+ *		template<typename TItem> struct SourceTrait<CustomContainer<TItem>> {
+ *			using Item = typename CustomContainer<TItem>::CustomContainerItem;
+ *			using IteratorState = size_t;
+ *			using ConstIteratorState = size_t;
+ *
+ *			static inline SizeHint sizeHint(const CustomContainer<TItem>& container) {
+ *				return SizeHint(container.size(), container.size());
+ *			}
+ *
+ *			static inline IteratorState initIterator(CustomContainer<TItem>&) {
+ *				return 0;
+ *			}
+ *			static inline ConstIteratorState initIterator(const CustomContainer<TItem>&) {
+ *				return 0;
+ *			}
+ *
+ *			static inline bool hasNext(CustomContainer<TItem>& container, IteratorState& iter) {
+ *				return iter < container.size();
+ *			}
+ *			static inline bool hasNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) {
+ *				return iter < container.size();
+ *			}
+ *
+ *			static inline Item& next(CustomContainer<TItem>& container, IteratorState& iter) {
+ *				return container.get(iter++);
+ *			}
+ *			static inline const Item& next(const CustomContainer<TItem>& container, ConstIteratorState& iter) {
+ *				return container.get(iter++);
+ *			}
+ *		};
+ *	};
+ * @endcode
+ * @note This specialization has to be in your import context whenever you want to use a CXXIter source with @c CustomContainer,
+ * so you should probably put this in a header you can include everywhere within your project.
+ *
+ * @section sec_generators Generators
+ * Generators do not take existing data containers as input of a CXXIter iterator, but instead use some kind of logic to generate elements.
+ * An example is the `CXXIter::range()` generator, which takes a @c start, @c end and an optional @c step argument, to produce numerical seriess of
+ * any arbitrary type that supports addition and comparison.
+ *
+ * Have a look at the public methods in the CXXIter namespace for more generators and examples of how to use them.
+ */

@@ -36,6 +36,9 @@ if(${CXXITER_WITH_DOCS})
 	set(DOXYGEN_INTERACTIVE_SVG YES)
 	set(DOXYGEN_DOT_TRANSPARENT YES)
 
-	doxygen_add_docs("${PROJECT_NAME}Docs" "${CMAKE_CURRENT_SOURCE_DIR}/src" ALL
-		COMMENT "Generate Doxygen documentation")
+	doxygen_add_docs("${PROJECT_NAME}Docs"
+		"${CMAKE_CURRENT_SOURCE_DIR}/src" "${CMAKE_CURRENT_SOURCE_DIR}/doc"
+		ALL
+		COMMENT "Generate Doxygen documentation"
+	)
 endif()

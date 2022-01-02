@@ -1,0 +1,11 @@
+/**
+ * @mainpage
+ * CXXIter is a ergonomic C++ Iterator interface for STL containers, similar to the iterators found
+ * in Rust or C#'s LINQ. It supports passing values by (const) reference or by using move semantics,
+ * which is tricky in some places, since references can not be stored in STL containers.
+ *
+ * @section sec_entry Entry
+ * Most of CXXIter's functionality is reachable from the CXXIter::IterApi baseclass's public API.
+ * To enter that API, you can either construct an iterator from a source container, or use one of
+ * the generator functions. See @subpage sourcesAndGenerators for more information.
+ */
