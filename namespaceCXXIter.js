@@ -1,18 +1,14 @@
 var namespaceCXXIter =
 [
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
+    [ "IteratorTrait", "structCXXIter_1_1IteratorTrait.html", null ],
+    [ "IterValue", "classCXXIter_1_1IterValue.html", null ],
     [ "SizeHint", "structCXXIter_1_1SizeHint.html", null ],
     [ "SourceTrait", "structCXXIter_1_1SourceTrait.html", "structCXXIter_1_1SourceTrait" ],
     [ "SrcCRef", "classCXXIter_1_1SrcCRef.html", null ],
     [ "SrcMov", "classCXXIter_1_1SrcMov.html", null ],
     [ "SrcRef", "classCXXIter_1_1SrcRef.html", null ],
-    [ "is_pair", "conceptCXXIter_1_1is__pair.html", null ],
-    [ "is_optional", "conceptCXXIter_1_1is__optional.html", null ],
     [ "CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
-    [ "ReservableContainer", "conceptCXXIter_1_1ReservableContainer.html", null ],
-    [ "BackInsertableContainer", "conceptCXXIter_1_1BackInsertableContainer.html", null ],
-    [ "InsertableContainer", "conceptCXXIter_1_1InsertableContainer.html", null ],
-    [ "AssocContainer", "conceptCXXIter_1_1AssocContainer.html", null ],
     [ "SourceContainer", "conceptCXXIter_1_1SourceContainer.html", null ],
     [ "SortOrder", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c", [
       [ "ASCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],

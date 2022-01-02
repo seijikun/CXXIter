@@ -1,0 +1,10 @@
+digraph "Graphical Class Hierarchy"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="CXXIter::SourceTrait\l\< TContainer \>",height=0.2,width=0.4,color="black",URL="$structCXXIter_1_1SourceTrait.html",tooltip="SourceTrait, that is used by CXXIter's standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C..."];
+}

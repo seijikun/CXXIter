@@ -25,6 +25,8 @@ var hierarchy =
     ] ],
     [ "CXXIter::IterApi< TakeWhile< TChainInput, TTakePredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Zipper< TChainInput1, TZipContainer, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IteratorTrait< T >", "structCXXIter_1_1IteratorTrait.html", null ],
+    [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue.html", null ],
     [ "CXXIter::SizeHint", "structCXXIter_1_1SizeHint.html", null ],
     [ "CXXIter::SourceTrait< TContainer >", "structCXXIter_1_1SourceTrait.html", null ]
 ];
