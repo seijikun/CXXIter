@@ -171,6 +171,9 @@ namespace {
 		return true;
 	}
 
+	template <class T, class... Ts>
+	constexpr bool are_same_v = (std::is_same_v<T, Ts> && ...);
+
 	template<typename T>
 	inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;
 
@@ -1011,6 +1014,67 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 	static inline SizeHint sizeHint(const Self& self) {
 		SizeHint result = ChainInputIterator1::sizeHint(self.input1);
 		result.add(ChainInputIterator2::sizeHint(self.input2));
+		return result;
+	}
+};
+
+
+
+// ################################################################################################
+// INTERSPERSER
+// ################################################################################################
+/** @private */
+template<typename TChainInput1, typename... TChainInputs>
+class Intersperser : public IterApi<Intersperser<TChainInput1, TChainInputs...>> {
+	friend struct IteratorTrait<Intersperser<TChainInput1, TChainInputs...>>;
+private:
+	static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
+	std::tuple<TChainInput1, TChainInputs...> inputs;
+	std::array<IterValue<typename TChainInput1::Item>, BATCH_SIZE> currentBatch;
+	size_t batchElementIdx = BATCH_SIZE;
+public:
+	Intersperser(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput1, typename... TChainInputs>
+struct IteratorTrait<Intersperser<TChainInput1, TChainInputs...>> {
+	using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, IteratorTrait<TChainInputs>...>;
+	static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
+	// CXXIter Interface
+	using Self = Intersperser<TChainInput1, TChainInputs...>;
+	using Item = typename TChainInput1::Item;
+
+	static inline IterValue<Item> next(Self& self) {
+		if(self.batchElementIdx == Self::BATCH_SIZE) { // returned all elements from the batch -> retrieve new batch
+			constexpr_for<0, INPUT_CNT>([&](auto idx) {
+				self.currentBatch[idx] = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
+				return true;
+			});
+			self.batchElementIdx = 0;
+		}
+		return std::move(self.currentBatch[self.batchElementIdx++]);
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		size_t lowerBoundMin = std::numeric_limits<size_t>::max();
+		std::optional<size_t> upperBoundMin = {};
+		size_t minIdx = 0;
+		constexpr_for<0, INPUT_CNT>([&](auto idx) {
+			SizeHint tmp = std::tuple_element_t<idx, ChainInputIterators>::sizeHint( std::get<idx>(self.inputs) );
+			if(lowerBoundMin > tmp.lowerBound) {
+				minIdx = idx;
+				lowerBoundMin = tmp.lowerBound;
+			}
+			upperBoundMin = SizeHint::upperBoundMin(upperBoundMin, tmp.upperBound);
+			return true;
+		});
+		// smallest input iterator defines base length. The amount of elements then is that
+		// length, multiplied by the amount of input iterators + the index of the shortest
+		if(upperBoundMin.has_value()) { upperBoundMin.value() = upperBoundMin.value() * Self::BATCH_SIZE + minIdx; }
+		SizeHint result = SizeHint(
+			lowerBoundMin * Self::BATCH_SIZE + minIdx,
+			upperBoundMin
+		);
 		return result;
 	}
 };
@@ -2053,7 +2117,8 @@ public:
 	 * @endcode
 	 */
 	template<typename... TOtherIterators>
-	requires (!std::disjunction_v< std::is_reference<typename IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
+	requires (CXXIterIterator<TOtherIterators> && ...)
+			&& (!std::disjunction_v< std::is_reference<typename IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
 	Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
 		return Zipper<TSelf, std::tuple, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
@@ -2079,6 +2144,32 @@ public:
 	requires std::is_same_v<Item, typename TOtherIterator::Item>
 	Chainer<TSelf, TOtherIterator> chain(TOtherIterator&& otherIterator) {
 		return Chainer<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	}
+
+	/**
+	 * @brief Intersperse the elements of this iterator with the ones from the other given iterator(s).
+	 * @details Everytime an element is polled from the iterator resulting from this call, an element from the
+	 * current input iterator is forwarded. Then, the current input iterator is switched to the next input.
+	 * The resulting iterator ends, when the currently active input has no more elements.
+	 * @param otherIterators An arbitrary amount of iterators to intersperse the elements of this iterator with.
+	 * @return A new iterator that interweaves the elements from this iterator and all the given iterators in order.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input1 = {1, 4, 7};
+	 * 	std::vector<int> input2 = {2, 5};
+	 * 	std::vector<int> input3 = {3, 6, 9};
+	 * 	std::vector<int> output = CXXIter::from(input1)
+	 * 		.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+	 * 		.collect<std::vector>();
+	 *	// output == {1, 2, 3, 4, 5, 6, 7}
+	 * @endcode
+	 */
+	template<typename... TOtherIterators>
+	requires (CXXIterIterator<TOtherIterators> && ...)
+			&& (are_same_v<Item, typename TOtherIterators::Item...>)
+	Intersperser<TSelf, TOtherIterators...> intersperse(TOtherIterators&&... otherIterators) {
+		return Intersperser<TSelf, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
 
 	/**

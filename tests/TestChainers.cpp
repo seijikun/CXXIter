@@ -507,6 +507,91 @@ TEST(CXXIter, chain) {
 	}
 }
 
+TEST(CXXIter, intersperse) {
+	{ // sizeHint
+		{
+			std::vector<int> input1 = {1, 3, 5, 7, 9};
+			std::vector<int> input2 = {2, 4, 6, 8, 10};
+			std::vector<int> input3 = {100, 200, 300, 400, 500};
+			SizeHint sizeHint = CXXIter::from(input1)
+					.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input1.size() + input2.size() + input3.size());
+			ASSERT_EQ(sizeHint.upperBound.value(), input1.size() + input2.size() + input3.size());
+		}
+		{
+			std::vector<int> input1 = {1, 3, 5, 7};
+			std::vector<int> input2 = {2, 4, 6, 8, 10};
+			std::vector<int> input3 = {100, 200, 300, 400, 500};
+			SizeHint sizeHint = CXXIter::from(input1)
+					.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input1.size() * 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), input1.size() * 3);
+		}
+		{
+			std::vector<int> input1 = {1, 3, 5, 7, 9};
+			std::vector<int> input2 = {2, 4, 6, 8};
+			std::vector<int> input3 = {100, 200, 300, 400, 500};
+			SizeHint sizeHint = CXXIter::from(input1)
+					.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input2.size() * 3 + 1);
+			ASSERT_EQ(sizeHint.upperBound.value(), input2.size() * 3 + 1);
+		}
+		{
+			std::vector<int> input1 = {1, 3, 5, 7, 9};
+			std::vector<int> input2 = {2, 4, 6, 8, 10};
+			std::vector<int> input3 = {100, 200, 300, 400};
+			SizeHint sizeHint = CXXIter::from(input1)
+					.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input3.size() * 3 + 2);
+			ASSERT_EQ(sizeHint.upperBound.value(), input3.size() * 3 + 2);
+		}
+	}
+	{
+		std::vector<int> input1 = {1, 3, 5, 7, 9};
+		std::vector<int> input2 = {2, 4, 6, 8, 10};
+		std::vector<int> input3 = {100, 200, 300, 400, 500};
+		std::vector<int> output = CXXIter::from(input1)
+				.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size() + input2.size() + input3.size());
+		ASSERT_THAT(output, ElementsAre(1, 2, 100, 3, 4, 200, 5, 6, 300, 7, 8, 400, 9, 10, 500));
+	}
+	{
+		std::vector<int> input1 = {1, 3, 5, 7};
+		std::vector<int> input2 = {2, 4, 6, 8, 10};
+		std::vector<int> input3 = {100, 200, 300, 400, 500};
+		std::vector<int> output = CXXIter::from(input1)
+				.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size() * 3);
+		ASSERT_THAT(output, ElementsAre(1, 2, 100, 3, 4, 200, 5, 6, 300, 7, 8, 400));
+	}
+	{
+		std::vector<int> input1 = {1, 3, 5, 7, 9};
+		std::vector<int> input2 = {2, 4, 6, 8};
+		std::vector<int> input3 = {100, 200, 300, 400, 500};
+		std::vector<int> output = CXXIter::from(input1)
+				.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input2.size() * 3 + 1);
+		ASSERT_THAT(output, ElementsAre(1, 2, 100, 3, 4, 200, 5, 6, 300, 7, 8, 400, 9));
+	}
+	{
+		std::vector<int> input1 = {1, 3, 5, 7, 9};
+		std::vector<int> input2 = {2, 4, 6, 8, 10};
+		std::vector<int> input3 = {100, 200, 300, 400};
+		std::vector<int> output = CXXIter::from(input1)
+				.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input3.size() * 3 + 2);
+		ASSERT_THAT(output, ElementsAre(1, 2, 100, 3, 4, 200, 5, 6, 300, 7, 8, 400, 9, 10));
+	}
+}
+
 TEST(CXXIter, groupBy) {
 	struct CakeMeasurement {
 		std::string cakeType;

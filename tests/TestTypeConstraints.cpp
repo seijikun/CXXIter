@@ -24,6 +24,17 @@ TEST(CXXIter, is_const_reference_v) {
 	ASSERT_TRUE(CXXIter::is_const_reference_v<const TestType&>);
 }
 
+TEST(CXXIter, are_same_v) {
+	static_assert( CXXIter::are_same_v<int, int, int>);
+	static_assert( CXXIter::are_same_v<std::vector<int>, std::vector<int>, std::vector<int>>);
+	static_assert( CXXIter::are_same_v<float, float, float>);
+	static_assert( CXXIter::are_same_v<std::optional<int>, std::optional<int>, std::optional<int>>);
+	static_assert(!CXXIter::are_same_v<int, float, int>);
+	static_assert(!CXXIter::are_same_v<std::vector<int>, std::vector<int>, std::vector<float>>);
+	static_assert(!CXXIter::are_same_v<float, float, int>);
+	static_assert(!CXXIter::are_same_v<std::vector<float>, std::optional<int>, std::optional<int>>);
+}
+
 TEST(CXXIter, CXXIterIterator) {
 	using TestSrc = std::vector<int>;
 
