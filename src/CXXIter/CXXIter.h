@@ -19,15 +19,15 @@ namespace CXXIter {
 // ITERATOR OPTIONAL (supports references)
 // ################################################################################################
 
+/** @private */
+template<typename TValue>
+class IterValue {};
+
 /**
  * @brief Container that is used to pass elements throught CXXIter iterator pipelines.
  * @details This is essentially a @c std::optional<> that also supports references (in comparison
  * to the original).
  */
-template<typename TValue>
-class IterValue {};
-
-/** @private */
 template<typename TValue>
 requires (!std::is_reference_v<TValue>)
 class IterValue<TValue> {
@@ -61,7 +61,6 @@ public:
 	}
 };
 
-/** @private */
 template<typename TValue>
 requires std::is_reference_v<TValue>
 class IterValue<TValue> {
@@ -225,9 +224,39 @@ namespace {
 	};
 }
 
-//TODO: document
+/**
+ * @brief Trait, that is used for the chaining and the operation of iterator pipelines.
+ * @details This allows making any class or struct iterable, to be able to interact with CXXIter's
+ * iterator pipelines. It essentially provides two functions:
+ * - One that delivers a hint about the iterator's size after the current element implementing
+ *   the CXXIter::IteratorTrait
+ * - Method that allows pulling one element from the iterator pipeline.
+ */
 template<typename T>
-struct IteratorTrait {};
+struct IteratorTrait {
+	/**
+	 * @brief Self-Type. This is the type of the struct for which the IteratorTrait is being specialized.
+	 */
+	using Self = IteratorTrait<T>;
+	/**
+	 * @brief Item-Type. This is the type of elements that can be pulled from this pipeline-element.
+	 */
+	using Item = void;
+
+	/**
+	 * @brief Pull one element from the iterator pipeline previous to this pipeline-element.
+	 * @param self Reference to the instance of the class for which IteratorTrait is being specialized.
+	 * @return An element (if any) wrapped in the CXXIter::IterValue.
+	 */
+	static inline IterValue<Item> next(Self& self) = delete;
+
+	/**
+	 * @brief Get the bounds on the remaining length of the iterator pipeline until this pipeline-element,
+	 * estimated from the source and all of the chained iterations until after this pipeline-element.
+	 * @return The estimated bounds on the remaining length of the iterator pipeline until after this pipeline-element.
+	 */
+	static inline SizeHint sizeHint(const Self& self) = delete;
+};
 
 template<typename T>
 concept CXXIterIterator =

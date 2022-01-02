@@ -24,6 +24,19 @@ TEST(CXXIter, is_const_reference_v) {
 	ASSERT_TRUE(CXXIter::is_const_reference_v<const TestType&>);
 }
 
+TEST(CXXIter, CXXIterIterator) {
+	using TestSrc = std::vector<int>;
+
+	static_assert( CXXIter::CXXIterIterator< CXXIter::SrcRef<TestSrc> >);
+	static_assert( CXXIter::CXXIterIterator< CXXIter::SrcMov<TestSrc> >);
+	static_assert( CXXIter::CXXIterIterator< CXXIter::SrcCRef<TestSrc> >);
+	static_assert(!CXXIter::CXXIterIterator< std::vector<int> >);
+	static_assert(!CXXIter::CXXIterIterator< std::vector<float> >);
+	static_assert(!CXXIter::CXXIterIterator< std::vector<CXXIter::SrcCRef<TestSrc>> >);
+	static_assert(!CXXIter::CXXIterIterator< int >);
+	static_assert(!CXXIter::CXXIterIterator< void >);
+}
+
 TEST(CXXIter, owned_t) {
 	using TestType = std::vector<int>;
 

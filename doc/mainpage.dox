@@ -5,7 +5,14 @@
  * which is tricky in some places, since references can not be stored in STL containers.
  *
  * @section sec_entry Entry
- * Most of CXXIter's functionality is reachable from the CXXIter::IterApi baseclass's public API.
- * To enter that API, you can either construct an iterator from a source container, or use one of
- * the generator functions. See @subpage sourcesAndGenerators for more information.
+ * As soon as one entered CXXIter's chainable API, everything is reachable as a subfunction of the
+ * result returned by the previous chaining method.
+ *
+ * To enter that API, one can either construct an iterator from a source container, or use one of
+ * the provided generator functions. See @subpage sourcesAndGenerators for more information.
+ *
+ * @section sec_chaining Chaining
+ * All of the chaining functionality is implemeneted by a common baseclass for all structs that
+ * implement the CXXIter::IteratorTrait.
+ * For an overview of all available functionality, have a look at CXXIter::IterApi.
  */
