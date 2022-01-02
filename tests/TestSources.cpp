@@ -304,11 +304,11 @@ TEST(CXXIter, next) {
 	std::vector<std::string> input = {"42", "1337"};
 	auto iter = CXXIter::from(input);
 	auto output0 = iter.next();
-	ASSERT_TRUE(output0.hasValue());
+	ASSERT_TRUE(output0.has_value());
 	ASSERT_EQ(output0.value(), "42");
 	auto output1 = iter.next();
-	ASSERT_TRUE(output1.hasValue());
+	ASSERT_TRUE(output1.has_value());
 	ASSERT_EQ(output1.value(), "1337");
 	auto output2 = iter.next();
-	ASSERT_FALSE(output2.hasValue());
+	ASSERT_FALSE(output2.has_value());
 }

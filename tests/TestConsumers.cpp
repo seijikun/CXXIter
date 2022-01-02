@@ -76,7 +76,7 @@ TEST(CXXIter, find) {
 				.find([](const std::string& item) {
 					return item.size() == 4;
 				});
-		ASSERT_TRUE(output.hasValue());
+		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "1337");
 	}
 	{
@@ -85,7 +85,7 @@ TEST(CXXIter, find) {
 				.find([](const std::string& item) {
 					return item.size() == 3;
 				});
-		ASSERT_FALSE(output.hasValue());
+		ASSERT_FALSE(output.has_value());
 	}
 }
 

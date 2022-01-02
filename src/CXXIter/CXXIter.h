@@ -44,7 +44,7 @@ public:
 	inline const TValue& value(TValue&& def) const { return inner.value_or(def); }
 	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
-	bool hasValue() const { return inner.has_value(); }
+	bool has_value() const { return inner.has_value(); }
 	std::optional<TValue> toStdOptional() {
 		return std::optional<TValue>(std::move(inner));
 	}
@@ -56,7 +56,7 @@ public:
 
 	template<typename TOutValue, std::invocable<TValue&&> TMapFn>
 	IterValue<TOutValue> map(TMapFn mapFn) {
-		if(!hasValue()) { return {}; }
+		if(!has_value()) { return {}; }
 		return mapFn(std::forward<TValue>(value()));
 	}
 };
@@ -78,7 +78,7 @@ public:
 	inline const TValue& value(TValue&& def) const { return inner.value_or(def); }
 	inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
-	bool hasValue() const { return inner.has_value(); }
+	bool has_value() const { return inner.has_value(); }
 	std::optional<TValueDeref> toStdOptional() {
 		if(inner.has_value()) { return inner.value(); }
 		return {};
@@ -91,7 +91,7 @@ public:
 
 	template<typename TOutValue, std::invocable<TValueDeref&&> TMapFn>
 	IterValue<TOutValue> map(TMapFn mapFn) {
-		if(!hasValue()) { return {}; }
+		if(!has_value()) { return {}; }
 		return mapFn(std::forward<TValueDeref>(value()));
 	}
 };
@@ -631,7 +631,7 @@ struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.hasValue()) { return {}; }
+			if(!item.has_value()) { return {}; }
 			if(self.filterFn(item.value())) { return item; }
 		}
 	}
@@ -670,7 +670,7 @@ struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = ChainInputIterator::next(self.input);
-		if(!item.hasValue()) { return {}; }
+		if(!item.has_value()) { return {}; }
 		self.modifierFn(item.value());
 		return item;
 	}
@@ -741,7 +741,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 		while(true) {
 			if(!self.current) { // pull new container from the outer iterator
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.hasValue()) { return {}; } // end of iteration
+				if(!item.has_value()) { return {}; } // end of iteration
 				self.current = SrcMov(std::move(
 					self.mapFn(std::forward<InputItem>( item.value() ))
 				));
@@ -749,7 +749,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 
 			// if the outer iterator yielded a container, take from it until we reach the end
 			auto item = NestedChainIterator::next(*self.current);
-			if(item.hasValue()) { // inner yielded a usable item
+			if(item.has_value()) { // inner yielded a usable item
 				return item.value();
 			} else {
 				self.current.reset(); // inner container ended, unset current cache
@@ -787,7 +787,7 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.hasValue()) { return {}; }
+			if(!item.has_value()) { return {}; }
 			std::optional<Item> value(self.filterMapFn(std::forward<InputItemOwned>( item.value() )));
 			if(!value) { continue; }
 			return *value;
@@ -828,7 +828,7 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = ChainInputIterator::next(self.input);
-		if(!item.hasValue()) { return {}; }
+		if(!item.has_value()) { return {}; }
 		// end iterator directly after takePredicate returned false the first time
 		if(self.takePredicate(item.value()) == false) { return {}; }
 		return item;
@@ -873,7 +873,7 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.hasValue()) { return {}; }
+			if(!item.has_value()) { return {}; }
 			if(self.skipEnded) { return item; }
 			if(!self.skipPredicate(item.value())) {
 				self.skipEnded = true;
@@ -920,7 +920,7 @@ struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 		Item item;
 		bool hasNext = constexpr_for<0, INPUT_CNT>([&](auto idx) {
 			auto input = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
-			if(!input.hasValue()) { return false; }
+			if(!input.has_value()) { return false; }
 			std::get<idx>(item) = input.value();
 			return true;
 		});
@@ -971,7 +971,7 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 		while(true) {
 			if(self.inputIdx == 0) {
 				auto item = ChainInputIterator1::next(self.input1);
-				if(!item.hasValue()) {
+				if(!item.has_value()) {
 					self.inputIdx = 1;
 					continue;
 				}
@@ -1025,7 +1025,7 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 			std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>> groupCache;
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.hasValue()) { break; } // group cache building complete
+				if(!item.has_value()) { break; } // group cache building complete
 				TGroupIdent itemGroup = self.groupIdentFn(item.value());
 				if(groupCache.contains(itemGroup)) {
 					groupCache[itemGroup].push_back(item.value());
@@ -1082,7 +1082,7 @@ struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
 			std::vector<OwnedInputItem> sortCache;
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.hasValue()) { break; }
+				if(!item.has_value()) { break; }
 				sortCache.push_back(std::forward<InputItem>( item.value() ));
 			}
 			// sort the cache
@@ -1235,7 +1235,7 @@ public:
 	void forEach(TUseFn useFn) {
 		while(true) {
 			auto item = Iterator::next(*self());
-			if(!item.hasValue()) { return; }
+			if(!item.has_value()) { return; }
 			useFn(std::forward<Item>( item.value() ));
 		}
 	}
@@ -1350,7 +1350,7 @@ public:
 		size_t idx = 0;
 		while(true) {
 			auto item = Iterator::next(*self());
-			if(!item.hasValue()) { return {}; }
+			if(!item.has_value()) { return {}; }
 			if(findFn(item.value())) { return idx; }
 			idx += 1;
 		}
@@ -1551,7 +1551,7 @@ public:
 	}
 	std::optional<TResult> min() {
 		auto item = Iterator::next(*self());
-		if(!item.hasValue()) { return {}; }
+		if(!item.has_value()) { return {}; }
 		TResult result = item.value();
 		forEach([&result](Item&& item) {
 			if(item < result) { result = item; }
@@ -1585,7 +1585,7 @@ public:
 	}
 	std::optional<TResult> max() {
 		auto item = Iterator::next(*self());
-		if(!item.hasValue()) { return {}; }
+		if(!item.has_value()) { return {}; }
 		TResult result = item.value();
 		forEach([&result](Item&& item) {
 			if(item > result) { result = item; }
@@ -1624,7 +1624,7 @@ public:
 	}
 	IterValue<Item> minBy(TMinValueExtractFn minValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
-		if(!result.hasValue()) { return {}; }
+		if(!result.has_value()) { return {}; }
 		auto resultValue = minValueExtractFn(result.value());
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
 			auto itemValue = minValueExtractFn(item);
@@ -1667,7 +1667,7 @@ public:
 	}
 	IterValue<Item> maxBy(TMaxValueExtractFn minValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
-		if(!result.hasValue()) { return {}; }
+		if(!result.has_value()) { return {}; }
 		auto resultValue = minValueExtractFn(result.value());
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
 			auto itemValue = minValueExtractFn(item);
