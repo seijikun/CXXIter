@@ -1021,28 +1021,28 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 
 
 // ################################################################################################
-// INTERSPERSER
+// ALTERNATER
 // ################################################################################################
 /** @private */
 template<typename TChainInput1, typename... TChainInputs>
-class Intersperser : public IterApi<Intersperser<TChainInput1, TChainInputs...>> {
-	friend struct IteratorTrait<Intersperser<TChainInput1, TChainInputs...>>;
+class Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
+	friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
 private:
 	static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
 	std::tuple<TChainInput1, TChainInputs...> inputs;
 	std::array<IterValue<typename TChainInput1::Item>, BATCH_SIZE> currentBatch;
 	size_t batchElementIdx = BATCH_SIZE;
 public:
-	Intersperser(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
+	Alternater(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
 template<typename TChainInput1, typename... TChainInputs>
-struct IteratorTrait<Intersperser<TChainInput1, TChainInputs...>> {
+struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 	using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, IteratorTrait<TChainInputs>...>;
 	static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 	// CXXIter Interface
-	using Self = Intersperser<TChainInput1, TChainInputs...>;
+	using Self = Alternater<TChainInput1, TChainInputs...>;
 	using Item = typename TChainInput1::Item;
 
 	static inline IterValue<Item> next(Self& self) {
@@ -2147,11 +2147,11 @@ public:
 	}
 
 	/**
-	 * @brief Intersperse the elements of this iterator with the ones from the other given iterator(s).
+	 * @brief Alternating the elements of this iterator with the ones from the other given iterator(s).
 	 * @details Everytime an element is polled from the iterator resulting from this call, an element from the
 	 * current input iterator is forwarded. Then, the current input iterator is switched to the next input.
 	 * The resulting iterator ends, when the currently active input has no more elements.
-	 * @param otherIterators An arbitrary amount of iterators to intersperse the elements of this iterator with.
+	 * @param otherIterators An arbitrary amount of iterators to alternate the elements of this iterator with.
 	 * @return A new iterator that interweaves the elements from this iterator and all the given iterators in order.
 	 *
 	 * Usage Example:
@@ -2160,7 +2160,7 @@ public:
 	 * 	std::vector<int> input2 = {2, 5};
 	 * 	std::vector<int> input3 = {3, 6, 9};
 	 * 	std::vector<int> output = CXXIter::from(input1)
-	 * 		.intersperse(CXXIter::from(input2), CXXIter::from(input3))
+	 * 		.alternate(CXXIter::from(input2), CXXIter::from(input3))
 	 * 		.collect<std::vector>();
 	 *	// output == {1, 2, 3, 4, 5, 6, 7}
 	 * @endcode
@@ -2168,8 +2168,8 @@ public:
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
 			&& (are_same_v<Item, typename TOtherIterators::Item...>)
-	Intersperser<TSelf, TOtherIterators...> intersperse(TOtherIterators&&... otherIterators) {
-		return Intersperser<TSelf, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
+	Alternater<TSelf, TOtherIterators...> alternate(TOtherIterators&&... otherIterators) {
+		return Alternater<TSelf, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
 
 	/**
