@@ -77,3 +77,21 @@ There is a wide variety of consumers, ranging from simple aggregating ones, such
 
 ## Examples
 For a large list of examples, have a look at the unit-tests in `tests/`.
+
+## Including In Your Project
+To include CXXIter in your cmake project, you can do this:
+```cmake
+include(FetchContent)
+
+# fetching CXXIter from github
+FetchContent_Declare(
+	CXXIter
+	GIT_REPOSITORY "https://github.com/seijikun/CXXIter"
+	GIT_TAG master
+)
+FetchContent_MakeAvailable(CXXIter)
+
+# "link" your project against CXXIter, which adds the correct include paths
+target_link_libraries(${PROJECT_NAME} PRIVATE CXXIter)
+
+```
