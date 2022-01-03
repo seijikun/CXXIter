@@ -244,11 +244,11 @@ requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f
 <tr class="memitem:a659825e0e603f7671f3077fb019a1951"><td class="memTemplItemLeft" align="right" valign="top">Chainer&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">chain</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
 <tr class="memdesc:a659825e0e603f7671f3077fb019a1951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains this iterator with the given <code>otherIterator</code>, resulting in a new iterator that first yields the elements of this iterator, and then the ones from the <code>otherIterator</code>.  <a href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">More...</a><br /></td></tr>
 <tr class="separator:a659825e0e603f7671f3077fb019a1951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa22a33d90569980c6fa514adc4cd509"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
+<tr class="memitem:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
 requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterators::Item...&gt;)</td></tr>
-<tr class="memitem:aaa22a33d90569980c6fa514adc4cd509"><td class="memTemplItemLeft" align="right" valign="top">Intersperser&lt; TSelf, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aaa22a33d90569980c6fa514adc4cd509">intersperse</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
-<tr class="memdesc:aaa22a33d90569980c6fa514adc4cd509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intersperse the elements of this iterator with the ones from the other given iterator(s).  <a href="classCXXIter_1_1IterApi.html#aaa22a33d90569980c6fa514adc4cd509">More...</a><br /></td></tr>
-<tr class="separator:aaa22a33d90569980c6fa514adc4cd509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memTemplItemLeft" align="right" valign="top">Alternater&lt; TSelf, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47">alternate</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
+<tr class="memdesc:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alternating the elements of this iterator with the ones from the other given iterator(s).  <a href="classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47">More...</a><br /></td></tr>
+<tr class="separator:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TGroupIdentifierFn&gt; </td></tr>
 <tr class="memitem:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">groupBy</a> (TGroupIdentifierFn groupIdentFn)</td></tr>
 <tr class="memdesc:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Groups the elements of this iterator according to the values returned by the given <code>groupidentFn</code>.  <a href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">More...</a><br /></td></tr>
@@ -365,6 +365,56 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5c29edb8c7eb5ab161a55b4c8f637e47" name="a5c29edb8c7eb5ab161a55b4c8f637e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c29edb8c7eb5ab161a55b4c8f637e47">&#9670;&nbsp;</a></span>alternate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;CXXIterIterator TSelf&gt; </div>
+<div class="memtemplate">
+template&lt;typename... TOtherIterators&gt; <br />
+requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterators::Item...&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Alternater&lt; TSelf, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::alternate </td>
+          <td>(</td>
+          <td class="paramtype">TOtherIterators &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>otherIterators</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Alternating the elements of this iterator with the ones from the other given iterator(s). </p>
+<p >Everytime an element is polled from the iterator resulting from this call, an element from the current input iterator is forwarded. Then, the current input iterator is switched to the next input. The resulting iterator ends, when the currently active input has no more elements. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherIterators</td><td>An arbitrary amount of iterators to alternate the elements of this iterator with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new iterator that interweaves the elements from this iterator and all the given iterators in order.</dd></dl>
+<p>Usage Example: </p><div class="fragment"><div class="line">   std::vector&lt;int&gt; input1 = {1, 4, 7};</div>
+<div class="line">   std::vector&lt;int&gt; input2 = {2, 5};</div>
+<div class="line">   std::vector&lt;int&gt; input3 = {3, 6, 9};</div>
+<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input1)</div>
+<div class="line">       .alternate(<a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input2), <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input3))</div>
+<div class="line">       .collect&lt;std::vector&gt;();</div>
+<div class="line"><span class="comment">// output == {1, 2, 3, 4, 5, 6, 7}</span></div>
+<div class="ttc" id="anamespaceCXXIter_html_abf8a6e7833d1a5ee280619f29eeee310"><div class="ttname"><a href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02334">CXXIter.h:2334</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02171">2171</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
 <a id="a054a041fb9dbbecc46138a09e08313e7" name="a054a041fb9dbbecc46138a09e08313e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a054a041fb9dbbecc46138a09e08313e7">&#9670;&nbsp;</a></span>cast()</h2>
 
@@ -404,7 +454,6 @@ template&lt;typename TItemOutput &gt; </div>
 <div class="line">std::vector&lt;double&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
 <div class="line">        .cast&lt;<span class="keywordtype">double</span>&gt;()</div>
 <div class="line">        .collect&lt;std::vector&gt;();</div>
-<div class="ttc" id="anamespaceCXXIter_html_abf8a6e7833d1a5ee280619f29eeee310"><div class="ttname"><a href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02334">CXXIter.h:2334</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01821">1821</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
@@ -1074,55 +1123,6 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 <div class="line">   .collect&lt;std::unordered_map&gt;();</div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02201">2201</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
-
-</div>
-</div>
-<a id="aaa22a33d90569980c6fa514adc4cd509" name="aaa22a33d90569980c6fa514adc4cd509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa22a33d90569980c6fa514adc4cd509">&#9670;&nbsp;</a></span>intersperse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;CXXIterIterator TSelf&gt; </div>
-<div class="memtemplate">
-template&lt;typename... TOtherIterators&gt; <br />
-requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterators::Item...&gt;)</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Intersperser&lt; TSelf, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::intersperse </td>
-          <td>(</td>
-          <td class="paramtype">TOtherIterators &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>otherIterators</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Intersperse the elements of this iterator with the ones from the other given iterator(s). </p>
-<p >Everytime an element is polled from the iterator resulting from this call, an element from the current input iterator is forwarded. Then, the current input iterator is switched to the next input. The resulting iterator ends, when the currently active input has no more elements. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">otherIterators</td><td>An arbitrary amount of iterators to intersperse the elements of this iterator with. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new iterator that interweaves the elements from this iterator and all the given iterators in order.</dd></dl>
-<p>Usage Example: </p><div class="fragment"><div class="line">   std::vector&lt;int&gt; input1 = {1, 4, 7};</div>
-<div class="line">   std::vector&lt;int&gt; input2 = {2, 5};</div>
-<div class="line">   std::vector&lt;int&gt; input3 = {3, 6, 9};</div>
-<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input1)</div>
-<div class="line">       .intersperse(<a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input2), <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input3))</div>
-<div class="line">       .collect&lt;std::vector&gt;();</div>
-<div class="line"><span class="comment">// output == {1, 2, 3, 4, 5, 6, 7}</span></div>
-</div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02171">2171</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< Alternater< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Caster< TChainInput, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Chainer< TChainInput1, TChainInput2 > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Filter< TChainInput, TFilterFn > >", "classCXXIter_1_1IterApi.html", null ],
@@ -9,7 +10,6 @@ var hierarchy =
     [ "CXXIter::IterApi< FunctionGenerator< TItem, TGeneratorFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< GroupBy< TChainInput, TGroupIdentifierFn, TGroupIdent > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< InplaceModifier< TChainInput, TModifierFn > >", "classCXXIter_1_1IterApi.html", null ],
-    [ "CXXIter::IterApi< Intersperser< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Map< TChainInput, TMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Range< TValue > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Repeater< TItem > >", "classCXXIter_1_1IterApi.html", null ],
