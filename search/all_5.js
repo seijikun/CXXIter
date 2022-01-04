@@ -2,7 +2,7 @@ var searchData=
 [
   ['inititerator_0',['initIterator',['../structCXXIter_1_1SourceTrait.html#ae01444bb2e4994ac858747a9aff48fc4',1,'CXXIter::SourceTrait::initIterator(TContainer &amp;container)'],['../structCXXIter_1_1SourceTrait.html#a505ae3ced497a1848473bf4593a23aa3',1,'CXXIter::SourceTrait::initIterator(const TContainer &amp;container)']]],
   ['item_1',['Item',['../structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93',1,'CXXIter::IteratorTrait::Item()'],['../structCXXIter_1_1SourceTrait.html#a3c72a215716e05df10d79738dd74eab3',1,'CXXIter::SourceTrait::Item()'],['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()']]],
-  ['itemowned_2',['ItemOwned',['../classCXXIter_1_1IterApi.html#a8242394d80dd375319dda6bc0872d07d',1,'CXXIter::IterApi']]],
+  ['itemowned_2',['ItemOwned',['../classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512',1,'CXXIter::IterApi']]],
   ['iterapi_3',['IterApi',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20alternater_3c_20tchaininput1_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_4',['IterApi&lt; Alternater&lt; TChainInput1, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20caster_3c_20tchaininput_2c_20titem_20_3e_20_3e_5',['IterApi&lt; Caster&lt; TChainInput, TItem &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
