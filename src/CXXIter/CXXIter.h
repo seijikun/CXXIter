@@ -64,7 +64,7 @@ public:
 template<typename TValue>
 requires std::is_reference_v<TValue>
 class IterValue<TValue> {
-	using TValueDeref = typename std::remove_reference<TValue>::type;
+	using TValueDeref = std::remove_reference_t<TValue>;
 	std::optional<std::reference_wrapper<TValueDeref>> inner;
 public:
 	IterValue() {}
@@ -391,7 +391,7 @@ concept SourceContainer = requires(
  * through the element stream, essentially "consuming" them.
  */
 template<typename TContainer>
-requires SourceContainer<typename std::remove_reference<TContainer>::type>
+requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
 	friend struct IteratorTrait<SrcMov<TContainer>>;
 	using Src = SourceTrait<TContainer>;
@@ -430,6 +430,7 @@ struct IteratorTrait<SrcMov<TContainer>> {
  * item source.
  */
 template<typename TContainer>
+requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
 	using Src = SourceTrait<TContainer>;
@@ -467,6 +468,7 @@ struct IteratorTrait<SrcRef<TContainer>> {
  * @details This guarantees the original source to stay untouched & unmodified.
  */
 template<typename TContainer>
+requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
 	using Src = SourceTrait<TContainer>;
@@ -1269,7 +1271,7 @@ public: // Associated types
 	/**
 	 * @brief Owned Type of the elements of this iterator. (References removed).
 	 */
-	using ItemOwned = typename std::remove_reference<Item>::type;
+	using ItemOwned = std::remove_cvref_t<Item>;
 
 private:
 	TSelf* self() { return static_cast<TSelf*>(this); }
@@ -2199,7 +2201,7 @@ public:
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
-		using TGroupIdent = std::remove_reference_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
+		using TGroupIdent = std::remove_cvref_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
 
