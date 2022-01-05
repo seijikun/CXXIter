@@ -1,8 +1,11 @@
 #include <iostream>
 #include <optional>
-//#include <ranges>
 #include <vector>
 #include <cmath>
+
+#ifndef __clang__
+#include <ranges>
+#endif
 
 #include <CXXIter/CXXIter.h>
 
@@ -61,23 +64,25 @@ static void BM_FilterMap_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_FilterMap_Native)->MinTime(10);
 
-//static void BM_FilterMap_CXX20Ranges(benchmark::State& state) {
-//	for (auto _ : state) {
-//		auto filterFn = [](const std::string& item){
-//			int itemValue = std::stoi(item);
-//			return (itemValue % 2 == 0);
-//		};
-//		auto mapFn = [](const std::string& item) {
-//			int itemValue = std::stoi(item);
-//			return std::to_string(itemValue * 2 + 1);
-//		};
+#ifndef __clang__
+static void BM_FilterMap_CXX20Ranges(benchmark::State& state) {
+	for (auto _ : state) {
+		auto filterFn = [](const std::string& item){
+			int itemValue = std::stoi(item);
+			return (itemValue % 2 == 0);
+		};
+		auto mapFn = [](const std::string& item) {
+			int itemValue = std::stoi(item);
+			return std::to_string(itemValue * 2 + 1);
+		};
 
 
-//		std::vector<std::string> output;
-//		auto range = INPUT1 | std::views::filter(filterFn) | std::views::transform(mapFn);
-//		for(const auto& item : range) { output.push_back(item); }
-//	}
-//} BENCHMARK(BM_FilterMap_CXX20Ranges)->MinTime(10);
+		std::vector<std::string> output;
+		auto range = INPUT1 | std::views::filter(filterFn) | std::views::transform(mapFn);
+		for(const auto& item : range) { output.push_back(item); }
+	}
+} BENCHMARK(BM_FilterMap_CXX20Ranges)->MinTime(10);
+#endif
 
 static void BM_FilterMap_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -99,13 +104,15 @@ static void BM_Filter_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Filter_Native)->MinTime(10);
 
-//static void BM_Filter_CXX20Ranges(benchmark::State& state) {
-//	for (auto _ : state) {
-//		std::vector<double> output;
-//		auto range = INPUT2 | std::views::filter(FILTER_FN);
-//		for(const auto& item : range) { output.push_back(item); }
-//	}
-//} BENCHMARK(BM_Filter_CXX20Ranges)->MinTime(10);
+#ifndef __clang__
+static void BM_Filter_CXX20Ranges(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		auto range = INPUT2 | std::views::filter(FILTER_FN);
+		for(const auto& item : range) { output.push_back(item); }
+	}
+} BENCHMARK(BM_Filter_CXX20Ranges)->MinTime(10);
+#endif
 
 static void BM_Filter_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -128,13 +135,15 @@ static void BM_Map_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Map_Native)->MinTime(10);
 
-//static void BM_Map_CXX20Ranges(benchmark::State& state) {
-//	for (auto _ : state) {
-//		std::vector<double> output;
-//		auto range = INPUT2 | std::views::transform([](double item) { return MAP_FN(item); });
-//		for(const auto& item : range) { output.push_back(item); }
-//	}
-//} BENCHMARK(BM_Map_CXX20Ranges)->MinTime(10);
+#ifndef __clang__
+static void BM_Map_CXX20Ranges(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		auto range = INPUT2 | std::views::transform([](double item) { return MAP_FN(item); });
+		for(const auto& item : range) { output.push_back(item); }
+	}
+} BENCHMARK(BM_Map_CXX20Ranges)->MinTime(10);
+#endif
 
 static void BM_Map_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -157,13 +166,15 @@ static void BM_Cast_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Cast_Native)->MinTime(10);
 
-//static void BM_Cast_CXX20Ranges(benchmark::State& state) {
-//	for (auto _ : state) {
-//		std::vector<float> output;
-//		auto range = INPUT2 | std::views::transform([](double item) { return static_cast<float>(item); });
-//		for(const auto& item : range) { output.push_back(item); }
-//	}
-//} BENCHMARK(BM_Cast_CXX20Ranges)->MinTime(10);
+#ifndef __clang__
+static void BM_Cast_CXX20Ranges(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<float> output;
+		auto range = INPUT2 | std::views::transform([](double item) { return static_cast<float>(item); });
+		for(const auto& item : range) { output.push_back(item); }
+	}
+} BENCHMARK(BM_Cast_CXX20Ranges)->MinTime(10);
+#endif
 
 static void BM_Cast_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
