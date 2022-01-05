@@ -411,7 +411,7 @@ struct IteratorTrait<SrcMov<TContainer>> {
 	using Item = typename Src::Item;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 		return std::move(Src::next(self.container, self.iter));
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
@@ -450,7 +450,7 @@ struct IteratorTrait<SrcRef<TContainer>> {
 	using Item = typename Src::Item&;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 		return Src::next(self.container, self.iter);
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
@@ -488,7 +488,7 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 	using Item = const typename Src::Item&;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(!Src::hasNext(self.container, self.iter)) { return {}; }
+		if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 		return Src::next(self.container, self.iter);
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
@@ -518,7 +518,7 @@ struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = self.generatorFn();
-		if(!item.has_value()) { return {}; }
+		if(!item.has_value()) [[unlikely]] { return {}; }
 		return item.value();
 	}
 	static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
@@ -589,7 +589,7 @@ struct IteratorTrait<Range<TValue>> {
 	using Item = TValue;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.current > self.to) { return {}; }
+		if(self.current > self.to) [[unlikely]] { return {}; }
 		TValue current = self.current;
 		self.current += self.step;
 		return current;
@@ -662,7 +662,7 @@ struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) { return {}; }
+			if(!item.has_value()) [[unlikely]] { return {}; }
 			if(self.filterFn(item.value())) { return item; }
 		}
 	}
@@ -701,7 +701,7 @@ struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = ChainInputIterator::next(self.input);
-		if(!item.has_value()) { return {}; }
+		if(!item.has_value()) [[unlikely]] { return {}; }
 		self.modifierFn(item.value());
 		return item;
 	}
@@ -772,7 +772,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 		while(true) {
 			if(!self.current) { // pull new container from the outer iterator
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) { return {}; } // end of iteration
+				if(!item.has_value()) [[unlikely]] { return {}; } // end of iteration
 				self.current = SrcMov(std::move(
 					self.mapFn(std::forward<InputItem>( item.value() ))
 				));
@@ -780,9 +780,9 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 
 			// if the outer iterator yielded a container, take from it until we reach the end
 			auto item = NestedChainIterator::next(*self.current);
-			if(item.has_value()) { // inner yielded a usable item
+			if(item.has_value()) [[likely]] { // inner yielded a usable item
 				return item.value();
-			} else {
+			} else [[unlikely]] {
 				self.current.reset(); // inner container ended, unset current cache
 			}
 		}
@@ -818,7 +818,7 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) { return {}; }
+			if(!item.has_value()) [[unlikely]] { return {}; }
 			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
 			if(!value) { continue; }
 			return *value;
@@ -859,7 +859,7 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = ChainInputIterator::next(self.input);
-		if(!item.has_value()) { return {}; }
+		if(!item.has_value()) [[unlikely]] { return {}; }
 		// end iterator directly after takePredicate returned false the first time
 		if(self.takePredicate(item.value()) == false) { return {}; }
 		return item;
@@ -904,7 +904,7 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 	static inline IterValue<Item> next(Self& self) {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) { return {}; }
+			if(!item.has_value()) [[unlikely]] { return {}; }
 			if(self.skipEnded) { return item; }
 			if(!self.skipPredicate(item.value())) {
 				self.skipEnded = true;
@@ -951,11 +951,11 @@ struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 		Item item;
 		bool hasNext = constexpr_for<0, INPUT_CNT>([&](auto idx) {
 			auto input = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
-			if(!input.has_value()) { return false; }
+			if(!input.has_value()) [[unlikely]] { return false; }
 			std::get<idx>(item) = input.value();
 			return true;
 		});
-		if(!hasNext) { return {}; }
+		if(!hasNext) [[unlikely]] { return {}; }
 		return item;
 	}
 	static inline SizeHint sizeHint(const Self& self) {
@@ -1002,7 +1002,7 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 		while(true) {
 			if(self.inputIdx == 0) {
 				auto item = ChainInputIterator1::next(self.input1);
-				if(!item.has_value()) {
+				if(!item.has_value()) [[unlikely]] {
 					self.inputIdx = 1;
 					continue;
 				}
@@ -1048,7 +1048,7 @@ struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 	using Item = typename TChainInput1::Item;
 
 	static inline IterValue<Item> next(Self& self) {
-		if(self.batchElementIdx == Self::BATCH_SIZE) { // returned all elements from the batch -> retrieve new batch
+		if(self.batchElementIdx == Self::BATCH_SIZE) [[unlikely]] { // returned all elements from the batch -> retrieve new batch
 			constexpr_for<0, INPUT_CNT>([&](auto idx) {
 				self.currentBatch[idx] = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
 				return true;
@@ -1117,7 +1117,7 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 			std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>> groupCache;
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) { break; } // group cache building complete
+				if(!item.has_value()) [[unlikely]] { break; } // group cache building complete
 				TGroupIdent itemGroup = self.groupIdentFn(item.value());
 				if(groupCache.contains(itemGroup)) {
 					groupCache[itemGroup].push_back(item.value());
@@ -1174,7 +1174,7 @@ struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
 			std::vector<OwnedInputItem> sortCache;
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) { break; }
+				if(!item.has_value()) [[unlikely]] { break; }
 				sortCache.push_back(std::forward<InputItem>( item.value() ));
 			}
 			// sort the cache
@@ -1327,7 +1327,7 @@ public:
 	void forEach(TUseFn useFn) {
 		while(true) {
 			auto item = Iterator::next(*self());
-			if(!item.has_value()) { return; }
+			if(!item.has_value()) [[unlikely]] { return; }
 			useFn(std::forward<Item>( item.value() ));
 		}
 	}
@@ -1442,8 +1442,8 @@ public:
 		size_t idx = 0;
 		while(true) {
 			auto item = Iterator::next(*self());
-			if(!item.has_value()) { return {}; }
-			if(findFn(item.value())) { return idx; }
+			if(!item.has_value()) [[unlikely]] { return {}; }
+			if(findFn(item.value())) [[unlikely]] { return idx; }
 			idx += 1;
 		}
 	}
@@ -1574,8 +1574,8 @@ public:
 	std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
 		std::string result;
 		forEach([&result, &separator](const std::string& item) {
-			if(result.size() > 0) { result += separator + item; }
-			else { result = item; }
+			if(result.size() > 0) [[likely]] { result += separator + item; }
+			else [[unlikely]] { result = item; }
 		});
 		return result;
 	}
