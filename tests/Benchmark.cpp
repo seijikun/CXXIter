@@ -1,5 +1,7 @@
 #include <iostream>
 #include <optional>
+//#include <ranges>
+#include <vector>
 #include <cmath>
 
 #include <CXXIter/CXXIter.h>
@@ -44,85 +46,159 @@ static const std::vector<double> INPUT2 = makeInput2();
 // ################################################################################################
 // BENCHMARKS
 // ################################################################################################
-static void BM_NativeUsingLambdas(benchmark::State& state) {
-	for (auto _ : state) { //TODO: output sizeHint
-		{ // filterMap
-			std::vector<std::string> output;
-			for(size_t i = 0; i < INPUT1.size(); ++i) {
-				auto res = FILTERMAP_FN( INPUT1[i] );
-				if(res) {
-					output.push_back(res.value());
-				}
-			}
-		}
-		{ // filter
-			std::vector<double> output;
-			auto outputInserter = std::back_inserter(output);
-			std::copy_if(INPUT2.begin(), INPUT2.end(), outputInserter, FILTER_FN);
-		}
-		{ // map
-			std::vector<double> output;
-			for(size_t i = 0; i < INPUT2.size(); ++i) {
-				output.push_back(MAP_FN(INPUT2[i]));
-			}
-		}
-		{ // cast
-			std::vector<float> output;
-			for(size_t i = 0; i < INPUT2.size(); ++i) {
-				output.push_back(static_cast<float>(INPUT2[i]));
-			}
-		}
-		{ // groupBy
-			std::unordered_map<size_t, std::vector<std::string>> output;
-			for(size_t i = 0; i < INPUT1.size(); ++i) {
-				size_t groupIdent = INPUT1[i].size();
-				if(output.find(groupIdent) == output.end()) {
-					output[groupIdent] = { INPUT1[i] };
-				} else {
-					output[groupIdent].push_back(INPUT1[i]);
-				}
-			}
-		}
-	}
-}
-BENCHMARK(BM_NativeUsingLambdas)->MinTime(60);
 
-
-
-
-// Define another benchmark
-static void BM_CXXIter(benchmark::State& state) {
+// FILTER MAP
+// ==========
+static void BM_FilterMap_Native(benchmark::State& state) {
 	for (auto _ : state) {
-		{ // filterMap
-			std::vector<std::string> output = CXXIter::from(INPUT1)
-				.filterMap(FILTERMAP_FN)
-				.collect<std::vector>();
-		}
-		{ // filter
-			std::vector<double> output = CXXIter::from(INPUT2)
-					.filter(FILTER_FN)
-					.collect<std::vector>();
-		}
-		{ // map
-			std::vector<double> output = CXXIter::from(INPUT2)
-					.map([](double val) { return std::sqrt(val); })
-					.collect<std::vector>();
-		}
-		{ // cast
-			std::vector<float> output = CXXIter::from(INPUT2).cast<float>().collect<std::vector>();
-		}
-		{ // groupBy
-			// quite a lot slower than native of course, because groupBy() internally creates
-			// a unordered_map, that is then pushed into the iterator, just to put the elements
-			// in a new unordered_map in collect().
-			std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(INPUT1)
-					.groupBy([](const std::string& item) { return item.size(); })
-					.collect<std::unordered_map>();
+		std::vector<std::string> output;
+		for(size_t i = 0; i < INPUT1.size(); ++i) {
+			auto res = FILTERMAP_FN( INPUT1[i] );
+			if(res) {
+				output.push_back(res.value());
+			}
 		}
 	}
-}
-BENCHMARK(BM_CXXIter)->MinTime(60);
+} BENCHMARK(BM_FilterMap_Native);
 
+//static void BM_FilterMap_CXX20Ranges(benchmark::State& state) {
+//	for (auto _ : state) {
+//		auto filterFn = [](const std::string& item){
+//			int itemValue = std::stoi(item);
+//			return (itemValue % 2 == 0);
+//		};
+//		auto mapFn = [](const std::string& item) {
+//			int itemValue = std::stoi(item);
+//			return std::to_string(itemValue * 2 + 1);
+//		};
+
+
+//		std::vector<std::string> output;
+//		auto range = INPUT1 | std::views::filter(filterFn) | std::views::transform(mapFn);
+//		for(const auto& item : range) { output.push_back(item); }
+//	}
+//} BENCHMARK(BM_FilterMap_CXX20Ranges);
+
+static void BM_FilterMap_CXXIter(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<std::string> output = CXXIter::from(INPUT1)
+			.filterMap(FILTERMAP_FN)
+			.collect<std::vector>();
+	}
+} BENCHMARK(BM_FilterMap_CXXIter);
+
+
+
+// FILTER
+// ==========
+static void BM_Filter_Native(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		auto outputInserter = std::back_inserter(output);
+		std::copy_if(INPUT2.begin(), INPUT2.end(), outputInserter, FILTER_FN);
+	}
+} BENCHMARK(BM_Filter_Native);
+
+//static void BM_Filter_CXX20Ranges(benchmark::State& state) {
+//	for (auto _ : state) {
+//		std::vector<double> output;
+//		auto range = INPUT2 | std::views::filter(FILTER_FN);
+//		for(const auto& item : range) { output.push_back(item); }
+//	}
+//} BENCHMARK(BM_Filter_CXX20Ranges);
+
+static void BM_Filter_CXXIter(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(INPUT2)
+				.filter(FILTER_FN)
+				.collect<std::vector>();
+	}
+} BENCHMARK(BM_Filter_CXXIter);
+
+
+
+// MAP
+// ==========
+static void BM_Map_Native(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		for(size_t i = 0; i < INPUT2.size(); ++i) {
+			output.push_back(MAP_FN(INPUT2[i]));
+		}
+	}
+} BENCHMARK(BM_Map_Native);
+
+//static void BM_Map_CXX20Ranges(benchmark::State& state) {
+//	for (auto _ : state) {
+//		std::vector<double> output;
+//		auto range = INPUT2 | std::views::transform([](double item) { return MAP_FN(item); });
+//		for(const auto& item : range) { output.push_back(item); }
+//	}
+//} BENCHMARK(BM_Map_CXX20Ranges);
+
+static void BM_Map_CXXIter(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(INPUT2)
+				.map([](double val) { return std::sqrt(val); })
+				.collect<std::vector>();
+	}
+} BENCHMARK(BM_Map_CXXIter);
+
+
+
+// CAST
+// ==========
+static void BM_Cast_Native(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<float> output;
+		for(size_t i = 0; i < INPUT2.size(); ++i) {
+			output.push_back(static_cast<float>(INPUT2[i]));
+		}
+	}
+} BENCHMARK(BM_Cast_Native);
+
+//static void BM_Cast_CXX20Ranges(benchmark::State& state) {
+//	for (auto _ : state) {
+//		std::vector<float> output;
+//		auto range = INPUT2 | std::views::transform([](double item) { return static_cast<float>(item); });
+//		for(const auto& item : range) { output.push_back(item); }
+//	}
+//} BENCHMARK(BM_Cast_CXX20Ranges);
+
+static void BM_Cast_CXXIter(benchmark::State& state) {
+	for (auto _ : state) {
+		std::vector<float> output = CXXIter::from(INPUT2).cast<float>().collect<std::vector>();
+	}
+} BENCHMARK(BM_Cast_CXXIter);
+
+
+
+// GROUP BY
+// ==========
+static void BM_GroupBy_Native(benchmark::State& state) {
+	for (auto _ : state) {
+		std::unordered_map<size_t, std::vector<std::string>> output;
+		for(size_t i = 0; i < INPUT1.size(); ++i) {
+			size_t groupIdent = INPUT1[i].size();
+			if(output.find(groupIdent) == output.end()) {
+				output[groupIdent] = { INPUT1[i] };
+			} else {
+				output[groupIdent].push_back(INPUT1[i]);
+			}
+		}
+	}
+} BENCHMARK(BM_GroupBy_Native);
+
+static void BM_GroupBy_CXXIter(benchmark::State& state) {
+	for (auto _ : state) {
+		// quite a lot slower than native of course, because groupBy() internally creates
+		// a unordered_map, that is then pushed into the iterator, just to put the elements
+		// in a new unordered_map in collect().
+		std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(INPUT1)
+				.groupBy([](const std::string& item) { return item.size(); })
+				.collect<std::unordered_map>();
+	}
+} BENCHMARK(BM_GroupBy_CXXIter);
 
 
 BENCHMARK_MAIN();
