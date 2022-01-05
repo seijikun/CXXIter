@@ -78,6 +78,34 @@ There is a wide variety of consumers, ranging from simple aggregating ones, such
 ## Examples
 For a large list of examples, have a look at the unit-tests in `tests/`.
 
+## Benchmarks
+CXXIter's design tries to avoid any structural slowdowns. As such, it does avoid using virtual dispatch in hot paths, as well as the usage of `std::function<>`.
+Here are the benchmark results from the simple benchmark in the `tests/` folder on my machine (Ryzen 5800X), comparing a native, a C++20 ranges and a CXXIter implementation of each micro-benchmark.
+```
+-----------------------------------------------------------------------------------
+Benchmark                                         Time             CPU   Iterations
+-----------------------------------------------------------------------------------
+FilterMap_Native                      3068779086 ns   3068000455 ns            4
+FilterMap_CXX20Ranges                 3219577931 ns   3219559105 ns            4
+FilterMap_CXXIter                     3152898478 ns   3152911409 ns            4
+
+Filter_Native                          398029908 ns    398031220 ns           35
+Filter_CXX20Ranges                     448209324 ns    448207127 ns           32
+Filter_CXXIter                         412271366 ns    412271629 ns           34
+
+Map_Native                             827857987 ns    827854529 ns           17
+Map_CXX20Ranges                        828180531 ns    828175523 ns           17
+Map_CXXIter                            832396096 ns    832392214 ns           17
+
+Cast_Native                            339857189 ns    339838111 ns           41
+Cast_CXX20Ranges                       332377684 ns    332377654 ns           42
+Cast_CXXIter                           482904938 ns    482907990 ns           29
+
+GroupBy_Native                        1616139752 ns   1616134295 ns            9
+GroupBy_CXXIter                       1890404863 ns   1890360021 ns            7
+```
+The results show that CXXIter seems to be suspiciously slow with the cast operation. This effect only appears on GCC as far as I could see.
+
 ## Including In Your Project
 To include CXXIter in your cmake project, you can do this:
 ```cmake
