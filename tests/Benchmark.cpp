@@ -59,7 +59,7 @@ static void BM_FilterMap_Native(benchmark::State& state) {
 			}
 		}
 	}
-} BENCHMARK(BM_FilterMap_Native);
+} BENCHMARK(BM_FilterMap_Native)->MinTime(10);
 
 //static void BM_FilterMap_CXX20Ranges(benchmark::State& state) {
 //	for (auto _ : state) {
@@ -77,7 +77,7 @@ static void BM_FilterMap_Native(benchmark::State& state) {
 //		auto range = INPUT1 | std::views::filter(filterFn) | std::views::transform(mapFn);
 //		for(const auto& item : range) { output.push_back(item); }
 //	}
-//} BENCHMARK(BM_FilterMap_CXX20Ranges);
+//} BENCHMARK(BM_FilterMap_CXX20Ranges)->MinTime(10);
 
 static void BM_FilterMap_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -85,7 +85,7 @@ static void BM_FilterMap_CXXIter(benchmark::State& state) {
 			.filterMap(FILTERMAP_FN)
 			.collect<std::vector>();
 	}
-} BENCHMARK(BM_FilterMap_CXXIter);
+} BENCHMARK(BM_FilterMap_CXXIter)->MinTime(10);
 
 
 
@@ -97,7 +97,7 @@ static void BM_Filter_Native(benchmark::State& state) {
 		auto outputInserter = std::back_inserter(output);
 		std::copy_if(INPUT2.begin(), INPUT2.end(), outputInserter, FILTER_FN);
 	}
-} BENCHMARK(BM_Filter_Native);
+} BENCHMARK(BM_Filter_Native)->MinTime(10);
 
 //static void BM_Filter_CXX20Ranges(benchmark::State& state) {
 //	for (auto _ : state) {
@@ -105,7 +105,7 @@ static void BM_Filter_Native(benchmark::State& state) {
 //		auto range = INPUT2 | std::views::filter(FILTER_FN);
 //		for(const auto& item : range) { output.push_back(item); }
 //	}
-//} BENCHMARK(BM_Filter_CXX20Ranges);
+//} BENCHMARK(BM_Filter_CXX20Ranges)->MinTime(10);
 
 static void BM_Filter_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -113,7 +113,7 @@ static void BM_Filter_CXXIter(benchmark::State& state) {
 				.filter(FILTER_FN)
 				.collect<std::vector>();
 	}
-} BENCHMARK(BM_Filter_CXXIter);
+} BENCHMARK(BM_Filter_CXXIter)->MinTime(10);
 
 
 
@@ -126,7 +126,7 @@ static void BM_Map_Native(benchmark::State& state) {
 			output.push_back(MAP_FN(INPUT2[i]));
 		}
 	}
-} BENCHMARK(BM_Map_Native);
+} BENCHMARK(BM_Map_Native)->MinTime(10);
 
 //static void BM_Map_CXX20Ranges(benchmark::State& state) {
 //	for (auto _ : state) {
@@ -134,7 +134,7 @@ static void BM_Map_Native(benchmark::State& state) {
 //		auto range = INPUT2 | std::views::transform([](double item) { return MAP_FN(item); });
 //		for(const auto& item : range) { output.push_back(item); }
 //	}
-//} BENCHMARK(BM_Map_CXX20Ranges);
+//} BENCHMARK(BM_Map_CXX20Ranges)->MinTime(10);
 
 static void BM_Map_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -142,7 +142,7 @@ static void BM_Map_CXXIter(benchmark::State& state) {
 				.map([](double val) { return std::sqrt(val); })
 				.collect<std::vector>();
 	}
-} BENCHMARK(BM_Map_CXXIter);
+} BENCHMARK(BM_Map_CXXIter)->MinTime(10);
 
 
 
@@ -155,7 +155,7 @@ static void BM_Cast_Native(benchmark::State& state) {
 			output.push_back(static_cast<float>(INPUT2[i]));
 		}
 	}
-} BENCHMARK(BM_Cast_Native);
+} BENCHMARK(BM_Cast_Native)->MinTime(10);
 
 //static void BM_Cast_CXX20Ranges(benchmark::State& state) {
 //	for (auto _ : state) {
@@ -163,13 +163,13 @@ static void BM_Cast_Native(benchmark::State& state) {
 //		auto range = INPUT2 | std::views::transform([](double item) { return static_cast<float>(item); });
 //		for(const auto& item : range) { output.push_back(item); }
 //	}
-//} BENCHMARK(BM_Cast_CXX20Ranges);
+//} BENCHMARK(BM_Cast_CXX20Ranges)->MinTime(10);
 
 static void BM_Cast_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
 		std::vector<float> output = CXXIter::from(INPUT2).cast<float>().collect<std::vector>();
 	}
-} BENCHMARK(BM_Cast_CXXIter);
+} BENCHMARK(BM_Cast_CXXIter)->MinTime(10);
 
 
 
@@ -187,7 +187,7 @@ static void BM_GroupBy_Native(benchmark::State& state) {
 			}
 		}
 	}
-} BENCHMARK(BM_GroupBy_Native);
+} BENCHMARK(BM_GroupBy_Native)->MinTime(10);
 
 static void BM_GroupBy_CXXIter(benchmark::State& state) {
 	for (auto _ : state) {
@@ -198,7 +198,7 @@ static void BM_GroupBy_CXXIter(benchmark::State& state) {
 				.groupBy([](const std::string& item) { return item.size(); })
 				.collect<std::unordered_map>();
 	}
-} BENCHMARK(BM_GroupBy_CXXIter);
+} BENCHMARK(BM_GroupBy_CXXIter)->MinTime(10);
 
 
 BENCHMARK_MAIN();
