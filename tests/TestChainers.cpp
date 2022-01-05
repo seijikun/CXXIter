@@ -656,11 +656,11 @@ TEST(CXXIter, groupBy) {
 	}
 }
 
-TEST(CXXIter, sorted) {
+TEST(CXXIter, sort) {
 	{ // sizeHint
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		SizeHint sizeHint = CXXIter::from(input)
-				.sorted<false>([](const float& a, const float& b) {
+				.sort<false>([](const float& a, const float& b) {
 					return (a < b);
 				})
 				.sizeHint();
@@ -670,7 +670,7 @@ TEST(CXXIter, sorted) {
 	{ // ASCENDING
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		std::vector<float> output = CXXIter::from(input)
-			.sorted<false>([](const float& a, const float& b) {
+			.sort<false>([](const float& a, const float& b) {
 				return (a < b);
 			})
 			.collect<std::vector>();
@@ -680,7 +680,7 @@ TEST(CXXIter, sorted) {
 	{ // DESCENDING
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		std::vector<float> output = CXXIter::from(input)
-			.sorted<false>([](const float& a, const float& b) {
+			.sort<false>([](const float& a, const float& b) {
 				return (a > b);
 			})
 			.collect<std::vector>();
@@ -690,7 +690,7 @@ TEST(CXXIter, sorted) {
 	{ // ASCENDING
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		std::vector<float> output = CXXIter::from(input)
-			.sorted<CXXIter::ASCENDING, false>()
+			.sort<CXXIter::ASCENDING, false>()
 			.collect<std::vector>();
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre(-42.0f, 0.5f, 1.0f, 2.0f, 3.0f));
@@ -698,18 +698,18 @@ TEST(CXXIter, sorted) {
 	{ // DESCENDING
 		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 		std::vector<float> output = CXXIter::from(input)
-			.sorted<CXXIter::DESCENDING, false>()
+			.sort<CXXIter::DESCENDING, false>()
 			.collect<std::vector>();
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre(3.0f, 2.0f, 1.0f, 0.5f, -42.0f));
 	}
 }
 
-TEST(CXXIter, sortedBy) {
+TEST(CXXIter, sortBy) {
 	{ // sizeHint
 		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 		SizeHint sizeHint = CXXIter::from(input)
-				.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+				.sortBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
 				.sizeHint();
 		ASSERT_EQ(sizeHint.lowerBound, input.size());
 		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
@@ -717,7 +717,7 @@ TEST(CXXIter, sortedBy) {
 	{ // ASCENDING
 		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 		std::vector<std::string> output = CXXIter::from(input)
-			.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+			.sortBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
 			.collect<std::vector>();
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre("tes", "test", "test1", "test2", "test23"));
@@ -725,7 +725,7 @@ TEST(CXXIter, sortedBy) {
 	{ // DESCENDING
 		std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 		std::vector<std::string> output = CXXIter::from(input)
-			.sortedBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
+			.sortBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
 			.collect<std::vector>();
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre("test23", "test1", "test2", "test", "tes"));

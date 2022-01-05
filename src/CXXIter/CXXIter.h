@@ -2219,7 +2219,7 @@ public:
 	 * @code
 	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 	 * 	std::vector<float> output = CXXIter::from(input)
-	 * 		.sorted<false>([](const float& a, const float& b) {
+	 * 		.sort<false>([](const float& a, const float& b) {
 	 * 			return (a < b);
 	 * 		})
 	 * 		.collect<std::vector>();
@@ -2228,20 +2228,20 @@ public:
 	 * @code
 	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 	 * 	std::vector<float> output = CXXIter::from(input)
-	 * 		.sorted<false>([](const float& a, const float& b) {
+	 * 		.sort<false>([](const float& a, const float& b) {
 	 * 			return (a > b);
 	 * 		})
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
 	template<bool STABLE, std::invocable<const ItemOwned&, const ItemOwned&> TCompareFn>
-	auto sorted(TCompareFn compareFn) {
+	auto sort(TCompareFn compareFn) {
 		return Sorter<TSelf, TCompareFn, STABLE>(std::move(*self()), compareFn);
 	}
 
 	/**
 	 * @brief Creates a new iterator that takes the items from this iterator, and passes them on sorted.
-	 * @note This variant of sorted() requires the items to support comparison operators.
+	 * @note This variant of sort() requires the items to support comparison operators.
 	 * @return New iterator that returns the items of this iterator sorted.
 	 * @attention Sorter requires to first drain the input iterator, before being able to supply a single element.
 	 * This leads to additional memory usage.
@@ -2253,21 +2253,21 @@ public:
 	 * @code
 	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 	 * 	std::vector<float> output = CXXIter::from(input)
-	 * 		.sorted<CXXIter::ASCENDING, false>()
+	 * 		.sort<CXXIter::ASCENDING, false>()
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 * - Sorting in descending order using a custom comparer:
 	 * @code
 	 * 	std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
 	 * 	std::vector<float> output = CXXIter::from(input)
-	 * 		.sorted<CXXIter::DESCENDING, false>()
+	 * 		.sort<CXXIter::DESCENDING, false>()
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
 	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false>
 	requires requires(const ItemOwned& a) { { a < a }; { a > a }; }
-	auto sorted() {
-		return sorted<STABLE>([](const ItemOwned& a, const ItemOwned& b) {
+	auto sort() {
+		return sort<STABLE>([](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
 				return (a < b);
 			} else {
@@ -2278,7 +2278,7 @@ public:
 
 	/**
 	 * @brief Creates a new iterator that takes the items from this iterator, and passes them on sorted.
-	 * @details In comparison to sorted(), which either uses a custom comparator or the items themselves
+	 * @details In comparison to sort(), which either uses a custom comparator or the items themselves
 	 * for the sort operation, this variant takes a @p sortValueExtractFn, which extracts a value for
 	 * each item in this iterator, that should be used for sorting comparisons.
 	 * @return New iterator that returns the items of this iterator sorted.
@@ -2292,14 +2292,14 @@ public:
 	 * @code
 	 * 	std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 	 * 	std::vector<std::string> output = CXXIter::from(input)
-	 * 		.sortedBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
+	 * 		.sortBy<CXXIter::ASCENDING, true>([](const std::string& item) { return item.size(); })
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 * - Sorting the items(strings) in descending order of their length:
 	 * @code
 	 * 	std::vector<std::string> input = {"test1", "test2", "test23", "test", "tes"};
 	 * 	std::vector<std::string> output = CXXIter::from(input)
-	 * 		.sortedBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
+	 * 		.sortBy<CXXIter::DESCENDING, true>([](const std::string& item) { return item.size(); })
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
@@ -2307,8 +2307,8 @@ public:
 	requires requires(const std::invoke_result_t<TSortValueExtractFn, const ItemOwned&>& a) {
 		{ a < a }; { a > a };
 	}
-	auto sortedBy(TSortValueExtractFn sortValueExtractFn) {
-		return sorted<STABLE>([&sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
+	auto sortBy(TSortValueExtractFn sortValueExtractFn) {
+		return sort<STABLE>([&sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
 				return (sortValueExtractFn(a) < sortValueExtractFn(b));
 			} else {
