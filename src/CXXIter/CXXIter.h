@@ -1211,8 +1211,7 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		if constexpr(ReservableContainer<TContainer<ItemOwned, TContainerArgs...>>) {
 			container.reserve( input.sizeHint().expectedResultSize() );
 		}
-		auto inserter = std::back_inserter(container);
-		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		input.forEach([&container](Item&& item) { container.push_back( std::forward<Item>(item) ); });
 		return container;
 	}
 };
@@ -1227,8 +1226,7 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		using TKey = std::remove_const_t<std::tuple_element_t<0, typename TChainInput::ItemOwned>>;
 		using TValue = std::tuple_element_t<1, typename TChainInput::ItemOwned>;
 		TContainer<TKey, TValue, TContainerArgs...> container;
-		auto inserter = std::inserter(container, container.end());
-		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		input.forEach([&container](Item&& item) { container.insert( std::forward<Item>(item) ); });
 		return container;
 	}
 };
@@ -1243,8 +1241,7 @@ struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		if constexpr(ReservableContainer<TContainer<ItemOwned, TContainerArgs...>>) {
 			container.reserve( input.sizeHint().expectedResultSize() );
 		}
-		auto inserter = std::inserter(container, container.end());
-		input.forEach([&inserter](Item&& item) { *inserter = item; });
+		input.forEach([&container](Item&& item) { container.insert( std::forward<Item>(item) ); });
 		return container;
 	}
 };
