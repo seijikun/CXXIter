@@ -253,20 +253,20 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are
 <tr class="memitem:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">groupBy</a> (TGroupIdentifierFn groupIdentFn)</td></tr>
 <tr class="memdesc:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Groups the elements of this iterator according to the values returned by the given <code>groupidentFn</code>.  <a href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">More...</a><br /></td></tr>
 <tr class="separator:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25568f12125a97a9579508a5cf5e7bd6"><td class="memTemplParams" colspan="2">template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp;, const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TCompareFn&gt; </td></tr>
-<tr class="memitem:a25568f12125a97a9579508a5cf5e7bd6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a25568f12125a97a9579508a5cf5e7bd6">sorted</a> (TCompareFn compareFn)</td></tr>
-<tr class="memdesc:a25568f12125a97a9579508a5cf5e7bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted, using the supplied <code>compareFn</code>.  <a href="classCXXIter_1_1IterApi.html#a25568f12125a97a9579508a5cf5e7bd6">More...</a><br /></td></tr>
-<tr class="separator:a25568f12125a97a9579508a5cf5e7bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c92644bc9fdae0fdc0795e0cfbda883"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> ORDER = SortOrder::ASCENDING, bool STABLE = false&gt; <br />
+<tr class="memitem:aff8dd89925c1e49327c408467ebdab22"><td class="memTemplParams" colspan="2">template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp;, const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TCompareFn&gt; </td></tr>
+<tr class="memitem:aff8dd89925c1e49327c408467ebdab22"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22">sort</a> (TCompareFn compareFn)</td></tr>
+<tr class="memdesc:aff8dd89925c1e49327c408467ebdab22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted, using the supplied <code>compareFn</code>.  <a href="classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22">More...</a><br /></td></tr>
+<tr class="separator:aff8dd89925c1e49327c408467ebdab22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c752a71a1a7931c711ed6749c62080"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> ORDER = SortOrder::ASCENDING, bool STABLE = false&gt; <br />
 requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp; a) { { a &lt; a }; { a &gt; a }; }</td></tr>
-<tr class="memitem:a6c92644bc9fdae0fdc0795e0cfbda883"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a6c92644bc9fdae0fdc0795e0cfbda883">sorted</a> ()</td></tr>
-<tr class="memdesc:a6c92644bc9fdae0fdc0795e0cfbda883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted.  <a href="classCXXIter_1_1IterApi.html#a6c92644bc9fdae0fdc0795e0cfbda883">More...</a><br /></td></tr>
-<tr class="separator:a6c92644bc9fdae0fdc0795e0cfbda883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90fcf438abe534c819b846b6a3fbf8c1"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> ORDER = SortOrder::ASCENDING, bool STABLE = false, std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TSortValueExtractFn&gt; <br />
+<tr class="memitem:af8c752a71a1a7931c711ed6749c62080"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080">sort</a> ()</td></tr>
+<tr class="memdesc:af8c752a71a1a7931c711ed6749c62080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted.  <a href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080">More...</a><br /></td></tr>
+<tr class="separator:af8c752a71a1a7931c711ed6749c62080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf9678cee596627f5c9712a8efb7518"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">SortOrder</a> ORDER = SortOrder::ASCENDING, bool STABLE = false, std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TSortValueExtractFn&gt; <br />
 requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp;&gt;&amp; a) { { a &lt; a }; { a &gt; a }; }</td></tr>
-<tr class="memitem:a90fcf438abe534c819b846b6a3fbf8c1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a90fcf438abe534c819b846b6a3fbf8c1">sortedBy</a> (TSortValueExtractFn sortValueExtractFn)</td></tr>
-<tr class="memdesc:a90fcf438abe534c819b846b6a3fbf8c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted.  <a href="classCXXIter_1_1IterApi.html#a90fcf438abe534c819b846b6a3fbf8c1">More...</a><br /></td></tr>
-<tr class="separator:a90fcf438abe534c819b846b6a3fbf8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf9678cee596627f5c9712a8efb7518"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518">sortBy</a> (TSortValueExtractFn sortValueExtractFn)</td></tr>
+<tr class="memdesc:afcf9678cee596627f5c9712a8efb7518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that takes the items from this iterator, and passes them on sorted.  <a href="classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518">More...</a><br /></td></tr>
+<tr class="separator:afcf9678cee596627f5c9712a8efb7518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;CXXIterIterator TSelf&gt;<br />
@@ -1664,8 +1664,8 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 
 </div>
 </div>
-<a id="a6c92644bc9fdae0fdc0795e0cfbda883" name="a6c92644bc9fdae0fdc0795e0cfbda883"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c92644bc9fdae0fdc0795e0cfbda883">&#9670;&nbsp;</a></span>sorted() <span class="overload">[1/2]</span></h2>
+<a id="af8c752a71a1a7931c711ed6749c62080" name="af8c752a71a1a7931c711ed6749c62080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c752a71a1a7931c711ed6749c62080">&#9670;&nbsp;</a></span>sort() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1679,7 +1679,7 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sorted </td>
+          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sort </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1693,7 +1693,7 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
 </div><div class="memdoc">
 
 <p>Creates a new iterator that takes the items from this iterator, and passes them on sorted. </p>
-<dl class="section note"><dt>Note</dt><dd>This variant of <a class="el" href="classCXXIter_1_1IterApi.html#a6c92644bc9fdae0fdc0795e0cfbda883" title="Creates a new iterator that takes the items from this iterator, and passes them on sorted.">sorted()</a> requires the items to support comparison operators. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This variant of <a class="el" href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080" title="Creates a new iterator that takes the items from this iterator, and passes them on sorted.">sort()</a> requires the items to support comparison operators. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>New iterator that returns the items of this iterator sorted. </dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>Sorter requires to first drain the input iterator, before being able to supply a single element. This leads to additional memory usage. </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1706,12 +1706,12 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
 <p>Usage Example:</p><ul>
 <li>Sorting in ascending order using a custom comparer: <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
 <div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sorted&lt;CXXIter::ASCENDING, <span class="keyword">false</span>&gt;()</div>
+<div class="line">    .sort&lt;CXXIter::ASCENDING, <span class="keyword">false</span>&gt;()</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --></li>
 <li>Sorting in descending order using a custom comparer: <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
 <div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sorted&lt;CXXIter::DESCENDING, <span class="keyword">false</span>&gt;()</div>
+<div class="line">    .sort&lt;CXXIter::DESCENDING, <span class="keyword">false</span>&gt;()</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> </li>
 </ul>
@@ -1720,8 +1720,8 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
 
 </div>
 </div>
-<a id="a25568f12125a97a9579508a5cf5e7bd6" name="a25568f12125a97a9579508a5cf5e7bd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25568f12125a97a9579508a5cf5e7bd6">&#9670;&nbsp;</a></span>sorted() <span class="overload">[2/2]</span></h2>
+<a id="aff8dd89925c1e49327c408467ebdab22" name="aff8dd89925c1e49327c408467ebdab22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8dd89925c1e49327c408467ebdab22">&#9670;&nbsp;</a></span>sort() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1734,7 +1734,7 @@ template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIt
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sorted </td>
+          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sort </td>
           <td>(</td>
           <td class="paramtype">TCompareFn&#160;</td>
           <td class="paramname"><em>compareFn</em></td><td>)</td>
@@ -1766,14 +1766,14 @@ template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIt
 <p>Usage Example:</p><ul>
 <li>Sorting in ascending order using a custom comparer: <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
 <div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sorted&lt;<span class="keyword">false</span>&gt;([](<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; b) {</div>
+<div class="line">    .sort&lt;<span class="keyword">false</span>&gt;([](<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; b) {</div>
 <div class="line">        <span class="keywordflow">return</span> (a &lt; b);</div>
 <div class="line">    })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --></li>
 <li>Sorting in descending order using a custom comparer: <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
 <div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sorted&lt;<span class="keyword">false</span>&gt;([](<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; b) {</div>
+<div class="line">    .sort&lt;<span class="keyword">false</span>&gt;([](<span class="keyword">const</span> <span class="keywordtype">float</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; b) {</div>
 <div class="line">        <span class="keywordflow">return</span> (a &gt; b);</div>
 <div class="line">    })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
@@ -1784,8 +1784,8 @@ template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIt
 
 </div>
 </div>
-<a id="a90fcf438abe534c819b846b6a3fbf8c1" name="a90fcf438abe534c819b846b6a3fbf8c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90fcf438abe534c819b846b6a3fbf8c1">&#9670;&nbsp;</a></span>sortedBy()</h2>
+<a id="afcf9678cee596627f5c9712a8efb7518" name="afcf9678cee596627f5c9712a8efb7518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcf9678cee596627f5c9712a8efb7518">&#9670;&nbsp;</a></span>sortBy()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1799,7 +1799,7 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sortedBy </td>
+          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::sortBy </td>
           <td>(</td>
           <td class="paramtype">TSortValueExtractFn&#160;</td>
           <td class="paramname"><em>sortValueExtractFn</em></td><td>)</td>
@@ -1814,7 +1814,7 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
 </div><div class="memdoc">
 
 <p>Creates a new iterator that takes the items from this iterator, and passes them on sorted. </p>
-<p >In comparison to <a class="el" href="classCXXIter_1_1IterApi.html#a6c92644bc9fdae0fdc0795e0cfbda883" title="Creates a new iterator that takes the items from this iterator, and passes them on sorted.">sorted()</a>, which either uses a custom comparator or the items themselves for the sort operation, this variant takes a <code>sortValueExtractFn</code>, which extracts a value for each item in this iterator, that should be used for sorting comparisons. </p><dl class="section return"><dt>Returns</dt><dd>New iterator that returns the items of this iterator sorted. </dd></dl>
+<p >In comparison to <a class="el" href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080" title="Creates a new iterator that takes the items from this iterator, and passes them on sorted.">sort()</a>, which either uses a custom comparator or the items themselves for the sort operation, this variant takes a <code>sortValueExtractFn</code>, which extracts a value for each item in this iterator, that should be used for sorting comparisons. </p><dl class="section return"><dt>Returns</dt><dd>New iterator that returns the items of this iterator sorted. </dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>Sorter requires to first drain the input iterator, before being able to supply a single element. This leads to additional memory usage. </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1826,12 +1826,12 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
 <p>Usage Example:</p><ul>
 <li>Sorting the items(strings) in ascending order of their length: <div class="fragment"><div class="line">std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;test1&quot;</span>, <span class="stringliteral">&quot;test2&quot;</span>, <span class="stringliteral">&quot;test23&quot;</span>, <span class="stringliteral">&quot;test&quot;</span>, <span class="stringliteral">&quot;tes&quot;</span>};</div>
 <div class="line">std::vector&lt;std::string&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sortedBy&lt;CXXIter::ASCENDING, <span class="keyword">true</span>&gt;([](<span class="keyword">const</span> std::string&amp; item) { <span class="keywordflow">return</span> item.size(); })</div>
+<div class="line">    .sortBy&lt;CXXIter::ASCENDING, <span class="keyword">true</span>&gt;([](<span class="keyword">const</span> std::string&amp; item) { <span class="keywordflow">return</span> item.size(); })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --></li>
 <li>Sorting the items(strings) in descending order of their length: <div class="fragment"><div class="line">std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;test1&quot;</span>, <span class="stringliteral">&quot;test2&quot;</span>, <span class="stringliteral">&quot;test23&quot;</span>, <span class="stringliteral">&quot;test&quot;</span>, <span class="stringliteral">&quot;tes&quot;</span>};</div>
 <div class="line">std::vector&lt;std::string&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
-<div class="line">    .sortedBy&lt;CXXIter::DESCENDING, <span class="keyword">true</span>&gt;([](<span class="keyword">const</span> std::string&amp; item) { <span class="keywordflow">return</span> item.size(); })</div>
+<div class="line">    .sortBy&lt;CXXIter::DESCENDING, <span class="keyword">true</span>&gt;([](<span class="keyword">const</span> std::string&amp; item) { <span class="keywordflow">return</span> item.size(); })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> </li>
 </ul>
