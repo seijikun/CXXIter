@@ -810,7 +810,7 @@ public:
 template<typename TChainInput, typename TFilterMapFn, typename TItem>
 struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	using ChainInputIterator = IteratorTrait<TChainInput>;
-	using InputItemOwned = typename TChainInput::ItemOwned;
+	using InputItem = typename TChainInput::Item;
 	// CXXIter Interface
 	using Self = FilterMap<TChainInput, TFilterMapFn, TItem>;
 	using Item = TItem;
@@ -819,7 +819,7 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 		while(true) {
 			auto item = ChainInputIterator::next(self.input);
 			if(!item.has_value()) { return {}; }
-			std::optional<Item> value(self.filterMapFn(std::forward<InputItemOwned>( item.value() )));
+			std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
 			if(!value) { continue; }
 			return *value;
 		}
@@ -1840,7 +1840,7 @@ public:
 	 * @endcode
 	 */
 	auto copied() {
-		return map([](ItemOwned&& item) -> ItemOwned {
+		return map([](const ItemOwned& item) -> ItemOwned {
 			ItemOwned copy = item;
 			return copy;
 		});

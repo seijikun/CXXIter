@@ -23,7 +23,7 @@ static std::vector<double> makeInput2() {
 }
 
 
-#define FILTERMAP_FN [](std::string&& item) -> std::optional<std::string> { \
+#define FILTERMAP_FN [](std::string item) -> std::optional<std::string> { \
 	int itemValue = std::stoi(item); \
 	if(itemValue % 2 == 0) { \
 		return std::to_string(itemValue * 2 + 1); \
@@ -38,8 +38,8 @@ static std::vector<double> makeInput2() {
 
 #define MAP_FN std::sqrt
 
-static std::vector<std::string> INPUT1 = makeInput1();
-static std::vector<double> INPUT2 = makeInput2();
+static const std::vector<std::string> INPUT1 = makeInput1();
+static const std::vector<double> INPUT2 = makeInput2();
 
 // ################################################################################################
 // BENCHMARKS
@@ -49,7 +49,7 @@ static void BM_NativeUsingLambdas(benchmark::State& state) {
 		{ // filterMap
 			std::vector<std::string> output;
 			for(size_t i = 0; i < INPUT1.size(); ++i) {
-				auto res = FILTERMAP_FN(std::forward<std::string>(INPUT1[i]));
+				auto res = FILTERMAP_FN( INPUT1[i] );
 				if(res) {
 					output.push_back(res.value());
 				}
@@ -112,6 +112,9 @@ static void BM_CXXIter(benchmark::State& state) {
 			std::vector<float> output = CXXIter::from(INPUT2).cast<float>().collect<std::vector>();
 		}
 		{ // groupBy
+			// quite a lot slower than native of course, because groupBy() internally creates
+			// a unordered_map, that is then pushed into the iterator, just to put the elements
+			// in a new unordered_map in collect().
 			std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(INPUT1)
 					.groupBy([](const std::string& item) { return item.size(); })
 					.collect<std::unordered_map>();
