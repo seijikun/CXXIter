@@ -365,7 +365,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = <span class="keyword">typename</span> Src::Item;</div>
 <div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>        <span class="keywordflow">return</span> std::move(Src::next(self.container, self.iter));</div>
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    }</div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825">sizeHint</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) { <span class="keywordflow">return</span> Src::sizeHint(self.container); }</div>
@@ -397,7 +397,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = <span class="keyword">typename</span> Src::Item&amp;;</div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span> </div>
 <div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>        <span class="keywordflow">return</span> Src::next(self.container, self.iter);</div>
 <div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    }</div>
 <div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825">sizeHint</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) { <span class="keywordflow">return</span> Src::sizeHint(self.container); }</div>
@@ -429,7 +429,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = <span class="keyword">const</span> <span class="keyword">typename</span> Src::Item&amp;;</div>
 <div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span> </div>
 <div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
-<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>        <span class="keywordflow">if</span>(!Src::hasNext(self.container, self.iter)) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>        <span class="keywordflow">return</span> Src::next(self.container, self.iter);</div>
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>    }</div>
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span>    <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825">sizeHint</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) { <span class="keywordflow">return</span> Src::sizeHint(self.container); }</div>
@@ -457,7 +457,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span> </div>
 <div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>        <span class="keyword">auto</span> item = self.generatorFn();</div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        <span class="keywordflow">return</span> item.value();</div>
 <div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    }</div>
 <div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825">sizeHint</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp;) { <span class="keywordflow">return</span> SizeHint(); }</div>
@@ -524,7 +524,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = TValue;</div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>        <span class="keywordflow">if</span>(self.current &gt; self.to) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>        <span class="keywordflow">if</span>(self.current &gt; self.to) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>        TValue current = self.current;</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>        self.current += self.step;</div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>        <span class="keywordflow">return</span> current;</div>
@@ -593,7 +593,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>            <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>            <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>            <span class="keywordflow">if</span>(self.filterFn(item.value())) { <span class="keywordflow">return</span> item; }</div>
 <div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>        }</div>
 <div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    }</div>
@@ -630,7 +630,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span> </div>
 <div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>        <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>        <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>        <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>        self.modifierFn(item.value());</div>
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>        <span class="keywordflow">return</span> item;</div>
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    }</div>
@@ -697,7 +697,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>            <span class="keywordflow">if</span>(!self.current) { <span class="comment">// pull new container from the outer iterator</span></div>
 <div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>                <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; } <span class="comment">// end of iteration</span></div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; } <span class="comment">// end of iteration</span></div>
 <div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>                self.current = SrcMov(std::move(</div>
 <div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>                    self.mapFn(std::forward&lt;InputItem&gt;( item.value() ))</div>
 <div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>                ));</div>
@@ -705,9 +705,9 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span> </div>
 <div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>            <span class="comment">// if the outer iterator yielded a container, take from it until we reach the end</span></div>
 <div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>            <span class="keyword">auto</span> item = NestedChainIterator::next(*self.current);</div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>            <span class="keywordflow">if</span>(item.has_value()) { <span class="comment">// inner yielded a usable item</span></div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>            <span class="keywordflow">if</span>(item.has_value()) [[likely]] { <span class="comment">// inner yielded a usable item</span></div>
 <div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>                <span class="keywordflow">return</span> item.value();</div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>            } <span class="keywordflow">else</span> [[unlikely]] {</div>
 <div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>                self.current.reset(); <span class="comment">// inner container ended, unset current cache</span></div>
 <div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>            }</div>
 <div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>        }</div>
@@ -741,7 +741,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>            <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>            <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>            std::optional&lt;Item&gt; value(self.filterMapFn(std::forward&lt;InputItem&gt;( item.value() )));</div>
 <div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>            <span class="keywordflow">if</span>(!value) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>            <span class="keywordflow">return</span> *value;</div>
@@ -780,7 +780,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span> </div>
 <div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>        <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>        <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>        <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>        <span class="comment">// end iterator directly after takePredicate returned false the first time</span></div>
 <div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>        <span class="keywordflow">if</span>(self.takePredicate(item.value()) == <span class="keyword">false</span>) { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>        <span class="keywordflow">return</span> item;</div>
@@ -823,7 +823,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
 <div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>            <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>            <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>            <span class="keywordflow">if</span>(self.skipEnded) { <span class="keywordflow">return</span> item; }</div>
 <div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>            <span class="keywordflow">if</span>(!self.skipPredicate(item.value())) {</div>
 <div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>                self.skipEnded = <span class="keyword">true</span>;</div>
@@ -868,11 +868,11 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>        <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> item;</div>
 <div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>        <span class="keywordtype">bool</span> hasNext = constexpr_for&lt;0, INPUT_CNT&gt;([&amp;](<span class="keyword">auto</span> idx) {</div>
 <div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>            <span class="keyword">auto</span> input = std::tuple_element_t&lt;idx, ChainInputIterators&gt;::next( std::get&lt;idx&gt;(self.inputs) );</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>            <span class="keywordflow">if</span>(!input.has_value()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>            <span class="keywordflow">if</span>(!input.has_value()) [[unlikely]] { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 <div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>            std::get&lt;idx&gt;(item) = input.value();</div>
 <div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>        });</div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>        <span class="keywordflow">if</span>(!hasNext) { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>        <span class="keywordflow">if</span>(!hasNext) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>        <span class="keywordflow">return</span> item;</div>
 <div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>    }</div>
 <div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>    <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825">sizeHint</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
@@ -917,7 +917,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>            <span class="keywordflow">if</span>(self.inputIdx == 0) {</div>
 <div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>                <span class="keyword">auto</span> item = ChainInputIterator1::next(self.input1);</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>                <span class="keywordflow">if</span>(!item.has_value()) {</div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] {</div>
 <div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                    self.inputIdx = 1;</div>
 <div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                }</div>
@@ -961,7 +961,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = <span class="keyword">typename</span> TChainInput1::Item;</div>
 <div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span> </div>
 <div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>    <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; <a class="code hl_function" href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c">next</a>(<a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a>&amp; self) {</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>        <span class="keywordflow">if</span>(self.batchElementIdx == Self::BATCH_SIZE) { <span class="comment">// returned all elements from the batch -&gt; retrieve new batch</span></div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>        <span class="keywordflow">if</span>(self.batchElementIdx == Self::BATCH_SIZE) [[unlikely]] { <span class="comment">// returned all elements from the batch -&gt; retrieve new batch</span></div>
 <div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>            constexpr_for&lt;0, INPUT_CNT&gt;([&amp;](<span class="keyword">auto</span> idx) {</div>
 <div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>                self.currentBatch[idx] = std::tuple_element_t&lt;idx, ChainInputIterators&gt;::next( std::get&lt;idx&gt;(self.inputs) );</div>
 <div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -1028,7 +1028,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>            std::unordered_map&lt;TGroupIdent, std::vector&lt;OwnedInputItem&gt;&gt; groupCache;</div>
 <div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>                <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">break</span>; } <span class="comment">// group cache building complete</span></div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">break</span>; } <span class="comment">// group cache building complete</span></div>
 <div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>                TGroupIdent itemGroup = self.groupIdentFn(item.value());</div>
 <div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>                <span class="keywordflow">if</span>(groupCache.contains(itemGroup)) {</div>
 <div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>                    groupCache[itemGroup].push_back(item.value());</div>
@@ -1083,7 +1083,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>            std::vector&lt;OwnedInputItem&gt; sortCache;</div>
 <div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>                <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">break</span>; }</div>
 <div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>                sortCache.push_back(std::forward&lt;InputItem&gt;( item.value() ));</div>
 <div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>            }</div>
 <div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>            <span class="comment">// sort the cache</span></div>
@@ -1189,7 +1189,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01327" name="l01327"></a><span class="lineno"><a class="line" href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066"> 1327</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066">forEach</a>(TUseFn useFn) {</div>
 <div class="line"><a id="l01328" name="l01328"></a><span class="lineno"> 1328</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l01329" name="l01329"></a><span class="lineno"> 1329</span>            <span class="keyword">auto</span> item = Iterator::next(*self());</div>
-<div class="line"><a id="l01330" name="l01330"></a><span class="lineno"> 1330</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a id="l01330" name="l01330"></a><span class="lineno"> 1330</span>            <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a id="l01331" name="l01331"></a><span class="lineno"> 1331</span>            useFn(std::forward&lt;Item&gt;( item.value() ));</div>
 <div class="line"><a id="l01332" name="l01332"></a><span class="lineno"> 1332</span>        }</div>
 <div class="line"><a id="l01333" name="l01333"></a><span class="lineno"> 1333</span>    }</div>
@@ -1220,8 +1220,8 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01442" name="l01442"></a><span class="lineno"> 1442</span>        <span class="keywordtype">size_t</span> idx = 0;</div>
 <div class="line"><a id="l01443" name="l01443"></a><span class="lineno"> 1443</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l01444" name="l01444"></a><span class="lineno"> 1444</span>            <span class="keyword">auto</span> item = Iterator::next(*self());</div>
-<div class="line"><a id="l01445" name="l01445"></a><span class="lineno"> 1445</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
-<div class="line"><a id="l01446" name="l01446"></a><span class="lineno"> 1446</span>            <span class="keywordflow">if</span>(findFn(item.value())) { <span class="keywordflow">return</span> idx; }</div>
+<div class="line"><a id="l01445" name="l01445"></a><span class="lineno"> 1445</span>            <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l01446" name="l01446"></a><span class="lineno"> 1446</span>            <span class="keywordflow">if</span>(findFn(item.value())) [[unlikely]] { <span class="keywordflow">return</span> idx; }</div>
 <div class="line"><a id="l01447" name="l01447"></a><span class="lineno"> 1447</span>            idx += 1;</div>
 <div class="line"><a id="l01448" name="l01448"></a><span class="lineno"> 1448</span>        }</div>
 <div class="line"><a id="l01449" name="l01449"></a><span class="lineno"> 1449</span>    }</div>
@@ -1244,8 +1244,8 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01574" name="l01574"></a><span class="lineno"><a class="line" href="classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437"> 1574</a></span>    std::string <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437">stringJoin</a>(<span class="keyword">const</span> std::string&amp; separator) <span class="keyword">requires</span> std::is_same_v&lt;ItemOwned, std::string&gt; {</div>
 <div class="line"><a id="l01575" name="l01575"></a><span class="lineno"> 1575</span>        std::string result;</div>
 <div class="line"><a id="l01576" name="l01576"></a><span class="lineno"> 1576</span>        forEach([&amp;result, &amp;separator](<span class="keyword">const</span> std::string&amp; item) {</div>
-<div class="line"><a id="l01577" name="l01577"></a><span class="lineno"> 1577</span>            <span class="keywordflow">if</span>(result.size() &gt; 0) { result += separator + item; }</div>
-<div class="line"><a id="l01578" name="l01578"></a><span class="lineno"> 1578</span>            <span class="keywordflow">else</span> { result = item; }</div>
+<div class="line"><a id="l01577" name="l01577"></a><span class="lineno"> 1577</span>            <span class="keywordflow">if</span>(result.size() &gt; 0) [[likely]] { result += separator + item; }</div>
+<div class="line"><a id="l01578" name="l01578"></a><span class="lineno"> 1578</span>            <span class="keywordflow">else</span> [[unlikely]] { result = item; }</div>
 <div class="line"><a id="l01579" name="l01579"></a><span class="lineno"> 1579</span>        });</div>
 <div class="line"><a id="l01580" name="l01580"></a><span class="lineno"> 1580</span>        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l01581" name="l01581"></a><span class="lineno"> 1581</span>    }</div>
