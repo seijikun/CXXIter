@@ -733,7 +733,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span><span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, <span class="keyword">typename</span> TFilterMapFn, <span class="keyword">typename</span> TItem&gt;</div>
 <div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span><span class="keyword">struct </span>IteratorTrait&lt;FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt; {</div>
 <div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>    <span class="keyword">using</span> ChainInputIterator = IteratorTrait&lt;TChainInput&gt;;</div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>    <span class="keyword">using</span> InputItemOwned = <span class="keyword">typename</span> TChainInput::ItemOwned;</div>
+<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>    <span class="keyword">using</span> InputItem = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>    <span class="comment">// CXXIter Interface</span></div>
 <div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c">Self</a> = FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;;</div>
 <div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>    <span class="keyword">using</span> <a class="code hl_typedef" href="structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93">Item</a> = TItem;</div>
@@ -742,7 +742,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>            <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
 <div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>            <span class="keywordflow">if</span>(!item.has_value()) { <span class="keywordflow">return</span> {}; }</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>            std::optional&lt;Item&gt; value(self.filterMapFn(std::forward&lt;InputItemOwned&gt;( item.value() )));</div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>            std::optional&lt;Item&gt; value(self.filterMapFn(std::forward&lt;InputItem&gt;( item.value() )));</div>
 <div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>            <span class="keywordflow">if</span>(!value) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>            <span class="keywordflow">return</span> *value;</div>
 <div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>        }</div>
@@ -1344,7 +1344,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span>    }</div>
 <div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span> </div>
 <div class="line"><a id="l01842" name="l01842"></a><span class="lineno"><a class="line" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f"> 1842</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">copied</a>() {</div>
-<div class="line"><a id="l01843" name="l01843"></a><span class="lineno"> 1843</span>        <span class="keywordflow">return</span> map([](<a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp;&amp; item) -&gt; <a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> {</div>
+<div class="line"><a id="l01843" name="l01843"></a><span class="lineno"> 1843</span>        <span class="keywordflow">return</span> map([](<span class="keyword">const</span> <a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp; item) -&gt; <a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> {</div>
 <div class="line"><a id="l01844" name="l01844"></a><span class="lineno"> 1844</span>            <a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> copy = item;</div>
 <div class="line"><a id="l01845" name="l01845"></a><span class="lineno"> 1845</span>            <span class="keywordflow">return</span> copy;</div>
 <div class="line"><a id="l01846" name="l01846"></a><span class="lineno"> 1846</span>        });</div>
