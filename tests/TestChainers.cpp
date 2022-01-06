@@ -638,6 +638,82 @@ TEST(CXXIter, alternate) {
 	}
 }
 
+TEST(CXXIter, intersperse) {
+	{ // sizeHint
+		{
+			std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+			SizeHint sizeHint = CXXIter::from(input).copied()
+					.intersperse(CXXIter::repeat(0))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input.size() * 2 - 1);
+			ASSERT_EQ(sizeHint.upperBound.value(), input.size() * 2 - 1);
+		}
+		{
+			std::vector<std::string> input = { "Apple", "Orange", "Cake" };
+			SizeHint sizeHint = CXXIter::from(input).copied()
+					.intersperse(CXXIter::repeat<std::string>(", "))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input.size() * 2 - 1);
+			ASSERT_EQ(sizeHint.upperBound.value(), input.size() * 2 - 1);
+		}
+		{ // separator iterator ends too early
+			std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+			SizeHint sizeHint = CXXIter::from(input).copied()
+					.intersperse(CXXIter::range(100, 102, 1))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 4 + 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), 4 + 3);
+		}
+		{ // separator iterator empty
+			std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+			SizeHint sizeHint = CXXIter::from(input).copied()
+					.intersperse(CXXIter::empty<int>())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 1);
+			ASSERT_EQ(sizeHint.upperBound.value(), 1);
+		}
+		{ // input empty
+			SizeHint sizeHint = CXXIter::empty<int>()
+					.intersperse(CXXIter::repeat<int>(0))
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), 0);
+		}
+	}
+	{
+		std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+		std::vector<int> output = CXXIter::from(input).copied()
+				.intersperse(CXXIter::repeat(0))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size() * 2 - 1);
+		ASSERT_THAT(output, ElementsAre(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6));
+	}
+	{
+		std::vector<std::string> input = { "Apple", "Orange", "Cake" };
+		std::vector<std::string> output = CXXIter::from(input).copied()
+				.intersperse(CXXIter::repeat<std::string>(", "))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size() * 2 - 1);
+		ASSERT_THAT(output, ElementsAre("Apple", ", ", "Orange", ", ", "Cake"));
+	}
+	{ // separator iterator ends too early
+		std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+		std::vector<int> output = CXXIter::from(input).copied()
+				.intersperse(CXXIter::range(100, 102, 1))
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 7);
+		ASSERT_THAT(output, ElementsAre(1, 100, 2, 101, 3, 102, 4));
+	}
+	{ // separator iterator empty
+		std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+		std::vector<int> output = CXXIter::from(input).copied()
+				.intersperse(CXXIter::empty<int>())
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 1);
+		ASSERT_THAT(output, ElementsAre(1));
+	}
+}
+
 TEST(CXXIter, groupBy) {
 	struct CakeMeasurement {
 		std::string cakeType;

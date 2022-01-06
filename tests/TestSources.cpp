@@ -232,6 +232,11 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 	}
 }
 
+TEST(CXXIter, empty) {
+	CXXIter::IterValue<std::string> output = CXXIter::empty<std::string>().next();
+	ASSERT_FALSE(output.has_value());
+}
+
 TEST(CXXIter, fromFn) {
 	size_t generatorState = 0;
 	std::function<std::optional<size_t>()> generatorFn = [generatorState]() mutable {

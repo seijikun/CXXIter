@@ -497,6 +497,27 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 
 
 // ################################################################################################
+// GENERATOR EMPTY
+// ################################################################################################
+/** @private */
+template<typename TItem>
+class Empty : public IterApi<Empty<TItem>> {
+	friend struct IteratorTrait<Empty<TItem>>;
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TItem>
+struct IteratorTrait<Empty<TItem>> {
+	// CXXIter Interface
+	using Self = Empty<TItem>;
+	using Item = TItem;
+
+	static inline IterValue<Item> next(Self&) { return {}; }
+	static inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
+};
+
+
+// ################################################################################################
 // GENERATOR FUNCTION
 // ################################################################################################
 /** @private */
@@ -1081,6 +1102,67 @@ struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 	}
 };
 
+
+
+// ################################################################################################
+// INTERSPERSER
+// ################################################################################################
+/** @private */
+template<typename TChainInput, typename TSeparatorInput>
+class Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
+	friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+	enum class IntersperserState { Uninitialized, Item, Separator };
+private:
+	TChainInput input;
+	TSeparatorInput separatorInput;
+	IterValue<typename TChainInput::Item> nextItem;
+	IntersperserState intersperserState = IntersperserState::Uninitialized;
+public:
+	Intersperser(TChainInput&& input, TSeparatorInput&& separatorInput) : input(std::move(input)), separatorInput(std::move(separatorInput)) {}
+};
+// ------------------------------------------------------------------------------------------------
+/** @private */
+template<typename TChainInput, typename TSeparatorInput>
+struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
+	using ChainInputIterator = IteratorTrait<TChainInput>;
+	using SeparatorInputIterator = IteratorTrait<TSeparatorInput>;
+	// CXXIter Interface
+	using Self = Intersperser<TChainInput, TSeparatorInput>;
+	using Item = typename ChainInputIterator::Item;
+
+	static inline IterValue<Item> next(Self& self) {
+		if(self.intersperserState == Self::IntersperserState::Uninitialized) [[unlikely]] {
+			self.nextItem = ChainInputIterator::next(self.input);
+			self.intersperserState = Self::IntersperserState::Item;
+		}
+		if(!self.nextItem.has_value()) [[unlikely]] { return {}; }
+
+		if(self.intersperserState == Self::IntersperserState::Item) {
+			self.intersperserState = Self::IntersperserState::Separator;
+			auto item = std::move(self.nextItem);
+			self.nextItem = ChainInputIterator::next(self.input);
+			return item;
+		} else {
+			self.intersperserState = Self::IntersperserState::Item;
+			return SeparatorInputIterator::next(self.separatorInput);
+		}
+	}
+	static inline SizeHint sizeHint(const Self& self) {
+		SizeHint input = ChainInputIterator::sizeHint(self.input);
+		SizeHint separator = SeparatorInputIterator::sizeHint(self.separatorInput);
+
+		SizeHint result = input;
+		if(result.lowerBound > 0) {
+			size_t sepCnt = std::min((result.lowerBound - 1), separator.lowerBound);
+			result.lowerBound = sepCnt * 2 + 1;
+		}
+		if(result.upperBound.value_or(0) > 0) {
+			size_t sepCnt = std::min((result.upperBound.value() - 1), separator.upperBound.value_or(SizeHint::INFINITE));
+			result.upperBound = sepCnt * 2 + 1;
+		}
+		return result;
+	}
+};
 
 
 // ################################################################################################
@@ -2249,6 +2331,50 @@ public:
 	}
 
 	/**
+	 * @brief Draw elements from the given @p otherIterator and use the returned elements as separators between
+	 * the elements of this iterator.
+	 * @details This draws one element "into the future" of this iterator, in order to determine if another
+	 * separator element from the given @p otherIterator is required.
+	 * The resulting iterator ends if either this iterator or the @p otherIterator has no more elements to pull.
+	 * The resulting iterator will always start and end on an element from this iterator.
+	 * @param otherIterator Iterator whose elements will be inserted as separator elements between the elements
+	 * of this iterator.
+	 * @return New iterator that uses the given @p otherIterator's elements as separators between this iterator's
+	 * elements.
+	 *
+	 * Usage Example:
+	 * - Using infinite separator iterator (int)
+	 * @code
+	 * 	std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+	 * 	std::vector<int> output = CXXIter::from(input).copied()
+	 * 		.intersperse(CXXIter::repeat(0))
+	 * 		.collect<std::vector>();
+	 * 	// output == {1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6}
+	 * @endcode
+	 * - Using infinite separator iterator (string)
+	 * @code
+	 * 	std::vector<std::string> input = { "Apple", "Orange", "Cake" };
+	 * 	std::vector<std::string> output = CXXIter::from(input).copied()
+	 * 		.intersperse(CXXIter::repeat<std::string>(", "))
+	 * 		.collect<std::vector>();
+	 * 	// output == {"Apple", ", ", "Orange", ", ", "Cake"}
+	 * @endcode
+	 * - Using finite separator iterator that ends earlier than source iterator
+	 * @code
+	 * 	std::vector<int> input = { 1, 2, 3, 4, 5, 6 };
+	 * 	std::vector<int> output = CXXIter::from(input).copied()
+	 * 		.intersperse(CXXIter::range(100, 102, 1))
+	 * 		.collect<std::vector>();
+	 * 	// output == {1, 100, 2, 101, 3, 102, 4}
+	 * @endcode
+	 */
+	template<typename TOtherIterator>
+	requires (std::is_same_v<Item, typename TOtherIterator::Item>)
+	Intersperser<TSelf, TOtherIterator> intersperse(TOtherIterator&& otherIterator) {
+		return Intersperser<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
+	}
+
+	/**
 	 * @brief Groups the elements of this iterator according to the values returned by the given @p groupidentFn.
 	 * @param groupIdentFn Function called for each element from this iterator, to determine the grouping value,
 	 * that is then used to identify the group an item belongs to.
@@ -2438,6 +2564,20 @@ SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
 }
 
 /**
+ * @brief Constructs an empty iterator yielding no items.
+ * @return An empty iterator that yields no items.
+ *
+ * Usage Example:
+ * @code
+ * 	CXXIter::IterValue<std::string> output = CXXIter::empty<std::string>()
+ * 		.next();
+ * 	// output == None
+ * @endcode
+ */
+template<typename TItem>
+Empty<TItem> empty() { return Empty<TItem>(); }
+
+/**
  * @brief Generator source that takes a @p generatorFn, each invocation of which produces one
  * element for the resulting iterator.
  * @param generatorFn Generator that returns an optional value. If the optional is None, the resulting
@@ -2453,8 +2593,8 @@ SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
  * 		return (generatorState++);
  * 	};
  * 	std::vector<size_t> output = CXXIter::fromFn(generatorFn)
- * 			.take(100)
- * 			.collect<std::vector>();
+ * 		.take(100)
+ * 		.collect<std::vector>();
  *	// output == {0, 1, 2, 3, ..., 99}
  * @endcode
  */
@@ -2476,8 +2616,8 @@ auto fromFn(TGeneratorFn generatorFn) {
  * @code
  * 	std::vector<int> item = {1, 3, 3, 7};
  * 	std::vector<int> output = CXXIter::repeat(item, 3)
- * 			.flatMap()
- * 			.collect<std::vector>();
+ * 		.flatMap()
+ * 		.collect<std::vector>();
  *	// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
  * @endcode
  */
