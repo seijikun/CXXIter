@@ -2116,6 +2116,39 @@ public:
 	}
 
 	/**
+	 * @brief Creates an iterator with the requested @p stepWidth from this iterator.
+	 * @details A step width of @c 1 is a NO-OP, a step width of @c 2 means that every second
+	 * element is skipped. The first element is always returned, irrespecting of the requested @p stepWidth.
+	 * @param step Step width with which elements from this iterator are yielded.
+	 * @return New iterator with the requested @p stepWidth
+	 *
+	 * Usage Example:
+	 * - Step width of 1 (No-Op):
+	 * @code
+	 * 	std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	 * 	std::vector<int> output = CXXIter::from(input)
+	 * 			.stepBy(1)
+	 * 			.collect<std::vector>();
+	 *	// output == {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	 * @endcode
+	 * - Step width of 2:
+	 * @code
+	 * 	std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	 * 	std::vector<int> output = CXXIter::from(input)
+	 * 			.stepBy(2)
+	 * 			.collect<std::vector>();
+	 *	// output == {0, 2, 4, 6, 8, 10}
+	 * @endcode
+	 */
+	auto stepBy(size_t stepWidth) {
+		//TODO: better SizeHints?
+		size_t idx = 0;
+		return filter([idx, stepWidth](const ItemOwned&) mutable {
+			return (idx++ % stepWidth) == 0;
+		});
+	}
+
+	/**
 	 * @brief "Zips up" two CXXIter iterators into a single iterator over pairs from both iterators.
 	 * @details Constructs new iterator that iterates over @c std::pair<> instances where values from this
 	 * iterator are put in the first value, and values from the given @p otherIterator become the second values.

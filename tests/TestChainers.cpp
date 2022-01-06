@@ -315,6 +315,33 @@ TEST(CXXIter, flatMap) {
 	}
 }
 
+TEST(CXXIter, stepBy) {
+	{
+		std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		std::vector<int> output = CXXIter::from(input)
+				.stepBy(1)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 11);
+		ASSERT_THAT(output, ElementsAre(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+	}
+	{
+		std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		std::vector<int> output = CXXIter::from(input)
+				.stepBy(2)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 6);
+		ASSERT_THAT(output, ElementsAre(0, 2, 4, 6, 8, 10));
+	}
+	{
+		std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		std::vector<int> output = CXXIter::from(input)
+				.stepBy(3)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(0, 3, 6, 9));
+	}
+}
+
 TEST(CXXIter, zip) {
 	{ // sizeHint
 		{
