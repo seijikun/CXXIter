@@ -62,6 +62,25 @@ TEST(CXXIter, copied) {
 	}
 }
 
+TEST(CXXIter, indexed) {
+	{
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::pair<size_t, std::string&>> output = CXXIter::from(input)
+				.indexed()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre(Pair(0, "1337"), Pair(1, "42"), Pair(2, "64")));
+	}
+	{
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::pair<size_t, std::string>> output = CXXIter::from(std::move(input))
+				.indexed()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre(Pair(0, "1337"), Pair(1, "42"), Pair(2, "64")));
+	}
+}
+
 TEST(CXXIter, filter) {
 	{ // sizeHint
 		std::vector<float> input = {1.35, 56.123};

@@ -735,7 +735,7 @@ struct IteratorTrait<Map<TChainInput, TMapFn, TItem>> {
 
 	static inline IterValue<Item> next(Self& self) {
 		auto item = ChainInputIterator::next(self.input);
-		return item.template map<Item>(self.mapFn);
+		return item.template map<Item, TMapFn&>(self.mapFn);
 	}
 	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
@@ -1840,6 +1840,28 @@ public:
 		return map([](const ItemOwned& item) -> ItemOwned {
 			ItemOwned copy = item;
 			return copy;
+		});
+	}
+
+	/**
+	 * @brief Constructs a new iterator that tags each element of this iterator with the corresponding index,
+	 * stored in a @c std::pair.
+	 * @return A new iterator whose elements are @c std::pair with an element index in the first, and the
+	 * original iterator's corresponding element in the second slot.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::pair<size_t, std::string&>> output = CXXIter::from(input)
+	 * 		.indexed()
+	 * 		.collect<std::vector>();
+	 *	// output == {{0, "1337"}, {1, "42"}, {2, "64"}}
+	 * @endcode
+	 */
+	auto indexed() {
+		size_t idx = 0;
+		return map([idx](ItemOwned&& item) mutable -> std::pair<size_t, Item> {
+			return std::pair<size_t, Item>(idx++, std::forward<Item>(item));
 		});
 	}
 
