@@ -6,5 +6,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="CXXIter::IteratorTrait\< T \>",height=0.2,width=0.4,color="black",URL="$structCXXIter_1_1IteratorTrait.html",tooltip="Trait, that is used for the chaining and the operation of iterator pipelines."];
+  Node0 [label="CXXIter::IterApi\< TSelf \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip="Public Iterator API surface."];
 }

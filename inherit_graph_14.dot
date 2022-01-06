@@ -6,7 +6,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="CXXIter::IterApi\< SrcCRef\l\< TContainer \> \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip=" "];
-  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="CXXIter::SrcCRef\< TContainer \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1SrcCRef.html",tooltip="CXXIter iterator source that immutably borrows the input item source, and passes immutable references..."];
+  Node0 [label="CXXIter::IterApi\< SkipWhile\l\< TChainInput, TSkipPredicate \> \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip=" "];
 }

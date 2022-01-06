@@ -6,5 +6,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="CXXIter::SourceTrait\l\< TContainer \>",height=0.2,width=0.4,color="black",URL="$structCXXIter_1_1SourceTrait.html",tooltip="SourceTrait, that is used by CXXIter's standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C..."];
+  Node0 [label="CXXIter::IterValue\l\< TValue \>",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterValue_3_01TValue_01_4.html",tooltip="Container that is used to pass elements throught CXXIter iterator pipelines."];
 }

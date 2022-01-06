@@ -14,6 +14,7 @@ var namespaceCXXIter =
       [ "ASCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],
       [ "DESCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53", null ]
     ] ],
+    [ "empty", "namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13", null ],
     [ "from", "namespaceCXXIter.html#a834f4bb3243dd87d589fb26b10ffd565", null ],
     [ "from", "namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310", null ],
     [ "from", "namespaceCXXIter.html#aec7a043f6abb7a80f95c4f067d0c1b65", null ],

@@ -7,5 +7,5 @@ digraph "CXXIter::SrcRef&lt; TContainer &gt;"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="{CXXIter::SrcRef\< TContainer \>\n||+ SrcRef()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ..."];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
-  Node2 [label="{CXXIter::IterApi\< SrcRef\l\< TContainer \> \>\n||+ ~IterApi()\l+ sizeHint()\l+ next()\l+ forEach()\l+ collect()\l+ fold()\l+ findIdx()\l+ findIdx()\l+ find()\l+ count()\land 31 more...\l}",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip=" "];
+  Node2 [label="{CXXIter::IterApi\< SrcRef\l\< TContainer \> \>\n||+ ~IterApi()\l+ sizeHint()\l+ next()\l+ forEach()\l+ collect()\l+ fold()\l+ findIdx()\l+ findIdx()\l+ find()\l+ count()\land 32 more...\l}",height=0.2,width=0.4,color="black",URL="$classCXXIter_1_1IterApi.html",tooltip=" "];
 }
