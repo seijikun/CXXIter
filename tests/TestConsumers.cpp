@@ -170,6 +170,25 @@ TEST(CXXIter, last) {
 	}
 }
 
+TEST(CXXIter, nth) {
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<int> output = CXXIter::from(input).nth(1).toStdOptional();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), 1337);
+	}
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<int> output = CXXIter::from(input).nth(10).toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+	{
+		std::vector<int> input = {};
+		std::optional<int> output = CXXIter::from(input).nth(0).toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, min) {
 	{
 		std::vector<int> input = {42, 1337, 52};

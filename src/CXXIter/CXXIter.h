@@ -1791,11 +1791,33 @@ public:
 	 *	// output == None
 	 * @endcode
 	 */
-	template<typename _unused = ItemOwned>
 	IterValue<Item> last() {
 		IterValue<Item> tmp;
 		forEach([&tmp](Item&& item) { tmp = item; });
 		return tmp;
+	}
+
+	/**
+	 * @brief Return the @p{n}-th element from this iterator (if available).
+	 * @param n Index of the element to return from this iterator.
+	 * @return The @p{n}-th element from this iterator.
+	 *
+	 * Usage Example:
+	 * - When the n-th element exists:
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	std::optional<int> output = CXXIter::from(input).nth(1).toStdOptional();
+	 *	// output == Some(1337)
+	 * @endcode
+	 * - When the n-th element does not exist:
+	 * @code
+	 * 	std::vector<int> input = {42, 1337, 52};
+	 * 	std::optional<int> output = CXXIter::from(input).nth(10).toStdOptional();
+	 *	// output == None
+	 * @endcode
+	 */
+	IterValue<Item> nth(size_t n) {
+		return skip(n).next();
 	}
 
 
