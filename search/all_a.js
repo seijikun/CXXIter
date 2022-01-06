@@ -13,6 +13,7 @@ var searchData=
   ['srccref_10',['SrcCRef',['../classCXXIter_1_1SrcCRef.html',1,'CXXIter']]],
   ['srcmov_11',['SrcMov',['../classCXXIter_1_1SrcMov.html',1,'CXXIter']]],
   ['srcref_12',['SrcRef',['../classCXXIter_1_1SrcRef.html',1,'CXXIter']]],
-  ['stringjoin_13',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
-  ['sum_14',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
+  ['stepby_13',['stepBy',['../classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817',1,'CXXIter::IterApi']]],
+  ['stringjoin_14',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
+  ['sum_15',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
 ];

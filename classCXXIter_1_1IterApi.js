@@ -36,6 +36,7 @@ var classCXXIter_1_1IterApi =
     [ "sort", "classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080", null ],
     [ "sort", "classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22", null ],
     [ "sortBy", "classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518", null ],
+    [ "stepBy", "classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817", null ],
     [ "stringJoin", "classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437", null ],
     [ "sum", "classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb", null ],
     [ "take", "classCXXIter_1_1IterApi.html#a36ee6ce2e84839b2e353bb83b07a64c2", null ],

@@ -234,6 +234,9 @@ requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a clas
 <tr class="memitem:ab16a10f60f2eddc85f29974d04672ba4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4">takeWhile</a> (TTakePredicate takePredicate)</td></tr>
 <tr class="memdesc:ab16a10f60f2eddc85f29974d04672ba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that yields the first elements of this iterator, for which the given <code>takePredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4">More...</a><br /></td></tr>
 <tr class="separator:ab16a10f60f2eddc85f29974d04672ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4cf427f53b7c5916727fe253589b817"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817">stepBy</a> (size_t stepWidth)</td></tr>
+<tr class="memdesc:aa4cf427f53b7c5916727fe253589b817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator with the requested <code>stepWidth</code> from this iterator.  <a href="classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817">More...</a><br /></td></tr>
+<tr class="separator:aa4cf427f53b7c5916727fe253589b817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2711ded9c0ed244f3a0c364eb4b252d1"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
 requires (!std::is_reference_v&lt;typename <a class="el" href="structCXXIter_1_1IteratorTrait.html">IteratorTrait</a>&lt;TOtherIterator&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt; &amp;&amp; !IS_REFERENCE)</td></tr>
 <tr class="memitem:a2711ded9c0ed244f3a0c364eb4b252d1"><td class="memTemplItemLeft" align="right" valign="top">Zipper&lt; TSelf, std::pair, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
@@ -414,9 +417,9 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are
 <div class="line">       .alternate(<a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input2), <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input3))</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 2, 3, 4, 5, 6, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_abf8a6e7833d1a5ee280619f29eeee310"><div class="ttname"><a href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02377">CXXIter.h:2377</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_abf8a6e7833d1a5ee280619f29eeee310"><div class="ttname"><a href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02410">CXXIter.h:2410</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02214">2214</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02247">2247</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -510,7 +513,7 @@ requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f
 <div class="line"><span class="comment">// output == {&quot;1337&quot;, &quot;42&quot;, &quot;31337&quot;, &quot;64&quot;}</span></div>
 <div class="ttc" id="aclassCXXIter_1_1IterApi_html_a116afb3640cb245742403c86fded359f"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">CXXIter::IterApi::copied</a></div><div class="ttdeci">auto copied()</div><div class="ttdoc">Constructs a new iterator that copies the elements of this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01861">CXXIter.h:1861</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02188">2188</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02221">2221</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1127,7 +1130,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 <div class="line">   .groupBy([](<span class="keyword">const</span> CakeMeasurement&amp; item) { <span class="keywordflow">return</span> item.cakeType; })</div>
 <div class="line">   .collect&lt;std::unordered_map&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02244">2244</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02277">2277</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1805,7 +1808,7 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02310">2310</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02343">2343</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1869,7 +1872,7 @@ template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIt
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02279">2279</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02312">2312</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1925,7 +1928,60 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02351">2351</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02384">2384</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
+<a id="aa4cf427f53b7c5916727fe253589b817" name="aa4cf427f53b7c5916727fe253589b817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4cf427f53b7c5916727fe253589b817">&#9670;&nbsp;</a></span>stepBy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;CXXIterIterator TSelf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::stepBy </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>stepWidth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an iterator with the requested <code>stepWidth</code> from this iterator. </p>
+<p >A step width of <code>1</code> is a NO-OP, a step width of <code>2</code> means that every second element is skipped. The first element is always returned, irrespecting of the requested <code>stepWidth</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">step</td><td>Step width with which elements from this iterator are yielded. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New iterator with the requested <code>stepWidth</code> </dd></dl>
+<p>Usage Example:</p><ul>
+<li>Step width of 1 (No-Op): <div class="fragment"><div class="line">   std::vector&lt;int&gt; input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</div>
+<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
+<div class="line">           .stepBy(1)</div>
+<div class="line">           .collect&lt;std::vector&gt;();</div>
+<div class="line"><span class="comment">// output == {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}</span></div>
+</div><!-- fragment --></li>
+<li>Step width of 2: <div class="fragment"><div class="line">   std::vector&lt;int&gt; input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</div>
+<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input)</div>
+<div class="line">           .stepBy(2)</div>
+<div class="line">           .collect&lt;std::vector&gt;();</div>
+<div class="line"><span class="comment">// output == {0, 2, 4, 6, 8, 10}</span></div>
+</div><!-- fragment --> </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02143">2143</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2176,7 +2232,7 @@ requires (!std::is_reference_v&lt;typename <a class="el" href="structCXXIter_1_1
 <div class="line">   .zip(<a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input2).<a class="code hl_function" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">copied</a>())</div>
 <div class="line">   .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02138">2138</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02171">2171</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2225,7 +2281,7 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!st
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == { {&quot;1337&quot;, 1337, 1337.0f}, {&quot;42&quot;, 42, 42.0f} }</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02165">2165</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02198">2198</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

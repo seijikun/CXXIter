@@ -5,6 +5,7 @@ var searchData=
   ['skipwhile_2',['skipWhile',['../classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce',1,'CXXIter::IterApi']]],
   ['sort_3',['sort',['../classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22',1,'CXXIter::IterApi::sort(TCompareFn compareFn)'],['../classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080',1,'CXXIter::IterApi::sort()']]],
   ['sortby_4',['sortBy',['../classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518',1,'CXXIter::IterApi']]],
-  ['stringjoin_5',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
-  ['sum_6',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
+  ['stepby_5',['stepBy',['../classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817',1,'CXXIter::IterApi']]],
+  ['stringjoin_6',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
+  ['sum_7',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
 ];
