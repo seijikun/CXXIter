@@ -254,13 +254,19 @@ TEST(CXXIter, maxBy) {
 }
 
 TEST(CXXIter, collect) {
-	{
-		// additional container type parameters
+	{ // additional container type parameters
 		std::vector<std::string> input = {"1337", "42", "64"};
 		std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
 				.collect<std::vector, std::allocator<std::string>>();
 		ASSERT_EQ(output.size(), 3);
 		ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+	}
+	{ // collect to string
+		std::string input = "ceasarencrypt";
+		std::string output = CXXIter::from(input)
+				.map([](char c) -> char { return (c + 1); })
+				.collect<std::basic_string>();
+		ASSERT_EQ(output, "dfbtbsfodszqu");
 	}
 
 	// test as many permutations of items to target collections
