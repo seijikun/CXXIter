@@ -33,15 +33,15 @@
 <polyline fill="none" stroke="black" points="16,-223.5 150,-223.5 "/>
 <text text-anchor="start" x="24" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~IterApi()</text>
 <text text-anchor="start" x="24" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ sizeHint()</text>
-<text text-anchor="start" x="24" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ next()</text>
-<text text-anchor="start" x="24" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ forEach()</text>
-<text text-anchor="start" x="24" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collect()</text>
-<text text-anchor="start" x="24" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fold()</text>
-<text text-anchor="start" x="24" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
+<text text-anchor="start" x="24" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ size()</text>
+<text text-anchor="start" x="24" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ next()</text>
+<text text-anchor="start" x="24" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ forEach()</text>
+<text text-anchor="start" x="24" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collect()</text>
+<text text-anchor="start" x="24" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fold()</text>
 <text text-anchor="start" x="24" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
-<text text-anchor="start" x="24" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ find()</text>
-<text text-anchor="start" x="24" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ count()</text>
-<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 32 more...</text>
+<text text-anchor="start" x="24" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
+<text text-anchor="start" x="24" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ find()</text>
+<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 33 more...</text>
 </a>
 </g>
 </g>

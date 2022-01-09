@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "CXXIter::ExactSizeIteratorTrait< T >", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],
     [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Alternater< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Caster< TChainInput, TItem > >", "classCXXIter_1_1IterApi.html", null ],

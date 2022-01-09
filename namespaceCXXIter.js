@@ -1,5 +1,6 @@
 var namespaceCXXIter =
 [
+    [ "ExactSizeIteratorTrait", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
     [ "IteratorTrait", "structCXXIter_1_1IteratorTrait.html", "structCXXIter_1_1IteratorTrait" ],
     [ "IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
@@ -9,6 +10,7 @@ var namespaceCXXIter =
     [ "SrcMov", "classCXXIter_1_1SrcMov.html", null ],
     [ "SrcRef", "classCXXIter_1_1SrcRef.html", null ],
     [ "CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
+    [ "CXXIterExactSizeIterator", "conceptCXXIter_1_1CXXIterExactSizeIterator.html", null ],
     [ "SourceContainer", "conceptCXXIter_1_1SourceContainer.html", null ],
     [ "SortOrder", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c", [
       [ "ASCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],
