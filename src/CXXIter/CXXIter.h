@@ -171,6 +171,28 @@ namespace {
 		return true;
 	}
 
+	//TODO: unit-tests
+	template<typename T>
+	struct SaturatingArithmetic {
+		T value;
+		SaturatingArithmetic(T value) : value(value) {}
+		T get() const { return value; }
+
+		SaturatingArithmetic<T> operator+(T o) {
+			T res = value + o;
+			res |= -(res < value);
+			return res;
+		}
+		SaturatingArithmetic<T> operator-(T o) {
+			T res = value - o;
+			res &= -(res <= value);
+			return res;
+		}
+		SaturatingArithmetic<T> operator/(T o) {
+			return value / o;
+		}
+	};
+
 	template <class T, class... Ts>
 	constexpr bool are_same_v = (std::is_same_v<T, Ts> && ...);
 
@@ -258,6 +280,19 @@ struct IteratorTrait {
 	static inline SizeHint sizeHint(const Self& self) = delete;
 };
 
+/**
+ * @brief Trait, that extends iterators for which an exact length is known.
+ */
+template<typename T>
+struct ExactSizeIteratorTrait {
+	/**
+	 * @brief Get the iterator's exact number of elements.
+	 * @param self Reference to the instance of the class for which ExactSizeIteratorTrait is being specialized.
+	 * @return This iterator's exact number of elements.
+	 */
+	static inline size_t size(const typename IteratorTrait<T>::Self& self) = delete;
+};
+
 template<typename T>
 concept CXXIterIterator =
 	(std::is_same_v<typename IteratorTrait<T>::Self, T>) &&
@@ -266,6 +301,11 @@ concept CXXIterIterator =
 		typename IteratorTrait<T>::Item;
 		{IteratorTrait<T>::next(self)} -> std::same_as<IterValue<typename IteratorTrait<T>::Item>>;
 		{IteratorTrait<T>::sizeHint(constSelf)} -> std::same_as<SizeHint>;
+};
+
+template<typename T>
+concept CXXIterExactSizeIterator = CXXIterIterator<T> && requires(const typename IteratorTrait<T>::Self& self) {
+		{ExactSizeIteratorTrait<T>::size(self)} -> std::same_as<size_t>;
 };
 
 template<CXXIterIterator TSelf> class IterApi;
@@ -394,6 +434,7 @@ template<typename TContainer>
 requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcMov : public IterApi<SrcMov<TContainer>> {
 	friend struct IteratorTrait<SrcMov<TContainer>>;
+	friend struct ExactSizeIteratorTrait<SrcMov<TContainer>>;
 	using Src = SourceTrait<TContainer>;
 private:
 	TContainer container;
@@ -416,6 +457,11 @@ struct IteratorTrait<SrcMov<TContainer>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
+/** @private */
+template<typename TContainer>
+struct ExactSizeIteratorTrait<SrcMov<TContainer>> {
+	static inline size_t size(const SrcMov<TContainer>& self) { return self.container.size(); }
+};
 
 
 
@@ -433,6 +479,7 @@ template<typename TContainer>
 requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcRef : public IterApi<SrcRef<TContainer>> {
 	friend struct IteratorTrait<SrcRef<TContainer>>;
+	friend struct ExactSizeIteratorTrait<SrcRef<TContainer>>;
 	using Src = SourceTrait<TContainer>;
 private:
 	TContainer& container;
@@ -455,6 +502,11 @@ struct IteratorTrait<SrcRef<TContainer>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
+/** @private */
+template<typename TContainer>
+struct ExactSizeIteratorTrait<SrcRef<TContainer>> {
+	static inline size_t size(const SrcRef<TContainer>& self) { return self.container.size(); }
+};
 
 
 
@@ -471,6 +523,7 @@ template<typename TContainer>
 requires SourceContainer<std::remove_cvref_t<TContainer>>
 class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 	friend struct IteratorTrait<SrcCRef<TContainer>>;
+	friend struct ExactSizeIteratorTrait<SrcCRef<TContainer>>;
 	using Src = SourceTrait<TContainer>;
 private:
 	const TContainer& container;
@@ -493,6 +546,11 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
 };
+/** @private */
+template<typename TContainer>
+struct ExactSizeIteratorTrait<SrcCRef<TContainer>> {
+	static inline size_t size(const SrcCRef<TContainer>& self) { return self.container.size(); }
+};
 
 
 
@@ -503,6 +561,7 @@ struct IteratorTrait<SrcCRef<TContainer>> {
 template<typename TItem>
 class Empty : public IterApi<Empty<TItem>> {
 	friend struct IteratorTrait<Empty<TItem>>;
+	friend struct ExactSizeIteratorTrait<Empty<TItem>>;
 };
 // ------------------------------------------------------------------------------------------------
 /** @private */
@@ -515,6 +574,11 @@ struct IteratorTrait<Empty<TItem>> {
 	static inline IterValue<Item> next(Self&) { return {}; }
 	static inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
 };
+/** @private */
+template<typename TItem>
+struct ExactSizeIteratorTrait<Empty<TItem>> {
+	static inline size_t size(const Empty<TItem>&) { return 0; }
+};
 
 
 // ################################################################################################
@@ -524,6 +588,7 @@ struct IteratorTrait<Empty<TItem>> {
 template<typename TItem, typename TGeneratorFn>
 class FunctionGenerator : public IterApi<FunctionGenerator<TItem, TGeneratorFn>> {
 	friend struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
+	friend struct ExactSizeIteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
 private:
 	TGeneratorFn generatorFn;
 public:
@@ -554,6 +619,7 @@ struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
 template<typename TItem>
 class Repeater : public IterApi<Repeater<TItem>> {
 	friend struct IteratorTrait<Repeater<TItem>>;
+	friend struct ExactSizeIteratorTrait<Repeater<TItem>>;
 private:
 	TItem item;
 	std::optional<size_t> repetitions;
@@ -583,16 +649,22 @@ struct IteratorTrait<Repeater<TItem>> {
 		);
 	}
 };
+/** @private */
+template<typename TItem>
+struct ExactSizeIteratorTrait<Repeater<TItem>> {
+	static inline size_t size(const Repeater<TItem>& self) { return IteratorTrait<Repeater<TItem>>::sizeHint(self).lowerBound; }
+};
 
 
 
 // ################################################################################################
-// GENERATOR RAMGE
+// GENERATOR RANGE
 // ################################################################################################
 /** @private */
 template<typename TValue>
 class Range : public IterApi<Range<TValue>> {
 	friend struct IteratorTrait<Range<TValue>>;
+	friend struct ExactSizeIteratorTrait<Range<TValue>>;
 private:
 	TValue current;
 	TValue from;
@@ -620,6 +692,11 @@ struct IteratorTrait<Range<TValue>> {
 		return SizeHint(cnt, cnt);
 	}
 };
+/** @private */
+template<typename TItem>
+struct ExactSizeIteratorTrait<Range<TItem>> {
+	static inline size_t size(const Range<TItem>& self) { return IteratorTrait<Range<TItem>>::sizeHint(self).lowerBound; }
+};
 
 
 
@@ -632,6 +709,7 @@ template<typename TChainInput, typename TItem>
 requires std::is_object_v<TItem>
 class Caster : public IterApi<Caster<TChainInput, TItem>> {
 	friend struct IteratorTrait<Caster<TChainInput, TItem>>;
+	friend struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
 private:
 	TChainInput input;
 public:
@@ -653,6 +731,11 @@ struct IteratorTrait<Caster<TChainInput, TItem>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput, typename TItem>
+struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>> {
+	static inline size_t size(const Caster<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+};
 
 
 
@@ -663,6 +746,7 @@ struct IteratorTrait<Caster<TChainInput, TItem>> {
 template<typename TChainInput, typename TFilterFn>
 class Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
 	friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;
+	friend struct ExactSizeIteratorTrait<Filter<TChainInput, TFilterFn>>;
 private:
 	using InputItem = typename TChainInput::Item;
 
@@ -703,6 +787,7 @@ template<typename TChainInput, typename TModifierFn>
 requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
 class InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
 	friend struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
+	friend struct ExactSizeIteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
 private:
 	using InputItem = typename TChainInput::Item;
 
@@ -728,6 +813,11 @@ struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 	}
 	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput, typename TItem>
+struct ExactSizeIteratorTrait<InplaceModifier<TChainInput, TItem>> {
+	static inline size_t size(const InplaceModifier<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+};
 
 
 
@@ -738,6 +828,7 @@ struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>> {
 template<typename TChainInput, typename TMapFn, typename TItem>
 class Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
 	friend struct IteratorTrait<Map<TChainInput, TMapFn, TItem>>;
+	friend struct ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>>;
 private:
 	TChainInput input;
 	TMapFn mapFn;
@@ -759,6 +850,11 @@ struct IteratorTrait<Map<TChainInput, TMapFn, TItem>> {
 		return item.template map<Item, TMapFn&>(self.mapFn);
 	}
 	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+};
+/** @private */
+template<CXXIterExactSizeIterator TChainInput, typename TMapFn, typename TItem>
+struct ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>> {
+	static inline size_t size(const Map<TChainInput, TMapFn, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
 };
 
 
@@ -953,6 +1049,7 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
 class Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 	friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
+	friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 private:
 	std::tuple<TChainInput1, TChainInputs...> inputs;
 public:
@@ -991,6 +1088,13 @@ struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 		return SizeHint(lowerBoundMin, upperBoundMin);
 	}
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput1, template<typename...> typename TZipContainer, CXXIterExactSizeIterator... TChainInputs>
+struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+	static inline size_t size(const Zipper<TChainInput1, TZipContainer, TChainInputs...>& self) {
+		return IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>::sizeHint(self).lowerBound;
+	}
+};
 
 
 
@@ -1001,6 +1105,7 @@ struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 template<typename TChainInput1, typename TChainInput2>
 class Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
 	friend struct IteratorTrait<Chainer<TChainInput1, TChainInput2>>;
+	friend struct ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>>;
 private:
 	TChainInput1 input1;
 	TChainInput2 input2;
@@ -1040,6 +1145,13 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 		return result;
 	}
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator TChainInput2>
+struct ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>> {
+	static inline size_t size(const Chainer<TChainInput1, TChainInput2>& self) {
+		return IteratorTrait<Chainer<TChainInput1, TChainInput2>>::sizeHint(self).lowerBound;
+	}
+};
 
 
 
@@ -1050,6 +1162,7 @@ struct IteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 template<typename TChainInput1, typename... TChainInputs>
 class Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
 	friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
+	friend struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
 private:
 	static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
 	std::tuple<TChainInput1, TChainInputs...> inputs;
@@ -1101,6 +1214,13 @@ struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 		return result;
 	}
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator... TChainInputs>
+struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
+	static inline size_t size(const Alternater<TChainInput1, TChainInputs...>& self) {
+		return IteratorTrait<Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
+	}
+};
 
 
 
@@ -1111,6 +1231,7 @@ struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 template<typename TChainInput, typename TSeparatorInput>
 class Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
 	friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+	friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
 	enum class IntersperserState { Uninitialized, Item, Separator };
 private:
 	TChainInput input;
@@ -1154,15 +1275,23 @@ struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
 		SizeHint result = input;
 		if(result.lowerBound > 0) {
 			size_t sepCnt = std::min((result.lowerBound - 1), separator.lowerBound);
-			result.lowerBound = sepCnt * 2 + 1;
+			result.lowerBound = (SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
 		}
 		if(result.upperBound.value_or(0) > 0) {
 			size_t sepCnt = std::min((result.upperBound.value() - 1), separator.upperBound.value_or(SizeHint::INFINITE));
-			result.upperBound = sepCnt * 2 + 1;
+			result.upperBound = (SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
 		}
 		return result;
 	}
 };
+/** @private */
+template<CXXIterExactSizeIterator TChainInput, CXXIterExactSizeIterator TSeparatorInput>
+struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
+	static inline size_t size(const Intersperser<TChainInput, TSeparatorInput>& self) {
+		return IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
+	}
+};
+
 
 
 // ################################################################################################
@@ -1229,6 +1358,7 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 template<typename TChainInput, typename TCompareFn, bool STABLE>
 class Sorter : public IterApi<Sorter<TChainInput, TCompareFn, STABLE>> {
 	friend struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;
+	friend struct ExactSizeIteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;
 private:
 	using OwnedInputItem = typename TChainInput::ItemOwned;
 	using SortCache = SrcMov<std::vector<OwnedInputItem>>;
@@ -1273,6 +1403,13 @@ struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
 		return SortCacheIterator::next(sortedItems);
 	}
 	static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+};
+/** @private */
+template<CXXIterExactSizeIterator TChainInput, typename TCompareFn, bool STABLE>
+struct ExactSizeIteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>> {
+	static inline size_t size(const Sorter<TChainInput, TCompareFn, STABLE>& self) {
+		return ExactSizeIteratorTrait<TChainInput>::size(self.input);
+	}
 };
 
 
@@ -1367,6 +1504,36 @@ public:
 	 */
 	SizeHint sizeHint() const {
 		return Iterator::sizeHint(*self());
+	}
+
+	/**
+	 * @brief Get this iterator's exact size.
+	 * @note This method only exists if the iterator's exact size is known. Operations like @c IterApi::filter
+	 * cause the remaining iterator to have an unknown exact size.
+	 * @return This iterator's exact number of elements.
+	 *
+	 * Usage Example:
+	 * - Valid (Exact number of elements is known):
+	 * @code
+	 * 	size_t size = CXXIter::range<float>(0.0f, 2.0f, 0.25f)
+	 * 			.map([](float blub) { return std::to_string(blub); })
+	 * 			.sort()
+	 * 			.intersperse(CXXIter::empty<std::string>())
+	 * 			.size();
+	 * 	// size == 8
+	 * @endcode
+	 * - Invalid, does not compile (Exact number of elements is unknown):
+	 * @code
+	 * 	size_t size = CXXIter::range<float>(0.0f, 2.0f, 0.25f)
+	 * 		.map([](float blub) { return std::to_string(blub); })
+	 * 		.sort()
+	 * 		.intersperse(CXXIter::empty<std::string>())
+	 * 		.flatMap()
+	 * 		.size();
+	 * @endcode
+	 */
+	size_t size() const requires CXXIterExactSizeIterator<TSelf> {
+		return ExactSizeIteratorTrait<TSelf>::size(*self());
 	}
 
 	/**
