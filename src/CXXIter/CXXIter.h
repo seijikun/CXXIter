@@ -162,6 +162,8 @@ struct SizeHint {
 
 /** @private */
 namespace {
+	#define ITERATOR_SEGMENT_NODISCARD_WARNING "The result of chainer methods needs to be used, otherwise the iterator will not be doing any work."
+
 	template<size_t START, size_t END, typename F>
 	constexpr bool constexpr_for(F&& f) {
 		if constexpr (START < END) {
@@ -707,7 +709,7 @@ struct ExactSizeIteratorTrait<Range<TItem>> {
 /** @private */
 template<typename TChainInput, typename TItem>
 requires std::is_object_v<TItem>
-class Caster : public IterApi<Caster<TChainInput, TItem>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {
 	friend struct IteratorTrait<Caster<TChainInput, TItem>>;
 	friend struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
 private:
@@ -744,7 +746,7 @@ struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TFilterFn>
-class Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
 	friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;
 	friend struct ExactSizeIteratorTrait<Filter<TChainInput, TFilterFn>>;
 private:
@@ -785,7 +787,7 @@ struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
 /** @private */
 template<typename TChainInput, typename TModifierFn>
 requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
-class InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
 	friend struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
 	friend struct ExactSizeIteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
 private:
@@ -826,7 +828,7 @@ struct ExactSizeIteratorTrait<InplaceModifier<TChainInput, TItem>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TMapFn, typename TItem>
-class Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
 	friend struct IteratorTrait<Map<TChainInput, TMapFn, TItem>>;
 	friend struct ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>>;
 private:
@@ -865,7 +867,7 @@ struct ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>> {
 /** @private */
 template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
 requires (!std::is_reference_v<TItemContainer>)
-class FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 	friend struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
 private:
 	TChainInput input;
@@ -914,7 +916,7 @@ struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TFilterMapFn, typename TItem>
-class FilterMap : public IterApi<FilterMap<TChainInput, TFilterMapFn, TItem>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] FilterMap : public IterApi<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 	friend struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>>;
 private:
 	TChainInput input;
@@ -954,7 +956,7 @@ struct IteratorTrait<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TTakePredicate>
-class TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
 	friend struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;
 private:
 	TChainInput input;
@@ -997,7 +999,7 @@ struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TSkipPredicate>
-class SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
 	friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
 private:
 	TChainInput input;
@@ -1047,7 +1049,7 @@ struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
-class Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 	friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 	friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 private:
@@ -1103,7 +1105,7 @@ struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs..
 // ################################################################################################
 /** @private */
 template<typename TChainInput1, typename TChainInput2>
-class Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
 	friend struct IteratorTrait<Chainer<TChainInput1, TChainInput2>>;
 	friend struct ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>>;
 private:
@@ -1160,7 +1162,7 @@ struct ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput1, typename... TChainInputs>
-class Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
 	friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
 	friend struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
 private:
@@ -1229,7 +1231,7 @@ struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TSeparatorInput>
-class Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
 	friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
 	friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
 	enum class IntersperserState { Uninitialized, Item, Separator };
@@ -1299,7 +1301,7 @@ struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
-class GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 	friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
 private:
 	using OwnedInputItem = typename TChainInput::ItemOwned;
@@ -1356,7 +1358,7 @@ struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 // ################################################################################################
 /** @private */
 template<typename TChainInput, typename TCompareFn, bool STABLE>
-class Sorter : public IterApi<Sorter<TChainInput, TCompareFn, STABLE>> {
+class [[nodiscard(ITERATOR_SEGMENT_NODISCARD_WARNING)]] Sorter : public IterApi<Sorter<TChainInput, TCompareFn, STABLE>> {
 	friend struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;
 	friend struct ExactSizeIteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;
 private:
