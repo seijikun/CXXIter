@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.14)
 
 project(CXXIter LANGUAGES CXX)
+
+include(cmake/CXXIter_features.cmake)
 
 option(CXXITER_WITH_TESTS "Compile the CIter tests" OFF)
 option(CXXITER_WITH_DOCS "Run Doxygen to produce documentation" OFF)
@@ -9,6 +11,7 @@ FILE(GLOB_RECURSE CXXITER_SOURCES "include/*.h")
 add_library(CXXIter INTERFACE ${CXXITER_SOURCES})
 target_include_directories(CXXIter INTERFACE "include/")
 target_compile_features(CXXIter INTERFACE cxx_std_20)
+target_compile_definitions(CXXIter INTERFACE $<$<BOOL:${CXXITER_HAS_COROUTINE}>:CXXITER_HAS_COROUTINE>)
 
 # INSTALL
 install(DIRECTORY include/CXXIter TYPE INCLUDE)
@@ -33,9 +36,11 @@ if(${CXXITER_WITH_DOCS})
 	set(DOXYGEN_DOT_IMAGE_FORMAT "svg")
 	set(DOXYGEN_INTERACTIVE_SVG YES)
 	set(DOXYGEN_DOT_TRANSPARENT YES)
+	# enable all conditional feature-flags for documentation
+	set(DOXYGEN_PREDEFINED CXXITER_HAS_COROUTINE)
 
 	doxygen_add_docs("CXXIterDocs"
-		"${CMAKE_CURRENT_SOURCE_DIR}/src" "${CMAKE_CURRENT_SOURCE_DIR}/doc"
+		"${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_CURRENT_SOURCE_DIR}/doc"
 		ALL
 		COMMENT "Generate Doxygen documentation"
 	)

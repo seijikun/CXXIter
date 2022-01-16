@@ -20,6 +20,7 @@
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
 #include "src/op/FlatMap.h"
+#include "src/op/Generator.h"
 #include "src/op/GroupBy.h"
 #include "src/op/InplaceModifier.h"
 #include "src/op/Intersperser.h"
@@ -774,6 +775,85 @@ public:
 		using TFlatMapFnResult = std::invoke_result_t<TFlatMapFn, Item&&>;
 		return FlatMap<TSelf, TFlatMapFn, TFlatMapFnResult>(std::move(*self()), mapFn);
 	}
+
+#ifdef CXXITER_HAS_COROUTINE
+	/**
+	 * @brief Creates a new iterator containing the items that the given generator produces for each element
+	 * in this iterator.
+	 * @details Conceptually, this method is very similar to flatMap() since it allows to take one element
+	 * from this iterator, and returning an arbitrary amount of new elements into the resulting iterator.
+	 * A big difference is, that with generateFrom(), elements can be produced on the fly using c++20
+	 * coroutines, while with flatMap() they need to be present in a supported container at once - taking up memory.
+	 * The given @p generatorFn is run for each element in this iterator, producing a generator.
+	 * This generator is then driven to completion, piping every element it produced into the resulting iterator.
+	 * @param generatorFn Generator function that is executed for each element of this iterator. This function
+	 * can use co_yield to produce as many elements as it wants. Its return value has to be explicitly specified
+	 * as CXXIter::Generator with the generated type as template parameter.
+	 * @note Returning references from the generator is supported. Make sure your references stay valid until
+	 * they are read, though.
+	 * @attention Special care has to be taken with respect to the argument types of the given @p generatorFn.
+	 * The generator must take the elements of the stream by-value (copied). If the elements in the stream are
+	 * moved through the stream, the @p generatorFn must take them as their owned type. If the elements are
+	 * passed as references through the stream, the @p generatorFn can take them as references.
+	 * If you are getting spurious SEGFAULTs - check your parameter types!
+	 *
+	 * Usage Example:
+	 *
+	 * The example shows a generator that repeats the strings from the source, depending on the string's
+	 * lengths. Special attention in these examples should be mainly on the parameter types, as well as the
+	 * explicitly specified return values of the given generator functions.
+	 *
+	 * - Using generateFrom() with a move source, that passes elements by move
+	 *   (generator clones elements and passes them on as owned clones)\n
+	 * Here, the type of the elements passed through the iterator are owned @c std::string by move.
+	 * So the type the generator has to take as parameter is an owned @p std::string.
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42"};
+	 * 	std::vector<std::string> output = CXXIter::from(std::move(input))
+	 * 			.generateFrom([](std::string item) -> CXXIter::Generator<std::string> {
+	 * 				for(size_t i = 0; i < item.size(); ++i) {
+	 * 					co_yield item;
+	 * 				}
+	 * 			})
+	 * 			.collect<std::vector>();
+	 * 	// output == { "1337", "1337", "1337", "1337", "42", "42" }
+	 * @endcode
+	 * - Using generateFrom() with a reference source, that passes elements as references
+	 *   (generator clones elements and passes them on as owned clones)\n
+	 * Here, the type of the elements passed through the iterator are const @c std::string references.
+	 * So the type the generator takes can either be a const @c std::string reference (because they don't
+	 * reference something temporary, but are references from the permanent source) - or as an owned @p std::string.
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 			.generateFrom([](const std::string& item) -> CXXIter::Generator<std::string> {
+	 * 				for(size_t i = 0; i < item.size(); ++i) {
+	 * 					co_yield item;
+	 * 				}
+	 * 			})
+	 * 			.collect<std::vector>();
+	 * 	// output == { "1337", "1337", "1337", "1337", "42", "42" }
+	 * @endcode
+	 * - Using generateFrom() with a reference source, that passes elements as references
+	 *   (generator clones references to elements - and passes on the copied references)\n
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 			.generateFrom([](const std::string& item) -> CXXIter::Generator<const std::string&> {
+	 * 				for(size_t i = 0; i < item.size(); ++i) {
+	 * 					co_yield item;
+	 * 				}
+	 * 			})
+	 * 			.collect<std::vector>();
+	 * 	// output == { "1337", "1337", "1337", "1337", "42", "42" }
+	 * @endcode
+	 */
+	template<GeneratorFromFunction<Item> TGeneratorFn>
+	auto generateFrom(TGeneratorFn generatorFn) {
+		using TGeneratorFnResult = std::invoke_result_t<TGeneratorFn, Item>;
+		return GenerateFrom<TSelf, TGeneratorFn, TGeneratorFnResult>(std::move(*self()), generatorFn);
+	}
+#endif
 
 	/**
 	 * @brief Creates an iterator that flattens the iterable elements of this iterator.

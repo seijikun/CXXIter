@@ -29,7 +29,9 @@ namespace CXXIter {
 		IterValue(const TValue& value) : inner(value) {}
 		IterValue(TValue&& value) : inner(std::forward<TValue>(value)) {}
 		IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
-		IterValue(IterValue<TValue>&& o) = default;
+		IterValue(IterValue<TValue>&& o) : inner(std::move(o.inner)) {
+			o.inner.reset();
+		};
 
 		inline const TValue& value() const { return inner.value(); }
 		inline TValue& value() { return inner.value(); }
@@ -62,7 +64,9 @@ namespace CXXIter {
 		IterValue() {}
 		IterValue(TValue value) : inner(value) {}
 		IterValue<TValue>& operator=(IterValue<TValue>&& o) = default;
-		IterValue(IterValue<TValue>&& o) = default;
+		IterValue(IterValue<TValue>&& o) : inner(std::move(o.inner)) {
+			o.inner.reset();
+		};
 
 		inline const TValue& value() const { return inner.value(); }
 		inline TValue& value() { return inner.value(); }
@@ -189,6 +193,27 @@ namespace CXXIter {
 
 		template <class T, class... Ts>
 		constexpr bool are_same_v = (std::is_same_v<T, Ts> && ...);
+
+		/**
+		 * @brief Constraint that checks whether the given type @p T is an instantiation of
+		 * the template class @p U.
+		 */
+		template <typename T, template <typename> typename U>
+		constexpr bool is_template_instance_v = false;
+		template <typename T, template <typename> typename U>
+		constexpr bool is_template_instance_v<U<T>, U> = true;
+
+		/**
+		 * @brief Concept that checks whether the given invocable type @p TFn is a function-type
+		 * that accepts the parameter of types @p TArgs by value.
+		 * @details This concepts only accepts @p TFn if it takes the argument types by value. Neither
+		 * taking the parameters as rvalue references, nor as lvalue references is allowed.
+		 */
+		template<typename TFn, typename... TArgs>
+		concept invocable_byvalue = requires(TFn fn, TArgs... args) {
+			{ fn(args...) }; // disallows TArgs&&
+			{ fn(std::forward<TArgs>(args)...) }; // disallows TArgs&
+		};
 
 		template<typename T>
 		inline constexpr bool is_const_reference_v = std::is_const_v<std::remove_reference_t<T>>;

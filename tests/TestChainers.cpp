@@ -315,6 +315,69 @@ TEST(CXXIter, flatMap) {
 	}
 }
 
+#ifdef CXXITER_HAS_COROUTINE
+TEST(CXXIter, generateFrom) {
+	{
+		std::vector<int> input = {1337, 42};
+		std::vector<int> output = CXXIter::from(input)
+				.generateFrom([](const int& item) -> CXXIter::Generator<int> {
+					for(int i = -2; i <= 2; ++i) {
+						co_yield (item + i);
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(1335, 1336, 1337, 1338, 1339, 40, 41, 42, 43, 44));
+	}
+	{ // cloning item reference - pass on as copied reference
+		std::vector<std::string> input = {"1337", "42"};
+		std::vector<std::string> output = CXXIter::from(input)
+				.generateFrom([](const std::string& item) -> CXXIter::Generator<const std::string&> {
+					for(size_t i = 0; i < item.size(); ++i) {
+						co_yield item;
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre("1337", "1337", "1337", "1337", "42", "42"));
+	}
+	{ // cloning item - pass on as owned copy
+		std::vector<std::string> input = {"1337", "42"};
+		std::vector<std::string> output = CXXIter::from(input)
+				.generateFrom([](const std::string& item) -> CXXIter::Generator<std::string> {
+					for(size_t i = 0; i < item.size(); ++i) {
+						co_yield item;
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre("1337", "1337", "1337", "1337", "42", "42"));
+	}
+	{
+		std::vector<std::string> input = {"1337", "42"};
+		std::vector<std::string> output = CXXIter::from(std::move(input))
+				.generateFrom([](std::string item) -> CXXIter::Generator<std::string> {
+					for(size_t i = 0; i < item.size(); ++i) {
+						co_yield item;
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre("1337", "1337", "1337", "1337", "42", "42"));
+	}
+	{ // correct exception propagation
+		try {
+			std::vector<int> input = {1337, 42};
+			std::vector<int> output = CXXIter::from(input)
+					.generateFrom([](int item) -> CXXIter::Generator<int> {
+						co_yield (item + 1);
+						throw std::runtime_error("Exception From GeneratorFn");
+					})
+					.collect<std::vector>();
+			ASSERT_TRUE(false); // unreachable!
+		} catch (std::runtime_error& ex) {
+			ASSERT_EQ(ex.what(), std::string("Exception From GeneratorFn"));
+		}
+	}
+}
+#endif
+
 TEST(CXXIter, stepBy) {
 	{
 		std::vector<int> input = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

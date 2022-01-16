@@ -16,6 +16,47 @@ using namespace CXXIter;
 // CONCEPTS & TYPE CONSTRAINTS & TYPE HELPERS
 // ################################################################################################
 
+TEST(CXXIter, IterValue) {
+	{ // Move out of IterValue has to clear source
+		{
+			IterValue<size_t> src = 1337;
+			IterValue<size_t> dst = std::move(src);
+			ASSERT_FALSE(src.has_value());
+			ASSERT_EQ(dst.value(), 1337);
+		}
+		{
+			IterValue<std::string> src = std::string("1337");
+			IterValue<std::string> dst = std::move(src);
+			ASSERT_FALSE(src.has_value());
+			ASSERT_EQ(dst.value(), "1337");
+		}
+		{
+			IterValue<size_t> src = 1337;
+			IterValue<size_t> dst(std::move(src));
+			ASSERT_FALSE(src.has_value());
+			ASSERT_EQ(dst.value(), 1337);
+		}
+		{
+			IterValue<std::string> src = std::string("1337");
+			IterValue<std::string> dst(std::move(src));
+			ASSERT_FALSE(src.has_value());
+			ASSERT_EQ(dst.value(), "1337");
+		}
+	}
+}
+
+TEST(CXXIter, invocable_byvalue) {
+	auto fnRValueRef = [](std::string&&) {};
+	auto fnLValueRef = [](std::string&) {};
+	auto fnByValue = [](std::string) {};
+
+
+	static_assert(!CXXIter::invocable_byvalue<typeof(fnRValueRef),	std::string>);
+	static_assert(!CXXIter::invocable_byvalue<typeof(fnLValueRef),	std::string>);
+	// should also forbid const lvalue ref - but seems impossible
+	static_assert( CXXIter::invocable_byvalue<typeof(fnByValue),	std::string>);
+}
+
 TEST(CXXIter, is_const_reference_v) {
 	using TestType = std::vector<int>;
 
