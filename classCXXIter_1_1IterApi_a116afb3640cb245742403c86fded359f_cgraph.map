@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::copied" name="CXXIter::IterApi::copied">
+<area shape="rect" id="node1" title="Constructs a new iterator that copies the elements of this iterator." alt="" coords="5,5,179,32"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6" title="Creates an iterator that uses the given mapFn to map each element from this iterator to elements of t..." alt="" coords="227,5,385,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="CXXIter::IterApi::mean" name="CXXIter::IterApi::mean">
+<area shape="rect" id="node1" title="Consumer that calculates the mean of all elements of this iterator." alt="" coords="5,13,172,39"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="220,13,375,39"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="423,13,601,39"/>
+<area shape="rect" id="node4" href="$structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="649,5,804,47"/>
+</map>
