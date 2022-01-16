@@ -6,7 +6,7 @@ var dir_94e28e050ec962af1417912038263e19 =
     [ "Filter.h", "Filter_8h_source.html", null ],
     [ "FilterMap.h", "FilterMap_8h_source.html", null ],
     [ "FlatMap.h", "FlatMap_8h_source.html", null ],
-    [ "Generator.h", "Generator_8h_source.html", null ],
+    [ "GenerateFrom.h", "GenerateFrom_8h_source.html", null ],
     [ "GroupBy.h", "GroupBy_8h_source.html", null ],
     [ "InplaceModifier.h", "InplaceModifier_8h_source.html", null ],
     [ "Intersperser.h", "Intersperser_8h_source.html", null ],

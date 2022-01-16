@@ -13,6 +13,7 @@ var namespaceCXXIter =
     [ "CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
     [ "CXXIterExactSizeIterator", "conceptCXXIter_1_1CXXIterExactSizeIterator.html", null ],
     [ "SourceContainer", "conceptCXXIter_1_1SourceContainer.html", null ],
+    [ "GeneratorFunction", "conceptCXXIter_1_1GeneratorFunction.html", null ],
     [ "GeneratorFromFunction", "conceptCXXIter_1_1GeneratorFromFunction.html", null ],
     [ "SortOrder", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c", [
       [ "ASCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],
@@ -23,6 +24,7 @@ var namespaceCXXIter =
     [ "from", "namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310", null ],
     [ "from", "namespaceCXXIter.html#aec7a043f6abb7a80f95c4f067d0c1b65", null ],
     [ "fromFn", "namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9", null ],
+    [ "generate", "namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1", null ],
     [ "range", "namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c", null ],
     [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ]
 ];
