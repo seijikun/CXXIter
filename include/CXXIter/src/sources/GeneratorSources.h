@@ -151,4 +151,35 @@ namespace CXXIter {
 		static inline size_t size(const Range<TItem>& self) { return IteratorTrait<Range<TItem>>::sizeHint(self).lowerBound; }
 	};
 
+
+
+#ifdef CXXITER_HAS_COROUTINE
+	// ################################################################################################
+	// COROUTINE GENERATOR
+	// ################################################################################################
+	/** @private */
+	template<typename TGenerator>
+	class CoroutineGenerator : public IterApi<CoroutineGenerator<TGenerator>> {
+		friend struct IteratorTrait<CoroutineGenerator<TGenerator>>;
+		friend struct ExactSizeIteratorTrait<CoroutineGenerator<TGenerator>>;
+	private:
+		TGenerator generator;
+	public:
+		CoroutineGenerator(TGenerator&& generator) : generator(std::forward<TGenerator>(generator)) {}
+	};
+	// ------------------------------------------------------------------------------------------------
+	/** @private */
+	template<typename TGeneratorFn>
+	struct IteratorTrait<CoroutineGenerator<TGeneratorFn>> {
+		// CXXIter Interface
+		using Self = CoroutineGenerator<TGeneratorFn>;
+		using Item = typename TGeneratorFn::value_type;
+
+		static inline IterValue<Item> next(Self& self) {
+			return self.generator.next();
+		}
+		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+	};
+#endif
+
 }

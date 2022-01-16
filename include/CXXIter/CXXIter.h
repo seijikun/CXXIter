@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "src/Common.h"
+#include "src/Generator.h"
 #include "src/sources/ContainerSources.h"
 #include "src/sources/GeneratorSources.h"
 #include "src/Collector.h"
@@ -20,7 +21,7 @@
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
 #include "src/op/FlatMap.h"
-#include "src/op/Generator.h"
+#include "src/op/GenerateFrom.h"
 #include "src/op/GroupBy.h"
 #include "src/op/InplaceModifier.h"
 #include "src/op/Intersperser.h"
@@ -1420,6 +1421,36 @@ auto fromFn(TGeneratorFn generatorFn) {
 	using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
 	return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);
 }
+
+#ifdef CXXITER_HAS_COROUTINE
+/**
+ * @brief Generator source that produces a new iterator over the elements produced by the
+ * given @p generatorFn - which is a c++20 coroutine yielding elements using @c co_yield.
+ * @param generatorFn C++20 generator coroutine function yielding elements using @c co_yield.
+ * The function must produces a generator of type CXXIter::Generator whose template parameter
+ * is set to the produced element type.
+ * @return CXXIter iterator over the elements produced by the c++20 coroutine given in @p generatorFn.
+ *
+ * Usage Example:
+ * - Simple generator example producing all integer numbers from 0 to 1000 as @p std::string
+ * @code
+ * 	std::vector<std::string> output = CXXIter::generate(
+ * 		[]() -> CXXIter::Generator<std::string> {
+ * 			for(size_t i = 0; i < 1000; ++i) {
+ * 				co_yield std::to_string(i);
+ * 			}
+ * 		}
+ * 	).collect<std::vector>();
+ *	// output == {0, 1, 2, ..., 1000}
+ * @endcode
+ */
+template<GeneratorFunction TGeneratorFn>
+auto generate(TGeneratorFn generatorFn) {
+	using TGenerator = typename std::invoke_result_t<TGeneratorFn>;
+	TGenerator generator = generatorFn();
+	return CoroutineGenerator<TGenerator>(std::forward<TGenerator>(generator));
+}
+#endif
 
 /**
  * @brief Construct a CXXIter iterator, by repeating the given @p item @p cnt times.

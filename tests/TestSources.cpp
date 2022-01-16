@@ -249,6 +249,31 @@ TEST(CXXIter, fromFn) {
 	for(size_t i = 0; i < 100; ++i) { ASSERT_EQ(output[i], i); }
 }
 
+#ifdef CXXITER_HAS_COROUTINE
+TEST(CXXIter, generate) {
+	{
+		std::vector<std::string> output = CXXIter::generate(
+			[]() -> CXXIter::Generator<std::string> {
+				for(size_t i = 0; i < 1000; ++i) {
+					co_yield std::to_string(i);
+				}
+			}
+		).collect<std::vector>();
+		ASSERT_EQ(output.size(), 1000);
+		for(size_t i = 0; i < 1000; ++i) { ASSERT_EQ(output[i], std::to_string(i)); }
+	}
+	{
+		std::vector<std::string> output = CXXIter::generate(
+			[]() -> CXXIter::Generator<std::string> {
+				co_yield std::to_string(0);
+			}
+		).collect<std::vector>();
+		ASSERT_EQ(output.size(), 1);
+		ASSERT_THAT(output, ElementsAre("0"));
+	}
+}
+#endif
+
 TEST(CXXIter, repeat) {
 	{ // sizeHint
 		{
