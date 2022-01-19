@@ -18,10 +18,8 @@ namespace CXXIter {
 		TChainInput input;
 		TSkipPredicate skipPredicate;
 		bool skipEnded = false;
-		std::optional<size_t> cntRequest;
 	public:
-		SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate, std::optional<size_t> cntRequest = {})
-			: input(std::move(input)), skipPredicate(skipPredicate), cntRequest(cntRequest) {}
+		SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
@@ -45,13 +43,8 @@ namespace CXXIter {
 			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {
-			SizeHint result = ChainInputIterator::sizeHint(self.input);
-			if(self.cntRequest.has_value()) {
-				result.subtract(self.cntRequest.value());
-			} else {
-				result.lowerBound = 0;
-			}
-			return result;
+			SizeHint input = ChainInputIterator::sizeHint(self.input);
+			return SizeHint(0, input.upperBound);
 		}
 	};
 

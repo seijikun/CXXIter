@@ -201,6 +201,14 @@ TEST(CXXIter, skip) {
 			ASSERT_EQ(sizeHint.lowerBound, 0);
 			ASSERT_EQ(sizeHint.upperBound.value(), 0);
 		}
+		{
+			std::vector<int> input = {42, 42, 42, 42, 1337, 42};
+			SizeHint sizeHint = CXXIter::from(input)
+					.skip(0)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, input.size());
+			ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+		}
 	}
 	{
 		std::vector<int> input = {42, 42, 42, 42, 1337};
@@ -209,6 +217,14 @@ TEST(CXXIter, skip) {
 				.collect<std::vector>();
 		ASSERT_EQ(output.size(), 2);
 		ASSERT_THAT(output, ElementsAre(42, 1337));
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(0)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(42, 42, 42, 42, 1337));
 	}
 }
 
@@ -250,6 +266,14 @@ TEST(CXXIter, take) {
 			ASSERT_EQ(sizeHint.lowerBound, input.size());
 			ASSERT_EQ(sizeHint.upperBound.value(), input.size());
 		}
+		{
+			std::vector<int> input = {42, 57, 64, 128, 1337, 10};
+			SizeHint sizeHint = CXXIter::from(input)
+					.take(0)
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), 0);
+		}
 	}
 	{
 		std::vector<int> input = {42, 57, 64, 128, 1337, 10};
@@ -266,6 +290,13 @@ TEST(CXXIter, take) {
 				.collect<std::basic_string>();
 		ASSERT_EQ(output.size(), 3);
 		ASSERT_EQ(output, "tes");
+	}
+	{
+		std::string input = "test";
+		std::string output = CXXIter::from(input)
+				.take(0)
+				.collect<std::basic_string>();
+		ASSERT_EQ(output.size(), 0);
 	}
 }
 

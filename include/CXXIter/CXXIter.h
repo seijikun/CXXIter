@@ -26,8 +26,10 @@
 #include "src/op/InplaceModifier.h"
 #include "src/op/Intersperser.h"
 #include "src/op/Map.h"
+#include "src/op/SkipN.h"
 #include "src/op/SkipWhile.h"
 #include "src/op/Sorter.h"
+#include "src/op/TakeN.h"
 #include "src/op/TakeWhile.h"
 #include "src/op/Zipper.h"
 
@@ -937,12 +939,8 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto skip(size_t cnt) {
-		auto skipPredicate = [cnt](const ItemOwned&) mutable {
-			if(cnt != 0) { cnt -= 1; return true; }
-			return false;
-		};
-		return SkipWhile<TSelf, decltype(skipPredicate)>(std::move(*self()), skipPredicate, cnt);
+	SkipN<TSelf> skip(size_t cnt) {
+		return SkipN<TSelf>(std::move(*self()), cnt);
 	}
 
 	/**
@@ -983,11 +981,8 @@ public:
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto take(size_t cnt) {
-		auto takePredicate = [cnt](const Item&) mutable {
-			return ((cnt--) != 0);
-		};
-		return TakeWhile<TSelf, decltype(takePredicate)>(std::move(*self()), takePredicate, cnt);
+	TakeN<TSelf> take(size_t cnt) {
+		return TakeN<TSelf>(std::move(*self()), cnt);
 	}
 
 	/**

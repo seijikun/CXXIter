@@ -106,6 +106,8 @@ TEST(CXXIter, ExactSizedItemSource) {
 	}
 	{
 		auto iter = CXXIter::from(input)
+				.skip(1)
+				.take(10)
 				.map([](int blub) { return std::to_string(blub); })
 				.sort()
 				.intersperse(CXXIter::empty<std::string>());
@@ -115,8 +117,10 @@ TEST(CXXIter, ExactSizedItemSource) {
 		auto iter = CXXIter::from(input)
 				.map([](int blub) { return std::to_string(blub); })
 				.sort()
-				.intersperse(CXXIter::repeat<std::string>(","));
-		ASSERT_EQ(iter.size(), 5);
+				.intersperse(CXXIter::repeat<std::string>(","))
+				.skip(1)
+				.take(3);
+		ASSERT_EQ(iter.size(), 3);
 	}
 	{
 		auto iter = CXXIter::from(input)

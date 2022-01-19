@@ -1,8 +1,6 @@
 #pragma once
 
 #include <utility>
-#include <optional>
-#include <algorithm>
 
 #include "../Common.h"
 
@@ -12,36 +10,46 @@ namespace CXXIter {
 	// TAKE WHILE
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TTakePredicate>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
-		friend struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;
+	template<typename TChainInput>
+	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeN : public IterApi<TakeN<TChainInput>> {
+		friend struct IteratorTrait<TakeN<TChainInput>>;
 	private:
 		TChainInput input;
-		TTakePredicate takePredicate;
+		size_t n;
+		size_t remaining;
 	public:
-		TakeWhile(TChainInput&& input, TTakePredicate takePredicate) : input(std::move(input)), takePredicate(takePredicate) {}
+		TakeN(TChainInput&& input, size_t n) : input(std::move(input)), n(n), remaining(n) {}
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
-	template<typename TChainInput, typename TTakePredicate>
-	struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
+	template<typename TChainInput>
+	struct IteratorTrait<TakeN<TChainInput>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
-		using Self = TakeWhile<TChainInput, TTakePredicate>;
+		using Self = TakeN<TChainInput>;
 		using Item = InputItem;
 
 		static inline IterValue<Item> next(Self& self) {
+			if(self.remaining == 0) [[unlikely]] { return {}; }
 			auto item = ChainInputIterator::next(self.input);
 			if(!item.has_value()) [[unlikely]] { return {}; }
-			// end iterator directly after takePredicate returned false the first time
-			if(self.takePredicate(item.value()) == false) { return {}; }
+			self.remaining -= 1;
 			return item;
 		}
 		static inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
-			return SizeHint(0, input.upperBound);
+			return SizeHint(
+				std::min(input.lowerBound, self.n),
+				SizeHint::upperBoundMin(input.upperBound, self.n)
+			);
 		}
 	};
-
+	/** @private */
+	template<CXXIterExactSizeIterator TChainInput>
+	struct ExactSizeIteratorTrait<TakeN<TChainInput>> {
+		static inline size_t size(const TakeN<TChainInput>& self) {
+			return IteratorTrait<TakeN<TChainInput>>::sizeHint(self).lowerBound;
+		}
+	};
 }
