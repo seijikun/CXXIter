@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1" target="_top" xlink:title="Creates an iterator that skips the first cnt elements from this iterator, before it yields the remain...">
+<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43" target="_top" xlink:title="Creates an iterator that skips the first cnt elements from this iterator, before it yields the remain...">
 <polygon fill="none" stroke="black" points="149,-0.5 149,-19.5 267,-19.5 267,-0.5 149,-0.5"/>
 <text text-anchor="middle" x="208" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::skip</text>
 </a>

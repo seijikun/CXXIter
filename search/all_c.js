@@ -4,7 +4,7 @@ var searchData=
   ['size_1',['size',['../classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804',1,'CXXIter::IterApi::size()'],['../structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed',1,'CXXIter::ExactSizeIteratorTrait::size()']]],
   ['sizehint_2',['SizeHint',['../structCXXIter_1_1SizeHint.html',1,'CXXIter']]],
   ['sizehint_3',['sizeHint',['../classCXXIter_1_1IterApi.html#a9baddc40de1b9c63102e5c5bf886474e',1,'CXXIter::IterApi::sizeHint()'],['../structCXXIter_1_1IteratorTrait.html#ad07acbdbc1b8bfac76e1ce809fb60825',1,'CXXIter::IteratorTrait::sizeHint()'],['../structCXXIter_1_1SourceTrait.html#a2b357ac1506b3b70a7be8d34da3aea3a',1,'CXXIter::SourceTrait::sizeHint()']]],
-  ['skip_4',['skip',['../classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1',1,'CXXIter::IterApi']]],
+  ['skip_4',['skip',['../classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43',1,'CXXIter::IterApi']]],
   ['skipwhile_5',['skipWhile',['../classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce',1,'CXXIter::IterApi']]],
   ['sort_6',['sort',['../classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080',1,'CXXIter::IterApi::sort()'],['../classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22',1,'CXXIter::IterApi::sort(TCompareFn compareFn)']]],
   ['sortby_7',['sortBy',['../classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518',1,'CXXIter::IterApi']]],

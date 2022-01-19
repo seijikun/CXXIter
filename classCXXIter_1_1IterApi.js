@@ -34,7 +34,7 @@ var classCXXIter_1_1IterApi =
     [ "nth", "classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019", null ],
     [ "size", "classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804", null ],
     [ "sizeHint", "classCXXIter_1_1IterApi.html#a9baddc40de1b9c63102e5c5bf886474e", null ],
-    [ "skip", "classCXXIter_1_1IterApi.html#ad616d50fe5b01eb2fdbfe02ced9cc2a1", null ],
+    [ "skip", "classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43", null ],
     [ "skipWhile", "classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce", null ],
     [ "sort", "classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080", null ],
     [ "sort", "classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22", null ],
@@ -42,7 +42,7 @@ var classCXXIter_1_1IterApi =
     [ "stepBy", "classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817", null ],
     [ "stringJoin", "classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437", null ],
     [ "sum", "classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb", null ],
-    [ "take", "classCXXIter_1_1IterApi.html#a36ee6ce2e84839b2e353bb83b07a64c2", null ],
+    [ "take", "classCXXIter_1_1IterApi.html#ab2f7853bd666a1190edc9918be95ba6f", null ],
     [ "takeWhile", "classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4", null ],
     [ "zip", "classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1", null ],
     [ "zipTuple", "classCXXIter_1_1IterApi.html#ac15b4914c7360e5d9fc5afe38e2469ab", null ]

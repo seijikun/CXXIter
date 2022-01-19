@@ -11,8 +11,10 @@ var dir_94e28e050ec962af1417912038263e19 =
     [ "InplaceModifier.h", "InplaceModifier_8h_source.html", null ],
     [ "Intersperser.h", "Intersperser_8h_source.html", null ],
     [ "Map.h", "Map_8h_source.html", null ],
+    [ "SkipN.h", "SkipN_8h_source.html", null ],
     [ "SkipWhile.h", "SkipWhile_8h_source.html", null ],
     [ "Sorter.h", "Sorter_8h_source.html", null ],
+    [ "TakeN.h", "TakeN_8h_source.html", null ],
     [ "TakeWhile.h", "TakeWhile_8h_source.html", null ],
     [ "Zipper.h", "Zipper_8h_source.html", null ]
 ];

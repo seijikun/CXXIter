@@ -19,6 +19,7 @@ var hierarchy =
     [ "CXXIter::IterApi< Map< TChainInput, TMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Range< TValue > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Repeater< TItem > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< SkipN< TChainInput > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< SkipWhile< TChainInput, TSkipPredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Sorter< TChainInput, TCompareFn, STABLE > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< SrcCRef< TContainer > >", "classCXXIter_1_1IterApi.html", [
@@ -30,6 +31,7 @@ var hierarchy =
     [ "CXXIter::IterApi< SrcRef< TContainer > >", "classCXXIter_1_1IterApi.html", [
       [ "CXXIter::SrcRef< TContainer >", "classCXXIter_1_1SrcRef.html", null ]
     ] ],
+    [ "CXXIter::IterApi< TakeN< TChainInput > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< TakeWhile< TChainInput, TTakePredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Zipper< TChainInput1, TZipContainer, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IteratorTrait< T >", "structCXXIter_1_1IteratorTrait.html", null ],
