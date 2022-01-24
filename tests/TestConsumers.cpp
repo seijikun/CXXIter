@@ -15,6 +15,21 @@
 // ################################################################################################
 // CONSUMERS
 // ################################################################################################
+TEST(CXXIter, iterator) {
+	std::vector<size_t> input = {1, 3, 3, 7};
+	auto iter = CXXIter::from(input)
+			.map([](size_t item) { return (item + 1); })
+			.filter([](size_t item) { return (item >= 4); })
+			.skip(1);
+
+	std::vector<size_t> output;
+	for(size_t item : iter) {
+		output.push_back(item);
+	}
+	ASSERT_EQ(output.size(), 2);
+	ASSERT_THAT(output, ElementsAre(4, 8));
+}
+
 TEST(CXXIter, forEach) {
 	// additional container type parameters
 	std::vector<std::string> input = {"1337", "42", "64"};

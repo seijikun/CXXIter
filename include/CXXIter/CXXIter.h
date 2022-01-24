@@ -67,8 +67,53 @@ private:
 	const TSelf* self() const { return static_cast<const TSelf*>(this); }
 	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
 
-public:
+public: // Lifecycle Management
 	virtual ~IterApi() {}
+
+public: // C++ Iterator API-Surface
+
+	/**
+	 * @brief C++ iterator implementation for a CXXIter chain.
+	 */
+	class iterator {
+		friend class IterApi;
+		TSelf& self;
+		IterValue<Item> element;
+
+		/** end ctor */
+		iterator(TSelf& self) : self(self) {}
+		/** element ctor */
+		iterator(TSelf& self, IterValue<Item>&& element) : self(self), element(std::move(element)) {}
+
+
+	public:
+		iterator& operator++() {
+			if(element.has_value()) {
+				element = self.next();
+			}
+			return *this;
+		}
+
+		Item& operator*() { return element.value(); }
+
+		bool operator!=(const iterator& o) {
+			return (element.has_value() != o.element.has_value());
+		}
+	};
+
+	/**
+	 * @brief begin() method, part of C++'s iterator interface
+	 * @return C++ interface on top of this iterator pipeline.
+	 */
+	iterator begin() { return {*self(), next()}; }
+
+	/**
+	 * @brief end() method, part of C++'s iterator interface
+	 * @return C++ interface on top of this iterator pipeline.
+	 */
+	iterator end() { return {*self()}; }
+
+public: // CXXIter API-Surface
 
 	/**
 	 * @brief Get the bounds on the remaining length of this iterator, estimated from the source
