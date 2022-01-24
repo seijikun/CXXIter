@@ -1,14 +1,17 @@
 var classCXXIter_1_1IterApi =
 [
+    [ "iterator", "classCXXIter_1_1IterApi_1_1iterator.html", null ],
     [ "Item", "classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8", null ],
     [ "ItemOwned", "classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512", null ],
     [ "Iterator", "classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32", null ],
     [ "alternate", "classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47", null ],
+    [ "begin", "classCXXIter_1_1IterApi.html#aaa8bf456c009689898f75879d1691120", null ],
     [ "cast", "classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7", null ],
     [ "chain", "classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
+    [ "end", "classCXXIter_1_1IterApi.html#abac1131fb2734cfae22b38099740627a", null ],
     [ "filter", "classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db", null ],
     [ "filterMap", "classCXXIter_1_1IterApi.html#a009154287504a68df72425093ee90851", null ],
     [ "find", "classCXXIter_1_1IterApi.html#ab44325cb6ee35f352ca90c33db720644", null ],

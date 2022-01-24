@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['next_0',['next',['../classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e',1,'CXXIter::IterApi::next()'],['../structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c',1,'CXXIter::IteratorTrait::next()'],['../structCXXIter_1_1SourceTrait.html#af173b542b3359ff432d47f8c97752238',1,'CXXIter::SourceTrait::next(TContainer &amp;container, IteratorState &amp;iter)'],['../structCXXIter_1_1SourceTrait.html#aa2cc0d19a301ab6423c8df49e409c81f',1,'CXXIter::SourceTrait::next(const TContainer &amp;container, ConstIteratorState &amp;iter)']]],
-  ['nth_1',['nth',['../classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019',1,'CXXIter::IterApi']]]
+  ['map_0',['map',['../classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6',1,'CXXIter::IterApi']]],
+  ['max_1',['max',['../classCXXIter_1_1IterApi.html#a7704878b20d80e80a913911314e095b1',1,'CXXIter::IterApi']]],
+  ['maxby_2',['maxBy',['../classCXXIter_1_1IterApi.html#a1952c90846e9a86983d5c8e9f25f6a02',1,'CXXIter::IterApi']]],
+  ['mean_3',['mean',['../classCXXIter_1_1IterApi.html#ab96a0fdc7efba2f4bddfa013429bc6bc',1,'CXXIter::IterApi']]],
+  ['min_4',['min',['../classCXXIter_1_1IterApi.html#a9f98bcc96bc3b93477045dabc085c733',1,'CXXIter::IterApi']]],
+  ['minby_5',['minBy',['../classCXXIter_1_1IterApi.html#a37f52ae6624d84dbce6635fffd824901',1,'CXXIter::IterApi']]],
+  ['modify_6',['modify',['../classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3',1,'CXXIter::IterApi']]]
 ];

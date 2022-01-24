@@ -34,6 +34,7 @@ var hierarchy =
     [ "CXXIter::IterApi< TakeN< TChainInput > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< TakeWhile< TChainInput, TTakePredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Zipper< TChainInput1, TZipContainer, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< TSelf >::iterator", "classCXXIter_1_1IterApi_1_1iterator.html", null ],
     [ "CXXIter::IteratorTrait< T >", "structCXXIter_1_1IteratorTrait.html", null ],
     [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
     [ "CXXIter::Generator< T >::promise_type", "structCXXIter_1_1Generator_1_1promise__type.html", null ],

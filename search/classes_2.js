@@ -26,6 +26,7 @@ var searchData=
   ['iterapi_3c_20taken_3c_20tchaininput_20_3e_20_3e_23',['IterApi&lt; TakeN&lt; TChainInput &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20takewhile_3c_20tchaininput_2c_20ttakepredicate_20_3e_20_3e_24',['IterApi&lt; TakeWhile&lt; TChainInput, TTakePredicate &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_25',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iteratortrait_26',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
-  ['itervalue_3c_20tvalue_20_3e_27',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
+  ['iterator_26',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
+  ['iteratortrait_27',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
+  ['itervalue_3c_20tvalue_20_3e_28',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
 ];
