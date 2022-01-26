@@ -406,6 +406,18 @@ TEST(CXXIter, generateFrom) {
 			ASSERT_EQ(ex.what(), std::string("Exception From GeneratorFn"));
 		}
 	}
+	{ // empty return
+		std::vector<std::string> input = {"1337", "42"};
+		std::vector<std::string> output = CXXIter::from(std::move(input))
+				.generateFrom([](std::string item) -> CXXIter::Generator<std::string> {
+					if constexpr(false) {
+						co_yield item;
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 0);
+		ASSERT_THAT(output, ElementsAre());
+	}
 }
 #endif
 
