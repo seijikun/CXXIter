@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::find" name="CXXIter::IterApi::find">
+<area shape="rect" id="node1" title="Searches for an element of this iterator, that satisfies the given findFn predicate." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil..." alt="" coords="208,5,368,32"/>
+</map>
