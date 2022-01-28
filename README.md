@@ -5,7 +5,7 @@ It supports passing values by (const) reference or by using move semantics, whic
 
 ## The API
 
-A full API-Documentation can be found [here](https://seijikun.github.io/CXXIter/).
+A full API-Documentation can be found [here](https://seijikun.github.io/CXXIter/docs/).
 
 ### Entry
 The `CXXIter` interface is entered by instantiating one of the possible source classes.

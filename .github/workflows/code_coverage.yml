@@ -1,0 +1,44 @@
+name: Code Coverage
+
+on: [push, pull_request]
+
+jobs:
+  code_coverage:
+    name: "Code Coverage"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -yq libgtest-dev libgmock-dev libbenchmark-dev cmake ninja-build pip
+        pip install gcovr
+    - name: Setup GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: 11
+        platform: x64
+      
+    - name: Configure
+      run: |
+        if [ -d "build" ]; then rm -rf ./build; fi
+        mkdir -p build
+        cd build
+        cmake ../ -GNinja -DCMAKE_BUILD_TYPE="CodeCoverage" -DCXXITER_WITH_TESTS=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+        
+    - name: Run Test Coverage
+      run: |
+        cd build/
+        cmake --build . --target CodeCoverage
+        
+    - name: Deploy Docs to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.2.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: build/tests/CXXIterTests_coverage
+        target-folder: "coverage"
+        clean: true

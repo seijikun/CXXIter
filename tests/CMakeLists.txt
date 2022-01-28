@@ -27,15 +27,17 @@ function(add_coverage_for EXE_TARGET_NAME)
 	# register target that runs the target executable to generate gcov-gcda files
 	add_custom_target(${EXE_TARGET_NAME}-gcovrun
 		COMMAND ${TBIN_DIR}/${EXE_TARGET_NAME}
-		DEPENDS ${EXE_TARGET_NAME}
+		DEPENDS ${TBIN_DIR}/${EXE_TARGET_NAME}
 		WORKING_DIRECTORY ${TBIN_DIR}
 		COMMENT "Run ${EXE_TARGET_NAME}-executable to produce coverage report files"
 	)
 
-	set(COVERAGE_REPORT_FILE ${TBIN_DIR}/${EXE_TARGET_NAME}_coverage.html)
+	set(COVERAGE_REPORT_FOLDER ${TBIN_DIR}/${EXE_TARGET_NAME}_coverage)
+	set(COVERAGE_REPORT_FILE ${COVERAGE_REPORT_FOLDER}/index.html)
 	find_program(GCOVR_BIN gcovr)
 	add_custom_command(OUTPUT ${COVERAGE_REPORT_FILE}
-		COMMAND ${GCOVR_ENV} ${GCOVR_BIN} --html-details -r ${PROJECT_SOURCE_DIR} ${TOBJECTS_DIR} --output ${COVERAGE_REPORT_FILE}
+		COMMAND ${CMAKE_COMMAND} -E make_directory ${COVERAGE_REPORT_FOLDER}
+		COMMAND ${GCOVR_ENV} ${GCOVR_BIN} --gcov-executable ${GCOV_BIN} --print-summary --html-details -r "${PROJECT_SOURCE_DIR}" "${TOBJECTS_DIR}" --output "${COVERAGE_REPORT_FILE}"
 		DEPENDS ${EXE_TARGET_NAME}-gcovrun
 		WORKING_DIRECTORY ${TBIN_DIR})
 	add_custom_target(${EXE_TARGET_NAME}-gcovr DEPENDS ${COVERAGE_REPORT_FILE})
@@ -45,6 +47,8 @@ function(add_coverage_for EXE_TARGET_NAME)
 endfunction(add_coverage_for)
 
 if(CMAKE_BUILD_TYPE STREQUAL "CodeCoverage")
+	find_package(gcov)
+	message(STATUS "Using gcov binary: ${GCOV_BIN}")
 	add_custom_target(CodeCoverage)
 	add_coverage_for(CXXIterTests)
 endif()

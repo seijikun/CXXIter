@@ -35,8 +35,10 @@ jobs:
         cmake --build .
         
     - name: Deploy Docs to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@v4.2.2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
         folder: build/html
+        target-folder: "docs"
+        clean: true

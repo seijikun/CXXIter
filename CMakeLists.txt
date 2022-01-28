@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.14)
 
 project(CXXIter LANGUAGES CXX)
 
-include(cmake/CXXIter_features.cmake)
+# add cmake to module path
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+include(CXXIter_features)
 
 option(CXXITER_WITH_TESTS "Compile the CIter tests" OFF)
 option(CXXITER_WITH_DOCS "Run Doxygen to produce documentation" OFF)
