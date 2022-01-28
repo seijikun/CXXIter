@@ -1,5 +1,0 @@
-<map id="CXXIter::IterApi::stringJoin" name="CXXIter::IterApi::stringJoin">
-<area shape="rect" id="node1" title="Consumer that concatenates the elements of this iterator to a large std::string , where each element ..." alt="" coords="5,13,196,39"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="244,13,423,39"/>
-<area shape="rect" id="node3" href="$structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="471,5,625,47"/>
-</map>

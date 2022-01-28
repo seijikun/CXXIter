@@ -1,4 +1,0 @@
-<map id="CXXIter::IterApi::nth" name="CXXIter::IterApi::nth">
-<area shape="rect" id="node1" title="Return the {n}&#45;th element from this iterator (if available)." alt="" coords="5,5,156,32"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43" title="Creates an iterator that skips the first cnt elements from this iterator, before it yields the remain..." alt="" coords="204,5,361,32"/>
-</map>
