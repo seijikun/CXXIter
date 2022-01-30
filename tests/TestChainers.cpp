@@ -620,6 +620,15 @@ TEST(CXXIter, chain) {
 			ASSERT_EQ(sizeHint.lowerBound, 2);
 			ASSERT_EQ(sizeHint.upperBound.value(), 4);
 		}
+		{
+			std::vector<std::string> input1 = {"1337", "42"};
+			auto iter2 = CXXIter::repeat<std::string>("endless");
+			SizeHint sizeHint = CXXIter::from(input1).copied().filter([](const auto&) { return true; })
+					.chain(iter2.copied())
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, SizeHint::INFINITE);
+			ASSERT_FALSE(sizeHint.upperBound.has_value());
+		}
 	}
 	{
 		std::vector<std::string> input1 = {"1337", "42"};
