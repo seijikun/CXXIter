@@ -1,711 +1,461 @@
-
+<!DOCTYPE html>
 <html>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>Head</title>
-  <style media="screen" type="text/css">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>GCC Code Coverage Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="index.css">
+  </head>
 
-    body
-    {
-      color: #000000;
-      background-color: #FFFFFF;
-    }
+  <body>
+    <h1>GCC Code Coverage Report</h1>
 
-    /* Link formats: use maroon w/underlines */
-    a:link
-    {
-      color: navy;
-      text-decoration: underline;
-    }
-    a:visited
-    {
-      color: maroon;
-      text-decoration: underline;
-    }
-    a:active
-    {
-      color: navy;
-      text-decoration: underline;
-    }
+    <hr/>
 
-    /*** TD formats ***/
-    td
-    {
-      font-family: sans-serif;
-    }
-    td.title
-    {
-      text-align: center;
-      padding-bottom: 10px;
-      font-size: 20pt;
-      font-weight: bold;
-    }
-
-    /* TD Header Information */
-    td.headerName
-    {
-      text-align: right;
-      color: black;
-      padding-right: 6px;
-      font-weight: bold;
-      vertical-align: top;
-      white-space: nowrap;
-    }
-    td.headerValue
-    {
-      text-align: left;
-      color: blue;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    td.headerTableEntry
-    {
-      text-align: right;
-      color: black;
-      font-weight: bold;
-      white-space: nowrap;
-      padding-left: 12px;
-      padding-right: 4px;
-      background-color: LightBlue;
-    }
-    td.headerValueLeg
-    {
-      text-align: left;
-      color: black;
-      font-size: 80%;
-      white-space: nowrap;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 2px;
-    }
-
-    /* Color of horizontal ruler */
-    td.hr
-    {
-      background-color: navy;
-      height:3px;
-    }
-    /* Footer format */
-    td.footer
-    {
-      text-align: center;
-      padding-top: 3px;
-      font-family: sans-serif;
-    }
-
-    /* Coverage Table */
-
-    td.coverTableHead
-    {
-      text-align: center;
-      color: white;
-      background-color: SteelBlue;
-      font-family: sans-serif;
-      font-size: 120%;
-      white-space: nowrap;
-      padding-left: 4px;
-      padding-right: 4px;
-    }
-    td.coverFile
-    {
-      text-align: left;
-      padding-left: 10px;
-      padding-right: 20px;
-      color: black;
-      background-color: LightBlue;
-      font-family: monospace;
-      font-weight: bold;
-      font-size: 110%;
-    }
-    td.coverBar
-    {
-      padding-left: 10px;
-      padding-right: 10px;
-      background-color: LightBlue;
-    }
-    td.coverBarOutline
-    {
-      background-color: white;
-    }
-    td.coverValue
-    {
-      padding-top: 2px;
-      text-align: right;
-      padding-left: 10px;
-      padding-right: 10px;
-      font-family: sans-serif;
-      white-space: nowrap;
-      font-weight: bold;
-    }
-
-    /* Link Details */
-    a.detail:link
-    {
-      color: #B8D0FF;
-      font-size:80%;
-    }
-    a.detail:visited
-    {
-      color: #B8D0FF;
-      font-size:80%;
-    }
-    a.detail:active
-    {
-      color: #FFFFFF;
-      font-size:80%;
-    }
-
-    .graphcont{
-        color:#000;
-        font-weight:700;
-        float:left
-    }
-
-    .graph{
-        float:left;
-        background-color: white;
-        position:relative;
-        width:280px;
-        padding:0
-    }
-
-    .graph .bar{
-        display:block;
-        position:relative;
-        border:black 1px solid;
-        text-align:center;
-        color:#fff;
-        height:10px;
-        font-family:Arial,Helvetica,sans-serif;
-        font-size:12px;
-        line-height:1.9em
-    }
-
-    .graph .bar span{
-        position:absolute;
-        left:1em
-    }
-
-    td.coveredLine,
-    span.coveredLine
-    {
-        background-color: LightGreen!important;
-    }
-
-    td.uncoveredLine,
-    span.uncoveredLine
-    {
-        background-color: LightPink!important;
-    }
-
-    .linebranch, .linecount
-    {
-        border-right: 1px gray solid;
-        background-color: lightgray;
-    }
-
-    span.takenBranch
-    {
-        color: Green!important;
-        cursor: help;
-    }
-
-    span.notTakenBranch
-    {
-        color: Red!important;
-        cursor: help;
-    }
-
-    .src
-    {
-        padding-left: 12px;
-    }
-
-    .srcHeader,
-    span.takenBranch,
-    span.notTakenBranch
-    {
-        font-family: monospace;
-        font-weight: bold;
-    }
-
-    pre
-    {
-        height : 15px;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .lineno
-    {
-        background-color: #EFE383;
-        border-right: 1px solid #BBB15F;
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title">GCC Code Coverage Report</td></tr>
-    <tr><td class="hr"></td></tr>
-
+    <div class="summary">
+<div>
+  <table class="legend">
     <tr>
-      <td width="100%">
-        <table cellpadding=1 border=0 width="100%">
-          <tr>
-            <td width="10%" class="headerName">Directory:</td>
-            <td width="35%" class="headerValue">./</td>
-            <td width="5%"></td>
-            <td width="15%"></td>
-            <td width="10%" class="headerValue" style="text-align:right;">Exec</td>
-            <td width="10%" class="headerValue" style="text-align:right;">Total</td>
-            <td width="15%" class="headerValue" style="text-align:right;">Coverage</td>
-          </tr>
-          <tr>
-            <td class="headerName">Date:</td>
-            <td class="headerValue">2022-01-28 23:00:30</td>
-            <td></td>
-            <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">0</td>
-            <td class="headerTableEntry">1636</td>
-            <td class="headerTableEntry" style="background-color:LightPink">0.0 %</td>
-          </tr>
-          <tr>
-            <td class="headerName">Legend:</td>
-            <td class="headerValueLeg">
-              <span style="background-color:LightPink">low: &lt; 75.0 %</span>
-              <span style="background-color:#FFFF55">medium: &gt;= 75.0 %</span>
-              <span style="background-color:LightGreen">high: &gt;= 90.0 %</span>
-            </td>
-            <td></td>
-            <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">0</td>
-            <td class="headerTableEntry">7486</td>
-            <td class="headerTableEntry" style="background-color:LightPink">0.0 %</td>
-          </tr>
-        </table>
+      <th scope="row">Directory:</th>
+      <td>./</td>
+    </tr>
+    <tr>
+      <th scope="row">Date:</th>
+      <td>2022-01-30 13:26:53</td>
+    </tr>
+    <tr>
+      <th scope="row">Legend:</th>
+      <td class="legend">
+        <span class="coverage-low">low: &gt;= 0%</span>
+        <span class="coverage-medium">medium: &gt;= 75.0%</span>
+        <span class="coverage-high">high: &gt;= 90.0%</span>
       </td>
-    </tr>
-
-    <tr><td class="hr"></td></tr>
-  </table>
-
-  <center>
-  <table width="80%" cellpadding=1 cellspacing=1 border=0>
-    <tr>
-      <td width="44%"><br></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-    </tr>
-    <tr>
-      <td class="coverTableHead">File</td>
-      <td class="coverTableHead" colspan=3>Lines</td>
-      <td class="coverTableHead" colspan=2>Branches</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_CXXIter.h.html">include/CXXIter/CXXIter.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 175</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 88</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_Collector.h.html">include/CXXIter/src/Collector.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 18</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_Common.h.html">include/CXXIter/src/Common.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 60</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 28</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_Alternater.h.html">include/CXXIter/src/op/Alternater.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 21</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 31</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_Caster.h.html">include/CXXIter/src/op/Caster.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 5</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_Chainer.h.html">include/CXXIter/src/op/Chainer.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 15</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 10</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_Filter.h.html">include/CXXIter/src/op/Filter.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 8</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 14</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_FilterMap.h.html">include/CXXIter/src/op/FilterMap.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 11</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 18</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_FlatMap.h.html">include/CXXIter/src/op/FlatMap.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 24</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_GroupBy.h.html">include/CXXIter/src/op/GroupBy.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 17</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 38</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_InplaceModifier.h.html">include/CXXIter/src/op/InplaceModifier.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 7</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 8</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_Intersperser.h.html">include/CXXIter/src/op/Intersperser.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 27</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 16</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_Map.h.html">include/CXXIter/src/op/Map.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 5</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_SkipN.h.html">include/CXXIter/src/op/SkipN.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 12</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 8</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_SkipWhile.h.html">include/CXXIter/src/op/SkipWhile.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 12</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 10</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_Sorter.h.html">include/CXXIter/src/op/Sorter.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 16</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_TakeN.h.html">include/CXXIter/src/op/TakeN.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 10</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_op_TakeWhile.h.html">include/CXXIter/src/op/TakeWhile.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 9</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 8</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_op_Zipper.h.html">include/CXXIter/src/op/Zipper.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 19</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 110</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.include_CXXIter_src_sources_ContainerSources.h.html">include/CXXIter/src/sources/ContainerSources.h</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 16</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.include_CXXIter_src_sources_GeneratorSources.h.html">include/CXXIter/src/sources/GeneratorSources.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 28</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 16</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.tests_TestChainers.cpp.html">tests/TestChainers.cpp</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 616</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 4099</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.tests_TestCommon.h.html">tests/TestCommon.h</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 30</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 10</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.tests_TestConsumers.cpp.html">tests/TestConsumers.cpp</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 183</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 932</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.tests_TestExactSized.cpp.html">tests/TestExactSized.cpp</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 76</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 306</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" style="background-color:LightSteelBlue"><a href="index.tests_TestSources.cpp.html">tests/TestSources.cpp</a></td>
-      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 200</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 1490</td>
-    </tr>
-
-
-    <tr>
-      <td class="coverFile" ><a href="index.tests_TestTypeConstraints.cpp.html">tests/TestTypeConstraints.cpp</a></td>
-      <td class="coverBar" align="center" >
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
-                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
-                </td></tr></table>
-      </td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 28</td>
-      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
-      <td class="CoverValue" style="background-color:LightPink;">0 / 164</td>
-    </tr>
-
-
-    <tr>
-      <td width="44%"><br></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
-      <td width="8%"></td>
     </tr>
   </table>
-  </center>
+</div>
 
-  <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="hr"><td></tr>
-    <tr><td class="footer">Generated by: <a href="http://gcovr.com">GCOVR (Version 4.2)</a></td></tr>
+<div>
+  <table class="coverage">
+    <tr>
+      <th></th>
+      <th scope="col">Exec</th>
+      <th scope="col">Total</th>
+      <th scope="col">Coverage</th>
+    </tr>
+    <tr>
+      <th scope="row">Lines:</th>
+      <td>0</td>
+      <td>1636</td>
+      <td class="coverage-none">0.0%</td>
+    </tr>
+    <tr>
+      <th scope="row">Branches:</th>
+      <td>0</td>
+      <td>7486</td>
+      <td class="coverage-none">0.0%</td>
+    </tr>
   </table>
-  <br>
+</div>
+    </div>
 
-</body>
+    <hr/>
 
+<table class="file-list">
+  <col/>
+  <colgroup span="3"/>
+  <colgroup span="2"/>
+
+  <tr>
+    <th scope="col">File</th>
+    <th scope="colgroup" colspan=3>Lines</th>
+    <th scope="colgroup" colspan=2>Branches</th>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.CXXIter.h.401c3707c48cdd19fc4f33da9df1edd6.html">include/CXXIter/CXXIter.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 175</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 88</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Collector.h.11e40b51c8dfbbfdd2704803694ae75c.html">include/CXXIter/src/Collector.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 14</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 18</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Common.h.2e4a737daba4c3bedeb5da907c500fcd.html">include/CXXIter/src/Common.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 60</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 28</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Alternater.h.75dd5e01ef29751472f9b5139e405c26.html">include/CXXIter/src/op/Alternater.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 21</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 31</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Caster.h.eed61aa57ecedacaff5cdd9965eb09cf.html">include/CXXIter/src/op/Caster.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 5</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 4</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Chainer.h.7d30b76315a0bd5f060a74f1b3b08aa7.html">include/CXXIter/src/op/Chainer.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 15</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 10</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Filter.h.e01b20c4289d6832a64672a43255aa28.html">include/CXXIter/src/op/Filter.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 8</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 14</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.FilterMap.h.8203400a150f1c99f188d05907ccd365.html">include/CXXIter/src/op/FilterMap.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 11</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 18</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.FlatMap.h.c235644aa9f55b610cae667c25d75766.html">include/CXXIter/src/op/FlatMap.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 14</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 24</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.GroupBy.h.2ae5fd6118d36f5b982432472717953b.html">include/CXXIter/src/op/GroupBy.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 17</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 38</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.InplaceModifier.h.203919f8bbe5e3dd24036f3674db7bc1.html">include/CXXIter/src/op/InplaceModifier.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 7</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 8</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Intersperser.h.a95ee374cffa6d18b8c48b64d61efaf7.html">include/CXXIter/src/op/Intersperser.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 27</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 16</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Map.h.a84b9b850e22f0b15995b557583b4c51.html">include/CXXIter/src/op/Map.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 5</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 4</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.SkipN.h.01e7fbf06099f65e33c1fabdbf8db376.html">include/CXXIter/src/op/SkipN.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 12</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 8</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.SkipWhile.h.b76df656f902265f67dba6b3b045f80f.html">include/CXXIter/src/op/SkipWhile.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 12</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 10</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Sorter.h.26e30dac6c4e447b26b5f457511657da.html">include/CXXIter/src/op/Sorter.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 14</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 16</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TakeN.h.78f180a822ad46c7287dcc0075f7d727.html">include/CXXIter/src/op/TakeN.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 14</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 10</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TakeWhile.h.9639634a2fae5ff03b4084a1c4c25cc9.html">include/CXXIter/src/op/TakeWhile.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 9</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 8</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.Zipper.h.2244d8cbe5bcee8b39964072378c38bf.html">include/CXXIter/src/op/Zipper.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 19</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 110</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.ContainerSources.h.dcaa93a9d118dee55f09d2d5f9013633.html">include/CXXIter/src/sources/ContainerSources.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 16</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 6</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.GeneratorSources.h.2b24c8263cd6cf82df40e4e8963cb82e.html">include/CXXIter/src/sources/GeneratorSources.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 28</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 16</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestChainers.cpp.53f532651364cadaf62cfed626c2d874.html">tests/TestChainers.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 616</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 4099</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestCommon.h.de201145ee0e05186ed3c95dc82b3e7d.html">tests/TestCommon.h</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 30</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 10</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestConsumers.cpp.c2b991c23c2ede802a152103ac89c441.html">tests/TestConsumers.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 183</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 932</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestExactSized.cpp.b160fd022552a38d873b1afbb621b22e.html">tests/TestExactSized.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 76</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 306</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestSources.cpp.d13a1f69cd8e199cb9f91b9b757f5a01.html">tests/TestSources.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 200</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 1490</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="index.TestTypeConstraints.cpp.1f9453cac131ee1ee3b0c6700c150e36.html">tests/TestTypeConstraints.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-none" min="0" max="100" value="0.0" title="0.0%">0.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-none">0.0%</td>
+    <td class="CoverValue line-coverage coverage-none">0 / 28</td>
+    <td class="CoverValue branch-coverage coverage-none">0.0%</td>
+    <td class="CoverValue branch-coverage coverage-none">0 / 164</td>
+  </tr>
+
+</table>
+
+    <hr/>
+
+    <footer>
+      Generated by: <a href="http://gcovr.com">GCOVR (Version 5.0)</a>
+    </footer>
+  </body>
 </html>
-
