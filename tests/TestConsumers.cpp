@@ -220,7 +220,7 @@ TEST(CXXIter, min) {
 
 TEST(CXXIter, minBy) {
 	{
-		std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::vector<std::string> input = {"middle", "smol", "largeString"};
 		std::optional<std::string> output = CXXIter::from(input)
 				.minBy([](const std::string& str) { return str.size(); })
 				.toStdOptional();
