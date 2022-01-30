@@ -18,6 +18,7 @@
 #include "src/op/Alternater.h"
 #include "src/op/Caster.h"
 #include "src/op/Chainer.h"
+#include "src/op/ChunkedExact.h"
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
 #include "src/op/FlatMap.h"
@@ -772,6 +773,40 @@ public: // CXXIter API-Surface
 	template<std::invocable<const ItemOwned&> TFilterFn>
 	Filter<TSelf, TFilterFn> filter(TFilterFn filterFn) {
 		return Filter<TSelf, TFilterFn>(std::move(*self()), filterFn);
+	}
+
+	/**
+	 * @brief Create new iterator that collects elements from this iterator in exact-sized chunks of @p CHUNK_SIZE, which then
+	 * constitue the elements of the new iterator.
+	 * @details A chunk is only committed in the new iterator, after it was filled completely. That means, that if the amount
+	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
+	 * fail to fill a complete chunk will be dropped.
+	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
+	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
+	 *
+	 * Usage Example:
+	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunkedExact<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {31337, 69, 5}, {1, 2, 3} }
+	 * @endcode
+	 * - If the amount of elements of the input can **not** be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunkedExact<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {31337, 69, 5} }
+	 * @endcode
+	 */
+	template<const size_t CHUNK_SIZE>
+	ChunkedExact<TSelf, CHUNK_SIZE> chunkedExact() {
+		return ChunkedExact<TSelf, CHUNK_SIZE>(std::move(*self()));
 	}
 
 	/**

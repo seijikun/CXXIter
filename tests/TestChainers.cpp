@@ -108,6 +108,78 @@ TEST(CXXIter, filter) {
 	}
 }
 
+TEST(CXXIter, chunkedExact) {
+	{ // sizeHint
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			SizeHint sizeHint = CXXIter::from(input)
+					.copied()
+					.chunkedExact<3>()
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 3);
+			ASSERT_EQ(sizeHint.upperBound.value(), 3);
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+			SizeHint sizeHint = CXXIter::from(input)
+					.copied()
+					.chunkedExact<3>()
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 2);
+			ASSERT_EQ(sizeHint.upperBound.value(), 2);
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+			SizeHint sizeHint = CXXIter::from(input)
+					.copied()
+					.chunkedExact<3>()
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 2);
+			ASSERT_EQ(sizeHint.upperBound.value(), 2);
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+			SizeHint sizeHint = CXXIter::from(input)
+					.copied()
+					.filter([](size_t) { return true; })
+					.chunkedExact<3>()
+					.sizeHint();
+			ASSERT_EQ(sizeHint.lowerBound, 0);
+			ASSERT_EQ(sizeHint.upperBound.value(), 2);
+		}
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+		auto output = CXXIter::from(input)
+				.copied()
+				.chunkedExact<3>()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+		ASSERT_THAT(output[1], ElementsAre(31337, 69, 5));
+		ASSERT_THAT(output[2], ElementsAre(1, 2, 3));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+		auto output = CXXIter::from(input)
+				.copied()
+				.chunkedExact<3>()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+		ASSERT_THAT(output[1], ElementsAre(31337, 69, 5));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+		auto output = CXXIter::from(input)
+				.copied()
+				.chunkedExact<5>()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 1);
+		ASSERT_THAT(output[0], ElementsAre(1337, 42, 512, 31337, 69));
+	}
+}
+
 TEST(CXXIter, filterMap) {
 	{ // sizeHint
 		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8};
