@@ -8,6 +8,7 @@ var classCXXIter_1_1IterApi =
     [ "begin", "classCXXIter_1_1IterApi.html#aaa8bf456c009689898f75879d1691120", null ],
     [ "cast", "classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7", null ],
     [ "chain", "classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951", null ],
+    [ "chunkedExact", "classCXXIter_1_1IterApi.html#a4380241032f7103134d662c7935c8d8c", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
