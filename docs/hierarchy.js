@@ -1,19 +1,16 @@
 var hierarchy =
 [
     [ "CXXIter::ExactSizeIteratorTrait< T >", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],
-    [ "CXXIter::Generator< T >", "classCXXIter_1_1Generator.html", null ],
     [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Alternater< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Caster< TChainInput, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Chainer< TChainInput1, TChainInput2 > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< ChunkedExact< TChainInput, CHUNK_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
-    [ "CXXIter::IterApi< CoroutineGenerator< TGenerator > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Empty< TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Filter< TChainInput, TFilterFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< FilterMap< TChainInput, TFilterMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< FlatMap< TChainInput, TFlatMapFn, TItemContainer > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< FunctionGenerator< TItem, TGeneratorFn > >", "classCXXIter_1_1IterApi.html", null ],
-    [ "CXXIter::IterApi< GenerateFrom< TChainInput, TGeneratorFn, TGenerator > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< GroupBy< TChainInput, TGroupIdentifierFn, TGroupIdent > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< InplaceModifier< TChainInput, TModifierFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Intersperser< TChainInput, TSeparatorInput > >", "classCXXIter_1_1IterApi.html", null ],
@@ -38,7 +35,6 @@ var hierarchy =
     [ "CXXIter::IterApi< TSelf >::iterator", "classCXXIter_1_1IterApi_1_1iterator.html", null ],
     [ "CXXIter::IteratorTrait< T >", "structCXXIter_1_1IteratorTrait.html", null ],
     [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
-    [ "CXXIter::Generator< T >::promise_type", "structCXXIter_1_1Generator_1_1promise__type.html", null ],
     [ "CXXIter::SizeHint", "structCXXIter_1_1SizeHint.html", null ],
     [ "CXXIter::SourceTrait< TContainer >", "structCXXIter_1_1SourceTrait.html", null ]
 ];

@@ -22,7 +22,6 @@ var classCXXIter_1_1IterApi =
     [ "flatMap", "classCXXIter_1_1IterApi.html#a165695af4dc2acf1cf6eadd3ae6c2fc2", null ],
     [ "fold", "classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e", null ],
     [ "forEach", "classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066", null ],
-    [ "generateFrom", "classCXXIter_1_1IterApi.html#a859ed47310bc0aade5e6d4378433ac84", null ],
     [ "groupBy", "classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5", null ],
     [ "indexed", "classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08", null ],
     [ "intersperse", "classCXXIter_1_1IterApi.html#a99ecd487d01ca5c35fef6c23fb483484", null ],
