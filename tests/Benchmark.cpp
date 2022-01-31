@@ -1,9 +1,10 @@
 #include <iostream>
 #include <optional>
+#include <version>
 #include <vector>
 #include <cmath>
 
-#ifndef __clang__
+#ifdef CXXITER_HAS_CXX20RANGES
 #include <ranges>
 #endif
 
@@ -64,7 +65,7 @@ static void BM_FilterMap_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_FilterMap_Native)->MinTime(10);
 
-#ifndef __clang__
+#ifdef CXXITER_HAS_CXX20RANGES
 static void BM_FilterMap_CXX20Ranges(benchmark::State& state) {
 	for (auto _ : state) {
 		auto filterFn = [](const std::string& item){
@@ -104,7 +105,7 @@ static void BM_Filter_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Filter_Native)->MinTime(10);
 
-#ifndef __clang__
+#ifdef CXXITER_HAS_CXX20RANGES
 static void BM_Filter_CXX20Ranges(benchmark::State& state) {
 	for (auto _ : state) {
 		std::vector<double> output;
@@ -135,7 +136,7 @@ static void BM_Map_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Map_Native)->MinTime(10);
 
-#ifndef __clang__
+#ifdef CXXITER_HAS_CXX20RANGES
 static void BM_Map_CXX20Ranges(benchmark::State& state) {
 	for (auto _ : state) {
 		std::vector<double> output;
@@ -166,7 +167,7 @@ static void BM_Cast_Native(benchmark::State& state) {
 	}
 } BENCHMARK(BM_Cast_Native)->MinTime(10);
 
-#ifndef __clang__
+#ifdef CXXITER_HAS_CXX20RANGES
 static void BM_Cast_CXX20Ranges(benchmark::State& state) {
 	for (auto _ : state) {
 		std::vector<float> output;

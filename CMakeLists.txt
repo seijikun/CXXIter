@@ -16,7 +16,7 @@ endif()
 add_library(CXXIter INTERFACE ${CXXITER_SOURCES})
 target_include_directories(CXXIter INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_features(CXXIter INTERFACE cxx_std_20)
-target_compile_definitions(CXXIter INTERFACE $<$<BOOL:${CXXITER_HAS_COROUTINE}>:CXXITER_HAS_COROUTINE>)
+target_compile_definitions(CXXIter INTERFACE ${CXXITER_FEATUREFLAG_COMPILE_DEFINITIONS})
 
 # INSTALL
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
@@ -42,7 +42,7 @@ if(${CXXITER_WITH_DOCS})
 	set(DOXYGEN_INTERACTIVE_SVG YES)
 	set(DOXYGEN_DOT_TRANSPARENT YES)
 	# enable all conditional feature-flags for documentation
-	set(DOXYGEN_PREDEFINED CXXITER_HAS_COROUTINE)
+	set(DOXYGEN_PREDEFINED ${CXXITER_FEATUREFLAG_NAMES})
 
 	doxygen_add_docs("CXXIterDocs"
 		"${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_CURRENT_SOURCE_DIR}/doc"
