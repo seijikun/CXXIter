@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.13)
 
 project(CXXIter LANGUAGES CXX)
 
@@ -9,14 +9,17 @@ include(CXXIter_features)
 option(CXXITER_WITH_TESTS "Compile the CIter tests" OFF)
 option(CXXITER_WITH_DOCS "Run Doxygen to produce documentation" OFF)
 
-FILE(GLOB_RECURSE CXXITER_SOURCES "include/*.h")
+if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.19.0")
+	# cmake pre 3.19 does not support the specifying of source files in INTERFACE libraries
+	file(GLOB_RECURSE CXXITER_SOURCES "include/*.h")
+endif()
 add_library(CXXIter INTERFACE ${CXXITER_SOURCES})
-target_include_directories(CXXIter INTERFACE "include/")
+target_include_directories(CXXIter INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_features(CXXIter INTERFACE cxx_std_20)
 target_compile_definitions(CXXIter INTERFACE $<$<BOOL:${CXXITER_HAS_COROUTINE}>:CXXITER_HAS_COROUTINE>)
 
 # INSTALL
-install(DIRECTORY include/CXXIter TYPE INCLUDE)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
 
 # UNIT-TESTS
 if(${CXXITER_WITH_TESTS})
