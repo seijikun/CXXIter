@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 project(CXXIter LANGUAGES CXX)
 
 # add cmake to module path
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 include(CXXIter_features)
 
 option(CXXITER_WITH_TESTS "Compile the CIter tests" OFF)
