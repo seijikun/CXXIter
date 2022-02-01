@@ -206,6 +206,15 @@ TEST(CXXIter, filterMap) {
 }
 
 TEST(CXXIter, map) {
+	struct SimpleState {
+		size_t state = 0;
+		SimpleState(size_t state) : state(state) {}
+		size_t getAddState() {
+			state += 1;
+			return state;
+		}
+	};
+
 	{ // sizeHint
 		std::vector<int> input = {1337, 42};
 		SizeHint sizeHint = CXXIter::from(input)
@@ -230,6 +239,25 @@ TEST(CXXIter, map) {
 			ASSERT_TRUE(output.contains(item));
 			ASSERT_EQ(output[item], std::to_string(item));
 		}
+	}
+	{ // move source
+		std::vector<SimpleState> input = { 0, 1336, 41, 68 };
+		size_t output = CXXIter::from(std::move(input))
+				.map([](SimpleState&& state) { return state.getAddState(); })
+				.sum();
+		ASSERT_EQ(output, 1 + 1337 + 42 + 69);
+		ASSERT_EQ(input.size(), 0);
+	}
+	{ // ref source
+		std::vector<SimpleState> input = { 1, 1337, 42, 69 };
+		size_t output = CXXIter::from(input)
+				.map([](SimpleState& state) { return state.getAddState(); })
+				.sum();
+		ASSERT_EQ(output, 2 + 1338 + 43 + 70);
+		ASSERT_EQ(input[0].getAddState(), 3);
+		ASSERT_EQ(input[1].getAddState(), 1339);
+		ASSERT_EQ(input[2].getAddState(), 44);
+		ASSERT_EQ(input[3].getAddState(), 71);
 	}
 }
 

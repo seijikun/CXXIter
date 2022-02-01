@@ -750,7 +750,7 @@ public: // CXXIter API-Surface
 	 */
 	auto indexed() {
 		size_t idx = 0;
-		return map([idx](ItemOwned&& item) mutable -> std::pair<size_t, Item> {
+		return map([idx](Item&& item) mutable -> std::pair<size_t, Item> {
 			return std::pair<size_t, Item>(idx++, std::forward<Item>(item));
 		});
 	}
@@ -827,9 +827,9 @@ public: // CXXIter API-Surface
 	 * 		.collect<std::unordered_map>(); // collect into map
 	 * @endcode
 	 */
-	template<std::invocable<ItemOwned&&> TMapFn>
+	template<std::invocable<Item&&> TMapFn>
 	auto map(TMapFn mapFn) {
-		using TMapFnResult = std::invoke_result_t<TMapFn, ItemOwned&&>;
+		using TMapFnResult = std::invoke_result_t<TMapFn, Item&&>;
 		return Map<TSelf, TMapFn, TMapFnResult>(std::move(*self()), mapFn);
 	}
 

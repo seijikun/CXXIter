@@ -84,10 +84,10 @@ namespace CXXIter {
 			return *this;
 		}
 
-		template<typename TOutValue, std::invocable<TValueDeref&&> TMapFn>
+		template<typename TOutValue, std::invocable<TValue> TMapFn>
 		IterValue<TOutValue> map(TMapFn mapFn) {
 			if(!has_value()) { return {}; }
-			return mapFn(std::forward<TValueDeref>(value()));
+			return mapFn(value());
 		}
 	};
 
