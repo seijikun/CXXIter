@@ -50,6 +50,6 @@ var classCXXIter_1_1IterApi =
     [ "sum", "classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb", null ],
     [ "take", "classCXXIter_1_1IterApi.html#ab2f7853bd666a1190edc9918be95ba6f", null ],
     [ "takeWhile", "classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4", null ],
-    [ "zip", "classCXXIter_1_1IterApi.html#a2711ded9c0ed244f3a0c364eb4b252d1", null ],
+    [ "zip", "classCXXIter_1_1IterApi.html#aaac3d483fd5f242376989ddd9a371b81", null ],
     [ "zipTuple", "classCXXIter_1_1IterApi.html#ac15b4914c7360e5d9fc5afe38e2469ab", null ]
 ];
