@@ -364,6 +364,54 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Consumer that counts the elements in this iterator, for which the given @p predicateFn
+	 * returns @c true.
+	 * @note This consumes the iterator.
+	 * @param predicateFn Predicate that is run for each element of this iterator, to determine whether it
+	 * should contribute to the resulting count.
+	 * @return The amount of elements in this iterator for which the given @p predicateFn returned @c true.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+	 * 	size_t output = CXXIter::from(input)
+	 * 			.count([](int item){ return (item % 2 == 0); });
+	 * // output == 5
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TPredicateFn>
+	size_t count(TPredicateFn predicateFn) {
+		return fold((size_t)0, [&predicateFn](size_t& cnt, auto&& item) {
+			if(predicateFn(item)) { cnt += 1; }
+		});
+	}
+
+	/**
+	 * @brief Consumer that counts the occurences of @p countItem within this iterator.
+	 * @note This consumes the iterator.
+	 * @param countItem Item for which to count the amount of occurences within this iterator.
+	 * @return The number of occurences of @p countItem within this iterator.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+	 * 	size_t output = CXXIter::from(input)
+	 * 			.map([](int item) { return (item % 2 == 0); })
+	 * 			.count(true);
+	 * 	// output == 5
+	 * @endcode
+	 */
+	size_t count(const ItemOwned& countItem)
+	requires requires(const ItemOwned& countItem, Item&& item) {
+		{countItem == item};
+	} {
+		return fold((size_t)0, [&countItem](size_t& cnt, auto&& item) {
+			if(item == countItem) { cnt += 1; }
+		});
+	}
+
+
+	/**
 	 * @brief Consumer that calculates the sum of all elements from this iterator.
 	 * @note This consumes the iterator.
 	 * @param startValue Starting value from which to start the sum.

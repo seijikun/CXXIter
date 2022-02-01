@@ -115,6 +115,32 @@ TEST(CXXIter, count) {
 		size_t output = CXXIter::from(input).count();
 		ASSERT_EQ(output, 0);
 	}
+	{
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+		size_t output = CXXIter::from(input)
+				.count([](int item){ return (item % 2 == 0); });
+		ASSERT_EQ(output, 5);
+	}
+	{
+		std::vector<int> input = {1, 3, 5, 7, 9, 11};
+		size_t output = CXXIter::from(input)
+				.count([](int item){ return (item % 2 == 0); });
+		ASSERT_EQ(output, 0);
+	}
+	{
+		std::vector<int> input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+		size_t output = CXXIter::from(input)
+				.map([](int item) { return (item % 2 == 0); })
+				.count(true);
+		ASSERT_EQ(output, 5);
+	}
+	{
+		std::vector<int> input = {1, 3, 5, 7, 9, 11};
+		size_t output = CXXIter::from(input)
+				.map([](int item) { return (item % 2 == 0); })
+				.count(true);
+		ASSERT_EQ(output, 0);
+	}
 }
 
 TEST(CXXIter, sum) {
