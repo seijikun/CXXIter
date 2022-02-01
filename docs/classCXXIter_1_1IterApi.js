@@ -12,6 +12,8 @@ var classCXXIter_1_1IterApi =
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
+    [ "count", "classCXXIter_1_1IterApi.html#afc37b3e2bc9c3417d29ff713e27111e1", null ],
+    [ "count", "classCXXIter_1_1IterApi.html#abfd58d36cbf83360cd7a6959971e2ef6", null ],
     [ "end", "classCXXIter_1_1IterApi.html#abac1131fb2734cfae22b38099740627a", null ],
     [ "filter", "classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db", null ],
     [ "filterMap", "classCXXIter_1_1IterApi.html#a009154287504a68df72425093ee90851", null ],
