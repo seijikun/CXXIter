@@ -360,7 +360,7 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span> </div>
 <div class="line"><a id="l00751" name="l00751"></a><span class="lineno"><a class="line" href="classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08">  751</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08">indexed</a>() {</div>
 <div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>        <span class="keywordtype">size_t</span> idx = 0;</div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">map</a>([idx](<a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp;&amp; item) <span class="keyword">mutable</span> -&gt; std::pair&lt;size_t, Item&gt; {</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">map</a>([idx](<a class="code hl_typedef" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>&amp;&amp; item) <span class="keyword">mutable</span> -&gt; std::pair&lt;size_t, Item&gt; {</div>
 <div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>            <span class="keywordflow">return</span> std::pair&lt;size_t, Item&gt;(idx++, std::forward&lt;Item&gt;(item));</div>
 <div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        });</div>
 <div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>    }</div>
@@ -375,9 +375,9 @@ $(document).ready(function(){initNavTree('CXXIter_8h_source.html',''); initResiz
 <div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>        <span class="keywordflow">return</span> ChunkedExact&lt;TSelf, CHUNK_SIZE&gt;(std::move(*self()));</div>
 <div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>    }</div>
 <div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span> </div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>    <span class="keyword">template</span>&lt;std::invocable&lt;ItemOwned&amp;&amp;&gt; TMapFn&gt;</div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>    <span class="keyword">template</span>&lt;std::invocable&lt;Item&amp;&amp;&gt; TMapFn&gt;</div>
 <div class="line"><a id="l00831" name="l00831"></a><span class="lineno"><a class="line" href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">  831</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">map</a>(TMapFn mapFn) {</div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>        <span class="keyword">using</span> TMapFnResult = std::invoke_result_t&lt;TMapFn, ItemOwned&amp;&amp;&gt;;</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>        <span class="keyword">using</span> TMapFnResult = std::invoke_result_t&lt;TMapFn, Item&amp;&amp;&gt;;</div>
 <div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>        <span class="keywordflow">return</span> Map&lt;TSelf, TMapFn, TMapFnResult&gt;(std::move(*self()), mapFn);</div>
 <div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>    }</div>
 <div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span> </div>
