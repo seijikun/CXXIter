@@ -605,6 +605,19 @@ TEST(CXXIter, zip) {
 		ASSERT_EQ(output.size(), 2);
 		ASSERT_THAT(output, ElementsAre(Pair("1337", 1337), Pair("42", 42)));
 	}
+	{
+		std::vector<std::string> input1 = {"1337", "42", "80"};
+		std::vector<int> input2 = {1337, 42};
+		std::vector<std::pair<std::string&, int&>> output = CXXIter::from(input1)
+				.zip(CXXIter::from(input2))
+				.modify([](std::pair<std::string&, int&> pair) {
+					std::get<1>(pair) += 1;
+				})
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre(Pair("1337", 1338), Pair("42", 43)));
+		ASSERT_THAT(input2, ElementsAre(1338, 43));
+	}
 }
 
 TEST(CXXIter, zipTuple) {

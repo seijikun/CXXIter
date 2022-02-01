@@ -33,14 +33,28 @@ namespace CXXIter {
 		using Item = TZipContainer<typename TChainInput1::Item, typename TChainInputs::Item...>;
 
 		static inline IterValue<Item> next(Self& self) {
-			Item item;
-			bool hasNext = constexpr_for<0, INPUT_CNT>([&](auto idx) {
-				auto input = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
-				if(!input.has_value()) [[unlikely]] { return false; }
-				std::get<idx>(item) = input.value();
-				return true;
-			});
-			if(!hasNext) [[unlikely]] { return {}; }
+			// extremely hugly hack to be able to support references in tuples and pairs!
+			// tuples and pairs with references in them do not have a default ctor(), so we have to initialize
+			// it in one go and decide whether that succeeded later on.
+			static uint8_t rawDefaultValues[sizeof(Item)] = {0};
+			static Item& defaultValues = *reinterpret_cast<Item*>(rawDefaultValues);
+
+			bool success = true;
+			auto getElementFromChainInput = [&]<size_t IDX>(std::integral_constant<size_t, IDX>) -> std::tuple_element_t<IDX, Item> {
+				auto input = std::tuple_element_t<IDX, ChainInputIterators>::next( std::get<IDX>(self.inputs) );
+				if(!input.has_value()) [[unlikely]] {
+					success = false;
+					// required as fallback for elements without default ctor(), such as references
+					return std::get<IDX>(defaultValues);
+				}
+				return input.value();
+			};
+			auto constructZipped = [&]<size_t... IDX>(std::integer_sequence<size_t, IDX...>) -> Item {
+				return { getElementFromChainInput(std::integral_constant<size_t, IDX>())... };
+			};
+
+			Item item = constructZipped(std::make_index_sequence<INPUT_CNT>{});
+			if(!success) { return {}; }
 			return item;
 		}
 		static inline SizeHint sizeHint(const Self& self) {

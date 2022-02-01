@@ -1189,7 +1189,6 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TOtherIterator>
-	requires (!std::is_reference_v<typename IteratorTrait<TOtherIterator>::Item> && !IS_REFERENCE)
 	Zipper<TSelf, std::pair, TOtherIterator> zip(TOtherIterator&& otherIterator) {
 		return Zipper<TSelf, std::pair, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
