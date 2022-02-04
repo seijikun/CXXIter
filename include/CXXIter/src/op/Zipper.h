@@ -18,6 +18,7 @@ namespace CXXIter {
 		friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 		friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 	private:
+		struct source_ended_exception {};
 		std::tuple<TChainInput1, TChainInputs...> inputs;
 	public:
 		Zipper(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
@@ -33,19 +34,10 @@ namespace CXXIter {
 		using Item = TZipContainer<typename TChainInput1::Item, typename TChainInputs::Item...>;
 
 		static inline IterValue<Item> next(Self& self) {
-			// extremely hugly hack to be able to support references in tuples and pairs!
-			// tuples and pairs with references in them do not have a default ctor(), so we have to initialize
-			// it in one go and decide whether that succeeded later on.
-			static uint8_t rawDefaultValues[sizeof(Item)] = {0};
-			static Item& defaultValues = *reinterpret_cast<Item*>(rawDefaultValues);
-
-			bool success = true;
 			auto getElementFromChainInput = [&]<size_t IDX>(std::integral_constant<size_t, IDX>) -> std::tuple_element_t<IDX, Item> {
 				auto input = std::tuple_element_t<IDX, ChainInputIterators>::next( std::get<IDX>(self.inputs) );
 				if(!input.has_value()) [[unlikely]] {
-					success = false;
-					// required as fallback for elements without default ctor(), such as references
-					return std::get<IDX>(defaultValues);
+					throw typename Self::source_ended_exception{};
 				}
 				return input.value();
 			};
@@ -53,9 +45,11 @@ namespace CXXIter {
 				return { getElementFromChainInput(std::integral_constant<size_t, IDX>())... };
 			};
 
-			Item item = constructZipped(std::make_index_sequence<INPUT_CNT>{});
-			if(!success) { return {}; }
-			return item;
+			try {
+				return constructZipped(std::make_index_sequence<INPUT_CNT>{});
+			} catch(typename Self::source_ended_exception) {
+				return {};
+			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {
 			size_t lowerBoundMin = std::numeric_limits<size_t>::max();
