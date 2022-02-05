@@ -82,29 +82,53 @@ For a large list of examples, have a look at the unit-tests in `tests/`.
 CXXIter's design tries to avoid any structural slowdowns. As such, it does avoid using virtual dispatch in hot paths, as well as the usage of `std::function<>`.
 Here are the benchmark results from the simple benchmark in the `tests/` folder on my machine (Ryzen 5800X), comparing a native, a C++20 ranges and a CXXIter implementation of each micro-benchmark.
 ```
------------------------------------------------------------------------------------
-Benchmark                                         Time             CPU   Iterations
------------------------------------------------------------------------------------
-FilterMap_Native                      3068779086 ns   3068000455 ns            4
-FilterMap_CXX20Ranges                 3219577931 ns   3219559105 ns            4
-FilterMap_CXXIter                     3152898478 ns   3152911409 ns            4
+-----------------------------------------------------------------------------------------
+Benchmark                                               Time             CPU   Iterations
+-----------------------------------------------------------------------------------------
+FilterMap_Native/Large/min_time:10.000      2901615173 ns   2901558802 ns            5
+FilterMap_CXX20Ranges/Large/min_time:10.000 2947774570 ns   2946858702 ns            5
+FilterMap_CXXIter/Large/min_time:10.000     2986734484 ns   2986205047 ns            5
 
-Filter_Native                          398029908 ns    398031220 ns           35
-Filter_CXX20Ranges                     448209324 ns    448207127 ns           32
-Filter_CXXIter                         412271366 ns    412271629 ns           34
+FilterMap_Native/Small/min_time:10.000             204 ns          204 ns     68795396
+FilterMap_CXX20Ranges/Small/min_time:10.000        197 ns          197 ns     71459697
+FilterMap_CXXIter/Small/min_time:10.000            204 ns          204 ns     69366238
 
-Map_Native                             827857987 ns    827854529 ns           17
-Map_CXX20Ranges                        828180531 ns    828175523 ns           17
-Map_CXXIter                            832396096 ns    832392214 ns           17
 
-Cast_Native                            339857189 ns    339838111 ns           41
-Cast_CXX20Ranges                       332377684 ns    332377654 ns           42
-Cast_CXXIter                           482904938 ns    482907990 ns           29
+Filter_Native/Large/min_time:10.000          391584224 ns    391479324 ns           36
+Filter_CXX20Ranges/Large/min_time:10.000     435718595 ns    435689028 ns           32
+Filter_CXXIter/Large/min_time:10.000         405839687 ns    405818030 ns           35
 
-GroupBy_Native                        1616139752 ns   1616134295 ns            9
-GroupBy_CXXIter                       1890404863 ns   1890360021 ns            7
+Filter_Native/Small/min_time:10.000               62.1 ns         62.1 ns    228092966
+Filter_CXX20Ranges/Small/min_time:10.000          66.3 ns         66.3 ns    211273332
+Filter_CXXIter/Small/min_time:10.000              62.2 ns         62.2 ns    223274566
+
+
+Map_Native/Large/min_time:10.000             827658901 ns    827441763 ns           17
+Map_CXX20Ranges/Large/min_time:10.000        830283730 ns    830172863 ns           17
+Map_CXXIter/Large/min_time:10.000            832004965 ns    831876755 ns           17
+
+Map_Native/Small/min_time:10.000                  73.5 ns         73.5 ns    190828412
+Map_CXX20Ranges/Small/min_time:10.000             75.3 ns         75.3 ns    186357996
+Map_CXXIter/Small/min_time:10.000                 72.6 ns         72.6 ns    194156850
+
+
+Cast_Native/Large/min_time:10.000            328406589 ns    328362799 ns           43
+Cast_CXX20Ranges/Large/min_time:10.000       325023974 ns    324994770 ns           43
+Cast_CXXIter/Large/min_time:10.000           482944749 ns    482808030 ns           29
+
+Cast_Native/Small/min_time:10.000                 64.6 ns         64.6 ns    217301590
+Cast_CXX20Ranges/Small/min_time:10.000            63.4 ns         63.4 ns    221671894
+Cast_CXXIter/Small/min_time:10.000                72.0 ns         72.0 ns    194525183
+
+
+GroupBy_Native/Large/min_time:10.000        1630731999 ns   1630347772 ns            9
+GroupBy_CXXIter/Large/min_time:10.000       2114174670 ns   2114070369 ns            7
+
+GroupBy_Native/Small/min_time:10.000               205 ns          205 ns     67938042
+GroupBy_CXXIter/Small/min_time:10.000              275 ns          275 ns     50986762
 ```
-The results show that CXXIter seems to be suspiciously slow with the cast operation. This effect only appears on GCC as far as I could see.
+Time: lower is better,
+Iterations: higher is better
 
 ## Including In Your Project
 To include CXXIter in your cmake project, you can do this:
