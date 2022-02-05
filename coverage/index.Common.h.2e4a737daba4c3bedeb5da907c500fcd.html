@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-02-04 23:01:49</td>
+      <td>2022-02-05 20:19:43</td>
     </tr>
   </table>
 </div>
@@ -1361,7 +1361,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="c1">// ################################################################################################</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1369,7 +1369,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="c1">// INTERNALS</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1385,7 +1385,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// INTERNALS</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1393,7 +1393,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ################################################################################################</span></td>
+      <td class="src ">	<span class="cm">/** @private */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1401,7 +1401,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="n">namespace</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1409,7 +1409,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src ">		<span class="cp">#define CXXITER_CHAINER_NODISCARD_WARNING &quot;The result of chainer methods needs to be used, otherwise the iterator will not be doing any work.&quot;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1417,7 +1417,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">namespace</span> <span class="p">{</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1425,7 +1425,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cp">#define CXXITER_CHAINER_NODISCARD_WARNING &quot;The result of chainer methods needs to be used, otherwise the iterator will not be doing any work.&quot;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1433,7 +1433,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		 * @brief Exception internally used to signal a iterator having ended.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1441,15 +1441,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kt">size_t</span> <span class="n">START</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">END</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">F</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">		 */</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l164" href="#l164">164</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">330</td>
-      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">constexpr_for</span><span class="p">(</span><span class="n">F</span><span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="k">struct</span> <span class="n">IteratorEndedException</span> <span class="p">{};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1457,11 +1457,35 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">if</span> <span class="n">constexpr</span> <span class="p">(</span><span class="n">START</span> <span class="o">&lt;</span> <span class="n">END</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l166" href="#l166">166</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kt">size_t</span> <span class="n">START</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">END</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">F</span><span class="o">&gt;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l167" href="#l167">167</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">330</td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">constexpr_for</span><span class="p">(</span><span class="n">F</span><span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l168" href="#l168">168</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">			<span class="k">if</span> <span class="n">constexpr</span> <span class="p">(</span><span class="n">START</span> <span class="o">&lt;</span> <span class="n">END</span><span class="p">)</span> <span class="p">{</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l169" href="#l169">169</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -1476,7 +1500,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l167" href="#l167">167</a></td>
+      <td class="lineno"><a id="l170" href="#l170">170</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -1491,7 +1515,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l168" href="#l168">168</a></td>
+      <td class="lineno"><a id="l171" href="#l171">171</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -1499,7 +1523,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l169" href="#l169">169</a></td>
+      <td class="lineno"><a id="l172" href="#l172">172</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">330</td>
@@ -1507,7 +1531,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l170" href="#l170">170</a></td>
+      <td class="lineno"><a id="l173" href="#l173">173</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -1515,35 +1539,11 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l171" href="#l171">171</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l172" href="#l172">172</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="c1">//TODO: unit-tests</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l173" href="#l173">173</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
-    </tr>
-
-    <tr class="source-line">
       <td class="lineno"><a id="l174" href="#l174">174</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">struct</span> <span class="n">SaturatingArithmetic</span> <span class="p">{</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1551,23 +1551,23 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">T</span> <span class="n">value</span><span class="p">;</span></td>
+      <td class="src ">		<span class="c1">//TODO: unit-tests</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l176" href="#l176">176</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">72</td>
-      <td class="src coveredLine">			<span class="n">SaturatingArithmetic</span><span class="p">(</span><span class="n">T</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span> <span class="n">value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l177" href="#l177">177</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">24</td>
-      <td class="src coveredLine">			<span class="n">T</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="k">struct</span> <span class="n">SaturatingArithmetic</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1575,31 +1575,31 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="n">T</span> <span class="n">value</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l179" href="#l179">179</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">+</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">72</td>
+      <td class="src coveredLine">			<span class="n">SaturatingArithmetic</span><span class="p">(</span><span class="n">T</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span> <span class="n">value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l180" href="#l180">180</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">				<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="linecount coveredLine">24</td>
+      <td class="src coveredLine">			<span class="n">T</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l181" href="#l181">181</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">				<span class="n">res</span> <span class="o">|=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">);</span></td>
+      <td class="linecount "></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1607,31 +1607,31 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">				<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
+      <td class="src coveredLine">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">+</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l183" href="#l183">183</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">			<span class="p">}</span></td>
+      <td class="linecount coveredLine">48</td>
+      <td class="src coveredLine">				<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">o</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l184" href="#l184">184</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">-</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">48</td>
+      <td class="src coveredLine">				<span class="n">res</span> <span class="o">|=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l185" href="#l185">185</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">				<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="linecount coveredLine">48</td>
+      <td class="src coveredLine">				<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1639,7 +1639,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="n">res</span> <span class="o">&amp;=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">);</span></td>
+      <td class="src ">			<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1647,7 +1647,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
+      <td class="src ">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">-</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1655,7 +1655,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">}</span></td>
+      <td class="src ">				<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="n">o</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1663,7 +1663,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">/</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">				<span class="n">res</span> <span class="o">&amp;=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1671,7 +1671,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="src ">				<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1687,7 +1687,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">			<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">/</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1695,7 +1695,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">				<span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="n">o</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1703,7 +1703,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1711,7 +1711,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">are_same_v</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">Ts</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="p">...);</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1727,7 +1727,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1735,7 +1735,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * @brief Constraint that checks whether the given type @p T is an instantiation of</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">are_same_v</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">Ts</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="p">...);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1743,7 +1743,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * the template class @p U.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1751,7 +1751,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 */</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1759,7 +1759,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">U</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">		 * @brief Constraint that checks whether the given type @p T is an instantiation of</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1767,7 +1767,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_template_instance_v</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		 * the template class @p U.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1775,7 +1775,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">U</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">		 */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1783,7 +1783,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_template_instance_v</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">U</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1791,7 +1791,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_template_instance_v</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1799,7 +1799,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src ">		<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">U</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1807,7 +1807,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * @brief Concept that checks whether the given invocable type @p TFn is a function-type</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_template_instance_v</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1815,7 +1815,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * that accepts the parameter of types @p TArgs by value.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1823,7 +1823,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * @details This concepts only accepts @p TFn if it takes the argument types by value. Neither</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1831,7 +1831,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 * taking the parameters as rvalue references, nor as lvalue references is allowed.</span></td>
+      <td class="src "><span class="cm">		 * @brief Concept that checks whether the given invocable type @p TFn is a function-type</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1839,7 +1839,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		 */</span></td>
+      <td class="src "><span class="cm">		 * that accepts the parameter of types @p TArgs by value.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1847,7 +1847,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TFn</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TArgs</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">		 * @details This concepts only accepts @p TFn if it takes the argument types by value. Neither</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1855,7 +1855,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">concept</span> <span class="n">invocable_byvalue</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TFn</span> <span class="n">fn</span><span class="p">,</span> <span class="n">TArgs</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">		 * taking the parameters as rvalue references, nor as lvalue references is allowed.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1863,7 +1863,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span> <span class="n">fn</span><span class="p">(</span><span class="n">args</span><span class="p">...)</span> <span class="p">};</span> <span class="c1">// disallows TArgs&amp;&amp;</span></td>
+      <td class="src "><span class="cm">		 */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1871,7 +1871,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span> <span class="n">fn</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">TArgs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...)</span> <span class="p">};</span> <span class="c1">// disallows TArgs&amp;</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TFn</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TArgs</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1879,7 +1879,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">		<span class="n">concept</span> <span class="n">invocable_byvalue</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TFn</span> <span class="n">fn</span><span class="p">,</span> <span class="n">TArgs</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1887,7 +1887,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="p">{</span> <span class="n">fn</span><span class="p">(</span><span class="n">args</span><span class="p">...)</span> <span class="p">};</span> <span class="c1">// disallows TArgs&amp;&amp;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1895,7 +1895,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="p">{</span> <span class="n">fn</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">TArgs</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...)</span> <span class="p">};</span> <span class="c1">// disallows TArgs&amp;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1903,7 +1903,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_const_reference_v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_const_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_reference_t</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1919,7 +1919,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">concept</span> <span class="n">is_pair</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">pair</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1927,7 +1927,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_element_t</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">is_const_reference_v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_const_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_reference_t</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1935,7 +1935,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_element_t</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1943,7 +1943,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_size_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">==</span> <span class="mi">2</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">concept</span> <span class="n">is_pair</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">pair</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1951,7 +1951,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_element_t</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1959,7 +1959,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">concept</span> <span class="n">is_optional</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">optional</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_element_t</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1967,7 +1967,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">}</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple_size_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">==</span> <span class="mi">2</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1975,7 +1975,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">optional</span><span class="p">.</span><span class="n">value</span><span class="p">()}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1983,7 +1983,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">optional</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">value</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">concept</span> <span class="n">is_optional</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">T</span> <span class="n">optional</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1991,7 +1991,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">optional</span> <span class="o">=</span> <span class="n">value</span><span class="p">};</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1999,7 +1999,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">optional</span><span class="p">.</span><span class="n">value</span><span class="p">()}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2007,7 +2007,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="p">{</span><span class="n">optional</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">value</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">::</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2015,7 +2015,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">optional</span> <span class="o">=</span> <span class="n">value</span><span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2023,7 +2023,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">concept</span> <span class="n">ReservableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span> <span class="n">container</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">newSize</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2031,7 +2031,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">newSize</span><span class="p">);</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2039,7 +2039,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2047,7 +2047,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="n">concept</span> <span class="n">ReservableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span> <span class="n">container</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">newSize</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2055,7 +2055,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">newSize</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2063,7 +2063,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Concept enforcing a back-insertible container like @c std::vector.</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2071,7 +2071,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2079,7 +2079,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2087,7 +2087,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">concept</span> <span class="n">BackInsertableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">TItem</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">		* @brief Concept enforcing a back-insertible container like @c std::vector.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2095,7 +2095,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2103,7 +2103,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2111,7 +2111,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">		<span class="n">concept</span> <span class="n">BackInsertableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">TItem</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2119,7 +2119,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2127,7 +2127,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2135,7 +2135,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Concept enforcing an insertible container like @c std::set.</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2143,7 +2143,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2151,7 +2151,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2159,7 +2159,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">concept</span> <span class="n">InsertableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">TItem</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">		* @brief Concept enforcing an insertible container like @c std::set.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2167,7 +2167,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2175,7 +2175,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2183,7 +2183,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">		<span class="n">concept</span> <span class="n">InsertableContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">TItem</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2191,7 +2191,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2199,7 +2199,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2207,7 +2207,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Concept enforcing an associative container like @c std::map.</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2215,7 +2215,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2223,7 +2223,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItemKey</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItemValue</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2231,7 +2231,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">concept</span> <span class="n">AssocContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItemKey</span><span class="p">,</span> <span class="n">TItemValue</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">TItemKey</span><span class="p">,</span> <span class="n">TItemValue</span><span class="o">&gt;</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">		* @brief Concept enforcing an associative container like @c std::map.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2239,7 +2239,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2247,7 +2247,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="nf">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">key_type</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span><span class="p">...</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItemKey</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItemValue</span><span class="p">,</span> <span class="kr">typename</span><span class="p">...</span> <span class="n">TContainerArgs</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2255,7 +2255,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="nf">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">mapped_type</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">concept</span> <span class="n">AssocContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&lt;</span><span class="n">TItemKey</span><span class="p">,</span> <span class="n">TItemValue</span><span class="p">,</span> <span class="n">TContainerArgs</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">TItemKey</span><span class="p">,</span> <span class="n">TItemValue</span><span class="o">&gt;</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2263,7 +2263,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2271,7 +2271,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="nf">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">key_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2279,7 +2279,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">}</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="nf">decltype</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="o">::</span><span class="n">mapped_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2287,7 +2287,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="n">container</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">item</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2295,7 +2295,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2303,7 +2303,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @brief Trait, that is used for the chaining and the operation of iterator pipelines.</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2311,7 +2311,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @details This allows making any class or struct iterable, to be able to interact with CXXIter&#39;s</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2319,7 +2319,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* iterator pipelines. It essentially provides two functions:</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2327,7 +2327,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* - One that delivers a hint about the iterator&#39;s size after the current element implementing</span></td>
+      <td class="src "><span class="cm">	* @brief Trait, that is used for the chaining and the operation of iterator pipelines.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2335,7 +2335,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*   the CXXIter::IteratorTrait</span></td>
+      <td class="src "><span class="cm">	* @details This allows making any class or struct iterable, to be able to interact with CXXIter&#39;s</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2343,7 +2343,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* - Method that allows pulling one element from the iterator pipeline.</span></td>
+      <td class="src "><span class="cm">	* iterator pipelines. It essentially provides two functions:</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2351,7 +2351,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*/</span></td>
+      <td class="src "><span class="cm">	* - One that delivers a hint about the iterator&#39;s size after the current element implementing</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2359,7 +2359,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">	*   the CXXIter::IteratorTrait</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2367,7 +2367,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">	* - Method that allows pulling one element from the iterator pipeline.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2375,7 +2375,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">	*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2383,7 +2383,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Self-Type. This is the type of the struct for which the IteratorTrait is being specialized.</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2391,7 +2391,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2399,7 +2399,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2407,7 +2407,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		* @brief Self-Type. This is the type of the struct for which the IteratorTrait is being specialized.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2415,7 +2415,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Item-Type. This is the type of elements that can be pulled from this pipeline-element.</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2423,7 +2423,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2431,7 +2431,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kt">void</span><span class="p">;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2439,7 +2439,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @brief Item-Type. This is the type of elements that can be pulled from this pipeline-element.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2447,7 +2447,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2455,7 +2455,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Pull one element from the iterator pipeline previous to this pipeline-element.</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kt">void</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2463,7 +2463,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param self Reference to the instance of the class for which IteratorTrait is being specialized.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2471,7 +2471,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return An element (if any) wrapped in the CXXIter::IterValue.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2479,7 +2479,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @brief Pull one element from the iterator pipeline previous to this pipeline-element.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2487,7 +2487,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		* @param self Reference to the instance of the class for which IteratorTrait is being specialized.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2495,7 +2495,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @return An element (if any) wrapped in the CXXIter::IterValue.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2503,7 +2503,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2511,7 +2511,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Get the bounds on the remaining length of the iterator pipeline until this pipeline-element,</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2519,7 +2519,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* estimated from the source and all of the chained iterations until after this pipeline-element.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2527,7 +2527,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return The estimated bounds on the remaining length of the iterator pipeline until after this pipeline-element.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2535,7 +2535,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @brief Get the bounds on the remaining length of the iterator pipeline until this pipeline-element,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2543,7 +2543,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		* estimated from the source and all of the chained iterations until after this pipeline-element.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2551,7 +2551,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="cm">		* @return The estimated bounds on the remaining length of the iterator pipeline until after this pipeline-element.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2559,7 +2559,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2567,7 +2567,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2575,7 +2575,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @brief Trait, that extends iterators for which an exact length is known.</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2583,7 +2583,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*/</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2591,7 +2591,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2599,7 +2599,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">ExactSizeIteratorTrait</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">	* @brief Trait, that extends iterators for which an exact length is known.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2607,7 +2607,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">	*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2615,7 +2615,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Get the iterator&#39;s exact number of elements.</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2623,7 +2623,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param self Reference to the instance of the class for which ExactSizeIteratorTrait is being specialized.</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">ExactSizeIteratorTrait</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2631,7 +2631,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return This iterator&#39;s exact number of elements.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2639,7 +2639,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @brief Get the iterator&#39;s exact number of elements.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2647,7 +2647,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		* @param self Reference to the instance of the class for which ExactSizeIteratorTrait is being specialized.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2655,7 +2655,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="cm">		* @return This iterator&#39;s exact number of elements.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2663,7 +2663,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2671,7 +2671,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2679,7 +2679,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterIterator</span> <span class="o">=</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2687,7 +2687,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2695,7 +2695,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">constSelf</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2703,7 +2703,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterIterator</span> <span class="o">=</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2711,7 +2711,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2719,7 +2719,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">constSelf</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2727,7 +2727,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">constSelf</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">SizeHint</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2735,7 +2735,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2743,7 +2743,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="p">{</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2751,7 +2751,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">constSelf</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">SizeHint</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2759,7 +2759,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2767,7 +2767,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2775,7 +2775,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2783,7 +2783,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2791,7 +2791,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2799,7 +2799,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2807,7 +2807,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2815,7 +2815,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @brief SourceTrait, that is used by CXXIter&#39;s standard source classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2823,7 +2823,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @details If you want to add support for your own containers to these sources, and thus to @c CXXIter::from() calls,</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -2831,7 +2831,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* create a template specialization of @c CXXIter::SourceTrait, for your container class.</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2839,7 +2839,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*</span></td>
+      <td class="src "><span class="cm">	* @brief SourceTrait, that is used by CXXIter&#39;s standard source classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2847,7 +2847,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* This is the default implementation supporting all STL containers.</span></td>
+      <td class="src "><span class="cm">	* @details If you want to add support for your own containers to these sources, and thus to @c CXXIter::from() calls,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2855,7 +2855,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*/</span></td>
+      <td class="src "><span class="cm">	* create a template specialization of @c CXXIter::SourceTrait, for your container class.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2863,7 +2863,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">SourceTrait</span> <span class="p">{</span></td>
+      <td class="src "><span class="cm">	*</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2871,7 +2871,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">	* This is the default implementation supporting all STL containers.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2879,7 +2879,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Type of the item @p TContainer holds and provides for the iterator.</span></td>
+      <td class="src "><span class="cm">	*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2887,7 +2887,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">SourceTrait</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2895,7 +2895,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2903,7 +2903,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		* @brief Type of the item @p TContainer holds and provides for the iterator.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2911,7 +2911,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration progress.</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2919,7 +2919,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">value_type</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2927,7 +2927,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2935,7 +2935,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">IteratorState</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">iterator</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		* @brief Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration progress.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2943,7 +2943,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2951,7 +2951,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration progress.</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2959,7 +2959,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">IteratorState</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">iterator</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2967,7 +2967,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2975,7 +2975,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">ConstIteratorState</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span></td>
+      <td class="src "><span class="cm">		* @brief Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration progress.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2983,7 +2983,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2991,7 +2991,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -2999,7 +2999,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Report a size hint for a source on the given @p container.</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">ConstIteratorState</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TContainer</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3007,7 +3007,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This injects information about the source&#39;s size (element count) into the iterator API.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3015,7 +3015,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param container Container for which to generate a size hint.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3023,7 +3023,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return A size hint for the given @p container.</span></td>
+      <td class="src "><span class="cm">		* @brief Report a size hint for a source on the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3031,15 +3031,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @details This injects information about the source&#39;s size (element count) into the iterator API.</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l361" href="#l361">361</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">294</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">SizeHint</span><span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">());</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param container Container for which to generate a size hint.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3047,7 +3047,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @return A size hint for the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3055,15 +3055,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l364" href="#l364">364</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Return an initial @c IteratorState instance for iteration on the given @p container.</span></td>
+      <td class="linecount coveredLine">294</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">SizeHint</span><span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">());</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3071,7 +3071,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is stored within CXXIter&#39;s source classes, to hold the iteration&#39;s state.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3079,7 +3079,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3087,7 +3087,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param container Container on which the source runs.</span></td>
+      <td class="src "><span class="cm">		* @brief Return an initial @c IteratorState instance for iteration on the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3095,7 +3095,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return Instance of @c IteratorState</span></td>
+      <td class="src "><span class="cm">		* @details This is stored within CXXIter&#39;s source classes, to hold the iteration&#39;s state.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3103,51 +3103,11 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l370" href="#l370">370</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">452</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IteratorState</span> <span class="nf">initIterator</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="p">}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l371" href="#l371">371</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l372" href="#l372">372</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Return an initial @c IteratorState instance for iteration on the given @p container.</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l373" href="#l373">373</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is stored within CXXIter&#39;s source classes, to hold the iteration&#39;s state.</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l374" href="#l374">374</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* This is used for @c CXXIter::SrcCRef</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l375" href="#l375">375</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -3155,11 +3115,51 @@
     </tr>
 
     <tr class="source-line">
+      <td class="lineno"><a id="l371" href="#l371">371</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @return Instance of @c IteratorState</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l372" href="#l372">372</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		*/</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l373" href="#l373">373</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">452</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IteratorState</span> <span class="nf">initIterator</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l374" href="#l374">374</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="cm">/**</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l375" href="#l375">375</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @brief Return an initial @c IteratorState instance for iteration on the given @p container.</span></td>
+    </tr>
+
+    <tr class="source-line">
       <td class="lineno"><a id="l376" href="#l376">376</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return Instance of @c ConstIteratorState</span></td>
+      <td class="src "><span class="cm">		* @details This is stored within CXXIter&#39;s source classes, to hold the iteration&#39;s state.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3167,15 +3167,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* This is used for @c CXXIter::SrcCRef</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l378" href="#l378">378</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">8</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">ConstIteratorState</span> <span class="nf">initIterator</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param container Container on which the source runs.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3183,7 +3183,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @return Instance of @c ConstIteratorState</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3191,15 +3191,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l381" href="#l381">381</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.</span></td>
+      <td class="linecount coveredLine">8</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">ConstIteratorState</span> <span class="nf">initIterator</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3207,7 +3207,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3215,7 +3215,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3223,7 +3223,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
+      <td class="src "><span class="cm">		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3231,7 +3231,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return @c true when there is another item available, @c false otherwise.</span></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3239,15 +3239,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l387" href="#l387">387</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1354</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">hasNext</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3255,7 +3255,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		* @return @c true when there is another item available, @c false otherwise.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3263,15 +3263,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l390" href="#l390">390</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
+      <td class="linecount coveredLine">1354</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">hasNext</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3279,7 +3279,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3287,7 +3287,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
+      <td class="src "><span class="cm">		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3295,7 +3295,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return @c true when there is another item available, @c false otherwise.</span></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3303,15 +3303,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
+      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l395" href="#l395">395</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">12</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">hasNext</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3319,7 +3319,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		* @return @c true when there is another item available, @c false otherwise.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3327,15 +3327,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l398" href="#l398">398</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.</span></td>
+      <td class="linecount coveredLine">12</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">hasNext</span><span class="p">(</span><span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3343,7 +3343,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3351,7 +3351,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
+      <td class="src ">		<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3359,7 +3359,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
+      <td class="src "><span class="cm">		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3367,7 +3367,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @return The next item from the current iteration.</span></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3375,51 +3375,11 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">		*/</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l404" href="#l404">404</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1088</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">Item</span><span class="o">&amp;</span> <span class="n">next</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="n">iter</span><span class="o">++</span><span class="p">);</span> <span class="p">}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l405" href="#l405">405</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/**</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l406" href="#l406">406</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l407" href="#l407">407</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l408" href="#l408">408</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
       <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l409" href="#l409">409</a></td>
+      <td class="lineno"><a id="l404" href="#l404">404</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -3427,7 +3387,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l410" href="#l410">410</a></td>
+      <td class="lineno"><a id="l405" href="#l405">405</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -3435,7 +3395,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l411" href="#l411">411</a></td>
+      <td class="lineno"><a id="l406" href="#l406">406</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -3443,11 +3403,51 @@
     </tr>
 
     <tr class="source-line">
+      <td class="lineno"><a id="l407" href="#l407">407</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1088</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">Item</span><span class="o">&amp;</span> <span class="n">next</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="n">iter</span><span class="o">++</span><span class="p">);</span> <span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l408" href="#l408">408</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="cm">/**</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l409" href="#l409">409</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l410" href="#l410">410</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @details This is used for @c CXXIter::SrcCRef</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l411" href="#l411">411</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param container Container on which the current iteration is running.</span></td>
+    </tr>
+
+    <tr class="source-line">
       <td class="lineno"><a id="l412" href="#l412">412</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">8</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="k">const</span> <span class="n">Item</span><span class="o">&amp;</span> <span class="n">next</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="n">iter</span><span class="o">++</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">		* @param iter The current iteration&#39;s state structure.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3455,7 +3455,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="cm">		* @return The next item from the current iteration.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3463,15 +3463,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">		*/</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l415" href="#l415">415</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="linecount coveredLine">8</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="k">const</span> <span class="n">Item</span><span class="o">&amp;</span> <span class="n">next</span><span class="p">([[</span><span class="n">maybe_unused</span><span class="p">]]</span> <span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span> <span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="n">iter</span><span class="o">++</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3479,7 +3479,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @brief Concept that checks whether the given @p TContainer is supported by CXXIter&#39;s standard source</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3487,7 +3487,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3495,7 +3495,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @details The concept does these checks by testing whether the @c CXXIter::SourceTrait was properly specialized</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3503,7 +3503,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* for the given @p TContainer type.</span></td>
+      <td class="src "><span class="cm">	* @brief Concept that checks whether the given @p TContainer is supported by CXXIter&#39;s standard source</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3511,7 +3511,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*</span></td>
+      <td class="src "><span class="cm">	* classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3519,7 +3519,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @see CXXIter::SourceTrait for further details on this.</span></td>
+      <td class="src "><span class="cm">	* @details The concept does these checks by testing whether the @c CXXIter::SourceTrait was properly specialized</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3527,7 +3527,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*/</span></td>
+      <td class="src "><span class="cm">	* for the given @p TContainer type.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3535,7 +3535,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cm">	*</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3543,7 +3543,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">SourceContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span></td>
+      <td class="src "><span class="cm">	* @see CXXIter::SourceTrait for further details on this.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3551,7 +3551,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
+      <td class="src "><span class="cm">	*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3559,7 +3559,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3567,7 +3567,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">SourceContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3575,7 +3575,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span></td>
+      <td class="src ">			<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3583,7 +3583,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">			<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3591,7 +3591,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3599,7 +3599,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="p">;</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3607,7 +3607,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3615,7 +3615,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3623,7 +3623,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">container</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3631,7 +3631,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">constContainer</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3647,7 +3647,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">container</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3655,7 +3655,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">constContainer</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3671,7 +3671,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&amp;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3679,7 +3679,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&amp;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3687,7 +3687,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -3695,7 +3695,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&amp;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3703,11 +3703,35 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">SourceTrait</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&amp;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l445" href="#l445">445</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">};</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l446" href="#l446">446</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l447" href="#l447">447</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l448" href="#l448">448</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
