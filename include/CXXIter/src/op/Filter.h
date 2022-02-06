@@ -29,11 +29,10 @@ namespace CXXIter {
 		using Self = Filter<TChainInput, TFilterFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
-				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) [[unlikely]] { return {}; }
-				if(self.filterFn(item.value())) { return item; }
+				Item item = ChainInputIterator::next(self.input);
+				if(self.filterFn(item)) { return std::forward<Item>(item); }
 			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {

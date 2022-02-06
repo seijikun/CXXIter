@@ -33,8 +33,8 @@ namespace CXXIter {
 		using Self = SrcMov<TContainer>;
 		using Item = typename Src::Item;
 
-		static inline IterValue<Item> next(Self& self) {
-			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { throw IteratorEndedException{}; }
 			return std::move(Src::next(self.container, self.iter));
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
@@ -78,8 +78,8 @@ namespace CXXIter {
 		using Self = SrcRef<TContainer>;
 		using Item = typename Src::Item&;
 
-		static inline IterValue<Item> next(Self& self) {
-			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { throw IteratorEndedException{}; }
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
@@ -122,8 +122,8 @@ namespace CXXIter {
 		using Self = SrcCRef<TContainer>;
 		using Item = const typename Src::Item&;
 
-		static inline IterValue<Item> next(Self& self) {
-			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { throw IteratorEndedException{}; }
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }

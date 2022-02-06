@@ -33,18 +33,16 @@ namespace CXXIter {
 		using Self = Chainer<TChainInput1, TChainInput2>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
 				if(self.inputIdx == 0) {
-					auto item = ChainInputIterator1::next(self.input1);
-					if(!item.has_value()) [[unlikely]] {
+					try {
+						return ChainInputIterator1::next(self.input1);
+					} catch (const IteratorEndedException&) {
 						self.inputIdx = 1;
-						continue;
 					}
-					return item;
 				} else {
-					auto item = ChainInputIterator2::next(self.input2);
-					return item;
+					return ChainInputIterator2::next(self.input2);
 				}
 			}
 		}

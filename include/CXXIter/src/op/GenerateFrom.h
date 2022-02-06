@@ -36,12 +36,10 @@ namespace CXXIter {
 		using Self = GenerateFrom<TChainInput, TGeneratorFn, TGenerator>;
 		using Item = typename TGenerator::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
 				if(!self.currentGenerator.has_value()) {
-					auto item = ChainInputIterator::next(self.input);
-					if(!item.has_value()) { return {}; } // reached end
-					self.currentGenerator.emplace(self.generatorFn( std::forward<Item>(item.value()) ));
+					self.currentGenerator.emplace(self.generatorFn(ChainInputIterator::next(self.input)));
 				}
 
 				auto item = self.currentGenerator.value().next();
@@ -49,7 +47,7 @@ namespace CXXIter {
 					self.currentGenerator.reset();
 					continue;
 				}
-				return item;
+				return item.value();
 			}
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }

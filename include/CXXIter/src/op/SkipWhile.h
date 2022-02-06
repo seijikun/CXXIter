@@ -26,17 +26,15 @@ namespace CXXIter {
 	template<typename TChainInput, typename TSkipPredicate>
 	struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
-		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = SkipWhile<TChainInput, TSkipPredicate>;
-		using Item = InputItem;
+		using Item = typename TChainInput::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
-				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) [[unlikely]] { return {}; }
+				Item item = ChainInputIterator::next(self.input);
 				if(self.skipEnded) { return item; }
-				if(!self.skipPredicate(item.value())) {
+				if(!self.skipPredicate(item)) {
 					self.skipEnded = true;
 					return item;
 				}

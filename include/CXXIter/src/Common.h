@@ -39,6 +39,7 @@ namespace CXXIter {
 		inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 		bool has_value() const { return inner.has_value(); }
+		void reset() { inner.reset(); }
 		std::optional<TValue> toStdOptional() {
 			return std::optional<TValue>(std::move(inner));
 		}
@@ -74,6 +75,7 @@ namespace CXXIter {
 		inline TValue& value(TValue&& def) { return inner.value_or(def); }
 
 		bool has_value() const { return inner.has_value(); }
+		void reset() { inner.reset(); }
 		std::optional<TValueDeref> toStdOptional() {
 			if(inner.has_value()) { return inner.value(); }
 			return {};
@@ -157,6 +159,11 @@ namespace CXXIter {
 	/** @private */
 	namespace {
 		#define CXXITER_CHAINER_NODISCARD_WARNING "The result of chainer methods needs to be used, otherwise the iterator will not be doing any work."
+
+		/**
+		 * @brief Exception internally used to signal a iterator having ended.
+		 */
+		struct IteratorEndedException {};
 
 		template<size_t START, size_t END, typename F>
 		constexpr bool constexpr_for(F&& f) {
@@ -316,7 +323,7 @@ namespace CXXIter {
 		requires(typename IteratorTrait<T>::Self& self, const typename IteratorTrait<T>::Self& constSelf) {
 			typename IteratorTrait<T>::Self;
 			typename IteratorTrait<T>::Item;
-			{IteratorTrait<T>::next(self)} -> std::same_as<IterValue<typename IteratorTrait<T>::Item>>;
+			{IteratorTrait<T>::next(self)} -> std::same_as<typename IteratorTrait<T>::Item>;
 			{IteratorTrait<T>::sizeHint(constSelf)} -> std::same_as<SizeHint>;
 	};
 

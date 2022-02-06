@@ -16,7 +16,7 @@ namespace CXXIter {
 	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
 		friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
 		friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
-		enum class IntersperserState { Uninitialized, Item, Separator };
+		enum class IntersperserState { Uninitialized, Item, Separator, Ended };
 	private:
 		TChainInput input;
 		TSeparatorInput separatorInput;
@@ -35,21 +35,27 @@ namespace CXXIter {
 		using Self = Intersperser<TChainInput, TSeparatorInput>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			if(self.intersperserState == Self::IntersperserState::Uninitialized) [[unlikely]] {
 				self.nextItem = ChainInputIterator::next(self.input);
 				self.intersperserState = Self::IntersperserState::Item;
 			}
-			if(!self.nextItem.has_value()) [[unlikely]] { return {}; }
 
 			if(self.intersperserState == Self::IntersperserState::Item) {
-				self.intersperserState = Self::IntersperserState::Separator;
-				auto item = std::move(self.nextItem);
-				self.nextItem = ChainInputIterator::next(self.input);
+				Item item = std::move(self.nextItem.value());
+				try {
+					self.nextItem = ChainInputIterator::next(self.input);
+					self.intersperserState = Self::IntersperserState::Separator;
+				} catch (const IteratorEndedException&) {
+					self.nextItem.reset();
+					self.intersperserState = Self::IntersperserState::Ended;
+				}
 				return item;
-			} else {
+			} else if(self.intersperserState == Self::IntersperserState::Separator) {
 				self.intersperserState = Self::IntersperserState::Item;
 				return SeparatorInputIterator::next(self.separatorInput);
+			} else {
+				throw IteratorEndedException{};
 			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {

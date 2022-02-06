@@ -139,6 +139,3 @@ TEST(CXXIter, ExactSizedItemSource) {
 		static_assert(!CXXIterExactSizeIterator<decltype(iter)>);
 	}
 }
-
-
-//TODO: skip(cnt) and take(cnt)

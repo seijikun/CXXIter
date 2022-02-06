@@ -25,15 +25,13 @@ namespace CXXIter {
 	template<typename TChainInput>
 	struct IteratorTrait<TakeN<TChainInput>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
-		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = TakeN<TChainInput>;
-		using Item = InputItem;
+		using Item = typename TChainInput::Item;
 
-		static inline IterValue<Item> next(Self& self) {
-			if(self.remaining == 0) [[unlikely]] { return {}; }
-			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			if(self.remaining == 0) [[unlikely]] { throw IteratorEndedException{}; }
+			Item item = ChainInputIterator::next(self.input);
 			self.remaining -= 1;
 			return item;
 		}

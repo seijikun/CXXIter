@@ -27,13 +27,11 @@ namespace CXXIter {
 		using Self = FilterMap<TChainInput, TFilterMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
-				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) [[unlikely]] { return {}; }
-				std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
-				if(!value) { continue; }
-				return *value;
+				std::optional<Item> filterMappedItem(self.filterMapFn(ChainInputIterator::next(self.input)));
+				if(!filterMappedItem.has_value()) { continue; }
+				return *filterMappedItem;
 			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {

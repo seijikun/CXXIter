@@ -34,22 +34,19 @@ namespace CXXIter {
 		using Self = FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
 		using Item = typename TItemContainer::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			while(true) {
 				if(!self.current) { // pull new container from the outer iterator
-					auto item = ChainInputIterator::next(self.input);
-					if(!item.has_value()) [[unlikely]] { return {}; } // end of iteration
 					self.current = SrcMov(std::move(
-						self.mapFn(std::forward<InputItem>( item.value() ))
+						self.mapFn(ChainInputIterator::next(self.input))
 					));
 				}
 
 				// if the outer iterator yielded a container, take from it until we reach the end
-				auto item = NestedChainIterator::next(*self.current);
-				if(item.has_value()) [[likely]] { // inner yielded a usable item
-					return item.value();
-				} else [[unlikely]] {
-					self.current.reset(); // inner container ended, unset current cache
+				try {
+					return NestedChainIterator::next(*self.current);
+				} catch (const IteratorEndedException&) {
+					self.current.reset();
 				}
 			}
 		}

@@ -35,15 +35,24 @@ namespace CXXIter {
 		using Self = Alternater<TChainInput1, TChainInputs...>;
 		using Item = typename TChainInput1::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			if(self.batchElementIdx == Self::BATCH_SIZE) [[unlikely]] { // returned all elements from the batch -> retrieve new batch
 				constexpr_for<0, INPUT_CNT>([&](auto idx) {
-					self.currentBatch[idx] = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
-					return true;
+					try {
+						self.currentBatch[idx] = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
+						return true;
+					} catch (const IteratorEndedException&) {
+						self.currentBatch[idx] = {};
+						return false;
+					}
 				});
 				self.batchElementIdx = 0;
 			}
-			return std::move(self.currentBatch[self.batchElementIdx++]);
+			if(self.currentBatch[self.batchElementIdx].has_value()) {
+				return self.currentBatch[self.batchElementIdx++].value();
+			} else {
+				throw IteratorEndedException{};
+			}
 		}
 		static inline SizeHint sizeHint(const Self& self) {
 			size_t lowerBoundMin = std::numeric_limits<size_t>::max();

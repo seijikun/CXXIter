@@ -18,7 +18,6 @@ namespace CXXIter {
 		friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 		friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 	private:
-		struct source_ended_exception {};
 		std::tuple<TChainInput1, TChainInputs...> inputs;
 	public:
 		Zipper(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
@@ -33,23 +32,14 @@ namespace CXXIter {
 		using Self = Zipper<TChainInput1, TZipContainer, TChainInputs...>;
 		using Item = TZipContainer<typename TChainInput1::Item, typename TChainInputs::Item...>;
 
-		static inline IterValue<Item> next(Self& self) {
-			auto getElementFromChainInput = [&]<size_t IDX>(std::integral_constant<size_t, IDX>) -> std::tuple_element_t<IDX, Item> {
-				auto input = std::tuple_element_t<IDX, ChainInputIterators>::next( std::get<IDX>(self.inputs) );
-				if(!input.has_value()) [[unlikely]] {
-					throw typename Self::source_ended_exception{};
-				}
-				return input.value();
-			};
+		static inline Item next(Self& self) {
 			auto constructZipped = [&]<size_t... IDX>(std::integer_sequence<size_t, IDX...>) -> Item {
-				return { getElementFromChainInput(std::integral_constant<size_t, IDX>())... };
+				return {
+					std::tuple_element_t<IDX, ChainInputIterators>::next( std::get<IDX>(self.inputs) )...
+				};
 			};
 
-			try {
-				return constructZipped(std::make_index_sequence<INPUT_CNT>{});
-			} catch(typename Self::source_ended_exception) {
-				return {};
-			}
+			return constructZipped(std::make_index_sequence<INPUT_CNT>{});
 		}
 		static inline SizeHint sizeHint(const Self& self) {
 			size_t lowerBoundMin = std::numeric_limits<size_t>::max();

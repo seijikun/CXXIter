@@ -24,7 +24,7 @@ namespace CXXIter {
 		using Self = Empty<TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self&) { return {}; }
+		static inline Item next(Self&) { throw IteratorEndedException{}; }
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
 	};
 	/** @private */
@@ -38,7 +38,7 @@ namespace CXXIter {
 	// GENERATOR FUNCTION
 	// ################################################################################################
 	/** @private */
-	template<typename TItem, typename TGeneratorFn>
+	template<typename TItem, typename TGeneratorFn> //TODO: port to IterValue, to also support references as items?
 	class FunctionGenerator : public IterApi<FunctionGenerator<TItem, TGeneratorFn>> {
 		friend struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
 		friend struct ExactSizeIteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
@@ -55,9 +55,9 @@ namespace CXXIter {
 		using Self = FunctionGenerator<TItem, TGeneratorFn>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			auto item = self.generatorFn();
-			if(!item.has_value()) [[unlikely]] { return {}; }
+			if(!item.has_value()) [[unlikely]] { throw IteratorEndedException{}; }
 			return item.value();
 		}
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
@@ -88,9 +88,9 @@ namespace CXXIter {
 		using Self = Repeater<TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			if(self.repetitions.has_value()) {
-				if(self.repetitionsRemaining == 0) { return {}; }
+				if(self.repetitionsRemaining == 0) { throw IteratorEndedException{}; }
 				self.repetitionsRemaining -= 1;
 			}
 			return self.item;
@@ -134,8 +134,8 @@ namespace CXXIter {
 		using Self = Range<TValue>;
 		using Item = TValue;
 
-		static inline IterValue<Item> next(Self& self) {
-			if(self.current > self.to) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			if(self.current > self.to) [[unlikely]] { throw IteratorEndedException{}; }
 			TValue current = self.current;
 			self.current += self.step;
 			return current;
@@ -175,8 +175,10 @@ namespace CXXIter {
 		using Self = CoroutineGenerator<TGeneratorFn>;
 		using Item = typename TGeneratorFn::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
-			return self.generator.next();
+		static inline Item next(Self& self) {
+			auto item = self.generator.next();
+			if(!item.has_value()) { throw IteratorEndedException{}; }
+			return item.value();
 		}
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
 	};

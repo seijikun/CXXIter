@@ -167,7 +167,11 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	IterValue<Item> next() {
-		return Iterator::next(*self());
+		try {
+			return Iterator::next(*self());
+		} catch(const IteratorEndedException&) {
+			return {};
+		}
 	}
 
 	// ###################
@@ -190,11 +194,11 @@ public: // CXXIter API-Surface
 	 */
 	template<typename TUseFn>
 	void forEach(TUseFn useFn) {
-		while(true) {
-			auto item = Iterator::next(*self());
-			if(!item.has_value()) [[unlikely]] { return; }
-			useFn(std::forward<Item>( item.value() ));
-		}
+		try {
+			while(true) {
+				useFn(Iterator::next(*self()));
+			}
+		} catch (const IteratorEndedException&) {}
 	}
 
 	/**
@@ -304,13 +308,13 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<const ItemOwned&> TFindFn>
 	std::optional<size_t> findIdx(TFindFn findFn) {
-		size_t idx = 0;
-		while(true) {
-			auto item = Iterator::next(*self());
-			if(!item.has_value()) [[unlikely]] { return {}; }
-			if(findFn(item.value())) [[unlikely]] { return idx; }
-			idx += 1;
-		}
+		try {
+			size_t idx = 0;
+			while(true) {
+				if(findFn( Iterator::next(*self()) )) { return idx; }
+				idx += 1;
+			}
+		} catch (const IteratorEndedException&) { return {}; }
 	}
 
 	/**
@@ -555,13 +559,13 @@ public: // CXXIter API-Surface
 		{ res = item };
 	}
 	std::optional<TResult> min() {
-		auto item = Iterator::next(*self());
-		if(!item.has_value()) { return {}; }
-		TResult result = item.value();
-		forEach([&result](Item&& item) {
-			if(item < result) { result = item; }
-		});
-		return result;
+		try {
+			TResult result = Iterator::next(*self());
+			forEach([&result](Item&& item) {
+				if(item < result) { result = item; }
+			});
+			return result;
+		} catch (const IteratorEndedException&) { return {}; }
 	}
 
 	/**
@@ -589,13 +593,13 @@ public: // CXXIter API-Surface
 		{ res = item };
 	}
 	std::optional<TResult> max() {
-		auto item = Iterator::next(*self());
-		if(!item.has_value()) { return {}; }
-		TResult result = item.value();
-		forEach([&result](Item&& item) {
-			if(item > result) { result = item; }
-		});
-		return result;
+		try {
+			TResult result = Iterator::next(*self());
+			forEach([&result](Item&& item) {
+				if(item > result) { result = item; }
+			});
+			return result;
+		} catch (const IteratorEndedException&) { return {}; }
 	}
 
 	/**
@@ -628,17 +632,18 @@ public: // CXXIter API-Surface
 		{ a < a };
 	}
 	IterValue<Item> minBy(TMinValueExtractFn minValueExtractFn) {
-		IterValue<Item> result = Iterator::next(*self());
-		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(result.value());
-		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(item);
-			if(itemValue < resultValue) {
-				result = item;
-				resultValue = itemValue;
-			}
-		});
-		return result;
+		try {
+			Item result = Iterator::next(*self());
+			auto resultValue = minValueExtractFn(result);
+			forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
+				auto itemValue = minValueExtractFn(item);
+				if(itemValue < resultValue) {
+					result = item;
+					resultValue = itemValue;
+				}
+			});
+			return result;
+		} catch (const IteratorEndedException&) { return {}; }
 	}
 
 	/**
@@ -671,17 +676,18 @@ public: // CXXIter API-Surface
 		{ a > a };
 	}
 	IterValue<Item> maxBy(TMaxValueExtractFn minValueExtractFn) {
-		IterValue<Item> result = Iterator::next(*self());
-		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(result.value());
-		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(item);
-			if(itemValue > resultValue) {
-				result = item;
-				resultValue = itemValue;
-			}
-		});
-		return result;
+		try {
+			Item result = Iterator::next(*self());
+			auto resultValue = minValueExtractFn(result);
+			forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
+				auto itemValue = minValueExtractFn(item);
+				if(itemValue > resultValue) {
+					result = item;
+					resultValue = itemValue;
+				}
+			});
+			return result;
+		} catch (const IteratorEndedException&) { return {}; }
 	}
 
 	/**

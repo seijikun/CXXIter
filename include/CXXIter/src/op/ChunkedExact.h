@@ -38,12 +38,10 @@ namespace CXXIter {
 		using Self = ChunkedExact<TChainInput, CHUNK_SIZE>;
 		using Item = ExactChunk<InputItem, CHUNK_SIZE>;
 
-		static inline IterValue<Item> next(Self& self) {
-			Item chunk;
+		static inline Item next(Self& self) {
+			Item chunk; //TODO: can we get rid of this for-loop here?
 			for(size_t i = 0; i < CHUNK_SIZE; ++i) {
-				auto item = ChainInputIterator::next(self.input);
-				if(!item.has_value()) [[unlikely]] { return {}; } // reached end. Chunk needs to be full to commit!
-				chunk[i] = std::move( item.value() );
+				chunk[i] = ChainInputIterator::next(self.input);
 			}
 			return chunk;
 		}

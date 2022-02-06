@@ -32,9 +32,8 @@ namespace CXXIter {
 		using Self = Caster<TChainInput, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
-			auto item = ChainInputIterator::next(self.input);
-			return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
+		static inline Item next(Self& self) {
+			return static_cast<Item>(ChainInputIterator::next(self.input));
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 	};

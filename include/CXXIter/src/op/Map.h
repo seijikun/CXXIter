@@ -30,9 +30,8 @@ namespace CXXIter {
 		using Self = Map<TChainInput, TMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
-			auto item = ChainInputIterator::next(self.input);
-			return item.template map<Item, TMapFn&>(self.mapFn);
+		static inline Item next(Self& self) {
+			return self.mapFn(ChainInputIterator::next(self.input));
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
 	};

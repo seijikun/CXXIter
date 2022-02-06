@@ -16,39 +16,63 @@
 // CONSUMERS
 // ################################################################################################
 TEST(CXXIter, iterator) {
-	std::vector<size_t> input = {1, 3, 3, 7};
-	auto iter = CXXIter::from(input)
-			.map([](size_t item) { return (item + 1); })
-			.filter([](size_t item) { return (item >= 4); })
-			.skip(1);
+	{
+		std::vector<size_t> input = {1, 3, 3, 7};
+		auto iter = CXXIter::from(input)
+				.map([](size_t item) { return (item + 1); })
+				.filter([](size_t item) { return (item >= 4); })
+				.skip(1);
 
-	std::vector<size_t> output;
-	for(size_t item : iter) {
-		output.push_back(item);
+		std::vector<size_t> output;
+		for(size_t item : iter) {
+			output.push_back(item);
+		}
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre(4, 8));
 	}
-	ASSERT_EQ(output.size(), 2);
-	ASSERT_THAT(output, ElementsAre(4, 8));
+	{
+		for(size_t item [[maybe_unused]] : CXXIter::empty<size_t>()) {
+			ASSERT_TRUE(false);
+		}
+	}
 }
 
 TEST(CXXIter, forEach) {
-	// additional container type parameters
-	std::vector<std::string> input = {"1337", "42", "64"};
-	std::vector<std::string> output;
-	CXXIter::from(input)
-			.forEach([&output](std::string& item) {
-				output.push_back(std::forward<std::string>(item));
-			});
-	ASSERT_EQ(output.size(), 3);
-	ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+	{
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::string> output;
+		CXXIter::from(input)
+				.forEach([&output](std::string& item) {
+					output.push_back(std::forward<std::string>(item));
+				});
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre("1337", "42", "64"));
+	}
+	{
+		CXXIter::empty<std::string>()
+				.forEach([](const std::string&) {
+					throw std::runtime_error("forEach()");
+				});
+	}
 }
 
 TEST(CXXIter, fold) {
-	std::vector<double> input = {1.331335363800390, 1.331335363800390, 1.331335363800390, 1.331335363800390};
-	double output = CXXIter::from(input)
-			.fold(1.0, [](double& workingValue, double item) {
-				workingValue *= item;
-			});
-	ASSERT_NEAR(output, 3.141592653589793, 0.0000000005);
+	{
+		std::vector<double> input = {1.331335363800390, 1.331335363800390, 1.331335363800390, 1.331335363800390};
+		double output = CXXIter::from(input)
+				.fold(1.0, [](double& workingValue, double item) {
+					workingValue *= item;
+				});
+		ASSERT_NEAR(output, 3.141592653589793, 0.0000000005);
+	}
+	{
+		double output = CXXIter::empty<double>()
+				.fold(1.0, [](double& workingValue, double item) {
+					throw std::runtime_error("fold()");
+					workingValue *= item;
+				});
+		ASSERT_EQ(output, 1.0);
+	}
 }
 
 TEST(CXXIter, findIdx) {
@@ -82,6 +106,11 @@ TEST(CXXIter, findIdx) {
 				.findIdx([](int item) { return (item % 2 == 0); });
 		ASSERT_FALSE(output.has_value());
 	}
+	{
+		std::optional<size_t> output = CXXIter::empty<int>()
+				.findIdx([](int item) { return (item % 2 == 0); });
+		ASSERT_FALSE(output.has_value());
+	}
 }
 
 TEST(CXXIter, find) {
@@ -102,6 +131,13 @@ TEST(CXXIter, find) {
 				});
 		ASSERT_FALSE(output.has_value());
 	}
+	{
+		CXXIter::IterValue<std::string> output = CXXIter::empty<std::string>()
+				.find([](const std::string&) -> bool {
+					throw std::runtime_error("find()");
+				});
+		ASSERT_FALSE(output.has_value());
+	}
 }
 
 TEST(CXXIter, count) {
@@ -111,8 +147,7 @@ TEST(CXXIter, count) {
 		ASSERT_EQ(output, 3);
 	}
 	{
-		std::vector<int> input = {};
-		size_t output = CXXIter::from(input).count();
+		size_t output = CXXIter::empty<int>().count();
 		ASSERT_EQ(output, 0);
 	}
 	{
@@ -164,6 +199,14 @@ TEST(CXXIter, sum) {
 		int output = CXXIter::from(input).sum(31337);
 		ASSERT_EQ(output, 31337);
 	}
+	{ // default startValue, empty iterator
+		int output = CXXIter::empty<int>().sum();
+		ASSERT_EQ(output, 0);
+	}
+	{ // custom startValue, empty iterator
+		int output = CXXIter::empty<int>().sum(31337);
+		ASSERT_EQ(output, 31337);
+	}
 }
 
 TEST(CXXIter, stringJoin) {
@@ -177,6 +220,12 @@ TEST(CXXIter, stringJoin) {
 	{ // empty input
 		std::vector<int> input = {};
 		std::string output = CXXIter::from(input)
+				.map([](const auto& item) { return std::to_string(item); })
+				.stringJoin(", ");
+		ASSERT_EQ(output, "");
+	}
+	{ // empty input
+		std::string output = CXXIter::empty<int>()
 				.map([](const auto& item) { return std::to_string(item); })
 				.stringJoin(", ");
 		ASSERT_EQ(output, "");
@@ -195,57 +244,73 @@ TEST(CXXIter, mean) {
 		std::optional<float> output = CXXIter::from(input).mean();
 		ASSERT_FALSE(output.has_value());
 	}
+	{ // empty input
+		std::optional<float> output = CXXIter::empty<float>().mean();
+		ASSERT_FALSE(output.has_value());
+	}
 }
 
 TEST(CXXIter, last) {
-	{
+	{ // non-empty input
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).last().toStdOptional();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 52);
 	}
-	{
+	{ // empty input
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).last().toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<int> output = CXXIter::empty<int>().last().toStdOptional();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
 TEST(CXXIter, nth) {
-	{
+	{ // non-empty input
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).nth(1).toStdOptional();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 1337);
 	}
-	{
+	{ // empty input
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).nth(10).toStdOptional();
 		ASSERT_FALSE(output.has_value());
 	}
-	{
+	{ // empty input
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).nth(0).toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<int> output = CXXIter::empty<int>().nth(0).toStdOptional();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
 TEST(CXXIter, min) {
-	{
+	{ // non-empty input
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).min();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 42);
 	}
-	{
+	{ // empty input
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).min();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<int> output = CXXIter::empty<int>().min();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
 TEST(CXXIter, minBy) {
-	{
+	{ // non-empty input
 		std::vector<std::string> input = {"middle", "smol", "largeString"};
 		std::optional<std::string> output = CXXIter::from(input)
 				.minBy([](const std::string& str) { return str.size(); })
@@ -253,9 +318,15 @@ TEST(CXXIter, minBy) {
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "smol");
 	}
-	{
+	{ // empty input
 		std::vector<std::string> input = {};
 		std::optional<std::string> output = CXXIter::from(input)
+				.minBy([](const std::string& str) { return str.size(); })
+				.toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<std::string> output = CXXIter::empty<std::string>()
 				.minBy([](const std::string& str) { return str.size(); })
 				.toStdOptional();
 		ASSERT_FALSE(output.has_value());
@@ -263,21 +334,25 @@ TEST(CXXIter, minBy) {
 }
 
 TEST(CXXIter, max) {
-	{
+	{ // non-empty input
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).max();
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 1337);
 	}
-	{
+	{ // empty input
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).max();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<int> output = CXXIter::empty<int>().max();
 		ASSERT_FALSE(output.has_value());
 	}
 }
 
 TEST(CXXIter, maxBy) {
-	{
+	{ // non-empty input
 		std::vector<std::string> input = {"smol", "middle", "largeString"};
 		std::optional<std::string> output = CXXIter::from(input)
 				.maxBy([](const std::string& str) { return str.size(); })
@@ -285,9 +360,15 @@ TEST(CXXIter, maxBy) {
 		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "largeString");
 	}
-	{
+	{ // empty input
 		std::vector<std::string> input = {};
 		std::optional<std::string> output = CXXIter::from(input)
+				.maxBy([](const std::string& str) { return str.size(); })
+				.toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // empty input
+		std::optional<std::string> output = CXXIter::empty<std::string>()
 				.maxBy([](const std::string& str) { return str.size(); })
 				.toStdOptional();
 		ASSERT_FALSE(output.has_value());
@@ -318,12 +399,20 @@ TEST(CXXIter, collect) {
 		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
 		ASSERT_EQ(output.size(), 3); \
 	} \
+	{ \
+		auto output = CXXIter::empty<std::string>().collect<TARGET_CONTAINER>(); \
+		ASSERT_EQ(output.size(), 0); \
+	}
 
 	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
 	{ \
 		std::vector<TestPair> input = {{"1337", 1337}, {"42", 42}, {"64", 64}}; \
 		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
 		ASSERT_EQ(output.size(), 3); \
+	} \
+	{ \
+		auto output = CXXIter::empty<TestPair>().collect<TARGET_CONTAINER>(); \
+		ASSERT_EQ(output.size(), 0); \
 	}
 
 	// CustomContainer

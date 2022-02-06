@@ -37,15 +37,17 @@ namespace CXXIter {
 		using Self = Sorter<TChainInput, TCompareFn, STABLE>;
 		using Item = OwnedInputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static inline Item next(Self& self) {
 			if(!self.sortCache.has_value()) {
-				// drain input iterator into sortCache
+				// allocate sortCache that will contain elements of input iterator
 				std::vector<OwnedInputItem> sortCache;
-				while(true) {
-					auto item = ChainInputIterator::next(self.input);
-					if(!item.has_value()) [[unlikely]] { break; }
-					sortCache.push_back(std::forward<InputItem>( item.value() ));
-				}
+				sortCache.reserve(self.input.sizeHint().expectedResultSize());
+				// drain input iterator into sortCache
+				try {
+					while(true) {
+						sortCache.push_back(ChainInputIterator::next(self.input));
+					}
+				} catch (const IteratorEndedException&) {}
 				// sort the cache
 				if constexpr(STABLE) {
 					std::stable_sort(sortCache.begin(), sortCache.end(), self.compareFn);

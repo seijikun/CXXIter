@@ -26,16 +26,14 @@ namespace CXXIter {
 	template<typename TChainInput, typename TTakePredicate>
 	struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
-		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = TakeWhile<TChainInput, TTakePredicate>;
-		using Item = InputItem;
+		using Item = typename TChainInput::Item;
 
-		static inline IterValue<Item> next(Self& self) {
-			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) [[unlikely]] { return {}; }
+		static inline Item next(Self& self) {
+			Item item = ChainInputIterator::next(self.input);
 			// end iterator directly after takePredicate returned false the first time
-			if(self.takePredicate(item.value()) == false) { return {}; }
+			if(self.takePredicate(item) == false) { throw IteratorEndedException{}; }
 			return item;
 		}
 		static inline SizeHint sizeHint(const Self& self) {

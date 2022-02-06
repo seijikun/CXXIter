@@ -33,10 +33,9 @@ namespace CXXIter {
 		using Self = InplaceModifier<TChainInput, TModifierFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
-			auto item = ChainInputIterator::next(self.input);
-			if(!item.has_value()) [[unlikely]] { return {}; }
-			self.modifierFn(item.value());
+		static inline Item next(Self& self) {
+			Item item = ChainInputIterator::next(self.input);
+			self.modifierFn(item);
 			return item;
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
