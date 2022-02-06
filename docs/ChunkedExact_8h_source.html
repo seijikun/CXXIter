@@ -123,30 +123,28 @@ $(document).ready(function(){initNavTree('ChunkedExact_8h_source.html',''); init
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using</span> Self = ChunkedExact&lt;TChainInput, CHUNK_SIZE&gt;;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">using</span> Item = ExactChunk&lt;InputItem, CHUNK_SIZE&gt;;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            Item chunk;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">inline</span> Item next(Self&amp; self) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            Item chunk; <span class="comment">//TODO: can we get rid of this for-loop here?</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; CHUNK_SIZE; ++i) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; } <span class="comment">// reached end. Chunk needs to be full to commit!</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                chunk[i] = std::move( item.value() );</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">return</span> chunk;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            SizeHint result = ChainInputIterator::sizeHint(self.input);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            result.lowerBound /= CHUNK_SIZE;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">if</span>(result.upperBound.has_value()) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                result.upperBound.value() /= CHUNK_SIZE;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    };</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, const <span class="keywordtype">size_t</span> CHUNK_SIZE&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;ChunkedExact&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> ChunkedExact&lt;TChainInput, CHUNK_SIZE&gt;&amp; self) { <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input) / CHUNK_SIZE; }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                chunk[i] = ChainInputIterator::next(self.input);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> chunk;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            SizeHint result = ChainInputIterator::sizeHint(self.input);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            result.lowerBound /= CHUNK_SIZE;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">if</span>(result.upperBound.has_value()) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                result.upperBound.value() /= CHUNK_SIZE;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    };</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, const <span class="keywordtype">size_t</span> CHUNK_SIZE&gt;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;ChunkedExact&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> ChunkedExact&lt;TChainInput, CHUNK_SIZE&gt;&amp; self) { <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input) / CHUNK_SIZE; }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
 <div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00041">CXXIter.h:41</a></div></div>
 <div class="ttc" id="astructCXXIter_1_1ExactSizeIteratorTrait_html_a91a16aa727508f27d07882a1e0b69fed"><div class="ttname"><a href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">CXXIter::ExactSizeIteratorTrait::size</a></div><div class="ttdeci">static size_t size(const typename IteratorTrait&lt; T &gt;::Self &amp;self)=delete</div><div class="ttdoc">Get the iterator's exact number of elements.</div></div>
 </div><!-- fragment --></div><!-- contents -->
