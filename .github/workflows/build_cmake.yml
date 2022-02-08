@@ -12,11 +12,23 @@ jobs:
         config:
         - {
             name: "GCC",
-            cc: "gcc", cxx: "g++"
+            cc: "gcc", cxx: "g++",
+            buildType: "Release"
+          }
+        - {
+            name: "GCC",
+            cc: "gcc", cxx: "g++",
+            buildType: "Debug"
           }
         - {
             name: "CLANG",
-            cc: "clang", cxx: "clang++"
+            cc: "clang", cxx: "clang++",
+            buildType: "Release"
+          }
+        - {
+            name: "CLANG",
+            cc: "clang", cxx: "clang++",
+            buildType: "Debug"
           }
 
     steps:
@@ -42,7 +54,7 @@ jobs:
         if [ -d "build" ]; then rm -rf ./build; fi
         mkdir -p build
         cd build
-        cmake -GNinja ../ -DCXXITER_WITH_TESTS=ON
+        cmake -GNinja ../ -DCXXITER_WITH_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.config.buildType }}
     
     - name: Build
       run: |
