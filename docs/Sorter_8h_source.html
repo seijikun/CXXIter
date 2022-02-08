@@ -122,40 +122,38 @@ $(document).ready(function(){initNavTree('Sorter_8h_source.html',''); initResiza
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">using</span> Self = Sorter&lt;TChainInput, TCompareFn, STABLE&gt;;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using</span> Item = OwnedInputItem;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">inline</span> Item next(Self&amp; self) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">if</span>(!self.sortCache.has_value()) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="comment">// allocate sortCache that will contain elements of input iterator</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="comment">// drain input iterator into sortCache</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                std::vector&lt;OwnedInputItem&gt; sortCache;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                sortCache.reserve(self.input.sizeHint().expectedResultSize());</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="comment">// drain input iterator into sortCache</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                        sortCache.push_back(ChainInputIterator::next(self.input));</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                } <span class="keywordflow">catch</span> (<span class="keyword">const</span> IteratorEndedException&amp;) {}</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="comment">// sort the cache</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(STABLE) {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    std::stable_sort(sortCache.begin(), sortCache.end(), self.compareFn);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    std::sort(sortCache.begin(), sortCache.end(), self.compareFn);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                self.sortCache.emplace(std::move(sortCache));</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keyword">using</span> SortCacheIterator = IteratorTrait&lt;typename Self::SortCache&gt;;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keyword">typename</span> Self::SortCache&amp; sortedItems = self.sortCache.value();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">return</span> SortCacheIterator::next(sortedItems);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    };</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, <span class="keyword">typename</span> TCompareFn, <span class="keywordtype">bool</span> STABLE&gt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;Sorter&lt;TChainInput, TCompareFn, STABLE&gt;&gt; {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> Sorter&lt;TChainInput, TCompareFn, STABLE&gt;&amp; self) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    };</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    sortCache.push_back(std::forward&lt;InputItem&gt;( item.value() ));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                <span class="comment">// sort the cache</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(STABLE) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    std::stable_sort(sortCache.begin(), sortCache.end(), self.compareFn);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    std::sort(sortCache.begin(), sortCache.end(), self.compareFn);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                self.sortCache.emplace(std::move(sortCache));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keyword">using</span> SortCacheIterator = IteratorTrait&lt;typename Self::SortCache&gt;;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keyword">typename</span> Self::SortCache&amp; sortedItems = self.sortCache.value();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">return</span> SortCacheIterator::next(sortedItems);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, <span class="keyword">typename</span> TCompareFn, <span class="keywordtype">bool</span> STABLE&gt;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;Sorter&lt;TChainInput, TCompareFn, STABLE&gt;&gt; {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> Sorter&lt;TChainInput, TCompareFn, STABLE&gt;&amp; self) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00041">CXXIter.h:41</a></div></div>
 <div class="ttc" id="astructCXXIter_1_1ExactSizeIteratorTrait_html_a91a16aa727508f27d07882a1e0b69fed"><div class="ttname"><a href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">CXXIter::ExactSizeIteratorTrait::size</a></div><div class="ttdeci">static size_t size(const typename IteratorTrait&lt; T &gt;::Self &amp;self)=delete</div><div class="ttdoc">Get the iterator's exact number of elements.</div></div>
 </div><!-- fragment --></div><!-- contents -->
