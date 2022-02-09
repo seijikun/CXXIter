@@ -51,6 +51,61 @@ TEST(CXXIter, fold) {
 	ASSERT_NEAR(output, 3.141592653589793, 0.0000000005);
 }
 
+TEST(CXXIter, all) {
+	{
+		std::vector<bool> input = { true, true, true, false };
+		bool output = CXXIter::from(input).copied().all();
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<bool> input = { false, true, true, true };
+		bool output = CXXIter::from(input).copied().all();
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<bool> input = { false, false, true, true };
+		bool output = CXXIter::from(input).copied().all();
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<bool> input = { true, true, false, true };
+		bool output = CXXIter::from(input).copied().all();
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<bool> input = { true, true, true, true };
+		bool output = CXXIter::from(input).copied().all();
+		ASSERT_TRUE(output);
+	}
+
+	auto intAsBoolFn = [](uint32_t item) -> bool { return (item != 0); };
+	{
+		std::vector<uint32_t> input = { 1, 1, 1, 0 };
+		bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<uint32_t> input = { 0, 1, 1, 1 };
+		bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<uint32_t> input = { 0, 0, 1, 1 };
+		bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<uint32_t> input = { 1, 1, 0, 1 };
+		bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+		ASSERT_FALSE(output);
+	}
+	{
+		std::vector<uint32_t> input = { 1, 1, 1, 1 };
+		bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+		ASSERT_TRUE(output);
+	}
+}
+
 TEST(CXXIter, findIdx) {
 	{ // item
 		std::vector<int> input = {42, 1337, 52};

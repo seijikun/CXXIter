@@ -252,6 +252,84 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Tests if all elements of this iterator match the given @p predicateFn.
+	 * @note This consumes the iterator.
+	 * @param predicateFn Predicate to test all item sof this iterator against.
+	 * @return @c true when the given @p predicateFn returned @c true for all elements of this
+	 * iterator, @c false otherwise.
+	 *
+	 * Usage Example:
+	 * (Using the following predicate)
+	 * @code
+	 * 	auto intAsBoolFn = [](uint32_t item) -> bool { return (item != 0); };
+	 * @endcode
+	 *
+	 * - For cases where the predicate does not return @c true for all elements:
+	 * @code
+	 * 	std::vector<uint32_t> input = { 1, 1, 1, 0 };
+	 * 	bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+	 * 	// output == false
+	 *
+	 * 	std::vector<uint32_t> input = { 0, 1, 1, 1 };
+	 * 	bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+	 * 	// output == false
+	 *
+	 * 	std::vector<uint32_t> input = { 0, 0, 1, 1 };
+	 * 	bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+	 * 	// output == false
+	 * @endcode
+	 *
+	 * - For cases where the predicate does return @c true for all elements:
+	 * @code
+	 * 	std::vector<uint32_t> input = { 1, 1, 1, 1 };
+	 * 	bool output = CXXIter::from(input).copied().all(intAsBoolFn);
+	 * 	// output == true
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TPredicateFn>
+	requires std::same_as<std::invoke_result_t<TPredicateFn, const ItemOwned&>, bool>
+	bool all(TPredicateFn predicateFn) {
+		return !skipWhile(predicateFn).next().has_value();
+	}
+
+	/**
+	 * @brief Tests if all elements of this iterator yield the value @c true when casted to @c bool.
+	 * @note This consumes the iterator.
+	 * @details This is an overload of all(TPredicateFn) for item types that support
+	 * being casted to @c bool.
+	 * @return @c true when all elements of this iterator yielded the value @c true when casted to
+	 * a @c bool, @c false otherwise.
+	 *
+	 * Usage Example:
+	 * - For cases where not all elements of this iterator evaluate to @c true when casted to @c bool.
+	 * @code
+	 * 	std::vector<bool> input = { true, true, true, false };
+	 * 	bool output = CXXIter::from(input).copied().all();
+	 * 	// output == false
+	 *
+	 * 	std::vector<bool> input = { false, true, true, true };
+	 * 	bool output = CXXIter::from(input).copied().all();
+	 * 	// output == false
+	 *
+	 * 	std::vector<bool> input = { true, true, false, true };
+	 * 	bool output = CXXIter::from(input).copied().all();
+	 * 	// output == false
+	 * @endcode
+	 *
+	 * - For cases where all elements of this iterator evaluate to @c true when casted to @c bool.
+	 * @code
+	 * 	std::vector<bool> input = { true, true, true, true };
+	 * 	bool output = CXXIter::from(input).copied().all();
+	 * 	// output == true
+	 * @endcode
+	 */
+	bool all() requires requires(const ItemOwned& item) {
+		{static_cast<bool>(item)};
+	} {
+		return all([](const auto& item) -> bool { return item; });
+	}
+
+	/**
 	 * @brief Search for the given @p searchItem within the items of this iterator, and return the index of the first item
 	 * from the iterator that is equal to the given @p searchItem.
 	 * @param searchItem Item to search for in the iterator.
