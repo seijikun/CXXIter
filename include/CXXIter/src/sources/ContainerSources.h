@@ -76,7 +76,7 @@ namespace CXXIter {
 		using Src = SourceTrait<TContainer>;
 		// CXXIter Interface
 		using Self = SrcRef<TContainer>;
-		using Item = typename Src::Item&;
+		using Item = typename Src::ItemRef;
 
 		static inline IterValue<Item> next(Self& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
@@ -120,7 +120,7 @@ namespace CXXIter {
 		using Src = SourceTrait<TContainer>;
 		// CXXIter Interface
 		using Self = SrcCRef<TContainer>;
-		using Item = const typename Src::Item&;
+		using Item = typename Src::ItemConstRef;
 
 		static inline IterValue<Item> next(Self& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }

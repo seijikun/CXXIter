@@ -91,6 +91,8 @@ namespace CXXIter {
 	// SourceTrait implementation for the CustomContainer
 	template<typename TItem> struct SourceTrait<CustomContainer<TItem>> {
 		using Item = typename CustomContainer<TItem>::CustomContainerItem;
+		using ItemRef = typename CustomContainer<TItem>::CustomContainerItem&;
+		using ItemConstRef = const typename CustomContainer<TItem>::CustomContainerItem&;
 		using IteratorState = size_t;
 		using ConstIteratorState = size_t;
 
@@ -102,8 +104,8 @@ namespace CXXIter {
 		static inline bool hasNext(CustomContainer<TItem>& container, IteratorState& iter) { return iter < container.size(); }
 		static inline bool hasNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return iter < container.size(); }
 
-		static inline Item& next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
-		static inline const Item& next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
+		static inline ItemRef next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
+		static inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
 	};
 
 	// Collector implementation for the CustomContainer

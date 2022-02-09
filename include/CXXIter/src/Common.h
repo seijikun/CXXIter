@@ -340,6 +340,14 @@ namespace CXXIter {
 		*/
 		using Item = typename TContainer::value_type;
 		/**
+		* @brief Type of the item @p TContainer holds and provides for the iterator, in referenced form.
+		*/
+		using ItemRef = typename TContainer::reference;
+		/**
+		* @brief Type of the item @p TContainer holds and provides for the iterator, in const referenced form.
+		*/
+		using ItemConstRef = typename TContainer::const_reference;
+		/**
 		* @brief Type of the state structure stored in CXXIter's source classes, used to keep track of the iteration progress.
 		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
 		*/
@@ -399,7 +407,7 @@ namespace CXXIter {
 		* @param iter The current iteration's state structure.
 		* @return The next item from the current iteration.
 		*/
-		static inline Item& next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter++); }
+		static inline ItemRef next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter++); }
 		/**
 		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.
 		* @details This is used for @c CXXIter::SrcCRef
@@ -407,7 +415,7 @@ namespace CXXIter {
 		* @param iter The current iteration's state structure.
 		* @return The next item from the current iteration.
 		*/
-		static inline const Item& next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter++); }
+		static inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter++); }
 	};
 
 	/**
@@ -426,6 +434,8 @@ namespace CXXIter {
 			typename SourceTrait<TContainer>::ConstIteratorState& constIterState
 		) {
 		typename SourceTrait<TContainer>::Item;
+		typename SourceTrait<TContainer>::ItemRef;
+		typename SourceTrait<TContainer>::ItemConstRef;
 		typename SourceTrait<TContainer>::IteratorState;
 		typename SourceTrait<TContainer>::ConstIteratorState;
 
@@ -435,8 +445,8 @@ namespace CXXIter {
 		{SourceTrait<TContainer>::hasNext(container, iterState)} -> std::same_as<bool>;
 		{SourceTrait<TContainer>::hasNext(constContainer, constIterState)} -> std::same_as<bool>;
 
-		{SourceTrait<TContainer>::next(container, iterState)} -> std::same_as<typename SourceTrait<TContainer>::Item&>;
-		{SourceTrait<TContainer>::next(constContainer, constIterState)} -> std::same_as<const typename SourceTrait<TContainer>::Item&>;
+		{SourceTrait<TContainer>::next(container, iterState)} -> std::same_as<typename SourceTrait<TContainer>::ItemRef>;
+		{SourceTrait<TContainer>::next(constContainer, constIterState)} -> std::same_as<typename SourceTrait<TContainer>::ItemConstRef>;
 	};
 
 }
