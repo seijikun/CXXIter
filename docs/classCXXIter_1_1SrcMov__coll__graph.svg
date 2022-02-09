@@ -40,8 +40,8 @@
 <text text-anchor="start" x="23.5" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ forEach()</text>
 <text text-anchor="start" x="23.5" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collect()</text>
 <text text-anchor="start" x="23.5" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fold()</text>
-<text text-anchor="start" x="23.5" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
-<text text-anchor="start" x="23.5" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 39 more...</text>
+<text text-anchor="start" x="23.5" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ all()</text>
+<text text-anchor="start" x="23.5" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 41 more...</text>
 </a>
 </g>
 </g>
