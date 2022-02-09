@@ -75,6 +75,30 @@ TEST(CXXIter, all) {
 	ASSERT_TRUE(boolTester({1, 1, 1, 1}));
 }
 
+TEST(CXXIter, any) {
+	auto boolTester = [](const std::vector<bool>& input) -> bool {
+		return CXXIter::from(input).copied().any();
+	};
+
+	ASSERT_FALSE(boolTester({false, false, false, false}));
+	ASSERT_TRUE(boolTester({true, true, true, false}));
+	ASSERT_TRUE(boolTester({false, true, true, true}));
+	ASSERT_TRUE(boolTester({false, false, true, true}));
+	ASSERT_TRUE(boolTester({true, true, false, true}));
+	ASSERT_TRUE(boolTester({true, true, true, true}));
+
+	auto intAsBoolFn = [](uint32_t item) -> bool { return (item != 0); };
+	auto intTester = [&intAsBoolFn](const std::vector<uint32_t>& input) -> bool {
+		return CXXIter::from(input).copied().any(intAsBoolFn);
+	};
+	ASSERT_FALSE(intTester({0, 0, 0, 0}));
+	ASSERT_TRUE(intTester({1, 1, 1, 0}));
+	ASSERT_TRUE(intTester({0, 1, 1, 1}));
+	ASSERT_TRUE(intTester({0, 0, 1, 1}));
+	ASSERT_TRUE(intTester({1, 1, 0, 1}));
+	ASSERT_TRUE(boolTester({1, 1, 1, 1}));
+}
+
 TEST(CXXIter, findIdx) {
 	{ // item
 		std::vector<int> input = {42, 1337, 52};

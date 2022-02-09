@@ -254,7 +254,7 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Tests if all elements of this iterator match the given @p predicateFn.
 	 * @note This consumes the iterator.
-	 * @param predicateFn Predicate to test all item sof this iterator against.
+	 * @param predicateFn Predicate to test all items of this iterator against.
 	 * @return @c true when the given @p predicateFn returned @c true for all elements of this
 	 * iterator, @c false otherwise.
 	 *
@@ -327,6 +327,82 @@ public: // CXXIter API-Surface
 		{static_cast<bool>(item)};
 	} {
 		return all([](const auto& item) -> bool { return item; });
+	}
+
+	/**
+	 * @brief Tests if any of the elements of this iterator match the given @p predicateFn.
+	 * @note This consumes the iterator.
+	 * @param predicateFn Predicate to test all items of this iterator against.
+	 * @return @c true when the given @p predicateFn returned @c true for any of the elements
+	 * of this iterator, @c false otherwise.
+	 *
+	 * Usage Example:
+	 * (Using the following predicate)
+	 * @code
+	 * 	auto intAsBoolFn = [](uint32_t item) -> bool { return (item != 0); };
+	 * @endcode
+	 *
+	 * - For the case where the @p predicateFn returns @c false for all elements:
+	 * @code
+	 * 	std::vector<uint32_t> input = { 0, 0, 0, 0 };
+	 * 	bool output = CXXIter::from(input).copied().any(intAsBoolFn);
+	 * 	// output == false
+	 * @endcode
+	 * - For the case where the @p predicateFn returns @c true for any of the elements:
+	 * @code
+	 * 	std::vector<uint32_t> input = { 0, 1, 1, 1 };
+	 * 	bool output = CXXIter::from(input).copied().any(intAsBoolFn);
+	 * 	// output == true
+	 *
+	 * 	std::vector<uint32_t> input = { 0, 0, 0, 1 };
+	 * 	bool output = CXXIter::from(input).copied().any(intAsBoolFn);
+	 * 	// output == true
+	 *
+	 * 	std::vector<uint32_t> input = { 1, 1, 1, 1 };
+	 * 	bool output = CXXIter::from(input).copied().any(intAsBoolFn);
+	 * 	// output == true
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TPredicateFn>
+	bool any(TPredicateFn predicateFn) {
+		return filter(predicateFn).next().has_value();
+	}
+
+	/**
+	 * @brief Tests if any of the elements of this iterator yield the value @c true when casted to @c bool.
+	 * @note This consumes the iterator.
+	 * @details This is an overload of any(TPredicateFn) for item types that support
+	 * being casted to @c bool.
+	 * @return @c true when any of the elements of this iterator yielded the value @c true when casted to
+	 * a @c bool, @c false otherwise.
+	 *
+	 * Usage Example:
+	 * - For cases where none of the elements yields the value @c true when casted to @c bool.
+	 * @code
+	 * 	std::vector<bool> input = { false, false, false, false };
+	 * 	bool output = CXXIter::from(input).copied().any();
+	 * 	// output == false
+	 * @endcode
+	 *
+	 * - For cases where any of the elements yields the value @c true when casted to @c bool.
+	 * @code
+	 * 	std::vector<bool> input = { false, true, true, true };
+	 * 	bool output = CXXIter::from(input).copied().any();
+	 * 	// output == true
+	 *
+	 * 	std::vector<bool> input = { true, false, false, false };
+	 * 	bool output = CXXIter::from(input).copied().any();
+	 * 	// output == true
+	 *
+	 * 	std::vector<bool> input = { true, true, true, true };
+	 * 	bool output = CXXIter::from(input).copied().any();
+	 * 	// output == true
+	 * @endcode
+	 */
+	bool any() requires requires(const ItemOwned& item) {
+		{static_cast<bool>(item)};
+	} {
+		return any([](const auto& item) -> bool { return item; });
 	}
 
 	/**
