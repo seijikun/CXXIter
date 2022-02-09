@@ -7,6 +7,8 @@ var classCXXIter_1_1IterApi =
     [ "all", "classCXXIter_1_1IterApi.html#a27ea52a9390e9127a7fafd760a68fc0c", null ],
     [ "all", "classCXXIter_1_1IterApi.html#a6d6aae5cb3890b2a21bb2d30cd55623d", null ],
     [ "alternate", "classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47", null ],
+    [ "any", "classCXXIter_1_1IterApi.html#a4f621d583ff137b6537eff24d96b2c18", null ],
+    [ "any", "classCXXIter_1_1IterApi.html#a233794e7bcf62f21de8f66cff22750b0", null ],
     [ "begin", "classCXXIter_1_1IterApi.html#aaa8bf456c009689898f75879d1691120", null ],
     [ "cast", "classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7", null ],
     [ "chain", "classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951", null ],
