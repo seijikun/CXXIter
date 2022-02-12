@@ -174,6 +174,11 @@ public: // CXXIter API-Surface
 	// CONSUMERS
 	// ###################
 	/**
+	 * @name Consumers
+	 */
+//@{
+
+	/**
 	 * @brief Consumer that calls the given function @p useFn for each of the elements in this iterator.
 	 * @note This consumes the iterator.
 	 * @param useFn Function called for each of the elements in this iterator.
@@ -910,11 +915,17 @@ public: // CXXIter API-Surface
 	IterValue<Item> nth(size_t n) {
 		return skip(n).next();
 	}
+//@}
 
 
 	// ###################
 	// CHAINERS
 	// ###################
+	/**
+	 * @name Chainers
+	 */
+//@{
+
 	/**
 	 * @brief Constructs a new iterator that casts the elements of this iterator to the type requested by @p TItemOutput.
 	 * @details This iterator applies the requested type cast to @p TItemOutput using @c static_cast<>.
@@ -1630,6 +1641,7 @@ public: // CXXIter API-Surface
 			}
 		});
 	}
+//@}
 };
 
 
