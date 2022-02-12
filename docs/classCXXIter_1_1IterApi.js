@@ -14,6 +14,7 @@ var classCXXIter_1_1IterApi =
     [ "chain", "classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951", null ],
     [ "chunkedExact", "classCXXIter_1_1IterApi.html#a4380241032f7103134d662c7935c8d8c", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
+    [ "collectInto", "classCXXIter_1_1IterApi.html#ab9f60e619bcb3f2f5728605e5738854c", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
     [ "count", "classCXXIter_1_1IterApi.html#afc37b3e2bc9c3417d29ff713e27111e1", null ],
