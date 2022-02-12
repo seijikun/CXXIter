@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-02-09 08:25:41</td>
+      <td>2022-02-12 02:29:44</td>
     </tr>
   </table>
 </div>
@@ -40,8 +40,8 @@
     </tr>
     <tr>
       <th scope="row">Lines:</th>
-      <td>35</td>
-      <td>35</td>
+      <td>38</td>
+      <td>38</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -230,7 +230,7 @@
       <td class="lineno"><a id="l21" href="#l21">21</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">6</td>
+      <td class="linecount coveredLine">14</td>
       <td class="src coveredLine">		<span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">TestPair</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span></td>
     </tr>
 
@@ -254,7 +254,7 @@
       <td class="lineno"><a id="l24" href="#l24">24</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">6</td>
+      <td class="linecount coveredLine">14</td>
       <td class="src coveredLine">			<span class="k">return</span> <span class="nf">firstHash</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="o">^</span> <span class="n">secondHash</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">second</span><span class="p">);</span></td>
     </tr>
 
@@ -725,12 +725,12 @@
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
         <div class="linebranchContents">
-          <div class="takenBranch">&check; Branch 3 taken 3 times.</div>
+          <div class="takenBranch">&check; Branch 3 taken 5 times.</div>
           <div class="notTakenBranch">&cross; Branch 4 not taken.</div>
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">3</td>
+      <td class="linecount coveredLine">5</td>
       <td class="src coveredLine">	<span class="n">CustomContainer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">TItem</span><span class="o">&gt;&amp;&amp;</span> <span class="n">initialItems</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">initialItems</span><span class="p">))</span> <span class="p">{}</span></td>
     </tr>
 
@@ -746,7 +746,7 @@
       <td class="lineno"><a id="l82" href="#l82">82</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">16</td>
+      <td class="linecount coveredLine">20</td>
       <td class="src coveredLine">	<span class="kt">size_t</span> <span class="n">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">input</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
@@ -770,7 +770,7 @@
       <td class="lineno"><a id="l85" href="#l85">85</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">12</td>
+      <td class="linecount coveredLine">24</td>
       <td class="src coveredLine">	<span class="kt">void</span> <span class="n">append</span><span class="p">(</span><span class="n">CustomContainerItem</span><span class="o">&amp;&amp;</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
@@ -778,7 +778,7 @@
       <td class="lineno"><a id="l86" href="#l86">86</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">12</td>
+      <td class="linecount coveredLine">24</td>
       <td class="src coveredLine">		<span class="n">input</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">CustomContainerItem</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">));</span></td>
     </tr>
 
@@ -786,7 +786,7 @@
       <td class="lineno"><a id="l87" href="#l87">87</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">12</td>
+      <td class="linecount coveredLine">24</td>
       <td class="src coveredLine">	<span class="p">}</span></td>
     </tr>
 
@@ -979,7 +979,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// Collector implementation for the CustomContainer</span></td>
+      <td class="src ">	<span class="c1">// IntoCollector implementation for the CustomContainer</span></td>
     </tr>
 
     <tr class="source-line">
@@ -987,7 +987,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -995,7 +995,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">Collector</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">CustomContainer</span><span class="o">&gt;</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">IntoCollector</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1003,15 +1003,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Item</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">ItemOwned</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l115" href="#l115">115</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">ItemOwned</span><span class="o">&gt;</span> <span class="n">collect</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">ItemOwned</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">ItemOwned</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1019,11 +1019,91 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">			<span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">ItemOwned</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">;</span></td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kt">void</span> <span class="nf">collectInto</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">TItem</span><span class="o">&gt;&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l117" href="#l117">117</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">10</td>
+      <td class="src coveredLine">			<span class="n">input</span><span class="p">.</span><span class="n">forEach</span><span class="p">([</span><span class="o">&amp;</span><span class="n">container</span><span class="p">](</span><span class="n">Item</span><span class="o">&amp;&amp;</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span> <span class="n">container</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">ItemOwned</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">));</span> <span class="p">});</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l118" href="#l118">118</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">4</td>
+      <td class="src coveredLine">		<span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l119" href="#l119">119</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">};</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l120" href="#l120">120</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l121" href="#l121">121</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// Collector implementation for the CustomContainer</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l122" href="#l122">122</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l123" href="#l123">123</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">Collector</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">CustomContainer</span><span class="o">&gt;</span> <span class="p">{</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l124" href="#l124">124</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Item</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">ItemOwned</span><span class="o">&gt;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l125" href="#l125">125</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">4</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">ItemOwned</span><span class="o">&gt;</span> <span class="n">collect</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l126" href="#l126">126</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">4</td>
+      <td class="src coveredLine">			<span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">ItemOwned</span><span class="o">&gt;</span> <span class="n">container</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l127" href="#l127">127</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -1038,7 +1118,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l118" href="#l118">118</a></td>
+      <td class="lineno"><a id="l128" href="#l128">128</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">4</td>
@@ -1046,7 +1126,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l119" href="#l119">119</a></td>
+      <td class="lineno"><a id="l129" href="#l129">129</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -1054,7 +1134,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l120" href="#l120">120</a></td>
+      <td class="lineno"><a id="l130" href="#l130">130</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -1062,7 +1142,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l121" href="#l121">121</a></td>
+      <td class="lineno"><a id="l131" href="#l131">131</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -1070,7 +1150,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l122" href="#l122">122</a></td>
+      <td class="lineno"><a id="l132" href="#l132">132</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
