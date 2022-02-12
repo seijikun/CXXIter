@@ -226,6 +226,27 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Consumer that collects all elements from this iterator into the given @p container.
+	 * @note This consumes the iterator.
+	 * @param container to collect this iterator's elements into.
+	 * @details Before appending this iterator's elements to the elements already present in the
+	 * given @p container, the collector tries to resize the @p container to its current size + this
+	 * iterator's expected amount of items.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string> output = {"prevElement"};
+	 *	CXXIter::from(input).collectInto(output);
+	 *	// output == {"prevElement", "1337", "42", "64"}
+	 * @endcode
+	 */
+	template<typename TTargetContainer>
+	void collectInto(TTargetContainer& container) {
+		IntoCollector<TSelf, TTargetContainer>::collectInto(*self(), container);
+	}
+
+	/**
 	 * @brief Consumer that executes the given @p foldFn for each item in this iterator, to apply
 	 * to a working value, which is passed on and passed as second argument to the next call to @p foldFn.
 	 * @note This consumes the iterator.

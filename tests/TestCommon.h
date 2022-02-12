@@ -108,6 +108,16 @@ namespace CXXIter {
 		static inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
 	};
 
+	// IntoCollector implementation for the CustomContainer
+	template<typename TChainInput, typename TItem>
+	struct IntoCollector<TChainInput, CustomContainer<TItem>> {
+		using Item = typename TChainInput::Item;
+		using ItemOwned = typename TChainInput::ItemOwned;
+		static void collectInto(TChainInput& input, CustomContainer<TItem>& container) {
+			input.forEach([&container](Item&& item) { container.append(std::forward<ItemOwned>(item)); });
+		}
+	};
+
 	// Collector implementation for the CustomContainer
 	template<typename TChainInput>
 	struct Collector<TChainInput, CustomContainer> {

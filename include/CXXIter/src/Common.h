@@ -236,31 +236,48 @@ namespace CXXIter {
 		/**
 		* @brief Concept enforcing a back-insertible container like @c std::vector.
 		*/
-		template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-		concept BackInsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
-			typename decltype(container)::value_type;
+		template<typename TContainer, typename TItem>
+		concept BackInsertableContainer = requires(TContainer& container, TItem item) {
+			typename TContainer::value_type;
 			container.push_back(item);
 		};
 
 		/**
+		* @brief Concept enforcing a back-insertible container like @c std::vector.
+		*/
+		template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
+		concept BackInsertableContainerTemplate = BackInsertableContainer<TContainer<TItem, TContainerArgs...>, TItem>;
+
+
+		/**
+		* @brief Concept enforcing an insertible container like @c std::set.
+		*/
+		template<typename TContainer, typename TItem>
+		concept InsertableContainer = requires(TContainer& container, TItem item) {
+			typename TContainer::value_type;
+			container.insert(item);
+		};
+		/**
 		* @brief Concept enforcing an insertible container like @c std::set.
 		*/
 		template<template<typename...> typename TContainer, typename TItem, typename... TContainerArgs>
-		concept InsertableContainer = requires(TContainer<TItem, TContainerArgs...> container, TItem item) {
-			typename decltype(container)::value_type;
-			container.insert(item);
-		};
+		concept InsertableContainerTemplate = InsertableContainer<TContainer<TItem, TContainerArgs...>, TItem>;
 
 		/**
 		* @brief Concept enforcing an associative container like @c std::map.
 		*/
-		template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
-		concept AssocContainer = requires(TContainer<TItemKey, TItemValue, TContainerArgs...> container, std::pair<TItemKey, TItemValue> item) {
-			typename decltype(container)::value_type;
-			typename decltype(container)::key_type;
-			typename decltype(container)::mapped_type;
+		template<typename TContainer, typename TItemKey, typename TItemValue>
+		concept AssocContainer = requires(TContainer& container, std::pair<TItemKey, TItemValue> item) {
+			typename TContainer::value_type;
+			typename TContainer::key_type;
+			typename TContainer::mapped_type;
 			container.insert(item);
 		};
+		/**
+		* @brief Concept enforcing an associative container like @c std::map.
+		*/
+		template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
+		concept AssocContainerTemplate = AssocContainer<TContainer<TItemKey, TItemValue, TContainerArgs...>, TItemKey, TItemValue>;
 	}
 
 	/**

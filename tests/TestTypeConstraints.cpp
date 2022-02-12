@@ -95,41 +95,41 @@ TEST(CXXIter, stlCollections) {
 	using TestKey = int;
 	using TestValue = std::string;
 
-	static_assert( CXXIter::BackInsertableContainer<std::vector				, TestValue>);
-	static_assert( CXXIter::BackInsertableContainer<std::list				, TestValue>);
-	static_assert( CXXIter::BackInsertableContainer<std::deque				, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::set				, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::multiset			, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::unordered_set		, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::unordered_multiset	, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::map				, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::multimap			, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::unordered_map		, TestValue>);
-	static_assert(!CXXIter::BackInsertableContainer<std::unordered_multimap	, TestValue>);
+	static_assert( CXXIter::BackInsertableContainerTemplate<std::vector				, TestValue>);
+	static_assert( CXXIter::BackInsertableContainerTemplate<std::list				, TestValue>);
+	static_assert( CXXIter::BackInsertableContainerTemplate<std::deque				, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::set				, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::multiset			, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::unordered_set		, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::unordered_multiset	, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::map				, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::multimap			, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::unordered_map		, TestValue>);
+	static_assert(!CXXIter::BackInsertableContainerTemplate<std::unordered_multimap	, TestValue>);
 
-	static_assert(!CXXIter::InsertableContainer<std::vector					, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::list					, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::deque					, TestValue>);
-	static_assert( CXXIter::InsertableContainer<std::set					, TestValue>);
-	static_assert( CXXIter::InsertableContainer<std::multiset				, TestValue>);
-	static_assert( CXXIter::InsertableContainer<std::unordered_set			, TestValue>);
-	static_assert( CXXIter::InsertableContainer<std::unordered_multiset		, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::map					, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::multimap				, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::unordered_map			, TestValue>);
-	static_assert(!CXXIter::InsertableContainer<std::unordered_multimap		, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::vector					, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::list					, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::deque					, TestValue>);
+	static_assert( CXXIter::InsertableContainerTemplate<std::set					, TestValue>);
+	static_assert( CXXIter::InsertableContainerTemplate<std::multiset				, TestValue>);
+	static_assert( CXXIter::InsertableContainerTemplate<std::unordered_set			, TestValue>);
+	static_assert( CXXIter::InsertableContainerTemplate<std::unordered_multiset		, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::map					, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::multimap				, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::unordered_map			, TestValue>);
+	static_assert(!CXXIter::InsertableContainerTemplate<std::unordered_multimap		, TestValue>);
 
-	//static_assert(!CXXIter::AssocContainer<std::vector			,TestKey, TestValue>);
-	//static_assert(!CXXIter::AssocContainer<std::list				,TestKey, TestValue>);
-	//static_assert(!CXXIter::AssocContainer<std::deque				,TestKey, TestValue>);
-	static_assert(!CXXIter::AssocContainer<std::set					,TestKey, TestValue>);
-	static_assert(!CXXIter::AssocContainer<std::multiset			,TestKey, TestValue>);
-	static_assert(!CXXIter::AssocContainer<std::unordered_set		,TestKey, TestValue>);
-	static_assert(!CXXIter::AssocContainer<std::unordered_multiset	,TestKey, TestValue>);
-	static_assert( CXXIter::AssocContainer<std::map					,TestKey, TestValue>);
-	static_assert( CXXIter::AssocContainer<std::multimap			,TestKey, TestValue>);
-	static_assert( CXXIter::AssocContainer<std::unordered_map		,TestKey, TestValue>);
-	static_assert( CXXIter::AssocContainer<std::unordered_multimap	,TestKey, TestValue>);
+	//static_assert(!CXXIter::AssocContainerTemplate<std::vector			,TestKey, TestValue>);
+	//static_assert(!CXXIter::AssocContainerTemplate<std::list				,TestKey, TestValue>);
+	//static_assert(!CXXIter::AssocContainerTemplate<std::deque				,TestKey, TestValue>);
+	static_assert(!CXXIter::AssocContainerTemplate<std::set					,TestKey, TestValue>);
+	static_assert(!CXXIter::AssocContainerTemplate<std::multiset			,TestKey, TestValue>);
+	static_assert(!CXXIter::AssocContainerTemplate<std::unordered_set		,TestKey, TestValue>);
+	static_assert(!CXXIter::AssocContainerTemplate<std::unordered_multiset	,TestKey, TestValue>);
+	static_assert( CXXIter::AssocContainerTemplate<std::map					,TestKey, TestValue>);
+	static_assert( CXXIter::AssocContainerTemplate<std::multimap			,TestKey, TestValue>);
+	static_assert( CXXIter::AssocContainerTemplate<std::unordered_map		,TestKey, TestValue>);
+	static_assert( CXXIter::AssocContainerTemplate<std::unordered_multimap	,TestKey, TestValue>);
 }
 
 TEST(CXXIter, is_pair) {
