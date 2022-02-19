@@ -6,5 +6,5 @@ var searchData=
   ['mean_3',['mean',['../classCXXIter_1_1IterApi.html#ab96a0fdc7efba2f4bddfa013429bc6bc',1,'CXXIter::IterApi']]],
   ['min_4',['min',['../classCXXIter_1_1IterApi.html#a9f98bcc96bc3b93477045dabc085c733',1,'CXXIter::IterApi']]],
   ['minby_5',['minBy',['../classCXXIter_1_1IterApi.html#a37f52ae6624d84dbce6635fffd824901',1,'CXXIter::IterApi']]],
-  ['modify_6',['modify',['../classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3',1,'CXXIter::IterApi']]]
+  ['modify_6',['modify',['../classCXXIter_1_1IterApi.html#ab1dfa465e7f30e6d8d4fadabd8b092b4',1,'CXXIter::IterApi']]]
 ];

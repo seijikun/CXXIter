@@ -229,24 +229,24 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, const <a cla
 <tr class="memdesc:aa0d21f64c103c94930a6965686f61019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <code></code>{n}-th element from this iterator (if available).  <a href="classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019">More...</a><br /></td></tr>
 <tr class="separator:aa0d21f64c103c94930a6965686f61019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Chainers</div></td></tr>
-<tr class="memitem:a054a041fb9dbbecc46138a09e08313e7"><td class="memTemplParams" colspan="2">template&lt;typename TItemOutput &gt; </td></tr>
-<tr class="memitem:a054a041fb9dbbecc46138a09e08313e7"><td class="memTemplItemLeft" align="right" valign="top">Caster&lt; TSelf, TItemOutput &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7">cast</a> ()</td></tr>
-<tr class="memdesc:a054a041fb9dbbecc46138a09e08313e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that casts the elements of this iterator to the type requested by <code>TItemOutput</code>.  <a href="classCXXIter_1_1IterApi.html#a054a041fb9dbbecc46138a09e08313e7">More...</a><br /></td></tr>
-<tr class="separator:a054a041fb9dbbecc46138a09e08313e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7e8944accd23e1175e685d34010306"><td class="memTemplParams" colspan="2">template&lt;typename TItemOutput &gt; </td></tr>
+<tr class="memitem:a4d7e8944accd23e1175e685d34010306"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Caster.html">op::Caster</a>&lt; TSelf, TItemOutput &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a4d7e8944accd23e1175e685d34010306">cast</a> ()</td></tr>
+<tr class="memdesc:a4d7e8944accd23e1175e685d34010306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that casts the elements of this iterator to the type requested by <code>TItemOutput</code>.  <a href="classCXXIter_1_1IterApi.html#a4d7e8944accd23e1175e685d34010306">More...</a><br /></td></tr>
+<tr class="separator:a4d7e8944accd23e1175e685d34010306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a116afb3640cb245742403c86fded359f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">copied</a> ()</td></tr>
 <tr class="memdesc:a116afb3640cb245742403c86fded359f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that copies the elements of this iterator.  <a href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">More...</a><br /></td></tr>
 <tr class="separator:a116afb3640cb245742403c86fded359f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a037dc6c6a07bbda8b580ef9ea266db08"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08">indexed</a> ()</td></tr>
 <tr class="memdesc:a037dc6c6a07bbda8b580ef9ea266db08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that tags each element of this iterator with the corresponding index, stored in a <code>std::pair</code>.  <a href="classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08">More...</a><br /></td></tr>
 <tr class="separator:a037dc6c6a07bbda8b580ef9ea266db08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7218d94c0c1e6c45dc36abccd57829db"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TFilterFn&gt; </td></tr>
-<tr class="memitem:a7218d94c0c1e6c45dc36abccd57829db"><td class="memTemplItemLeft" align="right" valign="top">Filter&lt; TSelf, TFilterFn &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db">filter</a> (TFilterFn filterFn)</td></tr>
-<tr class="memdesc:a7218d94c0c1e6c45dc36abccd57829db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that only contains the elements from this iterator, for which the given <code>filterFn</code> returned <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db">More...</a><br /></td></tr>
-<tr class="separator:a7218d94c0c1e6c45dc36abccd57829db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4380241032f7103134d662c7935c8d8c"><td class="memTemplParams" colspan="2">template&lt;const size_t CHUNK_SIZE&gt; </td></tr>
-<tr class="memitem:a4380241032f7103134d662c7935c8d8c"><td class="memTemplItemLeft" align="right" valign="top">ChunkedExact&lt; TSelf, CHUNK_SIZE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a4380241032f7103134d662c7935c8d8c">chunkedExact</a> ()</td></tr>
-<tr class="memdesc:a4380241032f7103134d662c7935c8d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that collects elements from this iterator in exact-sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <a href="classCXXIter_1_1IterApi.html#a4380241032f7103134d662c7935c8d8c">More...</a><br /></td></tr>
-<tr class="separator:a4380241032f7103134d662c7935c8d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe973bcef3669050b734c6c0c0481bb"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TFilterFn&gt; </td></tr>
+<tr class="memitem:a6fe973bcef3669050b734c6c0c0481bb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Filter.html">op::Filter</a>&lt; TSelf, TFilterFn &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a6fe973bcef3669050b734c6c0c0481bb">filter</a> (TFilterFn filterFn)</td></tr>
+<tr class="memdesc:a6fe973bcef3669050b734c6c0c0481bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that only contains the elements from this iterator, for which the given <code>filterFn</code> returned <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#a6fe973bcef3669050b734c6c0c0481bb">More...</a><br /></td></tr>
+<tr class="separator:a6fe973bcef3669050b734c6c0c0481bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23d5d6776ce01834b9e60b4244a49b3"><td class="memTemplParams" colspan="2">template&lt;const size_t CHUNK_SIZE&gt; </td></tr>
+<tr class="memitem:aa23d5d6776ce01834b9e60b4244a49b3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1ChunkedExact.html">op::ChunkedExact</a>&lt; TSelf, CHUNK_SIZE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aa23d5d6776ce01834b9e60b4244a49b3">chunkedExact</a> ()</td></tr>
+<tr class="memdesc:aa23d5d6776ce01834b9e60b4244a49b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that collects elements from this iterator in exact-sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <a href="classCXXIter_1_1IterApi.html#aa23d5d6776ce01834b9e60b4244a49b3">More...</a><br /></td></tr>
+<tr class="separator:aa23d5d6776ce01834b9e60b4244a49b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f3454d96494c248abf2e740442e6b6"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp;&amp; &gt; TMapFn&gt; </td></tr>
 <tr class="memitem:ad8f3454d96494c248abf2e740442e6b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">map</a> (TMapFn mapFn)</td></tr>
 <tr class="memdesc:ad8f3454d96494c248abf2e740442e6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that uses the given <code>mapFn</code> to map each element from this iterator to elements of the new iterator.  <a href="classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6">More...</a><br /></td></tr>
@@ -262,25 +262,25 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, const <a cla
 <tr class="memitem:ad8985f7682655e5a925329fcd971b482"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482">flatMap</a> ()</td></tr>
 <tr class="memdesc:ad8985f7682655e5a925329fcd971b482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that flattens the iterable elements of this iterator.  <a href="classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482">More...</a><br /></td></tr>
 <tr class="separator:ad8985f7682655e5a925329fcd971b482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48bef0687a6d677acbfa59d6a49b17c3"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TModifierFn&gt; </td></tr>
-<tr class="memitem:a48bef0687a6d677acbfa59d6a49b17c3"><td class="memTemplItemLeft" align="right" valign="top">InplaceModifier&lt; TSelf, TModifierFn &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3">modify</a> (TModifierFn modifierFn)</td></tr>
-<tr class="memdesc:a48bef0687a6d677acbfa59d6a49b17c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows to inspect and modify each item in-place, that passes through this iterator.  <a href="classCXXIter_1_1IterApi.html#a48bef0687a6d677acbfa59d6a49b17c3">More...</a><br /></td></tr>
-<tr class="separator:a48bef0687a6d677acbfa59d6a49b17c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1dfa465e7f30e6d8d4fadabd8b092b4"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TModifierFn&gt; </td></tr>
+<tr class="memitem:ab1dfa465e7f30e6d8d4fadabd8b092b4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1InplaceModifier.html">op::InplaceModifier</a>&lt; TSelf, TModifierFn &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab1dfa465e7f30e6d8d4fadabd8b092b4">modify</a> (TModifierFn modifierFn)</td></tr>
+<tr class="memdesc:ab1dfa465e7f30e6d8d4fadabd8b092b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows to inspect and modify each item in-place, that passes through this iterator.  <a href="classCXXIter_1_1IterApi.html#ab1dfa465e7f30e6d8d4fadabd8b092b4">More...</a><br /></td></tr>
+<tr class="separator:ab1dfa465e7f30e6d8d4fadabd8b092b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a009154287504a68df72425093ee90851"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp;&amp; &gt; TFilterMapFn&gt; <br />
 requires is_optional&lt;std::invoke_result_t&lt;TFilterMapFn, <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a>&amp;&amp;&gt;&gt;</td></tr>
 <tr class="memitem:a009154287504a68df72425093ee90851"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a009154287504a68df72425093ee90851">filterMap</a> (TFilterMapFn filterMapFn)</td></tr>
 <tr class="memdesc:a009154287504a68df72425093ee90851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new iterator that filters and maps items from this iterator.  <a href="classCXXIter_1_1IterApi.html#a009154287504a68df72425093ee90851">More...</a><br /></td></tr>
 <tr class="separator:a009154287504a68df72425093ee90851"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3400ae296262d6788de593b3fad79e43"><td class="memItemLeft" align="right" valign="top">SkipN&lt; TSelf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43">skip</a> (size_t cnt)</td></tr>
-<tr class="memdesc:a3400ae296262d6788de593b3fad79e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first <code>cnt</code> elements from this iterator, before it yields the remaining items.  <a href="classCXXIter_1_1IterApi.html#a3400ae296262d6788de593b3fad79e43">More...</a><br /></td></tr>
-<tr class="separator:a3400ae296262d6788de593b3fad79e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a6a0f58078b8797c3ede1e6ec3896ce"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TSkipPredicate&gt; </td></tr>
-<tr class="memitem:a2a6a0f58078b8797c3ede1e6ec3896ce"><td class="memTemplItemLeft" align="right" valign="top">SkipWhile&lt; TSelf, TSkipPredicate &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce">skipWhile</a> (TSkipPredicate skipPredicate)</td></tr>
-<tr class="memdesc:a2a6a0f58078b8797c3ede1e6ec3896ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first elements of this iterator, for which the given <code>skipPredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#a2a6a0f58078b8797c3ede1e6ec3896ce">More...</a><br /></td></tr>
-<tr class="separator:a2a6a0f58078b8797c3ede1e6ec3896ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2f7853bd666a1190edc9918be95ba6f"><td class="memItemLeft" align="right" valign="top">TakeN&lt; TSelf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab2f7853bd666a1190edc9918be95ba6f">take</a> (size_t cnt)</td></tr>
-<tr class="memdesc:ab2f7853bd666a1190edc9918be95ba6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that yields at most the first <code>cnt</code> elements from this iterator.  <a href="classCXXIter_1_1IterApi.html#ab2f7853bd666a1190edc9918be95ba6f">More...</a><br /></td></tr>
-<tr class="separator:ab2f7853bd666a1190edc9918be95ba6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4cbe6073a887100d549f0bea73a90e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1SkipN.html">op::SkipN</a>&lt; TSelf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#acf4cbe6073a887100d549f0bea73a90e">skip</a> (size_t cnt)</td></tr>
+<tr class="memdesc:acf4cbe6073a887100d549f0bea73a90e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first <code>cnt</code> elements from this iterator, before it yields the remaining items.  <a href="classCXXIter_1_1IterApi.html#acf4cbe6073a887100d549f0bea73a90e">More...</a><br /></td></tr>
+<tr class="separator:acf4cbe6073a887100d549f0bea73a90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc72090031914ff844c3242fddbd22c2"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TSkipPredicate&gt; </td></tr>
+<tr class="memitem:abc72090031914ff844c3242fddbd22c2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1SkipWhile.html">op::SkipWhile</a>&lt; TSelf, TSkipPredicate &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2">skipWhile</a> (TSkipPredicate skipPredicate)</td></tr>
+<tr class="memdesc:abc72090031914ff844c3242fddbd22c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that skips the first elements of this iterator, for which the given <code>skipPredicate</code> returns <code>true</code>.  <a href="classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2">More...</a><br /></td></tr>
+<tr class="separator:abc72090031914ff844c3242fddbd22c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e72f1bebe09215ce8effe156ca38d34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1TakeN.html">op::TakeN</a>&lt; TSelf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a3e72f1bebe09215ce8effe156ca38d34">take</a> (size_t cnt)</td></tr>
+<tr class="memdesc:a3e72f1bebe09215ce8effe156ca38d34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that yields at most the first <code>cnt</code> elements from this iterator.  <a href="classCXXIter_1_1IterApi.html#a3e72f1bebe09215ce8effe156ca38d34">More...</a><br /></td></tr>
+<tr class="separator:a3e72f1bebe09215ce8effe156ca38d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab16a10f60f2eddc85f29974d04672ba4"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TTakePredicate&gt; <br />
 requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>&amp;&gt;, bool&gt;</td></tr>
 <tr class="memitem:ab16a10f60f2eddc85f29974d04672ba4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4">takeWhile</a> (TTakePredicate takePredicate)</td></tr>
@@ -289,30 +289,30 @@ requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a clas
 <tr class="memitem:aa4cf427f53b7c5916727fe253589b817"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817">stepBy</a> (size_t stepWidth)</td></tr>
 <tr class="memdesc:aa4cf427f53b7c5916727fe253589b817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator with the requested <code>stepWidth</code> from this iterator.  <a href="classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817">More...</a><br /></td></tr>
 <tr class="separator:aa4cf427f53b7c5916727fe253589b817"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaac3d483fd5f242376989ddd9a371b81"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; </td></tr>
-<tr class="memitem:aaac3d483fd5f242376989ddd9a371b81"><td class="memTemplItemLeft" align="right" valign="top">Zipper&lt; TSelf, std::pair, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aaac3d483fd5f242376989ddd9a371b81">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
-<tr class="memdesc:aaac3d483fd5f242376989ddd9a371b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" two <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over pairs from both iterators.  <a href="classCXXIter_1_1IterApi.html#aaac3d483fd5f242376989ddd9a371b81">More...</a><br /></td></tr>
-<tr class="separator:aaac3d483fd5f242376989ddd9a371b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac15b4914c7360e5d9fc5afe38e2469ab"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
+<tr class="memitem:a697a84ef397adc29008d87edbc7095fc"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; </td></tr>
+<tr class="memitem:a697a84ef397adc29008d87edbc7095fc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Zipper.html">op::Zipper</a>&lt; TSelf, std::pair, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a697a84ef397adc29008d87edbc7095fc">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
+<tr class="memdesc:a697a84ef397adc29008d87edbc7095fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" two <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over pairs from both iterators.  <a href="classCXXIter_1_1IterApi.html#a697a84ef397adc29008d87edbc7095fc">More...</a><br /></td></tr>
+<tr class="separator:a697a84ef397adc29008d87edbc7095fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b65a1d1563f21ef3fa64fe9039e71f"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
 requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!std::disjunction_v&lt; std::is_reference&lt;typename <a class="el" href="structCXXIter_1_1IteratorTrait.html">IteratorTrait</a>&lt;TOtherIterators&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt;... &gt; &amp;&amp; !IS_REFERENCE)</td></tr>
-<tr class="memitem:ac15b4914c7360e5d9fc5afe38e2469ab"><td class="memTemplItemLeft" align="right" valign="top">Zipper&lt; TSelf, std::tuple, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ac15b4914c7360e5d9fc5afe38e2469ab">zipTuple</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
-<tr class="memdesc:ac15b4914c7360e5d9fc5afe38e2469ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" an arbitrary amount of <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over <code>std::tuple&lt;&gt;</code> from both iterators.  <a href="classCXXIter_1_1IterApi.html#ac15b4914c7360e5d9fc5afe38e2469ab">More...</a><br /></td></tr>
-<tr class="separator:ac15b4914c7360e5d9fc5afe38e2469ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a659825e0e603f7671f3077fb019a1951"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
+<tr class="memitem:ad7b65a1d1563f21ef3fa64fe9039e71f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Zipper.html">op::Zipper</a>&lt; TSelf, std::tuple, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad7b65a1d1563f21ef3fa64fe9039e71f">zipTuple</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
+<tr class="memdesc:ad7b65a1d1563f21ef3fa64fe9039e71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" an arbitrary amount of <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over <code>std::tuple&lt;&gt;</code> from both iterators.  <a href="classCXXIter_1_1IterApi.html#ad7b65a1d1563f21ef3fa64fe9039e71f">More...</a><br /></td></tr>
+<tr class="separator:ad7b65a1d1563f21ef3fa64fe9039e71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff8681de8cdfaff25d2d5b04226c983"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
 requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterator::Item&gt;</td></tr>
-<tr class="memitem:a659825e0e603f7671f3077fb019a1951"><td class="memTemplItemLeft" align="right" valign="top">Chainer&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">chain</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
-<tr class="memdesc:a659825e0e603f7671f3077fb019a1951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains this iterator with the given <code>otherIterator</code>, resulting in a new iterator that first yields the elements of this iterator, and then the ones from the <code>otherIterator</code>.  <a href="classCXXIter_1_1IterApi.html#a659825e0e603f7671f3077fb019a1951">More...</a><br /></td></tr>
-<tr class="separator:a659825e0e603f7671f3077fb019a1951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
+<tr class="memitem:a1ff8681de8cdfaff25d2d5b04226c983"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Chainer.html">op::Chainer</a>&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1ff8681de8cdfaff25d2d5b04226c983">chain</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
+<tr class="memdesc:a1ff8681de8cdfaff25d2d5b04226c983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains this iterator with the given <code>otherIterator</code>, resulting in a new iterator that first yields the elements of this iterator, and then the ones from the <code>otherIterator</code>.  <a href="classCXXIter_1_1IterApi.html#a1ff8681de8cdfaff25d2d5b04226c983">More...</a><br /></td></tr>
+<tr class="separator:a1ff8681de8cdfaff25d2d5b04226c983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad654573ae636287ffc55c116239b5718"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
 requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterators::Item...&gt;)</td></tr>
-<tr class="memitem:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memTemplItemLeft" align="right" valign="top">Alternater&lt; TSelf, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47">alternate</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
-<tr class="memdesc:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alternating the elements of this iterator with the ones from the other given iterator(s).  <a href="classCXXIter_1_1IterApi.html#a5c29edb8c7eb5ab161a55b4c8f637e47">More...</a><br /></td></tr>
-<tr class="separator:a5c29edb8c7eb5ab161a55b4c8f637e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99ecd487d01ca5c35fef6c23fb483484"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
+<tr class="memitem:ad654573ae636287ffc55c116239b5718"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Alternater.html">op::Alternater</a>&lt; TSelf, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad654573ae636287ffc55c116239b5718">alternate</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
+<tr class="memdesc:ad654573ae636287ffc55c116239b5718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alternating the elements of this iterator with the ones from the other given iterator(s).  <a href="classCXXIter_1_1IterApi.html#ad654573ae636287ffc55c116239b5718">More...</a><br /></td></tr>
+<tr class="separator:ad654573ae636287ffc55c116239b5718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b19694e4307cbc0387dab5c715e73e2"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
 requires (std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterator::Item&gt;)</td></tr>
-<tr class="memitem:a99ecd487d01ca5c35fef6c23fb483484"><td class="memTemplItemLeft" align="right" valign="top">Intersperser&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a99ecd487d01ca5c35fef6c23fb483484">intersperse</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
-<tr class="memdesc:a99ecd487d01ca5c35fef6c23fb483484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw elements from the given <code>otherIterator</code> and use the returned elements as separators between the elements of this iterator.  <a href="classCXXIter_1_1IterApi.html#a99ecd487d01ca5c35fef6c23fb483484">More...</a><br /></td></tr>
-<tr class="separator:a99ecd487d01ca5c35fef6c23fb483484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b19694e4307cbc0387dab5c715e73e2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1op_1_1Intersperser.html">op::Intersperser</a>&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a0b19694e4307cbc0387dab5c715e73e2">intersperse</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
+<tr class="memdesc:a0b19694e4307cbc0387dab5c715e73e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw elements from the given <code>otherIterator</code> and use the returned elements as separators between the elements of this iterator.  <a href="classCXXIter_1_1IterApi.html#a0b19694e4307cbc0387dab5c715e73e2">More...</a><br /></td></tr>
+<tr class="separator:a0b19694e4307cbc0387dab5c715e73e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &amp; &gt; TGroupIdentifierFn&gt; </td></tr>
 <tr class="memitem:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">groupBy</a> (TGroupIdentifierFn groupIdentFn)</td></tr>
 <tr class="memdesc:a3da71f522eb2a4e2177c9edb3bc713d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Groups the elements of this iterator according to the values returned by the given <code>groupidentFn</code>.  <a href="classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5">More...</a><br /></td></tr>
@@ -549,8 +549,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a5c29edb8c7eb5ab161a55b4c8f637e47" name="a5c29edb8c7eb5ab161a55b4c8f637e47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c29edb8c7eb5ab161a55b4c8f637e47">&#9670;&nbsp;</a></span>alternate()</h2>
+<a id="ad654573ae636287ffc55c116239b5718" name="ad654573ae636287ffc55c116239b5718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad654573ae636287ffc55c116239b5718">&#9670;&nbsp;</a></span>alternate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -564,7 +564,7 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (are
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Alternater&lt; TSelf, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::alternate </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Alternater.html">op::Alternater</a>&lt; TSelf, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::alternate </td>
           <td>(</td>
           <td class="paramtype">TOtherIterators &amp;&amp;...&#160;</td>
           <td class="paramname"><em>otherIterators</em></td><td>)</td>
@@ -754,8 +754,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a054a041fb9dbbecc46138a09e08313e7" name="a054a041fb9dbbecc46138a09e08313e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a054a041fb9dbbecc46138a09e08313e7">&#9670;&nbsp;</a></span>cast()</h2>
+<a id="a4d7e8944accd23e1175e685d34010306" name="a4d7e8944accd23e1175e685d34010306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d7e8944accd23e1175e685d34010306">&#9670;&nbsp;</a></span>cast()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -768,7 +768,7 @@ template&lt;typename TItemOutput &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Caster&lt; TSelf, TItemOutput &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::cast </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Caster.html">op::Caster</a>&lt; TSelf, TItemOutput &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::cast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -798,8 +798,8 @@ template&lt;typename TItemOutput &gt; </div>
 
 </div>
 </div>
-<a id="a659825e0e603f7671f3077fb019a1951" name="a659825e0e603f7671f3077fb019a1951"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a659825e0e603f7671f3077fb019a1951">&#9670;&nbsp;</a></span>chain()</h2>
+<a id="a1ff8681de8cdfaff25d2d5b04226c983" name="a1ff8681de8cdfaff25d2d5b04226c983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff8681de8cdfaff25d2d5b04226c983">&#9670;&nbsp;</a></span>chain()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -813,7 +813,7 @@ requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Chainer&lt; TSelf, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::chain </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Chainer.html">op::Chainer</a>&lt; TSelf, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::chain </td>
           <td>(</td>
           <td class="paramtype">TOtherIterator &amp;&amp;&#160;</td>
           <td class="paramname"><em>otherIterator</em></td><td>)</td>
@@ -848,8 +848,8 @@ requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f
 
 </div>
 </div>
-<a id="a4380241032f7103134d662c7935c8d8c" name="a4380241032f7103134d662c7935c8d8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4380241032f7103134d662c7935c8d8c">&#9670;&nbsp;</a></span>chunkedExact()</h2>
+<a id="aa23d5d6776ce01834b9e60b4244a49b3" name="aa23d5d6776ce01834b9e60b4244a49b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23d5d6776ce01834b9e60b4244a49b3">&#9670;&nbsp;</a></span>chunkedExact()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -862,7 +862,7 @@ template&lt;const size_t CHUNK_SIZE&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ChunkedExact&lt; TSelf, CHUNK_SIZE &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::chunkedExact </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1ChunkedExact.html">op::ChunkedExact</a>&lt; TSelf, CHUNK_SIZE &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::chunkedExact </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1216,8 +1216,8 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 </div>
 </div>
-<a id="a7218d94c0c1e6c45dc36abccd57829db" name="a7218d94c0c1e6c45dc36abccd57829db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7218d94c0c1e6c45dc36abccd57829db">&#9670;&nbsp;</a></span>filter()</h2>
+<a id="a6fe973bcef3669050b734c6c0c0481bb" name="a6fe973bcef3669050b734c6c0c0481bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fe973bcef3669050b734c6c0c0481bb">&#9670;&nbsp;</a></span>filter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1230,7 +1230,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Filter&lt; TSelf, TFilterFn &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::filter </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Filter.html">op::Filter</a>&lt; TSelf, TFilterFn &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::filter </td>
           <td>(</td>
           <td class="paramtype">TFilterFn&#160;</td>
           <td class="paramname"><em>filterFn</em></td><td>)</td>
@@ -1862,8 +1862,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a99ecd487d01ca5c35fef6c23fb483484" name="a99ecd487d01ca5c35fef6c23fb483484"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99ecd487d01ca5c35fef6c23fb483484">&#9670;&nbsp;</a></span>intersperse()</h2>
+<a id="a0b19694e4307cbc0387dab5c715e73e2" name="a0b19694e4307cbc0387dab5c715e73e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b19694e4307cbc0387dab5c715e73e2">&#9670;&nbsp;</a></span>intersperse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1877,7 +1877,7 @@ requires (std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Intersperser&lt; TSelf, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::intersperse </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Intersperser.html">op::Intersperser</a>&lt; TSelf, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::intersperse </td>
           <td>(</td>
           <td class="paramtype">TOtherIterator &amp;&amp;&#160;</td>
           <td class="paramname"><em>otherIterator</em></td><td>)</td>
@@ -2300,8 +2300,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a48bef0687a6d677acbfa59d6a49b17c3" name="a48bef0687a6d677acbfa59d6a49b17c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48bef0687a6d677acbfa59d6a49b17c3">&#9670;&nbsp;</a></span>modify()</h2>
+<a id="ab1dfa465e7f30e6d8d4fadabd8b092b4" name="ab1dfa465e7f30e6d8d4fadabd8b092b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1dfa465e7f30e6d8d4fadabd8b092b4">&#9670;&nbsp;</a></span>modify()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2314,7 +2314,7 @@ template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">InplaceModifier&lt; TSelf, TModifierFn &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::modify </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1InplaceModifier.html">op::InplaceModifier</a>&lt; TSelf, TModifierFn &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::modify </td>
           <td>(</td>
           <td class="paramtype">TModifierFn&#160;</td>
           <td class="paramname"><em>modifierFn</em></td><td>)</td>
@@ -2465,7 +2465,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><div class="memdoc">
 
 <p>Get this iterator's exact size. </p>
-<dl class="section note"><dt>Note</dt><dd>This method only exists if the iterator's exact size is known. Operations like <code><a class="el" href="classCXXIter_1_1IterApi.html#a7218d94c0c1e6c45dc36abccd57829db" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil...">IterApi::filter</a></code> cause the remaining iterator to have an unknown exact size. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method only exists if the iterator's exact size is known. Operations like <code><a class="el" href="classCXXIter_1_1IterApi.html#a6fe973bcef3669050b734c6c0c0481bb" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil...">IterApi::filter</a></code> cause the remaining iterator to have an unknown exact size. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>This iterator's exact number of elements.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>Valid (Exact number of elements is known): <div class="fragment"><div class="line"><span class="keywordtype">size_t</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">size</a> = CXXIter::range&lt;float&gt;(0.0f, 2.0f, 0.25f)</div>
@@ -2535,8 +2535,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a3400ae296262d6788de593b3fad79e43" name="a3400ae296262d6788de593b3fad79e43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3400ae296262d6788de593b3fad79e43">&#9670;&nbsp;</a></span>skip()</h2>
+<a id="acf4cbe6073a887100d549f0bea73a90e" name="acf4cbe6073a887100d549f0bea73a90e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4cbe6073a887100d549f0bea73a90e">&#9670;&nbsp;</a></span>skip()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2547,7 +2547,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SkipN&lt; TSelf &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::skip </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1SkipN.html">op::SkipN</a>&lt; TSelf &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::skip </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>cnt</em></td><td>)</td>
@@ -2578,8 +2578,8 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 </div>
 </div>
-<a id="a2a6a0f58078b8797c3ede1e6ec3896ce" name="a2a6a0f58078b8797c3ede1e6ec3896ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a6a0f58078b8797c3ede1e6ec3896ce">&#9670;&nbsp;</a></span>skipWhile()</h2>
+<a id="abc72090031914ff844c3242fddbd22c2" name="abc72090031914ff844c3242fddbd22c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc72090031914ff844c3242fddbd22c2">&#9670;&nbsp;</a></span>skipWhile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2592,7 +2592,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SkipWhile&lt; TSelf, TSkipPredicate &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::skipWhile </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1SkipWhile.html">op::SkipWhile</a>&lt; TSelf, TSkipPredicate &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::skipWhile </td>
           <td>(</td>
           <td class="paramtype">TSkipPredicate&#160;</td>
           <td class="paramname"><em>skipPredicate</em></td><td>)</td>
@@ -2985,8 +2985,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ab2f7853bd666a1190edc9918be95ba6f" name="ab2f7853bd666a1190edc9918be95ba6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f7853bd666a1190edc9918be95ba6f">&#9670;&nbsp;</a></span>take()</h2>
+<a id="a3e72f1bebe09215ce8effe156ca38d34" name="a3e72f1bebe09215ce8effe156ca38d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e72f1bebe09215ce8effe156ca38d34">&#9670;&nbsp;</a></span>take()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2997,7 +2997,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TakeN&lt; TSelf &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::take </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1TakeN.html">op::TakeN</a>&lt; TSelf &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::take </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>cnt</em></td><td>)</td>
@@ -3074,8 +3074,8 @@ requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a clas
 
 </div>
 </div>
-<a id="aaac3d483fd5f242376989ddd9a371b81" name="aaac3d483fd5f242376989ddd9a371b81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaac3d483fd5f242376989ddd9a371b81">&#9670;&nbsp;</a></span>zip()</h2>
+<a id="a697a84ef397adc29008d87edbc7095fc" name="a697a84ef397adc29008d87edbc7095fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697a84ef397adc29008d87edbc7095fc">&#9670;&nbsp;</a></span>zip()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3088,7 +3088,7 @@ template&lt;typename TOtherIterator &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Zipper&lt; TSelf, std::pair, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::zip </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Zipper.html">op::Zipper</a>&lt; TSelf, std::pair, TOtherIterator &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::zip </td>
           <td>(</td>
           <td class="paramtype">TOtherIterator &amp;&amp;&#160;</td>
           <td class="paramname"><em>otherIterator</em></td><td>)</td>
@@ -3120,8 +3120,8 @@ template&lt;typename TOtherIterator &gt; </div>
 
 </div>
 </div>
-<a id="ac15b4914c7360e5d9fc5afe38e2469ab" name="ac15b4914c7360e5d9fc5afe38e2469ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac15b4914c7360e5d9fc5afe38e2469ab">&#9670;&nbsp;</a></span>zipTuple()</h2>
+<a id="ad7b65a1d1563f21ef3fa64fe9039e71f" name="ad7b65a1d1563f21ef3fa64fe9039e71f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b65a1d1563f21ef3fa64fe9039e71f">&#9670;&nbsp;</a></span>zipTuple()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3135,7 +3135,7 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!st
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Zipper&lt; TSelf, std::tuple, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::zipTuple </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1op_1_1Zipper.html">op::Zipper</a>&lt; TSelf, std::tuple, TOtherIterators... &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::zipTuple </td>
           <td>(</td>
           <td class="paramtype">TOtherIterators &amp;&amp;...&#160;</td>
           <td class="paramname"><em>otherIterators</em></td><td>)</td>

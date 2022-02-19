@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exactsizeiteratortrait_0',['ExactSizeIteratorTrait',['../structCXXIter_1_1ExactSizeIteratorTrait.html',1,'CXXIter']]]
+  ['alternater_0',['Alternater',['../classCXXIter_1_1op_1_1Alternater.html',1,'CXXIter::op']]]
 ];

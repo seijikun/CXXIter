@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['sizehint_0',['SizeHint',['../structCXXIter_1_1SizeHint.html',1,'CXXIter']]],
-  ['sourcetrait_1',['SourceTrait',['../structCXXIter_1_1SourceTrait.html',1,'CXXIter']]],
-  ['srccref_2',['SrcCRef',['../classCXXIter_1_1SrcCRef.html',1,'CXXIter']]],
-  ['srcmov_3',['SrcMov',['../classCXXIter_1_1SrcMov.html',1,'CXXIter']]],
-  ['srcref_4',['SrcRef',['../classCXXIter_1_1SrcRef.html',1,'CXXIter']]]
+  ['generatefrom_0',['GenerateFrom',['../classCXXIter_1_1op_1_1GenerateFrom.html',1,'CXXIter::op']]],
+  ['generator_1',['Generator',['../classCXXIter_1_1Generator.html',1,'CXXIter']]],
+  ['groupby_2',['GroupBy',['../classCXXIter_1_1op_1_1GroupBy.html',1,'CXXIter::op']]]
 ];
