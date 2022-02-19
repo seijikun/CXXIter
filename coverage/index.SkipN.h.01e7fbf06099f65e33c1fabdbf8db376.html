@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-02-12 02:32:00</td>
+      <td>2022-02-19 14:24:28</td>
     </tr>
   </table>
 </div>
@@ -167,7 +167,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="n">namespace</span> <span class="n">op</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -175,7 +175,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">class</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span> <span class="nl">SkipN</span> <span class="p">:</span> <span class="n">public</span> <span class="n">IterApi</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -183,7 +183,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">friend</span> <span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">class</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span> <span class="nl">SkipN</span> <span class="p">:</span> <span class="n">public</span> <span class="n">IterApi</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -191,7 +191,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="nl">private</span><span class="p">:</span></td>
+      <td class="src ">			<span class="n">friend</span> <span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -199,7 +199,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">TChainInput</span> <span class="n">input</span><span class="p">;</span></td>
+      <td class="src ">		<span class="nl">private</span><span class="p">:</span></td>
     </tr>
 
     <tr class="source-line">
@@ -207,7 +207,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kt">size_t</span> <span class="n">n</span><span class="p">;</span></td>
+      <td class="src ">			<span class="n">TChainInput</span> <span class="n">input</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -215,7 +215,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kt">bool</span> <span class="n">skipEnded</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span></td>
+      <td class="src ">			<span class="kt">size_t</span> <span class="n">n</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -223,23 +223,23 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="nl">public</span><span class="p">:</span></td>
+      <td class="src ">			<span class="kt">bool</span> <span class="n">skipEnded</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l21" href="#l21">21</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">14</td>
-      <td class="src coveredLine">		<span class="n">SkipN</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">n</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="nl">public</span><span class="p">:</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l22" href="#l22">22</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="linecount coveredLine">14</td>
+      <td class="src coveredLine">			<span class="n">SkipN</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">n</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -247,7 +247,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -255,7 +255,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -263,7 +263,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
     </tr>
 
     <tr class="source-line">
@@ -271,7 +271,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="cm">/** @private */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -279,7 +279,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -287,7 +287,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">InputItem</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -295,7 +295,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -303,7 +303,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">InputItem</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -311,7 +311,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="n">InputItem</span><span class="p">;</span></td>
+      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
     </tr>
 
     <tr class="source-line">
@@ -319,11 +319,27 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l33" href="#l33">33</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="n">InputItem</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l34" href="#l34">34</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l35" href="#l35">35</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">15</td>
@@ -331,7 +347,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l34" href="#l34">34</a></td>
+      <td class="lineno"><a id="l36" href="#l36">36</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -346,7 +362,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l35" href="#l35">35</a></td>
+      <td class="lineno"><a id="l37" href="#l37">37</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -361,7 +377,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l36" href="#l36">36</a></td>
+      <td class="lineno"><a id="l38" href="#l38">38</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -376,7 +392,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l37" href="#l37">37</a></td>
+      <td class="lineno"><a id="l39" href="#l39">39</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -391,7 +407,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l38" href="#l38">38</a></td>
+      <td class="lineno"><a id="l40" href="#l40">40</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -399,7 +415,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l39" href="#l39">39</a></td>
+      <td class="lineno"><a id="l41" href="#l41">41</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">5</td>
@@ -407,7 +423,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l40" href="#l40">40</a></td>
+      <td class="lineno"><a id="l42" href="#l42">42</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -415,7 +431,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l41" href="#l41">41</a></td>
+      <td class="lineno"><a id="l43" href="#l43">43</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">14</td>
@@ -423,27 +439,11 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l42" href="#l42">42</a></td>
+      <td class="lineno"><a id="l44" href="#l44">44</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
       <td class="src ">		<span class="p">}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l43" href="#l43">43</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">7</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l44" href="#l44">44</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">7</td>
-      <td class="src coveredLine">			<span class="n">SizeHint</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -451,7 +451,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">7</td>
-      <td class="src coveredLine">			<span class="n">result</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">n</span><span class="p">);</span></td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -459,23 +459,23 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">7</td>
-      <td class="src coveredLine">			<span class="k">return</span> <span class="n">result</span><span class="p">;</span></td>
+      <td class="src coveredLine">			<span class="n">SizeHint</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l47" href="#l47">47</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="linecount coveredLine">7</td>
+      <td class="src coveredLine">			<span class="n">result</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">n</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l48" href="#l48">48</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="linecount coveredLine">7</td>
+      <td class="src coveredLine">			<span class="k">return</span> <span class="n">result</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -483,7 +483,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src ">		<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -491,7 +491,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -499,7 +499,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="cm">/** @private */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -507,7 +507,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -515,7 +515,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">return</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowerBound</span><span class="p">;</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -523,7 +523,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -531,7 +531,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">			<span class="k">return</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowerBound</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -539,7 +539,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -547,11 +547,27 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l58" href="#l58">58</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l59" href="#l59">59</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l60" href="#l60">60</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>

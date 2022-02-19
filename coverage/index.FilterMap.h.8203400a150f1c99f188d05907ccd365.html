@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-02-12 02:32:00</td>
+      <td>2022-02-19 14:24:28</td>
     </tr>
   </table>
 </div>
@@ -151,7 +151,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="n">namespace</span> <span class="n">op</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -159,7 +159,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">class</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span> <span class="nl">FilterMap</span> <span class="p">:</span> <span class="n">public</span> <span class="n">IterApi</span><span class="o">&lt;</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -167,7 +167,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">friend</span> <span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">class</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span> <span class="nl">FilterMap</span> <span class="p">:</span> <span class="n">public</span> <span class="n">IterApi</span><span class="o">&lt;</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -175,7 +175,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="nl">private</span><span class="p">:</span></td>
+      <td class="src ">			<span class="n">friend</span> <span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -183,7 +183,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">TChainInput</span> <span class="n">input</span><span class="p">;</span></td>
+      <td class="src ">		<span class="nl">private</span><span class="p">:</span></td>
     </tr>
 
     <tr class="source-line">
@@ -191,7 +191,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">TFilterMapFn</span> <span class="n">filterMapFn</span><span class="p">;</span></td>
+      <td class="src ">			<span class="n">TChainInput</span> <span class="n">input</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -199,11 +199,19 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="nl">public</span><span class="p">:</span></td>
+      <td class="src ">			<span class="n">TFilterMapFn</span> <span class="n">filterMapFn</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l18" href="#l18">18</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="nl">public</span><span class="p">:</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l19" href="#l19">19</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -214,15 +222,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">12</td>
-      <td class="src coveredLine">		<span class="n">FilterMap</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TFilterMapFn</span> <span class="n">filterMapFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">filterMapFn</span><span class="p">(</span><span class="n">filterMapFn</span><span class="p">)</span> <span class="p">{}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l19" href="#l19">19</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src coveredLine">			<span class="n">FilterMap</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TFilterMapFn</span> <span class="n">filterMapFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">filterMapFn</span><span class="p">(</span><span class="n">filterMapFn</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -230,7 +230,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
+      <td class="src ">		<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -238,7 +238,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -246,7 +246,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
     </tr>
 
     <tr class="source-line">
@@ -254,7 +254,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="cm">/** @private */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -262,7 +262,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -270,7 +270,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">InputItem</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -278,7 +278,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -286,7 +286,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">InputItem</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -294,7 +294,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="n">TItem</span><span class="p">;</span></td>
+      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
     </tr>
 
     <tr class="source-line">
@@ -302,11 +302,27 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">op</span><span class="o">::</span><span class="n">FilterMap</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l30" href="#l30">30</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="n">TItem</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l31" href="#l31">31</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l32" href="#l32">32</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">17</td>
@@ -314,7 +330,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l31" href="#l31">31</a></td>
+      <td class="lineno"><a id="l33" href="#l33">33</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/4</summary>
@@ -331,7 +347,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l32" href="#l32">32</a></td>
+      <td class="lineno"><a id="l34" href="#l34">34</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -346,7 +362,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l33" href="#l33">33</a></td>
+      <td class="lineno"><a id="l35" href="#l35">35</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -361,7 +377,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l34" href="#l34">34</a></td>
+      <td class="lineno"><a id="l36" href="#l36">36</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/4</summary>
@@ -378,7 +394,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l35" href="#l35">35</a></td>
+      <td class="lineno"><a id="l37" href="#l37">37</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -393,7 +409,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l36" href="#l36">36</a></td>
+      <td class="lineno"><a id="l38" href="#l38">38</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
@@ -408,7 +424,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l37" href="#l37">37</a></td>
+      <td class="lineno"><a id="l39" href="#l39">39</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -416,7 +432,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l38" href="#l38">38</a></td>
+      <td class="lineno"><a id="l40" href="#l40">40</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -424,7 +440,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l39" href="#l39">39</a></td>
+      <td class="lineno"><a id="l41" href="#l41">41</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">2</td>
@@ -432,7 +448,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l40" href="#l40">40</a></td>
+      <td class="lineno"><a id="l42" href="#l42">42</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">4</td>
@@ -440,7 +456,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l41" href="#l41">41</a></td>
+      <td class="lineno"><a id="l43" href="#l43">43</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">8</td>
@@ -448,7 +464,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l42" href="#l42">42</a></td>
+      <td class="lineno"><a id="l44" href="#l44">44</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -456,7 +472,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l43" href="#l43">43</a></td>
+      <td class="lineno"><a id="l45" href="#l45">45</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -464,7 +480,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l44" href="#l44">44</a></td>
+      <td class="lineno"><a id="l46" href="#l46">46</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -472,7 +488,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l45" href="#l45">45</a></td>
+      <td class="lineno"><a id="l47" href="#l47">47</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -480,7 +496,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l46" href="#l46">46</a></td>
+      <td class="lineno"><a id="l48" href="#l48">48</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
