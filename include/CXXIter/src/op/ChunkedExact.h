@@ -19,23 +19,25 @@ namespace CXXIter {
 	// CASTER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, const size_t CHUNK_SIZE>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] ChunkedExact : public IterApi<ChunkedExact<TChainInput, CHUNK_SIZE>> {
-		friend struct IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>>;
-		friend struct ExactSizeIteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>>;
-	private:
-		TChainInput input;
-	public:
-		ChunkedExact(TChainInput&& input) : input(std::move(input)) {}
-	};
+	namespace op {
+		template<typename TChainInput, const size_t CHUNK_SIZE>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] ChunkedExact : public IterApi<ChunkedExact<TChainInput, CHUNK_SIZE>> {
+			friend struct IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>>;
+			friend struct ExactSizeIteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>>;
+		private:
+			TChainInput input;
+		public:
+			ChunkedExact(TChainInput&& input) : input(std::move(input)) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, const size_t CHUNK_SIZE>
-	struct IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>> {
+	struct IteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
-		using Self = ChunkedExact<TChainInput, CHUNK_SIZE>;
+		using Self = op::ChunkedExact<TChainInput, CHUNK_SIZE>;
 		using Item = ExactChunk<InputItem, CHUNK_SIZE>;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -58,8 +60,10 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, const size_t CHUNK_SIZE>
-	struct ExactSizeIteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>> {
-		static inline size_t size(const ChunkedExact<TChainInput, CHUNK_SIZE>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input) / CHUNK_SIZE; }
+	struct ExactSizeIteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE>> {
+		static inline size_t size(const op::ChunkedExact<TChainInput, CHUNK_SIZE>& self) {
+			return ExactSizeIteratorTrait<TChainInput>::size(self.input) / CHUNK_SIZE;
+		}
 	};
 
 }

@@ -8,25 +8,27 @@ namespace CXXIter {
 	// FILTER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TFilterFn>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
-		friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;
-		friend struct ExactSizeIteratorTrait<Filter<TChainInput, TFilterFn>>;
-	private:
-		using InputItem = typename TChainInput::Item;
+	namespace op {
+		template<typename TChainInput, typename TFilterFn>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
+			friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;
+			friend struct ExactSizeIteratorTrait<Filter<TChainInput, TFilterFn>>;
+		private:
+			using InputItem = typename TChainInput::Item;
 
-		TChainInput input;
-		TFilterFn filterFn;
-	public:
-		Filter(TChainInput&& input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
-	};
+			TChainInput input;
+			TFilterFn filterFn;
+		public:
+			Filter(TChainInput&& input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TFilterFn>
-	struct IteratorTrait<Filter<TChainInput, TFilterFn>> {
+	struct IteratorTrait<op::Filter<TChainInput, TFilterFn>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		// CXXIter Interface
-		using Self = Filter<TChainInput, TFilterFn>;
+		using Self = op::Filter<TChainInput, TFilterFn>;
 		using Item = typename ChainInputIterator::Item;
 
 		static inline IterValue<Item> next(Self& self) {

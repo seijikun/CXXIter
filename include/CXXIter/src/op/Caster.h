@@ -12,24 +12,26 @@ namespace CXXIter {
 	// CASTER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TItem>
-	requires std::is_object_v<TItem>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {
-		friend struct IteratorTrait<Caster<TChainInput, TItem>>;
-		friend struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
-	private:
-		TChainInput input;
-	public:
-		Caster(TChainInput&& input) : input(std::move(input)) {}
-	};
+	namespace op {
+		template<typename TChainInput, typename TItem>
+		requires std::is_object_v<TItem>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {
+			friend struct IteratorTrait<Caster<TChainInput, TItem>>;
+			friend struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
+		private:
+			TChainInput input;
+		public:
+			Caster(TChainInput&& input) : input(std::move(input)) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TItem>
 	requires std::is_object_v<TItem>
-	struct IteratorTrait<Caster<TChainInput, TItem>> {
+	struct IteratorTrait<op::Caster<TChainInput, TItem>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		// CXXIter Interface
-		using Self = Caster<TChainInput, TItem>;
+		using Self = op::Caster<TChainInput, TItem>;
 		using Item = TItem;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -40,8 +42,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>
-	struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>> {
-		static inline size_t size(const Caster<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+	struct ExactSizeIteratorTrait<op::Caster<TChainInput, TItem>> {
+		static inline size_t size(const op::Caster<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
 	};
 
 }

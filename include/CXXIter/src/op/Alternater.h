@@ -13,26 +13,28 @@ namespace CXXIter {
 	// ALTERNATER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput1, typename... TChainInputs>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
-		friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
-		friend struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
-	private:
-		static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
-		std::tuple<TChainInput1, TChainInputs...> inputs;
-		std::array<IterValue<typename TChainInput1::Item>, BATCH_SIZE> currentBatch;
-		size_t batchElementIdx = BATCH_SIZE;
-	public:
-		Alternater(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
-	};
+	namespace op {
+		template<typename TChainInput1, typename... TChainInputs>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
+			friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
+			friend struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
+		private:
+			static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
+			std::tuple<TChainInput1, TChainInputs...> inputs;
+			std::array<IterValue<typename TChainInput1::Item>, BATCH_SIZE> currentBatch;
+			size_t batchElementIdx = BATCH_SIZE;
+		public:
+			Alternater(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput1, typename... TChainInputs>
-	struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
+	struct IteratorTrait<op::Alternater<TChainInput1, TChainInputs...>> {
 		using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, IteratorTrait<TChainInputs>...>;
 		static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 		// CXXIter Interface
-		using Self = Alternater<TChainInput1, TChainInputs...>;
+		using Self = op::Alternater<TChainInput1, TChainInputs...>;
 		using Item = typename TChainInput1::Item;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -70,9 +72,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator... TChainInputs>
-	struct ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>> {
-		static inline size_t size(const Alternater<TChainInput1, TChainInputs...>& self) {
-			return IteratorTrait<Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
+	struct ExactSizeIteratorTrait<op::Alternater<TChainInput1, TChainInputs...>> {
+		static inline size_t size(const op::Alternater<TChainInput1, TChainInputs...>& self) {
+			return IteratorTrait<op::Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
 		}
 	};
 

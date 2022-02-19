@@ -12,26 +12,28 @@ namespace CXXIter {
 	// FLATMAP
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
-	requires (!std::is_reference_v<TItemContainer>)
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
-		friend struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
-	private:
-		TChainInput input;
-		std::optional<SrcMov<TItemContainer>> current;
-		TFlatMapFn mapFn;
-	public:
-		FlatMap(TChainInput&& input, TFlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
-	};
+	namespace op {
+		template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
+		requires (!std::is_reference_v<TItemContainer>)
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
+			friend struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
+		private:
+			TChainInput input;
+			std::optional<SrcMov<TItemContainer>> current;
+			TFlatMapFn mapFn;
+		public:
+			FlatMap(TChainInput&& input, TFlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
-	struct IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
+	struct IteratorTrait<op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
 		using NestedChainIterator = IteratorTrait<SrcMov<TItemContainer>>;
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using InputItem = typename ChainInputIterator::Item;
 		// CXXIter Interface
-		using Self = FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
+		using Self = op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
 		using Item = typename TItemContainer::value_type;
 
 		static inline IterValue<Item> next(Self& self) {

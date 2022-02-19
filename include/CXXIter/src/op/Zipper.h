@@ -13,24 +13,26 @@ namespace CXXIter {
 	// ZIPPER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
-		friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
-		friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
-	private:
-		struct source_ended_exception {};
-		std::tuple<TChainInput1, TChainInputs...> inputs;
-	public:
-		Zipper(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
-	};
+	namespace op {
+		template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+			friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
+			friend struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
+		private:
+			struct source_ended_exception {};
+			std::tuple<TChainInput1, TChainInputs...> inputs;
+		public:
+			Zipper(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
-	struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+	struct IteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 		using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, IteratorTrait<TChainInputs>...>;
 		static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 		// CXXIter Interface
-		using Self = Zipper<TChainInput1, TZipContainer, TChainInputs...>;
+		using Self = op::Zipper<TChainInput1, TZipContainer, TChainInputs...>;
 		using Item = TZipContainer<typename TChainInput1::Item, typename TChainInputs::Item...>;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -65,9 +67,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, template<typename...> typename TZipContainer, CXXIterExactSizeIterator... TChainInputs>
-	struct ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
-		static inline size_t size(const Zipper<TChainInput1, TZipContainer, TChainInputs...>& self) {
-			return IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>::sizeHint(self).lowerBound;
+	struct ExactSizeIteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+		static inline size_t size(const op::Zipper<TChainInput1, TZipContainer, TChainInputs...>& self) {
+			return IteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>>::sizeHint(self).lowerBound;
 		}
 	};
 

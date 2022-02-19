@@ -12,27 +12,29 @@ namespace CXXIter {
 	// INTERSPERSER
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TSeparatorInput>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
-		friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
-		friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
-		enum class IntersperserState { Uninitialized, Item, Separator };
-	private:
-		TChainInput input;
-		TSeparatorInput separatorInput;
-		IterValue<typename TChainInput::Item> nextItem;
-		IntersperserState intersperserState = IntersperserState::Uninitialized;
-	public:
-		Intersperser(TChainInput&& input, TSeparatorInput&& separatorInput) : input(std::move(input)), separatorInput(std::move(separatorInput)) {}
-	};
+	namespace op {
+		template<typename TChainInput, typename TSeparatorInput>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
+			friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+			friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+			enum class IntersperserState { Uninitialized, Item, Separator };
+		private:
+			TChainInput input;
+			TSeparatorInput separatorInput;
+			IterValue<typename TChainInput::Item> nextItem;
+			IntersperserState intersperserState = IntersperserState::Uninitialized;
+		public:
+			Intersperser(TChainInput&& input, TSeparatorInput&& separatorInput) : input(std::move(input)), separatorInput(std::move(separatorInput)) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TSeparatorInput>
-	struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
+	struct IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using SeparatorInputIterator = IteratorTrait<TSeparatorInput>;
 		// CXXIter Interface
-		using Self = Intersperser<TChainInput, TSeparatorInput>;
+		using Self = op::Intersperser<TChainInput, TSeparatorInput>;
 		using Item = typename ChainInputIterator::Item;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -70,9 +72,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, CXXIterExactSizeIterator TSeparatorInput>
-	struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>> {
-		static inline size_t size(const Intersperser<TChainInput, TSeparatorInput>& self) {
-			return IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
+	struct ExactSizeIteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
+		static inline size_t size(const op::Intersperser<TChainInput, TSeparatorInput>& self) {
+			return IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
 		}
 	};
 

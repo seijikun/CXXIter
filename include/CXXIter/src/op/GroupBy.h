@@ -14,27 +14,29 @@ namespace CXXIter {
 	// GROUP BY
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
-		friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
-	private:
-		using OwnedInputItem = typename TChainInput::ItemOwned;
-		using GroupCache = SrcMov<std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>>>;
+	namespace op {
+		template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
+			friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
+		private:
+			using OwnedInputItem = typename TChainInput::ItemOwned;
+			using GroupCache = SrcMov<std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>>>;
 
-		TChainInput input;
-		TGroupIdentifierFn groupIdentFn;
-		std::optional<GroupCache> groupCache;
-	public:
-		GroupBy(TChainInput&& input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
-	};
+			TChainInput input;
+			TGroupIdentifierFn groupIdentFn;
+			std::optional<GroupCache> groupCache;
+		public:
+			GroupBy(TChainInput&& input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
-	struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
+	struct IteratorTrait<op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using OwnedInputItem = typename TChainInput::ItemOwned;
 		// CXXIter Interface
-		using Self = GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>;
+		using Self = op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>;
 		using Item = std::pair<const TGroupIdent, std::vector<OwnedInputItem>>;
 
 		static inline IterValue<Item> next(Self& self) {

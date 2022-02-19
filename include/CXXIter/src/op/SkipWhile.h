@@ -11,24 +11,26 @@ namespace CXXIter {
 	// SKIP WHILE
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput, typename TSkipPredicate>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
-		friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
-	private:
-		TChainInput input;
-		TSkipPredicate skipPredicate;
-		bool skipEnded = false;
-	public:
-		SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}
-	};
+	namespace op {
+		template<typename TChainInput, typename TSkipPredicate>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
+			friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
+		private:
+			TChainInput input;
+			TSkipPredicate skipPredicate;
+			bool skipEnded = false;
+		public:
+			SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TSkipPredicate>
-	struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>> {
+	struct IteratorTrait<op::SkipWhile<TChainInput, TSkipPredicate>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
-		using Self = SkipWhile<TChainInput, TSkipPredicate>;
+		using Self = op::SkipWhile<TChainInput, TSkipPredicate>;
 		using Item = InputItem;
 
 		static inline IterValue<Item> next(Self& self) {

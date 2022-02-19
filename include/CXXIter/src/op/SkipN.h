@@ -10,24 +10,26 @@ namespace CXXIter {
 	// SKIP WHILE
 	// ################################################################################################
 	/** @private */
-	template<typename TChainInput>
-	class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipN : public IterApi<SkipN<TChainInput>> {
-		friend struct IteratorTrait<SkipN<TChainInput>>;
-	private:
-		TChainInput input;
-		size_t n;
-		bool skipEnded = false;
-	public:
-		SkipN(TChainInput&& input, size_t n) : input(std::move(input)), n(n) {}
-	};
+	namespace op {
+		template<typename TChainInput>
+		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipN : public IterApi<SkipN<TChainInput>> {
+			friend struct IteratorTrait<SkipN<TChainInput>>;
+		private:
+			TChainInput input;
+			size_t n;
+			bool skipEnded = false;
+		public:
+			SkipN(TChainInput&& input, size_t n) : input(std::move(input)), n(n) {}
+		};
+	}
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput>
-	struct IteratorTrait<SkipN<TChainInput>> {
+	struct IteratorTrait<op::SkipN<TChainInput>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
-		using Self = SkipN<TChainInput>;
+		using Self = op::SkipN<TChainInput>;
 		using Item = InputItem;
 
 		static inline IterValue<Item> next(Self& self) {
@@ -48,9 +50,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>
-	struct ExactSizeIteratorTrait<SkipN<TChainInput>> {
-		static inline size_t size(const SkipN<TChainInput>& self) {
-			return IteratorTrait<SkipN<TChainInput>>::sizeHint(self).lowerBound;
+	struct ExactSizeIteratorTrait<op::SkipN<TChainInput>> {
+		static inline size_t size(const op::SkipN<TChainInput>& self) {
+			return IteratorTrait<op::SkipN<TChainInput>>::sizeHint(self).lowerBound;
 		}
 	};
 
