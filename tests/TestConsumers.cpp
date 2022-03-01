@@ -238,10 +238,49 @@ TEST(CXXIter, mean) {
 		ASSERT_TRUE(output.has_value());
 		ASSERT_NEAR(output.value(), 2.0f, 0.0000000005);
 	}
-	{ // empty input
+	{ // non-empty input, Norm::N_MINUS_ONE
+		std::vector<float> input = {1.0f, 2.0f, 3.0f};
+		std::optional<float> output = CXXIter::from(input)
+				.mean<CXXIter::StatisticNormalization::N_MINUS_ONE>();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value(), 3.0f, 0.0000000005);
+	}
+	{ // empty input, Norm::N
 		std::vector<float> input = {};
 		std::optional<float> output = CXXIter::from(input).mean();
 		ASSERT_FALSE(output.has_value());
+	}
+}
+
+TEST(CXXIter, stddev) {
+	{ // empty input
+		std::vector<float> input = {};
+		std::optional<float> output = CXXIter::from(input).stddev();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // input (too few elements)
+		std::vector<float> input = { 1.0f };
+		std::optional<float> output = CXXIter::from(input).stddev();
+		ASSERT_FALSE(output.has_value());
+	}
+	{ // non-empty input, Norm::N
+		std::vector<float> input = {1.0f, 2.0f, 3.0f};
+		std::optional<float> output = CXXIter::from(input).stddev();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value(), 0.816496, 0.00001f);
+	}
+	{ // non-empty input, Norm::N_MINUS_ONE
+		std::vector<float> input = {1.0f, 2.0f, 3.0f};
+		std::optional<float> output = CXXIter::from(input)
+				.stddev<CXXIter::StatisticNormalization::N_MINUS_ONE>();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value(), 1.0f, 0.00001f);
+	}
+	{ // non-empty input, Norm::N
+		std::vector<float> input = {2.0f, 4.0f, 4.0f, 4.0f, 5.0f, 5.0f, 7.0f, 9.0f};
+		std::optional<float> output = CXXIter::from(input).stddev();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value(), 2.0f, 0.00000005f);
 	}
 }
 

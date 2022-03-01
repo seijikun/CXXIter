@@ -679,6 +679,8 @@ public: // CXXIter API-Surface
 	 * dividing through the number of elements counted while summing.
 	 * @note This consumes the iterator.
 	 * @return The mean of all elements of this iterator.
+	 * @tparam NORM Type of the statistical normalization variant to use for the
+	 * calculation. @see StatisticNormalization
 	 * @tparam TResult Type of the mean-calculation's result. This is also the type used
 	 * for the sum of all elements.
 	 * @tparam TCount Type the element counter is converted into, before dividing the sum
@@ -699,14 +701,74 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	template<typename TResult = ItemOwned, typename TCount = ItemOwned>
+	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
 	std::optional<TResult> mean() {
 		size_t cnt = 0;
 		TResult result = fold(TResult(), [&cnt](TResult& res, Item&& item) {
 			cnt += 1;
 			res += item;
 		});
-		if(cnt > 0) { return result / static_cast<TCount>(cnt); }
+		if(cnt > 0) {
+			if constexpr(NORM == StatisticNormalization::N) {
+				return result / static_cast<TCount>(cnt);
+			} else {
+				return result / static_cast<TCount>(cnt - 1);
+			}
+		}
+		return {};
+	}
+
+	/**
+	 * @brief Consumer that calculates the standard deviation of all elements of this iterator.
+	 * @details The standard deviation is calculated by incrementally calculating a sum and
+	 * a squared sum of all elements. Then from there, the mean and then the standard deviation
+	 * are calculated.
+	 * @note This consumes the iterator.
+	 * @return The standard deviation of all elements of this iterator.
+	 * @tparam NORM Type of the statistical normalization variant to use for the
+	 * calculation. @see StatisticNormalization
+	 * @tparam TResult Type of the stddev-calculation's result. This is also the type used
+	 * for the sum of all elements.
+	 * @tparam TCount Type the element counter is converted into, before dividing the sum and
+	 * the squared sum by. This can be necessary, if TResult is a complex object that only supports
+	 * the division operator for e.g. double.
+	 * @see https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance
+	 *
+	 * Usage Example:
+	 * - For iterators with at least 2 values:
+	 * @code
+	 *	std::vector<float> input = {2.0f, 4.0f, 4.0f, 4.0f, 5.0f, 5.0f, 7.0f, 9.0f};
+	 *	std::optional<float> output = CXXIter::from(input).stddev();
+	 *	// output == Some(2.0f)
+	 * @endcode
+	 * - For iterators with less than 2 values (not defined):
+	 * @code
+	 *	std::vector<float> input = {};
+	 *	std::optional<float> output = CXXIter::from(input).stddev();
+	 *	// output == None
+	 * @endcode
+	 */
+	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
+	std::optional<TResult> stddev() {
+		TResult sumSquare = TResult();
+		TResult sum = TResult();
+		size_t cnt = 0;
+		forEach([&sumSquare, &sum, &cnt](Item&& item) {
+			sum += item;
+			sumSquare += (item * item);
+			cnt += 1;
+		});
+		if(cnt >= 2) {
+			if constexpr(NORM == StatisticNormalization::N) {
+				TResult E1 = (sumSquare / static_cast<TCount>(cnt));
+				TResult E2 = (sum / static_cast<TCount>(cnt));
+				return std::sqrt(E1 - (E2 * E2));
+			} else {
+				return std::sqrt(
+					(sumSquare - (sum * sum / static_cast<TCount>(cnt))) / static_cast<TCount>(cnt - 1)
+				);
+			}
+		}
 		return {};
 	}
 

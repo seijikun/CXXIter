@@ -110,6 +110,20 @@ namespace CXXIter {
 	static constexpr SortOrder DESCENDING = SortOrder::DESCENDING;
 
 	/**
+	 * @brief Normalization variant to use while calculating statistics (mean / stddev / ...)
+	 */
+	enum class StatisticNormalization {
+		/**
+		 * @brief Use when the mean, variance, stddev is calculated with the COMPLETE population
+		 */
+		N,
+		/**
+		 * @brief Use when the mean, variance, stddev is calculated from a sample of the population
+		 */
+		N_MINUS_ONE
+	};
+
+	/**
 	* @brief Structure holding the bounds of a CXXIter iterator's estimated length.
 	* @details This structure contains a lowerBound and an optional upper bound.
 	* Both are initialized from the source's length (if any), and subsequently edited
