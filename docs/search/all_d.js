@@ -8,7 +8,7 @@ var searchData=
   ['skipn_5',['SkipN',['../classCXXIter_1_1op_1_1SkipN.html',1,'CXXIter::op']]],
   ['skipwhile_6',['SkipWhile',['../classCXXIter_1_1op_1_1SkipWhile.html',1,'CXXIter::op']]],
   ['skipwhile_7',['skipWhile',['../classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2',1,'CXXIter::IterApi']]],
-  ['sort_8',['sort',['../classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22',1,'CXXIter::IterApi::sort(TCompareFn compareFn)'],['../classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080',1,'CXXIter::IterApi::sort()']]],
+  ['sort_8',['sort',['../classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080',1,'CXXIter::IterApi::sort()'],['../classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22',1,'CXXIter::IterApi::sort(TCompareFn compareFn)']]],
   ['sortby_9',['sortBy',['../classCXXIter_1_1IterApi.html#afcf9678cee596627f5c9712a8efb7518',1,'CXXIter::IterApi']]],
   ['sorter_10',['Sorter',['../classCXXIter_1_1op_1_1Sorter.html',1,'CXXIter::op']]],
   ['sortorder_11',['SortOrder',['../namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c',1,'CXXIter']]],
@@ -17,7 +17,9 @@ var searchData=
   ['srccref_14',['SrcCRef',['../classCXXIter_1_1SrcCRef.html',1,'CXXIter']]],
   ['srcmov_15',['SrcMov',['../classCXXIter_1_1SrcMov.html',1,'CXXIter']]],
   ['srcref_16',['SrcRef',['../classCXXIter_1_1SrcRef.html',1,'CXXIter']]],
-  ['stepby_17',['stepBy',['../classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817',1,'CXXIter::IterApi']]],
-  ['stringjoin_18',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
-  ['sum_19',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
+  ['statisticnormalization_17',['StatisticNormalization',['../namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec',1,'CXXIter']]],
+  ['stddev_18',['stddev',['../classCXXIter_1_1IterApi.html#a83370ed3a2770da9e4b5aa7317534487',1,'CXXIter::IterApi']]],
+  ['stepby_19',['stepBy',['../classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817',1,'CXXIter::IterApi']]],
+  ['stringjoin_20',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
+  ['sum_21',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
 ];

@@ -147,6 +147,11 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a36594d1d501e0f5fc7d80174fc82e42c"><td class="mdescLeft">&#160;</td><td class="mdescRight">SortOrder for the item sorting methods.  <a href="namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c">More...</a><br /></td></tr>
 <tr class="separator:a36594d1d501e0f5fc7d80174fc82e42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e698a5b11eca24990a5db359a5e58ec"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec">StatisticNormalization</a> { <a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca8d9c307cb7f3c4a32822a51922d1ceaa">N</a>
+, <a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8">N_MINUS_ONE</a>
+ }</td></tr>
+<tr class="memdesc:a4e698a5b11eca24990a5db359a5e58ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalization variant to use while calculating statistics (mean / stddev / ...)  <a href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec">More...</a><br /></td></tr>
+<tr class="separator:a4e698a5b11eca24990a5db359a5e58ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -235,6 +240,38 @@ template&lt;typename TItem , const size_t CHUNK_SIZE&gt; </div>
 
 </div>
 </div>
+<a id="a4e698a5b11eca24990a5db359a5e58ec" name="a4e698a5b11eca24990a5db359a5e58ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e698a5b11eca24990a5db359a5e58ec">&#9670;&nbsp;</a></span>StatisticNormalization</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec">CXXIter::StatisticNormalization</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Normalization variant to use while calculating statistics (mean / stddev / ...) </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4e698a5b11eca24990a5db359a5e58eca8d9c307cb7f3c4a32822a51922d1ceaa" name="a4e698a5b11eca24990a5db359a5e58eca8d9c307cb7f3c4a32822a51922d1ceaa"></a>N&#160;</td><td class="fielddoc"><p >Use when the mean, variance, stddev is calculated with the COMPLETE population. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8" name="a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8"></a>N_MINUS_ONE&#160;</td><td class="fielddoc"><p >Use when the mean, variance, stddev is calculated from a sample of the population. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="Common_8h_source.html#l00115">115</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a08757b4c745453b043188dfb2de50b13" name="a08757b4c745453b043188dfb2de50b13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08757b4c745453b043188dfb2de50b13">&#9670;&nbsp;</a></span>empty()</h2>
@@ -259,7 +296,7 @@ template&lt;typename TItem &gt; </div>
 <div class="line">    .next();</div>
 <div class="line"><span class="comment">// output == None</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01704">1704</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01766">1766</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -291,7 +328,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01688">1688</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01750">1750</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -323,7 +360,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01662">1662</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01724">1724</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -355,7 +392,7 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !is_const_reference_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01675">1675</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01737">1737</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -396,11 +433,11 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</div>
 <div class="line">       .take(100)</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, 3, ..., 99}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01729">CXXIter.h:1729</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ad452805bba5ba1b2e03b4a13fa99c4a9"><div class="ttname"><a href="namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01791">CXXIter.h:1791</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01729">1729</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01791">1791</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -440,11 +477,11 @@ template&lt;GeneratorFunction TGeneratorFn&gt; </div>
 <div class="line">   ).collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, ..., 1000}</span></div>
 <div class="ttc" id="aclassCXXIter_1_1Generator_html"><div class="ttname"><a href="classCXXIter_1_1Generator.html">CXXIter::Generator</a></div><div class="ttdoc">Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....</div><div class="ttdef"><b>Definition:</b> <a href="Generator_8h_source.html#l00021">Generator.h:21</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html_a3e7ee4115ed01f2665c01e65b94687c1"><div class="ttname"><a href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">CXXIter::generate</a></div><div class="ttdeci">auto generate(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that produces a new iterator over the elements produced by the given generatorFn - w...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01757">CXXIter.h:1757</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a3e7ee4115ed01f2665c01e65b94687c1"><div class="ttname"><a href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">CXXIter::generate</a></div><div class="ttdeci">auto generate(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that produces a new iterator over the elements produced by the given generatorFn - w...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01819">CXXIter.h:1819</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01757">1757</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01819">1819</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -496,7 +533,7 @@ template&lt;typename TValue &gt; </div>
 <li>For an integer type: <div class="fragment"><div class="line">std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(1, 7, 2)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 5, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01809">CXXIter.h:1809</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01871">CXXIter.h:1871</a></div></div>
 </div><!-- fragment --></li>
 <li>For a float type <div class="fragment"><div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(0.0f, 1.1f, 0.25f)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
@@ -504,7 +541,7 @@ template&lt;typename TValue &gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01809">1809</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01871">1871</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -556,9 +593,9 @@ template&lt;typename TItem &gt; </div>
 <div class="line">       .flatMap()</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01781">CXXIter.h:1781</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01843">CXXIter.h:1843</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01781">1781</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01843">1843</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

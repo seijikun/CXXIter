@@ -39,6 +39,10 @@ var namespaceCXXIter =
       [ "ASCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42ca83ec681a20197326c163ea3b39ef7c32", null ],
       [ "DESCENDING", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42cacff818f0ae4cef845577e39283886a53", null ]
     ] ],
+    [ "StatisticNormalization", "namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec", [
+      [ "N", "namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca8d9c307cb7f3c4a32822a51922d1ceaa", null ],
+      [ "N_MINUS_ONE", "namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8", null ]
+    ] ],
     [ "empty", "namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13", null ],
     [ "from", "namespaceCXXIter.html#a834f4bb3243dd87d589fb26b10ffd565", null ],
     [ "from", "namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310", null ],
