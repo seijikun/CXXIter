@@ -9,6 +9,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <cmath>
 
 #include "src/Common.h"
 #include "src/Generator.h"
@@ -719,15 +720,15 @@ public: // CXXIter API-Surface
 	}
 
 	/**
-	 * @brief Consumer that calculates the standard deviation of all elements of this iterator.
-	 * @details The standard deviation is calculated by incrementally calculating a sum and
-	 * a squared sum of all elements. Then from there, the mean and then the standard deviation
+	 * @brief Consumer that calculates the variance of all elements of this iterator.
+	 * @details The variance is calculated by incrementally calculating a sum and
+	 * a squared sum of all elements. Then from there, the mean and then the variance
 	 * are calculated.
 	 * @note This consumes the iterator.
-	 * @return The standard deviation of all elements of this iterator.
+	 * @return The variance of all elements of this iterator.
 	 * @tparam NORM Type of the statistical normalization variant to use for the
 	 * calculation. @see StatisticNormalization
-	 * @tparam TResult Type of the stddev-calculation's result. This is also the type used
+	 * @tparam TResult Type of the variance-calculation's result. This is also the type used
 	 * for the sum of all elements.
 	 * @tparam TCount Type the element counter is converted into, before dividing the sum and
 	 * the squared sum by. This can be necessary, if TResult is a complex object that only supports
@@ -738,18 +739,25 @@ public: // CXXIter API-Surface
 	 * - For iterators with at least 2 values:
 	 * @code
 	 *	std::vector<float> input = {2.0f, 4.0f, 4.0f, 4.0f, 5.0f, 5.0f, 7.0f, 9.0f};
-	 *	std::optional<float> output = CXXIter::from(input).stddev();
-	 *	// output == Some(2.0f)
+	 *	std::optional<float> output = CXXIter::from(input).variance();
+	 *	// output == Some(4.0f)
+	 * @endcode
+	 * - For iterators with at least 2 values with (N-1) norm:
+	 * @code
+	 *	std::vector<float> input = {1.0f, 2.0f, 3.0f};
+	 *	std::optional<float> output = CXXIter::from(input)
+	 *		.variance<CXXIter::StatisticNormalization::N_MINUS_ONE>();
+	 *	// output == Some(1.0f)
 	 * @endcode
 	 * - For iterators with less than 2 values (not defined):
 	 * @code
-	 *	std::vector<float> input = {};
-	 *	std::optional<float> output = CXXIter::from(input).stddev();
+	 *	std::vector<float> input = {42.0f};
+	 *	std::optional<float> output = CXXIter::from(input).variance();
 	 *	// output == None
 	 * @endcode
 	 */
 	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
-	std::optional<TResult> stddev() {
+	std::optional<TResult> variance() {
 		TResult sumSquare = TResult();
 		TResult sum = TResult();
 		size_t cnt = 0;
@@ -762,13 +770,53 @@ public: // CXXIter API-Surface
 			if constexpr(NORM == StatisticNormalization::N) {
 				TResult E1 = (sumSquare / static_cast<TCount>(cnt));
 				TResult E2 = (sum / static_cast<TCount>(cnt));
-				return std::sqrt(E1 - (E2 * E2));
+				return E1 - (E2 * E2);
 			} else {
-				return std::sqrt(
-					(sumSquare - (sum * sum / static_cast<TCount>(cnt))) / static_cast<TCount>(cnt - 1)
-				);
+				TResult E1 = (sum * sum / static_cast<TCount>(cnt));
+				return (sumSquare - E1) / static_cast<TCount>(cnt - 1);
 			}
 		}
+		return {};
+	}
+
+	/**
+	 * @brief Consumer that calculates the standard deviation of all elements of this iterator.
+	 * @details The standard deviation is calculated using @see variance().
+	 * @note This consumes the iterator.
+	 * @return The standard deviation of all elements of this iterator.
+	 * @tparam NORM Type of the statistical normalization variant to use for the
+	 * calculation. @see StatisticNormalization
+	 * @tparam TResult Type of the stddev-calculation's result. This is also the type used
+	 * for the sum of all elements.
+	 * @tparam TCount Type the element counter is converted into, before dividing the sum and
+	 * the squared sum by. This can be necessary, if TResult is a complex object that only supports
+	 * the division operator for e.g. double.
+	 *
+	 * Usage Example:
+	 * - For iterators with at least 2 values:
+	 * @code
+	 *	std::vector<float> input = {2.0f, 4.0f, 4.0f, 4.0f, 5.0f, 5.0f, 7.0f, 9.0f};
+	 *	std::optional<float> output = CXXIter::from(input).stddev();
+	 *	// output == Some(2.0f)
+	 * @endcode
+	 * - For iterators with at least 2 values with (N-1) norm:
+	 * @code
+	 *	std::vector<float> input = {1.0f, 2.0f, 3.0f};
+	 *	std::optional<float> output = CXXIter::from(input)
+	 *		.stddev<CXXIter::StatisticNormalization::N_MINUS_ONE>();
+	 *	// output == Some(1.0f)
+	 * @endcode
+	 * - For iterators with less than 2 values (not defined):
+	 * @code
+	 *	std::vector<float> input = {42.0f};
+	 *	std::optional<float> output = CXXIter::from(input).stddev();
+	 *	// output == None
+	 * @endcode
+	 */
+	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
+	std::optional<TResult> stddev() {
+		std::optional<TResult> result = variance<NORM, TResult, TCount>();
+		if(result.has_value()) { return std::sqrt(result.value()); }
 		return {};
 	}
 
