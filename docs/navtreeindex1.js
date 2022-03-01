@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"structCXXIter_1_1SizeHint.html":[3,0,0,6],
+"structCXXIter_1_1SizeHint.html":[5,0,0,6],
 "structCXXIter_1_1SourceTrait.html":[3,0,0,7],
 "structCXXIter_1_1SourceTrait.html":[5,0,0,7],
 "structCXXIter_1_1SourceTrait.html#a3c72a215716e05df10d79738dd74eab3":[3,0,0,7,1],

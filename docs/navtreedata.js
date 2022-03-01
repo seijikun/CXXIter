@@ -61,7 +61,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Alternater_8h_source.html",
-"structCXXIter_1_1SourceTrait.html"
+"structCXXIter_1_1SizeHint.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
