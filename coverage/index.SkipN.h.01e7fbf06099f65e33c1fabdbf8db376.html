@@ -9,11 +9,12 @@
   </head>
 
   <body>
-    <h1>GCC Code Coverage Report</h1>
+    <header>
+      <h1>GCC Code Coverage Report</h1>
 
-    <hr/>
+      <hr/>
 
-    <div class="summary">
+      <div class="summary">
 <div>
   <table class="legend">
     <tr>
@@ -26,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-03-01 14:24:04</td>
+      <td>2022-04-07 20:02:28</td>
     </tr>
   </table>
 </div>
@@ -45,6 +46,12 @@
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
+      <th scope="row">Functions:</th>
+      <td>6</td>
+      <td>6</td>
+      <td class="coverage-high">100.0%</td>
+    </tr>
+    <tr>
       <th scope="row">Branches:</th>
       <td>7</td>
       <td>8</td>
@@ -52,10 +59,91 @@
     </tr>
   </table>
 </div>
-    </div>
+      </div>
 
-    <hr/>
+      <hr/>
+    </header>
 
+    <nav>
+<details>
+  <summary>List of functions</summary>
+  <table class="listOfFunctions">
+    <tr>
+      <th>Function</th>
+      <th>Line</th>
+      <th>Call count</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l35">CXXIter::IteratorTrait&lt;CXXIter::op::SkipN&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt; &gt;::next(CXXIter::op::SkipN&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l35">35</a>
+      </td>
+      <td>
+        <a href="#l35"> called 12 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l45">CXXIter::IteratorTrait&lt;CXXIter::op::SkipN&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt; &gt;::sizeHint(CXXIter::op::SkipN&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt; const&amp;)</a>
+      </td>
+      <td>
+        <a href="#l45">45</a>
+      </td>
+      <td>
+        <a href="#l45"> called 5 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::SkipN&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::SkipN(CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;&amp;&amp;, unsigned long)</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::SkipN&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::SkipN(CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;&amp;&amp;, unsigned long)</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 8 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::SkipN&lt;CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2}&gt; &gt;::SkipN(CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2}&gt;&amp;&amp;, unsigned long)</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::SkipN&lt;CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#2}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#2}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;::SkipN(CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#2}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#2}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;&amp;, unsigned long)</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+  </table>
+</details>
+    </nav>
+
+    <main>
 <div class="file-source">
   <table>
     <tr>
@@ -576,11 +664,11 @@
 
   </table>
 </div>
-
-    <hr/>
+      <hr/>
+    </main>
 
     <footer>
-      Generated by: <a href="http://gcovr.com">GCOVR (Version 5.0)</a>
+      Generated by: <a href="http://gcovr.com">GCOVR (Version 5.1)</a>
     </footer>
   </body>
 </html>

@@ -9,11 +9,12 @@
   </head>
 
   <body>
-    <h1>GCC Code Coverage Report</h1>
+    <header>
+      <h1>GCC Code Coverage Report</h1>
 
-    <hr/>
+      <hr/>
 
-    <div class="summary">
+      <div class="summary">
 <div>
   <table class="legend">
     <tr>
@@ -26,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-03-01 14:24:04</td>
+      <td>2022-04-07 20:02:28</td>
     </tr>
   </table>
 </div>
@@ -40,8 +41,14 @@
     </tr>
     <tr>
       <th scope="row">Lines:</th>
-      <td>8</td>
-      <td>8</td>
+      <td>9</td>
+      <td>9</td>
+      <td class="coverage-high">100.0%</td>
+    </tr>
+    <tr>
+      <th scope="row">Functions:</th>
+      <td>36</td>
+      <td>36</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -52,10 +59,421 @@
     </tr>
   </table>
 </div>
-    </div>
+      </div>
 
-    <hr/>
+      <hr/>
+    </header>
 
+    <nav>
+<details>
+  <summary>List of functions</summary>
+  <table class="listOfFunctions">
+    <tr>
+      <th>Function</th>
+      <th>Line</th>
+      <th>Call count</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#3}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#3}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 5 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::stepBy(unsigned long)::{lambda(int const&amp;)#1}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::stepBy(unsigned long)::{lambda(int const&amp;)#1}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 24 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l34">CXXIter::IteratorTrait&lt;CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#2}&gt; &gt;::next(CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#2}&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l34">34</a>
+      </td>
+      <td>
+        <a href="#l34"> called 5 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::Empty&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_ExactSizedEmptySource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#2}&gt;::Filter(CXXIter::Empty&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_ExactSizedEmptySource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;::Filter(CXXIter::SrcCRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;&amp;&amp;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcCRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;::Filter(CXXIter::SrcCRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;&amp;&amp;, CXXIter_srcConstRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;::Filter(CXXIter::SrcMov&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;&amp;&amp;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;::Filter(CXXIter::SrcMov&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;&amp;&amp;, CXXIter_srcMove_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcMov&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#3}&gt;::Filter(CXXIter::SrcMov&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;&amp;&amp;, CXXIter_filter_Test::TestBody()::{lambda(int)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3}&gt;::Filter(CXXIter::SrcRef&lt;CustomContainer&lt;LifecycleDebugger&gt; &gt;&amp;&amp;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;LifecycleDebugger, std::allocator&lt;LifecycleDebugger&gt; &gt; &gt;&amp;&amp;, CXXIter_srcRef_Test::TestBody()::{lambda(LifecycleDebugger const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#1}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;&amp;&amp;, CXXIter_filter_Test::TestBody()::{lambda(int)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::stepBy(unsigned long)::{lambda(int const&amp;)#1}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;&amp;&amp;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::stepBy(unsigned long)::{lambda(int const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 3 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_filter_Test::TestBody()::{lambda(int)#2}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;&amp;&amp;, CXXIter_filter_Test::TestBody()::{lambda(int)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter_find_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;&amp;&amp;, CXXIter_find_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter_find_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#2}&gt;::Filter(CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;&amp;&amp;, CXXIter_find_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)#5}, unsigned long&gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)#5}, unsigned long&gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(unsigned long const&amp;, unsigned long const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;unsigned long&gt; &gt;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(unsigned long)#6}&gt;::Filter(CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)#5}, unsigned long&gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)#5}, unsigned long&gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(unsigned long const&amp;, unsigned long const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;unsigned long&gt; &gt;&amp;&amp;, CXXIter_ExactSizedRepeatSource_Test::TestBody()::{lambda(unsigned long)#6})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#4}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#4}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#5}&gt;::Filter(CXXIter::op::Intersperser&lt;CXXIter::op::Sorter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#4}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(int)#4}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::sort&lt;(CXXIter::SortOrder)0, false&gt;()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, false&gt;, CXXIter::Repeater&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;&amp;, CXXIter_ExactSizedItemSource_Test::TestBody()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#5})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt; &gt;::copied()::{lambda(bool const&amp;)#1}, bool&gt;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt; &gt;::copied()::{lambda(bool const&amp;)#1}, bool&gt; &gt;::any()::{lambda(auto:1 const&amp;)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt; &gt;::copied()::{lambda(bool const&amp;)#1}, bool&gt;&amp;&amp;, CXXIter::IterApi&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;bool, std::allocator&lt;bool&gt; &gt; &gt; &gt;::copied()::{lambda(bool const&amp;)#1}, bool&gt; &gt;::any()::{lambda(auto:1 const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 7 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;unsigned int, std::allocator&lt;unsigned int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;unsigned int, std::allocator&lt;unsigned int&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned int const&amp;)#1}, unsigned int&gt;, CXXIter_any_Test::TestBody()::{lambda(unsigned int)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcCRef&lt;std::vector&lt;unsigned int, std::allocator&lt;unsigned int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcCRef&lt;std::vector&lt;unsigned int, std::allocator&lt;unsigned int&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned int const&amp;)#1}, unsigned int&gt;&amp;&amp;, CXXIter_any_Test::TestBody()::{lambda(unsigned int)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 5 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;&amp;&amp;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::copied()::{lambda(int const&amp;)#1}, int&gt;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::copied()::{lambda(int const&amp;)#1}, int&gt;&amp;&amp;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::copied()::{lambda(int const&amp;)#1}, int&gt;, CXXIter_zip_Test::TestBody()::{lambda(auto:1 const&amp;)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;int, std::allocator&lt;int&gt; &gt; &gt; &gt;::copied()::{lambda(int const&amp;)#1}, int&gt;&amp;&amp;, CXXIter_zip_Test::TestBody()::{lambda(auto:1 const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#3}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_chain_Test::TestBody()::{lambda(auto:1 const&amp;)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#3}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#3})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, CXXIter_zip_Test::TestBody()::{lambda(auto:1 const&amp;)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; &gt;::copied()::{lambda(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)#1}, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&amp;, CXXIter_zip_Test::TestBody()::{lambda(auto:1 const&amp;)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt;, CXXIter_chunkedExact_Test::TestBody()::{lambda(unsigned long)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt;&amp;&amp;, CXXIter_chunkedExact_Test::TestBody()::{lambda(unsigned long)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;&amp;&amp;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+  </table>
+</details>
+    </nav>
+
+    <main>
 <div class="file-source">
   <table>
     <tr>
@@ -424,8 +842,8 @@
       <td class="lineno"><a id="l41" href="#l41">41</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">21</td>
+      <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -486,11 +904,11 @@
 
   </table>
 </div>
-
-    <hr/>
+      <hr/>
+    </main>
 
     <footer>
-      Generated by: <a href="http://gcovr.com">GCOVR (Version 5.0)</a>
+      Generated by: <a href="http://gcovr.com">GCOVR (Version 5.1)</a>
     </footer>
   </body>
 </html>
