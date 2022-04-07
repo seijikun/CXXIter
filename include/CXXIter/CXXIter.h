@@ -1743,7 +1743,7 @@ public: // CXXIter API-Surface
 		{ a < a }; { a > a };
 	}
 	auto sortBy(TSortValueExtractFn sortValueExtractFn) {
-		return sort<STABLE>([&sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
+		return sort<STABLE>([sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
 				return (sortValueExtractFn(a) < sortValueExtractFn(b));
 			} else {

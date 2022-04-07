@@ -1080,4 +1080,14 @@ TEST(CXXIter, sortBy) {
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre("test23", "test1", "test2", "test", "tes"));
 	}
+
+	{ // Lambda capture
+		float ref = 600.0;
+		std::vector<std::string> input = {"1337", "55", "500", "10000"};
+		auto output = CXXIter::from(input)
+				.sortBy([&](const std::string& val) { return std::abs(std::stof(val) - ref); })
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre("500", "55", "1337", "10000"));
+	}
 }
