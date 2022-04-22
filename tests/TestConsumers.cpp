@@ -406,11 +406,39 @@ TEST(CXXIter, minBy) {
 	}
 }
 
+TEST(CXXIter, minIdxBy) {
+	{
+		const std::vector<std::string> input = {"middle", "smol", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcCRef(input)
+				.minIdxBy([](const std::string& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 1);
+		ASSERT_THAT(input, ElementsAre("middle", "smol", "largeString"));
+	}
+	{
+		std::vector<std::string> input = {"middle", "smol", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcRef(input)
+				.minIdxBy([](const std::string& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 1);
+		ASSERT_THAT(input, ElementsAre("middle", "smol", "largeString"));
+	}
+	{
+		std::vector<std::string> input = {"middle", "smol", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcMov(std::move(input))
+				.minIdxBy([](std::string&& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 1);
+	}
+	{
+		std::vector<std::string> input = {};
+		std::optional<size_t> output = CXXIter::from(input)
+				.minIdxBy([](const std::string& str) { return str.size(); });
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, max) {
 	{
 		std::vector<int> input = {42, 1337, 52};
 		std::optional<int> output = CXXIter::from(input).copied().max().toStdOptional();
-		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), 1337);
 	}
 	{
@@ -426,7 +454,6 @@ TEST(CXXIter, maxBy) {
 		std::optional<std::string> output = CXXIter::SrcCRef(input)
 				.maxBy([](const std::string& str) { return str.size(); })
 				.toStdOptional();
-		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "largeString");
 		ASSERT_THAT(input, ElementsAre("smol", "middle", "largeString"));
 	}
@@ -435,7 +462,6 @@ TEST(CXXIter, maxBy) {
 		std::optional<std::string> output = CXXIter::SrcRef(input)
 				.maxBy([](std::string& str) { return str.size(); })
 				.toStdOptional();
-		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "largeString");
 		ASSERT_THAT(input, ElementsAre("smol", "middle", "largeString"));
 	}
@@ -444,7 +470,6 @@ TEST(CXXIter, maxBy) {
 		std::optional<std::string> output = CXXIter::SrcMov(std::move(input))
 				.maxBy([](std::string&& str) { return str.size(); })
 				.toStdOptional();
-		ASSERT_TRUE(output.has_value());
 		ASSERT_EQ(output.value(), "largeString");
 	}
 	{
@@ -452,6 +477,35 @@ TEST(CXXIter, maxBy) {
 		std::optional<std::string> output = CXXIter::from(input)
 				.maxBy([](const std::string& str) { return str.size(); })
 				.toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
+TEST(CXXIter, maxIdxBy) {
+	{
+		const std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcCRef(input)
+				.maxIdxBy([](const std::string& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 2);
+		ASSERT_THAT(input, ElementsAre("smol", "middle", "largeString"));
+	}
+	{
+		std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcRef(input)
+				.maxIdxBy([](std::string& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 2);
+		ASSERT_THAT(input, ElementsAre("smol", "middle", "largeString"));
+	}
+	{
+		std::vector<std::string> input = {"smol", "middle", "largeString"};
+		std::optional<size_t> output = CXXIter::SrcMov(std::move(input))
+				.maxIdxBy([](std::string&& str) { return str.size(); });
+		ASSERT_EQ(output.value(), 2);
+	}
+	{
+		std::vector<std::string> input = {};
+		std::optional<size_t> output = CXXIter::from(input)
+				.maxIdxBy([](const std::string& str) { return str.size(); });
 		ASSERT_FALSE(output.has_value());
 	}
 }

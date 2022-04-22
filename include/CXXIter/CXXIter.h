@@ -824,7 +824,8 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Consumer that yields the smallest element from this iterator.
 	 * @note This consumes the iterator.
-	 * @return The smallest element of this iterator (if any).
+	 * @return A CXXIter::IterValue optional either containing the smallest element of this iterator (if any),
+	 * or empty otherwise.
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator
@@ -849,7 +850,8 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Consumer that yields the largest element from this iterator.
 	 * @note This consumes the iterator.
-	 * @return The largest element of this iterator (if any).
+	 * @return A CXXIter::IterValue optional either containing the largest element of this iterator (if any),
+	 * or empty otherwise.
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator
@@ -873,8 +875,10 @@ public: // CXXIter API-Surface
 
 	/**
 	 * @brief Consumer that yields the smallest element from this iterator. Comparison of items is done
-	 * using the comparison values returned by invoking the given @p minValueExtractFn on each element.
+	 * using the comparison values returned by invoking the given @p compValueExtractFn on each element.
 	 * @note This consumes the iterator.
+	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter returns
+	 * the value by which the item should be compared to others.
 	 * @return A CXXIter::IterValue optional either containing the smallest element of this iterator (if any),
 	 * or empty otherwise.
 	 *
@@ -896,17 +900,17 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	template<typename TMinValueExtractFn>
-	requires requires(const std::invoke_result_t<TMinValueExtractFn, Item&&>& a, std::remove_cvref_t<decltype(a)> ownedA) {
+	template<typename TCompValueExtractFn>
+	requires requires(const std::invoke_result_t<TCompValueExtractFn, Item&&>& a, std::remove_cvref_t<decltype(a)> ownedA) {
 		{ a < a };
 		{ ownedA = ownedA };
 	}
-	IterValue<Item> minBy(TMinValueExtractFn minValueExtractFn) {
+	IterValue<Item> minBy(TCompValueExtractFn compValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(std::forward<Item>(result.value()));
-		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(std::forward<Item>(item));
+		auto resultValue = compValueExtractFn(std::forward<Item>(result.value()));
+		forEach([&result, &resultValue, &compValueExtractFn](Item&& item) {
+			auto itemValue = compValueExtractFn(std::forward<Item>(item));
 			if(itemValue < resultValue) {
 				result = item;
 				resultValue = itemValue;
@@ -916,9 +920,55 @@ public: // CXXIter API-Surface
 	}
 
 	/**
-	 * @brief Consumer that yields the largest element from this iterator. Comparison of items is done
-	 * using the comparison values returned by invoking the given @p minValueExtractFn on each element.
+	 * @brief Consumer that yields the index of the smallest element from this iterator. Comparison of items is done
+	 * using the comparison values returned by invoking the given @p compValueExtractFn on each element.
 	 * @note This consumes the iterator.
+	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter, returns
+	 * the value by which the item should be compared to others.
+	 * @return Index of the smallest element within the input iterator.
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *  const std::vector<std::string> input = {"middle", "smol", "largeString"};
+	 *  std::optional<size_t> output = CXXIter::SrcCRef(input)
+	 *  	.minIdxBy([](const std::string& str) { return str.size(); });
+	 *  // output = Some(1)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *  const std::vector<std::string> input = {};
+	 *  std::optional<size_t> output = CXXIter::SrcCRef(input)
+	 *  	.minIdxBy([](const std::string& str) { return str.size(); });
+	 *  // output = None
+	 * @endcode
+	 */
+	template<typename TCompValueExtractFn>
+	requires requires(const std::invoke_result_t<TCompValueExtractFn, Item&&>& a) {
+		{ a < a };
+	}
+	std::optional<size_t> minIdxBy(TCompValueExtractFn compValueExtractFn) {
+		IterValue<Item> tmp = Iterator::next(*self());
+		if(!tmp.has_value()) { return {}; }
+		size_t iterationIdx = 1, minIdx = 0;
+		auto minValue = compValueExtractFn(std::forward<Item>(tmp.value()));
+		forEach([iterationIdx, &minIdx, &minValue, &compValueExtractFn](Item&& item) mutable {
+			auto itemValue = compValueExtractFn(std::forward<Item>(item));
+			if(itemValue < minValue) {
+				minValue = itemValue;
+				minIdx = iterationIdx;
+			}
+			iterationIdx += 1;
+		});
+		return minIdx;
+	}
+
+	/**
+	 * @brief Consumer that yields the largest element from this iterator. Comparison of items is done
+	 * using the comparison values returned by invoking the given @p compValueExtractFn on each element.
+	 * @note This consumes the iterator.
+	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter returns
+	 * the value by which the item should be compared to others.
 	 * @return A CXXIter::IterValue optional either containing the largest element of this iterator (if any),
 	 * or empty otherwise.
 	 *
@@ -945,18 +995,63 @@ public: // CXXIter API-Surface
 		{ a > a };
 		{ ownedA = ownedA };
 	}
-	IterValue<Item> maxBy(TMaxValueExtractFn minValueExtractFn) {
+	IterValue<Item> maxBy(TMaxValueExtractFn compValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(std::forward<Item>(result.value()));
-		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(std::forward<Item>(item));
+		auto resultValue = compValueExtractFn(std::forward<Item>(result.value()));
+		forEach([&result, &resultValue, &compValueExtractFn](Item&& item) {
+			auto itemValue = compValueExtractFn(std::forward<Item>(item));
 			if(itemValue > resultValue) {
 				result = item;
 				resultValue = itemValue;
 			}
 		});
 		return result;
+	}
+
+	/**
+	 * @brief Consumer that yields the index of the largest element from this iterator. Comparison of items is done
+	 * using the comparison values returned by invoking the given @p TCompValueExtractFn on each element.
+	 * @note This consumes the iterator.
+	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter, returns
+	 * the value by which the item should be compared to others.
+	 * @return Index of the largest element within the input iterator.
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *  const std::vector<std::string> input = {"middle", "largeString", "smol"};
+	 *  std::optional<size_t> output = CXXIter::SrcCRef(input)
+	 *  	.maxIdxBy([](const std::string& str) { return str.size(); });
+	 *  // output = Some(1)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *  const std::vector<std::string> input = {};
+	 *  std::optional<size_t> output = CXXIter::SrcCRef(input)
+	 *  	.maxIdxBy([](const std::string& str) { return str.size(); });
+	 *  // output = None
+	 * @endcode
+	 */
+	template<typename TMaxValueExtractFn>
+	requires requires(const std::invoke_result_t<TMaxValueExtractFn, Item&&>& a, std::remove_cvref_t<decltype(a)> ownedA) {
+		{ a > a };
+		{ ownedA = ownedA };
+	}
+	std::optional<size_t> maxIdxBy(TMaxValueExtractFn compValueExtractFn) {
+		IterValue<Item> tmp = Iterator::next(*self());
+		if(!tmp.has_value()) { return {}; }
+		size_t iterationIdx = 1, maxIdx = 0;
+		auto maxValue = compValueExtractFn(std::forward<Item>(tmp.value()));
+		forEach([iterationIdx, &maxIdx, &maxValue, &compValueExtractFn](Item&& item) mutable {
+			auto itemValue = compValueExtractFn(std::forward<Item>(item));
+			if(itemValue > maxValue) {
+				maxValue = itemValue;
+				maxIdx = iterationIdx;
+			}
+			iterationIdx += 1;
+		});
+		return maxIdx;
 	}
 
 	/**
