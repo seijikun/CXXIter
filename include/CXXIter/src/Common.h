@@ -42,6 +42,7 @@ namespace CXXIter {
 		std::optional<TValue> toStdOptional() {
 			return std::optional<TValue>(std::move(inner));
 		}
+		operator std::optional<TValue>() { return toStdOptional(); }
 
 		IterValue<TValue>& operator=(TValue&& o) {
 			inner = std::forward<TValue>(o);
@@ -78,6 +79,7 @@ namespace CXXIter {
 			if(inner.has_value()) { return inner.value(); }
 			return {};
 		}
+		operator std::optional<TValueDeref>() { return toStdOptional(); }
 
 		IterValue<TValue>& operator=(TValue&& o) {
 			inner = std::forward<TValue>(o);
