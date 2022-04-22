@@ -66,7 +66,7 @@ var sectionId = 'dynsection-14';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#a62f8227306326b2e141baeee05a2a0e7" target="_top" xlink:title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co...">
+<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e" target="_top" xlink:title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co...">
 <polygon fill="none" stroke="black" points="155,-6 155,-25 287,-25 287,-6 155,-6"/>
 <text text-anchor="middle" x="221" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::maxBy</text>
 </a>

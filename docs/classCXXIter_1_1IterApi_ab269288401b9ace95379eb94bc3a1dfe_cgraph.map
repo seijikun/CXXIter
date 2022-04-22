@@ -1,6 +1,6 @@
 <map id="CXXIter::IterApi::max" name="CXXIter::IterApi::max">
 <area shape="rect" id="node1" title="Consumer that yields the largest element from this iterator." alt="" coords="5,31,164,57"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a62f8227306326b2e141baeee05a2a0e7" title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co..." alt="" coords="212,31,388,57"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e" title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co..." alt="" coords="212,31,388,57"/>
 <area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="436,5,615,32"/>
 <area shape="rect" id="node4" href="$structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="663,23,817,65"/>
 </map>

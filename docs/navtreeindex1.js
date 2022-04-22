@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"sourcesAndGenerators.html#subsec_custom_sources":[2,0,0],
+"structCXXIter_1_1ExactSizeIteratorTrait.html":[5,0,0,1],
+"structCXXIter_1_1ExactSizeIteratorTrait.html":[3,0,0,1],
+"structCXXIter_1_1Generator_1_1promise__type.html":[5,0,0,2,0],
 "structCXXIter_1_1Generator_1_1promise__type.html":[3,0,0,2,0],
 "structCXXIter_1_1IteratorTrait.html":[5,0,0,4],
 "structCXXIter_1_1IteratorTrait.html":[3,0,0,4],
