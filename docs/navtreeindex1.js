@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"pages.html":[],
+"sourcesAndGenerators.html":[2],
+"sourcesAndGenerators.html#sec_generators":[2,1],
+"sourcesAndGenerators.html#sec_sources":[2,0],
 "sourcesAndGenerators.html#subsec_custom_sources":[2,0,0],
 "structCXXIter_1_1ExactSizeIteratorTrait.html":[5,0,0,1],
 "structCXXIter_1_1ExactSizeIteratorTrait.html":[3,0,0,1],
