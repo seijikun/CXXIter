@@ -98,13 +98,13 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="24" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ copied()</text>
 <text text-anchor="start" x="24" y="-431.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ indexed()</text>
 <text text-anchor="start" x="24" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ filter()</text>
-<text text-anchor="start" x="24" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ chunkedExact()</text>
-<text text-anchor="start" x="24" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ map()</text>
-<text text-anchor="start" x="24" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ flatMap()</text>
-<text text-anchor="start" x="24" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ flatMap()</text>
-<text text-anchor="start" x="24" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ generateFrom()</text>
-<text text-anchor="start" x="24" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ modify()</text>
-<text text-anchor="start" x="24" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 15 more...</text>
+<text text-anchor="start" x="24" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unique()</text>
+<text text-anchor="start" x="24" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unique()</text>
+<text text-anchor="start" x="24" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ chunkedExact()</text>
+<text text-anchor="start" x="24" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ map()</text>
+<text text-anchor="start" x="24" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ flatMap()</text>
+<text text-anchor="start" x="24" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ flatMap()</text>
+<text text-anchor="start" x="24" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 17 more...</text>
 <text text-anchor="start" x="24" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00">* forEach()</text>
 <text text-anchor="start" x="24" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collect()</text>
 <text text-anchor="start" x="24" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collectInto()</text>
@@ -120,13 +120,13 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="24" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">* copied()</text>
 <text text-anchor="start" x="24" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">* indexed()</text>
 <text text-anchor="start" x="24" y="-178.5" font-family="Helvetica,sans-Serif" font-size="10.00">* filter()</text>
-<text text-anchor="start" x="24" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">* chunkedExact()</text>
-<text text-anchor="start" x="24" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">* map()</text>
-<text text-anchor="start" x="24" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">* flatMap()</text>
-<text text-anchor="start" x="24" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">* flatMap()</text>
-<text text-anchor="start" x="24" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">* generateFrom()</text>
-<text text-anchor="start" x="24" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">* modify()</text>
-<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 15 more...</text>
+<text text-anchor="start" x="24" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00">* unique()</text>
+<text text-anchor="start" x="24" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">* unique()</text>
+<text text-anchor="start" x="24" y="-145.5" font-family="Helvetica,sans-Serif" font-size="10.00">* chunkedExact()</text>
+<text text-anchor="start" x="24" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">* map()</text>
+<text text-anchor="start" x="24" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">* flatMap()</text>
+<text text-anchor="start" x="24" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">* flatMap()</text>
+<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 17 more...</text>
 </a>
 </g>
 </g>

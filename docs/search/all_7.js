@@ -35,10 +35,11 @@ var searchData=
   ['iterapi_3c_20srcref_3c_20tcontainer_20_3e_20_3e_32',['IterApi&lt; SrcRef&lt; TContainer &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20taken_3c_20tchaininput_20_3e_20_3e_33',['IterApi&lt; TakeN&lt; TChainInput &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20takewhile_3c_20tchaininput_2c_20ttakepredicate_20_3e_20_3e_34',['IterApi&lt; TakeWhile&lt; TChainInput, TTakePredicate &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_35',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iterator_36',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
-  ['iterator_37',['Iterator',['../classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32',1,'CXXIter::IterApi']]],
-  ['iteratorstate_38',['IteratorState',['../structCXXIter_1_1SourceTrait.html#a99953aec531457dcf045aff276aba775',1,'CXXIter::SourceTrait']]],
-  ['iteratortrait_39',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
-  ['itervalue_3c_20tvalue_20_3e_40',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
+  ['iterapi_3c_20unique_3c_20tchaininput_2c_20tmapfn_20_3e_20_3e_35',['IterApi&lt; Unique&lt; TChainInput, TMapFn &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
+  ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_36',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
+  ['iterator_37',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
+  ['iterator_38',['Iterator',['../classCXXIter_1_1IterApi.html#a400f05b1c612d1088ce9561fd7191d32',1,'CXXIter::IterApi']]],
+  ['iteratorstate_39',['IteratorState',['../structCXXIter_1_1SourceTrait.html#a99953aec531457dcf045aff276aba775',1,'CXXIter::SourceTrait']]],
+  ['iteratortrait_40',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
+  ['itervalue_3c_20tvalue_20_3e_41',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
 ];

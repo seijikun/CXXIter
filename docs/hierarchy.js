@@ -68,6 +68,9 @@ var hierarchy =
     [ "CXXIter::IterApi< TakeWhile< TChainInput, TTakePredicate > >", "classCXXIter_1_1IterApi.html", [
       [ "CXXIter::op::TakeWhile< TChainInput, TTakePredicate >", "classCXXIter_1_1op_1_1TakeWhile.html", null ]
     ] ],
+    [ "CXXIter::IterApi< Unique< TChainInput, TMapFn > >", "classCXXIter_1_1IterApi.html", [
+      [ "CXXIter::op::Unique< TChainInput, TMapFn >", "classCXXIter_1_1op_1_1Unique.html", null ]
+    ] ],
     [ "CXXIter::IterApi< Zipper< TChainInput1, TZipContainer, TChainInputs... > >", "classCXXIter_1_1IterApi.html", [
       [ "CXXIter::op::Zipper< TChainInput1, TZipContainer, TChainInputs >", "classCXXIter_1_1op_1_1Zipper.html", null ]
     ] ],

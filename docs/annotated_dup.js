@@ -19,6 +19,7 @@ var annotated_dup =
         [ "Sorter", "classCXXIter_1_1op_1_1Sorter.html", null ],
         [ "TakeN", "classCXXIter_1_1op_1_1TakeN.html", null ],
         [ "TakeWhile", "classCXXIter_1_1op_1_1TakeWhile.html", null ],
+        [ "Unique", "classCXXIter_1_1op_1_1Unique.html", null ],
         [ "Zipper", "classCXXIter_1_1op_1_1Zipper.html", null ]
       ] ],
       [ "ExactSizeIteratorTrait", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],

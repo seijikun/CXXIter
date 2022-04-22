@@ -1,5 +1,12 @@
 var NAVTREEINDEX1 =
 {
+"structCXXIter_1_1Generator_1_1promise__type.html":[3,0,0,2,0],
+"structCXXIter_1_1IteratorTrait.html":[5,0,0,4],
+"structCXXIter_1_1IteratorTrait.html":[3,0,0,4],
+"structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c":[5,0,0,4,1],
+"structCXXIter_1_1IteratorTrait.html#a892a600dee340dbc043ec634e018662c":[3,0,0,4,1],
+"structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93":[3,0,0,4,0],
+"structCXXIter_1_1IteratorTrait.html#ab5b240730a2cd7bf3ac25f2b78b8aa93":[5,0,0,4,0],
 "structCXXIter_1_1SizeHint.html":[3,0,0,6],
 "structCXXIter_1_1SizeHint.html":[5,0,0,6],
 "structCXXIter_1_1SourceTrait.html":[3,0,0,7],
