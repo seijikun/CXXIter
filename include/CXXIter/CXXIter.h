@@ -33,6 +33,7 @@
 #include "src/op/Sorter.h"
 #include "src/op/TakeN.h"
 #include "src/op/TakeWhile.h"
+#include "src/op/Unique.h"
 #include "src/op/Zipper.h"
 
 
@@ -1117,6 +1118,53 @@ public: // CXXIter API-Surface
 	template<std::invocable<const ItemOwned&> TFilterFn>
 	op::Filter<TSelf, TFilterFn> filter(TFilterFn filterFn) {
 		return op::Filter<TSelf, TFilterFn>(std::move(*self()), filterFn);
+	}
+
+	/**
+	 * @brief Constructs a new iterator that only contains every element of the input iterator only once.
+	 * @details This variant checks whether the data returned by the given @p mapFn when invoked with the input's
+	 * item is unique. This requires the data returned by @p mapFn to be hashable using @c std::hash.
+	 * @param mapFn Function that maps the input's element to data that should be used in the uniqueness-check.
+	 * @return Iterator that does not contain duplicate elements from the input iterator's elements.
+	 * @attention Unique requires extra data storage to remember what items it has already seen. This
+	 * leads to additional memory usage.
+	 *
+	 * Usage Example:
+	 * @code
+	 *  std::vector<double> input = {1.0, 1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5};
+	 *  std::vector<double> output = CXXIter::from(input)
+	 * 		.unique([](double item) { return std::floor(item); })
+	 * 		.copied()
+	 * 		.collect<std::vector>();
+	 *  // output == { 1.0, 2.0, 3.25, 4.5 }
+	 * @endcode
+	 */
+	template<std::invocable<const ItemOwned&> TMapFn>
+	requires is_hashable<std::invoke_result_t<TMapFn, const ItemOwned&>>
+	op::Unique<TSelf, TMapFn> unique(TMapFn mapFn) {
+		return op::Unique<TSelf, TMapFn>(std::move(*self()), mapFn);
+	}
+
+	/**
+	 * @brief Constructs a new iterator that only contains every element of the input iterator only once.
+	 * @details This variant uses the input elements directly for the uniqueness-comparison.
+	 * This requires the input elements to be hashable using @c std::hash.
+	 * @return Iterator that does not contain duplicate elements from the input iterator's elements.
+	 * @attention Unique requires extra data storage to remember what items it has already seen. This
+	 * leads to additional memory usage.
+	 *
+	 * Usage Example:
+	 * @code
+	 *  std::vector<double> input = {1.0, 1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5};
+	 *  std::vector<double> output = CXXIter::from(input)
+	 * 		.unique()
+	 * 		.copied()
+	 * 		.collect<std::vector>();
+	 *  // output == { 1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5 }
+	 * @endcode
+	 */
+	auto unique() {
+		return unique([](const auto& item) { return item; });
 	}
 
 	/**

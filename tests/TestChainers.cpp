@@ -108,6 +108,44 @@ TEST(CXXIter, filter) {
 	}
 }
 
+TEST(CXXIter, unique) {
+	{ // sizeHint
+		std::vector<size_t> input = {1, 1, 2, 3, 3, 4, 4, 5, 5, 5};
+		SizeHint sizeHint = CXXIter::from(input)
+				.unique()
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, 0);
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{ // basic data
+		std::vector<size_t> input = {1, 1, 2, 3, 3, 4, 4, 5, 5, 5};
+		std::vector<size_t> output = CXXIter::from(input)
+				.unique()
+				.copied()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 5);
+		ASSERT_THAT(output, ElementsAre(1, 2, 3, 4, 5));
+	}
+	{ // basic data
+		std::vector<double> input = {1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5};
+		std::vector<double> output = CXXIter::from(input)
+				.unique()
+				.copied()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input.size());
+		ASSERT_THAT(output, ElementsAre(1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5));
+	}
+	{ // with mapFn
+		std::vector<double> input = {1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5};
+		std::vector<double> output = CXXIter::from(input)
+				.unique([](double item) { return std::floor(item); })
+				.copied()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(1.0, 2.0, 3.25, 4.5));
+	}
+}
+
 TEST(CXXIter, chunkedExact) {
 	{ // sizeHint
 		{

@@ -216,6 +216,15 @@ namespace CXXIter {
 		constexpr bool is_template_instance_v<U<T>, U> = true;
 
 		/**
+		 * @brief Concept that checks whether the given type T has an implementation of @c std::hash<T>::operator()
+		 * @see https://en.cppreference.com/w/cpp/language/constraints
+		 */
+		template<typename T>
+		concept is_hashable = requires(T a) {
+			{ std::hash<T>{}(a) } -> std::convertible_to<std::size_t>;
+		};
+
+		/**
 		 * @brief Concept that checks whether the given invocable type @p TFn is a function-type
 		 * that accepts the parameter of types @p TArgs by value.
 		 * @details This concepts only accepts @p TFn if it takes the argument types by value. Neither
