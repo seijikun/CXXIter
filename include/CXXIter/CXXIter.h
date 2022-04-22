@@ -848,6 +848,29 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Consumer that yields the index of the smallest element within this iterator.
+	 * @note This consumes the iterator.
+	 * @return Index of the smallest element within the input iterator (if any).
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<int> input = {1337, 42, 52};
+	 *	std::optional<size_t> output = CXXIter::from(input).minIdx();
+	 *	// output == Some(1)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<int> input = {};
+	 *	std::optional<size_t> output = CXXIter::from(input).minIdx();
+	 *	// output == None
+	 * @endcode
+	 */
+	std::optional<size_t> minIdx() {
+		return minIdxBy([](auto&& item) { return item; });
+	}
+
+	/**
 	 * @brief Consumer that yields the largest element from this iterator.
 	 * @note This consumes the iterator.
 	 * @return A CXXIter::IterValue optional either containing the largest element of this iterator (if any),
@@ -871,6 +894,29 @@ public: // CXXIter API-Surface
 	 */
 	IterValue<Item> max() {
 		return maxBy([](auto&& item) { return item; });
+	}
+
+	/**
+	 * @brief Consumer that yields the index of the largest element within this iterator.
+	 * @note This consumes the iterator.
+	 * @return Index of the largest element within the input iterator (if any).
+	 *
+	 * Usage Example:
+	 * - For a non-empty iterator
+	 * @code
+	 *	std::vector<int> input = {42, 1337, 52};
+	 *	std::optional<size_t> output = CXXIter::from(input).maxIdx();
+	 *	// output == Some(1)
+	 * @endcode
+	 * - For an empty iterator:
+	 * @code
+	 *	std::vector<int> input = {};
+	 *	std::optional<size_t> output = CXXIter::from(input).maxIdx();
+	 *	// output == None
+	 * @endcode
+	 */
+	std::optional<size_t> maxIdx() {
+		return maxIdxBy([](auto&& item) { return item; });
 	}
 
 	/**
@@ -925,7 +971,7 @@ public: // CXXIter API-Surface
 	 * @note This consumes the iterator.
 	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter, returns
 	 * the value by which the item should be compared to others.
-	 * @return Index of the smallest element within the input iterator.
+	 * @return Index of the smallest element within the input iterator (if any).
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator
@@ -1015,7 +1061,7 @@ public: // CXXIter API-Surface
 	 * @note This consumes the iterator.
 	 * @param compValueExtractFn Function that, given an element from the input iterator as parameter, returns
 	 * the value by which the item should be compared to others.
-	 * @return Index of the largest element within the input iterator.
+	 * @return Index of the largest element within the input iterator (if any).
 	 *
 	 * Usage Example:
 	 * - For a non-empty iterator

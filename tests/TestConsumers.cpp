@@ -370,6 +370,20 @@ TEST(CXXIter, min) {
 	}
 }
 
+TEST(CXXIter, minIdx) {
+	{
+		std::vector<int> input = {1337, 42, 52};
+		std::optional<size_t> output = CXXIter::from(input).minIdx();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_EQ(output.value(), 1);
+	}
+	{
+		std::vector<int> input = {};
+		std::optional<size_t> output = CXXIter::from(input).minIdx();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
 TEST(CXXIter, minBy) {
 	{
 		const std::vector<std::string> input = {"middle", "smol", "largeString"};
@@ -444,6 +458,19 @@ TEST(CXXIter, max) {
 	{
 		std::vector<int> input = {};
 		std::optional<int> output = CXXIter::from(input).copied().max().toStdOptional();
+		ASSERT_FALSE(output.has_value());
+	}
+}
+
+TEST(CXXIter, maxIdx) {
+	{
+		std::vector<int> input = {42, 1337, 52};
+		std::optional<size_t> output = CXXIter::from(input).maxIdx();
+		ASSERT_EQ(output.value(), 1);
+	}
+	{
+		std::vector<int> input = {};
+		std::optional<size_t> output = CXXIter::from(input).maxIdx();
 		ASSERT_FALSE(output.has_value());
 	}
 }
