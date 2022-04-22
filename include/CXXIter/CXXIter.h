@@ -830,29 +830,20 @@ public: // CXXIter API-Surface
 	 * - For a non-empty iterator
 	 * @code
 	 *	std::vector<int> input = {42, 1337, 52};
-	 *	std::optional<int> output = CXXIter::from(input).min();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.min().toStdOptional();
 	 *	// output == Some(42)
 	 * @endcode
 	 * - For an empty iterator:
 	 * @code
 	 *	std::vector<int> input = {};
-	 *	std::optional<int> output = CXXIter::from(input).min();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.min().toStdOptional();
 	 *	// output == None
 	 * @endcode
 	 */
-	template<typename TResult = ItemOwned>
-	requires requires(TResult res, ItemOwned item) {
-		{ item < res };
-		{ res = item };
-	}
-	std::optional<TResult> min() {
-		auto item = Iterator::next(*self());
-		if(!item.has_value()) { return {}; }
-		TResult result = item.value();
-		forEach([&result](Item&& item) {
-			if(item < result) { result = item; }
-		});
-		return result;
+	IterValue<Item> min() {
+		return minBy([](auto&& item) { return item; });
 	}
 
 	/**
@@ -864,29 +855,20 @@ public: // CXXIter API-Surface
 	 * - For a non-empty iterator
 	 * @code
 	 *	std::vector<int> input = {42, 1337, 52};
-	 *	std::optional<int> output = CXXIter::from(input).max();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.max().toStdOptional();
 	 *	// output == Some(1337)
 	 * @endcode
 	 * - For an empty iterator:
 	 * @code
 	 *	std::vector<int> input = {};
-	 *	std::optional<int> output = CXXIter::from(input).max();
+	 *	std::optional<int> output = CXXIter::from(input)
+	 *		.max().toStdOptional();
 	 *	// output == None
 	 * @endcode
 	 */
-	template<typename TResult = ItemOwned>
-	requires requires(TResult res, ItemOwned item) {
-		{ item > res };
-		{ res = item };
-	}
-	std::optional<TResult> max() {
-		auto item = Iterator::next(*self());
-		if(!item.has_value()) { return {}; }
-		TResult result = item.value();
-		forEach([&result](Item&& item) {
-			if(item > result) { result = item; }
-		});
-		return result;
+	IterValue<Item> max() {
+		return maxBy([](auto&& item) { return item; });
 	}
 
 	/**
@@ -915,15 +897,16 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TMinValueExtractFn>
-	requires requires(const std::invoke_result_t<TMinValueExtractFn, const ItemOwned&>& a) {
+	requires requires(const std::invoke_result_t<TMinValueExtractFn, Item&&>& a, std::remove_cvref_t<decltype(a)> ownedA) {
 		{ a < a };
+		{ ownedA = ownedA };
 	}
 	IterValue<Item> minBy(TMinValueExtractFn minValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(result.value());
+		auto resultValue = minValueExtractFn(std::forward<Item>(result.value()));
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(item);
+			auto itemValue = minValueExtractFn(std::forward<Item>(item));
 			if(itemValue < resultValue) {
 				result = item;
 				resultValue = itemValue;
@@ -958,15 +941,16 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TMaxValueExtractFn>
-	requires requires(const std::invoke_result_t<TMaxValueExtractFn, const ItemOwned&>& a) {
+	requires requires(const std::invoke_result_t<TMaxValueExtractFn, Item&&>& a, std::remove_cvref_t<decltype(a)> ownedA) {
 		{ a > a };
+		{ ownedA = ownedA };
 	}
 	IterValue<Item> maxBy(TMaxValueExtractFn minValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
-		auto resultValue = minValueExtractFn(result.value());
+		auto resultValue = minValueExtractFn(std::forward<Item>(result.value()));
 		forEach([&result, &resultValue, &minValueExtractFn](Item&& item) {
-			auto itemValue = minValueExtractFn(item);
+			auto itemValue = minValueExtractFn(std::forward<Item>(item));
 			if(itemValue > resultValue) {
 				result = item;
 				resultValue = itemValue;
