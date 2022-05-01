@@ -51,5 +51,6 @@ var namespaceCXXIter =
     [ "fromFn", "namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9", null ],
     [ "generate", "namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1", null ],
     [ "range", "namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c", null ],
-    [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ]
+    [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ],
+    [ "unzip", "namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f", null ]
 ];

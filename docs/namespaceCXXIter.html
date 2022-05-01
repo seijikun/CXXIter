@@ -191,6 +191,10 @@ requires is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td></tr>
 <tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplItemLeft" align="right" valign="top">Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">range</a> (TValue <a class="el" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">from</a>, TValue to, TValue step=1)</td></tr>
 <tr class="memdesc:a4b4d837f5716b2f5fd7c3098268c582c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">More...</a><br /></td></tr>
 <tr class="separator:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d9da90524395fd7d89cf58ac49728f"><td class="memTemplParams" colspan="2">template&lt;size_t FIELD_IDX&gt; </td></tr>
+<tr class="memitem:a37d9da90524395fd7d89cf58ac49728f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f">unzip</a> ()</td></tr>
+<tr class="memdesc:a37d9da90524395fd7d89cf58ac49728f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to construct a lambda that extracts the <code>FIELD_IDX</code>-th element from tuples or pairs passing through the iterator.  <a href="namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f">More...</a><br /></td></tr>
+<tr class="separator:a37d9da90524395fd7d89cf58ac49728f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>. </p>
@@ -596,6 +600,46 @@ template&lt;typename TItem &gt; </div>
 <div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02064">CXXIter.h:2064</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02064">2064</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+
+</div>
+</div>
+<a id="a37d9da90524395fd7d89cf58ac49728f" name="a37d9da90524395fd7d89cf58ac49728f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37d9da90524395fd7d89cf58ac49728f">&#9670;&nbsp;</a></span>unzip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t FIELD_IDX&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto CXXIter::unzip </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Helper to construct a lambda that extracts the <code>FIELD_IDX</code>-th element from tuples or pairs passing through the iterator. </p>
+<p >You can use this shortcut everywhere, where a lambda is required that takes a tuple or pair and returns their <code>FIELD_IDX</code>-th element. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">FIELD_IDX</td><td>Index of the field to extract. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Lambda that, given an arbitrary tuple or pair, extracts its <code>FIELD_IDX</code>-th element.</dd></dl>
+<p>Usage Example:</p><ul>
+<li>Use the tuple's second (idx = 1) field to sort by. <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
+<div class="line">std::vector&lt;std::pair&lt;size_t, float&gt;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a>(input).copied()</div>
+<div class="line">   .indexed()</div>
+<div class="line">   .sortBy&lt;CXXIter::DESCENDING&gt;(CXXIter::unzip&lt;1&gt;())</div>
+<div class="line">   .collect&lt;std::vector&gt;();</div>
+<div class="line"><span class="comment">// output = {{3, 3.0f}, {1, 2.0f}, {0, 1.0f}, {2, 0.5f}, {4, -42.0f}}</span></div>
+<div class="ttc" id="anamespaceCXXIter_html_abf8a6e7833d1a5ee280619f29eeee310"><div class="ttname"><a href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01945">CXXIter.h:1945</a></div></div>
+</div><!-- fragment --> </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="Common_8h_source.html#l00193">193</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>

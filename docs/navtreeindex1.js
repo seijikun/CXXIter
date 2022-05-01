@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"namespaces.html":[3,0],
 "pages.html":[],
 "sourcesAndGenerators.html":[2],
 "sourcesAndGenerators.html#sec_generators":[2,1],

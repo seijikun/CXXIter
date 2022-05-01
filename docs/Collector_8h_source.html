@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('Collector_8h_source.html',''); initRes
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, <span class="keyword">typename</span> TContainer&gt;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">requires</span> BackInsertableContainer&lt;TContainer, typename TChainInput::ItemOwned&gt;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">struct </span>IntoCollector&lt;TChainInput, TContainer&gt; {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">using</span> Item = <span class="keyword">typename</span> TChainInput::Item;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> collectInto(TChainInput&amp; input, TContainer&amp; container) {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(ReservableContainer&lt;TContainer&gt;) {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                container.reserve( container.size() + input.sizeHint().expectedResultSize() );</div>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('Collector_8h_source.html',''); initRes
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">requires</span> (!BackInsertableContainer&lt;TContainer, typename TChainInput::ItemOwned&gt;)</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        &amp;&amp; InsertableContainer&lt;TContainer, typename TChainInput::ItemOwned&gt;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">struct</span> IntoCollector&lt;TChainInput, TContainer&gt; {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">using</span> Item = <span class="keyword">typename</span> TChainInput::Item;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> collectInto(TChainInput&amp; input, TContainer&amp; container) {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(ReservableContainer&lt;TContainer&gt;) {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                container.reserve( container.size() + input.sizeHint().expectedResultSize() );</div>
@@ -147,8 +147,8 @@ $(document).ready(function(){initNavTree('Collector_8h_source.html',''); initRes
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">struct</span> Collector&lt;TChainInput, TContainer, TContainerArgs...&gt; {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        template&lt;typename Item, typename ItemOwned&gt;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">static</span> <span class="keyword">auto</span> collect(TChainInput&amp; input) {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keyword">using</span> TKey = std::remove_const_t&lt;std::tuple_element_t&lt;0, typename TChainInput::ItemOwned&gt;&gt;;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keyword">using</span> TValue = std::tuple_element_t&lt;1, typename TChainInput::ItemOwned&gt;;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keyword">using </span>TKey = std::remove_const_t&lt;std::tuple_element_t&lt;0, typename TChainInput::ItemOwned&gt;&gt;;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keyword">using </span>TValue = std::tuple_element_t&lt;1, typename TChainInput::ItemOwned&gt;;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            TContainer&lt;TKey, TValue, TContainerArgs...&gt; container;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            IntoCollector&lt;TChainInput, <span class="keyword">decltype</span>(container)&gt;::collectInto(input, container);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">return</span> container;</div>
