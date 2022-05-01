@@ -11,8 +11,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// CASTER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TItem>
 		requires std::is_object_v<TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {

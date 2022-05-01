@@ -11,8 +11,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// TAKE WHILE
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TTakePredicate>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
 			friend struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;

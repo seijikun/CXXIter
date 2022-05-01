@@ -10,8 +10,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// SKIP WHILE
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TSkipPredicate>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
 			friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;

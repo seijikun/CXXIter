@@ -10,8 +10,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// UNIQUE
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TMapFn>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Unique : public IterApi<Unique<TChainInput, TMapFn>> {
 			friend struct IteratorTrait<Unique<TChainInput, TMapFn>>;

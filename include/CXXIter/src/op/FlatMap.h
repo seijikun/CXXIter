@@ -11,8 +11,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// FLATMAP
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
 		requires (!std::is_reference_v<TItemContainer>)
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {

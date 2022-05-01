@@ -9,8 +9,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// MAP
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TMapFn, typename TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
 			friend struct IteratorTrait<Map<TChainInput, TMapFn, TItem>>;

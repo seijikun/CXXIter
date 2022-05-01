@@ -18,8 +18,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// CASTER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, const size_t CHUNK_SIZE>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] ChunkedExact : public IterApi<ChunkedExact<TChainInput, CHUNK_SIZE>> {
 			friend struct IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE>>;

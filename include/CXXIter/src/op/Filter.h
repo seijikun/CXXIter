@@ -7,8 +7,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// FILTER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TFilterFn>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
 			friend struct IteratorTrait<Filter<TChainInput, TFilterFn>>;

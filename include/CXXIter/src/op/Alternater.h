@@ -12,8 +12,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// ALTERNATER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput1, typename... TChainInputs>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
 			friend struct IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;

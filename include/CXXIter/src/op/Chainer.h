@@ -10,8 +10,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// CHAINER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput1, typename TChainInput2>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
 			friend struct IteratorTrait<Chainer<TChainInput1, TChainInput2>>;

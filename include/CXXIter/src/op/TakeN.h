@@ -9,8 +9,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// TAKE WHILE
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeN : public IterApi<TakeN<TChainInput>> {
 			friend struct IteratorTrait<TakeN<TChainInput>>;

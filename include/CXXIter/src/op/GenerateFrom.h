@@ -14,8 +14,8 @@ namespace CXXIter {
 	template<typename T, typename TItem>
 	concept GeneratorFromFunction = (invocable_byvalue<T, TItem> && is_template_instance_v<std::invoke_result_t<T, TItem>, Generator>);
 
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TGeneratorFn, typename TGenerator>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] GenerateFrom : public IterApi<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>> {
 			friend struct IteratorTrait<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>>;

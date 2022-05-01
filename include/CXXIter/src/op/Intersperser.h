@@ -11,8 +11,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// INTERSPERSER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TSeparatorInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
 			friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;

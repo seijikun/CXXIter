@@ -11,8 +11,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// SORTER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TCompareFn, bool STABLE>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Sorter : public IterApi<Sorter<TChainInput, TCompareFn, STABLE>> {
 			friend struct IteratorTrait<Sorter<TChainInput, TCompareFn, STABLE>>;

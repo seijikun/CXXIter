@@ -12,8 +12,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// ZIPPER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 			friend struct IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;

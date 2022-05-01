@@ -10,8 +10,8 @@ namespace CXXIter {
 	// ################################################################################################
 	// INPLACE MODIFIER
 	// ################################################################################################
-	/** @private */
 	namespace op {
+		/** @private */
 		template<typename TChainInput, typename TModifierFn>
 		requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
