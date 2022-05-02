@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-01 17:38:02</td>
+      <td>2022-05-02 12:52:51</td>
     </tr>
   </table>
 </div>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>36</td>
-      <td>36</td>
+      <td>37</td>
+      <td>37</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -460,6 +460,17 @@
     </tr>
     <tr>
       <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt;, CXXIter_chunked_Test::TestBody()::{lambda(unsigned long)#1}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt;&amp;&amp;, CXXIter_chunked_Test::TestBody()::{lambda(unsigned long)#1})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#1}, unsigned long&gt;&amp;&amp;, CXXIter_iterator_Test::TestBody()::{lambda(unsigned long)#2})</a>
       </td>
       <td>
@@ -656,7 +667,7 @@
       <td class="lineno"><a id="l22" href="#l22">22</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">78</td>
+      <td class="linecount coveredLine">80</td>
       <td class="src coveredLine">			<span class="n">Filter</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TFilterFn</span> <span class="n">filterFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">filterFn</span><span class="p">(</span><span class="n">filterFn</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
@@ -842,7 +853,7 @@
       <td class="lineno"><a id="l41" href="#l41">41</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">21</td>
+      <td class="linecount coveredLine">22</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
@@ -850,7 +861,7 @@
       <td class="lineno"><a id="l42" href="#l42">42</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">21</td>
+      <td class="linecount coveredLine">22</td>
       <td class="src coveredLine">			<span class="n">SizeHint</span> <span class="n">input</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
@@ -858,7 +869,7 @@
       <td class="lineno"><a id="l43" href="#l43">43</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">41</td>
+      <td class="linecount coveredLine">43</td>
       <td class="src coveredLine">			<span class="k">return</span> <span class="nf">SizeHint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">.</span><span class="n">upperBound</span><span class="p">);</span></td>
     </tr>
 
