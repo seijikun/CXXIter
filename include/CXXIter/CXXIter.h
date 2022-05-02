@@ -19,6 +19,7 @@
 #include "src/op/Alternater.h"
 #include "src/op/Caster.h"
 #include "src/op/Chainer.h"
+#include "src/op/Chunked.h"
 #include "src/op/ChunkedExact.h"
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
@@ -1290,6 +1291,39 @@ public: // CXXIter API-Surface
 	 */
 	auto unique() {
 		return unique([](const auto& item) { return item; });
+	}
+
+	/**
+	 * @brief Create new iterator that collects elements from this iterator in chunks of size up to @p CHUNK_SIZE, which then
+	 * constitue the elements of the new iterator.
+	 * @details Chunks are of up to @p CHUNK_SIZE elements in size. If the amount of items in the iterator are not dividable
+	 * by the requested @p CHUNK_SIZE the last chunk will be smaller.
+	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
+	 * @return New iterator that contains chunks of up to the requested size, containing elements from this iterator as elements.
+	 *
+	 * Usage Example:
+	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunked<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {31337, 69, 5}, {1, 2, 3} }
+	 * @endcode
+	 * - If the amount of elements of the input can **not** be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunked<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {31337, 69, 5}, {1, 2} }
+	 * @endcode
+	 */
+	template<const size_t CHUNK_SIZE>
+	op::Chunked<TSelf, CHUNK_SIZE> chunked() {
+		return op::Chunked<TSelf, CHUNK_SIZE>(std::move(*self()));
 	}
 
 	/**
