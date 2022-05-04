@@ -681,6 +681,7 @@ public: // CXXIter API-Surface
 	 * @details The mean is calculated by first summing up all elements, and then
 	 * dividing through the number of elements counted while summing.
 	 * @note This consumes the iterator.
+	 * @param sumStart Optional starting point for the sum of all items. Normally uses default ctor of @p TResult.
 	 * @return The mean of all elements of this iterator.
 	 * @tparam NORM Type of the statistical normalization variant to use for the
 	 * calculation. @see StatisticNormalization
@@ -705,9 +706,9 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
-	std::optional<TResult> mean() {
+	std::optional<TResult> mean(TResult sumStart = TResult()) {
 		size_t cnt = 0;
-		TResult result = fold(TResult(), [&cnt](TResult& res, Item&& item) {
+		TResult result = fold(sumStart, [&cnt](TResult& res, Item&& item) {
 			cnt += 1;
 			res += item;
 		});

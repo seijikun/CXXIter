@@ -250,6 +250,32 @@ TEST(CXXIter, mean) {
 		std::optional<float> output = CXXIter::from(input).mean();
 		ASSERT_FALSE(output.has_value());
 	}
+
+	// structure with retarded default ctor, that initializes internal value with weird value
+	// Have to provide sumStart to mean() to get meaningful results
+	// - This unit-test was definitely not added because a certain c++ math vector template
+	//   library has a retarded default ctor that doesn't initialize values...
+	struct VecWithDumbDefaultCtor {
+		double val;
+		VecWithDumbDefaultCtor(double val = 1.0) : val(val) {}
+		VecWithDumbDefaultCtor& operator +=(const VecWithDumbDefaultCtor& o) { val += o.val; return *this; }
+		VecWithDumbDefaultCtor& operator /=(double div) { val /= div; return *this; }
+		VecWithDumbDefaultCtor operator/ (double div) { VecWithDumbDefaultCtor tmp = *this; tmp /= div; return tmp; }
+	};
+	{ // using sumStart from default ctor
+		std::vector<VecWithDumbDefaultCtor> input = {1.0, 2.0, 3.0};
+		std::optional<VecWithDumbDefaultCtor> output = CXXIter::from(input)
+				.mean<CXXIter::StatisticNormalization::N_MINUS_ONE, VecWithDumbDefaultCtor, double>();
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value().val, 3.5f, 0.0000000005);
+	}
+	{ // using sumStart from passed initial value
+		std::vector<VecWithDumbDefaultCtor> input = {1.0, 2.0, 3.0};
+		std::optional<VecWithDumbDefaultCtor> output = CXXIter::from(input)
+				.mean<CXXIter::StatisticNormalization::N_MINUS_ONE, VecWithDumbDefaultCtor, double>({0.0});
+		ASSERT_TRUE(output.has_value());
+		ASSERT_NEAR(output.value().val, 3.0f, 0.0000000005);
+	}
 }
 
 TEST(CXXIter, variance) {
