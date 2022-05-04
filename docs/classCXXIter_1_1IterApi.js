@@ -40,7 +40,7 @@ var classCXXIter_1_1IterApi =
     [ "maxBy", "classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e", null ],
     [ "maxIdx", "classCXXIter_1_1IterApi.html#af161ffefa2006ad6df0bd084d7374f51", null ],
     [ "maxIdxBy", "classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad", null ],
-    [ "mean", "classCXXIter_1_1IterApi.html#a4c19be9de6540d214adf108c509d0692", null ],
+    [ "mean", "classCXXIter_1_1IterApi.html#a1727767f03cfe2be17ea017e87beb7ab", null ],
     [ "min", "classCXXIter_1_1IterApi.html#a8cf454fb870bc6d782f5f4a392c39520", null ],
     [ "minBy", "classCXXIter_1_1IterApi.html#a2b119a582aeea0e05e9d6985c4439983", null ],
     [ "minIdx", "classCXXIter_1_1IterApi.html#ad191096d655db542272acc7b89f76962", null ],
