@@ -38,6 +38,18 @@ namespace CXXIter {
 			input.forEach([&container](Item&& item) { container.insert( std::forward<Item>(item) ); });
 		}
 	};
+	/** @private */
+	template<typename TChainInput, typename TContainer>
+	requires StdArrayContainer<TContainer, typename TChainInput::ItemOwned>
+	struct IntoCollector<TChainInput, TContainer> {
+		using Item = typename TChainInput::Item;
+		static void collectInto(TChainInput& input, TContainer& container) {
+			size_t idx = 0;
+			input
+				.take(container.max_size())
+				.forEach([&idx, &container](Item&& item) { container[idx++] = item; });
+		}
+	};
 
 
 	// ################################################################################################

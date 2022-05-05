@@ -234,6 +234,41 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Consumer that collects all elements from this iterator in a new container of type @p TTargetContainer
+	 * @note This consumes the iterator.
+	 * @tparam TTargetContainer Fully qualified type of the target container to collect the items of this iterator into.
+	 * @return An instance of @p TTargetContainer with all the elements of this iterator collected into.
+	 *
+	 * Usage Example:
+	 * - std::vector<std::string>
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string> output = CXXIter::from(input)
+	 * 		.collect<std::vector<std::string>>();
+	 * @endcode
+	 *
+	 * - std::vector<std::string> with explicitly defined allocator
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::string, std::allocator<std::string>> output = CXXIter::from(input)
+	 * 		.collect<std::vector<std::string, std::allocator<std::string>>>();
+	 * @endcode
+	 *
+	 * - std::array<std::string, 3>
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::array<std::string, 3> output = CXXIter::from(input)
+	 * 		.collect<std::array<std::string, 3>>();
+	 * @endcode
+	 */
+	template<typename TTargetContainer>
+	TTargetContainer collect() {
+		TTargetContainer container;
+		collectInto(container);
+		return container;
+	}
+
+	/**
 	 * @brief Consumer that collects all elements from this iterator into the given @p container.
 	 * @note This consumes the iterator.
 	 * @param container to collect this iterator's elements into.

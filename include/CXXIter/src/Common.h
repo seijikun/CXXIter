@@ -333,6 +333,18 @@ namespace CXXIter {
 		*/
 		template<template<typename...> typename TContainer, typename TItemKey, typename TItemValue, typename... TContainerArgs>
 		concept AssocContainerTemplate = AssocContainer<TContainer<TItemKey, TItemValue, TContainerArgs...>, TItemKey, TItemValue>;
+
+		/**
+		 * @brief Concept enforcing a std::array<,> template instantiation
+		 */
+		template<typename TContainer, typename TItem>
+		concept StdArrayContainer = requires(TContainer& container, size_t idx, TItem item) {
+			typename TContainer::value_type;
+			typename TContainer::size_type;
+			{container[idx] = item};
+			{container.max_size()} -> std::same_as<typename TContainer::size_type>;
+			{container.fill(item)};
+		} && !InsertableContainer<TContainer, TItem> && !BackInsertableContainer<TContainer, TItem>;
 	}
 
 	/**

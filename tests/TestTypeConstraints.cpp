@@ -1,3 +1,4 @@
+#include <array>
 #include <vector>
 #include <string>
 #include <set>
@@ -130,6 +131,20 @@ TEST(CXXIter, stlCollections) {
 	static_assert( CXXIter::AssocContainerTemplate<std::multimap			,TestKey, TestValue>);
 	static_assert( CXXIter::AssocContainerTemplate<std::unordered_map		,TestKey, TestValue>);
 	static_assert( CXXIter::AssocContainerTemplate<std::unordered_multimap	,TestKey, TestValue>);
+
+	// std::array concept
+	static_assert( CXXIter::StdArrayContainer<std::array<TestValue, 3>,						TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::vector<TestValue>,						TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::list<TestValue>,							TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::deque<TestValue>,						TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::set<TestValue>,							TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::multiset<TestValue>,						TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::unordered_set<TestValue>,				TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::unordered_multiset<TestValue>,			TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::map<TestKey, TestValue>,					TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::multimap<TestKey, TestValue>,			TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::unordered_map<TestKey, TestValue>,		TestValue>);
+	static_assert(!CXXIter::StdArrayContainer<std::unordered_multimap<TestKey, TestValue>,	TestValue>);
 }
 
 TEST(CXXIter, is_pair) {

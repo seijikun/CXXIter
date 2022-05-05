@@ -581,15 +581,13 @@ TEST(CXXIter, collect) {
 
 	// test as many permutations of items to target collections
 
-	#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
-	{ \
+	#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) { \
 		std::vector<std::string> input = {"1337", "42", "64"}; \
 		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
 		ASSERT_EQ(output.size(), 3); \
 	} \
 
-	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
-	{ \
+	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) { \
 		std::vector<TestPair> input = {{"1337", 1337}, {"42", 42}, {"64", 64}}; \
 		auto output = CXXIter::from(input).collect<TARGET_CONTAINER>(); \
 		ASSERT_EQ(output.size(), 3); \
@@ -619,6 +617,56 @@ TEST(CXXIter, collect) {
 	#undef PAIR_COLLECTOR_TEST_FOR_CONTAINER
 }
 
+TEST(CXXIter, collect2) {
+	{ // collect to string
+		std::string input = "ceasarencrypt";
+		std::string output = CXXIter::from(input)
+				.map([](char c) -> char { return (c + 1); })
+				.collect<std::string>();
+		ASSERT_EQ(output, "dfbtbsfodszqu");
+	}
+
+	// test as many permutations of items to target collections
+
+	#define COLLECTOR_TEST_FOR_CONTAINER(...) { \
+		std::vector<std::string> input = {"1337", "42", "64"}; \
+		auto output = CXXIter::from(input).collect<__VA_ARGS__>(); \
+		ASSERT_EQ(output.size(), 3); \
+	}
+
+	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) { \
+		std::vector<TestPair> input = {{"1337", 1337}, {"42", 42}, {"64", 64}}; \
+		auto output = CXXIter::from(input).collect<__VA_ARGS__>(); \
+		ASSERT_EQ(output.size(), 3); \
+	}
+
+	// CustomContainer
+	COLLECTOR_TEST_FOR_CONTAINER(CustomContainer<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(CustomContainer<TestPair>);
+
+	// back-inserter containers
+	COLLECTOR_TEST_FOR_CONTAINER(std::vector<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::vector<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::list<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::list<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::deque<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::deque<TestPair>);
+
+	// insert containers
+	COLLECTOR_TEST_FOR_CONTAINER(std::set<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::set<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::multiset<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multiset<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset<TestPair>);
+
+	// associative containers
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::map<std::string, int>);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multimap<std::string, int>);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_map<std::string, int>);
+	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multimap<std::string, int>);
+
+	// std::array
+	COLLECTOR_TEST_FOR_CONTAINER(std::array<std::string, 3>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::array<TestPair, 3>);
+
+	#undef COLLECTOR_TEST_FOR_CONTAINER
+	#undef PAIR_COLLECTOR_TEST_FOR_CONTAINER
+}
+
 TEST(CXXIter, collectInto) {
 	{ // additional container type parameters
 		std::vector<std::string> input = {"1337", "42", "64"};
@@ -635,44 +683,54 @@ TEST(CXXIter, collectInto) {
 				.collectInto(output);
 		ASSERT_EQ(output, "dfbtbsfodszqu");
 	}
+	{ // collect to std::array
+		std::vector<float> input = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0};
+		std::array<float, 3> output;
+		CXXIter::from(input).copied()
+				.filter([](float item) { return item < 3.5; })
+				.collectInto(output);
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre(1.0, 2.0, 3.0));
+	}
 
 	// test as many permutations of items to target collections
 
-	#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \
-	{ \
+	#define COLLECTOR_TEST_FOR_CONTAINER(...) { \
 		std::vector<std::string> input = {"1337", "42", "64"}; \
-		TARGET_CONTAINER<std::string> output = {"pre-existing item in output"}; \
+		__VA_ARGS__ output = {"pre-existing item in output"}; \
 		CXXIter::from(input).collectInto(output); \
-		ASSERT_EQ(output.size(), 4); \
+		ASSERT_EQ(output.size(), 3 + 1); \
 	} \
 
-	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) \
-	{ \
+	#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) { \
 		std::vector<TestPair> input = {{"1337", 1337}, {"42", 42}, {"64", 64}}; \
-		__VA_ARGS__ output = {{"pre-existing", 5}}; \
+		__VA_ARGS__ output = { std::make_pair(std::string("pre-existing"), 5)}; \
 		CXXIter::from(input).collectInto(output); \
 		ASSERT_EQ(output.size(), 3 + 1); \
 	}
 
 	// CustomContainer
-	COLLECTOR_TEST_FOR_CONTAINER(CustomContainer); PAIR_COLLECTOR_TEST_FOR_CONTAINER(CustomContainer<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(CustomContainer<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(CustomContainer<TestPair>);
 
 	// back-inserter containers
-	COLLECTOR_TEST_FOR_CONTAINER(std::vector); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::vector<TestPair>);
-	COLLECTOR_TEST_FOR_CONTAINER(std::list); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::list<TestPair>);
-	COLLECTOR_TEST_FOR_CONTAINER(std::deque); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::deque<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::vector<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::vector<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::list<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::list<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::deque<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::deque<TestPair>);
 
 	// insert containers
-	COLLECTOR_TEST_FOR_CONTAINER(std::set); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::set<TestPair>);
-	COLLECTOR_TEST_FOR_CONTAINER(std::multiset); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multiset<TestPair>);
-	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set<TestPair>);
-	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::set<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::set<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::multiset<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multiset<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_set<TestPair>);
+	COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset<std::string>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multiset<TestPair>);
 
 	// associative containers
 	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::map<std::string, int>);
 	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::multimap<std::string, int>);
 	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_map<std::string, int>);
 	PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::unordered_multimap<std::string, int>);
+
+	// std::array
+	COLLECTOR_TEST_FOR_CONTAINER(std::array<std::string, 4>); PAIR_COLLECTOR_TEST_FOR_CONTAINER(std::array<TestPair, 4>);
 
 	#undef COLLECTOR_TEST_FOR_CONTAINER
 	#undef PAIR_COLLECTOR_TEST_FOR_CONTAINER
