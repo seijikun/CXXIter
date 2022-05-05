@@ -102,6 +102,15 @@ TEST(CXXIter, srcMove) { // move
 				.mean().value();
 		ASSERT_EQ(output, 4);
 	}
+	{ // support for containers that store their data on the stack
+		std::array<int, 3> input = {1, 2, 3};
+		auto iter = CXXIter::from(std::move(input));
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcMov<std::array<int, 3>>>);
+		int output = iter
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 4);
+	}
 }
 
 TEST(CXXIter, srcConstRef) { // const references
@@ -166,6 +175,15 @@ TEST(CXXIter, srcConstRef) { // const references
 				.mean().value();
 		ASSERT_EQ(output, 4);
 	}
+	{ // support for containers that store their data on the stack
+		const std::array<int, 3> input = {1, 2, 3};
+		auto iter = CXXIter::from(input);
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcCRef<std::array<int, 3>>>);
+		int output = iter
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 4);
+	}
 }
 
 TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
@@ -225,6 +243,16 @@ TEST(CXXIter, srcRef) { // mutable references (move out of heapTest)
 		std::vector<int>& inputRef = input;
 		auto iter = CXXIter::from(inputRef);
 		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcRef<std::vector<int>>>);
+		int output = iter
+				.map([](int item) { return item * 2; })
+				.mean().value();
+		ASSERT_EQ(output, 4);
+	}
+
+	{ // support for containers that store their data on the stack
+		std::array<int, 3> input = {1, 2, 3};
+		auto iter = CXXIter::from(input);
+		static_assert(std::is_same_v<decltype(iter), CXXIter::SrcRef<std::array<int, 3>>>);
 		int output = iter
 				.map([](int item) { return item * 2; })
 				.mean().value();

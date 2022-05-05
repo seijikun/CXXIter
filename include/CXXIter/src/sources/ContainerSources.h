@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "../Common.h"
 
 namespace CXXIter {
@@ -19,10 +21,10 @@ namespace CXXIter {
 		friend struct ExactSizeIteratorTrait<SrcMov<TContainer>>;
 		using Src = SourceTrait<TContainer>;
 	private:
-		TContainer container;
+		std::unique_ptr<TContainer> container;
 		typename Src::IteratorState iter;
 	public:
-		SrcMov(TContainer&& container) : container(std::move(container)), iter(Src::initIterator(this->container)) {}
+		SrcMov(TContainer&& container) : container(std::make_unique<TContainer>(std::move(container))), iter(Src::initIterator(*this->container)) {}
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
@@ -34,15 +36,15 @@ namespace CXXIter {
 		using Item = typename Src::Item;
 
 		static inline IterValue<Item> next(Self& self) {
-			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
-			return std::move(Src::next(self.container, self.iter));
+			if(!Src::hasNext(*self.container, self.iter)) [[unlikely]] { return {}; }
+			return std::move(Src::next(*self.container, self.iter));
 		}
-		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(*self.container); }
 	};
 	/** @private */
 	template<typename TContainer>
 	struct ExactSizeIteratorTrait<SrcMov<TContainer>> {
-		static inline size_t size(const SrcMov<TContainer>& self) { return self.container.size(); }
+		static inline size_t size(const SrcMov<TContainer>& self) { return self.container->size(); }
 	};
 
 
