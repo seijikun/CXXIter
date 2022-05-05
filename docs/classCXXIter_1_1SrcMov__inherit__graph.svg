@@ -85,15 +85,15 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="23.5" y="-585.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ next()</text>
 <text text-anchor="start" x="23.5" y="-574.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ forEach()</text>
 <text text-anchor="start" x="23.5" y="-563.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collect()</text>
-<text text-anchor="start" x="23.5" y="-552.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collectInto()</text>
-<text text-anchor="start" x="23.5" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fold()</text>
-<text text-anchor="start" x="23.5" y="-530.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ all()</text>
+<text text-anchor="start" x="23.5" y="-552.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collect()</text>
+<text text-anchor="start" x="23.5" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ collectInto()</text>
+<text text-anchor="start" x="23.5" y="-530.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fold()</text>
 <text text-anchor="start" x="23.5" y="-519.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ all()</text>
-<text text-anchor="start" x="23.5" y="-508.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ any()</text>
+<text text-anchor="start" x="23.5" y="-508.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ all()</text>
 <text text-anchor="start" x="23.5" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ any()</text>
-<text text-anchor="start" x="23.5" y="-486.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
+<text text-anchor="start" x="23.5" y="-486.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ any()</text>
 <text text-anchor="start" x="23.5" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ findIdx()</text>
-<text text-anchor="start" x="23.5" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 19 more...</text>
+<text text-anchor="start" x="23.5" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 20 more...</text>
 <text text-anchor="start" x="23.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ cast()</text>
 <text text-anchor="start" x="23.5" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ copied()</text>
 <text text-anchor="start" x="23.5" y="-431.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ indexed()</text>
@@ -107,15 +107,15 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="23.5" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 18 more...</text>
 <text text-anchor="start" x="23.5" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00">* forEach()</text>
 <text text-anchor="start" x="23.5" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collect()</text>
-<text text-anchor="start" x="23.5" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collectInto()</text>
-<text text-anchor="start" x="23.5" y="-299.5" font-family="Helvetica,sans-Serif" font-size="10.00">* fold()</text>
-<text text-anchor="start" x="23.5" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00">* all()</text>
+<text text-anchor="start" x="23.5" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collect()</text>
+<text text-anchor="start" x="23.5" y="-299.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collectInto()</text>
+<text text-anchor="start" x="23.5" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00">* fold()</text>
 <text text-anchor="start" x="23.5" y="-277.5" font-family="Helvetica,sans-Serif" font-size="10.00">* all()</text>
-<text text-anchor="start" x="23.5" y="-266.5" font-family="Helvetica,sans-Serif" font-size="10.00">* any()</text>
+<text text-anchor="start" x="23.5" y="-266.5" font-family="Helvetica,sans-Serif" font-size="10.00">* all()</text>
 <text text-anchor="start" x="23.5" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">* any()</text>
-<text text-anchor="start" x="23.5" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00">* findIdx()</text>
+<text text-anchor="start" x="23.5" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00">* any()</text>
 <text text-anchor="start" x="23.5" y="-233.5" font-family="Helvetica,sans-Serif" font-size="10.00">* findIdx()</text>
-<text text-anchor="start" x="23.5" y="-222.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 19 more...</text>
+<text text-anchor="start" x="23.5" y="-222.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 20 more...</text>
 <text text-anchor="start" x="23.5" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00">* cast()</text>
 <text text-anchor="start" x="23.5" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">* copied()</text>
 <text text-anchor="start" x="23.5" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">* indexed()</text>

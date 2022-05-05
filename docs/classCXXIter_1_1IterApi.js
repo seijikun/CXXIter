@@ -15,6 +15,7 @@ var classCXXIter_1_1IterApi =
     [ "chunked", "classCXXIter_1_1IterApi.html#ad4a7ab60181e939f57eb56373c5a2bbe", null ],
     [ "chunkedExact", "classCXXIter_1_1IterApi.html#aa23d5d6776ce01834b9e60b4244a49b3", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89", null ],
+    [ "collect", "classCXXIter_1_1IterApi.html#af624739bd9e8e235500273f5a9465544", null ],
     [ "collectInto", "classCXXIter_1_1IterApi.html#ab9f60e619bcb3f2f5728605e5738854c", null ],
     [ "copied", "classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f", null ],
     [ "count", "classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815", null ],
