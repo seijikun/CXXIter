@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-04 15:20:44</td>
+      <td>2022-05-05 23:02:33</td>
     </tr>
   </table>
 </div>
@@ -41,21 +41,21 @@
     </tr>
     <tr>
       <th scope="row">Lines:</th>
-      <td>475</td>
-      <td>475</td>
+      <td>503</td>
+      <td>503</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>48</td>
-      <td>48</td>
+      <td>50</td>
+      <td>50</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
       <th scope="row">Branches:</th>
-      <td>1008</td>
-      <td>3020</td>
-      <td class="coverage-low">33.4%</td>
+      <td>1259</td>
+      <td>3660</td>
+      <td class="coverage-low">34.4%</td>
     </tr>
   </table>
 </div>
@@ -115,6 +115,28 @@
       </td>
       <td>
         <a href="#l78"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l620">CXXIter_collect2_Test::CXXIter_collect2_Test()</a>
+      </td>
+      <td>
+        <a href="#l620">620</a>
+      </td>
+      <td>
+        <a href="#l620"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l620">CXXIter_collect2_Test::TestBody()</a>
+      </td>
+      <td>
+        <a href="#l620">620</a>
+      </td>
+      <td>
+        <a href="#l620"> called 1 time</a>
       </td>
     </tr>
     <tr>
@@ -9605,7 +9627,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cp">#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \</span></td>
+      <td class="src ">	<span class="cp">#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) { \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9613,7 +9635,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">	{ \</span></td>
+      <td class="src "><span class="cp">		std::vector&lt;std::string&gt; input = {&quot;1337&quot;, &quot;42&quot;, &quot;64&quot;}; \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9621,7 +9643,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		std::vector&lt;std::string&gt; input = {&quot;1337&quot;, &quot;42&quot;, &quot;64&quot;}; \</span></td>
+      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;TARGET_CONTAINER&gt;(); \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9629,7 +9651,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;TARGET_CONTAINER&gt;(); \</span></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9637,7 +9659,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
+      <td class="src "><span class="cp">	} \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9645,7 +9667,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">	} \</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -9653,7 +9675,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="cp">#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) { \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9661,7 +9683,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cp">#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \</span></td>
+      <td class="src "><span class="cp">		std::vector&lt;TestPair&gt; input = {{&quot;1337&quot;, 1337}, {&quot;42&quot;, 42}, {&quot;64&quot;, 64}}; \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9669,7 +9691,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">	{ \</span></td>
+      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;TARGET_CONTAINER&gt;(); \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9677,7 +9699,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		std::vector&lt;TestPair&gt; input = {{&quot;1337&quot;, 1337}, {&quot;42&quot;, 42}, {&quot;64&quot;, 64}}; \</span></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9685,7 +9707,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;TARGET_CONTAINER&gt;(); \</span></td>
+      <td class="src "><span class="cp">	}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -9693,7 +9715,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -9701,27 +9723,11 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">	}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l597" href="#l597">597</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l598" href="#l598">598</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
       <td class="src ">	<span class="c1">// CustomContainer</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l599" href="#l599">599</a></td>
+      <td class="lineno"><a id="l597" href="#l597">597</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -9790,7 +9796,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l600" href="#l600">600</a></td>
+      <td class="lineno"><a id="l598" href="#l598">598</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -9798,7 +9804,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l601" href="#l601">601</a></td>
+      <td class="lineno"><a id="l599" href="#l599">599</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -9806,7 +9812,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l602" href="#l602">602</a></td>
+      <td class="lineno"><a id="l600" href="#l600">600</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -9875,7 +9881,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l603" href="#l603">603</a></td>
+      <td class="lineno"><a id="l601" href="#l601">601</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -9944,7 +9950,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l604" href="#l604">604</a></td>
+      <td class="lineno"><a id="l602" href="#l602">602</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -10013,7 +10019,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l605" href="#l605">605</a></td>
+      <td class="lineno"><a id="l603" href="#l603">603</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10021,7 +10027,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l606" href="#l606">606</a></td>
+      <td class="lineno"><a id="l604" href="#l604">604</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10029,7 +10035,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l607" href="#l607">607</a></td>
+      <td class="lineno"><a id="l605" href="#l605">605</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -10098,7 +10104,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l608" href="#l608">608</a></td>
+      <td class="lineno"><a id="l606" href="#l606">606</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -10167,7 +10173,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l609" href="#l609">609</a></td>
+      <td class="lineno"><a id="l607" href="#l607">607</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -10236,7 +10242,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l610" href="#l610">610</a></td>
+      <td class="lineno"><a id="l608" href="#l608">608</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">22/56</summary>
@@ -10305,7 +10311,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l611" href="#l611">611</a></td>
+      <td class="lineno"><a id="l609" href="#l609">609</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10313,7 +10319,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l612" href="#l612">612</a></td>
+      <td class="lineno"><a id="l610" href="#l610">610</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10321,7 +10327,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l613" href="#l613">613</a></td>
+      <td class="lineno"><a id="l611" href="#l611">611</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">11/28</summary>
@@ -10362,7 +10368,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l614" href="#l614">614</a></td>
+      <td class="lineno"><a id="l612" href="#l612">612</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">11/28</summary>
@@ -10403,7 +10409,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l615" href="#l615">615</a></td>
+      <td class="lineno"><a id="l613" href="#l613">613</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">11/28</summary>
@@ -10444,7 +10450,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l616" href="#l616">616</a></td>
+      <td class="lineno"><a id="l614" href="#l614">614</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">11/28</summary>
@@ -10485,7 +10491,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l617" href="#l617">617</a></td>
+      <td class="lineno"><a id="l615" href="#l615">615</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10493,7 +10499,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l618" href="#l618">618</a></td>
+      <td class="lineno"><a id="l616" href="#l616">616</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10501,7 +10507,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l619" href="#l619">619</a></td>
+      <td class="lineno"><a id="l617" href="#l617">617</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10509,7 +10515,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l620" href="#l620">620</a></td>
+      <td class="lineno"><a id="l618" href="#l618">618</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10517,7 +10523,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l621" href="#l621">621</a></td>
+      <td class="lineno"><a id="l619" href="#l619">619</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10525,71 +10531,15 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l622" href="#l622">622</a></td>
+      <td class="lineno"><a id="l620" href="#l620">620</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">collectInto</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">4</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">collect2</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l623" href="#l623">623</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span> <span class="c1">// additional container type parameters</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l624" href="#l624">624</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">6</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;1337&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;64&quot;</span><span class="p">};</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l625" href="#l625">625</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">output</span><span class="p">;</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l626" href="#l626">626</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">collectInto</span><span class="p">(</span><span class="n">output</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l627" href="#l627">627</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">3</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l628" href="#l628">628</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span><span class="s">&quot;1337&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;64&quot;</span><span class="p">));</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l629" href="#l629">629</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l630" href="#l630">630</a></td>
+      <td class="lineno"><a id="l621" href="#l621">621</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10597,63 +10547,109 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l631" href="#l631">631</a></td>
+      <td class="lineno"><a id="l622" href="#l622">622</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
+      <td class="linecount coveredLine">2</td>
       <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">input</span> <span class="o">=</span> <span class="s">&quot;ceasarencrypt&quot;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l632" href="#l632">632</a></td>
+      <td class="lineno"><a id="l623" href="#l623">623</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">output</span><span class="p">;</span></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l633" href="#l633">633</a></td>
+      <td class="lineno"><a id="l624" href="#l624">624</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l634" href="#l634">634</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">15</td>
+      <td class="linecount coveredLine">17</td>
       <td class="src coveredLine">				<span class="p">.</span><span class="n">map</span><span class="p">([](</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">})</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l635" href="#l635">635</a></td>
+      <td class="lineno"><a id="l625" href="#l625">625</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collectInto</span><span class="p">(</span><span class="n">output</span><span class="p">);</span></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l636" href="#l636">636</a></td>
+      <td class="lineno"><a id="l626" href="#l626">626</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">3/12</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 4 not taken.</div>
+          <div class="takenBranch">&check; Branch 5 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 8 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 12 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 14 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 19 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 20 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
+      <td class="linecount coveredLine">2</td>
       <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s">&quot;dfbtbsfodszqu&quot;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l637" href="#l637">637</a></td>
+      <td class="lineno"><a id="l627" href="#l627">627</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">2/4</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="takenBranch">&check; Branch 4 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">1</td>
+      <td class="linecount coveredLine">2</td>
       <td class="src coveredLine">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l638" href="#l638">638</a></td>
+      <td class="lineno"><a id="l628" href="#l628">628</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10661,7 +10657,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l639" href="#l639">639</a></td>
+      <td class="lineno"><a id="l629" href="#l629">629</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10669,7 +10665,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l640" href="#l640">640</a></td>
+      <td class="lineno"><a id="l630" href="#l630">630</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10677,23 +10673,15 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l641" href="#l641">641</a></td>
+      <td class="lineno"><a id="l631" href="#l631">631</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cp">#define COLLECTOR_TEST_FOR_CONTAINER(TARGET_CONTAINER) \</span></td>
+      <td class="src ">	<span class="cp">#define COLLECTOR_TEST_FOR_CONTAINER(...) { \</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l642" href="#l642">642</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">	{ \</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l643" href="#l643">643</a></td>
+      <td class="lineno"><a id="l632" href="#l632">632</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10701,39 +10689,31 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l644" href="#l644">644</a></td>
+      <td class="lineno"><a id="l633" href="#l633">633</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		TARGET_CONTAINER&lt;std::string&gt; output = {&quot;pre-existing item in output&quot;}; \</span></td>
+      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;__VA_ARGS__&gt;(); \</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l645" href="#l645">645</a></td>
+      <td class="lineno"><a id="l634" href="#l634">634</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		CXXIter::from(input).collectInto(output); \</span></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l646" href="#l646">646</a></td>
+      <td class="lineno"><a id="l635" href="#l635">635</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 4); \</span></td>
+      <td class="src "><span class="cp">	}</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l647" href="#l647">647</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">	} \</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l648" href="#l648">648</a></td>
+      <td class="lineno"><a id="l636" href="#l636">636</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10741,23 +10721,15 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l649" href="#l649">649</a></td>
+      <td class="lineno"><a id="l637" href="#l637">637</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cp">#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) \</span></td>
+      <td class="src ">	<span class="cp">#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) { \</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l650" href="#l650">650</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">	{ \</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l651" href="#l651">651</a></td>
+      <td class="lineno"><a id="l638" href="#l638">638</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10765,35 +10737,627 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l652" href="#l652">652</a></td>
+      <td class="lineno"><a id="l639" href="#l639">639</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">		__VA_ARGS__ output = {{&quot;pre-existing&quot;, 5}}; \</span></td>
+      <td class="src "><span class="cp">		auto output = CXXIter::from(input).collect&lt;__VA_ARGS__&gt;(); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l640" href="#l640">640</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l641" href="#l641">641</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">	}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l642" href="#l642">642</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l643" href="#l643">643</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// CustomContainer</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l644" href="#l644">644</a></td>
+      <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
+      </td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l645" href="#l645">645</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l646" href="#l646">646</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// back-inserter containers</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l647" href="#l647">647</a></td>
+      <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
+      </td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l648" href="#l648">648</a></td>
+      <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
+      </td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l649" href="#l649">649</a></td>
+      <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
+      </td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l650" href="#l650">650</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l651" href="#l651">651</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// insert containers</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l652" href="#l652">652</a></td>
+      <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
+      </td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l653" href="#l653">653</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">		CXXIter::from(input).collectInto(output); \</span></td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l654" href="#l654">654</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3 + 1); \</span></td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l655" href="#l655">655</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">	}</span></td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -10809,63 +11373,256 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// CustomContainer</span></td>
+      <td class="src ">	<span class="c1">// associative containers</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l658" href="#l658">658</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">11/28</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="takenBranch">&check; Branch 4 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+          <div class="takenBranch">&check; Branch 7 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 8 not taken.</div>
+          <div class="takenBranch">&check; Branch 11 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 12 not taken.</div>
+          <div class="takenBranch">&check; Branch 15 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 16 not taken.</div>
+          <div class="takenBranch">&check; Branch 18 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 19 not taken.</div>
+          <div class="takenBranch">&check; Branch 22 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 23 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 26 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 28 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 32 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 33 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 36 not taken.</div>
+          <div class="takenBranch">&check; Branch 40 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="takenBranch">&check; Branch 43 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 44 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">18</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+      <td class="linecount coveredLine">16</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l659" href="#l659">659</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">11/28</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="takenBranch">&check; Branch 4 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+          <div class="takenBranch">&check; Branch 7 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 8 not taken.</div>
+          <div class="takenBranch">&check; Branch 11 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 12 not taken.</div>
+          <div class="takenBranch">&check; Branch 15 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 16 not taken.</div>
+          <div class="takenBranch">&check; Branch 18 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 19 not taken.</div>
+          <div class="takenBranch">&check; Branch 22 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 23 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 26 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 28 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 32 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 33 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 36 not taken.</div>
+          <div class="takenBranch">&check; Branch 40 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="takenBranch">&check; Branch 43 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 44 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="linecount coveredLine">16</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l660" href="#l660">660</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">11/28</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="takenBranch">&check; Branch 4 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+          <div class="takenBranch">&check; Branch 7 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 8 not taken.</div>
+          <div class="takenBranch">&check; Branch 11 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 12 not taken.</div>
+          <div class="takenBranch">&check; Branch 15 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 16 not taken.</div>
+          <div class="takenBranch">&check; Branch 18 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 19 not taken.</div>
+          <div class="takenBranch">&check; Branch 22 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 23 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 26 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 28 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 32 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 33 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 36 not taken.</div>
+          <div class="takenBranch">&check; Branch 40 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="takenBranch">&check; Branch 43 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 44 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// back-inserter containers</span></td>
+      <td class="linecount coveredLine">16</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l661" href="#l661">661</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">11/28</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+          <div class="takenBranch">&check; Branch 4 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+          <div class="takenBranch">&check; Branch 7 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 8 not taken.</div>
+          <div class="takenBranch">&check; Branch 11 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 12 not taken.</div>
+          <div class="takenBranch">&check; Branch 15 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 16 not taken.</div>
+          <div class="takenBranch">&check; Branch 18 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 19 not taken.</div>
+          <div class="takenBranch">&check; Branch 22 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 23 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 26 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 28 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 32 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 33 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 36 not taken.</div>
+          <div class="takenBranch">&check; Branch 40 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="takenBranch">&check; Branch 43 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 44 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+      <td class="linecount coveredLine">16</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l662" href="#l662">662</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+      <td class="linecount "></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l663" href="#l663">663</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// std::array</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l664" href="#l664">664</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">22/56</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 2 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+          <div class="takenBranch">&check; Branch 6 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 7 not taken.</div>
+          <div class="takenBranch">&check; Branch 10 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 11 not taken.</div>
+          <div class="takenBranch">&check; Branch 14 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 15 not taken.</div>
+          <div class="takenBranch">&check; Branch 21 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 22 not taken.</div>
+          <div class="takenBranch">&check; Branch 24 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 25 not taken.</div>
+          <div class="takenBranch">&check; Branch 28 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 29 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 31 not taken.</div>
+          <div class="takenBranch">&check; Branch 32 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 34 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 35 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 38 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 39 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 41 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 42 not taken.</div>
+          <div class="takenBranch">&check; Branch 46 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 47 not taken.</div>
+          <div class="takenBranch">&check; Branch 49 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 50 not taken.</div>
+          <div class="takenBranch">&check; Branch 52 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 53 not taken.</div>
+          <div class="takenBranch">&check; Branch 55 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 56 not taken.</div>
+          <div class="takenBranch">&check; Branch 58 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 59 not taken.</div>
+          <div class="takenBranch">&check; Branch 61 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 62 not taken.</div>
+          <div class="takenBranch">&check; Branch 65 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 66 not taken.</div>
+          <div class="takenBranch">&check; Branch 69 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 70 not taken.</div>
+          <div class="takenBranch">&check; Branch 72 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 73 not taken.</div>
+          <div class="takenBranch">&check; Branch 76 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 77 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 79 not taken.</div>
+          <div class="takenBranch">&check; Branch 80 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 82 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 83 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 86 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 87 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 89 not taken.</div>
+          <div class="notTakenBranch">&cross; Branch 90 not taken.</div>
+          <div class="takenBranch">&check; Branch 94 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 95 not taken.</div>
+          <div class="takenBranch">&check; Branch 97 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 98 not taken.</div>
+          <div class="takenBranch">&check; Branch 100 taken 1 times.</div>
+          <div class="notTakenBranch">&cross; Branch 101 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="linecount coveredLine">32</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -10873,99 +11630,11 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// insert containers</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l666" href="#l666">666</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l667" href="#l667">667</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l668" href="#l668">668</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l669" href="#l669">669</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l670" href="#l670">670</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l671" href="#l671">671</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// associative containers</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l672" href="#l672">672</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l673" href="#l673">673</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l674" href="#l674">674</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l675" href="#l675">675</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l676" href="#l676">676</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l677" href="#l677">677</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10973,7 +11642,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l678" href="#l678">678</a></td>
+      <td class="lineno"><a id="l667" href="#l667">667</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10981,7 +11650,7 @@
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l679" href="#l679">679</a></td>
+      <td class="lineno"><a id="l668" href="#l668">668</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -10989,7 +11658,559 @@
     </tr>
 
     <tr class="source-line">
+      <td class="lineno"><a id="l669" href="#l669">669</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l670" href="#l670">670</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">collectInto</span><span class="p">)</span> <span class="p">{</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l671" href="#l671">671</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">{</span> <span class="c1">// additional container type parameters</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l672" href="#l672">672</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">6</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;1337&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;64&quot;</span><span class="p">};</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l673" href="#l673">673</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">output</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l674" href="#l674">674</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">collectInto</span><span class="p">(</span><span class="n">output</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l675" href="#l675">675</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">3</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l676" href="#l676">676</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span><span class="s">&quot;1337&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;64&quot;</span><span class="p">));</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l677" href="#l677">677</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">	<span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l678" href="#l678">678</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">{</span> <span class="c1">// collect to string</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l679" href="#l679">679</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">input</span> <span class="o">=</span> <span class="s">&quot;ceasarencrypt&quot;</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
       <td class="lineno"><a id="l680" href="#l680">680</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">output</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l681" href="#l681">681</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l682" href="#l682">682</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">15</td>
+      <td class="src coveredLine">				<span class="p">.</span><span class="n">map</span><span class="p">([](</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">})</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l683" href="#l683">683</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">				<span class="p">.</span><span class="n">collectInto</span><span class="p">(</span><span class="n">output</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l684" href="#l684">684</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s">&quot;dfbtbsfodszqu&quot;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l685" href="#l685">685</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">	<span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l686" href="#l686">686</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">{</span> <span class="c1">// collect to std::array</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l687" href="#l687">687</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">};</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l688" href="#l688">688</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">output</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l689" href="#l689">689</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">copied</span><span class="p">()</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l690" href="#l690">690</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">5</td>
+      <td class="src coveredLine">				<span class="p">.</span><span class="n">filter</span><span class="p">([](</span><span class="kt">float</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">item</span> <span class="o">&lt;</span> <span class="mf">3.5</span><span class="p">;</span> <span class="p">})</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l691" href="#l691">691</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">				<span class="p">.</span><span class="n">collectInto</span><span class="p">(</span><span class="n">output</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l692" href="#l692">692</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">3</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l693" href="#l693">693</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">		<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">));</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l694" href="#l694">694</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">1</td>
+      <td class="src coveredLine">	<span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l695" href="#l695">695</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l696" href="#l696">696</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// test as many permutations of items to target collections</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l697" href="#l697">697</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l698" href="#l698">698</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="cp">#define COLLECTOR_TEST_FOR_CONTAINER(...) { \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l699" href="#l699">699</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		std::vector&lt;std::string&gt; input = {&quot;1337&quot;, &quot;42&quot;, &quot;64&quot;}; \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l700" href="#l700">700</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		__VA_ARGS__ output = {&quot;pre-existing item in output&quot;}; \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l701" href="#l701">701</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		CXXIter::from(input).collectInto(output); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l702" href="#l702">702</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3 + 1); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l703" href="#l703">703</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">	} \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l704" href="#l704">704</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l705" href="#l705">705</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="cp">#define PAIR_COLLECTOR_TEST_FOR_CONTAINER(...) { \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l706" href="#l706">706</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		std::vector&lt;TestPair&gt; input = {{&quot;1337&quot;, 1337}, {&quot;42&quot;, 42}, {&quot;64&quot;, 64}}; \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l707" href="#l707">707</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		__VA_ARGS__ output = { std::make_pair(std::string(&quot;pre-existing&quot;), 5)}; \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l708" href="#l708">708</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		CXXIter::from(input).collectInto(output); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l709" href="#l709">709</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">		ASSERT_EQ(output.size(), 3 + 1); \</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l710" href="#l710">710</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">	}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l711" href="#l711">711</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l712" href="#l712">712</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// CustomContainer</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l713" href="#l713">713</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">18</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">CustomContainer</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l714" href="#l714">714</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l715" href="#l715">715</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// back-inserter containers</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l716" href="#l716">716</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l717" href="#l717">717</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l718" href="#l718">718</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l719" href="#l719">719</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l720" href="#l720">720</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// insert containers</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l721" href="#l721">721</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l722" href="#l722">722</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l723" href="#l723">723</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l724" href="#l724">724</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">20</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multiset</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l725" href="#l725">725</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l726" href="#l726">726</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// associative containers</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l727" href="#l727">727</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">10</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l728" href="#l728">728</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">10</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l729" href="#l729">729</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">10</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l730" href="#l730">730</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">10</td>
+      <td class="src coveredLine">	<span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_multimap</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l731" href="#l731">731</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l732" href="#l732">732</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="c1">// std::array</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l733" href="#l733">733</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">14</td>
+      <td class="src coveredLine">	<span class="n">COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span><span class="p">);</span> <span class="n">PAIR_COLLECTOR_TEST_FOR_CONTAINER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">TestPair</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span><span class="p">);</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l734" href="#l734">734</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l735" href="#l735">735</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="cp">#undef COLLECTOR_TEST_FOR_CONTAINER</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l736" href="#l736">736</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="cp">#undef PAIR_COLLECTOR_TEST_FOR_CONTAINER</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l737" href="#l737">737</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l738" href="#l738">738</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>

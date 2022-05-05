@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-04 15:20:44</td>
+      <td>2022-05-05 23:02:33</td>
     </tr>
   </table>
 </div>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>37</td>
-      <td>37</td>
+      <td>38</td>
+      <td>38</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -361,6 +361,17 @@
     </tr>
     <tr>
       <td>
+        <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;, CXXIter_collectInto_Test::TestBody()::{lambda(float)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;&amp;&amp;, CXXIter_collectInto_Test::TestBody()::{lambda(float)#2})</a>
+      </td>
+      <td>
+        <a href="#l22">22</a>
+      </td>
+      <td>
+        <a href="#l22"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="#l22">CXXIter::op::Filter&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#2}&gt;::Filter(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;float, std::allocator&lt;float&gt; &gt; &gt; &gt;::copied()::{lambda(float const&amp;)#1}, float&gt;&amp;&amp;, CXXIter_zipTuple_Test::TestBody()::{lambda(auto:1 const&amp;)#2})</a>
       </td>
       <td>
@@ -667,7 +678,7 @@
       <td class="lineno"><a id="l22" href="#l22">22</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">80</td>
+      <td class="linecount coveredLine">82</td>
       <td class="src coveredLine">			<span class="n">Filter</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TFilterFn</span> <span class="n">filterFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">filterFn</span><span class="p">(</span><span class="n">filterFn</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
@@ -763,7 +774,7 @@
       <td class="lineno"><a id="l34" href="#l34">34</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">169</td>
+      <td class="linecount coveredLine">172</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
@@ -793,7 +804,7 @@
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">169</td>
+      <td class="linecount coveredLine">172</td>
       <td class="src coveredLine">				<span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
@@ -808,7 +819,7 @@
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">249</td>
+      <td class="linecount coveredLine">255</td>
       <td class="src coveredLine">				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span> <span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{};</span> <span class="p">}</span></td>
     </tr>
 
@@ -829,7 +840,7 @@
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">143</td>
+      <td class="linecount coveredLine">146</td>
       <td class="src coveredLine">				<span class="k">if</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">filterFn</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">()))</span> <span class="p">{</span> <span class="k">return</span> <span class="n">item</span><span class="p">;</span> <span class="p">}</span></td>
     </tr>
 
