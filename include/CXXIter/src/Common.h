@@ -169,34 +169,6 @@ namespace CXXIter {
 
 
 	// ################################################################################################
-	// HELPERS
-	// ################################################################################################
-
-	/**
-	 * @brief Helper to construct a lambda that extracts the `FIELD_IDX`-th element from tuples or pairs passing through the iterator.
-	 * @details You can use this shortcut everywhere, where a lambda is required that takes a tuple or pair and returns their `FIELD_IDX`-th element.
-	 * @tparam FIELD_IDX Index of the field to extract.
-	 * @return Lambda that, given an arbitrary tuple or pair, extracts its `FIELD_IDX`-th element.
-	 *
-	 * Usage Example:
-	 * - Use the tuple's second (idx = 1) field to sort by.
-	 * @code
-	 *  std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
-	 *  std::vector<std::pair<size_t, float>> output = CXXIter::from(input).copied()
-	 *		.indexed()
-	 *		.sortBy<CXXIter::DESCENDING>(CXXIter::unzip<1>())
-	 *		.collect<std::vector>();
-	 *  // output = {{3, 3.0f}, {1, 2.0f}, {0, 1.0f}, {2, 0.5f}, {4, -42.0f}}
-	 * @endcode
-	 */
-	template<size_t FIELD_IDX>
-	auto unzip() {
-		return [](const auto& item) { return std::get<FIELD_IDX>(item); };
-	}
-
-
-
-	// ################################################################################################
 	// INTERNALS
 	// ################################################################################################
 

@@ -36,6 +36,7 @@
 #include "src/op/TakeWhile.h"
 #include "src/op/Unique.h"
 #include "src/op/Zipper.h"
+#include "src/Helpers.h"
 
 
 /**
