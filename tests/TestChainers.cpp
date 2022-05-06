@@ -604,6 +604,17 @@ TEST(CXXIter, generateFrom) {
 				.collect<std::vector>();
 		ASSERT_THAT(output, ElementsAre("1337", "1337", "1337", "1337", "42", "42"));
 	}
+	{ // generate different item type than input type
+		std::vector<size_t> input = {1, 2, 3, 4};
+		std::vector<std::string> output = CXXIter::from(std::move(input))
+				.generateFrom([](size_t item) -> CXXIter::Generator<std::string> {
+					for(size_t i = 0; i < item; ++i) {
+						co_yield std::to_string(i);
+					}
+				})
+				.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre("0", "0", "1", "0", "1", "2", "0", "1", "2", "3"));
+	}
 	{ // correct exception propagation
 		try {
 			std::vector<int> input = {1337, 42};

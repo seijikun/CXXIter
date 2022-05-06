@@ -33,6 +33,7 @@ namespace CXXIter {
 	template<typename TChainInput, typename TGeneratorFn, typename TGenerator>
 	struct IteratorTrait<op::GenerateFrom<TChainInput, TGeneratorFn, TGenerator>> {
 		using ChainInputIterator = IteratorTrait<TChainInput>;
+		using InputItem = typename TChainInput::Item;
 		using InputItemOwned = typename TChainInput::ItemOwned;
 		// CXXIter Interface
 		using Self = op::GenerateFrom<TChainInput, TGeneratorFn, TGenerator>;
@@ -43,7 +44,7 @@ namespace CXXIter {
 				if(!self.currentGenerator.has_value()) {
 					auto item = ChainInputIterator::next(self.input);
 					if(!item.has_value()) { return {}; } // reached end
-					self.currentGenerator.emplace(self.generatorFn( std::forward<Item>(item.value()) ));
+					self.currentGenerator.emplace(self.generatorFn( std::forward<InputItem>(item.value()) ));
 				}
 
 				auto item = self.currentGenerator.value().next();
