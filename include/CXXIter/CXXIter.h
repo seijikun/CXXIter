@@ -2165,9 +2165,3 @@ Range<TValue> range(TValue from, TValue to, TValue step = 1) {
 }
 
 }
-
-// until c++20 modules are here, clean up interface by erasing
-// defines made by/for CXXIter.
-#undef CXXITER_HAS_COROUTINE
-#undef CXXITER_HAS_CXX20RANGES
-#undef CXXITER_CHAINER_NODISCARD_WARNING
