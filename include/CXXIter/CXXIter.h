@@ -1856,7 +1856,8 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Groups the elements of this iterator according to the values returned by the given @p groupidentFn.
 	 * @param groupIdentFn Function called for each element from this iterator, to determine the grouping value,
-	 * that is then used to identify the group an item belongs to.
+	 * that is then used to identify the group an item belongs to. The type returned by this function has to
+	 * implement @c std::hash<>.
 	 * @return New iterator whose elements are the calculated groups from the values of this iterator, in the form
 	 * of a @c std::pair<> with the group identifier as first value, and a @c std::vector of all values in the group
 	 * as second value.
@@ -1879,6 +1880,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
+	requires is_hashable<std::invoke_result_t<TGroupIdentifierFn, const Item&>>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
 		using TGroupIdent = std::remove_cvref_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return op::GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
