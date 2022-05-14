@@ -1370,6 +1370,9 @@ public: // CXXIter API-Surface
 	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
 	 * fail to fill a complete chunk will be dropped.
 	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
+	 * @tparam STEP_SIZE Controls the step-size between chunks. Per default, this is set to the same as @p CHUNK_SIZE, so the produced
+	 * chunks are directly adjacent. If this is set to a value smaler than @p CHUNK_SIZE, the generated chunks will overlap. If
+	 * this is set to a value higher than @p CHUNK_SIZE, the generated chunks will have gaps in between (those items are dropped).
 	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
 	 *
 	 * Usage Example:
@@ -1391,10 +1394,28 @@ public: // CXXIter API-Surface
 	 * 			.collect<std::vector>();
 	 * 	// output == { {1337, 42, 512}, {31337, 69, 5} }
 	 * @endcode
+	 * - Overlapping chunks (STEP_SIZE < CHUNK_SIZE):
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunkedExact<3, 1>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {42, 512, 31337}, {512, 31337, 69}, {31337, 69, 5} }
+	 * @endcode
+	 * - Gapped Chunks (STEP_SIZE > CHUNK_SIZE):
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+	 * 	auto output = CXXIter::from(input)
+	 * 			.copied()
+	 * 			.chunkedExact<3, 4>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {69, 5, 1} }
+	 * @endcode
 	 */
-	template<const size_t CHUNK_SIZE>
-	op::ChunkedExact<TSelf, CHUNK_SIZE> chunkedExact() {
-		return op::ChunkedExact<TSelf, CHUNK_SIZE>(std::move(*self()));
+	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
+	op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExact() {
+		return op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
 	}
 
 	/**
