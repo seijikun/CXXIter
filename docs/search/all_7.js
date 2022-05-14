@@ -12,7 +12,7 @@ var searchData=
   ['iterapi_3c_20caster_3c_20tchaininput_2c_20titem_20_3e_20_3e_9',['IterApi&lt; Caster&lt; TChainInput, TItem &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20chainer_3c_20tchaininput1_2c_20tchaininput2_20_3e_20_3e_10',['IterApi&lt; Chainer&lt; TChainInput1, TChainInput2 &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20chunked_3c_20tchaininput_2c_20chunk_5fsize_20_3e_20_3e_11',['IterApi&lt; Chunked&lt; TChainInput, CHUNK_SIZE &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
-  ['iterapi_3c_20chunkedexact_3c_20tchaininput_2c_20chunk_5fsize_20_3e_20_3e_12',['IterApi&lt; ChunkedExact&lt; TChainInput, CHUNK_SIZE &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
+  ['iterapi_3c_20chunkedexact_3c_20tchaininput_2c_20chunk_5fsize_2c_20step_5fsize_20_3e_20_3e_12',['IterApi&lt; ChunkedExact&lt; TChainInput, CHUNK_SIZE, STEP_SIZE &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20coroutinegenerator_3c_20tgenerator_20_3e_20_3e_13',['IterApi&lt; CoroutineGenerator&lt; TGenerator &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20empty_3c_20titem_20_3e_20_3e_14',['IterApi&lt; Empty&lt; TItem &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20filter_3c_20tchaininput_2c_20tfilterfn_20_3e_20_3e_15',['IterApi&lt; Filter&lt; TChainInput, TFilterFn &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],

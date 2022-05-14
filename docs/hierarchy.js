@@ -7,7 +7,7 @@ var hierarchy =
     [ "CXXIter::IterApi< Caster< TChainInput, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Chainer< TChainInput1, TChainInput2 > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Chunked< TChainInput, CHUNK_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
-    [ "CXXIter::IterApi< ChunkedExact< TChainInput, CHUNK_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< ChunkedExact< TChainInput, CHUNK_SIZE, STEP_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< CoroutineGenerator< TGenerator > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Empty< TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Filter< TChainInput, TFilterFn > >", "classCXXIter_1_1IterApi.html", null ],
