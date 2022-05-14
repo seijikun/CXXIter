@@ -32,7 +32,7 @@ var classCXXIter_1_1IterApi =
     [ "fold", "classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e", null ],
     [ "forEach", "classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066", null ],
     [ "generateFrom", "classCXXIter_1_1IterApi.html#a859ed47310bc0aade5e6d4378433ac84", null ],
-    [ "groupBy", "classCXXIter_1_1IterApi.html#a3da71f522eb2a4e2177c9edb3bc713d5", null ],
+    [ "groupBy", "classCXXIter_1_1IterApi.html#a0f1f802151cd4c60920e2fecaca9e52c", null ],
     [ "indexed", "classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08", null ],
     [ "intersperse", "classCXXIter_1_1IterApi.html#a0b19694e4307cbc0387dab5c715e73e2", null ],
     [ "last", "classCXXIter_1_1IterApi.html#ac706806233525343ea38dc7e78f2faeb", null ],
