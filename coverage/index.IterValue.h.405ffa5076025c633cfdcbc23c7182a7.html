@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-20 18:25:43</td>
+      <td>2022-05-20 18:52:20</td>
     </tr>
   </table>
 </div>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>244</td>
-      <td>245</td>
+      <td>249</td>
+      <td>250</td>
       <td class="coverage-high">99.6%</td>
     </tr>
     <tr>
@@ -1923,6 +1923,61 @@
     </tr>
     <tr>
       <td>
+        <a href="#l63">CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;::IterValue()</a>
+      </td>
+      <td>
+        <a href="#l63">63</a>
+      </td>
+      <td>
+        <a href="#l63"> called 4 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l66">CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;::IterValue(CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;&amp;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l66">66</a>
+      </td>
+      <td>
+        <a href="#l66"> called 4 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l64">CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;::IterValue(std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l64">64</a>
+      </td>
+      <td>
+        <a href="#l64"> called 4 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l75">CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;::has_value() const</a>
+      </td>
+      <td>
+        <a href="#l75">75</a>
+      </td>
+      <td>
+        <a href="#l75"> called 12 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l71">CXXIter::IterValue&lt;std::pair&lt;int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;&amp;&gt;::value()</a>
+      </td>
+      <td>
+        <a href="#l71">71</a>
+      </td>
+      <td>
+        <a href="#l71"> called 4 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="#l26">CXXIter::IterValue&lt;std::pair&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const, std::vector&lt;CXXIter_groupBy_Test::TestBody()::CakeMeasurement, std::allocator&lt;CXXIter_groupBy_Test::TestBody()::CakeMeasurement&gt; &gt; &gt; &gt;::IterValue()</a>
       </td>
       <td>
@@ -3297,7 +3352,7 @@
       <td class="lineno"><a id="l63" href="#l63">63</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">534</td>
+      <td class="linecount coveredLine">542</td>
       <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">()</span> <span class="p">{}</span></td>
     </tr>
 
@@ -3305,7 +3360,7 @@
       <td class="lineno"><a id="l64" href="#l64">64</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1730</td>
+      <td class="linecount coveredLine">1738</td>
       <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="n">TValue</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
@@ -3321,7 +3376,7 @@
       <td class="lineno"><a id="l66" href="#l66">66</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">274</td>
+      <td class="linecount coveredLine">278</td>
       <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">))</span> <span class="p">{</span></td>
     </tr>
 
@@ -3329,7 +3384,7 @@
       <td class="lineno"><a id="l67" href="#l67">67</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">274</td>
+      <td class="linecount coveredLine">278</td>
       <td class="src coveredLine">			<span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span></td>
     </tr>
 
@@ -3337,7 +3392,7 @@
       <td class="lineno"><a id="l68" href="#l68">68</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">274</td>
+      <td class="linecount coveredLine">278</td>
       <td class="src coveredLine">		<span class="p">};</span></td>
     </tr>
 
@@ -3361,7 +3416,7 @@
       <td class="lineno"><a id="l71" href="#l71">71</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1832</td>
+      <td class="linecount coveredLine">1840</td>
       <td class="src coveredLine">		<span class="kr">inline</span> <span class="n">TValue</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
@@ -3393,7 +3448,7 @@
       <td class="lineno"><a id="l75" href="#l75">75</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">2318</td>
+      <td class="linecount coveredLine">2342</td>
       <td class="src coveredLine">		<span class="kt">bool</span> <span class="n">has_value</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">has_value</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
