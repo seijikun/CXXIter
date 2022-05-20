@@ -12,6 +12,7 @@ namespace CXXIter {
 		template<typename TChainInput, typename TFilterMapFn, typename TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FilterMap : public IterApi<FilterMap<TChainInput, TFilterMapFn, TItem>> {
 			friend struct trait::Iterator<FilterMap<TChainInput, TFilterMapFn, TItem>>;
+			friend struct trait::DoubleEndedIterator<FilterMap<TChainInput, TFilterMapFn, TItem>>;
 		private:
 			TChainInput input;
 			TFilterMapFn filterMapFn;
@@ -41,6 +42,25 @@ namespace CXXIter {
 		static inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
+		}
+	};
+	/** @private */
+	template<CXXIterDoubleEndedIterator TChainInput, typename TFilterMapFn, typename TItem>
+	struct trait::DoubleEndedIterator<op::FilterMap<TChainInput, TFilterMapFn, TItem>> {
+		using ChainInputIterator = trait::DoubleEndedIterator<TChainInput>;
+		using InputItem = typename TChainInput::Item;
+		// CXXIter Interface
+		using Self = op::FilterMap<TChainInput, TFilterMapFn, TItem>;
+		using Item = TItem;
+
+		static inline IterValue<Item> nextBack(Self& self) {
+			while(true) {
+				auto item = ChainInputIterator::nextBack(self.input);
+				if(!item.has_value()) [[unlikely]] { return {}; }
+				std::optional<Item> value(self.filterMapFn(std::forward<InputItem>( item.value() )));
+				if(!value) { continue; }
+				return *value;
+			}
 		}
 	};
 

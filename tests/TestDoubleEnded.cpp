@@ -158,3 +158,30 @@ TEST(CXXIter, doubleEndedFilter) {
 		ASSERT_FALSE(src.next().has_value());
 	}
 }
+
+TEST(CXXIter, doubleEndedFilterMap) {
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(std::move(input)).filterMap([](float val) -> std::optional<size_t> {
+			if(val <= 2.0f) { return {}; }
+			return static_cast<size_t>(val);
+		});
+		ASSERT_EQ(src.nextBack().value(), 4);
+		ASSERT_EQ(src.nextBack().value(), 3);
+		ASSERT_EQ(src.nextBack().value(), 2);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(std::move(input)).filterMap([](float val) -> std::optional<size_t> {
+			if(val <= 2.0f) { return {}; }
+			return static_cast<size_t>(val);
+		});
+		ASSERT_EQ(src.nextBack().value(), 4);
+		ASSERT_EQ(src.next().value(), 2);
+		ASSERT_EQ(src.nextBack().value(), 3);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+}

@@ -13,7 +13,6 @@ namespace CXXIter {
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
 			friend struct trait::Iterator<Filter<TChainInput, TFilterFn>>;
 			friend struct trait::DoubleEndedIterator<Filter<TChainInput, TFilterFn>>;
-			friend struct trait::ExactSizeIterator<Filter<TChainInput, TFilterFn>>;
 		private:
 			using InputItem = typename TChainInput::Item;
 
