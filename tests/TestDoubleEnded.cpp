@@ -203,3 +203,36 @@ TEST(CXXIter, doubleEndedModify) {
 		ASSERT_THAT(input, ElementsAre( Pair(1337, "3-1337"), Pair(42, "2-42"), Pair(69, "1-69"), Pair(31337, "0-31337") ));
 	}
 }
+
+TEST(CXXIter, doubleEndedMap) {
+	{
+		size_t iterState = 0;
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(input).map([iterState](float val) mutable -> size_t {
+			iterState += 100;
+			return static_cast<size_t>(val) + iterState;
+		});
+		ASSERT_EQ(src.nextBack().value(), 100);
+		ASSERT_EQ(src.nextBack().value(), 204);
+		ASSERT_EQ(src.nextBack().value(), 303);
+		ASSERT_EQ(src.nextBack().value(), 402);
+		ASSERT_EQ(src.nextBack().value(), 501);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{
+		size_t iterState = 0;
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(input).map([iterState](float val) mutable -> size_t {
+			iterState += 100;
+			return static_cast<size_t>(val) + iterState;
+		});
+		ASSERT_EQ(src.nextBack().value(), 100);
+		ASSERT_EQ(src.nextBack().value(), 204);
+		ASSERT_EQ(src.next().value(), 301);
+		ASSERT_EQ(src.next().value(), 402);
+		ASSERT_EQ(src.nextBack().value(), 503);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+}
