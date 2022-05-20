@@ -95,8 +95,8 @@ TEST(CXXIter, doubleEndedCast) {
 		std::vector<float> input = {1.337f, 2.338f, 3.339f};
 		auto src = CXXIter::from(std::move(input)).cast<size_t>();
 		ASSERT_EQ(src.nextBack().value(), 3);
-		ASSERT_EQ(src.next().value(), 1);
 		ASSERT_EQ(src.nextBack().value(), 2);
+		ASSERT_EQ(src.nextBack().value(), 1);
 		ASSERT_FALSE(src.nextBack().has_value());
 		ASSERT_FALSE(src.next().has_value());
 	}
@@ -104,8 +104,35 @@ TEST(CXXIter, doubleEndedCast) {
 		std::vector<float> input = {1.337f, 2.338f, 3.339f};
 		auto src = CXXIter::from(std::move(input)).cast<size_t>();
 		ASSERT_EQ(src.nextBack().value(), 3);
+		ASSERT_EQ(src.next().value(), 1);
 		ASSERT_EQ(src.nextBack().value(), 2);
-		ASSERT_EQ(src.nextBack().value(), 1);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+}
+
+TEST(CXXIter, doubleEndedChainer) {
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<std::string> input2 = {"31337", "64"};
+		auto src = CXXIter::from(std::move(input1))
+				.chain(CXXIter::from(std::move(input2)));
+		ASSERT_EQ(src.nextBack().value(), "64");
+		ASSERT_EQ(src.nextBack().value(), "31337");
+		ASSERT_EQ(src.nextBack().value(), "42");
+		ASSERT_EQ(src.nextBack().value(), "1337");
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{
+		std::vector<std::string> input1 = {"1337", "42"};
+		std::vector<std::string> input2 = {"31337", "64"};
+		auto src = CXXIter::from(std::move(input1))
+				.chain(CXXIter::from(std::move(input2)));
+		ASSERT_EQ(src.nextBack().value(), "64");
+		ASSERT_EQ(src.next().value(), "1337");
+		ASSERT_EQ(src.next().value(), "42");
+		ASSERT_EQ(src.nextBack().value(), "31337");
 		ASSERT_FALSE(src.nextBack().has_value());
 		ASSERT_FALSE(src.next().has_value());
 	}
