@@ -137,3 +137,24 @@ TEST(CXXIter, doubleEndedChainer) {
 		ASSERT_FALSE(src.next().has_value());
 	}
 }
+
+TEST(CXXIter, doubleEndedFilter) {
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(std::move(input)).filter([](float val) { return val > 2.0f; });
+		ASSERT_EQ(src.nextBack().value(), 4.340f);
+		ASSERT_EQ(src.nextBack().value(), 3.339f);
+		ASSERT_EQ(src.nextBack().value(), 2.338f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f, 4.340f, 0.1f};
+		auto src = CXXIter::from(std::move(input)).filter([](float val) { return val > 2.0f; });
+		ASSERT_EQ(src.nextBack().value(), 4.340f);
+		ASSERT_EQ(src.next().value(), 2.338f);
+		ASSERT_EQ(src.nextBack().value(), 3.339f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+}
