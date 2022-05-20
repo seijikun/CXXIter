@@ -74,16 +74,21 @@ namespace CXXIter {
 	};
 
 	template<typename T>
+	concept CXXIterDoubleEndedIterator = CXXIterIterator<T> && requires(typename trait::Iterator<T>::Self& self) {
+		{trait::DoubleEndedIterator<T>::nextBack(self)} -> std::same_as<IterValue<typename trait::Iterator<T>::Item>>;
+	};
+
+	template<typename T>
 	concept CXXIterExactSizeIterator = CXXIterIterator<T> && requires(const typename trait::Iterator<T>::Self& self) {
-			{trait::ExactSizeIterator<T>::size(self)} -> std::same_as<size_t>;
+		{trait::ExactSizeIterator<T>::size(self)} -> std::same_as<size_t>;
 	};
 
 	template<CXXIterIterator TSelf> class IterApi;
 
 	/**
 	* @brief Concept that checks whether the given @p TContainer is supported by CXXIter's standard source
-	* classes @c CXXIter::SrcMov, @c CXXIter::SrcRef and @c CXXIter::SrcCRef.
-	* @details The concept does these checks by testing whether the @c CXXIter::SourceTrait was properly specialized
+	* classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.
+	* @details The concept does these checks by testing whether the CXXIter::trait::Source was properly specialized
 	* for the given @p TContainer type.
 	*
 	* @see CXXIter::SourceTrait for further details on this.
@@ -109,6 +114,26 @@ namespace CXXIter {
 
 		{trait::Source<TContainer>::next(container, iterState)} -> std::same_as<typename trait::Source<TContainer>::ItemRef>;
 		{trait::Source<TContainer>::next(constContainer, constIterState)} -> std::same_as<typename trait::Source<TContainer>::ItemConstRef>;
+	};
+
+	/**
+	* @brief Concept that checks whether the given @p TContainer supports double-ended iteration when using CXXIter's
+	* standard source classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.
+	* @details The concept does these checks by testing whether the optional double-ended part in CXXIter::trait::Source
+	* was properly specialized properly provided by the specialization for the given @p TContainer type.
+	*
+	* @see CXXIter::Source for further details on this.
+	*/
+	template<typename TContainer>
+	concept DoubleEndedSourceContainer = SourceContainer<TContainer> && requires(
+				TContainer& container,
+				const TContainer& constContainer,
+				typename trait::Source<TContainer>::IteratorState& iterState,
+				typename trait::Source<TContainer>::ConstIteratorState& constIterState
+			) {
+
+		{trait::Source<TContainer>::nextBack(container, iterState)} -> std::same_as<typename trait::Source<TContainer>::ItemRef>;
+		{trait::Source<TContainer>::nextBack(constContainer, constIterState)} -> std::same_as<typename trait::Source<TContainer>::ItemConstRef>;
 	};
 
 }

@@ -3,6 +3,9 @@
 #include "IterValue.h"
 #include "SizeHint.h"
 
+/**
+ * @brief Trait namespace. This namespaces contains all public traits that cover all of the iterator's inner workings.
+ */
 namespace CXXIter::trait {
 
 	// ################################################################################################
@@ -14,13 +17,13 @@ namespace CXXIter::trait {
 	* @details This allows making any class or struct iterable, to be able to interact with CXXIter's
 	* iterator pipelines. It essentially provides two functions:
 	* - One that delivers a hint about the iterator's size after the current element implementing
-	*   the CXXIter::IteratorTrait
+	*   the trait @c CXXIter::trait::Iterator
 	* - Method that allows pulling one element from the iterator pipeline.
 	*/
 	template<typename T>
 	struct Iterator {
 		/**
-		* @brief Self-Type. This is the type of the struct for which the trait::IteratorTrait is being specialized.
+		* @brief Self-Type. This is the type of the struct for which the trait::Iterator is being specialized.
 		*/
 		using Self = trait::Iterator<T>;
 		/**
@@ -30,7 +33,7 @@ namespace CXXIter::trait {
 
 		/**
 		* @brief Pull one element from the iterator pipeline previous to this pipeline-element.
-		* @param self Reference to the instance of the class for which trait::IteratorTrait is being specialized.
+		* @param self Reference to the instance of the class for which trait::Iterator is being specialized.
 		* @return An element (if any) wrapped in the CXXIter::IterValue.
 		*/
 		static inline IterValue<Item> next(Self& self) = delete;
@@ -54,6 +57,21 @@ namespace CXXIter::trait {
 		* @return This iterator's exact number of elements.
 		*/
 		static inline size_t size(const typename trait::Iterator<T>::Self& self) = delete;
+	};
+
+	/**
+	* @brief Trait that extends the Iterator trait with double-ended functionality.
+	* @details Implementing this trait extends the iterator with the functionality to pull elements from the back.
+	* This can be arbitrarily mixed. Elements can e.g. be retrieved from front and back alternatingly.
+	*/
+	template<typename T>
+	struct DoubleEndedIterator {
+		/**
+		* @brief Pull the next last element from the iterator pipeline previous to this pipeline-element.
+		* @param self Reference to the instance of the class for which trait::DoubleEndedIterator is being specialized.
+		* @return An element (if any) wrapped in the CXXIter::IterValue.
+		*/
+		static inline IterValue<typename Iterator<T>::Item> nextBack(typename trait::Iterator<T>::Self& self) = delete;
 	};
 
 
@@ -81,16 +99,28 @@ namespace CXXIter::trait {
 		* @brief Type of the item @p TContainer holds and provides for the iterator, in const referenced form.
 		*/
 		using ItemConstRef = typename TContainer::const_reference;
+
 		/**
 		* @brief Type of the state structure stored in CXXIter's source classes, used to keep track of the iteration progress.
 		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
 		*/
-		using IteratorState = typename TContainer::iterator;
+		struct IteratorState {
+			/** Iteration range left (start) */
+			typename TContainer::iterator left;
+			/** Iteration range right (end) */
+			typename TContainer::iterator right;
+		};
+
 		/**
 		* @brief Type of the state structure stored in CXXIter's source classes, used to keep track of the iteration progress.
 		* @details This is used for @c CXXIter::SrcCRef
 		*/
-		using ConstIteratorState = typename TContainer::const_iterator;
+		struct ConstIteratorState {
+			/** Iteration range left (start) */
+			typename TContainer::const_iterator left;
+			/** Iteration range right (end) */
+			typename TContainer::const_iterator right;
+		};
 
 		/**
 		* @brief Report a size hint for a source on the given @p container.
@@ -107,7 +137,7 @@ namespace CXXIter::trait {
 		* @param container Container on which the source runs.
 		* @return Instance of @c IteratorState
 		*/
-		static inline IteratorState initIterator(TContainer& container) { return container.begin(); }
+		static inline IteratorState initIterator(TContainer& container) { return {container.begin(), container.end()}; }
 		/**
 		* @brief Return an initial @c IteratorState instance for iteration on the given @p container.
 		* @details This is stored within CXXIter's source classes, to hold the iteration's state.
@@ -115,7 +145,7 @@ namespace CXXIter::trait {
 		* @param container Container on which the source runs.
 		* @return Instance of @c ConstIteratorState
 		*/
-		static inline ConstIteratorState initIterator(const TContainer& container) { return container.begin(); }
+		static inline ConstIteratorState initIterator(const TContainer& container) { return {container.begin(), container.end()}; }
 
 		/**
 		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
@@ -124,7 +154,7 @@ namespace CXXIter::trait {
 		* @param iter The current iteration's state structure.
 		* @return @c true when there is another item available, @c false otherwise.
 		*/
-		static inline bool hasNext(TContainer& container, IteratorState& iter) { return (iter != container.end()); }
+		static inline bool hasNext([[maybe_unused]] TContainer& container, IteratorState& iter) { return (iter.left != iter.right); }
 		/**
 		* @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
 		* @details This is used for @c CXXIter::SrcCRef
@@ -132,7 +162,7 @@ namespace CXXIter::trait {
 		* @param iter The current iteration's state structure.
 		* @return @c true when there is another item available, @c false otherwise.
 		*/
-		static inline bool hasNext(const TContainer& container, ConstIteratorState& iter) { return (iter != container.end()); }
+		static inline bool hasNext([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (iter.left != iter.right); }
 
 		/**
 		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.
@@ -141,7 +171,7 @@ namespace CXXIter::trait {
 		* @param iter The current iteration's state structure.
 		* @return The next item from the current iteration.
 		*/
-		static inline ItemRef next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter++); }
+		static inline ItemRef next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter.left++); }
 		/**
 		* @brief Return the next item in the iteration with the given @p iter state on the given @p container.
 		* @details This is used for @c CXXIter::SrcCRef
@@ -149,7 +179,31 @@ namespace CXXIter::trait {
 		* @param iter The current iteration's state structure.
 		* @return The next item from the current iteration.
 		*/
-		static inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter++); }
+		static inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter.left++); }
+
+	/**
+	 * @name Double-Ended iterator functionality (optional)
+	 */
+	//@{
+		/**
+		* @brief Return the next item from the back of the iteration with the given @p iter state on the given @p container.
+		* @note Implementing this is optional, since not all containers can support this.
+		* @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+		* @param container Container on which the current iteration is running.
+		* @param iter The current iteration's state structure.
+		* @return The next item from the back of the current iteration.
+		*/
+		static inline ItemRef nextBack([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*--iter.right); }
+		/**
+		* @brief Return the next item from the back of the iteration with the given @p iter state on the given @p container.
+		* @note Implementing this is optional, since not all containers can support this.
+		* @details This is used for @c CXXIter::SrcCRef
+		* @param container Container on which the current iteration is running.
+		* @param iter The current iteration's state structure.
+		* @return The next item from the back of the current iteration.
+		*/
+		static inline ItemConstRef nextBack([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*--iter.right); }
+	//}@
 	};
 
 }

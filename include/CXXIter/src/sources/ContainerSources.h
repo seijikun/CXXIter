@@ -18,6 +18,7 @@ namespace CXXIter {
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcMov : public IterApi<SrcMov<TContainer>> {
 		friend struct trait::Iterator<SrcMov<TContainer>>;
+		friend struct trait::DoubleEndedIterator<SrcMov<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcMov<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
@@ -30,7 +31,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::Iterator<SrcMov<TContainer>> {
-		using Src = Source<TContainer>;
+		using Src = trait::Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcMov<TContainer>;
 		using Item = typename Src::Item;
@@ -40,6 +41,19 @@ namespace CXXIter {
 			return std::move(Src::next(*self.container, self.iter));
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(*self.container); }
+	};
+	/** @private */
+	template<typename TContainer>
+	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	struct trait::DoubleEndedIterator<SrcMov<TContainer>> {
+		using Src = trait::Source<TContainer>;
+		using Item = typename Src::Item;
+
+		// CXXIter Interface
+		static inline IterValue<Item> nextBack(SrcMov<TContainer>& self) {
+			if(!Src::hasNext(*self.container, self.iter)) [[unlikely]] { return {}; }
+			return std::move(Src::nextBack(*self.container, self.iter));
+		}
 	};
 	/** @private */
 	template<typename TContainer>
@@ -63,6 +77,7 @@ namespace CXXIter {
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcRef : public IterApi<SrcRef<TContainer>> {
 		friend struct trait::Iterator<SrcRef<TContainer>>;
+		friend struct trait::DoubleEndedIterator<SrcRef<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcRef<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
@@ -75,7 +90,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::Iterator<SrcRef<TContainer>> {
-		using Src = Source<TContainer>;
+		using Src = trait::Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcRef<TContainer>;
 		using Item = typename Src::ItemRef;
@@ -85,6 +100,19 @@ namespace CXXIter {
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+	};
+	/** @private */
+	template<typename TContainer>
+	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	struct trait::DoubleEndedIterator<SrcRef<TContainer>> {
+		using Src = trait::Source<TContainer>;
+		using Item = typename Src::ItemRef;
+
+		// CXXIter Interface
+		static inline IterValue<Item> nextBack(SrcRef<TContainer>& self) {
+			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
+			return Src::nextBack(self.container, self.iter);
+		}
 	};
 	/** @private */
 	template<typename TContainer>
@@ -107,6 +135,7 @@ namespace CXXIter {
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 		friend struct trait::Iterator<SrcCRef<TContainer>>;
+		friend struct trait::DoubleEndedIterator<SrcCRef<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcCRef<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
@@ -119,7 +148,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::Iterator<SrcCRef<TContainer>> {
-		using Src = Source<TContainer>;
+		using Src = trait::Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcCRef<TContainer>;
 		using Item = typename Src::ItemConstRef;
@@ -129,6 +158,19 @@ namespace CXXIter {
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+	};
+	/** @private */
+	template<typename TContainer>
+	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	struct trait::DoubleEndedIterator<SrcCRef<TContainer>> {
+		using Src = trait::Source<TContainer>;
+		using Item = typename Src::ItemConstRef;
+
+		// CXXIter Interface
+		static inline IterValue<Item> nextBack(SrcCRef<TContainer>& self) {
+			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
+			return Src::nextBack(self.container, self.iter);
+		}
 	};
 	/** @private */
 	template<typename TContainer>

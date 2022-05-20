@@ -167,11 +167,31 @@ public: // CXXIter API-Surface
 	 *
 	 * Usage Example:
 	 * @code
-	 *
+	 * 	std::optional<float> output = CXXIter::range<float>(1.337f, 2.0f, 0.25f)
+	 * 		.next().toStdOptional();
+	 *  // output == Some(1.337f);
 	 * @endcode
 	 */
 	IterValue<Item> next() {
 		return Iterator::next(*self());
+	}
+
+	/**
+	 * @brief Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue<>.
+	 * @note If the returned CXXIter::IterValue is empty, there are no elements left in this iterator.
+	 * Calling @c nextBack() again after that is undefined behavior.
+	 * @note This method only exists if the iterator implements the DoubleEndedIterator trait.
+	 * @return The next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue<>
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::optional<float> output = CXXIter::range<float>(1.337f, 2.0f, 0.25f)
+	 * 		.nextBack().toStdOptional();
+	 *  // output == Some(0.25f);
+	 * @endcode
+	 */
+	IterValue<Item> nextBack() requires CXXIterDoubleEndedIterator<TSelf> {
+		return trait::DoubleEndedIterator<TSelf>::nextBack(*self());
 	}
 
 	// ###################
