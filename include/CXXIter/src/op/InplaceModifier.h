@@ -16,6 +16,7 @@ namespace CXXIter {
 		requires std::is_object_v<typename trait::Iterator<TChainInput>::Item> || (!std::is_const_v<typename trait::Iterator<TChainInput>::Item>)
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
 			friend struct trait::Iterator<InplaceModifier<TChainInput, TModifierFn>>;
+			friend struct trait::DoubleEndedIterator<InplaceModifier<TChainInput, TModifierFn>>;
 			friend struct trait::ExactSizeIterator<InplaceModifier<TChainInput, TModifierFn>>;
 		private:
 			using InputItem = typename TChainInput::Item;
@@ -42,6 +43,21 @@ namespace CXXIter {
 			return item;
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+	};
+	/** @private */
+	template<CXXIterDoubleEndedIterator TChainInput, typename TModifierFn>
+	struct trait::DoubleEndedIterator<op::InplaceModifier<TChainInput, TModifierFn>> {
+		using ChainInputIterator = trait::DoubleEndedIterator<TChainInput>;
+		// CXXIter Interface
+		using Self = op::InplaceModifier<TChainInput, TModifierFn>;
+		using Item = typename ChainInputIterator::Item;
+
+		static inline IterValue<Item> nextBack(Self& self) {
+			auto item = ChainInputIterator::nextBack(self.input);
+			if(!item.has_value()) [[unlikely]] { return {}; }
+			self.modifierFn(item.value());
+			return item;
+		}
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>

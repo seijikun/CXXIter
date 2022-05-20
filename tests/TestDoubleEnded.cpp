@@ -185,3 +185,21 @@ TEST(CXXIter, doubleEndedFilterMap) {
 		ASSERT_FALSE(src.next().has_value());
 	}
 }
+
+TEST(CXXIter, doubleEndedModify) {
+	{
+		size_t iterState = 0;
+		std::vector<std::pair<int, std::string>> input = { {1337, "1337"}, {42, "42"}, {69, "69"}, {31337, "31337"} };
+		auto src = CXXIter::from(input)
+				.modify([iterState](auto& keyValue) mutable {
+					keyValue.second = std::to_string(iterState++) + "-" + keyValue.second;
+				});
+		for(size_t i = 0; i < input.size(); ++i) {
+			ASSERT_TRUE(src.nextBack().has_value());
+		}
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+
+		ASSERT_THAT(input, ElementsAre( Pair(1337, "3-1337"), Pair(42, "2-42"), Pair(69, "1-69"), Pair(31337, "0-31337") ));
+	}
+}
