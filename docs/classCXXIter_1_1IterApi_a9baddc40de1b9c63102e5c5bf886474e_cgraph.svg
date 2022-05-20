@@ -20,10 +20,10 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="structCXXIter_1_1trait_1_1IteratorTrait.html#a94a8e66688ad382a0a84c6e77758c279" target="_top" xlink:title="Get the bounds on the remaining length of the iterator pipeline until this pipeline&#45;element,...">
+<g id="a_node2"><a xlink:href="structCXXIter_1_1trait_1_1Iterator.html#a626fe95e0099da380bb2d5ee0534c3e4" target="_top" xlink:title="Get the bounds on the remaining length of the iterator pipeline until this pipeline&#45;element,...">
 <polygon fill="none" stroke="black" points="173,-0.5 173,-30.5 295,-30.5 295,-0.5 173,-0.5"/>
 <text text-anchor="start" x="181" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::trait::Iterator</text>
-<text text-anchor="middle" x="234" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Trait::sizeHint</text>
+<text text-anchor="middle" x="234" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::sizeHint</text>
 </a>
 </g>
 </g>

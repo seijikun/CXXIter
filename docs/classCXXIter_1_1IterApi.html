@@ -110,10 +110,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:adbc66a9fb33a7029e078ad75eddf5a46"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#adbc66a9fb33a7029e078ad75eddf5a46">Iterator</a> = <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html">trait::IteratorTrait</a>&lt; TSelf &gt;</td></tr>
-<tr class="memdesc:adbc66a9fb33a7029e078ad75eddf5a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::IteratorTrait</a> implemenation for this.  <a href="classCXXIter_1_1IterApi.html#adbc66a9fb33a7029e078ad75eddf5a46">More...</a><br /></td></tr>
-<tr class="separator:adbc66a9fb33a7029e078ad75eddf5a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f3ed5b2201522d327c6a8a92d371c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> = typename <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0">Iterator::Item</a></td></tr>
+<tr class="memitem:a1ca8ef5efb4a7f873cdcb094e1547e52"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1ca8ef5efb4a7f873cdcb094e1547e52">Iterator</a> = <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">trait::Iterator</a>&lt; TSelf &gt;</td></tr>
+<tr class="memdesc:a1ca8ef5efb4a7f873cdcb094e1547e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> implemenation for this.  <a href="classCXXIter_1_1IterApi.html#a1ca8ef5efb4a7f873cdcb094e1547e52">More...</a><br /></td></tr>
+<tr class="separator:a1ca8ef5efb4a7f873cdcb094e1547e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f3ed5b2201522d327c6a8a92d371c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> = typename <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">Iterator::Item</a></td></tr>
 <tr class="memdesc:a00f3ed5b2201522d327c6a8a92d371c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the elements of this iterator. (Can be references)  <a href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">More...</a><br /></td></tr>
 <tr class="separator:a00f3ed5b2201522d327c6a8a92d371c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a628012452f851b7099d919218e2a5512"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> = std::remove_cvref_t&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;</td></tr>
@@ -329,11 +329,11 @@ requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a clas
 <tr class="memitem:a697a84ef397adc29008d87edbc7095fc"><td class="memTemplItemLeft" align="right" valign="top">op::Zipper&lt; TSelf, std::pair, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a697a84ef397adc29008d87edbc7095fc">zip</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
 <tr class="memdesc:a697a84ef397adc29008d87edbc7095fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" two <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over pairs from both iterators.  <a href="classCXXIter_1_1IterApi.html#a697a84ef397adc29008d87edbc7095fc">More...</a><br /></td></tr>
 <tr class="separator:a697a84ef397adc29008d87edbc7095fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a95f31f92767cbde38c198b54c39f89"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
-requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!std::disjunction_v&lt; std::is_reference&lt;typename <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html">trait::IteratorTrait</a>&lt;TOtherIterators&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt;... &gt; &amp;&amp; !IS_REFERENCE)</td></tr>
-<tr class="memitem:a2a95f31f92767cbde38c198b54c39f89"><td class="memTemplItemLeft" align="right" valign="top">op::Zipper&lt; TSelf, std::tuple, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2a95f31f92767cbde38c198b54c39f89">zipTuple</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
-<tr class="memdesc:a2a95f31f92767cbde38c198b54c39f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" an arbitrary amount of <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over <code>std::tuple&lt;&gt;</code> from both iterators.  <a href="classCXXIter_1_1IterApi.html#a2a95f31f92767cbde38c198b54c39f89">More...</a><br /></td></tr>
-<tr class="separator:a2a95f31f92767cbde38c198b54c39f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69a33172afd539a6dd763492752139c7"><td class="memTemplParams" colspan="2">template&lt;typename... TOtherIterators&gt; <br />
+requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!std::disjunction_v&lt; std::is_reference&lt;typename <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">trait::Iterator</a>&lt;TOtherIterators&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt;... &gt; &amp;&amp; !IS_REFERENCE)</td></tr>
+<tr class="memitem:a69a33172afd539a6dd763492752139c7"><td class="memTemplItemLeft" align="right" valign="top">op::Zipper&lt; TSelf, std::tuple, TOtherIterators... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a69a33172afd539a6dd763492752139c7">zipTuple</a> (TOtherIterators &amp;&amp;... otherIterators)</td></tr>
+<tr class="memdesc:a69a33172afd539a6dd763492752139c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Zips up" an arbitrary amount of <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterators into a single iterator over <code>std::tuple&lt;&gt;</code> from both iterators.  <a href="classCXXIter_1_1IterApi.html#a69a33172afd539a6dd763492752139c7">More...</a><br /></td></tr>
+<tr class="separator:a69a33172afd539a6dd763492752139c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ff8681de8cdfaff25d2d5b04226c983"><td class="memTemplParams" colspan="2">template&lt;typename TOtherIterator &gt; <br />
 requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>, typename TOtherIterator::Item&gt;</td></tr>
 <tr class="memitem:a1ff8681de8cdfaff25d2d5b04226c983"><td class="memTemplItemLeft" align="right" valign="top">op::Chainer&lt; TSelf, TOtherIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1ff8681de8cdfaff25d2d5b04226c983">chain</a> (TOtherIterator &amp;&amp;otherIterator)</td></tr>
@@ -384,7 +384,7 @@ class CXXIter::IterApi&lt; TSelf &gt;</div><p >Public Iterator API surface. </p>
 template&lt;CXXIterIterator TSelf&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::Item =  typename <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0">Iterator::Item</a></td>
+          <td class="memname">using <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::Item =  typename <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">Iterator::Item</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -415,8 +415,8 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 </div>
 </div>
-<a id="adbc66a9fb33a7029e078ad75eddf5a46" name="adbc66a9fb33a7029e078ad75eddf5a46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbc66a9fb33a7029e078ad75eddf5a46">&#9670;&nbsp;</a></span>Iterator</h2>
+<a id="a1ca8ef5efb4a7f873cdcb094e1547e52" name="a1ca8ef5efb4a7f873cdcb094e1547e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca8ef5efb4a7f873cdcb094e1547e52">&#9670;&nbsp;</a></span>Iterator</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,12 +424,12 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 template&lt;CXXIterIterator TSelf&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::Iterator =  <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html">trait::IteratorTrait</a>&lt;TSelf&gt;</td>
+          <td class="memname">using <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::Iterator =  <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">trait::Iterator</a>&lt;TSelf&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Type of the <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::IteratorTrait</a> implemenation for this. </p>
+<p>Type of the <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> implemenation for this. </p>
 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00060">60</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
@@ -3768,8 +3768,8 @@ template&lt;typename TOtherIterator &gt; </div>
 
 </div>
 </div>
-<a id="a2a95f31f92767cbde38c198b54c39f89" name="a2a95f31f92767cbde38c198b54c39f89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a95f31f92767cbde38c198b54c39f89">&#9670;&nbsp;</a></span>zipTuple()</h2>
+<a id="a69a33172afd539a6dd763492752139c7" name="a69a33172afd539a6dd763492752139c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69a33172afd539a6dd763492752139c7">&#9670;&nbsp;</a></span>zipTuple()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3777,7 +3777,7 @@ template&lt;typename TOtherIterator &gt; </div>
 template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="memtemplate">
 template&lt;typename... TOtherIterators&gt; <br />
-requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!std::disjunction_v&lt; std::is_reference&lt;typename <a class="el" href="structCXXIter_1_1trait_1_1IteratorTrait.html">trait::IteratorTrait</a>&lt;TOtherIterators&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt;... &gt; &amp;&amp; !IS_REFERENCE)</div>
+requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!std::disjunction_v&lt; std::is_reference&lt;typename <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">trait::Iterator</a>&lt;TOtherIterators&gt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">::Item</a>&gt;... &gt; &amp;&amp; !IS_REFERENCE)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">

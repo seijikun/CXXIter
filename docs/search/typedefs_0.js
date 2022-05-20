@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['constiteratorstate_0',['ConstIteratorState',['../structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e',1,'CXXIter::trait::SourceTrait']]]
+  ['constiteratorstate_0',['ConstIteratorState',['../structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975',1,'CXXIter::trait::Source']]]
 ];

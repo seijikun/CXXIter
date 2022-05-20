@@ -10,7 +10,7 @@ var searchData=
   ['chunkedexact_7',['chunkedExact',['../classCXXIter_1_1IterApi.html#aa100f6d93caf6b3537535df3a4a81e32',1,'CXXIter::IterApi']]],
   ['collect_8',['collect',['../classCXXIter_1_1IterApi.html#af624739bd9e8e235500273f5a9465544',1,'CXXIter::IterApi::collect()'],['../classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89',1,'CXXIter::IterApi::collect()']]],
   ['collectinto_9',['collectInto',['../classCXXIter_1_1IterApi.html#ab9f60e619bcb3f2f5728605e5738854c',1,'CXXIter::IterApi']]],
-  ['constiteratorstate_10',['ConstIteratorState',['../structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e',1,'CXXIter::trait::SourceTrait']]],
+  ['constiteratorstate_10',['ConstIteratorState',['../structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975',1,'CXXIter::trait::Source']]],
   ['copied_11',['copied',['../classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f',1,'CXXIter::IterApi']]],
   ['count_12',['count',['../classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815',1,'CXXIter::IterApi::count()'],['../classCXXIter_1_1IterApi.html#abfd58d36cbf83360cd7a6959971e2ef6',1,'CXXIter::IterApi::count(TPredicateFn predicateFn)'],['../classCXXIter_1_1IterApi.html#afc37b3e2bc9c3417d29ff713e27111e1',1,'CXXIter::IterApi::count(const ItemOwned &amp;countItem)']]],
   ['cxxiter_13',['CXXIter',['../namespaceCXXIter.html',1,'CXXIter'],['../index.html',1,'(Global Namespace)']]],

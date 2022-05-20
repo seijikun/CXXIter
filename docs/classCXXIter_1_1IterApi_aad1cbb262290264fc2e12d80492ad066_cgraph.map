@@ -1,4 +1,4 @@
 <map id="CXXIter::IterApi::forEach" name="CXXIter::IterApi::forEach">
 <area shape="rect" id="node1" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="5,13,184,39"/>
-<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="232,5,395,47"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1Iterator.html#ae0ea73d4371db684ce0317ef4f464110" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="232,5,395,47"/>
 </map>

@@ -1,12 +1,12 @@
 var searchData=
 [
   ['indexed_0',['indexed',['../classCXXIter_1_1IterApi.html#a037dc6c6a07bbda8b580ef9ea266db08',1,'CXXIter::IterApi']]],
-  ['inititerator_1',['initIterator',['../structCXXIter_1_1trait_1_1SourceTrait.html#a45761d065081ce375ae57fe857c18d72',1,'CXXIter::trait::SourceTrait::initIterator(TContainer &amp;container)'],['../structCXXIter_1_1trait_1_1SourceTrait.html#ad37c83909915fc603f15cdc08a8cca7a',1,'CXXIter::trait::SourceTrait::initIterator(const TContainer &amp;container)']]],
+  ['inititerator_1',['initIterator',['../structCXXIter_1_1trait_1_1Source.html#acf59d9167cf1d7e3010c51722354022b',1,'CXXIter::trait::Source::initIterator(TContainer &amp;container)'],['../structCXXIter_1_1trait_1_1Source.html#a851033a4d15a158044264239cfcdfe13',1,'CXXIter::trait::Source::initIterator(const TContainer &amp;container)']]],
   ['intersperse_2',['intersperse',['../classCXXIter_1_1IterApi.html#a0b19694e4307cbc0387dab5c715e73e2',1,'CXXIter::IterApi']]],
-  ['item_3',['Item',['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()'],['../structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0',1,'CXXIter::trait::IteratorTrait::Item()'],['../structCXXIter_1_1trait_1_1SourceTrait.html#a2f84ef4bb9399ad7ac940c65b57d7188',1,'CXXIter::trait::SourceTrait::Item()']]],
-  ['itemconstref_4',['ItemConstRef',['../structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5',1,'CXXIter::trait::SourceTrait']]],
+  ['item_3',['Item',['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()'],['../structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575',1,'CXXIter::trait::Iterator::Item()'],['../structCXXIter_1_1trait_1_1Source.html#a1b53a018f1cd74c1a85771f52c29e472',1,'CXXIter::trait::Source::Item()']]],
+  ['itemconstref_4',['ItemConstRef',['../structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563',1,'CXXIter::trait::Source']]],
   ['itemowned_5',['ItemOwned',['../classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512',1,'CXXIter::IterApi']]],
-  ['itemref_6',['ItemRef',['../structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3',1,'CXXIter::trait::SourceTrait']]],
+  ['itemref_6',['ItemRef',['../structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536',1,'CXXIter::trait::Source']]],
   ['iterapi_7',['IterApi',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20alternater_3c_20tchaininput1_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_8',['IterApi&lt; Alternater&lt; TChainInput1, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20caster_3c_20tchaininput_2c_20titem_20_3e_20_3e_9',['IterApi&lt; Caster&lt; TChainInput, TItem &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
@@ -37,8 +37,7 @@ var searchData=
   ['iterapi_3c_20unique_3c_20tchaininput_2c_20tmapfn_20_3e_20_3e_34',['IterApi&lt; Unique&lt; TChainInput, TMapFn &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_35',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterator_36',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
-  ['iterator_37',['Iterator',['../classCXXIter_1_1IterApi.html#adbc66a9fb33a7029e078ad75eddf5a46',1,'CXXIter::IterApi']]],
-  ['iteratorstate_38',['IteratorState',['../structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0',1,'CXXIter::trait::SourceTrait']]],
-  ['iteratortrait_39',['IteratorTrait',['../structCXXIter_1_1trait_1_1IteratorTrait.html',1,'CXXIter::trait']]],
-  ['itervalue_3c_20tvalue_20_3e_40',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
+  ['iterator_37',['Iterator',['../structCXXIter_1_1trait_1_1Iterator.html',1,'CXXIter::trait::Iterator&lt; T &gt;'],['../classCXXIter_1_1IterApi.html#a1ca8ef5efb4a7f873cdcb094e1547e52',1,'CXXIter::IterApi::Iterator()']]],
+  ['iteratorstate_38',['IteratorState',['../structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440',1,'CXXIter::trait::Source']]],
+  ['itervalue_3c_20tvalue_20_3e_39',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
 ];

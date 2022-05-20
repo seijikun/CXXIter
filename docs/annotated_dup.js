@@ -2,9 +2,9 @@ var annotated_dup =
 [
     [ "CXXIter", "namespaceCXXIter.html", [
       [ "trait", null, [
-        [ "ExactSizeIteratorTrait", "structCXXIter_1_1trait_1_1ExactSizeIteratorTrait.html", null ],
-        [ "IteratorTrait", "structCXXIter_1_1trait_1_1IteratorTrait.html", "structCXXIter_1_1trait_1_1IteratorTrait" ],
-        [ "SourceTrait", "structCXXIter_1_1trait_1_1SourceTrait.html", "structCXXIter_1_1trait_1_1SourceTrait" ]
+        [ "ExactSizeIterator", "structCXXIter_1_1trait_1_1ExactSizeIterator.html", null ],
+        [ "Iterator", "structCXXIter_1_1trait_1_1Iterator.html", "structCXXIter_1_1trait_1_1Iterator" ],
+        [ "Source", "structCXXIter_1_1trait_1_1Source.html", "structCXXIter_1_1trait_1_1Source" ]
       ] ],
       [ "Generator", "classCXXIter_1_1Generator.html", "classCXXIter_1_1Generator" ],
       [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],

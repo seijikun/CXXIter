@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['item_0',['Item',['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()'],['../structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0',1,'CXXIter::trait::IteratorTrait::Item()'],['../structCXXIter_1_1trait_1_1SourceTrait.html#a2f84ef4bb9399ad7ac940c65b57d7188',1,'CXXIter::trait::SourceTrait::Item()']]],
-  ['itemconstref_1',['ItemConstRef',['../structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5',1,'CXXIter::trait::SourceTrait']]],
+  ['item_0',['Item',['../classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8',1,'CXXIter::IterApi::Item()'],['../structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575',1,'CXXIter::trait::Iterator::Item()'],['../structCXXIter_1_1trait_1_1Source.html#a1b53a018f1cd74c1a85771f52c29e472',1,'CXXIter::trait::Source::Item()']]],
+  ['itemconstref_1',['ItemConstRef',['../structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563',1,'CXXIter::trait::Source']]],
   ['itemowned_2',['ItemOwned',['../classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512',1,'CXXIter::IterApi']]],
-  ['itemref_3',['ItemRef',['../structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3',1,'CXXIter::trait::SourceTrait']]],
-  ['iterator_4',['Iterator',['../classCXXIter_1_1IterApi.html#adbc66a9fb33a7029e078ad75eddf5a46',1,'CXXIter::IterApi']]],
-  ['iteratorstate_5',['IteratorState',['../structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0',1,'CXXIter::trait::SourceTrait']]]
+  ['itemref_3',['ItemRef',['../structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536',1,'CXXIter::trait::Source']]],
+  ['iterator_4',['Iterator',['../classCXXIter_1_1IterApi.html#a1ca8ef5efb4a7f873cdcb094e1547e52',1,'CXXIter::IterApi']]],
+  ['iteratorstate_5',['IteratorState',['../structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440',1,'CXXIter::trait::Source']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['size_0',['size',['../classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804',1,'CXXIter::IterApi::size()'],['../structCXXIter_1_1trait_1_1ExactSizeIteratorTrait.html#a43dd88af969b3c90b333820185ceace2',1,'CXXIter::trait::ExactSizeIteratorTrait::size()']]],
-  ['sizehint_1',['sizeHint',['../classCXXIter_1_1IterApi.html#a9baddc40de1b9c63102e5c5bf886474e',1,'CXXIter::IterApi::sizeHint()'],['../structCXXIter_1_1trait_1_1IteratorTrait.html#a94a8e66688ad382a0a84c6e77758c279',1,'CXXIter::trait::IteratorTrait::sizeHint()'],['../structCXXIter_1_1trait_1_1SourceTrait.html#aebc5632eeff362e181afffc334bfb883',1,'CXXIter::trait::SourceTrait::sizeHint()']]],
+  ['size_0',['size',['../classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804',1,'CXXIter::IterApi::size()'],['../structCXXIter_1_1trait_1_1ExactSizeIterator.html#a0f4bf9800252e44e65fb4073af93bb2f',1,'CXXIter::trait::ExactSizeIterator::size()']]],
+  ['sizehint_1',['sizeHint',['../classCXXIter_1_1IterApi.html#a9baddc40de1b9c63102e5c5bf886474e',1,'CXXIter::IterApi::sizeHint()'],['../structCXXIter_1_1trait_1_1Iterator.html#a626fe95e0099da380bb2d5ee0534c3e4',1,'CXXIter::trait::Iterator::sizeHint()'],['../structCXXIter_1_1trait_1_1Source.html#a57c240b6caf8d57b8be2b6889baf79a0',1,'CXXIter::trait::Source::sizeHint()']]],
   ['skip_2',['skip',['../classCXXIter_1_1IterApi.html#acf4cbe6073a887100d549f0bea73a90e',1,'CXXIter::IterApi']]],
   ['skipwhile_3',['skipWhile',['../classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2',1,'CXXIter::IterApi']]],
   ['sort_4',['sort',['../classCXXIter_1_1IterApi.html#aff8dd89925c1e49327c408467ebdab22',1,'CXXIter::IterApi::sort(TCompareFn compareFn)'],['../classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080',1,'CXXIter::IterApi::sort()']]],

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CXXIter: CXXIter::trait::SourceTrait&lt; TContainer &gt; Struct Template Reference</title>
+<title>CXXIter: CXXIter::trait::Source&lt; TContainer &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structCXXIter_1_1trait_1_1SourceTrait.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structCXXIter_1_1trait_1_1Source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,74 +85,74 @@ $(document).ready(function(){initNavTree('structCXXIter_1_1trait_1_1SourceTrait.
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="structCXXIter_1_1trait_1_1SourceTrait-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">CXXIter::trait::SourceTrait&lt; TContainer &gt; Struct Template Reference</div></div>
+<a href="structCXXIter_1_1trait_1_1Source-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">CXXIter::trait::Source&lt; TContainer &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">SourceTrait</a>, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>.  
- <a href="structCXXIter_1_1trait_1_1SourceTrait.html#details">More...</a></p>
+<p>SourceTrait, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>.  
+ <a href="structCXXIter_1_1trait_1_1Source.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Traits_8h_source.html">Traits.h</a>&gt;</code></p>
 <div class="dynheader">
-Collaboration diagram for CXXIter::trait::SourceTrait&lt; TContainer &gt;:</div>
+Collaboration diagram for CXXIter::trait::Source&lt; TContainer &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1SourceTrait__coll__graph.svg" width="198" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1Source__coll__graph.svg" width="170" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a2f84ef4bb9399ad7ac940c65b57d7188"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#a2f84ef4bb9399ad7ac940c65b57d7188">Item</a> = typename TContainer::value_type</td></tr>
-<tr class="memdesc:a2f84ef4bb9399ad7ac940c65b57d7188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#a2f84ef4bb9399ad7ac940c65b57d7188">More...</a><br /></td></tr>
-<tr class="separator:a2f84ef4bb9399ad7ac940c65b57d7188"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0415ad7ef0a22c9c34369056ac1d4b3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3">ItemRef</a> = typename TContainer::reference</td></tr>
-<tr class="memdesc:ac0415ad7ef0a22c9c34369056ac1d4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator, in referenced form.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3">More...</a><br /></td></tr>
-<tr class="separator:ac0415ad7ef0a22c9c34369056ac1d4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfb0298dbf89ecb77c34d89b6f849cb5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5">ItemConstRef</a> = typename TContainer::const_reference</td></tr>
-<tr class="memdesc:abfb0298dbf89ecb77c34d89b6f849cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator, in const referenced form.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5">More...</a><br /></td></tr>
-<tr class="separator:abfb0298dbf89ecb77c34d89b6f849cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2966cc7f1dd2d35b7167a9f058f17e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> = typename TContainer::iterator</td></tr>
-<tr class="memdesc:ae2966cc7f1dd2d35b7167a9f058f17e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">More...</a><br /></td></tr>
-<tr class="separator:ae2966cc7f1dd2d35b7167a9f058f17e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad84715c169d7571dbe2a782090f1264e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> = typename TContainer::const_iterator</td></tr>
-<tr class="memdesc:ad84715c169d7571dbe2a782090f1264e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">More...</a><br /></td></tr>
-<tr class="separator:ad84715c169d7571dbe2a782090f1264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b53a018f1cd74c1a85771f52c29e472"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a1b53a018f1cd74c1a85771f52c29e472">Item</a> = typename TContainer::value_type</td></tr>
+<tr class="memdesc:a1b53a018f1cd74c1a85771f52c29e472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator.  <a href="structCXXIter_1_1trait_1_1Source.html#a1b53a018f1cd74c1a85771f52c29e472">More...</a><br /></td></tr>
+<tr class="separator:a1b53a018f1cd74c1a85771f52c29e472"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad117e6f0003005dbfaf01f845091536"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">ItemRef</a> = typename TContainer::reference</td></tr>
+<tr class="memdesc:aad117e6f0003005dbfaf01f845091536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator, in referenced form.  <a href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">More...</a><br /></td></tr>
+<tr class="separator:aad117e6f0003005dbfaf01f845091536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add956d6babfe5823bc784e3ad9790563"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a> = typename TContainer::const_reference</td></tr>
+<tr class="memdesc:add956d6babfe5823bc784e3ad9790563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the item <code>TContainer</code> holds and provides for the iterator, in const referenced form.  <a href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">More...</a><br /></td></tr>
+<tr class="separator:add956d6babfe5823bc784e3ad9790563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78207acec0dca59ba55c44a9ad77c440"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> = typename TContainer::iterator</td></tr>
+<tr class="memdesc:a78207acec0dca59ba55c44a9ad77c440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress.  <a href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">More...</a><br /></td></tr>
+<tr class="separator:a78207acec0dca59ba55c44a9ad77c440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33352dbfac1c73bd986652affdb12975"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> = typename TContainer::const_iterator</td></tr>
+<tr class="memdesc:a33352dbfac1c73bd986652affdb12975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state structure stored in <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s source classes, used to keep track of the iteration progress.  <a href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">More...</a><br /></td></tr>
+<tr class="separator:a33352dbfac1c73bd986652affdb12975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aebc5632eeff362e181afffc334bfb883"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1SizeHint.html">SizeHint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#aebc5632eeff362e181afffc334bfb883">sizeHint</a> (const TContainer &amp;container)</td></tr>
-<tr class="memdesc:aebc5632eeff362e181afffc334bfb883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report a size hint for a source on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#aebc5632eeff362e181afffc334bfb883">More...</a><br /></td></tr>
-<tr class="separator:aebc5632eeff362e181afffc334bfb883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45761d065081ce375ae57fe857c18d72"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#a45761d065081ce375ae57fe857c18d72">initIterator</a> (TContainer &amp;container)</td></tr>
-<tr class="memdesc:a45761d065081ce375ae57fe857c18d72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an initial <code>IteratorState</code> instance for iteration on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#a45761d065081ce375ae57fe857c18d72">More...</a><br /></td></tr>
-<tr class="separator:a45761d065081ce375ae57fe857c18d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad37c83909915fc603f15cdc08a8cca7a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad37c83909915fc603f15cdc08a8cca7a">initIterator</a> (const TContainer &amp;container)</td></tr>
-<tr class="memdesc:ad37c83909915fc603f15cdc08a8cca7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an initial <code>IteratorState</code> instance for iteration on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#ad37c83909915fc603f15cdc08a8cca7a">More...</a><br /></td></tr>
-<tr class="separator:ad37c83909915fc603f15cdc08a8cca7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf7dd33ddf93040f8fb9cf5b56a890b8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#abf7dd33ddf93040f8fb9cf5b56a890b8">hasNext</a> (TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> &amp;iter)</td></tr>
-<tr class="memdesc:abf7dd33ddf93040f8fb9cf5b56a890b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether there is a next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#abf7dd33ddf93040f8fb9cf5b56a890b8">More...</a><br /></td></tr>
-<tr class="separator:abf7dd33ddf93040f8fb9cf5b56a890b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5380332bc05a227bf1964242595e77c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ab5380332bc05a227bf1964242595e77c">hasNext</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> &amp;iter)</td></tr>
-<tr class="memdesc:ab5380332bc05a227bf1964242595e77c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether there is a next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#ab5380332bc05a227bf1964242595e77c">More...</a><br /></td></tr>
-<tr class="separator:ab5380332bc05a227bf1964242595e77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a782234fe532bce378ada781c56e5f773"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3">ItemRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#a782234fe532bce378ada781c56e5f773">next</a> (TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> &amp;iter)</td></tr>
-<tr class="memdesc:a782234fe532bce378ada781c56e5f773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#a782234fe532bce378ada781c56e5f773">More...</a><br /></td></tr>
-<tr class="separator:a782234fe532bce378ada781c56e5f773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3248a85a4b935194684fbceeb0e13644"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5">ItemConstRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#a3248a85a4b935194684fbceeb0e13644">next</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> &amp;iter)</td></tr>
-<tr class="memdesc:a3248a85a4b935194684fbceeb0e13644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1SourceTrait.html#a3248a85a4b935194684fbceeb0e13644">More...</a><br /></td></tr>
-<tr class="separator:a3248a85a4b935194684fbceeb0e13644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57c240b6caf8d57b8be2b6889baf79a0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1SizeHint.html">SizeHint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a57c240b6caf8d57b8be2b6889baf79a0">sizeHint</a> (const TContainer &amp;container)</td></tr>
+<tr class="memdesc:a57c240b6caf8d57b8be2b6889baf79a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report a size hint for a source on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#a57c240b6caf8d57b8be2b6889baf79a0">More...</a><br /></td></tr>
+<tr class="separator:a57c240b6caf8d57b8be2b6889baf79a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf59d9167cf1d7e3010c51722354022b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#acf59d9167cf1d7e3010c51722354022b">initIterator</a> (TContainer &amp;container)</td></tr>
+<tr class="memdesc:acf59d9167cf1d7e3010c51722354022b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an initial <code>IteratorState</code> instance for iteration on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#acf59d9167cf1d7e3010c51722354022b">More...</a><br /></td></tr>
+<tr class="separator:acf59d9167cf1d7e3010c51722354022b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a851033a4d15a158044264239cfcdfe13"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a851033a4d15a158044264239cfcdfe13">initIterator</a> (const TContainer &amp;container)</td></tr>
+<tr class="memdesc:a851033a4d15a158044264239cfcdfe13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an initial <code>IteratorState</code> instance for iteration on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#a851033a4d15a158044264239cfcdfe13">More...</a><br /></td></tr>
+<tr class="separator:a851033a4d15a158044264239cfcdfe13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab786b2c6e73015ac07ae04128487194f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#ab786b2c6e73015ac07ae04128487194f">hasNext</a> (TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:ab786b2c6e73015ac07ae04128487194f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether there is a next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#ab786b2c6e73015ac07ae04128487194f">More...</a><br /></td></tr>
+<tr class="separator:ab786b2c6e73015ac07ae04128487194f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab83f8afa73d30398ff4892e23b62910b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#ab83f8afa73d30398ff4892e23b62910b">hasNext</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:ab83f8afa73d30398ff4892e23b62910b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether there is a next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#ab83f8afa73d30398ff4892e23b62910b">More...</a><br /></td></tr>
+<tr class="separator:ab83f8afa73d30398ff4892e23b62910b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada39c0b622e1ddf51dfa6579583ed4ea"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">ItemRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#ada39c0b622e1ddf51dfa6579583ed4ea">next</a> (TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:ada39c0b622e1ddf51dfa6579583ed4ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#ada39c0b622e1ddf51dfa6579583ed4ea">More...</a><br /></td></tr>
+<tr class="separator:ada39c0b622e1ddf51dfa6579583ed4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1334493c6c1f15e502b166eeb33e9dc3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a1334493c6c1f15e502b166eeb33e9dc3">next</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:a1334493c6c1f15e502b166eeb33e9dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <a href="structCXXIter_1_1trait_1_1Source.html#a1334493c6c1f15e502b166eeb33e9dc3">More...</a><br /></td></tr>
+<tr class="separator:a1334493c6c1f15e502b166eeb33e9dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TContainer&gt;<br />
-struct CXXIter::trait::SourceTrait&lt; TContainer &gt;</div><p ><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html" title="SourceTrait, that is used by CXXIter&#39;s standard source classes CXXIter::SrcMov, CXXIter::SrcRef and C...">SourceTrait</a>, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>. </p>
+struct CXXIter::trait::Source&lt; TContainer &gt;</div><p >SourceTrait, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>. </p>
 <p >If you want to add support for your own containers to these sources, and thus to <code><a class="el" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8" title="Construct a CXXIter move source from the given container.">CXXIter::from()</a></code> calls, create a template specialization of <code>CXXIter::SourceTrait</code>, for your container class.</p>
 <p >This is the default implementation supporting all STL containers. </p>
 
 <p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00071">71</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ad84715c169d7571dbe2a782090f1264e" name="ad84715c169d7571dbe2a782090f1264e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad84715c169d7571dbe2a782090f1264e">&#9670;&nbsp;</a></span>ConstIteratorState</h2>
+<a id="a33352dbfac1c73bd986652affdb12975" name="a33352dbfac1c73bd986652affdb12975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33352dbfac1c73bd986652affdb12975">&#9670;&nbsp;</a></span>ConstIteratorState</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,7 +160,7 @@ struct CXXIter::trait::SourceTrait&lt; TContainer &gt;</div><p ><a class="el" hr
 template&lt;typename TContainer &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::ConstIteratorState =  typename TContainer::const_iterator</td>
+          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::ConstIteratorState =  typename TContainer::const_iterator</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -172,8 +172,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="a2f84ef4bb9399ad7ac940c65b57d7188" name="a2f84ef4bb9399ad7ac940c65b57d7188"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f84ef4bb9399ad7ac940c65b57d7188">&#9670;&nbsp;</a></span>Item</h2>
+<a id="a1b53a018f1cd74c1a85771f52c29e472" name="a1b53a018f1cd74c1a85771f52c29e472"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b53a018f1cd74c1a85771f52c29e472">&#9670;&nbsp;</a></span>Item</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +181,7 @@ template&lt;typename TContainer &gt; </div>
 template&lt;typename TContainer &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::Item =  typename TContainer::value_type</td>
+          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::Item =  typename TContainer::value_type</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -192,8 +192,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="abfb0298dbf89ecb77c34d89b6f849cb5" name="abfb0298dbf89ecb77c34d89b6f849cb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfb0298dbf89ecb77c34d89b6f849cb5">&#9670;&nbsp;</a></span>ItemConstRef</h2>
+<a id="add956d6babfe5823bc784e3ad9790563" name="add956d6babfe5823bc784e3ad9790563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add956d6babfe5823bc784e3ad9790563">&#9670;&nbsp;</a></span>ItemConstRef</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +201,7 @@ template&lt;typename TContainer &gt; </div>
 template&lt;typename TContainer &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::ItemConstRef =  typename TContainer::const_reference</td>
+          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::ItemConstRef =  typename TContainer::const_reference</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -212,8 +212,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="ac0415ad7ef0a22c9c34369056ac1d4b3" name="ac0415ad7ef0a22c9c34369056ac1d4b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0415ad7ef0a22c9c34369056ac1d4b3">&#9670;&nbsp;</a></span>ItemRef</h2>
+<a id="aad117e6f0003005dbfaf01f845091536" name="aad117e6f0003005dbfaf01f845091536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad117e6f0003005dbfaf01f845091536">&#9670;&nbsp;</a></span>ItemRef</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,7 @@ template&lt;typename TContainer &gt; </div>
 template&lt;typename TContainer &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::ItemRef =  typename TContainer::reference</td>
+          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::ItemRef =  typename TContainer::reference</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -232,8 +232,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="ae2966cc7f1dd2d35b7167a9f058f17e0" name="ae2966cc7f1dd2d35b7167a9f058f17e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2966cc7f1dd2d35b7167a9f058f17e0">&#9670;&nbsp;</a></span>IteratorState</h2>
+<a id="a78207acec0dca59ba55c44a9ad77c440" name="a78207acec0dca59ba55c44a9ad77c440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78207acec0dca59ba55c44a9ad77c440">&#9670;&nbsp;</a></span>IteratorState</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +241,7 @@ template&lt;typename TContainer &gt; </div>
 template&lt;typename TContainer &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::IteratorState =  typename TContainer::iterator</td>
+          <td class="memname">using <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::IteratorState =  typename TContainer::iterator</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -254,8 +254,8 @@ template&lt;typename TContainer &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab5380332bc05a227bf1964242595e77c" name="ab5380332bc05a227bf1964242595e77c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5380332bc05a227bf1964242595e77c">&#9670;&nbsp;</a></span>hasNext() <span class="overload">[1/2]</span></h2>
+<a id="ab83f8afa73d30398ff4892e23b62910b" name="ab83f8afa73d30398ff4892e23b62910b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab83f8afa73d30398ff4892e23b62910b">&#9670;&nbsp;</a></span>hasNext() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,7 +266,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::hasNext </td>
+          <td class="memname">static bool <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::hasNext </td>
           <td>(</td>
           <td class="paramtype">const TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -274,7 +274,7 @@ template&lt;typename TContainer &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> &amp;&#160;</td>
           <td class="paramname"><em>iter</em>&#160;</td>
         </tr>
         <tr>
@@ -304,8 +304,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="abf7dd33ddf93040f8fb9cf5b56a890b8" name="abf7dd33ddf93040f8fb9cf5b56a890b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf7dd33ddf93040f8fb9cf5b56a890b8">&#9670;&nbsp;</a></span>hasNext() <span class="overload">[2/2]</span></h2>
+<a id="ab786b2c6e73015ac07ae04128487194f" name="ab786b2c6e73015ac07ae04128487194f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab786b2c6e73015ac07ae04128487194f">&#9670;&nbsp;</a></span>hasNext() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,7 +316,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::hasNext </td>
+          <td class="memname">static bool <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::hasNext </td>
           <td>(</td>
           <td class="paramtype">TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -324,7 +324,7 @@ template&lt;typename TContainer &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> &amp;&#160;</td>
           <td class="paramname"><em>iter</em>&#160;</td>
         </tr>
         <tr>
@@ -354,8 +354,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="ad37c83909915fc603f15cdc08a8cca7a" name="ad37c83909915fc603f15cdc08a8cca7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad37c83909915fc603f15cdc08a8cca7a">&#9670;&nbsp;</a></span>initIterator() <span class="overload">[1/2]</span></h2>
+<a id="a851033a4d15a158044264239cfcdfe13" name="a851033a4d15a158044264239cfcdfe13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a851033a4d15a158044264239cfcdfe13">&#9670;&nbsp;</a></span>initIterator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +366,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::initIterator </td>
+          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::initIterator </td>
           <td>(</td>
           <td class="paramtype">const TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
@@ -393,8 +393,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="a45761d065081ce375ae57fe857c18d72" name="a45761d065081ce375ae57fe857c18d72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45761d065081ce375ae57fe857c18d72">&#9670;&nbsp;</a></span>initIterator() <span class="overload">[2/2]</span></h2>
+<a id="acf59d9167cf1d7e3010c51722354022b" name="acf59d9167cf1d7e3010c51722354022b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf59d9167cf1d7e3010c51722354022b">&#9670;&nbsp;</a></span>initIterator() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,7 +405,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::initIterator </td>
+          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::initIterator </td>
           <td>(</td>
           <td class="paramtype">TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
@@ -432,8 +432,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="a3248a85a4b935194684fbceeb0e13644" name="a3248a85a4b935194684fbceeb0e13644"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3248a85a4b935194684fbceeb0e13644">&#9670;&nbsp;</a></span>next() <span class="overload">[1/2]</span></h2>
+<a id="a1334493c6c1f15e502b166eeb33e9dc3" name="a1334493c6c1f15e502b166eeb33e9dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1334493c6c1f15e502b166eeb33e9dc3">&#9670;&nbsp;</a></span>next() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -444,7 +444,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#abfb0298dbf89ecb77c34d89b6f849cb5">ItemConstRef</a> <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::next </td>
+          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::next </td>
           <td>(</td>
           <td class="paramtype">const TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -452,7 +452,7 @@ template&lt;typename TContainer &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ad84715c169d7571dbe2a782090f1264e">ConstIteratorState</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a33352dbfac1c73bd986652affdb12975">ConstIteratorState</a> &amp;&#160;</td>
           <td class="paramname"><em>iter</em>&#160;</td>
         </tr>
         <tr>
@@ -482,8 +482,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="a782234fe532bce378ada781c56e5f773" name="a782234fe532bce378ada781c56e5f773"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a782234fe532bce378ada781c56e5f773">&#9670;&nbsp;</a></span>next() <span class="overload">[2/2]</span></h2>
+<a id="ada39c0b622e1ddf51dfa6579583ed4ea" name="ada39c0b622e1ddf51dfa6579583ed4ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada39c0b622e1ddf51dfa6579583ed4ea">&#9670;&nbsp;</a></span>next() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -494,7 +494,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ac0415ad7ef0a22c9c34369056ac1d4b3">ItemRef</a> <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::next </td>
+          <td class="memname">static <a class="el" href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">ItemRef</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::next </td>
           <td>(</td>
           <td class="paramtype">TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -502,7 +502,7 @@ template&lt;typename TContainer &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html#ae2966cc7f1dd2d35b7167a9f058f17e0">IteratorState</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a78207acec0dca59ba55c44a9ad77c440">IteratorState</a> &amp;&#160;</td>
           <td class="paramname"><em>iter</em>&#160;</td>
         </tr>
         <tr>
@@ -532,8 +532,8 @@ template&lt;typename TContainer &gt; </div>
 
 </div>
 </div>
-<a id="aebc5632eeff362e181afffc334bfb883" name="aebc5632eeff362e181afffc334bfb883"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebc5632eeff362e181afffc334bfb883">&#9670;&nbsp;</a></span>sizeHint()</h2>
+<a id="a57c240b6caf8d57b8be2b6889baf79a0" name="a57c240b6caf8d57b8be2b6889baf79a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57c240b6caf8d57b8be2b6889baf79a0">&#9670;&nbsp;</a></span>sizeHint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -544,7 +544,7 @@ template&lt;typename TContainer &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structCXXIter_1_1SizeHint.html">SizeHint</a> <a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">CXXIter::trait::SourceTrait</a>&lt; TContainer &gt;::sizeHint </td>
+          <td class="memname">static <a class="el" href="structCXXIter_1_1SizeHint.html">SizeHint</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::sizeHint </td>
           <td>(</td>
           <td class="paramtype">const TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
@@ -579,7 +579,7 @@ template&lt;typename TContainer &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><b>trait</b></li><li class="navelem"><a class="el" href="structCXXIter_1_1trait_1_1SourceTrait.html">SourceTrait</a></li>
+    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><b>trait</b></li><li class="navelem"><a class="el" href="structCXXIter_1_1trait_1_1Source.html">Source</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

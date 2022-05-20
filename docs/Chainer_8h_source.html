@@ -100,8 +100,8 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">namespace </span>op {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput1, <span class="keyword">typename</span> TChainInput2&gt;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">class </span>[[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Chainer : <span class="keyword">public</span> IterApi&lt;Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::IteratorTrait&lt;Chainer&lt;TChainInput1, TChainInput2&gt;&gt;;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::ExactSizeIteratorTrait&lt;Chainer&lt;TChainInput1, TChainInput2&gt;&gt;;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::Iterator&lt;Chainer&lt;TChainInput1, TChainInput2&gt;&gt;;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::ExactSizeIterator&lt;Chainer&lt;TChainInput1, TChainInput2&gt;&gt;;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            TChainInput1 input1;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            TChainInput2 input2;</div>
@@ -112,10 +112,10 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput1, <span class="keyword">typename</span> TChainInput2&gt;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">struct </span>trait::IteratorTrait&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">using </span>ChainInputIterator1 = trait::IteratorTrait&lt;TChainInput1&gt;;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">using </span>ChainInputIterator2 = trait::IteratorTrait&lt;TChainInput2&gt;;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">using </span>InputItem = <span class="keyword">typename</span> <a class="code hl_typedef" href="structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0">trait::IteratorTrait&lt;TChainInput1&gt;::Item</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">struct </span>trait::Iterator&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">using </span>ChainInputIterator1 = trait::Iterator&lt;TChainInput1&gt;;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">using </span>ChainInputIterator2 = trait::Iterator&lt;TChainInput2&gt;;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">using </span>InputItem = <span class="keyword">typename</span> <a class="code hl_typedef" href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">trait::Iterator&lt;TChainInput1&gt;::Item</a>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// CXXIter Interface</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">using </span>Self = op::Chainer&lt;TChainInput1, TChainInput2&gt;;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">using </span>Item = InputItem;</div>
@@ -142,15 +142,15 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    };</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator TChainInput2&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">struct </span>trait::ExactSizeIteratorTrait&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Chainer&lt;TChainInput1, TChainInput2&gt;&amp; self) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">return</span> trait::IteratorTrait&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt;::sizeHint(self).lowerBound;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">return</span> trait::Iterator&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt;::sizeHint(self).lowerBound;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        }</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    };</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
 <div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00045">CXXIter.h:45</a></div></div>
-<div class="ttc" id="astructCXXIter_1_1trait_1_1IteratorTrait_html_a236dc25864e4b31cd34a68f5f45cc8b0"><div class="ttname"><a href="structCXXIter_1_1trait_1_1IteratorTrait.html#a236dc25864e4b31cd34a68f5f45cc8b0">CXXIter::trait::IteratorTrait::Item</a></div><div class="ttdeci">void Item</div><div class="ttdoc">Item-Type. This is the type of elements that can be pulled from this pipeline-element.</div><div class="ttdef"><b>Definition:</b> <a href="Traits_8h_source.html#l00029">Traits.h:29</a></div></div>
+<div class="ttc" id="astructCXXIter_1_1trait_1_1Iterator_html_a384416c2080e247759c652b17c9c4575"><div class="ttname"><a href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">CXXIter::trait::Iterator::Item</a></div><div class="ttdeci">void Item</div><div class="ttdoc">Item-Type. This is the type of elements that can be pulled from this pipeline-element.</div><div class="ttdef"><b>Definition:</b> <a href="Traits_8h_source.html#l00029">Traits.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

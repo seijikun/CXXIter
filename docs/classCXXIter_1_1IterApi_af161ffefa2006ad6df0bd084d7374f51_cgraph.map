@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="Consumer that yields the index of the largest element within this iterator." alt="" coords="5,31,184,57"/>
 <area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad" title="Consumer that yields the index of the largest element from this iterator. Comparison of items is done..." alt="" coords="232,31,428,57"/>
 <area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="476,5,655,32"/>
-<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="703,23,865,65"/>
+<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1Iterator.html#ae0ea73d4371db684ce0317ef4f464110" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="703,23,865,65"/>
 </map>
