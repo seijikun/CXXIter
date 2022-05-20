@@ -50,6 +50,7 @@ var classCXXIter_1_1IterApi =
     [ "next", "classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e", null ],
     [ "nextBack", "classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0", null ],
     [ "nth", "classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019", null ],
+    [ "reverse", "classCXXIter_1_1IterApi.html#ac63528dd525977d236a3c3b050ed1456", null ],
     [ "size", "classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804", null ],
     [ "sizeHint", "classCXXIter_1_1IterApi.html#a9baddc40de1b9c63102e5c5bf886474e", null ],
     [ "skip", "classCXXIter_1_1IterApi.html#acf4cbe6073a887100d549f0bea73a90e", null ],

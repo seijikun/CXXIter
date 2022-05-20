@@ -278,6 +278,9 @@ requires util::is_hashable&lt;std::invoke_result_t&lt;TMapFn, const <a class="el
 <tr class="memitem:a7c3a1a50ce87f94bbeb146897248e6f2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7c3a1a50ce87f94bbeb146897248e6f2">unique</a> ()</td></tr>
 <tr class="memdesc:a7c3a1a50ce87f94bbeb146897248e6f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that only contains every element of the input iterator only once.  <a href="classCXXIter_1_1IterApi.html#a7c3a1a50ce87f94bbeb146897248e6f2">More...</a><br /></td></tr>
 <tr class="separator:a7c3a1a50ce87f94bbeb146897248e6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63528dd525977d236a3c3b050ed1456"><td class="memItemLeft" align="right" valign="top">op::Reverse&lt; TSelf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ac63528dd525977d236a3c3b050ed1456">reverse</a> ()</td></tr>
+<tr class="memdesc:ac63528dd525977d236a3c3b050ed1456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new iterator that provides the elements of this iterator in reverse order.  <a href="classCXXIter_1_1IterApi.html#ac63528dd525977d236a3c3b050ed1456">More...</a><br /></td></tr>
+<tr class="separator:ac63528dd525977d236a3c3b050ed1456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a7ab60181e939f57eb56373c5a2bbe"><td class="memTemplParams" colspan="2">template&lt;const size_t CHUNK_SIZE&gt; </td></tr>
 <tr class="memitem:ad4a7ab60181e939f57eb56373c5a2bbe"><td class="memTemplItemLeft" align="right" valign="top">op::Chunked&lt; TSelf, CHUNK_SIZE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad4a7ab60181e939f57eb56373c5a2bbe">chunked</a> ()</td></tr>
 <tr class="memdesc:ad4a7ab60181e939f57eb56373c5a2bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that collects elements from this iterator in chunks of size up to <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <a href="classCXXIter_1_1IterApi.html#ad4a7ab60181e939f57eb56373c5a2bbe">More...</a><br /></td></tr>
@@ -376,7 +379,7 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
 <div class="textblock"><div class="compoundTemplParams">template&lt;CXXIterIterator TSelf&gt;<br />
 class CXXIter::IterApi&lt; TSelf &gt;</div><p >Public Iterator API surface. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00055">55</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00056">56</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a00f3ed5b2201522d327c6a8a92d371c8" name="a00f3ed5b2201522d327c6a8a92d371c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00f3ed5b2201522d327c6a8a92d371c8">&#9670;&nbsp;</a></span>Item</h2>
@@ -394,7 +397,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 <p>Type of the elements of this iterator. (Can be references) </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00064">64</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00065">65</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -414,7 +417,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 <p>Owned Type of the elements of this iterator. (References removed). </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00068">68</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00069">69</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -434,7 +437,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 <p>Type of the <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> implemenation for this. </p>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00060">60</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00061">61</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +467,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00076">76</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00077">77</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -509,7 +512,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">std::vector&lt;bool&gt; input = { <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span> };</div>
 <div class="line"><span class="keywordtype">bool</span> output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).copied().all();</div>
 <div class="line"><span class="comment">// output == false</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a488278efdb3aea93ff9fa7583e3c81a8"><div class="ttname"><a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02059">CXXIter.h:2059</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a488278efdb3aea93ff9fa7583e3c81a8"><div class="ttname"><a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02081">CXXIter.h:2081</a></div></div>
 </div><!-- fragment --></li>
 <li>For cases where all elements of this iterator evaluate to <code>true</code> when casted to <code>bool</code>. <div class="fragment"><div class="line">std::vector&lt;bool&gt; input = { <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">true</span> };</div>
 <div class="line"><span class="keywordtype">bool</span> output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).copied().all();</div>
@@ -517,7 +520,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00411">411</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00412">412</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -579,7 +582,7 @@ requires std::same_as&lt;std::invoke_result_t&lt;TPredicateFn, const <a class="e
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00376">376</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00377">377</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -634,7 +637,7 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (uti
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 2, 3, 4, 5, 6, 7}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01849">1849</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01871">1871</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -685,7 +688,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00487">487</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00488">488</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -746,7 +749,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00452">452</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00453">453</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -784,7 +787,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <p><a class="el" href="classCXXIter_1_1IterApi.html#aaa8bf456c009689898f75879d1691120" title="begin() method, part of C++&#39;s iterator interface">begin()</a> method, part of C++'s iterator interface </p>
 <dl class="section return"><dt>Returns</dt><dd>C++ interface on top of this iterator pipeline. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00113">113</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00114">114</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -834,7 +837,7 @@ template&lt;typename TItemOutput &gt; </div>
 <div class="line">        .cast&lt;<span class="keywordtype">double</span>&gt;()</div>
 <div class="line">        .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01238">1238</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01239">1239</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -882,9 +885,9 @@ requires std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00f
 <div class="line">           .chain(<a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input2).<a class="code hl_function" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">copied</a>())</div>
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {&quot;1337&quot;, &quot;42&quot;, &quot;31337&quot;, &quot;64&quot;}</span></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a116afb3640cb245742403c86fded359f"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">CXXIter::IterApi::copied</a></div><div class="ttdeci">auto copied()</div><div class="ttdoc">Constructs a new iterator that copies the elements of this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01257">CXXIter.h:1257</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a116afb3640cb245742403c86fded359f"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">CXXIter::IterApi::copied</a></div><div class="ttdeci">auto copied()</div><div class="ttdoc">Constructs a new iterator that copies the elements of this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01258">CXXIter.h:1258</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01823">1823</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01845">1845</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -940,7 +943,7 @@ template&lt;const size_t CHUNK_SIZE&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01382">1382</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01404">1404</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1011,7 +1014,7 @@ template&lt;const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE&gt; </d
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01437">1437</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01459">1459</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1062,7 @@ template&lt;template&lt; typename... &gt; typename TTargetContainer, typename...
 <div class="line">std::vector&lt;std::string, std::allocator&lt;std::string&gt;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
 <div class="line">    .collect&lt;std::vector, std::allocator&lt;std::string&gt;&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00253">253</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00254">254</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1114,7 +1117,7 @@ template&lt;typename TTargetContainer &gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00286">286</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00287">287</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1166,7 +1169,7 @@ template&lt;typename TTargetContainer &gt; </div>
 <div class="line"><a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).collectInto(output);</div>
 <div class="line"><span class="comment">// output == {&quot;prevElement&quot;, &quot;1337&quot;, &quot;42&quot;, &quot;64&quot;}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00309">309</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00310">310</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1203,7 +1206,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">    .modify([](std::string&amp; item) { item[item.size() - 1] += 1; }) <span class="comment">// modify copies, input untouched</span></div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01257">1257</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01258">1258</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1248,7 +1251,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line"><span class="keywordtype">size_t</span> output2 = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input2).count();</div>
 <div class="line"><span class="comment">// output == 0</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00601">601</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00602">602</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1298,9 +1301,9 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">        .map([](<span class="keywordtype">int</span> item) { <span class="keywordflow">return</span> (item % 2 == 0); })</div>
 <div class="line">        .<a class="code hl_function" href="classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815">count</a>(<span class="keyword">true</span>);</div>
 <div class="line"><span class="comment">// output == 5</span></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a418901ce726860a7a91bffbc210c1815"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815">CXXIter::IterApi::count</a></div><div class="ttdeci">size_t count()</div><div class="ttdoc">Consumer that counts the elements in this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00601">CXXIter.h:601</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a418901ce726860a7a91bffbc210c1815"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815">CXXIter::IterApi::count</a></div><div class="ttdeci">size_t count()</div><div class="ttdoc">Consumer that counts the elements in this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00602">CXXIter.h:602</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00643">643</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00644">644</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1346,7 +1349,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 <div class="line">            .count([](<span class="keywordtype">int</span> item){ <span class="keywordflow">return</span> (item % 2 == 0); });</div>
 <div class="line"><span class="comment">// output == 5</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00622">622</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00623">623</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1384,7 +1387,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <p><a class="el" href="classCXXIter_1_1IterApi.html#abac1131fb2734cfae22b38099740627a" title="end() method, part of C++&#39;s iterator interface">end()</a> method, part of C++'s iterator interface </p>
 <dl class="section return"><dt>Returns</dt><dd>C++ interface on top of this iterator pipeline. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00119">119</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00120">120</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1429,7 +1432,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 <div class="line">    .filter([](<span class="keywordtype">int</span> item) { <span class="keywordflow">return</span> (item % 2) == 0; })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01302">1302</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01303">1303</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1478,7 +1481,7 @@ requires util::is_optional&lt;std::invoke_result_t&lt;TFilterMapFn, <a class="el
 <div class="line">    })</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01632">1632</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01654">1654</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1535,7 +1538,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00582">582</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00583">583</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1590,7 +1593,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00513">513</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00514">514</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1643,7 +1646,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00545">545</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00546">546</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1685,7 +1688,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">    .flatMap()</div>
 <div class="line">    .collect&lt;std::vector&gt;(); <span class="comment">// collect into vector containing {1337, 42, 6, 123, 7888}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01587">1587</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01609">1609</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1736,7 +1739,7 @@ template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#
 <div class="line">    .flatMap([](<span class="keyword">auto</span>&amp;&amp; item) { <span class="keywordflow">return</span> std::get&lt;1&gt;(item); }) <span class="comment">// flatten the std::vector&lt;int&gt; from the pair</span></div>
 <div class="line">    .collect&lt;std::vector&gt;(); <span class="comment">// collect into vector containing {1337, 42, 6, 123, 7888}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01486">1486</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01508">1508</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1795,7 +1798,7 @@ template&lt;typename TResult , std::invocable&lt; TResult &amp;, <a class="el" h
 <div class="line">       });</div>
 <div class="line"><span class="comment">// output ~ 3.141592653589793</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00333">333</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00334">334</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1848,7 +1851,7 @@ template&lt;typename TUseFn &gt; </div>
 <div class="line">            output.push_back(std::forward&lt;std::string&gt;(item));</div>
 <div class="line">        });</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00221">221</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00222">222</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1934,7 +1937,7 @@ Here, the type of the elements passed through the iterator are const <code>std::
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01564">1564</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01586">1586</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -1988,7 +1991,7 @@ requires util::is_hashable&lt;std::invoke_result_t&lt;TGroupIdentifierFn, const 
 <div class="line">   .groupBy([](<span class="keyword">const</span> CakeMeasurement&amp; item) { <span class="keywordflow">return</span> item.cakeType; })</div>
 <div class="line">   .collect&lt;std::unordered_map&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01925">1925</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01947">1947</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2025,7 +2028,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {{0, &quot;1337&quot;}, {1, &quot;42&quot;}, {2, &quot;64&quot;}}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01279">1279</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01280">1280</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2078,7 +2081,7 @@ requires (std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00
 <div class="line">    .intersperse(<a class="code hl_function" href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a>(0))</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02178">CXXIter.h:2178</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02200">CXXIter.h:2200</a></div></div>
 </div><!-- fragment --></li>
 <li>Using infinite separator iterator (string) <div class="fragment"><div class="line">std::vector&lt;std::string&gt; input = { <span class="stringliteral">&quot;Apple&quot;</span>, <span class="stringliteral">&quot;Orange&quot;</span>, <span class="stringliteral">&quot;Cake&quot;</span> };</div>
 <div class="line">std::vector&lt;std::string&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).copied()</div>
@@ -2091,11 +2094,11 @@ requires (std::is_same_v&lt;<a class="el" href="classCXXIter_1_1IterApi.html#a00
 <div class="line">    .intersperse(<a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(100, 102, 1))</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 100, 2, 101, 3, 102, 4}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02206">CXXIter.h:2206</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02228">CXXIter.h:2228</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01893">1893</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01915">1915</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2142,7 +2145,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01184">1184</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01185">1185</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2193,7 +2196,7 @@ template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#
 <div class="line">    .map([](<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> std::make_pair(i, std::to_string(i)); }) <span class="comment">// construct pair</span></div>
 <div class="line">    .collect&lt;std::unordered_map&gt;(); <span class="comment">// collect into map</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01460">1460</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01482">1482</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2238,7 +2241,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00953">953</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00954">954</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2301,7 +2304,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01102">1102</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01103">1103</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2350,7 +2353,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00976">976</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00977">977</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2403,7 +2406,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 <div class="line">std::optional&lt;size_t&gt; output = <a class="code hl_class" href="classCXXIter_1_1SrcCRef.html">CXXIter::SrcCRef</a>(input)</div>
 <div class="line">   .<a class="code hl_function" href="classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad">maxIdxBy</a>([](<span class="keyword">const</span> std::string&amp; str) { <span class="keywordflow">return</span> str.size(); });</div>
 <div class="line"><span class="comment">// output = Some(1)</span></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a61dd9812e764db7f0acbc1509cea21ad"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad">CXXIter::IterApi::maxIdxBy</a></div><div class="ttdeci">std::optional&lt; size_t &gt; maxIdxBy(TMaxValueExtractFn compValueExtractFn)</div><div class="ttdoc">Consumer that yields the index of the largest element from this iterator. Comparison of items is done...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01145">CXXIter.h:1145</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_a61dd9812e764db7f0acbc1509cea21ad"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad">CXXIter::IterApi::maxIdxBy</a></div><div class="ttdeci">std::optional&lt; size_t &gt; maxIdxBy(TMaxValueExtractFn compValueExtractFn)</div><div class="ttdoc">Consumer that yields the index of the largest element from this iterator. Comparison of items is done...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01146">CXXIter.h:1146</a></div></div>
 <div class="ttc" id="aclassCXXIter_1_1SrcCRef_html"><div class="ttname"><a href="classCXXIter_1_1SrcCRef.html">CXXIter::SrcCRef</a></div><div class="ttdoc">CXXIter iterator source that immutably borrows the input item source, and passes immutable references...</div><div class="ttdef"><b>Definition:</b> <a href="ContainerSources_8h_source.html#l00136">ContainerSources.h:136</a></div></div>
 </div><!-- fragment --></li>
 <li>For an empty iterator: <div class="fragment"><div class="line"><span class="keyword">const</span> std::vector&lt;std::string&gt; input = {};</div>
@@ -2413,7 +2416,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01145">1145</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01146">1146</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2485,7 +2488,7 @@ template&lt;<a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00765">765</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00766">766</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2536,7 +2539,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00904">904</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00905">905</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2599,7 +2602,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01012">1012</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01013">1013</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2648,7 +2651,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00927">927</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00928">928</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2701,7 +2704,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 <div class="line">std::optional&lt;size_t&gt; output = <a class="code hl_class" href="classCXXIter_1_1SrcCRef.html">CXXIter::SrcCRef</a>(input)</div>
 <div class="line">   .<a class="code hl_function" href="classCXXIter_1_1IterApi.html#af531c69c1b5edf6d5c30c56ddd0c9500">minIdxBy</a>([](<span class="keyword">const</span> std::string&amp; str) { <span class="keywordflow">return</span> str.size(); });</div>
 <div class="line"><span class="comment">// output = Some(1)</span></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_af531c69c1b5edf6d5c30c56ddd0c9500"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#af531c69c1b5edf6d5c30c56ddd0c9500">CXXIter::IterApi::minIdxBy</a></div><div class="ttdeci">std::optional&lt; size_t &gt; minIdxBy(TCompValueExtractFn compValueExtractFn)</div><div class="ttdoc">Consumer that yields the index of the smallest element from this iterator. Comparison of items is don...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01054">CXXIter.h:1054</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_af531c69c1b5edf6d5c30c56ddd0c9500"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#af531c69c1b5edf6d5c30c56ddd0c9500">CXXIter::IterApi::minIdxBy</a></div><div class="ttdeci">std::optional&lt; size_t &gt; minIdxBy(TCompValueExtractFn compValueExtractFn)</div><div class="ttdoc">Consumer that yields the index of the smallest element from this iterator. Comparison of items is don...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01055">CXXIter.h:1055</a></div></div>
 </div><!-- fragment --></li>
 <li>For an empty iterator: <div class="fragment"><div class="line"><span class="keyword">const</span> std::vector&lt;std::string&gt; input = {};</div>
 <div class="line">std::optional&lt;size_t&gt; output = <a class="code hl_class" href="classCXXIter_1_1SrcCRef.html">CXXIter::SrcCRef</a>(input)</div>
@@ -2710,7 +2713,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01054">1054</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01055">1055</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2761,7 +2764,7 @@ template&lt;std::invocable&lt; <a class="el" href="classCXXIter_1_1IterApi.html#
 <div class="line">    .modify([](<span class="keyword">auto</span>&amp; keyValue) { keyValue.second = <span class="stringliteral">&quot;-&quot;</span> + keyValue.second; }) <span class="comment">// modify input</span></div>
 <div class="line">    .collect&lt;std::unordered_map&gt;(); <span class="comment">// copy to output</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01607">1607</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01629">1629</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2797,7 +2800,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">       .next().toStdOptional();</div>
 <div class="line"><span class="comment">// output == Some(1.337f);</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00175">175</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00176">176</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2841,7 +2844,7 @@ This method only exists if the iterator implements the DoubleEndedIterator trait
 <div class="line">       .nextBack().toStdOptional();</div>
 <div class="line"><span class="comment">// output == Some(0.25f);</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00193">193</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00194">194</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2896,13 +2899,51 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01209">1209</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01210">1210</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_aa0d21f64c103c94930a6965686f61019_cgraph.svg" width="367" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<a id="ac63528dd525977d236a3c3b050ed1456" name="ac63528dd525977d236a3c3b050ed1456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63528dd525977d236a3c3b050ed1456">&#9670;&nbsp;</a></span>reverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;CXXIterIterator TSelf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">op::Reverse&lt; TSelf &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::reverse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a new iterator that provides the elements of this iterator in reverse order. </p>
+<dl class="section attention"><dt>Attention</dt><dd>If the underlying iterator implements DoubleEndedIterator it is going to be used and this operation will not have an additional cost. If the underlying iterator does not implement DoubleEndedIterator, it will be emulated by first draining the iterator into a container and then providing those elements in reverse. This leads to additional memory usage. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator that provides the elements of this iterator in reverse order.</dd></dl>
+<p>Usage Example: </p><div class="fragment"><div class="line">std::vector&lt;size_t&gt; input = {1, 42, 2, 1337, 3, 4, 69, 5, 6, 5};</div>
+<div class="line">std::vector&lt;size_t&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).copied()</div>
+<div class="line">   .reverse()</div>
+<div class="line">   .collect&lt;std::vector&gt;();</div>
+<div class="line"><span class="comment">// output == { 5, 6, 5, 69, 4, 3, 1337, 2, 42, 1 }</span></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01371">1371</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -2941,8 +2982,8 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">        .intersperse(CXXIter::empty&lt;std::string&gt;())</div>
 <div class="line">        .<a class="code hl_function" href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">size</a>();</div>
 <div class="line"><span class="comment">// size == 8</span></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_ada90a5f5e73ce22a69b21870ee197804"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">CXXIter::IterApi::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdoc">Get this iterator's exact size.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00158">CXXIter.h:158</a></div></div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_af8c752a71a1a7931c711ed6749c62080"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080">CXXIter::IterApi::sort</a></div><div class="ttdeci">auto sort()</div><div class="ttdoc">Creates a new iterator that takes the items from this iterator, and passes them on sorted.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01991">CXXIter.h:1991</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_ada90a5f5e73ce22a69b21870ee197804"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">CXXIter::IterApi::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdoc">Get this iterator's exact size.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00159">CXXIter.h:159</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_af8c752a71a1a7931c711ed6749c62080"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#af8c752a71a1a7931c711ed6749c62080">CXXIter::IterApi::sort</a></div><div class="ttdeci">auto sort()</div><div class="ttdoc">Creates a new iterator that takes the items from this iterator, and passes them on sorted.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02013">CXXIter.h:2013</a></div></div>
 </div><!-- fragment --></li>
 <li>Invalid, does not compile (Exact number of elements is unknown): <div class="fragment"><div class="line"><span class="keywordtype">size_t</span> <a class="code hl_function" href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">size</a> = CXXIter::range&lt;float&gt;(0.0f, 2.0f, 0.25f)</div>
 <div class="line">    .map([](<span class="keywordtype">float</span> blub) { <span class="keywordflow">return</span> std::to_string(blub); })</div>
@@ -2950,11 +2991,11 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">    .intersperse(CXXIter::empty&lt;std::string&gt;())</div>
 <div class="line">    .<a class="code hl_function" href="classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482">flatMap</a>()</div>
 <div class="line">    .size();</div>
-<div class="ttc" id="aclassCXXIter_1_1IterApi_html_ad8985f7682655e5a925329fcd971b482"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482">CXXIter::IterApi::flatMap</a></div><div class="ttdeci">auto flatMap()</div><div class="ttdoc">Creates an iterator that flattens the iterable elements of this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01587">CXXIter.h:1587</a></div></div>
+<div class="ttc" id="aclassCXXIter_1_1IterApi_html_ad8985f7682655e5a925329fcd971b482"><div class="ttname"><a href="classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482">CXXIter::IterApi::flatMap</a></div><div class="ttdeci">auto flatMap()</div><div class="ttdoc">Creates an iterator that flattens the iterable elements of this iterator.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l01609">CXXIter.h:1609</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00158">158</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00159">159</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2992,7 +3033,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <p>Get the bounds on the remaining length of this iterator, estimated from the source and all of the chained iterations on it. </p>
 <dl class="section return"><dt>Returns</dt><dd>The estimated bounds on the remaining length of this iterator. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00128">128</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00129">129</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3041,7 +3082,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">    .skip(3) <span class="comment">// skip first 3 values</span></div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01651">1651</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01673">1673</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3086,7 +3127,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
 <div class="line">    .skipWhile([](<span class="keyword">const</span> <span class="keywordtype">int</span> value) { <span class="keywordflow">return</span> (value == 42); }) <span class="comment">// skip leading 42s</span></div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01676">1676</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01698">1698</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3142,7 +3183,7 @@ requires requires(const <a class="el" href="classCXXIter_1_1IterApi.html#a628012
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01991">1991</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02013">2013</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3206,7 +3247,7 @@ template&lt;bool STABLE, std::invocable&lt; const <a class="el" href="classCXXIt
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01960">1960</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01982">1982</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3262,7 +3303,7 @@ requires requires(const std::invoke_result_t&lt;TSortValueExtractFn, const <a cl
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02032">2032</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02054">2054</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3328,7 +3369,7 @@ template&lt;<a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00876">876</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00877">877</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3381,7 +3422,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01746">1746</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01768">1768</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3441,7 +3482,7 @@ This method is only available for iterators whose elements are <code>std::string
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00726">726</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00727">727</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3508,7 +3549,7 @@ requires requires(TResult res, <a class="el" href="classCXXIter_1_1IterApi.html#
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00688">688</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00689">689</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3557,7 +3598,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">    .take(3) <span class="comment">// take first 3 values</span></div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01693">1693</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01715">1715</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3603,7 +3644,7 @@ requires std::is_same_v&lt;std::invoke_result_t&lt;TTakePredicate, const <a clas
 <div class="line">    .takeWhile([](<span class="keyword">const</span> <span class="keywordtype">int</span> value) { <span class="keywordflow">return</span> (value &lt; 1000); }) <span class="comment">// take until first item &gt; 1000</span></div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01717">1717</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01739">1739</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3642,7 +3683,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == { 1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5 }</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01349">1349</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01350">1350</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3697,7 +3738,7 @@ requires util::is_hashable&lt;std::invoke_result_t&lt;TMapFn, const <a class="el
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == { 1.0, 2.0, 3.25, 4.5 }</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01327">1327</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01328">1328</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3762,7 +3803,7 @@ template&lt;<a class="el" href="namespaceCXXIter.html#a4e698a5b11eca24990a5db359
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00819">819</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l00820">820</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -3814,7 +3855,7 @@ template&lt;typename TOtherIterator &gt; </div>
 <div class="line">   .zip(<a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input2).<a class="code hl_function" href="classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f">copied</a>())</div>
 <div class="line">   .collect&lt;std::vector&gt;();</div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01773">1773</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01795">1795</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -3863,7 +3904,7 @@ requires (CXXIterIterator&lt;TOtherIterators&gt; &amp;&amp; ...) &amp;&amp; (!st
 <div class="line">           .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == { {&quot;1337&quot;, 1337, 1337.0f}, {&quot;42&quot;, 42, 42.0f} }</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01800">1800</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l01822">1822</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

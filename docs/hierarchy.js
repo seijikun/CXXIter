@@ -23,6 +23,7 @@ var hierarchy =
     [ "CXXIter::IterApi< Map< TChainInput, TMapFn, TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Range< TValue > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Repeater< TItem > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< Reverse< TChainInput > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< SkipN< TChainInput > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< SkipWhile< TChainInput, TSkipPredicate > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Sorter< TChainInput, TCompareFn, STABLE > >", "classCXXIter_1_1IterApi.html", null ],
