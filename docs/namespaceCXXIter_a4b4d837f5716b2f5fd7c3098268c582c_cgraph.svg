@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310" target="_top" xlink:title="Construct a CXXIter move source from the given container.">
+<g id="a_node2"><a xlink:href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8" target="_top" xlink:title="Construct a CXXIter move source from the given container.">
 <polygon fill="none" stroke="black" points="123,-0.5 123,-19.5 206,-19.5 206,-0.5 123,-0.5"/>
 <text text-anchor="middle" x="164.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::from</text>
 </a>

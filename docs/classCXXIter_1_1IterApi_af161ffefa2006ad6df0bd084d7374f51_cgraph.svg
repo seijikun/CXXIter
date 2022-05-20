@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 647;
+var viewWidth = 653;
 var viewHeight = 53;
 var sectionId = 'dynsection-17';
 </script>
@@ -102,24 +102,24 @@ var sectionId = 'dynsection-17';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" target="_top" xlink:title="Pull one element from the iterator pipeline previous to this pipeline&#45;element.">
-<polygon fill="none" stroke="black" points="523,-0.5 523,-30.5 639,-30.5 639,-0.5 523,-0.5"/>
-<text text-anchor="start" x="531" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IteratorTrait</text>
-<text text-anchor="middle" x="581" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::next</text>
+<g id="a_node4"><a xlink:href="structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" target="_top" xlink:title="Pull one element from the iterator pipeline previous to this pipeline&#45;element.">
+<polygon fill="none" stroke="black" points="523,-0.5 523,-30.5 645,-30.5 645,-0.5 523,-0.5"/>
+<text text-anchor="start" x="531" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::trait::Iterator</text>
+<text text-anchor="middle" x="584" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Trait::next</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge5" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M317.3,-15.5C375.36,-15.5 456.04,-15.5 512.62,-15.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="512.9,-19 522.9,-15.5 512.9,-12 512.9,-19"/>
+<path fill="none" stroke="midnightblue" d="M317.12,-15.5C375.03,-15.5 455.64,-15.5 512.88,-15.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="512.93,-19 522.93,-15.5 512.93,-12 512.93,-19"/>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M487.05,-26.61C495.48,-25.6 504.12,-24.57 512.57,-23.56"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="513.25,-27 522.76,-22.34 512.42,-20.05 513.25,-27"/>
+<path fill="none" stroke="midnightblue" d="M487.36,-26.72C495.75,-25.73 504.35,-24.72 512.79,-23.73"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="513.46,-27.18 522.99,-22.54 512.65,-20.23 513.46,-27.18"/>
 </g>
 </g>
 </svg>

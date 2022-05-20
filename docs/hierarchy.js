@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "CXXIter::ExactSizeIteratorTrait< T >", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],
+    [ "CXXIter::trait::ExactSizeIteratorTrait< T >", "structCXXIter_1_1trait_1_1ExactSizeIteratorTrait.html", null ],
     [ "CXXIter::Generator< T >", "classCXXIter_1_1Generator.html", null ],
     [ "CXXIter::IterApi< TSelf >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Alternater< TChainInput1, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
@@ -38,9 +38,9 @@ var hierarchy =
     [ "CXXIter::IterApi< Unique< TChainInput, TMapFn > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Zipper< TChainInput1, TZipContainer, TChainInputs... > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< TSelf >::iterator", "classCXXIter_1_1IterApi_1_1iterator.html", null ],
-    [ "CXXIter::IteratorTrait< T >", "structCXXIter_1_1IteratorTrait.html", null ],
+    [ "CXXIter::trait::IteratorTrait< T >", "structCXXIter_1_1trait_1_1IteratorTrait.html", null ],
     [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
     [ "CXXIter::Generator< T >::promise_type", "structCXXIter_1_1Generator_1_1promise__type.html", null ],
     [ "CXXIter::SizeHint", "structCXXIter_1_1SizeHint.html", null ],
-    [ "CXXIter::SourceTrait< TContainer >", "structCXXIter_1_1SourceTrait.html", null ]
+    [ "CXXIter::trait::SourceTrait< TContainer >", "structCXXIter_1_1trait_1_1SourceTrait.html", null ]
 ];

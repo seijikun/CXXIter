@@ -108,8 +108,8 @@ $(document).ready(function(){initNavTree('Chunked_8h_source.html',''); initResiz
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">namespace </span>op {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, const <span class="keywordtype">size_t</span> CHUNK_SIZE&gt;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">class </span>[[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Chunked : <span class="keyword">public</span> IterApi&lt;Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>IteratorTrait&lt;Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt;;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt;;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::IteratorTrait&lt;Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt;;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::ExactSizeIteratorTrait&lt;Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt;;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            TChainInput input;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordtype">bool</span> reachedEnd = <span class="keyword">false</span>;</div>
@@ -119,8 +119,8 @@ $(document).ready(function(){initNavTree('Chunked_8h_source.html',''); initResiz
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, const <span class="keywordtype">size_t</span> CHUNK_SIZE&gt;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">struct </span>IteratorTrait&lt;op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>ChainInputIterator = IteratorTrait&lt;TChainInput&gt;;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">struct </span>trait::IteratorTrait&lt;op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>ChainInputIterator = trait::IteratorTrait&lt;TChainInput&gt;;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">using </span>InputItem = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// CXXIter Interface</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">using </span>Self = op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;;</div>
@@ -151,15 +151,15 @@ $(document).ready(function(){initNavTree('Chunked_8h_source.html',''); initResiz
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    };</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, const <span class="keywordtype">size_t</span> CHUNK_SIZE&gt;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">struct </span>trait::ExactSizeIteratorTrait&lt;op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;&gt; {</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Chunked&lt;TChainInput, CHUNK_SIZE&gt;&amp; self) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input) / CHUNK_SIZE;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="structCXXIter_1_1trait_1_1ExactSizeIteratorTrait.html#a43dd88af969b3c90b333820185ceace2">trait::ExactSizeIteratorTrait&lt;TChainInput&gt;::size</a>(self.input) / CHUNK_SIZE;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    };</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 <div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00045">CXXIter.h:45</a></div></div>
-<div class="ttc" id="astructCXXIter_1_1ExactSizeIteratorTrait_html_a91a16aa727508f27d07882a1e0b69fed"><div class="ttname"><a href="structCXXIter_1_1ExactSizeIteratorTrait.html#a91a16aa727508f27d07882a1e0b69fed">CXXIter::ExactSizeIteratorTrait::size</a></div><div class="ttdeci">static size_t size(const typename IteratorTrait&lt; T &gt;::Self &amp;self)=delete</div><div class="ttdoc">Get the iterator's exact number of elements.</div></div>
+<div class="ttc" id="astructCXXIter_1_1trait_1_1ExactSizeIteratorTrait_html_a43dd88af969b3c90b333820185ceace2"><div class="ttname"><a href="structCXXIter_1_1trait_1_1ExactSizeIteratorTrait.html#a43dd88af969b3c90b333820185ceace2">CXXIter::trait::ExactSizeIteratorTrait::size</a></div><div class="ttdeci">static size_t size(const typename trait::IteratorTrait&lt; T &gt;::Self &amp;self)=delete</div><div class="ttdoc">Get the iterator's exact number of elements.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

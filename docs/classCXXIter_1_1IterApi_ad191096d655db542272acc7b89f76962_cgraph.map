@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="Consumer that yields the index of the smallest element within this iterator." alt="" coords="5,31,180,57"/>
 <area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#af531c69c1b5edf6d5c30c56ddd0c9500" title="Consumer that yields the index of the smallest element from this iterator. Comparison of items is don..." alt="" coords="228,31,420,57"/>
 <area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="468,5,647,32"/>
-<area shape="rect" id="node4" href="$structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="695,23,849,65"/>
+<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="695,23,857,65"/>
 </map>

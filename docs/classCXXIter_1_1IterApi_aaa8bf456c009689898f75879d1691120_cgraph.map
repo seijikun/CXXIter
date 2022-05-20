@@ -1,5 +1,5 @@
 <map id="CXXIter::IterApi::begin" name="CXXIter::IterApi::begin">
 <area shape="rect" id="node1" title="begin() method, part of C++&#39;s iterator interface" alt="" coords="5,13,172,39"/>
 <area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="220,13,379,39"/>
-<area shape="rect" id="node3" href="$structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="427,5,581,47"/>
+<area shape="rect" id="node3" href="$structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="427,5,589,47"/>
 </map>

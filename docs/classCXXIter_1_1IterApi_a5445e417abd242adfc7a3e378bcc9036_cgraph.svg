@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 777;
+var viewWidth = 783;
 var viewHeight = 53;
 var sectionId = 'dynsection-32';
 </script>
@@ -96,18 +96,18 @@ var sectionId = 'dynsection-32';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="structCXXIter_1_1IteratorTrait.html#a6981855188842adf93100c490475143c" target="_top" xlink:title="Pull one element from the iterator pipeline previous to this pipeline&#45;element.">
-<polygon fill="none" stroke="black" points="653,-14 653,-44 769,-44 769,-14 653,-14"/>
-<text text-anchor="start" x="661" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IteratorTrait</text>
-<text text-anchor="middle" x="711" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">::next</text>
+<g id="a_node3"><a xlink:href="structCXXIter_1_1trait_1_1IteratorTrait.html#a7a3de8ab8551a98a82b82a789b6ee81f" target="_top" xlink:title="Pull one element from the iterator pipeline previous to this pipeline&#45;element.">
+<polygon fill="none" stroke="black" points="653,-14 653,-44 775,-44 775,-14 653,-14"/>
+<text text-anchor="start" x="661" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::trait::Iterator</text>
+<text text-anchor="middle" x="714" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00">Trait::next</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M617.05,-29C625.48,-29 634.12,-29 642.57,-29"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="642.77,-32.5 652.76,-29 642.76,-25.5 642.77,-32.5"/>
+<path fill="none" stroke="midnightblue" d="M617.36,-29C625.75,-29 634.35,-29 642.79,-29"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="642.99,-32.5 652.99,-29 642.99,-25.5 642.99,-32.5"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">

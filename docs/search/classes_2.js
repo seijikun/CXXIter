@@ -30,6 +30,6 @@ var searchData=
   ['iterapi_3c_20unique_3c_20tchaininput_2c_20tmapfn_20_3e_20_3e_27',['IterApi&lt; Unique&lt; TChainInput, TMapFn &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterapi_3c_20zipper_3c_20tchaininput1_2c_20tzipcontainer_2c_20tchaininputs_2e_2e_2e_20_3e_20_3e_28',['IterApi&lt; Zipper&lt; TChainInput1, TZipContainer, TChainInputs... &gt; &gt;',['../classCXXIter_1_1IterApi.html',1,'CXXIter']]],
   ['iterator_29',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
-  ['iteratortrait_30',['IteratorTrait',['../structCXXIter_1_1IteratorTrait.html',1,'CXXIter']]],
+  ['iteratortrait_30',['IteratorTrait',['../structCXXIter_1_1trait_1_1IteratorTrait.html',1,'CXXIter::trait']]],
   ['itervalue_3c_20tvalue_20_3e_31',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
 ];

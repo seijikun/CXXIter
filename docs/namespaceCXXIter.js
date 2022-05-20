@@ -1,12 +1,9 @@
 var namespaceCXXIter =
 [
-    [ "ExactSizeIteratorTrait", "structCXXIter_1_1ExactSizeIteratorTrait.html", null ],
     [ "Generator", "classCXXIter_1_1Generator.html", "classCXXIter_1_1Generator" ],
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
-    [ "IteratorTrait", "structCXXIter_1_1IteratorTrait.html", "structCXXIter_1_1IteratorTrait" ],
     [ "IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
     [ "SizeHint", "structCXXIter_1_1SizeHint.html", null ],
-    [ "SourceTrait", "structCXXIter_1_1SourceTrait.html", "structCXXIter_1_1SourceTrait" ],
     [ "SrcCRef", "classCXXIter_1_1SrcCRef.html", null ],
     [ "SrcMov", "classCXXIter_1_1SrcMov.html", null ],
     [ "SrcRef", "classCXXIter_1_1SrcRef.html", null ],
@@ -24,10 +21,10 @@ var namespaceCXXIter =
       [ "N_MINUS_ONE", "namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8", null ]
     ] ],
     [ "empty", "namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13", null ],
-    [ "from", "namespaceCXXIter.html#a834f4bb3243dd87d589fb26b10ffd565", null ],
-    [ "from", "namespaceCXXIter.html#abf8a6e7833d1a5ee280619f29eeee310", null ],
-    [ "from", "namespaceCXXIter.html#aec7a043f6abb7a80f95c4f067d0c1b65", null ],
-    [ "fromFn", "namespaceCXXIter.html#ad452805bba5ba1b2e03b4a13fa99c4a9", null ],
+    [ "from", "namespaceCXXIter.html#a3ff38b1d29d18580630a804fa187b6a2", null ],
+    [ "from", "namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8", null ],
+    [ "from", "namespaceCXXIter.html#ac11e5e27bdd461af693ce93facecfa11", null ],
+    [ "fromFn", "namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c", null ],
     [ "generate", "namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1", null ],
     [ "range", "namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c", null ],
     [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ],

@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('FilterMap_8h_source.html',''); initRes
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">namespace </span>op {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, <span class="keyword">typename</span> TFilterMapFn, <span class="keyword">typename</span> TItem&gt;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">class </span>[[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FilterMap : <span class="keyword">public</span> IterApi&lt;FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt; {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>IteratorTrait&lt;FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt;;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::IteratorTrait&lt;FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt;;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            TChainInput input;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            TFilterMapFn filterMapFn;</div>
@@ -107,8 +107,8 @@ $(document).ready(function(){initNavTree('FilterMap_8h_source.html',''); initRes
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput, <span class="keyword">typename</span> TFilterMapFn, <span class="keyword">typename</span> TItem&gt;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">struct </span>IteratorTrait&lt;op::FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt; {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">using </span>ChainInputIterator = IteratorTrait&lt;TChainInput&gt;;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">struct </span>trait::IteratorTrait&lt;op::FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;&gt; {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">using </span>ChainInputIterator = trait::IteratorTrait&lt;TChainInput&gt;;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">using </span>InputItem = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// CXXIter Interface</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">using </span>Self = op::FilterMap&lt;TChainInput, TFilterMapFn, TItem&gt;;</div>

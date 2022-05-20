@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('SkipN_8h_source.html',''); initResizab
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">namespace </span>op {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput&gt;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">class </span>[[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipN : <span class="keyword">public</span> IterApi&lt;SkipN&lt;TChainInput&gt;&gt; {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>IteratorTrait&lt;SkipN&lt;TChainInput&gt;&gt;;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keyword">friend</span> <span class="keyword">struct </span>trait::IteratorTrait&lt;SkipN&lt;TChainInput&gt;&gt;;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            TChainInput input;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordtype">size_t</span> n;</div>
@@ -110,8 +110,8 @@ $(document).ready(function(){initNavTree('SkipN_8h_source.html',''); initResizab
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TChainInput&gt;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">struct </span>IteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt; {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">using </span>ChainInputIterator = IteratorTrait&lt;TChainInput&gt;;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">struct </span>trait::IteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt; {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">using </span>ChainInputIterator = trait::IteratorTrait&lt;TChainInput&gt;;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">using </span>InputItem = <span class="keyword">typename</span> TChainInput::Item;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// CXXIter Interface</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">using </span>Self = op::SkipN&lt;TChainInput&gt;;</div>
@@ -134,9 +134,9 @@ $(document).ready(function(){initNavTree('SkipN_8h_source.html',''); initResizab
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput&gt;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">struct </span>ExactSizeIteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt; {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">struct </span>trait::ExactSizeIteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt; {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::SkipN&lt;TChainInput&gt;&amp; self) {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> IteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt;::sizeHint(self).lowerBound;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> trait::IteratorTrait&lt;op::SkipN&lt;TChainInput&gt;&gt;::sizeHint(self).lowerBound;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    };</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CXXIter: CXXIter::@2::invocable_byvalue Concept Reference</title>
+<title>CXXIter: CXXIter::util::InsertableContainer Concept Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('conceptCXXIter_1_1_0d2_1_1invocable__byvalue.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('conceptCXXIter_1_1util_1_1InsertableContainer.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,31 +82,31 @@ $(document).ready(function(){initNavTree('conceptCXXIter_1_1_0d2_1_1invocable__b
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">CXXIter::@2::invocable_byvalue Concept Reference</div></div>
+  <div class="headertitle"><div class="title">CXXIter::util::InsertableContainer Concept Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Concept that checks whether the given invocable type <code>TFn</code> is a function-type that accepts the parameter of types <code>TArgs</code> by value.  
-<a href="conceptCXXIter_1_1_0d2_1_1invocable__byvalue.html#details">More...</a></p>
-<h2 class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TFn, <span class="keyword">typename</span>... TArgs&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_namespace" href="namespaceCXXIter.html">CXXIter</a>::@2::<a class="code hl_concept" href="conceptCXXIter_1_1_0d2_1_1invocable__byvalue.html">invocable_byvalue</a> =  <span class="keyword">requires</span>(TFn fn, TArgs... args) {</div>
-<div class="line">            { fn(args...) }; </div>
-<div class="line">            { fn(std::forward&lt;TArgs&gt;(args)...) }; </div>
-<div class="line">        }</div>
-<div class="ttc" id="aconceptCXXIter_1_1_0d2_1_1invocable__byvalue_html"><div class="ttname"><a href="conceptCXXIter_1_1_0d2_1_1invocable__byvalue.html">CXXIter::@2::invocable_byvalue</a></div><div class="ttdoc">Concept that checks whether the given invocable type TFn is a function-type that accepts the paramete...</div><div class="ttdef"><b>Definition:</b> <a href="Common_8h_source.html#l00238">Common.h:238</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00045">CXXIter.h:45</a></div></div>
-</div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Concept that checks whether the given invocable type <code>TFn</code> is a function-type that accepts the parameter of types <code>TArgs</code> by value. </p>
-<p >This concepts only accepts <code>TFn</code> if it takes the argument types by value. Neither taking the parameters as rvalue references, nor as lvalue references is allowed. </p>
+<p>Concept enforcing an insertible container like <code>std::set</code>.  
+<a href="conceptCXXIter_1_1util_1_1InsertableContainer.html#details">More...</a></p>
 
-<p class="definition">Definition at line <a class="el" href="Common_8h_source.html#l00238">238</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+<p><code>#include &lt;<a class="el" href="Constraints_8h_source.html">Constraints.h</a>&gt;</code></p>
+<h2 class="groupheader">Concept definition</h2>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TContainer, <span class="keyword">typename</span> TItem&gt;</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptCXXIter_1_1util_1_1InsertableContainer.html">CXXIter::util::InsertableContainer</a> =  <span class="keyword">requires</span>(TContainer&amp; container, TItem item) {</div>
+<div class="line">        <span class="keyword">typename</span> TContainer::value_type;</div>
+<div class="line">        container.insert(item);</div>
+<div class="line">    }</div>
+<div class="ttc" id="aconceptCXXIter_1_1util_1_1InsertableContainer_html"><div class="ttname"><a href="conceptCXXIter_1_1util_1_1InsertableContainer.html">CXXIter::util::InsertableContainer</a></div><div class="ttdoc">Concept enforcing an insertible container like std::set.</div><div class="ttdef"><b>Definition:</b> <a href="Constraints_8h_source.html#l00088">Constraints.h:88</a></div></div>
+</div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Concept enforcing an insertible container like <code>std::set</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="Constraints_8h_source.html#l00088">88</a> of file <a class="el" href="Constraints_8h_source.html">Constraints.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><b>@2</b></li><li class="navelem"><a class="el" href="conceptCXXIter_1_1_0d2_1_1invocable__byvalue.html">invocable_byvalue</a></li>
+    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="conceptCXXIter_1_1util_1_1InsertableContainer.html">InsertableContainer</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
