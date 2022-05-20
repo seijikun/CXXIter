@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-20 19:16:01</td>
+      <td>2022-05-20 20:11:17</td>
     </tr>
   </table>
 </div>
@@ -47,14 +47,14 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>115</td>
-      <td>115</td>
+      <td>116</td>
+      <td>116</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
       <th scope="row">Branches:</th>
-      <td>2</td>
       <td>4</td>
+      <td>8</td>
       <td class="coverage-low">50.0%</td>
     </tr>
   </table>
@@ -477,7 +477,7 @@
         <a href="#l23">23</a>
       </td>
       <td>
-        <a href="#l23"> called 30 times</a>
+        <a href="#l23"> called 32 times</a>
       </td>
     </tr>
     <tr>
@@ -499,7 +499,7 @@
         <a href="#l23">23</a>
       </td>
       <td>
-        <a href="#l23"> called 28 times</a>
+        <a href="#l23"> called 33 times</a>
       </td>
     </tr>
     <tr>
@@ -621,6 +621,17 @@
       </td>
       <td>
         <a href="#l23"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l51">CXXIter::trait::DoubleEndedIterator&lt;CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt; &gt;::nextBack(CXXIter::op::Map&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt;, CXXIter::IterApi&lt;CXXIter::SrcRef&lt;std::vector&lt;unsigned long, std::allocator&lt;unsigned long&gt; &gt; &gt; &gt;::copied()::{lambda(unsigned long const&amp;)#1}, unsigned long&gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l51">51</a>
+      </td>
+      <td>
+        <a href="#l51"> called 11 times</a>
       </td>
     </tr>
     <tr>
@@ -1060,7 +1071,7 @@
         <a href="#l36">36</a>
       </td>
       <td>
-        <a href="#l36"> called 41 times</a>
+        <a href="#l36"> called 51 times</a>
       </td>
     </tr>
     <tr>
@@ -1071,7 +1082,7 @@
         <a href="#l40">40</a>
       </td>
       <td>
-        <a href="#l40"> called 30 times</a>
+        <a href="#l40"> called 35 times</a>
       </td>
     </tr>
     <tr>
@@ -1104,7 +1115,7 @@
         <a href="#l36">36</a>
       </td>
       <td>
-        <a href="#l36"> called 113 times</a>
+        <a href="#l36"> called 136 times</a>
       </td>
     </tr>
     <tr>
@@ -1115,7 +1126,7 @@
         <a href="#l40">40</a>
       </td>
       <td>
-        <a href="#l40"> called 28 times</a>
+        <a href="#l40"> called 36 times</a>
       </td>
     </tr>
     <tr>
@@ -1533,7 +1544,7 @@
       <td class="lineno"><a id="l23" href="#l23">23</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">318</td>
+      <td class="linecount coveredLine">332</td>
       <td class="src coveredLine">			<span class="n">Map</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TMapFn</span> <span class="n">mapFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">mapFn</span><span class="p">(</span><span class="n">mapFn</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
@@ -1637,7 +1648,7 @@
       <td class="lineno"><a id="l36" href="#l36">36</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">846</td>
+      <td class="linecount coveredLine">912</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
@@ -1647,12 +1658,12 @@
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
         <div class="linebranchContents">
-          <div class="takenBranch">&check; Branch 1 taken 423 times.</div>
+          <div class="takenBranch">&check; Branch 1 taken 456 times.</div>
           <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">846</td>
+      <td class="linecount coveredLine">912</td>
       <td class="src coveredLine">			<span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
@@ -1662,12 +1673,12 @@
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/2</summary>
         <div class="linebranchContents">
-          <div class="takenBranch">&check; Branch 1 taken 423 times.</div>
+          <div class="takenBranch">&check; Branch 1 taken 456 times.</div>
           <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">1692</td>
+      <td class="linecount coveredLine">1824</td>
       <td class="src coveredLine">			<span class="k">return</span> <span class="n">item</span><span class="p">.</span><span class="n">template</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">Item</span><span class="p">,</span> <span class="n">TMapFn</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">mapFn</span><span class="p">);</span></td>
     </tr>
 
@@ -1683,7 +1694,7 @@
       <td class="lineno"><a id="l40" href="#l40">40</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">220</td>
+      <td class="linecount coveredLine">246</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
@@ -1771,23 +1782,37 @@
       <td class="lineno"><a id="l51" href="#l51">51</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">10</td>
+      <td class="linecount coveredLine">21</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">nextBack</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l52" href="#l52">52</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 11 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">10</td>
+      <td class="linecount coveredLine">21</td>
       <td class="src coveredLine">			<span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l53" href="#l53">53</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="takenBranch">&check; Branch 1 taken 11 times.</div>
+          <div class="notTakenBranch">&cross; Branch 2 not taken.</div>
+        </div>
+        </details>
       </td>
-      <td class="linecount coveredLine">20</td>
+      <td class="linecount coveredLine">42</td>
       <td class="src coveredLine">			<span class="k">return</span> <span class="n">item</span><span class="p">.</span><span class="n">template</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">Item</span><span class="p">,</span> <span class="n">TMapFn</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">mapFn</span><span class="p">);</span></td>
     </tr>
 
