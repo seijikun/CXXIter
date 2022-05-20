@@ -15,7 +15,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TTakePredicate>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeWhile : public IterApi<TakeWhile<TChainInput, TTakePredicate>> {
-			friend struct IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;
+			friend struct trait::IteratorTrait<TakeWhile<TChainInput, TTakePredicate>>;
 		private:
 			TChainInput input;
 			TTakePredicate takePredicate;
@@ -26,8 +26,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TTakePredicate>
-	struct IteratorTrait<op::TakeWhile<TChainInput, TTakePredicate>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::TakeWhile<TChainInput, TTakePredicate>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::TakeWhile<TChainInput, TTakePredicate>;

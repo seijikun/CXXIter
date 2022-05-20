@@ -86,7 +86,7 @@ namespace CXXIter {
 	};
 
 	template<typename T>
-	concept GeneratorFunction = (std::invocable<T> && is_template_instance_v<std::invoke_result_t<T>, Generator>);
+	concept GeneratorFunction = (std::invocable<T> && util::is_template_instance_v<std::invoke_result_t<T>, Generator>);
 }
 
 #endif

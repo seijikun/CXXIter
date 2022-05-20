@@ -13,10 +13,10 @@ namespace CXXIter {
 	namespace op {
 		/** @private */
 		template<typename TChainInput, typename TModifierFn>
-		requires std::is_object_v<typename IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename IteratorTrait<TChainInput>::Item>)
+		requires std::is_object_v<typename trait::IteratorTrait<TChainInput>::Item> || (!std::is_const_v<typename trait::IteratorTrait<TChainInput>::Item>)
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] InplaceModifier : public IterApi<InplaceModifier<TChainInput, TModifierFn>> {
-			friend struct IteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
-			friend struct ExactSizeIteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
+			friend struct trait::IteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
+			friend struct trait::ExactSizeIteratorTrait<InplaceModifier<TChainInput, TModifierFn>>;
 		private:
 			using InputItem = typename TChainInput::Item;
 
@@ -29,8 +29,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TModifierFn>
-	struct IteratorTrait<op::InplaceModifier<TChainInput, TModifierFn>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::InplaceModifier<TChainInput, TModifierFn>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		// CXXIter Interface
 		using Self = op::InplaceModifier<TChainInput, TModifierFn>;
 		using Item = typename ChainInputIterator::Item;
@@ -45,8 +45,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>
-	struct ExactSizeIteratorTrait<op::InplaceModifier<TChainInput, TItem>> {
-		static inline size_t size(const op::InplaceModifier<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+	struct trait::ExactSizeIteratorTrait<op::InplaceModifier<TChainInput, TItem>> {
+		static inline size_t size(const op::InplaceModifier<TChainInput, TItem>& self) { return trait::ExactSizeIteratorTrait<TChainInput>::size(self.input); }
 	};
 
 }

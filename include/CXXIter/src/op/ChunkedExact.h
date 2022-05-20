@@ -22,8 +22,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, const size_t CHUNK_SIZE, const size_t STEP_SIZE>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] ChunkedExact : public IterApi<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
-			friend struct IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
-			friend struct ExactSizeIteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
+			friend struct trait::IteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
+			friend struct trait::ExactSizeIteratorTrait<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
 		private:
 			TChainInput input;
 			std::optional<ExactChunk<typename TChainInput::Item, CHUNK_SIZE>> chunk;
@@ -34,7 +34,7 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, const size_t CHUNK_SIZE, const size_t STEP_SIZE>
-	struct IteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
+	struct trait::IteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
 	private:
 		static constexpr size_t LOAD_SIZE = std::min(CHUNK_SIZE, STEP_SIZE);
 		static constexpr size_t SHIFT_SIZE = (STEP_SIZE < CHUNK_SIZE) ? (CHUNK_SIZE - STEP_SIZE) : 0;
@@ -42,7 +42,7 @@ namespace CXXIter {
 		static constexpr size_t SKIP_SIZE = (STEP_SIZE > CHUNK_SIZE) ? (STEP_SIZE - CHUNK_SIZE) : 0;
 
 	public:
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>;
@@ -90,9 +90,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, const size_t CHUNK_SIZE, const size_t STEP_SIZE>
-	struct ExactSizeIteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
+	struct trait::ExactSizeIteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
 		static inline size_t size(const op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>& self) {
-			return IteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>::sizeHint(self).lowerBound;
+			return trait::IteratorTrait<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>::sizeHint(self).lowerBound;
 		}
 	};
 

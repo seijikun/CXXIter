@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "../Common.h"
+#include "../util/SaturatingArithmetic.h"
 
 namespace CXXIter {
 
@@ -15,8 +16,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TSeparatorInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
-			friend struct IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
-			friend struct ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+			friend struct trait::IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+			friend struct trait::ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
 			enum class IntersperserState { Uninitialized, Item, Separator };
 		private:
 			TChainInput input;
@@ -30,9 +31,9 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TSeparatorInput>
-	struct IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
-		using SeparatorInputIterator = IteratorTrait<TSeparatorInput>;
+	struct trait::IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+		using SeparatorInputIterator = trait::IteratorTrait<TSeparatorInput>;
 		// CXXIter Interface
 		using Self = op::Intersperser<TChainInput, TSeparatorInput>;
 		using Item = typename ChainInputIterator::Item;
@@ -61,20 +62,20 @@ namespace CXXIter {
 			SizeHint result = input;
 			if(result.lowerBound > 0) {
 				size_t sepCnt = std::min((result.lowerBound - 1), separator.lowerBound);
-				result.lowerBound = (SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
+				result.lowerBound = (util::SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
 			}
 			if(result.upperBound.value_or(0) > 0) {
 				size_t sepCnt = std::min((result.upperBound.value() - 1), separator.upperBound.value_or(SizeHint::INFINITE));
-				result.upperBound = (SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
+				result.upperBound = (util::SaturatingArithmetic<size_t>(sepCnt) + sepCnt + 1).get();
 			}
 			return result;
 		}
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, CXXIterExactSizeIterator TSeparatorInput>
-	struct ExactSizeIteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
+	struct trait::ExactSizeIteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
 		static inline size_t size(const op::Intersperser<TChainInput, TSeparatorInput>& self) {
-			return IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
+			return trait::IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
 		}
 	};
 

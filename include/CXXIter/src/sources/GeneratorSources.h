@@ -13,13 +13,13 @@ namespace CXXIter {
 	/** @private */
 	template<typename TItem>
 	class Empty : public IterApi<Empty<TItem>> {
-		friend struct IteratorTrait<Empty<TItem>>;
-		friend struct ExactSizeIteratorTrait<Empty<TItem>>;
+		friend struct trait::IteratorTrait<Empty<TItem>>;
+		friend struct trait::ExactSizeIteratorTrait<Empty<TItem>>;
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TItem>
-	struct IteratorTrait<Empty<TItem>> {
+	struct trait::IteratorTrait<Empty<TItem>> {
 		// CXXIter Interface
 		using Self = Empty<TItem>;
 		using Item = TItem;
@@ -29,7 +29,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TItem>
-	struct ExactSizeIteratorTrait<Empty<TItem>> {
+	struct trait::ExactSizeIteratorTrait<Empty<TItem>> {
 		static inline size_t size(const Empty<TItem>&) { return 0; }
 	};
 
@@ -40,8 +40,8 @@ namespace CXXIter {
 	/** @private */
 	template<typename TItem, typename TGeneratorFn>
 	class FunctionGenerator : public IterApi<FunctionGenerator<TItem, TGeneratorFn>> {
-		friend struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
-		friend struct ExactSizeIteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
+		friend struct trait::IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
+		friend struct trait::ExactSizeIteratorTrait<FunctionGenerator<TItem, TGeneratorFn>>;
 	private:
 		TGeneratorFn generatorFn;
 	public:
@@ -50,7 +50,7 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TItem, typename TGeneratorFn>
-	struct IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
+	struct trait::IteratorTrait<FunctionGenerator<TItem, TGeneratorFn>> {
 		// CXXIter Interface
 		using Self = FunctionGenerator<TItem, TGeneratorFn>;
 		using Item = TItem;
@@ -71,8 +71,8 @@ namespace CXXIter {
 	/** @private */
 	template<typename TItem>
 	class Repeater : public IterApi<Repeater<TItem>> {
-		friend struct IteratorTrait<Repeater<TItem>>;
-		friend struct ExactSizeIteratorTrait<Repeater<TItem>>;
+		friend struct trait::IteratorTrait<Repeater<TItem>>;
+		friend struct trait::ExactSizeIteratorTrait<Repeater<TItem>>;
 	private:
 		TItem item;
 		std::optional<size_t> repetitions;
@@ -83,7 +83,7 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TItem>
-	struct IteratorTrait<Repeater<TItem>> {
+	struct trait::IteratorTrait<Repeater<TItem>> {
 		// CXXIter Interface
 		using Self = Repeater<TItem>;
 		using Item = TItem;
@@ -104,8 +104,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TItem>
-	struct ExactSizeIteratorTrait<Repeater<TItem>> {
-		static inline size_t size(const Repeater<TItem>& self) { return IteratorTrait<Repeater<TItem>>::sizeHint(self).lowerBound; }
+	struct trait::ExactSizeIteratorTrait<Repeater<TItem>> {
+		static inline size_t size(const Repeater<TItem>& self) { return trait::IteratorTrait<Repeater<TItem>>::sizeHint(self).lowerBound; }
 	};
 
 
@@ -116,8 +116,8 @@ namespace CXXIter {
 	/** @private */
 	template<typename TValue>
 	class Range : public IterApi<Range<TValue>> {
-		friend struct IteratorTrait<Range<TValue>>;
-		friend struct ExactSizeIteratorTrait<Range<TValue>>;
+		friend struct trait::IteratorTrait<Range<TValue>>;
+		friend struct trait::ExactSizeIteratorTrait<Range<TValue>>;
 	private:
 		TValue current;
 		TValue from;
@@ -129,7 +129,7 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TValue>
-	struct IteratorTrait<Range<TValue>> {
+	struct trait::IteratorTrait<Range<TValue>> {
 		// CXXIter Interface
 		using Self = Range<TValue>;
 		using Item = TValue;
@@ -147,8 +147,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TItem>
-	struct ExactSizeIteratorTrait<Range<TItem>> {
-		static inline size_t size(const Range<TItem>& self) { return IteratorTrait<Range<TItem>>::sizeHint(self).lowerBound; }
+	struct trait::ExactSizeIteratorTrait<Range<TItem>> {
+		static inline size_t size(const Range<TItem>& self) { return trait::IteratorTrait<Range<TItem>>::sizeHint(self).lowerBound; }
 	};
 
 
@@ -160,8 +160,8 @@ namespace CXXIter {
 	/** @private */
 	template<typename TGenerator>
 	class CoroutineGenerator : public IterApi<CoroutineGenerator<TGenerator>> {
-		friend struct IteratorTrait<CoroutineGenerator<TGenerator>>;
-		friend struct ExactSizeIteratorTrait<CoroutineGenerator<TGenerator>>;
+		friend struct trait::IteratorTrait<CoroutineGenerator<TGenerator>>;
+		friend struct trait::ExactSizeIteratorTrait<CoroutineGenerator<TGenerator>>;
 	private:
 		TGenerator generator;
 	public:
@@ -170,7 +170,7 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TGeneratorFn>
-	struct IteratorTrait<CoroutineGenerator<TGeneratorFn>> {
+	struct trait::IteratorTrait<CoroutineGenerator<TGeneratorFn>> {
 		// CXXIter Interface
 		using Self = CoroutineGenerator<TGeneratorFn>;
 		using Item = typename TGeneratorFn::value_type;

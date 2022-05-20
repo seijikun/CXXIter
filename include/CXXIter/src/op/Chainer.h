@@ -14,8 +14,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput1, typename TChainInput2>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Chainer : public IterApi<Chainer<TChainInput1, TChainInput2>> {
-			friend struct IteratorTrait<Chainer<TChainInput1, TChainInput2>>;
-			friend struct ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>>;
+			friend struct trait::IteratorTrait<Chainer<TChainInput1, TChainInput2>>;
+			friend struct trait::ExactSizeIteratorTrait<Chainer<TChainInput1, TChainInput2>>;
 		private:
 			TChainInput1 input1;
 			TChainInput2 input2;
@@ -27,10 +27,10 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput1, typename TChainInput2>
-	struct IteratorTrait<op::Chainer<TChainInput1, TChainInput2>> {
-		using ChainInputIterator1 = IteratorTrait<TChainInput1>;
-		using ChainInputIterator2 = IteratorTrait<TChainInput2>;
-		using InputItem = typename IteratorTrait<TChainInput1>::Item;
+	struct trait::IteratorTrait<op::Chainer<TChainInput1, TChainInput2>> {
+		using ChainInputIterator1 = trait::IteratorTrait<TChainInput1>;
+		using ChainInputIterator2 = trait::IteratorTrait<TChainInput2>;
+		using InputItem = typename trait::IteratorTrait<TChainInput1>::Item;
 		// CXXIter Interface
 		using Self = op::Chainer<TChainInput1, TChainInput2>;
 		using Item = InputItem;
@@ -58,9 +58,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator TChainInput2>
-	struct ExactSizeIteratorTrait<op::Chainer<TChainInput1, TChainInput2>> {
+	struct trait::ExactSizeIteratorTrait<op::Chainer<TChainInput1, TChainInput2>> {
 		static inline size_t size(const op::Chainer<TChainInput1, TChainInput2>& self) {
-			return IteratorTrait<op::Chainer<TChainInput1, TChainInput2>>::sizeHint(self).lowerBound;
+			return trait::IteratorTrait<op::Chainer<TChainInput1, TChainInput2>>::sizeHint(self).lowerBound;
 		}
 	};
 

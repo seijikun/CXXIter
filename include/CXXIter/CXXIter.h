@@ -55,9 +55,9 @@ template<CXXIterIterator TSelf>
 class IterApi {
 public: // Associated types
 	/**
-	 * @brief Type of the IteratorTrait implemenation for this.
+	 * @brief Type of the trait::IteratorTrait implemenation for this.
 	 */
-	using Iterator = IteratorTrait<TSelf>;
+	using Iterator = trait::IteratorTrait<TSelf>;
 	/**
 	 * @brief Type of the elements of this iterator. (Can be references)
 	 */
@@ -156,7 +156,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	size_t size() const requires CXXIterExactSizeIterator<TSelf> {
-		return ExactSizeIteratorTrait<TSelf>::size(*self());
+		return trait::ExactSizeIteratorTrait<TSelf>::size(*self());
 	}
 
 	/**
@@ -1303,7 +1303,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TMapFn>
-	requires is_hashable<std::invoke_result_t<TMapFn, const ItemOwned&>>
+	requires util::is_hashable<std::invoke_result_t<TMapFn, const ItemOwned&>>
 	op::Unique<TSelf, TMapFn> unique(TMapFn mapFn) {
 		return op::Unique<TSelf, TMapFn>(std::move(*self()), mapFn);
 	}
@@ -1608,7 +1608,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
-	requires is_optional<std::invoke_result_t<TFilterMapFn, ItemOwned&&>>
+	requires util::is_optional<std::invoke_result_t<TFilterMapFn, ItemOwned&&>>
 	auto filterMap(TFilterMapFn filterMapFn) {
 		using TFilterMapFnResult = typename std::invoke_result_t<TFilterMapFn, ItemOwned&&>::value_type;
 		return op::FilterMap<TSelf, TFilterMapFn, TFilterMapFnResult>(std::move(*self()), filterMapFn);
@@ -1776,7 +1776,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
-			&& (!std::disjunction_v< std::is_reference<typename IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
+			&& (!std::disjunction_v< std::is_reference<typename trait::IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
 	op::Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
 		return op::Zipper<TSelf, std::tuple, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
@@ -1825,7 +1825,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
-			&& (are_same_v<Item, typename TOtherIterators::Item...>)
+			&& (util::are_same_v<Item, typename TOtherIterators::Item...>)
 	op::Alternater<TSelf, TOtherIterators...> alternate(TOtherIterators&&... otherIterators) {
 		return op::Alternater<TSelf, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
@@ -1901,7 +1901,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
-	requires is_hashable<std::invoke_result_t<TGroupIdentifierFn, const Item&>>
+	requires util::is_hashable<std::invoke_result_t<TGroupIdentifierFn, const Item&>>
 	auto groupBy(TGroupIdentifierFn groupIdentFn) {
 		using TGroupIdent = std::remove_cvref_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return op::GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
@@ -2035,7 +2035,7 @@ public: // CXXIter API-Surface
  * @return CXXIter move source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
 	return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
 }
@@ -2048,7 +2048,7 @@ SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
  * @return CXXIter mutable-reference source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
 	return SrcRef<std::remove_cvref_t<TContainer>>(container);
 }
@@ -2061,7 +2061,7 @@ SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
  * @return CXXIter const-reference source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
 SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
 	return SrcCRef<std::remove_cvref_t<TContainer>>(container);
 }
@@ -2102,7 +2102,7 @@ Empty<TItem> empty() { return Empty<TItem>(); }
  * @endcode
  */
 template<std::invocable<> TGeneratorFn>
-requires is_optional<std::invoke_result_t<TGeneratorFn>>
+requires util::is_optional<std::invoke_result_t<TGeneratorFn>>
 auto fromFn(TGeneratorFn generatorFn) {
 	using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
 	return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);

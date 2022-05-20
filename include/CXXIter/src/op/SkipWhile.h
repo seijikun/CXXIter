@@ -14,7 +14,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TSkipPredicate>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipWhile : public IterApi<SkipWhile<TChainInput, TSkipPredicate>> {
-			friend struct IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
+			friend struct trait::IteratorTrait<SkipWhile<TChainInput, TSkipPredicate>>;
 		private:
 			TChainInput input;
 			TSkipPredicate skipPredicate;
@@ -26,8 +26,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TSkipPredicate>
-	struct IteratorTrait<op::SkipWhile<TChainInput, TSkipPredicate>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::SkipWhile<TChainInput, TSkipPredicate>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::SkipWhile<TChainInput, TSkipPredicate>;

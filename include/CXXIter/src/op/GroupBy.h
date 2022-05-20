@@ -17,7 +17,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] GroupBy : public IterApi<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
-			friend struct IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
+			friend struct trait::IteratorTrait<GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>>;
 		private:
 			using OwnedInputItem = typename TChainInput::ItemOwned;
 			using GroupCache = SrcMov<std::unordered_map<TGroupIdent, std::vector<OwnedInputItem>>>;
@@ -32,8 +32,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TGroupIdentifierFn, typename TGroupIdent>
-	struct IteratorTrait<op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		using OwnedInputItem = typename TChainInput::ItemOwned;
 		// CXXIter Interface
 		using Self = op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>;
@@ -57,7 +57,7 @@ namespace CXXIter {
 				self.groupCache.emplace(std::move(groupCache));
 			}
 
-			using GroupCacheIterator = IteratorTrait<typename Self::GroupCache>;
+			using GroupCacheIterator = trait::IteratorTrait<typename Self::GroupCache>;
 			typename Self::GroupCache& groupedItems = self.groupCache.value();
 			return GroupCacheIterator::next(groupedItems);
 		}

@@ -89,7 +89,7 @@ template<typename TItem> struct CustomContainer {
 
 namespace CXXIter {
 	// SourceTrait implementation for the CustomContainer
-	template<typename TItem> struct SourceTrait<CustomContainer<TItem>> {
+	template<typename TItem> struct trait::SourceTrait<CustomContainer<TItem>> {
 		using Item = typename CustomContainer<TItem>::CustomContainerItem;
 		using ItemRef = typename CustomContainer<TItem>::CustomContainerItem&;
 		using ItemConstRef = const typename CustomContainer<TItem>::CustomContainerItem&;

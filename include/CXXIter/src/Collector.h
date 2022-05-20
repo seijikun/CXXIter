@@ -15,11 +15,11 @@ namespace CXXIter {
 	struct IntoCollector {};
 	/** @private */
 	template<typename TChainInput, typename TContainer>
-	requires BackInsertableContainer<TContainer, typename TChainInput::ItemOwned>
+	requires util::BackInsertableContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
 		static void collectInto(TChainInput& input, TContainer& container) {
-			if constexpr(ReservableContainer<TContainer>) {
+			if constexpr(util::ReservableContainer<TContainer>) {
 				container.reserve( container.size() + input.sizeHint().expectedResultSize() );
 			}
 			input.forEach([&container](Item&& item) { container.push_back( std::forward<Item>(item) ); });
@@ -27,12 +27,12 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TChainInput, typename TContainer>
-	requires (!BackInsertableContainer<TContainer, typename TChainInput::ItemOwned>)
-		&& InsertableContainer<TContainer, typename TChainInput::ItemOwned>
+	requires (!util::BackInsertableContainer<TContainer, typename TChainInput::ItemOwned>)
+		&& util::InsertableContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
 		static void collectInto(TChainInput& input, TContainer& container) {
-			if constexpr(ReservableContainer<TContainer>) {
+			if constexpr(util::ReservableContainer<TContainer>) {
 				container.reserve( container.size() + input.sizeHint().expectedResultSize() );
 			}
 			input.forEach([&container](Item&& item) { container.insert( std::forward<Item>(item) ); });
@@ -40,7 +40,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TChainInput, typename TContainer>
-	requires StdArrayContainer<TContainer, typename TChainInput::ItemOwned>
+	requires util::StdArrayContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
 		static void collectInto(TChainInput& input, TContainer& container) {
@@ -60,8 +60,8 @@ namespace CXXIter {
 	struct Collector {};
 	/** @private */
 	template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
-	requires BackInsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
-		|| InsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+	requires util::BackInsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
+		|| util::InsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
 	struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		template<typename Item, typename ItemOwned>
 		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
@@ -72,9 +72,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TChainInput, template <typename...> typename TContainer, typename... TContainerArgs>
-	requires (!BackInsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
-		&& is_pair<typename TChainInput::ItemOwned>
-		&& AssocContainerTemplate<TContainer, std::tuple_element_t<0, typename TChainInput::ItemOwned>, std::tuple_element_t<1, typename TChainInput::ItemOwned>, TContainerArgs...>
+	requires (!util::BackInsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>)
+		&& util::is_pair<typename TChainInput::ItemOwned>
+		&& util::AssocContainerTemplate<TContainer, std::tuple_element_t<0, typename TChainInput::ItemOwned>, std::tuple_element_t<1, typename TChainInput::ItemOwned>, TContainerArgs...>
 	struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		template<typename Item, typename ItemOwned>
 		static auto collect(TChainInput& input) {

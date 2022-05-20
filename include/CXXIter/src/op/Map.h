@@ -13,8 +13,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TMapFn, typename TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Map : public IterApi<Map<TChainInput, TMapFn, TItem>> {
-			friend struct IteratorTrait<Map<TChainInput, TMapFn, TItem>>;
-			friend struct ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>>;
+			friend struct trait::IteratorTrait<Map<TChainInput, TMapFn, TItem>>;
+			friend struct trait::ExactSizeIteratorTrait<Map<TChainInput, TMapFn, TItem>>;
 		private:
 			TChainInput input;
 			TMapFn mapFn;
@@ -25,8 +25,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TMapFn, typename TItem>
-	struct IteratorTrait<op::Map<TChainInput, TMapFn, TItem>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::Map<TChainInput, TMapFn, TItem>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		using InputItemOwned = typename TChainInput::ItemOwned;
 		// CXXIter Interface
 		using Self = op::Map<TChainInput, TMapFn, TItem>;
@@ -40,8 +40,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TMapFn, typename TItem>
-	struct ExactSizeIteratorTrait<op::Map<TChainInput, TMapFn, TItem>> {
-		static inline size_t size(const op::Map<TChainInput, TMapFn, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+	struct trait::ExactSizeIteratorTrait<op::Map<TChainInput, TMapFn, TItem>> {
+		static inline size_t size(const op::Map<TChainInput, TMapFn, TItem>& self) { return trait::ExactSizeIteratorTrait<TChainInput>::size(self.input); }
 	};
 
 }

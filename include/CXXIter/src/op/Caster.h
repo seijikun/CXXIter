@@ -16,8 +16,8 @@ namespace CXXIter {
 		template<typename TChainInput, typename TItem>
 		requires std::is_object_v<TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {
-			friend struct IteratorTrait<Caster<TChainInput, TItem>>;
-			friend struct ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
+			friend struct trait::IteratorTrait<Caster<TChainInput, TItem>>;
+			friend struct trait::ExactSizeIteratorTrait<Caster<TChainInput, TItem>>;
 		private:
 			TChainInput input;
 		public:
@@ -28,8 +28,8 @@ namespace CXXIter {
 	/** @private */
 	template<typename TChainInput, typename TItem>
 	requires std::is_object_v<TItem>
-	struct IteratorTrait<op::Caster<TChainInput, TItem>> {
-		using ChainInputIterator = IteratorTrait<TChainInput>;
+	struct trait::IteratorTrait<op::Caster<TChainInput, TItem>> {
+		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
 		// CXXIter Interface
 		using Self = op::Caster<TChainInput, TItem>;
 		using Item = TItem;
@@ -42,8 +42,8 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>
-	struct ExactSizeIteratorTrait<op::Caster<TChainInput, TItem>> {
-		static inline size_t size(const op::Caster<TChainInput, TItem>& self) { return ExactSizeIteratorTrait<TChainInput>::size(self.input); }
+	struct trait::ExactSizeIteratorTrait<op::Caster<TChainInput, TItem>> {
+		static inline size_t size(const op::Caster<TChainInput, TItem>& self) { return trait::ExactSizeIteratorTrait<TChainInput>::size(self.input); }
 	};
 
 }
