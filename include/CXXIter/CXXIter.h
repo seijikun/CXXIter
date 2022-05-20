@@ -29,6 +29,7 @@
 #include "src/op/InplaceModifier.h"
 #include "src/op/Intersperser.h"
 #include "src/op/Map.h"
+#include "src/op/Reverse.h"
 #include "src/op/SkipN.h"
 #include "src/op/SkipWhile.h"
 #include "src/op/Sorter.h"
@@ -1348,6 +1349,27 @@ public: // CXXIter API-Surface
 	 */
 	auto unique() {
 		return unique([](const auto& item) { return item; });
+	}
+
+	/**
+	 * @brief Constructs a new iterator that provides the elements of this iterator in reverse order.
+	 * @attention If the underlying iterator implements DoubleEndedIterator it is going to be used and this operation
+	 * will not have an additional cost. If the underlying iterator does not implement DoubleEndedIterator, it will
+	 * be emulated by first draining the iterator into a container and then providing those elements in reverse.
+	 * This leads to additional memory usage.
+	 * @return Iterator that provides the elements of this iterator in reverse order.
+	 *
+	 * Usage Example:
+	 * @code
+	 *  std::vector<size_t> input = {1, 42, 2, 1337, 3, 4, 69, 5, 6, 5};
+	 *  std::vector<size_t> output = CXXIter::from(input).copied()
+	 *		.reverse()
+	 *		.collect<std::vector>();
+	 *  // output == { 5, 6, 5, 69, 4, 3, 1337, 2, 42, 1 }
+	 * @endcode
+	 */
+	op::Reverse<TSelf> reverse() {
+		return op::Reverse<TSelf>(std::move(*self()));
 	}
 
 	/**

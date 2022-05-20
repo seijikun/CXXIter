@@ -146,6 +146,56 @@ TEST(CXXIter, unique) {
 	}
 }
 
+TEST(CXXIter, reverse) {
+	{ // sizeHint
+		std::vector<size_t> input = {1, 42, 2, 1337, 3, 4, 69, 5, 6, 5};
+		SizeHint sizeHint = CXXIter::from(input).copied()
+				.reverse()
+				.sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{ // Reverse using DoubleEndedIterator
+		std::vector<size_t> input = {1, 42, 2, 1337, 3, 4, 69, 5, 6, 5};
+		std::vector<size_t> output = CXXIter::from(input).copied()
+				.reverse()
+				.collect<std::vector>();
+		ASSERT_EQ(input.size(), output.size());
+		ASSERT_THAT(output, ElementsAre(5, 6, 5, 69, 4, 3, 1337, 2, 42, 1));
+	}
+	{ // Reverse using internal Cache
+		std::vector<size_t> input1 = {1, 2, 3, 4, 5};
+		std::vector<std::string> input2 = {"1", "2", "3", "4", "5", "6"};
+		std::vector<std::pair<size_t, std::string>> output = CXXIter::from(input1).copied()
+				.zip(CXXIter::from(input2).copied())
+				.reverse()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size());
+		ASSERT_THAT(output, ElementsAre(Pair(5, "5"), Pair(4, "4"), Pair(3, "3"), Pair(2, "2"), Pair(1, "1")));
+	}
+
+	{ // Double Reverse using DoubleEndedIterator
+		std::vector<size_t> input = {1, 42, 2, 1337, 3, 4, 69, 5, 6, 5};
+		std::vector<size_t> output = CXXIter::from(input).copied()
+				.reverse()
+				.reverse()
+				.collect<std::vector>();
+		ASSERT_EQ(input.size(), output.size());
+		ASSERT_THAT(output, ElementsAre(1, 42, 2, 1337, 3, 4, 69, 5, 6, 5));
+	}
+	{ // Double Reverse using internal Cache
+		std::vector<size_t> input1 = {1, 2, 3, 4, 5};
+		std::vector<std::string> input2 = {"1", "2", "3", "4", "5", "6"};
+		std::vector<std::pair<size_t, std::string>> output = CXXIter::from(input1).copied()
+				.zip(CXXIter::from(input2).copied())
+				.reverse()
+				.reverse()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), input1.size());
+		ASSERT_THAT(output, ElementsAre(Pair(1, "1"), Pair(2, "2"), Pair(3, "3"), Pair(4, "4"), Pair(5, "5")));
+	}
+}
+
 TEST(CXXIter, chunkedExact) {
 	{ // non-interleaved
 		{ // sizeHint
