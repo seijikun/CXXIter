@@ -1,14 +1,15 @@
 var indexSectionsWithContent =
 {
-  0: "abcefghilmnprstuvz",
-  1: "egips",
+  0: "abcdefghilmnprstuvz",
+  1: "cdegips",
   2: "c",
   3: "abcefghilmnrstuvz",
-  4: "cis",
-  5: "s",
-  6: "n",
-  7: "cs",
-  8: "c"
+  4: "lr",
+  5: "is",
+  6: "s",
+  7: "n",
+  8: "cs",
+  9: "c"
 };
 
 var indexSectionNames =
@@ -17,11 +18,12 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "typedefs",
-  5: "enums",
-  6: "enumvalues",
-  7: "pages",
-  8: "concepts"
+  4: "variables",
+  5: "typedefs",
+  6: "enums",
+  7: "enumvalues",
+  8: "pages",
+  9: "concepts"
 };
 
 var indexSectionLabels =
@@ -30,10 +32,11 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Typedefs",
-  5: "Enumerations",
-  6: "Enumerator",
-  7: "Pages",
-  8: "Concepts"
+  4: "Variables",
+  5: "Typedefs",
+  6: "Enumerations",
+  7: "Enumerator",
+  8: "Pages",
+  9: "Concepts"
 };
 

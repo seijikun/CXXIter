@@ -1,5 +1,6 @@
 var namespaceCXXIter =
 [
+    [ "trait", "namespaceCXXIter_1_1trait.html", "namespaceCXXIter_1_1trait" ],
     [ "Generator", "classCXXIter_1_1Generator.html", "classCXXIter_1_1Generator" ],
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
     [ "IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
@@ -8,8 +9,10 @@ var namespaceCXXIter =
     [ "SrcMov", "classCXXIter_1_1SrcMov.html", null ],
     [ "SrcRef", "classCXXIter_1_1SrcRef.html", null ],
     [ "CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
+    [ "CXXIterDoubleEndedIterator", "conceptCXXIter_1_1CXXIterDoubleEndedIterator.html", null ],
     [ "CXXIterExactSizeIterator", "conceptCXXIter_1_1CXXIterExactSizeIterator.html", null ],
     [ "SourceContainer", "conceptCXXIter_1_1SourceContainer.html", null ],
+    [ "DoubleEndedSourceContainer", "conceptCXXIter_1_1DoubleEndedSourceContainer.html", null ],
     [ "GeneratorFunction", "conceptCXXIter_1_1GeneratorFunction.html", null ],
     [ "GeneratorFromFunction", "conceptCXXIter_1_1GeneratorFromFunction.html", null ],
     [ "SortOrder", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c", [

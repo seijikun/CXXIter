@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['promise_5ftype_0',['promise_type',['../structCXXIter_1_1Generator_1_1promise__type.html',1,'CXXIter::Generator']]]
+  ['n_0',['N',['../namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca8d9c307cb7f3c4a32822a51922d1ceaa',1,'CXXIter']]],
+  ['n_5fminus_5fone_1',['N_MINUS_ONE',['../namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8',1,'CXXIter']]],
+  ['next_2',['next',['../classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e',1,'CXXIter::IterApi::next()'],['../structCXXIter_1_1trait_1_1Iterator.html#ae0ea73d4371db684ce0317ef4f464110',1,'CXXIter::trait::Iterator::next()'],['../structCXXIter_1_1trait_1_1Source.html#ada39c0b622e1ddf51dfa6579583ed4ea',1,'CXXIter::trait::Source::next(TContainer &amp;container, IteratorState &amp;iter)'],['../structCXXIter_1_1trait_1_1Source.html#a1334493c6c1f15e502b166eeb33e9dc3',1,'CXXIter::trait::Source::next(const TContainer &amp;container, ConstIteratorState &amp;iter)']]],
+  ['nextback_3',['nextBack',['../classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0',1,'CXXIter::IterApi::nextBack()'],['../structCXXIter_1_1trait_1_1DoubleEndedIterator.html#a6ac4f576f43beb6f966c05f8213576f0',1,'CXXIter::trait::DoubleEndedIterator::nextBack()'],['../structCXXIter_1_1trait_1_1Source.html#a6856b6ea5da7db01a0a9f6023c09fd75',1,'CXXIter::trait::Source::nextBack(TContainer &amp;container, IteratorState &amp;iter)'],['../structCXXIter_1_1trait_1_1Source.html#a4164862b1fc1df97bbdf6379d2bd6ba8',1,'CXXIter::trait::Source::nextBack(const TContainer &amp;container, ConstIteratorState &amp;iter)']]],
+  ['nth_4',['nth',['../classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019',1,'CXXIter::IterApi']]]
 ];

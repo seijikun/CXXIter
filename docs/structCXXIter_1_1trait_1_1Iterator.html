@@ -104,7 +104,7 @@ Collaboration diagram for CXXIter::trait::Iterator&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:ac11589ba26f7b23ee3f065a841d1895c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Iterator.html#ac11589ba26f7b23ee3f065a841d1895c">Self</a> = <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">trait::Iterator</a>&lt; T &gt;</td></tr>
-<tr class="memdesc:ac11589ba26f7b23ee3f065a841d1895c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Self-Type. This is the type of the struct for which the trait::IteratorTrait is being specialized.  <a href="structCXXIter_1_1trait_1_1Iterator.html#ac11589ba26f7b23ee3f065a841d1895c">More...</a><br /></td></tr>
+<tr class="memdesc:ac11589ba26f7b23ee3f065a841d1895c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Self-Type. This is the type of the struct for which the <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> is being specialized.  <a href="structCXXIter_1_1trait_1_1Iterator.html#ac11589ba26f7b23ee3f065a841d1895c">More...</a><br /></td></tr>
 <tr class="separator:ac11589ba26f7b23ee3f065a841d1895c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a384416c2080e247759c652b17c9c4575"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">Item</a> = void</td></tr>
 <tr class="memdesc:a384416c2080e247759c652b17c9c4575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item-Type. This is the type of elements that can be pulled from this pipeline-element.  <a href="structCXXIter_1_1trait_1_1Iterator.html#a384416c2080e247759c652b17c9c4575">More...</a><br /></td></tr>
@@ -123,11 +123,11 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
 struct CXXIter::trait::Iterator&lt; T &gt;</div><p >Trait, that is used for the chaining and the operation of iterator pipelines. </p>
 <p >This allows making any class or struct iterable, to be able to interact with <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s iterator pipelines. It essentially provides two functions:</p><ul>
-<li>One that delivers a hint about the iterator's size after the current element implementing the CXXIter::IteratorTrait</li>
+<li>One that delivers a hint about the iterator's size after the current element implementing the trait <code><a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">CXXIter::trait::Iterator</a></code> </li>
 <li>Method that allows pulling one element from the iterator pipeline. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00021">21</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00024">24</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a384416c2080e247759c652b17c9c4575" name="a384416c2080e247759c652b17c9c4575"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a384416c2080e247759c652b17c9c4575">&#9670;&nbsp;</a></span>Item</h2>
@@ -145,7 +145,7 @@ template&lt;typename T &gt; </div>
 
 <p>Item-Type. This is the type of elements that can be pulled from this pipeline-element. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00029">29</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00032">32</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -163,9 +163,9 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Self-Type. This is the type of the struct for which the trait::IteratorTrait is being specialized. </p>
+<p>Self-Type. This is the type of the struct for which the <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> is being specialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00025">25</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00028">28</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -199,7 +199,7 @@ template&lt;typename T &gt; </div>
 <p>Pull one element from the iterator pipeline previous to this pipeline-element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>Reference to the instance of the class for which trait::IteratorTrait is being specialized. </td></tr>
+    <tr><td class="paramname">self</td><td>Reference to the instance of the class for which <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html" title="Trait, that is used for the chaining and the operation of iterator pipelines.">trait::Iterator</a> is being specialized. </td></tr>
   </table>
   </dd>
 </dl>
@@ -246,7 +246,7 @@ template&lt;typename T &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><b>trait</b></li><li class="navelem"><a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">Iterator</a></li>
+    <li class="navelem"><a class="el" href="namespaceCXXIter.html">CXXIter</a></li><li class="navelem"><a class="el" href="namespaceCXXIter_1_1trait.html">trait</a></li><li class="navelem"><a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">Iterator</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

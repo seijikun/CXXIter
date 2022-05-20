@@ -127,6 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">next</a> ()</td></tr>
 <tr class="memdesc:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">More...</a><br /></td></tr>
 <tr class="separator:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">nextBack</a> ()</td></tr>
+<tr class="memdesc:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">More...</a><br /></td></tr>
+<tr class="separator:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066">forEach</a> (TUseFn useFn)</td></tr>
 <tr class="memdesc:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that calls the given function <code>useFn</code> for each of the elements in this iterator.  <a href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066">More...</a><br /></td></tr>
 <tr class="separator:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,6 +309,8 @@ Public Member Functions</h2></td></tr>
 Friends</h2></td></tr>
 <tr class="memitem:a9e13a87b9be7d404c95331fc308d3a75"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcCRef.html#a9e13a87b9be7d404c95331fc308d3a75">trait::Iterator&lt; SrcCRef&lt; TContainer &gt; &gt;</a></td></tr>
 <tr class="separator:a9e13a87b9be7d404c95331fc308d3a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6514d6a71d13b9d0778bd47effadb414"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcCRef.html#a6514d6a71d13b9d0778bd47effadb414">trait::DoubleEndedIterator&lt; SrcCRef&lt; TContainer &gt; &gt;</a></td></tr>
+<tr class="separator:a6514d6a71d13b9d0778bd47effadb414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12f916f2f40c3bab045bc5a12d9d8fbd"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcCRef.html#a12f916f2f40c3bab045bc5a12d9d8fbd">trait::ExactSizeIterator&lt; SrcCRef&lt; TContainer &gt; &gt;</a></td></tr>
 <tr class="separator:a12f916f2f40c3bab045bc5a12d9d8fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -328,7 +333,7 @@ requires SourceContainer&lt;std::remove_cvref_t&lt;TContainer&gt;&gt;<br />
 class CXXIter::SrcCRef&lt; TContainer &gt;</div><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator source that immutably borrows the input item source, and passes immutable references to the items of the source through the iterator. </p>
 <p >This guarantees the original source to stay untouched &amp; unmodified. </p>
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00108">108</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00136">136</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5f15b0e49d59291121a88b93c2a3139e" name="a5f15b0e49d59291121a88b93c2a3139e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f15b0e49d59291121a88b93c2a3139e">&#9670;&nbsp;</a></span>SrcCRef()</h2>
@@ -356,11 +361,37 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00116">116</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00145">145</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a6514d6a71d13b9d0778bd47effadb414" name="a6514d6a71d13b9d0778bd47effadb414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6514d6a71d13b9d0778bd47effadb414">&#9670;&nbsp;</a></span>trait::DoubleEndedIterator&lt; SrcCRef&lt; TContainer &gt; &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TContainer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend struct <a class="el" href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html">trait::DoubleEndedIterator</a>&lt; <a class="el" href="classCXXIter_1_1SrcCRef.html">SrcCRef</a>&lt; TContainer &gt; &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00120">120</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+
+</div>
+</div>
 <a id="a12f916f2f40c3bab045bc5a12d9d8fbd" name="a12f916f2f40c3bab045bc5a12d9d8fbd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12f916f2f40c3bab045bc5a12d9d8fbd">&#9670;&nbsp;</a></span>trait::ExactSizeIterator&lt; SrcCRef&lt; TContainer &gt; &gt;</h2>
 
@@ -383,7 +414,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00092">92</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00120">120</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>
@@ -409,7 +440,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00092">92</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00120">120</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>

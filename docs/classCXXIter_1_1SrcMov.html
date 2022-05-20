@@ -127,6 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">next</a> ()</td></tr>
 <tr class="memdesc:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">More...</a><br /></td></tr>
 <tr class="separator:a1a805fbdc20f9eb42e8162d5eb0a1b3e inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">nextBack</a> ()</td></tr>
+<tr class="memdesc:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">More...</a><br /></td></tr>
+<tr class="separator:a7f1f0e435b605b4947eea18fa4762ca0 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066">forEach</a> (TUseFn useFn)</td></tr>
 <tr class="memdesc:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that calls the given function <code>useFn</code> for each of the elements in this iterator.  <a href="classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066">More...</a><br /></td></tr>
 <tr class="separator:aad1cbb262290264fc2e12d80492ad066 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,6 +309,8 @@ Public Member Functions</h2></td></tr>
 Friends</h2></td></tr>
 <tr class="memitem:a80e833ceaa08097161a792698900b145"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcMov.html#a80e833ceaa08097161a792698900b145">trait::Iterator&lt; SrcMov&lt; TContainer &gt; &gt;</a></td></tr>
 <tr class="separator:a80e833ceaa08097161a792698900b145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11a8384f235e304c918f4224d0839ee"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcMov.html#aa11a8384f235e304c918f4224d0839ee">trait::DoubleEndedIterator&lt; SrcMov&lt; TContainer &gt; &gt;</a></td></tr>
+<tr class="separator:aa11a8384f235e304c918f4224d0839ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59561683dd9f101589992c31def61257"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcMov.html#a59561683dd9f101589992c31def61257">trait::ExactSizeIterator&lt; SrcMov&lt; TContainer &gt; &gt;</a></td></tr>
 <tr class="separator:a59561683dd9f101589992c31def61257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -355,11 +360,37 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00027">27</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00028">28</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="aa11a8384f235e304c918f4224d0839ee" name="aa11a8384f235e304c918f4224d0839ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11a8384f235e304c918f4224d0839ee">&#9670;&nbsp;</a></span>trait::DoubleEndedIterator&lt; SrcMov&lt; TContainer &gt; &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TContainer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend struct <a class="el" href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html">trait::DoubleEndedIterator</a>&lt; <a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; TContainer &gt; &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00001">1</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+
+</div>
+</div>
 <a id="a59561683dd9f101589992c31def61257" name="a59561683dd9f101589992c31def61257"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a59561683dd9f101589992c31def61257">&#9670;&nbsp;</a></span>trait::ExactSizeIterator&lt; SrcMov&lt; TContainer &gt; &gt;</h2>
 
