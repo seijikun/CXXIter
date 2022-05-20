@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-14 22:29:29</td>
+      <td>2022-05-20 12:48:27</td>
     </tr>
   </table>
 </div>
@@ -14849,7 +14849,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * @brief Type of the IteratorTrait implemenation for this.</span></td>
+      <td class="src "><span class="cm">	 * @brief Type of the trait::IteratorTrait implemenation for this.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -14865,7 +14865,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">using</span> <span class="n">Iterator</span> <span class="o">=</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TSelf</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">using</span> <span class="n">Iterator</span> <span class="o">=</span> <span class="n">trait</span><span class="o">::</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TSelf</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -15671,7 +15671,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">20</td>
-      <td class="src coveredLine">		<span class="k">return</span> <span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">TSelf</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="o">*</span><span class="n">self</span><span class="p">());</span></td>
+      <td class="src coveredLine">		<span class="k">return</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIteratorTrait</span><span class="o">&lt;</span><span class="n">TSelf</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="o">*</span><span class="n">self</span><span class="p">());</span></td>
     </tr>
 
     <tr class="source-line">
@@ -25196,7 +25196,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">requires</span> <span class="n">is_hashable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TMapFn</span><span class="p">,</span> <span class="k">const</span> <span class="n">ItemOwned</span><span class="o">&amp;&gt;&gt;</span></td>
+      <td class="src ">	<span class="n">requires</span> <span class="n">util</span><span class="o">::</span><span class="n">is_hashable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TMapFn</span><span class="p">,</span> <span class="k">const</span> <span class="n">ItemOwned</span><span class="o">&amp;&gt;&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -27636,7 +27636,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">requires</span> <span class="n">is_optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">ItemOwned</span><span class="o">&amp;&amp;&gt;&gt;</span></td>
+      <td class="src ">	<span class="n">requires</span> <span class="n">util</span><span class="o">::</span><span class="n">is_optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TFilterMapFn</span><span class="p">,</span> <span class="n">ItemOwned</span><span class="o">&amp;&amp;&gt;&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -28980,7 +28980,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">disjunction_v</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_reference</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TOtherIterators</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">...</span> <span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">IS_REFERENCE</span><span class="p">)</span></td>
+      <td class="src ">			<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">disjunction_v</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_reference</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">IteratorTrait</span><span class="o">&lt;</span><span class="n">TOtherIterators</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">...</span> <span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">IS_REFERENCE</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
@@ -29372,7 +29372,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">are_same_v</span><span class="o">&lt;</span><span class="n">Item</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TOtherIterators</span><span class="o">::</span><span class="n">Item</span><span class="p">...</span><span class="o">&gt;</span><span class="p">)</span></td>
+      <td class="src ">			<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">util</span><span class="o">::</span><span class="n">are_same_v</span><span class="o">&lt;</span><span class="n">Item</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TOtherIterators</span><span class="o">::</span><span class="n">Item</span><span class="p">...</span><span class="o">&gt;</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
@@ -29980,7 +29980,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">requires</span> <span class="n">is_hashable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TGroupIdentifierFn</span><span class="p">,</span> <span class="k">const</span> <span class="n">Item</span><span class="o">&amp;&gt;&gt;</span></td>
+      <td class="src ">	<span class="n">requires</span> <span class="n">util</span><span class="o">::</span><span class="n">is_hashable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TGroupIdentifierFn</span><span class="p">,</span> <span class="k">const</span> <span class="n">Item</span><span class="o">&amp;&gt;&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -31052,7 +31052,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
+      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">util</span><span class="o">::</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
@@ -31156,7 +31156,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
+      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">util</span><span class="o">::</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
@@ -31260,7 +31260,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
+      <td class="src "><span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">util</span><span class="o">::</span><span class="n">is_const_reference_v</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span><span class="p">)</span></td>
     </tr>
 
     <tr class="source-line">
@@ -31588,7 +31588,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">requires</span> <span class="n">is_optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TGeneratorFn</span><span class="o">&gt;&gt;</span></td>
+      <td class="src "><span class="n">requires</span> <span class="n">util</span><span class="o">::</span><span class="n">is_optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">TGeneratorFn</span><span class="o">&gt;&gt;</span></td>
     </tr>
 
     <tr class="source-line">
