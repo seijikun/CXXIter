@@ -17,6 +17,7 @@ namespace CXXIter {
 		requires std::is_object_v<TItem>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Caster : public IterApi<Caster<TChainInput, TItem>> {
 			friend struct trait::Iterator<Caster<TChainInput, TItem>>;
+			friend struct trait::DoubleEndedIterator<Caster<TChainInput, TItem>>;
 			friend struct trait::ExactSizeIterator<Caster<TChainInput, TItem>>;
 		private:
 			TChainInput input;
@@ -39,6 +40,19 @@ namespace CXXIter {
 			return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+	};
+	/** @private */
+	template<CXXIterDoubleEndedIterator TChainInput, typename TItem>
+	requires std::is_object_v<TItem>
+	struct trait::DoubleEndedIterator<op::Caster<TChainInput, TItem>> {
+		using ChainInputIterator = trait::DoubleEndedIterator<TChainInput>;
+		using Self = op::Caster<TChainInput, TItem>;
+		using Item = TItem;
+
+		static inline IterValue<TItem> nextBack(Self& self) {
+			auto item = ChainInputIterator::nextBack(self.input);
+			return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
+		}
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>

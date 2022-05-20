@@ -15,7 +15,7 @@
 using namespace CXXIter;
 
 
-TEST(CXXIter, DoubleEndedSources) {
+TEST(CXXIter, doubleEndedSources) {
 	{ // SrcCRef
 		{
 			std::vector<float> input = {1.337f, 1.338f, 1.339f};
@@ -34,6 +34,10 @@ TEST(CXXIter, DoubleEndedSources) {
 			ASSERT_EQ(src.nextBack().value(), 1.338f);
 			ASSERT_FALSE(src.nextBack().has_value());
 			ASSERT_FALSE(src.next().has_value());
+		}
+		{
+			std::vector<float> input = {};
+			ASSERT_FALSE(SrcCRef(input).nextBack().has_value());
 		}
 	}
 	{ // SrcRef
@@ -55,6 +59,10 @@ TEST(CXXIter, DoubleEndedSources) {
 			ASSERT_FALSE(src.nextBack().has_value());
 			ASSERT_FALSE(src.next().has_value());
 		}
+		{
+			std::vector<float> input = {};
+			ASSERT_FALSE(SrcRef(input).nextBack().has_value());
+		}
 	}
 	{ // SrcMov
 		{
@@ -75,5 +83,30 @@ TEST(CXXIter, DoubleEndedSources) {
 			ASSERT_FALSE(src.nextBack().has_value());
 			ASSERT_FALSE(src.next().has_value());
 		}
+		{
+			std::vector<float> input = {};
+			ASSERT_FALSE(SrcMov(std::move(input)).nextBack().has_value());
+		}
+	}
+}
+
+TEST(CXXIter, doubleEndedCast) {
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f};
+		auto src = CXXIter::from(std::move(input)).cast<size_t>();
+		ASSERT_EQ(src.nextBack().value(), 3);
+		ASSERT_EQ(src.next().value(), 1);
+		ASSERT_EQ(src.nextBack().value(), 2);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{
+		std::vector<float> input = {1.337f, 2.338f, 3.339f};
+		auto src = CXXIter::from(std::move(input)).cast<size_t>();
+		ASSERT_EQ(src.nextBack().value(), 3);
+		ASSERT_EQ(src.nextBack().value(), 2);
+		ASSERT_EQ(src.nextBack().value(), 1);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
 	}
 }
