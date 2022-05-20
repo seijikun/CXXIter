@@ -236,3 +236,54 @@ TEST(CXXIter, doubleEndedMap) {
 		ASSERT_FALSE(src.next().has_value());
 	}
 }
+
+TEST(CXXIter, doubleEndedSort) {
+	{ // ASCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		auto src = CXXIter::from(input)
+			.sort<false>([](const float& a, const float& b) { return (a < b); });
+		ASSERT_EQ(src.nextBack().value(), 3.0f);
+		ASSERT_EQ(src.nextBack().value(), 2.0f);
+		ASSERT_EQ(src.nextBack().value(), 1.0f);
+		ASSERT_EQ(src.nextBack().value(), 0.5f);
+		ASSERT_EQ(src.nextBack().value(), -42.0f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{ // ASCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		auto src = CXXIter::from(input)
+			.sort<false>([](const float& a, const float& b) { return (a < b); });
+		ASSERT_EQ(src.nextBack().value(), 3.0f);
+		ASSERT_EQ(src.next().value(), -42.0f);
+		ASSERT_EQ(src.next().value(), 0.5f);
+		ASSERT_EQ(src.nextBack().value(), 2.0f);
+		ASSERT_EQ(src.nextBack().value(), 1.0f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{ // DESCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		auto src = CXXIter::from(input)
+			.sort<CXXIter::DESCENDING, false>();
+		ASSERT_EQ(src.nextBack().value(), -42.0f);
+		ASSERT_EQ(src.nextBack().value(), 0.5f);
+		ASSERT_EQ(src.nextBack().value(), 1.0f);
+		ASSERT_EQ(src.nextBack().value(), 2.0f);
+		ASSERT_EQ(src.nextBack().value(), 3.0f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+	{ // DESCENDING
+		std::vector<float> input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};
+		auto src = CXXIter::from(input)
+				.sort<CXXIter::DESCENDING, false>();
+		ASSERT_EQ(src.nextBack().value(), -42.0f);
+		ASSERT_EQ(src.next().value(), 3.0f);
+		ASSERT_EQ(src.next().value(), 2.0f);
+		ASSERT_EQ(src.nextBack().value(), 0.5f);
+		ASSERT_EQ(src.nextBack().value(), 1.0f);
+		ASSERT_FALSE(src.nextBack().has_value());
+		ASSERT_FALSE(src.next().has_value());
+	}
+}
