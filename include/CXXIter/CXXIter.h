@@ -55,9 +55,9 @@ template<CXXIterIterator TSelf>
 class IterApi {
 public: // Associated types
 	/**
-	 * @brief Type of the trait::IteratorTrait implemenation for this.
+	 * @brief Type of the trait::Iterator implemenation for this.
 	 */
-	using Iterator = trait::IteratorTrait<TSelf>;
+	using Iterator = trait::Iterator<TSelf>;
 	/**
 	 * @brief Type of the elements of this iterator. (Can be references)
 	 */
@@ -156,7 +156,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	size_t size() const requires CXXIterExactSizeIterator<TSelf> {
-		return trait::ExactSizeIteratorTrait<TSelf>::size(*self());
+		return trait::ExactSizeIterator<TSelf>::size(*self());
 	}
 
 	/**
@@ -1776,7 +1776,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
-			&& (!std::disjunction_v< std::is_reference<typename trait::IteratorTrait<TOtherIterators>::Item>... > && !IS_REFERENCE)
+			&& (!std::disjunction_v< std::is_reference<typename trait::Iterator<TOtherIterators>::Item>... > && !IS_REFERENCE)
 	op::Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
 		return op::Zipper<TSelf, std::tuple, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}

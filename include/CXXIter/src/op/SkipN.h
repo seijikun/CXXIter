@@ -13,7 +13,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] SkipN : public IterApi<SkipN<TChainInput>> {
-			friend struct trait::IteratorTrait<SkipN<TChainInput>>;
+			friend struct trait::Iterator<SkipN<TChainInput>>;
 		private:
 			TChainInput input;
 			size_t n;
@@ -25,8 +25,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput>
-	struct trait::IteratorTrait<op::SkipN<TChainInput>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::SkipN<TChainInput>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::SkipN<TChainInput>;
@@ -50,9 +50,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>
-	struct trait::ExactSizeIteratorTrait<op::SkipN<TChainInput>> {
+	struct trait::ExactSizeIterator<op::SkipN<TChainInput>> {
 		static inline size_t size(const op::SkipN<TChainInput>& self) {
-			return trait::IteratorTrait<op::SkipN<TChainInput>>::sizeHint(self).lowerBound;
+			return trait::Iterator<op::SkipN<TChainInput>>::sizeHint(self).lowerBound;
 		}
 	};
 

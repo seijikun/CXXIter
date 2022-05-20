@@ -17,9 +17,9 @@ namespace CXXIter {
 	template<typename TContainer>
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcMov : public IterApi<SrcMov<TContainer>> {
-		friend struct trait::IteratorTrait<SrcMov<TContainer>>;
-		friend struct trait::ExactSizeIteratorTrait<SrcMov<TContainer>>;
-		using Src = trait::SourceTrait<TContainer>;
+		friend struct trait::Iterator<SrcMov<TContainer>>;
+		friend struct trait::ExactSizeIterator<SrcMov<TContainer>>;
+		using Src = trait::Source<TContainer>;
 	private:
 		std::unique_ptr<TContainer> container;
 		typename Src::IteratorState iter;
@@ -29,8 +29,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TContainer>
-	struct trait::IteratorTrait<SrcMov<TContainer>> {
-		using Src = SourceTrait<TContainer>;
+	struct trait::Iterator<SrcMov<TContainer>> {
+		using Src = Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcMov<TContainer>;
 		using Item = typename Src::Item;
@@ -43,7 +43,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	struct trait::ExactSizeIteratorTrait<SrcMov<TContainer>> {
+	struct trait::ExactSizeIterator<SrcMov<TContainer>> {
 		static inline size_t size(const SrcMov<TContainer>& self) { return self.container->size(); }
 	};
 
@@ -62,9 +62,9 @@ namespace CXXIter {
 	template<typename TContainer>
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcRef : public IterApi<SrcRef<TContainer>> {
-		friend struct trait::IteratorTrait<SrcRef<TContainer>>;
-		friend struct trait::ExactSizeIteratorTrait<SrcRef<TContainer>>;
-		using Src = trait::SourceTrait<TContainer>;
+		friend struct trait::Iterator<SrcRef<TContainer>>;
+		friend struct trait::ExactSizeIterator<SrcRef<TContainer>>;
+		using Src = trait::Source<TContainer>;
 	private:
 		TContainer& container;
 		typename Src::IteratorState iter;
@@ -74,8 +74,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TContainer>
-	struct trait::IteratorTrait<SrcRef<TContainer>> {
-		using Src = SourceTrait<TContainer>;
+	struct trait::Iterator<SrcRef<TContainer>> {
+		using Src = Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcRef<TContainer>;
 		using Item = typename Src::ItemRef;
@@ -88,7 +88,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	struct trait::ExactSizeIteratorTrait<SrcRef<TContainer>> {
+	struct trait::ExactSizeIterator<SrcRef<TContainer>> {
 		static inline size_t size(const SrcRef<TContainer>& self) { return self.container.size(); }
 	};
 
@@ -106,9 +106,9 @@ namespace CXXIter {
 	template<typename TContainer>
 	requires SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcCRef : public IterApi<SrcCRef<TContainer>> {
-		friend struct trait::IteratorTrait<SrcCRef<TContainer>>;
-		friend struct trait::ExactSizeIteratorTrait<SrcCRef<TContainer>>;
-		using Src = trait::SourceTrait<TContainer>;
+		friend struct trait::Iterator<SrcCRef<TContainer>>;
+		friend struct trait::ExactSizeIterator<SrcCRef<TContainer>>;
+		using Src = trait::Source<TContainer>;
 	private:
 		const TContainer& container;
 		typename Src::ConstIteratorState iter;
@@ -118,8 +118,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TContainer>
-	struct trait::IteratorTrait<SrcCRef<TContainer>> {
-		using Src = SourceTrait<TContainer>;
+	struct trait::Iterator<SrcCRef<TContainer>> {
+		using Src = Source<TContainer>;
 		// CXXIter Interface
 		using Self = SrcCRef<TContainer>;
 		using Item = typename Src::ItemConstRef;
@@ -132,7 +132,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	struct trait::ExactSizeIteratorTrait<SrcCRef<TContainer>> {
+	struct trait::ExactSizeIterator<SrcCRef<TContainer>> {
 		static inline size_t size(const SrcCRef<TContainer>& self) { return self.container.size(); }
 	};
 

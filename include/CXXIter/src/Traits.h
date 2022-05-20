@@ -18,11 +18,11 @@ namespace CXXIter::trait {
 	* - Method that allows pulling one element from the iterator pipeline.
 	*/
 	template<typename T>
-	struct IteratorTrait {
+	struct Iterator {
 		/**
 		* @brief Self-Type. This is the type of the struct for which the trait::IteratorTrait is being specialized.
 		*/
-		using Self = trait::IteratorTrait<T>;
+		using Self = trait::Iterator<T>;
 		/**
 		* @brief Item-Type. This is the type of elements that can be pulled from this pipeline-element.
 		*/
@@ -47,13 +47,13 @@ namespace CXXIter::trait {
 	* @brief Trait, that extends iterators for which an exact length is known.
 	*/
 	template<typename T>
-	struct ExactSizeIteratorTrait {
+	struct ExactSizeIterator {
 		/**
 		* @brief Get the iterator's exact number of elements.
-		* @param self Reference to the instance of the class for which trait::ExactSizeIteratorTrait is being specialized.
+		* @param self Reference to the instance of the class for which trait::ExactSizeIterator is being specialized.
 		* @return This iterator's exact number of elements.
 		*/
-		static inline size_t size(const typename trait::IteratorTrait<T>::Self& self) = delete;
+		static inline size_t size(const typename trait::Iterator<T>::Self& self) = delete;
 	};
 
 
@@ -68,7 +68,7 @@ namespace CXXIter::trait {
 	*
 	* This is the default implementation supporting all STL containers.
 	*/
-	template<typename TContainer> struct SourceTrait {
+	template<typename TContainer> struct Source {
 		/**
 		* @brief Type of the item @p TContainer holds and provides for the iterator.
 		*/

@@ -16,8 +16,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TSeparatorInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Intersperser : public IterApi<Intersperser<TChainInput, TSeparatorInput>> {
-			friend struct trait::IteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
-			friend struct trait::ExactSizeIteratorTrait<Intersperser<TChainInput, TSeparatorInput>>;
+			friend struct trait::Iterator<Intersperser<TChainInput, TSeparatorInput>>;
+			friend struct trait::ExactSizeIterator<Intersperser<TChainInput, TSeparatorInput>>;
 			enum class IntersperserState { Uninitialized, Item, Separator };
 		private:
 			TChainInput input;
@@ -31,9 +31,9 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TSeparatorInput>
-	struct trait::IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
-		using SeparatorInputIterator = trait::IteratorTrait<TSeparatorInput>;
+	struct trait::Iterator<op::Intersperser<TChainInput, TSeparatorInput>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
+		using SeparatorInputIterator = trait::Iterator<TSeparatorInput>;
 		// CXXIter Interface
 		using Self = op::Intersperser<TChainInput, TSeparatorInput>;
 		using Item = typename ChainInputIterator::Item;
@@ -73,9 +73,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, CXXIterExactSizeIterator TSeparatorInput>
-	struct trait::ExactSizeIteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>> {
+	struct trait::ExactSizeIterator<op::Intersperser<TChainInput, TSeparatorInput>> {
 		static inline size_t size(const op::Intersperser<TChainInput, TSeparatorInput>& self) {
-			return trait::IteratorTrait<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
+			return trait::Iterator<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
 		}
 	};
 

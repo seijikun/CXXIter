@@ -11,8 +11,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TFilterFn>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Filter : public IterApi<Filter<TChainInput, TFilterFn>> {
-			friend struct trait::IteratorTrait<Filter<TChainInput, TFilterFn>>;
-			friend struct trait::ExactSizeIteratorTrait<Filter<TChainInput, TFilterFn>>;
+			friend struct trait::Iterator<Filter<TChainInput, TFilterFn>>;
+			friend struct trait::ExactSizeIterator<Filter<TChainInput, TFilterFn>>;
 		private:
 			using InputItem = typename TChainInput::Item;
 
@@ -25,8 +25,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TFilterFn>
-	struct trait::IteratorTrait<op::Filter<TChainInput, TFilterFn>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::Filter<TChainInput, TFilterFn>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		// CXXIter Interface
 		using Self = op::Filter<TChainInput, TFilterFn>;
 		using Item = typename ChainInputIterator::Item;

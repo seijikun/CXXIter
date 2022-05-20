@@ -65,17 +65,17 @@ namespace CXXIter {
 
 	template<typename T>
 	concept CXXIterIterator =
-		(std::is_same_v<typename trait::IteratorTrait<T>::Self, T>) &&
-		requires(typename trait::IteratorTrait<T>::Self& self, const typename trait::IteratorTrait<T>::Self& constSelf) {
-			typename trait::IteratorTrait<T>::Self;
-			typename trait::IteratorTrait<T>::Item;
-			{trait::IteratorTrait<T>::next(self)} -> std::same_as<IterValue<typename trait::IteratorTrait<T>::Item>>;
-			{trait::IteratorTrait<T>::sizeHint(constSelf)} -> std::same_as<SizeHint>;
+		(std::is_same_v<typename trait::Iterator<T>::Self, T>) &&
+		requires(typename trait::Iterator<T>::Self& self, const typename trait::Iterator<T>::Self& constSelf) {
+			typename trait::Iterator<T>::Self;
+			typename trait::Iterator<T>::Item;
+			{trait::Iterator<T>::next(self)} -> std::same_as<IterValue<typename trait::Iterator<T>::Item>>;
+			{trait::Iterator<T>::sizeHint(constSelf)} -> std::same_as<SizeHint>;
 	};
 
 	template<typename T>
-	concept CXXIterExactSizeIterator = CXXIterIterator<T> && requires(const typename trait::IteratorTrait<T>::Self& self) {
-			{trait::ExactSizeIteratorTrait<T>::size(self)} -> std::same_as<size_t>;
+	concept CXXIterExactSizeIterator = CXXIterIterator<T> && requires(const typename trait::Iterator<T>::Self& self) {
+			{trait::ExactSizeIterator<T>::size(self)} -> std::same_as<size_t>;
 	};
 
 	template<CXXIterIterator TSelf> class IterApi;
@@ -92,23 +92,23 @@ namespace CXXIter {
 	concept SourceContainer = requires(
 			TContainer& container,
 			const TContainer& constContainer,
-			typename trait::SourceTrait<TContainer>::IteratorState& iterState,
-			typename trait::SourceTrait<TContainer>::ConstIteratorState& constIterState
+			typename trait::Source<TContainer>::IteratorState& iterState,
+			typename trait::Source<TContainer>::ConstIteratorState& constIterState
 		) {
-		typename trait::SourceTrait<TContainer>::Item;
-		typename trait::SourceTrait<TContainer>::ItemRef;
-		typename trait::SourceTrait<TContainer>::ItemConstRef;
-		typename trait::SourceTrait<TContainer>::IteratorState;
-		typename trait::SourceTrait<TContainer>::ConstIteratorState;
+		typename trait::Source<TContainer>::Item;
+		typename trait::Source<TContainer>::ItemRef;
+		typename trait::Source<TContainer>::ItemConstRef;
+		typename trait::Source<TContainer>::IteratorState;
+		typename trait::Source<TContainer>::ConstIteratorState;
 
-		{trait::SourceTrait<TContainer>::initIterator(container)} -> std::same_as<typename trait::SourceTrait<TContainer>::IteratorState>;
-		{trait::SourceTrait<TContainer>::initIterator(constContainer)} -> std::same_as<typename trait::SourceTrait<TContainer>::ConstIteratorState>;
+		{trait::Source<TContainer>::initIterator(container)} -> std::same_as<typename trait::Source<TContainer>::IteratorState>;
+		{trait::Source<TContainer>::initIterator(constContainer)} -> std::same_as<typename trait::Source<TContainer>::ConstIteratorState>;
 
-		{trait::SourceTrait<TContainer>::hasNext(container, iterState)} -> std::same_as<bool>;
-		{trait::SourceTrait<TContainer>::hasNext(constContainer, constIterState)} -> std::same_as<bool>;
+		{trait::Source<TContainer>::hasNext(container, iterState)} -> std::same_as<bool>;
+		{trait::Source<TContainer>::hasNext(constContainer, constIterState)} -> std::same_as<bool>;
 
-		{trait::SourceTrait<TContainer>::next(container, iterState)} -> std::same_as<typename trait::SourceTrait<TContainer>::ItemRef>;
-		{trait::SourceTrait<TContainer>::next(constContainer, constIterState)} -> std::same_as<typename trait::SourceTrait<TContainer>::ItemConstRef>;
+		{trait::Source<TContainer>::next(container, iterState)} -> std::same_as<typename trait::Source<TContainer>::ItemRef>;
+		{trait::Source<TContainer>::next(constContainer, constIterState)} -> std::same_as<typename trait::Source<TContainer>::ItemConstRef>;
 	};
 
 }

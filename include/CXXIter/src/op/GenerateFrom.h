@@ -18,8 +18,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TGeneratorFn, typename TGenerator>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] GenerateFrom : public IterApi<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>> {
-			friend struct trait::IteratorTrait<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>>;
-			friend struct trait::ExactSizeIteratorTrait<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>>;
+			friend struct trait::Iterator<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>>;
+			friend struct trait::ExactSizeIterator<GenerateFrom<TChainInput, TGeneratorFn, TGenerator>>;
 		private:
 			TChainInput input;
 			TGeneratorFn generatorFn;
@@ -31,8 +31,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TGeneratorFn, typename TGenerator>
-	struct trait::IteratorTrait<op::GenerateFrom<TChainInput, TGeneratorFn, TGenerator>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::GenerateFrom<TChainInput, TGeneratorFn, TGenerator>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		using InputItemOwned = typename TChainInput::ItemOwned;
 		// CXXIter Interface

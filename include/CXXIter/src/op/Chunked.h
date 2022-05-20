@@ -22,8 +22,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, const size_t CHUNK_SIZE>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Chunked : public IterApi<Chunked<TChainInput, CHUNK_SIZE>> {
-			friend struct trait::IteratorTrait<Chunked<TChainInput, CHUNK_SIZE>>;
-			friend struct trait::ExactSizeIteratorTrait<Chunked<TChainInput, CHUNK_SIZE>>;
+			friend struct trait::Iterator<Chunked<TChainInput, CHUNK_SIZE>>;
+			friend struct trait::ExactSizeIterator<Chunked<TChainInput, CHUNK_SIZE>>;
 		private:
 			TChainInput input;
 			bool reachedEnd = false;
@@ -34,8 +34,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, const size_t CHUNK_SIZE>
-	struct trait::IteratorTrait<op::Chunked<TChainInput, CHUNK_SIZE>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::Chunked<TChainInput, CHUNK_SIZE>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::Chunked<TChainInput, CHUNK_SIZE>;
@@ -67,9 +67,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, const size_t CHUNK_SIZE>
-	struct trait::ExactSizeIteratorTrait<op::Chunked<TChainInput, CHUNK_SIZE>> {
+	struct trait::ExactSizeIterator<op::Chunked<TChainInput, CHUNK_SIZE>> {
 		static inline size_t size(const op::Chunked<TChainInput, CHUNK_SIZE>& self) {
-			return trait::ExactSizeIteratorTrait<TChainInput>::size(self.input) / CHUNK_SIZE;
+			return trait::ExactSizeIterator<TChainInput>::size(self.input) / CHUNK_SIZE;
 		}
 	};
 

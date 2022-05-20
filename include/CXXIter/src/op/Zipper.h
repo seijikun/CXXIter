@@ -16,8 +16,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Zipper : public IterApi<Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
-			friend struct trait::IteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
-			friend struct trait::ExactSizeIteratorTrait<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
+			friend struct trait::Iterator<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
+			friend struct trait::ExactSizeIterator<Zipper<TChainInput1, TZipContainer, TChainInputs...>>;
 		private:
 			struct source_ended_exception {};
 			std::tuple<TChainInput1, TChainInputs...> inputs;
@@ -28,8 +28,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput1, template<typename...> typename TZipContainer, typename... TChainInputs>
-	struct trait::IteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
-		using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, trait::IteratorTrait<TChainInputs>...>;
+	struct trait::Iterator<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+		using ChainInputIterators = std::tuple<Iterator<TChainInput1>, trait::Iterator<TChainInputs>...>;
 		static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 		// CXXIter Interface
 		using Self = op::Zipper<TChainInput1, TZipContainer, TChainInputs...>;
@@ -67,9 +67,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, template<typename...> typename TZipContainer, CXXIterExactSizeIterator... TChainInputs>
-	struct trait::ExactSizeIteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
+	struct trait::ExactSizeIterator<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>> {
 		static inline size_t size(const op::Zipper<TChainInput1, TZipContainer, TChainInputs...>& self) {
-			return trait::IteratorTrait<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>>::sizeHint(self).lowerBound;
+			return trait::Iterator<op::Zipper<TChainInput1, TZipContainer, TChainInputs...>>::sizeHint(self).lowerBound;
 		}
 	};
 

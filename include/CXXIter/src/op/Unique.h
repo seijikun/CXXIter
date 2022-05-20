@@ -14,7 +14,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput, typename TMapFn>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Unique : public IterApi<Unique<TChainInput, TMapFn>> {
-			friend struct trait::IteratorTrait<Unique<TChainInput, TMapFn>>;
+			friend struct trait::Iterator<Unique<TChainInput, TMapFn>>;
 		private:
 			using OwnedInputItem = typename TChainInput::ItemOwned;
 
@@ -30,8 +30,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TMapFn>
-	struct trait::IteratorTrait<op::Unique<TChainInput, TMapFn>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::Unique<TChainInput, TMapFn>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		using OwnedInputItem = typename TChainInput::ItemOwned;
 		// CXXIter Interface

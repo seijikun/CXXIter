@@ -16,8 +16,8 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput1, typename... TChainInputs>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] Alternater : public IterApi<Alternater<TChainInput1, TChainInputs...>> {
-			friend struct trait::IteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
-			friend struct trait::ExactSizeIteratorTrait<Alternater<TChainInput1, TChainInputs...>>;
+			friend struct trait::Iterator<Alternater<TChainInput1, TChainInputs...>>;
+			friend struct trait::ExactSizeIterator<Alternater<TChainInput1, TChainInputs...>>;
 		private:
 			static constexpr size_t BATCH_SIZE = 1 + sizeof...(TChainInputs);
 			std::tuple<TChainInput1, TChainInputs...> inputs;
@@ -30,8 +30,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput1, typename... TChainInputs>
-	struct trait::IteratorTrait<op::Alternater<TChainInput1, TChainInputs...>> {
-		using ChainInputIterators = std::tuple<IteratorTrait<TChainInput1>, trait::IteratorTrait<TChainInputs>...>;
+	struct trait::Iterator<op::Alternater<TChainInput1, TChainInputs...>> {
+		using ChainInputIterators = std::tuple<Iterator<TChainInput1>, trait::Iterator<TChainInputs>...>;
 		static constexpr size_t INPUT_CNT = 1 + sizeof...(TChainInputs);
 		// CXXIter Interface
 		using Self = op::Alternater<TChainInput1, TChainInputs...>;
@@ -72,9 +72,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator... TChainInputs>
-	struct trait::ExactSizeIteratorTrait<op::Alternater<TChainInput1, TChainInputs...>> {
+	struct trait::ExactSizeIterator<op::Alternater<TChainInput1, TChainInputs...>> {
 		static inline size_t size(const op::Alternater<TChainInput1, TChainInputs...>& self) {
-			return trait::IteratorTrait<op::Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
+			return trait::Iterator<op::Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
 		}
 	};
 

@@ -13,7 +13,7 @@ namespace CXXIter {
 		/** @private */
 		template<typename TChainInput>
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] TakeN : public IterApi<TakeN<TChainInput>> {
-			friend struct trait::IteratorTrait<TakeN<TChainInput>>;
+			friend struct trait::Iterator<TakeN<TChainInput>>;
 		private:
 			TChainInput input;
 			size_t n;
@@ -25,8 +25,8 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput>
-	struct trait::IteratorTrait<op::TakeN<TChainInput>> {
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::TakeN<TChainInput>> {
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename TChainInput::Item;
 		// CXXIter Interface
 		using Self = op::TakeN<TChainInput>;
@@ -49,9 +49,9 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>
-	struct trait::ExactSizeIteratorTrait<op::TakeN<TChainInput>> {
+	struct trait::ExactSizeIterator<op::TakeN<TChainInput>> {
 		static inline size_t size(const op::TakeN<TChainInput>& self) {
-			return trait::IteratorTrait<op::TakeN<TChainInput>>::sizeHint(self).lowerBound;
+			return trait::Iterator<op::TakeN<TChainInput>>::sizeHint(self).lowerBound;
 		}
 	};
 }

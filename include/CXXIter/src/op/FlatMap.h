@@ -16,7 +16,7 @@ namespace CXXIter {
 		template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
 		requires (!std::is_reference_v<TItemContainer>)
 		class [[nodiscard(CXXITER_CHAINER_NODISCARD_WARNING)]] FlatMap : public IterApi<FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
-			friend struct trait::IteratorTrait<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
+			friend struct trait::Iterator<FlatMap<TChainInput, TFlatMapFn, TItemContainer>>;
 		private:
 			TChainInput input;
 			std::optional<SrcMov<TItemContainer>> current;
@@ -28,9 +28,9 @@ namespace CXXIter {
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
 	template<typename TChainInput, typename TFlatMapFn, typename TItemContainer>
-	struct trait::IteratorTrait<op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
-		using NestedChainIterator = trait::IteratorTrait<SrcMov<TItemContainer>>;
-		using ChainInputIterator = trait::IteratorTrait<TChainInput>;
+	struct trait::Iterator<op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>> {
+		using NestedChainIterator = trait::Iterator<SrcMov<TItemContainer>>;
+		using ChainInputIterator = trait::Iterator<TChainInput>;
 		using InputItem = typename ChainInputIterator::Item;
 		// CXXIter Interface
 		using Self = op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
