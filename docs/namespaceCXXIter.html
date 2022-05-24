@@ -110,8 +110,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html">IterApi</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Public Iterator API surface.  <a href="classCXXIter_1_1IterApi.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterValue_3_01TValue_01_4.html">IterValue&lt; TValue &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that is used to pass elements throught <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator pipelines.  <a href="classCXXIter_1_1IterValue_3_01TValue_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that is used to pass elements through <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s iterator pipelines.  <a href="classCXXIter_1_1IterValue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1SizeHint.html">SizeHint</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure holding the bounds of a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator's estimated length.  <a href="structCXXIter_1_1SizeHint.html#details">More...</a><br /></td></tr>
@@ -325,9 +325,10 @@ template&lt;typename TItem &gt; </div>
 
 <p>Constructs an empty iterator yielding no items. </p>
 <dl class="section return"><dt>Returns</dt><dd>An empty iterator that yields no items.</dd></dl>
-<p>Usage Example: </p><div class="fragment"><div class="line">CXXIter::IterValue&lt;std::string&gt; output = CXXIter::empty&lt;std::string&gt;()</div>
+<p>Usage Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classCXXIter_1_1IterValue.html">CXXIter::IterValue&lt;std::string&gt;</a> output = CXXIter::empty&lt;std::string&gt;()</div>
 <div class="line">    .next();</div>
 <div class="line"><span class="comment">// output == None</span></div>
+<div class="ttc" id="aclassCXXIter_1_1IterValue_html"><div class="ttname"><a href="classCXXIter_1_1IterValue.html">CXXIter::IterValue</a></div><div class="ttdoc">Container that is used to pass elements through CXXIter's iterator pipelines.</div><div class="ttdef"><b>Definition:</b> <a href="IterValue_8h_source.html#l00019">IterValue.h:19</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02123">2123</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 

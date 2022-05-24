@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['map_0',['map',['../classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6',1,'CXXIter::IterApi']]],
+  ['map_0',['map',['../classCXXIter_1_1IterApi.html#ad8f3454d96494c248abf2e740442e6b6',1,'CXXIter::IterApi::map()'],['../classCXXIter_1_1IterValue.html#a92252d23634a2bc534b4b0003693be59',1,'CXXIter::IterValue::map(TMapFn mapFn)'],['../classCXXIter_1_1IterValue.html#a9aa9f733d0cbe8bc1ad0697d6a1ef89e',1,'CXXIter::IterValue::map(TMapFn mapFn)']]],
   ['max_1',['max',['../classCXXIter_1_1IterApi.html#ab269288401b9ace95379eb94bc3a1dfe',1,'CXXIter::IterApi']]],
   ['maxby_2',['maxBy',['../classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e',1,'CXXIter::IterApi']]],
   ['maxidx_3',['maxIdx',['../classCXXIter_1_1IterApi.html#af161ffefa2006ad6df0bd084d7374f51',1,'CXXIter::IterApi']]],

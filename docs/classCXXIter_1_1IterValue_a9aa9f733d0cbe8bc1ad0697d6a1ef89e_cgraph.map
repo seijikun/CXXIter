@@ -1,0 +1,5 @@
+<map id="CXXIter::IterValue::map" name="CXXIter::IterValue::map">
+<area shape="rect" id="node1" title="Map this IterValue&#39;s contained value (if any) to the requested new TOutValue type,..." alt="" coords="5,46,180,73"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterValue.html#a152e5d33392c8437ab8a72707f8acdf2" title="Get whether this optional IteratorValue contains a value." alt="" coords="228,5,365,47"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterValue.html#a10232ef74599e80b16cafe0b0a0dcc6a" title="Get the contained value (if any)." alt="" coords="228,71,365,112"/>
+</map>

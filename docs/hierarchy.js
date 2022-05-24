@@ -43,7 +43,11 @@ var hierarchy =
     [ "CXXIter::IterApi< TSelf >::iterator", "classCXXIter_1_1IterApi_1_1iterator.html", null ],
     [ "CXXIter::trait::Iterator< T >", "structCXXIter_1_1trait_1_1Iterator.html", null ],
     [ "CXXIter::trait::Source< TContainer >::IteratorState", "structCXXIter_1_1trait_1_1Source_1_1IteratorState.html", null ],
-    [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
+    [ "CXXIter::IterValue< TValue >", "classCXXIter_1_1IterValue.html", null ],
+    [ "CXXIter::IterValue< Item >", "classCXXIter_1_1IterValue.html", null ],
+    [ "CXXIter::IterValue< T >", "classCXXIter_1_1IterValue.html", null ],
+    [ "CXXIter::IterValue< typename TChainInput1::Item >", "classCXXIter_1_1IterValue.html", null ],
+    [ "CXXIter::IterValue< typename TChainInput::Item >", "classCXXIter_1_1IterValue.html", null ],
     [ "CXXIter::Generator< T >::promise_type", "structCXXIter_1_1Generator_1_1promise__type.html", null ],
     [ "CXXIter::SizeHint", "structCXXIter_1_1SizeHint.html", null ],
     [ "CXXIter::trait::Source< TContainer >", "structCXXIter_1_1trait_1_1Source.html", null ]

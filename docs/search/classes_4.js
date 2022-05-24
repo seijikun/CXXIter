@@ -33,5 +33,9 @@ var searchData=
   ['iterator_30',['iterator',['../classCXXIter_1_1IterApi_1_1iterator.html',1,'CXXIter::IterApi']]],
   ['iterator_31',['Iterator',['../structCXXIter_1_1trait_1_1Iterator.html',1,'CXXIter::trait']]],
   ['iteratorstate_32',['IteratorState',['../structCXXIter_1_1trait_1_1Source_1_1IteratorState.html',1,'CXXIter::trait::Source']]],
-  ['itervalue_3c_20tvalue_20_3e_33',['IterValue&lt; TValue &gt;',['../classCXXIter_1_1IterValue_3_01TValue_01_4.html',1,'CXXIter']]]
+  ['itervalue_33',['IterValue',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]],
+  ['itervalue_3c_20item_20_3e_34',['IterValue&lt; Item &gt;',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]],
+  ['itervalue_3c_20t_20_3e_35',['IterValue&lt; T &gt;',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]],
+  ['itervalue_3c_20typename_20tchaininput1_3a_3aitem_20_3e_36',['IterValue&lt; typename TChainInput1::Item &gt;',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]],
+  ['itervalue_3c_20typename_20tchaininput_3a_3aitem_20_3e_37',['IterValue&lt; typename TChainInput::Item &gt;',['../classCXXIter_1_1IterValue.html',1,'CXXIter']]]
 ];

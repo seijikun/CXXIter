@@ -134,10 +134,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada90a5f5e73ce22a69b21870ee197804"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">size</a> () const</td></tr>
 <tr class="memdesc:ada90a5f5e73ce22a69b21870ee197804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get this iterator's exact size.  <a href="classCXXIter_1_1IterApi.html#ada90a5f5e73ce22a69b21870ee197804">More...</a><br /></td></tr>
 <tr class="separator:ada90a5f5e73ce22a69b21870ee197804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a805fbdc20f9eb42e8162d5eb0a1b3e"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">next</a> ()</td></tr>
+<tr class="memitem:a1a805fbdc20f9eb42e8162d5eb0a1b3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">next</a> ()</td></tr>
 <tr class="memdesc:a1a805fbdc20f9eb42e8162d5eb0a1b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e">More...</a><br /></td></tr>
 <tr class="separator:a1a805fbdc20f9eb42e8162d5eb0a1b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f1f0e435b605b4947eea18fa4762ca0"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">nextBack</a> ()</td></tr>
+<tr class="memitem:a7f1f0e435b605b4947eea18fa4762ca0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">nextBack</a> ()</td></tr>
 <tr class="memdesc:a7f1f0e435b605b4947eea18fa4762ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.  <a href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0">More...</a><br /></td></tr>
 <tr class="separator:a7f1f0e435b605b4947eea18fa4762ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Consumers</div></td></tr>
@@ -184,7 +184,7 @@ requires std::same_as&lt;std::invoke_result_t&lt;TPredicateFn, const <a class="e
 <tr class="memdesc:a36e35fb8446e4c302e48a0a3b2cdca86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for the iterator with the given <code>findFn</code>, and return the index of the element from this iterator, for which the <code>findFn</code> returned <code>true</code> the first time.  <a href="classCXXIter_1_1IterApi.html#a36e35fb8446e4c302e48a0a3b2cdca86">More...</a><br /></td></tr>
 <tr class="separator:a36e35fb8446e4c302e48a0a3b2cdca86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab44325cb6ee35f352ca90c33db720644"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi.html#a628012452f851b7099d919218e2a5512">ItemOwned</a> &amp; &gt; TFindFn&gt; </td></tr>
-<tr class="memitem:ab44325cb6ee35f352ca90c33db720644"><td class="memTemplItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab44325cb6ee35f352ca90c33db720644">find</a> (TFindFn findFn)</td></tr>
+<tr class="memitem:ab44325cb6ee35f352ca90c33db720644"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab44325cb6ee35f352ca90c33db720644">find</a> (TFindFn findFn)</td></tr>
 <tr class="memdesc:ab44325cb6ee35f352ca90c33db720644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for an element of this iterator, that satisfies the given <code>findFn</code> predicate.  <a href="classCXXIter_1_1IterApi.html#ab44325cb6ee35f352ca90c33db720644">More...</a><br /></td></tr>
 <tr class="separator:ab44325cb6ee35f352ca90c33db720644"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a418901ce726860a7a91bffbc210c1815"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815">count</a> ()</td></tr>
@@ -217,13 +217,13 @@ requires requires(TResult res, <a class="el" href="classCXXIter_1_1IterApi.html#
 <tr class="memitem:a83370ed3a2770da9e4b5aa7317534487"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; TResult &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a83370ed3a2770da9e4b5aa7317534487">stddev</a> ()</td></tr>
 <tr class="memdesc:a83370ed3a2770da9e4b5aa7317534487"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that calculates the standard deviation of all elements of this iterator.  <a href="classCXXIter_1_1IterApi.html#a83370ed3a2770da9e4b5aa7317534487">More...</a><br /></td></tr>
 <tr class="separator:a83370ed3a2770da9e4b5aa7317534487"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cf454fb870bc6d782f5f4a392c39520"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a8cf454fb870bc6d782f5f4a392c39520">min</a> ()</td></tr>
+<tr class="memitem:a8cf454fb870bc6d782f5f4a392c39520"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a8cf454fb870bc6d782f5f4a392c39520">min</a> ()</td></tr>
 <tr class="memdesc:a8cf454fb870bc6d782f5f4a392c39520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the smallest element from this iterator.  <a href="classCXXIter_1_1IterApi.html#a8cf454fb870bc6d782f5f4a392c39520">More...</a><br /></td></tr>
 <tr class="separator:a8cf454fb870bc6d782f5f4a392c39520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad191096d655db542272acc7b89f76962"><td class="memItemLeft" align="right" valign="top">std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ad191096d655db542272acc7b89f76962">minIdx</a> ()</td></tr>
 <tr class="memdesc:ad191096d655db542272acc7b89f76962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the index of the smallest element within this iterator.  <a href="classCXXIter_1_1IterApi.html#ad191096d655db542272acc7b89f76962">More...</a><br /></td></tr>
 <tr class="separator:ad191096d655db542272acc7b89f76962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab269288401b9ace95379eb94bc3a1dfe"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab269288401b9ace95379eb94bc3a1dfe">max</a> ()</td></tr>
+<tr class="memitem:ab269288401b9ace95379eb94bc3a1dfe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab269288401b9ace95379eb94bc3a1dfe">max</a> ()</td></tr>
 <tr class="memdesc:ab269288401b9ace95379eb94bc3a1dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the largest element from this iterator.  <a href="classCXXIter_1_1IterApi.html#ab269288401b9ace95379eb94bc3a1dfe">More...</a><br /></td></tr>
 <tr class="separator:ab269288401b9ace95379eb94bc3a1dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af161ffefa2006ad6df0bd084d7374f51"><td class="memItemLeft" align="right" valign="top">std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#af161ffefa2006ad6df0bd084d7374f51">maxIdx</a> ()</td></tr>
@@ -231,7 +231,7 @@ requires requires(TResult res, <a class="el" href="classCXXIter_1_1IterApi.html#
 <tr class="separator:af161ffefa2006ad6df0bd084d7374f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b119a582aeea0e05e9d6985c4439983"><td class="memTemplParams" colspan="2">template&lt;typename TCompValueExtractFn &gt; <br />
 requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>&amp;&amp;&gt;&amp; a, std::remove_cvref_t&lt;decltype(a)&gt; ownedA) { { a &lt; a }; { ownedA = ownedA }; }</td></tr>
-<tr class="memitem:a2b119a582aeea0e05e9d6985c4439983"><td class="memTemplItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2b119a582aeea0e05e9d6985c4439983">minBy</a> (TCompValueExtractFn compValueExtractFn)</td></tr>
+<tr class="memitem:a2b119a582aeea0e05e9d6985c4439983"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a2b119a582aeea0e05e9d6985c4439983">minBy</a> (TCompValueExtractFn compValueExtractFn)</td></tr>
 <tr class="memdesc:a2b119a582aeea0e05e9d6985c4439983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the smallest element from this iterator. Comparison of items is done using the comparison values returned by invoking the given <code>compValueExtractFn</code> on each element.  <a href="classCXXIter_1_1IterApi.html#a2b119a582aeea0e05e9d6985c4439983">More...</a><br /></td></tr>
 <tr class="separator:a2b119a582aeea0e05e9d6985c4439983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af531c69c1b5edf6d5c30c56ddd0c9500"><td class="memTemplParams" colspan="2">template&lt;typename TCompValueExtractFn &gt; <br />
@@ -241,7 +241,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 <tr class="separator:af531c69c1b5edf6d5c30c56ddd0c9500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab52a8aecfbfa75c7ab5606628831687e"><td class="memTemplParams" colspan="2">template&lt;typename TMaxValueExtractFn &gt; <br />
 requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a>&amp;&amp;&gt;&amp; a, std::remove_cvref_t&lt;decltype(a)&gt; ownedA) { { a &gt; a }; { ownedA = ownedA }; }</td></tr>
-<tr class="memitem:ab52a8aecfbfa75c7ab5606628831687e"><td class="memTemplItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e">maxBy</a> (TMaxValueExtractFn compValueExtractFn)</td></tr>
+<tr class="memitem:ab52a8aecfbfa75c7ab5606628831687e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e">maxBy</a> (TMaxValueExtractFn compValueExtractFn)</td></tr>
 <tr class="memdesc:ab52a8aecfbfa75c7ab5606628831687e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the largest element from this iterator. Comparison of items is done using the comparison values returned by invoking the given <code>compValueExtractFn</code> on each element.  <a href="classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e">More...</a><br /></td></tr>
 <tr class="separator:ab52a8aecfbfa75c7ab5606628831687e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61dd9812e764db7f0acbc1509cea21ad"><td class="memTemplParams" colspan="2">template&lt;typename TMaxValueExtractFn &gt; <br />
@@ -249,10 +249,10 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 <tr class="memitem:a61dd9812e764db7f0acbc1509cea21ad"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; size_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad">maxIdxBy</a> (TMaxValueExtractFn compValueExtractFn)</td></tr>
 <tr class="memdesc:a61dd9812e764db7f0acbc1509cea21ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the index of the largest element from this iterator. Comparison of items is done using the comparison values returned by invoking the given <code>TCompValueExtractFn</code> on each element.  <a href="classCXXIter_1_1IterApi.html#a61dd9812e764db7f0acbc1509cea21ad">More...</a><br /></td></tr>
 <tr class="separator:a61dd9812e764db7f0acbc1509cea21ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac706806233525343ea38dc7e78f2faeb"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ac706806233525343ea38dc7e78f2faeb">last</a> ()</td></tr>
+<tr class="memitem:ac706806233525343ea38dc7e78f2faeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ac706806233525343ea38dc7e78f2faeb">last</a> ()</td></tr>
 <tr class="memdesc:ac706806233525343ea38dc7e78f2faeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumer that yields the last element of this iterator.  <a href="classCXXIter_1_1IterApi.html#ac706806233525343ea38dc7e78f2faeb">More...</a><br /></td></tr>
 <tr class="separator:ac706806233525343ea38dc7e78f2faeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0d21f64c103c94930a6965686f61019"><td class="memItemLeft" align="right" valign="top">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019">nth</a> (size_t n)</td></tr>
+<tr class="memitem:aa0d21f64c103c94930a6965686f61019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019">nth</a> (size_t n)</td></tr>
 <tr class="memdesc:aa0d21f64c103c94930a6965686f61019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <code></code>{n}-th element from this iterator (if available).  <a href="classCXXIter_1_1IterApi.html#aa0d21f64c103c94930a6965686f61019">More...</a><br /></td></tr>
 <tr class="separator:aa0d21f64c103c94930a6965686f61019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Chainers</div></td></tr>
@@ -1499,7 +1499,7 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::find </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::find </td>
           <td>(</td>
           <td class="paramtype">TFindFn&#160;</td>
           <td class="paramname"><em>findFn</em></td><td>)</td>
@@ -1520,17 +1520,18 @@ template&lt;std::invocable&lt; const <a class="el" href="classCXXIter_1_1IterApi
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An CXXIter::IterValue containing the first element, for which the <code>findFn</code> predicate returned <code>true</code> (if any), otherwise empty.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> containing the first element, for which the <code>findFn</code> predicate returned <code>true</code> (if any), otherwise empty.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>When item is found in the iterator: <div class="fragment"><div class="line">std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;42&quot;</span>, <span class="stringliteral">&quot;1337&quot;</span>, <span class="stringliteral">&quot;52&quot;</span>};</div>
-<div class="line">CXXIter::IterValue&lt;std::string&amp;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
+<div class="line"><a class="code hl_class" href="classCXXIter_1_1IterValue.html">CXXIter::IterValue&lt;std::string&amp;&gt;</a> output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
 <div class="line">        .find([](<span class="keyword">const</span> std::string&amp; item) {</div>
 <div class="line">            <span class="keywordflow">return</span> item.size() == 4;</div>
 <div class="line">        });</div>
 <div class="line"><span class="comment">// output == Some(&quot;1337&quot;&amp;)</span></div>
+<div class="ttc" id="aclassCXXIter_1_1IterValue_html"><div class="ttname"><a href="classCXXIter_1_1IterValue.html">CXXIter::IterValue</a></div><div class="ttdoc">Container that is used to pass elements through CXXIter's iterator pipelines.</div><div class="ttdef"><b>Definition:</b> <a href="IterValue_8h_source.html#l00019">IterValue.h:19</a></div></div>
 </div><!-- fragment --></li>
 <li>When item is not found in the iterator: <div class="fragment"><div class="line">std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;42&quot;</span>, <span class="stringliteral">&quot;1337&quot;</span>, <span class="stringliteral">&quot;52&quot;</span>};</div>
-<div class="line">CXXIter::IterValue&lt;std::string&amp;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
+<div class="line"><a class="code hl_class" href="classCXXIter_1_1IterValue.html">CXXIter::IterValue&lt;std::string&amp;&gt;</a> output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
 <div class="line">        .find([](<span class="keyword">const</span> std::string&amp; item) {</div>
 <div class="line">            <span class="keywordflow">return</span> item.size() == 3;</div>
 <div class="line">        });</div>
@@ -2114,7 +2115,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::last </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::last </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2212,7 +2213,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::max </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::max </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2227,7 +2228,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 <p>Consumer that yields the largest element from this iterator. </p>
 <dl class="section note"><dt>Note</dt><dd>This consumes the iterator. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>A CXXIter::IterValue optional either containing the largest element of this iterator (if any), or empty otherwise.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> optional either containing the largest element of this iterator (if any), or empty otherwise.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>For a non-empty iterator <div class="fragment"><div class="line">std::vector&lt;int&gt; input = {42, 1337, 52};</div>
 <div class="line">std::optional&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
@@ -2245,7 +2246,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ab269288401b9ace95379eb94bc3a1dfe_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ab269288401b9ace95379eb94bc3a1dfe_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2266,7 +2267,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::maxBy </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::maxBy </td>
           <td>(</td>
           <td class="paramtype">TMaxValueExtractFn&#160;</td>
           <td class="paramname"><em>compValueExtractFn</em></td><td>)</td>
@@ -2288,7 +2289,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A CXXIter::IterValue optional either containing the largest element of this iterator (if any), or empty otherwise.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> optional either containing the largest element of this iterator (if any), or empty otherwise.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>For a non-empty iterator <div class="fragment"><div class="line">   std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;smol&quot;</span>, <span class="stringliteral">&quot;middle&quot;</span>, <span class="stringliteral">&quot;largeString&quot;</span>};</div>
 <div class="line">   std::optional&lt;std::string&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
@@ -2308,7 +2309,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ab52a8aecfbfa75c7ab5606628831687e_cgraph.svg" width="624" height="71"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ab52a8aecfbfa75c7ab5606628831687e_cgraph.svg" width="624" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2357,7 +2358,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_af161ffefa2006ad6df0bd084d7374f51_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_af161ffefa2006ad6df0bd084d7374f51_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2420,7 +2421,7 @@ requires requires(const std::invoke_result_t&lt;TMaxValueExtractFn, <a class="el
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a61dd9812e764db7f0acbc1509cea21ad_cgraph.svg" width="644" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a61dd9812e764db7f0acbc1509cea21ad_cgraph.svg" width="644" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2510,7 +2511,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::min </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::min </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2525,7 +2526,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 
 <p>Consumer that yields the smallest element from this iterator. </p>
 <dl class="section note"><dt>Note</dt><dd>This consumes the iterator. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>A CXXIter::IterValue optional either containing the smallest element of this iterator (if any), or empty otherwise.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> optional either containing the smallest element of this iterator (if any), or empty otherwise.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>For a non-empty iterator <div class="fragment"><div class="line">std::vector&lt;int&gt; input = {42, 1337, 52};</div>
 <div class="line">std::optional&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
@@ -2543,7 +2544,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a8cf454fb870bc6d782f5f4a392c39520_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a8cf454fb870bc6d782f5f4a392c39520_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2564,7 +2565,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::minBy </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::minBy </td>
           <td>(</td>
           <td class="paramtype">TCompValueExtractFn&#160;</td>
           <td class="paramname"><em>compValueExtractFn</em></td><td>)</td>
@@ -2586,7 +2587,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A CXXIter::IterValue optional either containing the smallest element of this iterator (if any), or empty otherwise.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> optional either containing the smallest element of this iterator (if any), or empty otherwise.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>For a non-empty iterator <div class="fragment"><div class="line">   std::vector&lt;std::string&gt; input = {<span class="stringliteral">&quot;smol&quot;</span>, <span class="stringliteral">&quot;middle&quot;</span>, <span class="stringliteral">&quot;largeString&quot;</span>};</div>
 <div class="line">   std::optional&lt;std::string&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
@@ -2606,7 +2607,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a2b119a582aeea0e05e9d6985c4439983_cgraph.svg" width="620" height="71"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_a2b119a582aeea0e05e9d6985c4439983_cgraph.svg" width="620" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2655,7 +2656,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ad191096d655db542272acc7b89f76962_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_ad191096d655db542272acc7b89f76962_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2717,7 +2718,7 @@ requires requires(const std::invoke_result_t&lt;TCompValueExtractFn, <a class="e
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_af531c69c1b5edf6d5c30c56ddd0c9500_cgraph.svg" width="640" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCXXIter_1_1IterApi_af531c69c1b5edf6d5c30c56ddd0c9500_cgraph.svg" width="640" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2780,7 +2781,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::next </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::next </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2794,7 +2795,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><div class="memdoc">
 
 <p>Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;. </p>
-<dl class="section note"><dt>Note</dt><dd>If the returned CXXIter::IterValue is empty, there are no elements left in this iterator. Calling <code><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">next()</a></code> again after that is undefined behavior. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If the returned <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> is empty, there are no elements left in this iterator. Calling <code><a class="el" href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">next()</a></code> again after that is undefined behavior. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;</dd></dl>
 <p>Usage Example: </p><div class="fragment"><div class="line">   std::optional&lt;float&gt; output = CXXIter::range&lt;float&gt;(1.337f, 2.0f, 0.25f)</div>
 <div class="line">       .next().toStdOptional();</div>
@@ -2822,7 +2823,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::nextBack </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::nextBack </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2836,7 +2837,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
 </div><div class="memdoc">
 
 <p>Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;. </p>
-<dl class="section note"><dt>Note</dt><dd>If the returned CXXIter::IterValue is empty, there are no elements left in this iterator. Calling <code><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0" title="Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">nextBack()</a></code> again after that is undefined behavior. </dd>
+<dl class="section note"><dt>Note</dt><dd>If the returned <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">CXXIter::IterValue</a> is empty, there are no elements left in this iterator. Calling <code><a class="el" href="classCXXIter_1_1IterApi.html#a7f1f0e435b605b4947eea18fa4762ca0" title="Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">nextBack()</a></code> again after that is undefined behavior. </dd>
 <dd>
 This method only exists if the iterator implements the DoubleEndedIterator trait. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;</dd></dl>
@@ -2866,7 +2867,7 @@ template&lt;CXXIterIterator TSelf&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IterValue&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::nth </td>
+          <td class="memname"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; <a class="el" href="classCXXIter_1_1IterApi.html#a00f3ed5b2201522d327c6a8a92d371c8">Item</a> &gt; <a class="el" href="classCXXIter_1_1IterApi.html">CXXIter::IterApi</a>&lt; TSelf &gt;::nth </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>

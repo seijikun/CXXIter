@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['unique_0',['unique',['../classCXXIter_1_1IterApi.html#ae692e23a444ce5a9f484ae959cd3bf7b',1,'CXXIter::IterApi::unique(TMapFn mapFn)'],['../classCXXIter_1_1IterApi.html#a7c3a1a50ce87f94bbeb146897248e6f2',1,'CXXIter::IterApi::unique()']]],
-  ['unzip_1',['unzip',['../namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f',1,'CXXIter']]]
+  ['take_0',['take',['../classCXXIter_1_1IterApi.html#a3e72f1bebe09215ce8effe156ca38d34',1,'CXXIter::IterApi']]],
+  ['takewhile_1',['takeWhile',['../classCXXIter_1_1IterApi.html#ab16a10f60f2eddc85f29974d04672ba4',1,'CXXIter::IterApi']]],
+  ['tostdoptional_2',['toStdOptional',['../classCXXIter_1_1IterValue.html#a1843fa4bcf33055f287f4d43c300b575',1,'CXXIter::IterValue']]],
+  ['trydyncast_3',['tryDynCast',['../namespaceCXXIter.html#ad5b5f706c889ffaebff251125cd02d27',1,'CXXIter']]]
 ];

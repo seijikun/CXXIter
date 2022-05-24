@@ -3,7 +3,7 @@ var namespaceCXXIter =
     [ "trait", "namespaceCXXIter_1_1trait.html", "namespaceCXXIter_1_1trait" ],
     [ "Generator", "classCXXIter_1_1Generator.html", "classCXXIter_1_1Generator" ],
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
-    [ "IterValue< TValue >", "classCXXIter_1_1IterValue_3_01TValue_01_4.html", null ],
+    [ "IterValue", "classCXXIter_1_1IterValue.html", "classCXXIter_1_1IterValue" ],
     [ "SizeHint", "structCXXIter_1_1SizeHint.html", null ],
     [ "SrcCRef", "classCXXIter_1_1SrcCRef.html", null ],
     [ "SrcMov", "classCXXIter_1_1SrcMov.html", null ],

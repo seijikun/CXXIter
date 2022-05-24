@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['range_0',['range',['../namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c',1,'CXXIter']]],
-  ['repeat_1',['repeat',['../namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0',1,'CXXIter']]],
-  ['reverse_2',['reverse',['../classCXXIter_1_1IterApi.html#ac63528dd525977d236a3c3b050ed1456',1,'CXXIter::IterApi']]]
+  ['operator_3d_0',['operator=',['../classCXXIter_1_1IterValue.html#a487f65c0192a5a2df1d3f0752afea0a8',1,'CXXIter::IterValue::operator=(IterValue &amp;&amp;o)=default'],['../classCXXIter_1_1IterValue.html#aefff278b7685113730f6ae9e986e094b',1,'CXXIter::IterValue::operator=(TValueDeref &amp;&amp;o)']]],
+  ['optional_3c_20tvaluestore_20_3e_1',['optional&lt; TValueStore &gt;',['../classCXXIter_1_1IterValue.html#a09b54da1eb51a4001fa5e01e725fdfee',1,'CXXIter::IterValue']]]
 ];
