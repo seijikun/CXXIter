@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-05-24 14:21:27</td>
+      <td>2022-06-06 11:31:58</td>
     </tr>
   </table>
 </div>
@@ -579,7 +579,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">advanceBy</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">advanceBy</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -587,7 +587,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -595,7 +595,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="cm">/** @private */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -603,7 +603,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span> <span class="n">TChainInput</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -611,7 +611,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -619,7 +619,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">return</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowerBound</span><span class="p">;</span></td>
+      <td class="src ">		<span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -627,7 +627,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src ">			<span class="k">return</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">SkipN</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowerBound</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -635,7 +635,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">		<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -643,7 +643,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -651,11 +651,19 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l60" href="#l60">60</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l61" href="#l61">61</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
