@@ -6,6 +6,7 @@
 #include <algorithm>
 
 #include "../Common.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -64,6 +65,7 @@ namespace CXXIter {
 			});
 			return SizeHint(lowerBoundMin, upperBoundMin);
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, template<typename...> typename TZipContainer, CXXIterExactSizeIterator... TChainInputs>

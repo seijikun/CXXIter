@@ -7,6 +7,7 @@
 
 #include "../Common.h"
 #include "../sources/ContainerSources.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -65,6 +66,7 @@ namespace CXXIter {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(1, input.upperBound);
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

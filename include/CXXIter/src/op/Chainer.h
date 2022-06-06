@@ -58,6 +58,16 @@ namespace CXXIter {
 			result.add(ChainInputIterator2::sizeHint(self.input2));
 			return result;
 		}
+		static inline size_t advanceBy(Self& self, size_t n) {
+			size_t skipped = 0;
+			if(!self.input1Ended) {
+				skipped += ChainInputIterator1::advanceBy(self.input1, n);
+			}
+			if(!self.input2Ended) {
+				skipped += ChainInputIterator2::advanceBy(self.input2, (n - skipped));
+			}
+			return skipped;
+		}
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput1, CXXIterDoubleEndedIterator TChainInput2>

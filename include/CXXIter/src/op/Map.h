@@ -3,6 +3,7 @@
 #include <utility>
 
 #include "../Common.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -38,6 +39,7 @@ namespace CXXIter {
 			return item.template map<Item, TMapFn&>(self.mapFn);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TMapFn, typename TItem>

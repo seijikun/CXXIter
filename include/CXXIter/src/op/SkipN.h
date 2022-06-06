@@ -47,6 +47,7 @@ namespace CXXIter {
 			result.subtract(self.n);
 			return result;
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return ChainInputIterator::advanceBy(self.input, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>

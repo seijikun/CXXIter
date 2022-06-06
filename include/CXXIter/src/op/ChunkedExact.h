@@ -6,6 +6,7 @@
 #include <type_traits>
 
 #include "../Common.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -87,6 +88,7 @@ namespace CXXIter {
 			}
 			return result;
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, const size_t CHUNK_SIZE, const size_t STEP_SIZE>

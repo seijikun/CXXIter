@@ -178,6 +178,26 @@ public: // CXXIter API-Surface
 	}
 
 	/**
+	 * @brief Advance the iterator by n elements.
+	 * @details If possible, this is a O(1) operation. Some iterator pipeline elements make that impossible
+	 * though. In these cases, the implementation falls back to pulling n elements and dropping them.
+	 * @param n The amount of elements to advance the iterator by.
+	 *
+	 * Usage Example:
+	 * @code
+	 *  auto src = CXXIter::range<float>(1.337f, 2.0f, 0.25f, 5.0f, 42.0f);
+	 * 	std::optional<float> output = src.next().toStdOptional();
+	 *  // output == Some(1.337f);
+	 *  src.advanceBy(2);
+	 *  output = src.next().toStdOptional();
+	 *  // output == Some(5.0f);
+	 * @endcode
+	 */
+	void advanceBy(size_t n) {
+		Iterator::advanceBy(*self(), n);
+	}
+
+	/**
 	 * @brief Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue<>.
 	 * @note If the returned CXXIter::IterValue is empty, there are no elements left in this iterator.
 	 * Calling @c nextBack() again after that is undefined behavior.

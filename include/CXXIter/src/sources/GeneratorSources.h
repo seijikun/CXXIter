@@ -4,6 +4,7 @@
 #include <optional>
 
 #include "../Common.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -26,6 +27,7 @@ namespace CXXIter {
 
 		static inline IterValue<Item> next(Self&) { return {}; }
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
+		static inline size_t advanceBy(Self& self, size_t n) { return 0; }
 	};
 	/** @private */
 	template<typename TItem>
@@ -61,6 +63,7 @@ namespace CXXIter {
 			return item.value();
 		}
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 
@@ -101,6 +104,7 @@ namespace CXXIter {
 				self.repetitions
 			);
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<typename TItem>
@@ -144,6 +148,7 @@ namespace CXXIter {
 			size_t cnt = static_cast<size_t>((self.to - self.from) / self.step) + 1;
 			return SizeHint(cnt, cnt);
 		}
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<typename TItem>
@@ -179,6 +184,7 @@ namespace CXXIter {
 			return self.generator.next();
 		}
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 #endif
 

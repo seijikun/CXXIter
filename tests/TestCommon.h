@@ -106,6 +106,12 @@ namespace CXXIter {
 
 		static inline ItemRef next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
 		static inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
+
+		static inline size_t skipN(CustomContainer<TItem>& container, IteratorState& iter, size_t n) {
+			size_t skipN = std::min(container.cnt - iter, n);
+			iter += skipN;
+			return skipN;
+		}
 	};
 
 	// IntoCollector implementation for the CustomContainer

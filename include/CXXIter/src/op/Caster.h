@@ -40,6 +40,7 @@ namespace CXXIter {
 			return item.template map<Item>([](auto&& item) { return static_cast<Item>(item); });
 		}
 		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static inline size_t advanceBy(Self& self, size_t n) { return ChainInputIterator::advanceBy(self.input, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TItem>

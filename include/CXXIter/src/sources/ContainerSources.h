@@ -41,6 +41,9 @@ namespace CXXIter {
 			return std::move(Src::next(*self.container, self.iter));
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(*self.container); }
+		static inline size_t advanceBy(Self& self, size_t n) {
+			return Src::skipN(*self.container, self.iter, n);
+		}
 	};
 	/** @private */
 	template<typename TContainer>
@@ -100,6 +103,9 @@ namespace CXXIter {
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+		static inline size_t advanceBy(Self& self, size_t n) {
+			return Src::skipN(self.container, self.iter, n);
+		}
 	};
 	/** @private */
 	template<typename TContainer>
@@ -158,6 +164,9 @@ namespace CXXIter {
 			return Src::next(self.container, self.iter);
 		}
 		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+		static inline size_t advanceBy(Self& self, size_t n) {
+			return Src::skipN(self.container, self.iter, n);
+		}
 	};
 	/** @private */
 	template<typename TContainer>

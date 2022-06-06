@@ -46,6 +46,11 @@ namespace CXXIter {
 				SizeHint::upperBoundMin(input.upperBound, self.n)
 			);
 		}
+		static inline size_t advanceBy(Self& self, size_t n) {
+			size_t skipN = ChainInputIterator::advanceby(self.input, n);
+			if(self.n < skipN) { self.n = 0; } else { self.n -= skipN; }
+			return skipN;
+		}
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>

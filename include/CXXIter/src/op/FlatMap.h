@@ -5,6 +5,7 @@
 
 #include "../Common.h"
 #include "../sources/ContainerSources.h"
+#include "../util/TraitImpl.h"
 
 namespace CXXIter {
 
@@ -56,6 +57,7 @@ namespace CXXIter {
 			}
 		}
 		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }
