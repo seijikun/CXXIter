@@ -1,8 +1,5 @@
 <map id="CXXIter::IterApi::max" name="CXXIter::IterApi::max">
-<area shape="rect" id="node1" title="Consumer that yields the largest element from this iterator." alt="" coords="5,85,164,112"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e" title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co..." alt="" coords="212,85,388,112"/>
-<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="436,5,615,32"/>
-<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1Iterator.html#ae0ea73d4371db684ce0317ef4f464110" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="663,23,825,65"/>
-<area shape="rect" id="node5" href="$classCXXIter_1_1IterValue.html#a152e5d33392c8437ab8a72707f8acdf2" title="Get whether this optional IteratorValue contains a value." alt="" coords="457,107,594,149"/>
-<area shape="rect" id="node6" href="$classCXXIter_1_1IterValue.html#a10232ef74599e80b16cafe0b0a0dcc6a" title="Get the contained value (if any)." alt="" coords="457,173,594,214"/>
+<area shape="rect" id="node1" title="Consumer that yields the largest element from this iterator." alt="" coords="5,29,164,56"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#ab52a8aecfbfa75c7ab5606628831687e" title="Consumer that yields the largest element from this iterator. Comparison of items is done using the co..." alt="" coords="212,29,388,56"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="436,29,595,56"/>
 </map>

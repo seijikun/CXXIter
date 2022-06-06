@@ -1,6 +1,6 @@
 <map id="CXXIter::IterApi::sum" name="CXXIter::IterApi::sum">
-<area shape="rect" id="node1" title="Consumer that calculates the sum of all elements from this iterator." alt="" coords="5,13,164,39"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="212,13,367,39"/>
-<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="415,13,593,39"/>
-<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1Iterator.html#ae0ea73d4371db684ce0317ef4f464110" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="641,5,804,47"/>
+<area shape="rect" id="node1" title="Consumer that calculates the sum of all elements from this iterator." alt="" coords="5,29,164,56"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="212,29,367,56"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="415,29,593,56"/>
+<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="641,29,800,56"/>
 </map>
