@@ -84,16 +84,6 @@ namespace CXXIter::trait {
 		* @return An element (if any) wrapped in the CXXIter::IterValue.
 		*/
 		static inline IterValue<typename Iterator<T>::Item> nextBack(Self& self) = delete;
-
-		/**
-		 * @brief Advance the iterator by n elements from the back.
-		 * @details If possible, this should be forwarded to the previous pipeline element, because then the
-		 * pipeline source has the possibility to implement this as a O(1) operation, if supported.
-		 * @param n The amount of elements to advance the iterator by from the back.
-		 * @return The amount of elements by which the iterator was actually advanced (e.g. if the iterator
-		 * did have less than @p n elements remaining)
-		 */
-		static inline void advanceBackBy(Self& self, size_t n) = delete;
 	};
 
 

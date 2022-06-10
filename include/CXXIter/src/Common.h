@@ -77,8 +77,6 @@ namespace CXXIter {
 	template<typename T>
 	concept CXXIterDoubleEndedIterator = CXXIterIterator<T> && requires(typename trait::Iterator<T>::Self& self) {
 		{trait::DoubleEndedIterator<T>::nextBack(self)} -> std::same_as<IterValue<typename trait::Iterator<T>::Item>>;
-		//TOOD:
-		//{trait::Iterator<T>::advanceBackBy(self, n)} -> std::same_as<size_t>;
 	};
 
 	template<typename T>
