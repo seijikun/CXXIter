@@ -7,6 +7,7 @@ var dir_94e28e050ec962af1417912038263e19 =
     [ "ChunkedExact.h", "ChunkedExact_8h_source.html", null ],
     [ "Filter.h", "Filter_8h_source.html", null ],
     [ "FilterMap.h", "FilterMap_8h_source.html", null ],
+    [ "FlagLast.h", "FlagLast_8h_source.html", null ],
     [ "FlatMap.h", "FlatMap_8h_source.html", null ],
     [ "GenerateFrom.h", "GenerateFrom_8h_source.html", null ],
     [ "GroupBy.h", "GroupBy_8h_source.html", null ],

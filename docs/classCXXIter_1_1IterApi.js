@@ -28,6 +28,7 @@ var classCXXIter_1_1IterApi =
     [ "find", "classCXXIter_1_1IterApi.html#ab44325cb6ee35f352ca90c33db720644", null ],
     [ "findIdx", "classCXXIter_1_1IterApi.html#a8842d23b1b30accf123e096fb7aae099", null ],
     [ "findIdx", "classCXXIter_1_1IterApi.html#a36e35fb8446e4c302e48a0a3b2cdca86", null ],
+    [ "flagLast", "classCXXIter_1_1IterApi.html#a20aea92a66ad20c05d914944968d4f26", null ],
     [ "flatMap", "classCXXIter_1_1IterApi.html#ad8985f7682655e5a925329fcd971b482", null ],
     [ "flatMap", "classCXXIter_1_1IterApi.html#a165695af4dc2acf1cf6eadd3ae6c2fc2", null ],
     [ "fold", "classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e", null ],

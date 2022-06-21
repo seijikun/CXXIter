@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('structCXXIter_1_1trait_1_1DoubleEndedI
 <div class="dynheader">
 Collaboration diagram for CXXIter::trait::DoubleEndedIterator&lt; T &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1DoubleEndedIterator__coll__graph.svg" width="211" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1DoubleEndedIterator__coll__graph.svg" width="211" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -111,9 +111,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1df2ad0221ab220f805b4f7161dbf784"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; typename <a class="el" href="structCXXIter_1_1trait_1_1Iterator.html">Iterator</a>&lt; T &gt;::Item &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html#a1df2ad0221ab220f805b4f7161dbf784">nextBack</a> (Self &amp;self)=delete</td></tr>
 <tr class="memdesc:a1df2ad0221ab220f805b4f7161dbf784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pull the next last element from the iterator pipeline previous to this pipeline-element.  <a href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html#a1df2ad0221ab220f805b4f7161dbf784">More...</a><br /></td></tr>
 <tr class="separator:a1df2ad0221ab220f805b4f7161dbf784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb6262b4345b32c333b936ea233ee290"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html#adb6262b4345b32c333b936ea233ee290">advanceBackBy</a> (Self &amp;self, size_t n)=delete</td></tr>
-<tr class="memdesc:adb6262b4345b32c333b936ea233ee290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance the iterator by n elements from the back.  <a href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html#adb6262b4345b32c333b936ea233ee290">More...</a><br /></td></tr>
-<tr class="separator:adb6262b4345b32c333b936ea233ee290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
@@ -141,53 +138,6 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adb6262b4345b32c333b936ea233ee290" name="adb6262b4345b32c333b936ea233ee290"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb6262b4345b32c333b936ea233ee290">&#9670;&nbsp;</a></span>advanceBackBy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void <a class="el" href="structCXXIter_1_1trait_1_1DoubleEndedIterator.html">CXXIter::trait::DoubleEndedIterator</a>&lt; T &gt;::advanceBackBy </td>
-          <td>(</td>
-          <td class="paramtype">Self &amp;&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Advance the iterator by n elements from the back. </p>
-<p >If possible, this should be forwarded to the previous pipeline element, because then the pipeline source has the possibility to implement this as a O(1) operation, if supported. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>The amount of elements to advance the iterator by from the back. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The amount of elements by which the iterator was actually advanced (e.g. if the iterator did have less than <code>n</code> elements remaining) </dd></dl>
-
-</div>
-</div>
 <a id="a1df2ad0221ab220f805b4f7161dbf784" name="a1df2ad0221ab220f805b4f7161dbf784"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1df2ad0221ab220f805b4f7161dbf784">&#9670;&nbsp;</a></span>nextBack()</h2>
 

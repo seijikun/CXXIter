@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"index.html":[],
+"index.html#sec_chaining":[1],
+"index.html#sec_entry":[0],
 "namespaceCXXIter.html":[3,0,0],
 "namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13":[3,0,0,17],
 "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c":[3,0,0,15],

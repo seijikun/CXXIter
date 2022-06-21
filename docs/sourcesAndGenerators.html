@@ -101,7 +101,7 @@ Sources</h1>
 <div class="line"><span class="keyword">auto</span> constRefIter   = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(constInput);</div>
 <div class="line"><span class="keyword">auto</span> mutableRefIter = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input);</div>
 <div class="line"><span class="keyword">auto</span> moveIter       = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(std::move(input));</div>
-<div class="ttc" id="anamespaceCXXIter_html_a488278efdb3aea93ff9fa7583e3c81a8"><div class="ttname"><a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02101">CXXIter.h:2101</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a488278efdb3aea93ff9fa7583e3c81a8"><div class="ttname"><a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02132">CXXIter.h:2132</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsec_custom_sources"></a>
 Supporting Custom Containers</h2>
 <p >To add support for your own container, or another container that is not yet supported, to <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s sources, you need to specialize the CXXIter::SourceTrait for the container type in question. The following exemplarily shows how one would do this for the following custom container type: </p><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TItem&gt; <span class="keyword">struct </span>CustomContainer {</div>
@@ -152,7 +152,7 @@ Supporting Custom Containers</h2>
 <div class="line">       }</div>
 <div class="line">   };</div>
 <div class="line">};</div>
-<div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00046">CXXIter.h:46</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html"><div class="ttname"><a href="namespaceCXXIter.html">CXXIter</a></div><div class="ttdoc">CXXIter.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l00047">CXXIter.h:47</a></div></div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>This specialization has to be in your import context whenever you want to use a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> source with <code>CustomContainer</code>, so you should probably put this in a header you can include everywhere within your project.</dd></dl>
 <h1><a class="anchor" id="sec_generators"></a>
 Generators</h1>
