@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-06-21 12:52:41</td>
+      <td>2022-06-21 13:31:55</td>
     </tr>
   </table>
 </div>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>115</td>
-      <td>115</td>
+      <td>118</td>
+      <td>118</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -346,6 +346,17 @@
       </td>
       <td>
         <a href="#l90"> called 3 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l90">CXXIter::SrcRef&lt;std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt; &gt;::SrcRef(std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l90">90</a>
+      </td>
+      <td>
+        <a href="#l90"> called 2 times</a>
       </td>
     </tr>
     <tr>
@@ -1006,6 +1017,28 @@
       </td>
       <td>
         <a href="#l105"> called 3 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l101">CXXIter::trait::Iterator&lt;CXXIter::SrcRef&lt;std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt; &gt; &gt;::next(CXXIter::SrcRef&lt;std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt; &gt;&amp;)</a>
+      </td>
+      <td>
+        <a href="#l101">101</a>
+      </td>
+      <td>
+        <a href="#l101"> called 18 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l105">CXXIter::trait::Iterator&lt;CXXIter::SrcRef&lt;std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt; &gt; &gt;::sizeHint(CXXIter::SrcRef&lt;std::vector&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake, std::allocator&lt;CXXIter_filterIsOneOf_Test::TestBody()::Cake&gt; &gt; &gt; const&amp;)</a>
+      </td>
+      <td>
+        <a href="#l105">105</a>
+      </td>
+      <td>
+        <a href="#l105"> called 2 times</a>
       </td>
     </tr>
     <tr>
@@ -2092,7 +2125,7 @@
       <td class="lineno"><a id="l90" href="#l90">90</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">654</td>
+      <td class="linecount coveredLine">658</td>
       <td class="src coveredLine">		<span class="n">SrcRef</span><span class="p">(</span><span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="o">:</span> <span class="n">container</span><span class="p">(</span><span class="n">container</span><span class="p">),</span> <span class="n">iter</span><span class="p">(</span><span class="n">Src</span><span class="o">::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">this</span><span class="o">-&gt;</span><span class="n">container</span><span class="p">))</span> <span class="p">{}</span></td>
     </tr>
 
@@ -2180,7 +2213,7 @@
       <td class="lineno"><a id="l101" href="#l101">101</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">2198</td>
+      <td class="linecount coveredLine">2234</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
@@ -2190,12 +2223,12 @@
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
         <div class="linebranchContents">
-          <div class="takenBranch">&check; Branch 1 taken 214 times.</div>
-          <div class="takenBranch">&check; Branch 2 taken 885 times.</div>
+          <div class="takenBranch">&check; Branch 1 taken 216 times.</div>
+          <div class="takenBranch">&check; Branch 2 taken 901 times.</div>
         </div>
         </details>
       </td>
-      <td class="linecount coveredLine">2198</td>
+      <td class="linecount coveredLine">2234</td>
       <td class="src coveredLine">			<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">Src</span><span class="o">::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">container</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">iter</span><span class="p">))</span> <span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{};</span> <span class="p">}</span></td>
     </tr>
 
@@ -2203,7 +2236,7 @@
       <td class="lineno"><a id="l103" href="#l103">103</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1770</td>
+      <td class="linecount coveredLine">1802</td>
       <td class="src coveredLine">			<span class="k">return</span> <span class="n">Src</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">container</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">iter</span><span class="p">);</span></td>
     </tr>
 
@@ -2219,7 +2252,7 @@
       <td class="lineno"><a id="l105" href="#l105">105</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">434</td>
+      <td class="linecount coveredLine">438</td>
       <td class="src coveredLine">		<span class="k">static</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Src</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">container</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
