@@ -1,5 +1,11 @@
 var namespaceCXXIter =
 [
+    [ "fn", "namespaceCXXIter_1_1fn.html", [
+      [ "filterIsOneOf", "namespaceCXXIter_1_1fn.html#aa75c6f99c4ef41547c55e6ed02a07840", null ],
+      [ "filterIsOneOf", "namespaceCXXIter_1_1fn.html#ab4b7df35d2cb7efa64c5c9e6936195c8", null ],
+      [ "tryDynCast", "namespaceCXXIter_1_1fn.html#a1c68ca065b35b2a2c4907d03aed03b30", null ],
+      [ "unzip", "namespaceCXXIter_1_1fn.html#a5e4b65a152cc2fbb285198bbae167602", null ]
+    ] ],
     [ "trait", "namespaceCXXIter_1_1trait.html", "namespaceCXXIter_1_1trait" ],
     [ "Generator", "classCXXIter_1_1Generator.html", "classCXXIter_1_1Generator" ],
     [ "IterApi", "classCXXIter_1_1IterApi.html", "classCXXIter_1_1IterApi" ],
@@ -30,7 +36,5 @@ var namespaceCXXIter =
     [ "fromFn", "namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c", null ],
     [ "generate", "namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1", null ],
     [ "range", "namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c", null ],
-    [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ],
-    [ "tryDynCast", "namespaceCXXIter.html#ad5b5f706c889ffaebff251125cd02d27", null ],
-    [ "unzip", "namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f", null ]
+    [ "repeat", "namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0", null ]
 ];

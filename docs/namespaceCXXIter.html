@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('namespaceCXXIter.html',''); initResiza
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
+<tr class="memitem:namespaceCXXIter_1_1fn"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter_1_1fn.html">fn</a></td></tr>
+<tr class="memdesc:namespaceCXXIter_1_1fn"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace that contains helper functions providing commonly required functionality when working with <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceCXXIter_1_1trait"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCXXIter_1_1trait.html">trait</a></td></tr>
 <tr class="memdesc:namespaceCXXIter_1_1trait"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trait namespace. This namespaces contains all public traits that cover all of the iterator's inner workings. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,17 +198,6 @@ requires util::is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td><
 <tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplItemLeft" align="right" valign="top">Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">range</a> (TValue <a class="el" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">from</a>, TValue to, TValue step=1)</td></tr>
 <tr class="memdesc:a4b4d837f5716b2f5fd7c3098268c582c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">More...</a><br /></td></tr>
 <tr class="separator:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Helpers</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >These functions are small helper functions that can be used in conjunction with the iterator API interface. For example by constructing lambdas for reusable tasks with a clear and concise API, instead of copying the lambda code itself everywhere it is needed. </p>
-</div></td></tr>
-<tr class="memitem:a37d9da90524395fd7d89cf58ac49728f"><td class="memTemplParams" colspan="2">template&lt;size_t FIELD_IDX&gt; </td></tr>
-<tr class="memitem:a37d9da90524395fd7d89cf58ac49728f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f">unzip</a> ()</td></tr>
-<tr class="memdesc:a37d9da90524395fd7d89cf58ac49728f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to construct a lambda that extracts the <code>FIELD_IDX</code>-th element from tuples or pairs passing through the iterator.  <a href="namespaceCXXIter.html#a37d9da90524395fd7d89cf58ac49728f">More...</a><br /></td></tr>
-<tr class="separator:a37d9da90524395fd7d89cf58ac49728f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5b5f706c889ffaebff251125cd02d27"><td class="memTemplParams" colspan="2">template&lt;typename TDynCastTarget &gt; </td></tr>
-<tr class="memitem:ad5b5f706c889ffaebff251125cd02d27"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#ad5b5f706c889ffaebff251125cd02d27">tryDynCast</a> ()</td></tr>
-<tr class="memdesc:ad5b5f706c889ffaebff251125cd02d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to construct a filterMap lambda that takes a pointer, dyncasts it to the requested type and returns a <code>std::optional&lt;TDynCastTarget&gt;</code> with the result if the cast was successfull.  <a href="namespaceCXXIter.html#ad5b5f706c889ffaebff251125cd02d27">More...</a><br /></td></tr>
-<tr class="separator:ad5b5f706c889ffaebff251125cd02d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>. </p>
@@ -630,93 +622,6 @@ template&lt;typename TItem &gt; </div>
 <div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02251">CXXIter.h:2251</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02251">2251</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
-
-</div>
-</div>
-<a id="ad5b5f706c889ffaebff251125cd02d27" name="ad5b5f706c889ffaebff251125cd02d27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5b5f706c889ffaebff251125cd02d27">&#9670;&nbsp;</a></span>tryDynCast()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TDynCastTarget &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">auto CXXIter::tryDynCast </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Helper to construct a filterMap lambda that takes a pointer, dyncasts it to the requested type and returns a <code>std::optional&lt;TDynCastTarget&gt;</code> with the result if the cast was successfull. </p>
-<p >You can use this shortcut everywhere, where a lambda is required that takes an element and returns an <code>std::optional&lt;TDynCastTarget&gt;</code> that is set only when the <code>dynamic_cast()</code> was successful. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">TDynCastTarget</td><td>Type that the elements that are passed to the generated lambda should be cast to. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Lambda that attempts to <code>dynamic_cast()</code> a given element to <code>TDynCastTarget</code> and returns a <code>std::optional&lt;TDynCastTarget&gt;</code> with the result if the cast was successful. And <code>none</code> if it failed.</dd></dl>
-<p>Usage Example: </p><div class="fragment"><div class="line"><span class="keyword">struct </span>Parent {</div>
-<div class="line">   <span class="keyword">virtual</span> ~Parent() {}</div>
-<div class="line">};</div>
-<div class="line"><span class="keyword">struct </span>Child1 : <span class="keyword">public</span> Parent {</div>
-<div class="line">   std::string id;</div>
-<div class="line">   Child1(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>) : id(id) {}</div>
-<div class="line">};</div>
-<div class="line"><span class="keyword">struct </span>Child2 : <span class="keyword">public</span> Parent {};</div>
-<div class="line"> </div>
-<div class="line">std::vector&lt;Parent*&gt; input = { <span class="keyword">new</span> Parent(), <span class="keyword">new</span> Child1(<span class="stringliteral">&quot;0&quot;</span>), <span class="keyword">new</span> Child1(<span class="stringliteral">&quot;1&quot;</span>), <span class="keyword">new</span> Child2() };</div>
-<div class="line">std::vector&lt;Child1*&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input)</div>
-<div class="line">       .filterMap(CXXIter::tryDynCast&lt;Child1*&gt;())</div>
-<div class="line">       .collect&lt;std::vector&gt;();</div>
-<div class="line">ASSERT_EQ(output.size(), 2);</div>
-<div class="line">ASSERT_EQ(output[0]-&gt;<span class="keywordtype">id</span>, <span class="stringliteral">&quot;0&quot;</span>);</div>
-<div class="line">ASSERT_EQ(output[1]-&gt;<span class="keywordtype">id</span>, <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(output).forEach([](<span class="keyword">auto</span> ptr) { <span class="keyword">delete</span> ptr; });</div>
-<div class="ttc" id="anamespaceCXXIter_html_a488278efdb3aea93ff9fa7583e3c81a8"><div class="ttname"><a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a></div><div class="ttdeci">SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02132">CXXIter.h:2132</a></div></div>
-</div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="Helpers_8h_source.html#l00076">76</a> of file <a class="el" href="Helpers_8h_source.html">Helpers.h</a>.</p>
-
-</div>
-</div>
-<a id="a37d9da90524395fd7d89cf58ac49728f" name="a37d9da90524395fd7d89cf58ac49728f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37d9da90524395fd7d89cf58ac49728f">&#9670;&nbsp;</a></span>unzip()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;size_t FIELD_IDX&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">auto CXXIter::unzip </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Helper to construct a lambda that extracts the <code>FIELD_IDX</code>-th element from tuples or pairs passing through the iterator. </p>
-<p >You can use this shortcut everywhere, where a lambda is required that takes a tuple or pair and returns their <code>FIELD_IDX</code>-th element. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">FIELD_IDX</td><td>Index of the field to extract. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Lambda that, given an arbitrary tuple or pair, extracts its <code>FIELD_IDX</code>-th element.</dd></dl>
-<p>Usage Example:</p><ul>
-<li>Use the tuple's second (idx = 1) field to sort by. <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
-<div class="line">std::vector&lt;std::pair&lt;size_t, float&gt;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">CXXIter::from</a>(input).copied()</div>
-<div class="line">   .indexed()</div>
-<div class="line">   .sortBy&lt;CXXIter::DESCENDING&gt;(CXXIter::unzip&lt;1&gt;())</div>
-<div class="line">   .collect&lt;std::vector&gt;();</div>
-<div class="line"><span class="comment">// output = {{3, 3.0f}, {1, 2.0f}, {0, 1.0f}, {2, 0.5f}, {4, -42.0f}}</span></div>
-</div><!-- fragment --> </li>
-</ul>
-
-<p class="definition">Definition at line <a class="el" href="Helpers_8h_source.html#l00039">39</a> of file <a class="el" href="Helpers_8h_source.html">Helpers.h</a>.</p>
 
 </div>
 </div>

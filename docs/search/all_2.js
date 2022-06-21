@@ -15,11 +15,12 @@ var searchData=
   ['count_12',['count',['../classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815',1,'CXXIter::IterApi::count()'],['../classCXXIter_1_1IterApi.html#abfd58d36cbf83360cd7a6959971e2ef6',1,'CXXIter::IterApi::count(TPredicateFn predicateFn)'],['../classCXXIter_1_1IterApi.html#afc37b3e2bc9c3417d29ff713e27111e1',1,'CXXIter::IterApi::count(const ItemOwned &amp;countItem)']]],
   ['cxxiter_13',['CXXIter',['../namespaceCXXIter.html',1,'CXXIter'],['../index.html',1,'(Global Namespace)']]],
   ['doubleendedsourcecontainer_14',['DoubleEndedSourceContainer',['../conceptCXXIter_1_1DoubleEndedSourceContainer.html',1,'CXXIter']]],
-  ['insertablecontainer_15',['InsertableContainer',['../conceptCXXIter_1_1util_1_1_0d32_1_1InsertableContainer.html',1,'CXXIter::util::@32']]],
-  ['insertablecontainertemplate_16',['InsertableContainerTemplate',['../conceptCXXIter_1_1util_1_1_0d32_1_1InsertableContainerTemplate.html',1,'CXXIter::util::@32']]],
-  ['invocable_5fbyvalue_17',['invocable_byvalue',['../conceptCXXIter_1_1util_1_1_0d32_1_1invocable__byvalue.html',1,'CXXIter::util::@32']]],
-  ['is_5fhashable_18',['is_hashable',['../conceptCXXIter_1_1util_1_1_0d32_1_1is__hashable.html',1,'CXXIter::util::@32']]],
-  ['sourcecontainer_19',['SourceContainer',['../conceptCXXIter_1_1SourceContainer.html',1,'CXXIter']]],
-  ['stdarraycontainer_20',['StdArrayContainer',['../conceptCXXIter_1_1util_1_1_0d32_1_1StdArrayContainer.html',1,'CXXIter::util::@32']]],
-  ['trait_21',['trait',['../namespaceCXXIter_1_1trait.html',1,'CXXIter']]]
+  ['fn_15',['fn',['../namespaceCXXIter_1_1fn.html',1,'CXXIter']]],
+  ['insertablecontainer_16',['InsertableContainer',['../conceptCXXIter_1_1util_1_1_0d32_1_1InsertableContainer.html',1,'CXXIter::util::@32']]],
+  ['insertablecontainertemplate_17',['InsertableContainerTemplate',['../conceptCXXIter_1_1util_1_1_0d32_1_1InsertableContainerTemplate.html',1,'CXXIter::util::@32']]],
+  ['invocable_5fbyvalue_18',['invocable_byvalue',['../conceptCXXIter_1_1util_1_1_0d32_1_1invocable__byvalue.html',1,'CXXIter::util::@32']]],
+  ['is_5fhashable_19',['is_hashable',['../conceptCXXIter_1_1util_1_1_0d32_1_1is__hashable.html',1,'CXXIter::util::@32']]],
+  ['sourcecontainer_20',['SourceContainer',['../conceptCXXIter_1_1SourceContainer.html',1,'CXXIter']]],
+  ['stdarraycontainer_21',['StdArrayContainer',['../conceptCXXIter_1_1util_1_1_0d32_1_1StdArrayContainer.html',1,'CXXIter::util::@32']]],
+  ['trait_22',['trait',['../namespaceCXXIter_1_1trait.html',1,'CXXIter']]]
 ];
