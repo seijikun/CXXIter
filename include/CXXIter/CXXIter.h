@@ -23,6 +23,7 @@
 #include "src/op/ChunkedExact.h"
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
+#include "src/op/FlagLast.h"
 #include "src/op/FlatMap.h"
 #include "src/op/GenerateFrom.h"
 #include "src/op/GroupBy.h"
@@ -1302,6 +1303,36 @@ public: // CXXIter API-Surface
 		return map([idx](Item&& item) mutable -> std::pair<size_t, Item> {
 			return std::pair<size_t, Item>(idx++, std::forward<Item>(item));
 		});
+	}
+
+	/**
+	 * @brief Constructs a new iterator that tags each element with a boolean value specifying whether the
+	 * element is the last one in the iterator. Boolean and actual iterator element are stored in a @c std::pair.
+	 * @return A new iterator whose elements are @c std::pair with the iterator element in the first, and a boolean
+	 * flag specifying whether the element will be the last one in the second slot.
+	 *
+	 * Usage Example:
+	 * - Flag last element in filtered iterator
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "420", "64"};
+	 * 	std::vector<std::pair<std::string&, bool>> output = CXXIter::from(input)
+	 * 		.filter([](const std::string& el) { return el.size() >= 3; })
+	 * 		.flagLast()
+	 * 		.collect<std::vector>();
+	 *	// output == {{"1337", false}, {"420", true}}
+	 * @endcode
+	 * - Use last flag to filter (remove last element from iterator)
+	 * @code
+	 * 	std::vector<std::string> input = {"1337", "42", "64"};
+	 * 	std::vector<std::pair<std::string&, bool>> output = CXXIter::from(input)
+	 * 			.flagLast()
+	 * 			.filter([](const std::pair<std::string&, bool>& el) { return !el.second; })
+	 * 			.collect<std::vector>();
+	 *	// output == {{"1337", false}, {"42", false}}
+	 * @endcode
+	 */
+	op::FlagLast<TSelf> flagLast() {
+		return op::FlagLast<TSelf>(std::move(*self()));
 	}
 
 	/**

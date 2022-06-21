@@ -81,6 +81,52 @@ TEST(CXXIter, indexed) {
 	}
 }
 
+TEST(CXXIter, flagLast) {
+	{ // sizeHint
+		std::vector<float> input = {1.35, 56.123};
+		SizeHint sizeHint = CXXIter::from(input).flagLast().sizeHint();
+		ASSERT_EQ(sizeHint.lowerBound, input.size());
+		ASSERT_EQ(sizeHint.upperBound.value(), input.size());
+	}
+	{ // reference
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::pair<std::string&, bool>> output = CXXIter::from(input)
+				.flagLast()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre(Pair("1337", false), Pair("42", false), Pair("64", true)));
+	}
+	{ //moved
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::pair<std::string, bool>> output = CXXIter::from(std::move(input))
+				.flagLast()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 3);
+		ASSERT_THAT(output, ElementsAre(Pair("1337", false), Pair("42", false), Pair("64", true)));
+	}
+	{ // filterLast
+		std::vector<std::string> input = {"1337", "42", "64"};
+		std::vector<std::string> output = CXXIter::from(input)
+				.flagLast()
+				.filterMap([](const std::pair<std::string&, bool>& el) -> std::optional<std::string> {
+					if(el.second) { return {}; } // remove last
+					return el.first;
+				})
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre("1337", "42"));
+	}
+	{ // flag after non-exact iterator
+		std::vector<std::string> input = {"1337", "42", "420", "64"};
+		std::vector<std::pair<std::string&, bool>> output = CXXIter::from(input)
+				.filter([](const std::string& el) { return el.size() >= 3; })
+				.flagLast()
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output, ElementsAre(Pair("1337", false), Pair("420", true)));
+	}
+}
+
 TEST(CXXIter, filter) {
 	{ // sizeHint
 		std::vector<float> input = {1.35, 56.123};
