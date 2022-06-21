@@ -62,9 +62,7 @@ namespace CXXIter {
 			}
 
 			// if step-size is greater than chunk-size, we need to skip some values
-			for(size_t i = 0; i < SKIP_SIZE; ++i) {
-				ChainInputIterator::next(self.input);
-			}
+			ChainInputIterator::advanceBy(self.input, SKIP_SIZE);
 
 			// if step-size is smaller than chunk-size, we have to shift out the first couple of items
 			// so we can push new ones in the back
