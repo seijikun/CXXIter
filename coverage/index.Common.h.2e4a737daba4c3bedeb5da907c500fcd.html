@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-06-06 11:31:58</td>
+      <td>2022-06-21 12:52:41</td>
     </tr>
   </table>
 </div>
@@ -715,7 +715,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">//TOOD:</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -723,7 +723,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">//{trait::Iterator&lt;T&gt;::advanceBackBy(self, n)} -&gt; std::same_as&lt;size_t&gt;;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -731,7 +731,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -739,7 +739,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -747,7 +747,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -755,7 +755,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -763,7 +763,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -771,7 +771,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -787,7 +787,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -795,7 +795,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">	* @brief Concept that checks whether the given @p TContainer is supported by CXXIter&#39;s standard source</span></td>
     </tr>
 
     <tr class="source-line">
@@ -803,7 +803,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">	* classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -811,7 +811,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @brief Concept that checks whether the given @p TContainer is supported by CXXIter&#39;s standard source</span></td>
+      <td class="src "><span class="cm">	* @details The concept does these checks by testing whether the CXXIter::trait::Source was properly specialized</span></td>
     </tr>
 
     <tr class="source-line">
@@ -819,7 +819,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.</span></td>
+      <td class="src "><span class="cm">	* for the given @p TContainer type.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -827,7 +827,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @details The concept does these checks by testing whether the CXXIter::trait::Source was properly specialized</span></td>
+      <td class="src "><span class="cm">	*</span></td>
     </tr>
 
     <tr class="source-line">
@@ -835,7 +835,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* for the given @p TContainer type.</span></td>
+      <td class="src "><span class="cm">	* @see CXXIter::SourceTrait for further details on this.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -843,7 +843,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*</span></td>
+      <td class="src "><span class="cm">	*/</span></td>
     </tr>
 
     <tr class="source-line">
@@ -851,7 +851,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	* @see CXXIter::SourceTrait for further details on this.</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -859,7 +859,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	*/</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">SourceContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span></td>
     </tr>
 
     <tr class="source-line">
@@ -867,7 +867,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -875,7 +875,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">SourceContainer</span> <span class="o">=</span> <span class="n">requires</span><span class="p">(</span></td>
+      <td class="src ">			<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -883,7 +883,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -891,7 +891,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -899,7 +899,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
+      <td class="src ">			<span class="kt">size_t</span> <span class="n">n</span></td>
     </tr>
 
     <tr class="source-line">
@@ -907,7 +907,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span><span class="p">,</span></td>
+      <td class="src ">		<span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -915,7 +915,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kt">size_t</span> <span class="n">n</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -923,7 +923,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -931,7 +931,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -939,7 +939,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -947,7 +947,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="p">;</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -955,7 +955,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -963,7 +963,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">container</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -971,7 +971,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">constContainer</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -979,7 +979,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">container</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -987,7 +987,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">initIterator</span><span class="p">(</span><span class="n">constContainer</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -995,7 +995,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1003,7 +1003,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1011,7 +1011,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">hasNext</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1019,7 +1019,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1027,7 +1027,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1035,7 +1035,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipN</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1043,7 +1043,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipN</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1051,7 +1051,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipN</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1059,7 +1059,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipN</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1067,7 +1067,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">	<span class="cm">/**</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1075,7 +1075,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cm">	 * @brief Concept that checks whether the given @p TContainer supports double-ended iteration when using CXXIter&#39;s</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1083,7 +1083,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/**</span></td>
+      <td class="src "><span class="cm">	 * standard source classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1091,7 +1091,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * @brief Concept that checks whether the given @p TContainer supports double-ended iteration when using CXXIter&#39;s</span></td>
+      <td class="src "><span class="cm">	 * @details The concept does these checks by testing whether the optional double-ended part in CXXIter::trait::Source</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1099,7 +1099,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * standard source classes CXXIter::SrcMov, CXXIter::SrcRef and CXXIter::SrcCRef.</span></td>
+      <td class="src "><span class="cm">	 * was properly provided by the specialization for the given @p TContainer type.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1107,7 +1107,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * @details The concept does these checks by testing whether the optional double-ended part in CXXIter::trait::Source</span></td>
+      <td class="src "><span class="cm">	 *</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1115,7 +1115,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * was properly provided by the specialization for the given @p TContainer type.</span></td>
+      <td class="src "><span class="cm">	 * @see CXXIter::Source for further details on this.</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1123,7 +1123,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 *</span></td>
+      <td class="src "><span class="cm">	 */</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1131,7 +1131,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 * @see CXXIter::Source for further details on this.</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1139,7 +1139,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">	 */</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">DoubleEndedSourceContainer</span> <span class="o">=</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1147,7 +1147,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TContainer</span><span class="o">&gt;</span></td>
+      <td class="src ">				<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1155,7 +1155,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">DoubleEndedSourceContainer</span> <span class="o">=</span> <span class="n">SourceContainer</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span></td>
+      <td class="src ">				<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1163,7 +1163,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span></td>
+      <td class="src ">				<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1171,7 +1171,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="k">const</span> <span class="n">TContainer</span><span class="o">&amp;</span> <span class="n">constContainer</span><span class="p">,</span></td>
+      <td class="src ">				<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1179,7 +1179,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">IteratorState</span><span class="o">&amp;</span> <span class="n">iterState</span><span class="p">,</span></td>
+      <td class="src ">				<span class="kt">size_t</span> <span class="n">n</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1187,7 +1187,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ConstIteratorState</span><span class="o">&amp;</span> <span class="n">constIterState</span><span class="p">,</span></td>
+      <td class="src ">			<span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1195,7 +1195,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="kt">size_t</span> <span class="n">n</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1203,7 +1203,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1211,7 +1211,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1219,7 +1219,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemRef</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1227,7 +1227,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">constContainer</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">ItemConstRef</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipNBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1235,7 +1235,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipNBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1243,7 +1243,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipNBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">iterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -1251,7 +1251,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Source</span><span class="o">&lt;</span><span class="n">TContainer</span><span class="o">&gt;::</span><span class="n">skipNBack</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">constIterState</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -1259,27 +1259,11 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l149" href="#l149">149</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l150" href="#l150">150</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
       <td class="src "><span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l151" href="#l151">151</a></td>
+      <td class="lineno"><a id="l149" href="#l149">149</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
