@@ -98,7 +98,7 @@ TEST(CXXIter, randomAccessModify) {
 	std::vector<std::pair<int, std::string>> input = { {1337, "1337"}, {42, "42"}, {69, "69"}, {31337, "31337"} };
 	auto src = CXXIter::from(input)
 			.modify([](auto& keyValue) {
-				keyValue.second += "-" + std::to_string(keyValue.first + 1);
+				keyValue.second = keyValue.second + "-" + std::to_string(keyValue.first + 1);
 			});
 	ASSERT_TRUE(src.next().has_value());
 	src.advanceBy(2);
