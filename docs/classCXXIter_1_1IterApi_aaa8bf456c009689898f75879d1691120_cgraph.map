@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::begin" name="CXXIter::IterApi::begin">
+<area shape="rect" id="node1" title="begin() method, part of C++&#39;s iterator interface" alt="" coords="5,29,172,55"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="220,29,379,55"/>
+</map>

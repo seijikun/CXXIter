@@ -1,4 +1,4 @@
 <map id="CXXIter::IterApi::any" name="CXXIter::IterApi::any">
-<area shape="rect" id="node1" title="Tests if any of the elements of this iterator match the given predicateFn." alt="" coords="5,5,160,32"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a6fe973bcef3669050b734c6c0c0481bb" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil..." alt="" coords="208,5,368,32"/>
+<area shape="rect" id="node1" title="Tests if any of the elements of this iterator match the given predicateFn." alt="" coords="5,5,160,31"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a6fe973bcef3669050b734c6c0c0481bb" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil..." alt="" coords="208,5,368,31"/>
 </map>

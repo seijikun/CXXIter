@@ -1,4 +1,4 @@
 <map id="CXXIter::IterApi::all" name="CXXIter::IterApi::all">
-<area shape="rect" id="node1" title="Tests if all elements of this iterator match the given predicateFn." alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2" title="Creates an iterator that skips the first elements of this iterator, for which the given skipPredicate..." alt="" coords="200,5,395,32"/>
+<area shape="rect" id="node1" title="Tests if all elements of this iterator match the given predicateFn." alt="" coords="5,5,152,31"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#abc72090031914ff844c3242fddbd22c2" title="Creates an iterator that skips the first elements of this iterator, for which the given skipPredicate..." alt="" coords="200,5,395,31"/>
 </map>

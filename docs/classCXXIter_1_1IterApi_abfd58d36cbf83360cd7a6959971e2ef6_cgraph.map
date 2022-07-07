@@ -1,6 +1,6 @@
 <map id="CXXIter::IterApi::count" name="CXXIter::IterApi::count">
-<area shape="rect" id="node1" title="Consumer that counts the elements in this iterator, for which the given predicateFn returns true." alt="" coords="5,29,172,56"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="220,29,375,56"/>
-<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="423,29,601,56"/>
-<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="649,29,808,56"/>
+<area shape="rect" id="node1" title="Consumer that counts the elements in this iterator, for which the given predicateFn returns true." alt="" coords="5,29,172,55"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a16bc04471483e7ce71726036befa551e" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="220,29,375,55"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="423,29,601,55"/>
+<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="649,29,808,55"/>
 </map>
