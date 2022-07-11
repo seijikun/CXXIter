@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::indexed" name="CXXIter::IterApi::indexed">
+<area shape="rect" id="node1" title="Constructs a new iterator that tags each element of this iterator with the corresponding index,..." alt="" coords="5,5,187,31"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a43378f096e81b660ea0fb80dcdeeb5ff" title="Creates an iterator that uses the given mapFn to map each element from this iterator to elements of t..." alt="" coords="235,5,393,31"/>
+</map>

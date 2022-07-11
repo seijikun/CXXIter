@@ -1,0 +1,4 @@
+<map id="CXXIter::IterValue::optional&lt; TValueStore &gt;" name="CXXIter::IterValue::optional&lt; TValueStore &gt;">
+<area shape="rect" id="node1" title="Cast to std::optional&lt;&gt;." alt="" coords="5,5,196,45"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterValue.html#a17e3771df57409c90a01629ff097fe78" title="Convert this IterValue to a std::optional&lt;&gt; on the owned (no&#45;reference) type." alt="" coords="244,5,381,45"/>
+</map>

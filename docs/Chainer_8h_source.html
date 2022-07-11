@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordtype">bool</span> input1Ended = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">bool</span> input2Ended = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            Chainer(TChainInput1&amp;&amp; input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">constexpr</span> Chainer(TChainInput1&amp;&amp; input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        };</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">using </span>Self = op::Chainer&lt;TChainInput1, TChainInput2&gt;;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>Item = InputItem;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="keywordflow">if</span>(self.input1Ended == <span class="keyword">false</span>) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    <span class="keyword">auto</span> item = ChainInputIterator1::next(self.input1);</div>
@@ -138,12 +138,12 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                }</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            }</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            SizeHint result = ChainInputIterator1::sizeHint(self.input1);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            result.add(ChainInputIterator2::sizeHint(self.input2));</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordtype">size_t</span> skipped = 0;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span>(!self.input1Ended) {</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                skipped += ChainInputIterator1::advanceBy(self.input1, n);</div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">using </span>Self = op::Chainer&lt;TChainInput1, TChainInput2&gt;;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">using </span>Item = InputItem;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">if</span>(self.input2Ended == <span class="keyword">false</span>) {</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    <span class="keyword">auto</span> item = ChainInputIterator2::nextBack(self.input2);</div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('Chainer_8h_source.html',''); initResiz
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    };</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator TChainInput2&gt;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt; {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Chainer&lt;TChainInput1, TChainInput2&gt;&amp; self) {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Chainer&lt;TChainInput1, TChainInput2&gt;&amp; self) {</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordflow">return</span> trait::Iterator&lt;op::Chainer&lt;TChainInput1, TChainInput2&gt;&gt;::sizeHint(self).lowerBound;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    };</div>

@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" target="_top" xlink:title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">
+<g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" target="_top" xlink:title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">
 <polygon fill="none" stroke="black" points="280,-19 161,-19 161,0 280,0 280,-19"/>
 <text text-anchor="middle" x="220.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::next</text>
 </a>

@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('GroupBy_8h_source.html',''); initResiz
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            TGroupIdentifierFn groupIdentFn;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            std::optional&lt;GroupCache&gt; groupCache;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            GroupBy(TChainInput&amp;&amp; input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keyword">constexpr</span> GroupBy(TChainInput&amp;&amp; input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        };</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('GroupBy_8h_source.html',''); initResiz
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">using </span>Self = op::GroupBy&lt;TChainInput, TGroupIdentifierFn, TGroupIdent&gt;;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">using </span>Item = std::pair&lt;const TGroupIdent, std::vector&lt;OwnedInputItem&gt;&gt;;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="comment">// we have to drain the input in order to be able to calculate the groups</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="comment">// so we do that on the first invocation, and then yield from the calculated result.</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">if</span>(!self.groupCache.has_value()) [[unlikely]] {</div>
@@ -147,11 +147,11 @@ $(document).ready(function(){initNavTree('GroupBy_8h_source.html',''); initResiz
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keyword">typename</span> Self::GroupCache&amp; groupedItems = self.groupCache.value();</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">return</span> GroupCacheIterator::next(groupedItems);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            SizeHint input = ChainInputIterator::sizeHint(self.input);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">return</span> SizeHint(1, input.upperBound);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>

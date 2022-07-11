@@ -1,5 +1,0 @@
-<map id="CXXIter::IterApi::last" name="CXXIter::IterApi::last">
-<area shape="rect" id="node1" title="Consumer that yields the last element of this iterator." alt="" coords="5,29,160,55"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#aad1cbb262290264fc2e12d80492ad066" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="208,29,387,55"/>
-<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#a1a805fbdc20f9eb42e8162d5eb0a1b3e" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="435,29,593,55"/>
-</map>

@@ -108,7 +108,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1Generator.html">Generator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> that C++20 coroutines passed to <a class="el" href="classCXXIter_1_1IterApi.html#a859ed47310bc0aade5e6d4378433ac84" title="Creates a new iterator containing the items that the given generator produces for each element in thi...">CXXIter::IterApi::generateFrom()</a> have to return. This generator supports exceptions, co_yield for producing an arbitrary amount of elements, and can take references as results from coroutines - as long as they live long enough until used.  <a href="classCXXIter_1_1Generator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> that C++20 coroutines passed to <a class="el" href="classCXXIter_1_1IterApi.html#a0bc354cd12e167499b95a4e5e42d7e3c" title="Creates a new iterator containing the items that the given generator produces for each element in thi...">CXXIter::IterApi::generateFrom()</a> have to return. This generator supports exceptions, co_yield for producing an arbitrary amount of elements, and can take references as results from coroutines - as long as they live long enough until used.  <a href="classCXXIter_1_1Generator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html">IterApi</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Public Iterator API surface.  <a href="classCXXIter_1_1IterApi.html#details">More...</a><br /></td></tr>
@@ -162,42 +162,42 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a488278efdb3aea93ff9fa7583e3c81a8"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
+<tr class="memitem:a16947bc06c8ede74d5590b7fab2404c8"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</td></tr>
-<tr class="memitem:a488278efdb3aea93ff9fa7583e3c81a8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">from</a> (TContainer &amp;&amp;container)</td></tr>
-<tr class="memdesc:a488278efdb3aea93ff9fa7583e3c81a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container.  <a href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">More...</a><br /></td></tr>
-<tr class="separator:a488278efdb3aea93ff9fa7583e3c81a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac11e5e27bdd461af693ce93facecfa11"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
+<tr class="memitem:a16947bc06c8ede74d5590b7fab2404c8"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">from</a> (TContainer &amp;&amp;container)</td></tr>
+<tr class="memdesc:a16947bc06c8ede74d5590b7fab2404c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container.  <a href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">More...</a><br /></td></tr>
+<tr class="separator:a16947bc06c8ede74d5590b7fab2404c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36db5a17a125f4ced8e95cefb63baf16"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</td></tr>
-<tr class="memitem:ac11e5e27bdd461af693ce93facecfa11"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1SrcRef.html">SrcRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#ac11e5e27bdd461af693ce93facecfa11">from</a> (TContainer &amp;container)</td></tr>
-<tr class="memdesc:ac11e5e27bdd461af693ce93facecfa11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container.  <a href="namespaceCXXIter.html#ac11e5e27bdd461af693ce93facecfa11">More...</a><br /></td></tr>
-<tr class="separator:ac11e5e27bdd461af693ce93facecfa11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ff38b1d29d18580630a804fa187b6a2"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
+<tr class="memitem:a36db5a17a125f4ced8e95cefb63baf16"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classCXXIter_1_1SrcRef.html">SrcRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a36db5a17a125f4ced8e95cefb63baf16">from</a> (TContainer &amp;container)</td></tr>
+<tr class="memdesc:a36db5a17a125f4ced8e95cefb63baf16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container.  <a href="namespaceCXXIter.html#a36db5a17a125f4ced8e95cefb63baf16">More...</a><br /></td></tr>
+<tr class="separator:a36db5a17a125f4ced8e95cefb63baf16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83329cada9fbc2653193766fd4f34aa9"><td class="memTemplParams" colspan="2">template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</td></tr>
-<tr class="memitem:a3ff38b1d29d18580630a804fa187b6a2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCXXIter_1_1SrcCRef.html">SrcCRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a3ff38b1d29d18580630a804fa187b6a2">from</a> (const TContainer &amp;container)</td></tr>
-<tr class="memdesc:a3ff38b1d29d18580630a804fa187b6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container.  <a href="namespaceCXXIter.html#a3ff38b1d29d18580630a804fa187b6a2">More...</a><br /></td></tr>
-<tr class="separator:a3ff38b1d29d18580630a804fa187b6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08757b4c745453b043188dfb2de50b13"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
-<tr class="memitem:a08757b4c745453b043188dfb2de50b13"><td class="memTemplItemLeft" align="right" valign="top">Empty&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13">empty</a> ()</td></tr>
-<tr class="memdesc:a08757b4c745453b043188dfb2de50b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty iterator yielding no items.  <a href="namespaceCXXIter.html#a08757b4c745453b043188dfb2de50b13">More...</a><br /></td></tr>
-<tr class="separator:a08757b4c745453b043188dfb2de50b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aa73163d08911be3623ef7e1a93b43c"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt;&gt; TGeneratorFn&gt; <br />
+<tr class="memitem:a83329cada9fbc2653193766fd4f34aa9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classCXXIter_1_1SrcCRef.html">SrcCRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a83329cada9fbc2653193766fd4f34aa9">from</a> (const TContainer &amp;container)</td></tr>
+<tr class="memdesc:a83329cada9fbc2653193766fd4f34aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container.  <a href="namespaceCXXIter.html#a83329cada9fbc2653193766fd4f34aa9">More...</a><br /></td></tr>
+<tr class="separator:a83329cada9fbc2653193766fd4f34aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6813c9c63b1580e89b28bdf2b6805abc"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
+<tr class="memitem:a6813c9c63b1580e89b28bdf2b6805abc"><td class="memTemplItemLeft" align="right" valign="top">constexpr Empty&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a6813c9c63b1580e89b28bdf2b6805abc">empty</a> ()</td></tr>
+<tr class="memdesc:a6813c9c63b1580e89b28bdf2b6805abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty iterator yielding no items.  <a href="namespaceCXXIter.html#a6813c9c63b1580e89b28bdf2b6805abc">More...</a><br /></td></tr>
+<tr class="separator:a6813c9c63b1580e89b28bdf2b6805abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19b6759a5ff6bfc571d857258b4cb84"><td class="memTemplParams" colspan="2">template&lt;std::invocable&lt;&gt; TGeneratorFn&gt; <br />
 requires util::is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</td></tr>
-<tr class="memitem:a9aa73163d08911be3623ef7e1a93b43c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c">fromFn</a> (TGeneratorFn generatorFn)</td></tr>
-<tr class="memdesc:a9aa73163d08911be3623ef7e1a93b43c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> source that takes a <code>generatorFn</code>, each invocation of which produces one element for the resulting iterator.  <a href="namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c">More...</a><br /></td></tr>
-<tr class="separator:a9aa73163d08911be3623ef7e1a93b43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19b6759a5ff6bfc571d857258b4cb84"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#ac19b6759a5ff6bfc571d857258b4cb84">fromFn</a> (TGeneratorFn generatorFn)</td></tr>
+<tr class="memdesc:ac19b6759a5ff6bfc571d857258b4cb84"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> source that takes a <code>generatorFn</code>, each invocation of which produces one element for the resulting iterator.  <a href="namespaceCXXIter.html#ac19b6759a5ff6bfc571d857258b4cb84">More...</a><br /></td></tr>
+<tr class="separator:ac19b6759a5ff6bfc571d857258b4cb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e7ee4115ed01f2665c01e65b94687c1"><td class="memTemplParams" colspan="2">template&lt;GeneratorFunction TGeneratorFn&gt; </td></tr>
 <tr class="memitem:a3e7ee4115ed01f2665c01e65b94687c1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">generate</a> (TGeneratorFn generatorFn)</td></tr>
 <tr class="memdesc:a3e7ee4115ed01f2665c01e65b94687c1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> source that produces a new iterator over the elements produced by the given <code>generatorFn</code> - which is a c++20 coroutine yielding elements using <code>co_yield</code>.  <a href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">More...</a><br /></td></tr>
 <tr class="separator:a3e7ee4115ed01f2665c01e65b94687c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
-<tr class="memitem:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memTemplItemLeft" align="right" valign="top">Repeater&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">repeat</a> (const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</td></tr>
-<tr class="memdesc:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator, by repeating the given <code>item</code> <code>cnt</code> times.  <a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">More...</a><br /></td></tr>
-<tr class="separator:a8db3d258c4fa18c3a122fd13b916f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplParams" colspan="2">template&lt;typename TValue &gt; </td></tr>
-<tr class="memitem:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memTemplItemLeft" align="right" valign="top">Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">range</a> (TValue <a class="el" href="namespaceCXXIter.html#a488278efdb3aea93ff9fa7583e3c81a8">from</a>, TValue to, TValue step=1)</td></tr>
-<tr class="memdesc:a4b4d837f5716b2f5fd7c3098268c582c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">More...</a><br /></td></tr>
-<tr class="separator:a4b4d837f5716b2f5fd7c3098268c582c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e210a6d394df7fbba6cf0af3c456b47"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
+<tr class="memitem:a4e210a6d394df7fbba6cf0af3c456b47"><td class="memTemplItemLeft" align="right" valign="top">constexpr Repeater&lt; TItem &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a4e210a6d394df7fbba6cf0af3c456b47">repeat</a> (const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</td></tr>
+<tr class="memdesc:a4e210a6d394df7fbba6cf0af3c456b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator, by repeating the given <code>item</code> <code>cnt</code> times.  <a href="namespaceCXXIter.html#a4e210a6d394df7fbba6cf0af3c456b47">More...</a><br /></td></tr>
+<tr class="separator:a4e210a6d394df7fbba6cf0af3c456b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b6b98e81805de0ccce287caa2990210"><td class="memTemplParams" colspan="2">template&lt;typename TValue &gt; </td></tr>
+<tr class="memitem:a1b6b98e81805de0ccce287caa2990210"><td class="memTemplItemLeft" align="right" valign="top">constexpr Range&lt; TValue &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210">range</a> (TValue <a class="el" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">from</a>, TValue to, TValue step=1)</td></tr>
+<tr class="memdesc:a1b6b98e81805de0ccce287caa2990210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements.  <a href="namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210">More...</a><br /></td></tr>
+<tr class="separator:a1b6b98e81805de0ccce287caa2990210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>. </p>
@@ -298,21 +298,29 @@ template&lt;typename TItem , const size_t CHUNK_SIZE&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a08757b4c745453b043188dfb2de50b13" name="a08757b4c745453b043188dfb2de50b13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08757b4c745453b043188dfb2de50b13">&#9670;&nbsp;</a></span>empty()</h2>
+<a id="a6813c9c63b1580e89b28bdf2b6805abc" name="a6813c9c63b1580e89b28bdf2b6805abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6813c9c63b1580e89b28bdf2b6805abc">&#9670;&nbsp;</a></span>empty()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TItem &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Empty&lt; TItem &gt; CXXIter::empty </td>
+          <td class="memname">constexpr Empty&lt; TItem &gt; CXXIter::empty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Constructs an empty iterator yielding no items. </p>
@@ -322,27 +330,35 @@ template&lt;typename TItem &gt; </div>
 <div class="line"><span class="comment">// output == None</span></div>
 <div class="ttc" id="aclassCXXIter_1_1IterValue_html"><div class="ttname"><a href="classCXXIter_1_1IterValue.html">CXXIter::IterValue</a></div><div class="ttdoc">Container that is used to pass elements through CXXIter's iterator pipelines.</div><div class="ttdef"><b>Definition:</b> <a href="IterValue_8h_source.html#l00019">IterValue.h:19</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02174">2174</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02171">2171</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
-<a id="a3ff38b1d29d18580630a804fa187b6a2" name="a3ff38b1d29d18580630a804fa187b6a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ff38b1d29d18580630a804fa187b6a2">&#9670;&nbsp;</a></span>from() <span class="overload">[1/3]</span></h2>
+<a id="a83329cada9fbc2653193766fd4f34aa9" name="a83329cada9fbc2653193766fd4f34aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83329cada9fbc2653193766fd4f34aa9">&#9670;&nbsp;</a></span>from() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCXXIter_1_1SrcCRef.html">SrcCRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
+          <td class="memname">constexpr <a class="el" href="classCXXIter_1_1SrcCRef.html">SrcCRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
           <td>(</td>
           <td class="paramtype">const TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container. </p>
@@ -354,27 +370,35 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_refe
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> const-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02158">2158</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02155">2155</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
-<a id="a488278efdb3aea93ff9fa7583e3c81a8" name="a488278efdb3aea93ff9fa7583e3c81a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a488278efdb3aea93ff9fa7583e3c81a8">&#9670;&nbsp;</a></span>from() <span class="overload">[2/3]</span></h2>
+<a id="a16947bc06c8ede74d5590b7fab2404c8" name="a16947bc06c8ede74d5590b7fab2404c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16947bc06c8ede74d5590b7fab2404c8">&#9670;&nbsp;</a></span>from() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
+          <td class="memname">constexpr <a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
           <td>(</td>
           <td class="paramtype">TContainer &amp;&amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container. </p>
@@ -386,27 +410,35 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_refe
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> move source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02132">2132</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02129">2129</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
-<a id="ac11e5e27bdd461af693ce93facecfa11" name="ac11e5e27bdd461af693ce93facecfa11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac11e5e27bdd461af693ce93facecfa11">&#9670;&nbsp;</a></span>from() <span class="overload">[3/3]</span></h2>
+<a id="a36db5a17a125f4ced8e95cefb63baf16" name="a36db5a17a125f4ced8e95cefb63baf16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36db5a17a125f4ced8e95cefb63baf16">&#9670;&nbsp;</a></span>from() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TContainer &gt; <br />
 requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_reference_v&lt;TContainer&gt; &amp;&amp; SourceContainer&lt;TContainer&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCXXIter_1_1SrcRef.html">SrcRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
+          <td class="memname">constexpr <a class="el" href="classCXXIter_1_1SrcRef.html">SrcRef</a>&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; CXXIter::from </td>
           <td>(</td>
           <td class="paramtype">TContainer &amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container. </p>
@@ -418,27 +450,35 @@ requires (!std::is_reference_v&lt;TContainer&gt; &amp;&amp; !util::is_const_refe
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> mutable-reference source from the given container. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02145">2145</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02142">2142</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
-<a id="a9aa73163d08911be3623ef7e1a93b43c" name="a9aa73163d08911be3623ef7e1a93b43c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aa73163d08911be3623ef7e1a93b43c">&#9670;&nbsp;</a></span>fromFn()</h2>
+<a id="ac19b6759a5ff6bfc571d857258b4cb84" name="ac19b6759a5ff6bfc571d857258b4cb84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac19b6759a5ff6bfc571d857258b4cb84">&#9670;&nbsp;</a></span>fromFn()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;std::invocable&lt;&gt; TGeneratorFn&gt; <br />
 requires util::is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto CXXIter::fromFn </td>
+          <td class="memname">constexpr auto CXXIter::fromFn </td>
           <td>(</td>
           <td class="paramtype">TGeneratorFn&#160;</td>
           <td class="paramname"><em>generatorFn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p><a class="el" href="classCXXIter_1_1Generator.html" title="Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....">Generator</a> source that takes a <code>generatorFn</code>, each invocation of which produces one element for the resulting iterator. </p>
@@ -455,15 +495,15 @@ requires util::is_optional&lt;std::invoke_result_t&lt;TGeneratorFn&gt;&gt;</div>
 <div class="line">   std::function&lt;std::optional&lt;size_t&gt;()&gt; generatorFn = [generatorState]() <span class="keyword">mutable</span> {</div>
 <div class="line">       <span class="keywordflow">return</span> (generatorState++);</div>
 <div class="line">   };</div>
-<div class="line">   std::vector&lt;size_t&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c">CXXIter::fromFn</a>(generatorFn)</div>
+<div class="line">   std::vector&lt;size_t&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#ac19b6759a5ff6bfc571d857258b4cb84">CXXIter::fromFn</a>(generatorFn)</div>
 <div class="line">       .take(100)</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, 3, ..., 99}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a9aa73163d08911be3623ef7e1a93b43c"><div class="ttname"><a href="namespaceCXXIter.html#a9aa73163d08911be3623ef7e1a93b43c">CXXIter::fromFn</a></div><div class="ttdeci">auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02199">CXXIter.h:2199</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_ac19b6759a5ff6bfc571d857258b4cb84"><div class="ttname"><a href="namespaceCXXIter.html#ac19b6759a5ff6bfc571d857258b4cb84">CXXIter::fromFn</a></div><div class="ttdeci">constexpr auto fromFn(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that takes a generatorFn, each invocation of which produces one element for the resu...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02196">CXXIter.h:2196</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02199">2199</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02196">2196</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
@@ -503,24 +543,27 @@ template&lt;GeneratorFunction TGeneratorFn&gt; </div>
 <div class="line">   ).collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0, 1, 2, ..., 1000}</span></div>
 <div class="ttc" id="aclassCXXIter_1_1Generator_html"><div class="ttname"><a href="classCXXIter_1_1Generator.html">CXXIter::Generator</a></div><div class="ttdoc">Generator that C++20 coroutines passed to CXXIter::IterApi::generateFrom() have to return....</div><div class="ttdef"><b>Definition:</b> <a href="Generator_8h_source.html#l00021">Generator.h:21</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html_a3e7ee4115ed01f2665c01e65b94687c1"><div class="ttname"><a href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">CXXIter::generate</a></div><div class="ttdeci">auto generate(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that produces a new iterator over the elements produced by the given generatorFn - w...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02227">CXXIter.h:2227</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a3e7ee4115ed01f2665c01e65b94687c1"><div class="ttname"><a href="namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1">CXXIter::generate</a></div><div class="ttdeci">auto generate(TGeneratorFn generatorFn)</div><div class="ttdoc">Generator source that produces a new iterator over the elements produced by the given generatorFn - w...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02224">CXXIter.h:2224</a></div></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02227">2227</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02224">2224</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>
-<a id="a4b4d837f5716b2f5fd7c3098268c582c" name="a4b4d837f5716b2f5fd7c3098268c582c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b4d837f5716b2f5fd7c3098268c582c">&#9670;&nbsp;</a></span>range()</h2>
+<a id="a1b6b98e81805de0ccce287caa2990210" name="a1b6b98e81805de0ccce287caa2990210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b6b98e81805de0ccce287caa2990210">&#9670;&nbsp;</a></span>range()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TValue &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Range&lt; TValue &gt; CXXIter::range </td>
+          <td class="memname">constexpr Range&lt; TValue &gt; CXXIter::range </td>
           <td>(</td>
           <td class="paramtype">TValue&#160;</td>
           <td class="paramname"><em>from</em>, </td>
@@ -543,6 +586,11 @@ template&lt;typename TValue &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that yields all elements in the range between [<code>from</code>, <code>to</code>] (inclusive both edges), using the given <code>step</code> between elements. </p>
@@ -556,37 +604,40 @@ template&lt;typename TValue &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator returning elements from the requested range [<code>from</code>, <code>to</code>] using the given <code>step</code> width.</dd></dl>
 <p>Usage Example:</p><ul>
-<li>For an integer type: <div class="fragment"><div class="line">std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(1, 7, 2)</div>
+<li>For an integer type: <div class="fragment"><div class="line">std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210">CXXIter::range</a>(1, 7, 2)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 5, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a4b4d837f5716b2f5fd7c3098268c582c"><div class="ttname"><a href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a></div><div class="ttdeci">Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02279">CXXIter.h:2279</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a1b6b98e81805de0ccce287caa2990210"><div class="ttname"><a href="namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210">CXXIter::range</a></div><div class="ttdeci">constexpr Range&lt; TValue &gt; range(TValue from, TValue to, TValue step=1)</div><div class="ttdoc">Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02276">CXXIter.h:2276</a></div></div>
 </div><!-- fragment --></li>
-<li>For a float type <div class="fragment"><div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4b4d837f5716b2f5fd7c3098268c582c">CXXIter::range</a>(0.0f, 1.1f, 0.25f)</div>
+<li>For a float type <div class="fragment"><div class="line">std::vector&lt;float&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210">CXXIter::range</a>(0.0f, 1.1f, 0.25f)</div>
 <div class="line">    .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {0.0f, 0.25f, 0.5f, 0.75f, 1.0f}</span></div>
 </div><!-- fragment --> </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02279">2279</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02276">2276</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceCXXIter_a4b4d837f5716b2f5fd7c3098268c582c_cgraph.svg" width="286" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceCXXIter_a1b6b98e81805de0ccce287caa2990210_cgraph.svg" width="286" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="a8db3d258c4fa18c3a122fd13b916f4e0" name="a8db3d258c4fa18c3a122fd13b916f4e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8db3d258c4fa18c3a122fd13b916f4e0">&#9670;&nbsp;</a></span>repeat()</h2>
+<a id="a4e210a6d394df7fbba6cf0af3c456b47" name="a4e210a6d394df7fbba6cf0af3c456b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e210a6d394df7fbba6cf0af3c456b47">&#9670;&nbsp;</a></span>repeat()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename TItem &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Repeater&lt; TItem &gt; CXXIter::repeat </td>
+          <td class="memname">constexpr Repeater&lt; TItem &gt; CXXIter::repeat </td>
           <td>(</td>
           <td class="paramtype">const TItem &amp;&#160;</td>
           <td class="paramname"><em>item</em>, </td>
@@ -603,6 +654,11 @@ template&lt;typename TItem &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator, by repeating the given <code>item</code> <code>cnt</code> times. </p>
@@ -615,13 +671,13 @@ template&lt;typename TItem &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator that returns the given <code>item</code> <code>cnt</code> times.</dd></dl>
 <p>Usage Example: </p><div class="fragment"><div class="line">   std::vector&lt;int&gt; item = {1, 3, 3, 7};</div>
-<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a>(item, 3)</div>
+<div class="line">   std::vector&lt;int&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a4e210a6d394df7fbba6cf0af3c456b47">CXXIter::repeat</a>(item, 3)</div>
 <div class="line">       .flatMap()</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}</span></div>
-<div class="ttc" id="anamespaceCXXIter_html_a8db3d258c4fa18c3a122fd13b916f4e0"><div class="ttname"><a href="namespaceCXXIter.html#a8db3d258c4fa18c3a122fd13b916f4e0">CXXIter::repeat</a></div><div class="ttdeci">Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02251">CXXIter.h:2251</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a4e210a6d394df7fbba6cf0af3c456b47"><div class="ttname"><a href="namespaceCXXIter.html#a4e210a6d394df7fbba6cf0af3c456b47">CXXIter::repeat</a></div><div class="ttdeci">constexpr Repeater&lt; TItem &gt; repeat(const TItem &amp;item, std::optional&lt; size_t &gt; cnt={})</div><div class="ttdoc">Construct a CXXIter iterator, by repeating the given item cnt times.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02248">CXXIter.h:2248</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02251">2251</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CXXIter_8h_source.html#l02248">2248</a> of file <a class="el" href="CXXIter_8h_source.html">CXXIter.h</a>.</p>
 
 </div>
 </div>

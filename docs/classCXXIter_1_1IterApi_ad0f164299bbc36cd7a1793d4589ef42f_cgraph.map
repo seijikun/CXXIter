@@ -1,0 +1,6 @@
+<map id="CXXIter::IterApi::count" name="CXXIter::IterApi::count">
+<area shape="rect" id="node1" title="Consumer that counts the elements in this iterator." alt="" coords="5,29,172,55"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a7f1ac0dcf28ba4cce1b08cd20936f4bf" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="220,29,375,55"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="423,29,601,55"/>
+<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="649,29,808,55"/>
+</map>

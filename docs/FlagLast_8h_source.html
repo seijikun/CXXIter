@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('FlagLast_8h_source.html',''); initResi
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">bool</span> initialized = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            IterValue&lt;InputItem&gt; nextValue;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            FlagLast(TChainInput&amp;&amp; input) : input(std::move(input)) {}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keyword">constexpr</span> FlagLast(TChainInput&amp;&amp; input) : input(std::move(input)) {}</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        };</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('FlagLast_8h_source.html',''); initResi
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">using </span>Self = op::FlagLast&lt;TChainInput&gt;;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>Item = std::pair&lt;InputItem, bool&gt;;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">if</span>(!self.initialized) [[unlikely]] {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="comment">// initialize by populating nextValue with the first element from the input iterator</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                self.nextValue = ChainInputIterator::next(self.input);</div>
@@ -138,12 +138,12 @@ $(document).ready(function(){initNavTree('FlagLast_8h_source.html',''); initResi
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            item.second = !self.nextValue.has_value();</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> item;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    };</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput&gt;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::FlagLast&lt;TChainInput&gt;&gt; {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::FlagLast&lt;TChainInput&gt;&amp; self) { <span class="keywordflow">return</span> trait::ExactSizeIterator&lt;TChainInput&gt;::size(self.input); }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::FlagLast&lt;TChainInput&gt;&amp; self) { <span class="keywordflow">return</span> trait::ExactSizeIterator&lt;TChainInput&gt;::size(self.input); }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>

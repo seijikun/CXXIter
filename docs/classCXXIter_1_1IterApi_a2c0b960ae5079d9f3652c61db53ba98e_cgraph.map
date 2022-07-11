@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::stepBy" name="CXXIter::IterApi::stepBy">
+<area shape="rect" id="node1" title="Creates an iterator with the requested stepWidth from this iterator." alt="" coords="5,5,180,31"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#af826c21fcc7af8992e4466e9ff68910c" title="Constructs a new iterator that only contains the elements from this iterator, for which the given fil..." alt="" coords="228,5,388,31"/>
+</map>

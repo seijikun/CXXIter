@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('Alternater_8h_source.html',''); initRe
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            std::array&lt;IterValue&lt;typename TChainInput1::Item&gt;, BATCH_SIZE&gt; currentBatch;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordtype">size_t</span> batchElementIdx = BATCH_SIZE;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            Alternater(TChainInput1&amp;&amp; input1, TChainInputs&amp;&amp;... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keyword">constexpr</span> Alternater(TChainInput1&amp;&amp; input1, TChainInputs&amp;&amp;... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        };</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('Alternater_8h_source.html',''); initRe
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>Self = op::Alternater&lt;TChainInput1, TChainInputs...&gt;;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> TChainInput1::Item;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">if</span>(self.batchElementIdx == Self::BATCH_SIZE) [[unlikely]] { <span class="comment">// returned all elements from the batch -&gt; retrieve new batch</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                constexpr_for&lt;0, INPUT_CNT&gt;([&amp;](<span class="keyword">auto</span> idx) {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    self.currentBatch[idx] = std::tuple_element_t&lt;idx, ChainInputIterators&gt;::next( std::get&lt;idx&gt;(self.inputs) );</div>
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('Alternater_8h_source.html',''); initRe
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">return</span> std::move(self.currentBatch[self.batchElementIdx++]);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">size_t</span> lowerBoundMin = std::numeric_limits&lt;size_t&gt;::max();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            std::optional&lt;size_t&gt; upperBoundMin = {};</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordtype">size_t</span> minIdx = 0;</div>
@@ -155,11 +155,11 @@ $(document).ready(function(){initNavTree('Alternater_8h_source.html',''); initRe
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            );</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    };</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator... TChainInputs&gt;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Alternater&lt;TChainInput1, TChainInputs...&gt;&gt; {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Alternater&lt;TChainInput1, TChainInputs...&gt;&amp; self) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Alternater&lt;TChainInput1, TChainInputs...&gt;&amp; self) {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">return</span> trait::Iterator&lt;op::Alternater&lt;TChainInput1, TChainInputs...&gt;&gt;::sizeHint(self).lowerBound;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    };</div>

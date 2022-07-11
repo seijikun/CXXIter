@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::forEach" name="CXXIter::IterApi::forEach">
+<area shape="rect" id="node1" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="5,29,184,55"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="232,29,391,55"/>
+</map>

@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('Filter_8h_source.html',''); initResiza
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            TChainInput input;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            TFilterFn filterFn;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            Filter(TChainInput&amp;&amp; input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keyword">constexpr</span> Filter(TChainInput&amp;&amp; input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        };</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -117,18 +117,18 @@ $(document).ready(function(){initNavTree('Filter_8h_source.html',''); initResiza
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">using </span>Self = op::Filter&lt;TChainInput, TFilterFn&gt;;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> ChainInputIterator::Item;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keywordflow">if</span>(self.filterFn(item.value())) { <span class="keywordflow">return</span> item; }</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            SizeHint input = ChainInputIterator::sizeHint(self.input);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> SizeHint(0, input.upperBound);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">template</span>&lt;CXXIterDoubleEndedIterator TChainInput, <span class="keyword">typename</span> TFilterFn&gt;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">struct </span>trait::DoubleEndedIterator&lt;op::Filter&lt;TChainInput, TFilterFn&gt;&gt; {</div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('Filter_8h_source.html',''); initResiza
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">using </span>Self = op::Filter&lt;TChainInput, TFilterFn&gt;;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> ChainInputIterator::Item;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keyword">auto</span> item = ChainInputIterator::nextBack(self.input);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>

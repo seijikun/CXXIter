@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('Reverse_8h_source.html',''); initResiz
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            std::conditional_t&lt;USE_CACHE, std::optional&lt;ReverseCache&gt;, NoReverseCache&gt; reverseCache;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            Reverse(TChainInput&amp;&amp; input) : input(std::move(input)) {}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keyword">constexpr</span> Reverse(TChainInput&amp;&amp; input) : input(std::move(input)) {}</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        };</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('Reverse_8h_source.html',''); initResiz
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            self.reverseCache = <span class="keyword">typename</span> Self::ReverseCache(std::move(reverseCache));</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(Self::USE_CACHE) {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <span class="keywordflow">if</span>(!self.reverseCache.has_value()) [[unlikely]] { initReverseCache(self); }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">return</span> trait::DoubleEndedIterator&lt;typename Self::ReverseCache&gt;::nextBack(self.reverseCache.value());</div>
@@ -154,8 +154,8 @@ $(document).ready(function(){initNavTree('Reverse_8h_source.html',''); initResiz
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="keywordflow">return</span> trait::DoubleEndedIterator&lt;TChainInput&gt;::nextBack(self.input);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            }</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPullBack(self, n); }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPullBack(self, n); }</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    };</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">template</span>&lt;CXXIterDoubleEndedIterator TChainInput&gt;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">struct </span>trait::DoubleEndedIterator&lt;op::Reverse&lt;TChainInput&gt;&gt; {</div>
@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('Reverse_8h_source.html',''); initResiz
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">using </span>Self = op::Reverse&lt;TChainInput&gt;;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">using </span>Item = InputItem;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(Self::USE_CACHE) {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">if</span>(!self.reverseCache.has_value()) [[unlikely]] { initReverseCache(self); }</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <span class="keywordflow">return</span> trait::Iterator&lt;typename Self::ReverseCache&gt;::next(self.reverseCache.value());</div>
@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('Reverse_8h_source.html',''); initResiz
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    };</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput&gt;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Reverse&lt;TChainInput&gt;&gt; {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Reverse&lt;TChainInput&gt;&amp; self) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Reverse&lt;TChainInput&gt;&amp; self) {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> trait::ExactSizeIterator&lt;TChainInput&gt;::size(self.input);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    };</div>

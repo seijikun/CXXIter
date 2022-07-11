@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('GenerateFrom_8h_source.html',''); init
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            TGeneratorFn generatorFn;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            std::optional&lt;TGenerator&gt; currentGenerator;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            GenerateFrom(TChainInput&amp;&amp; input, TGeneratorFn&amp; generatorFn) : input(std::move(input)), generatorFn(generatorFn) {}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keyword">constexpr</span> GenerateFrom(TChainInput&amp;&amp; input, TGeneratorFn&amp; generatorFn) : input(std::move(input)), generatorFn(generatorFn) {}</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        };</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('GenerateFrom_8h_source.html',''); init
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">using </span>Self = op::GenerateFrom&lt;TChainInput, TGeneratorFn, TGenerator&gt;;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">using </span>Item = <span class="keyword">typename</span> TGenerator::value_type;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">if</span>(!self.currentGenerator.has_value()) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
@@ -141,8 +141,8 @@ $(document).ready(function(){initNavTree('GenerateFrom_8h_source.html',''); init
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="keywordflow">return</span> item;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>

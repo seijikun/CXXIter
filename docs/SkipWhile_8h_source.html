@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('SkipWhile_8h_source.html',''); initRes
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            TSkipPredicate skipPredicate;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordtype">bool</span> skipEnded = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            SkipWhile(TChainInput&amp;&amp; input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keyword">constexpr</span> SkipWhile(TChainInput&amp;&amp; input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        };</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('SkipWhile_8h_source.html',''); initRes
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">using </span>Self = op::SkipWhile&lt;TChainInput, TSkipPredicate&gt;;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">using </span>Item = InputItem;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                <span class="keywordflow">if</span>(!item.has_value()) [[unlikely]] { <span class="keywordflow">return</span> {}; }</div>
@@ -130,11 +130,11 @@ $(document).ready(function(){initNavTree('SkipWhile_8h_source.html',''); initRes
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                }</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            }</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            SizeHint input = ChainInputIterator::sizeHint(self.input);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">return</span> SizeHint(0, input.upperBound);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    };</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>

@@ -1,0 +1,8 @@
+<map id="CXXIter::IterApi::minIdx" name="CXXIter::IterApi::minIdx">
+<area shape="rect" id="node1" title="Consumer that yields the index of the smallest element within this iterator." alt="" coords="5,85,180,111"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a80fed2b11d55f597ddd51f6f6e302235" title="Consumer that yields the index of the smallest element from this iterator. Comparison of items is don..." alt="" coords="228,85,420,111"/>
+<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="468,5,647,31"/>
+<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="695,31,853,56"/>
+<area shape="rect" id="node5" href="$classCXXIter_1_1IterValue.html#a1328a0235310a7b0610f2ca7f0f08d4d" title="Get whether this optional IteratorValue contains a value." alt="" coords="489,106,626,146"/>
+<area shape="rect" id="node6" href="$classCXXIter_1_1IterValue.html#ae90e2e32a4cf74ed8cc186086abbab82" title="Get the contained value (if any)." alt="" coords="489,170,626,210"/>
+</map>

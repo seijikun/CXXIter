@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['cast_0',['cast',['../classCXXIter_1_1IterApi.html#a4d7e8944accd23e1175e685d34010306',1,'CXXIter::IterApi']]],
-  ['chain_1',['chain',['../classCXXIter_1_1IterApi.html#a1ff8681de8cdfaff25d2d5b04226c983',1,'CXXIter::IterApi']]],
-  ['chunked_2',['chunked',['../classCXXIter_1_1IterApi.html#ad4a7ab60181e939f57eb56373c5a2bbe',1,'CXXIter::IterApi']]],
-  ['chunkedexact_3',['chunkedExact',['../classCXXIter_1_1IterApi.html#aa100f6d93caf6b3537535df3a4a81e32',1,'CXXIter::IterApi']]],
-  ['collect_4',['collect',['../classCXXIter_1_1IterApi.html#a294c5e7bc59f4e4c5d7e40b96dff3a89',1,'CXXIter::IterApi::collect()'],['../classCXXIter_1_1IterApi.html#af624739bd9e8e235500273f5a9465544',1,'CXXIter::IterApi::collect()']]],
-  ['collectinto_5',['collectInto',['../classCXXIter_1_1IterApi.html#ab9f60e619bcb3f2f5728605e5738854c',1,'CXXIter::IterApi']]],
-  ['copied_6',['copied',['../classCXXIter_1_1IterApi.html#a116afb3640cb245742403c86fded359f',1,'CXXIter::IterApi']]],
-  ['count_7',['count',['../classCXXIter_1_1IterApi.html#a418901ce726860a7a91bffbc210c1815',1,'CXXIter::IterApi::count()'],['../classCXXIter_1_1IterApi.html#abfd58d36cbf83360cd7a6959971e2ef6',1,'CXXIter::IterApi::count(TPredicateFn predicateFn)'],['../classCXXIter_1_1IterApi.html#afc37b3e2bc9c3417d29ff713e27111e1',1,'CXXIter::IterApi::count(const ItemOwned &amp;countItem)']]]
+  ['cast_0',['cast',['../classCXXIter_1_1IterApi.html#a369d1fc651019755b6818d7424f9213d',1,'CXXIter::IterApi']]],
+  ['chain_1',['chain',['../classCXXIter_1_1IterApi.html#ae2fafd3b3bfa6a8afde529871c9ef2c9',1,'CXXIter::IterApi']]],
+  ['chunked_2',['chunked',['../classCXXIter_1_1IterApi.html#a9b1ab30441863c58e4cc43baf1cc7c0c',1,'CXXIter::IterApi']]],
+  ['chunkedexact_3',['chunkedExact',['../classCXXIter_1_1IterApi.html#a1ed3a6a0c06aa6c5f3603b905128dc10',1,'CXXIter::IterApi']]],
+  ['collect_4',['collect',['../classCXXIter_1_1IterApi.html#a0420b1199895b59678d5d38ec75e9b34',1,'CXXIter::IterApi::collect()'],['../classCXXIter_1_1IterApi.html#acbfb7469c7cb5940a0318bced013e3cb',1,'CXXIter::IterApi::collect()']]],
+  ['collectinto_5',['collectInto',['../classCXXIter_1_1IterApi.html#a04aad46c9bc5467092b5c9cfd547b7d0',1,'CXXIter::IterApi']]],
+  ['copied_6',['copied',['../classCXXIter_1_1IterApi.html#a9700ae231ce535a8e67ddc388df59a04',1,'CXXIter::IterApi']]],
+  ['count_7',['count',['../classCXXIter_1_1IterApi.html#ad0f164299bbc36cd7a1793d4589ef42f',1,'CXXIter::IterApi::count()'],['../classCXXIter_1_1IterApi.html#a7679861c75b8c6f3dc52b33a352b31d9',1,'CXXIter::IterApi::count(TPredicateFn predicateFn)'],['../classCXXIter_1_1IterApi.html#a9da9a1b04d5e1b2f47fbf13b71daa65a',1,'CXXIter::IterApi::count(const ItemOwned &amp;countItem)']]]
 ];

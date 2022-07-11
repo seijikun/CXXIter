@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('Zipper_8h_source.html',''); initResiza
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keyword">struct </span>source_ended_exception {};</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            std::tuple&lt;TChainInput1, TChainInputs...&gt; inputs;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            Zipper(TChainInput1&amp;&amp; input1, TChainInputs&amp;&amp;... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">constexpr</span> Zipper(TChainInput1&amp;&amp; input1, TChainInputs&amp;&amp;... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        };</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('Zipper_8h_source.html',''); initResiza
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">using </span>Self = op::Zipper&lt;TChainInput1, TZipContainer, TChainInputs...&gt;;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">using </span>Item = TZipContainer&lt;<span class="keyword">typename</span> TChainInput1::Item, <span class="keyword">typename</span> TChainInputs::Item...&gt;;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keyword">auto</span> getElementFromChainInput = [&amp;]&lt;<span class="keywordtype">size_t</span> IDX&gt;(std::integral_constant&lt;size_t, IDX&gt;) -&gt; std::tuple_element_t&lt;IDX, Item&gt; {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="keyword">auto</span> input = std::tuple_element_t&lt;IDX, ChainInputIterators&gt;::next( std::get&lt;IDX&gt;(self.inputs) );</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="keywordflow">if</span>(!input.has_value()) [[unlikely]] {</div>
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('Zipper_8h_source.html',''); initResiza
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="keywordflow">return</span> {};</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordtype">size_t</span> lowerBoundMin = std::numeric_limits&lt;size_t&gt;::max();</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            std::optional&lt;size_t&gt; upperBoundMin = {};</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            constexpr_for&lt;0, INPUT_CNT&gt;([&amp;](<span class="keyword">auto</span> idx) {</div>
@@ -150,11 +150,11 @@ $(document).ready(function(){initNavTree('Zipper_8h_source.html',''); initResiza
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            });</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> SizeHint(lowerBoundMin, upperBoundMin);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    };</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput1, <span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> TZipContainer, CXXIterExactSizeIterator... TChainInputs&gt;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Zipper&lt;TChainInput1, TZipContainer, TChainInputs...&gt;&gt; {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Zipper&lt;TChainInput1, TZipContainer, TChainInputs...&gt;&amp; self) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Zipper&lt;TChainInput1, TZipContainer, TChainInputs...&gt;&amp; self) {</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">return</span> trait::Iterator&lt;op::Zipper&lt;TChainInput1, TZipContainer, TChainInputs...&gt;&gt;::sizeHint(self).lowerBound;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    };</div>

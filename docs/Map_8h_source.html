@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('Map_8h_source.html',''); initResizable
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            TChainInput input;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            TMapFn mapFn;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            Map(TChainInput&amp;&amp; input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keyword">constexpr</span> Map(TChainInput&amp;&amp; input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        };</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// ------------------------------------------------------------------------------------------------</span></div>
@@ -119,12 +119,12 @@ $(document).ready(function(){initNavTree('Map_8h_source.html',''); initResizable
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">using </span>Self = op::Map&lt;TChainInput, TMapFn, TItem&gt;;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">using </span>Item = TItem;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; next(Self&amp; self) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keyword">auto</span> item = ChainInputIterator::next(self.input);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">return</span> item.template map&lt;Item, TMapFn&amp;&gt;(self.mapFn);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> SizeHint sizeHint(<span class="keyword">const</span> Self&amp; self) { <span class="keywordflow">return</span> ChainInputIterator::sizeHint(self.input); }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> advanceBy(Self&amp; self, <span class="keywordtype">size_t</span> n) { <span class="keywordflow">return</span> util::advanceByPull(self, n); }</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    };</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">template</span>&lt;CXXIterDoubleEndedIterator TChainInput, <span class="keyword">typename</span> TMapFn, <span class="keyword">typename</span> TItem&gt;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">struct </span>trait::DoubleEndedIterator&lt;op::Map&lt;TChainInput, TMapFn, TItem&gt;&gt; {</div>
@@ -134,14 +134,14 @@ $(document).ready(function(){initNavTree('Map_8h_source.html',''); initResizable
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keyword">using </span>Self = op::Map&lt;TChainInput, TMapFn, TItem&gt;;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">using </span>Item = TItem;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">static</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> IterValue&lt;Item&gt; nextBack(Self&amp; self) {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">auto</span> item = ChainInputIterator::nextBack(self.input);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> item.template map&lt;Item, TMapFn&amp;&gt;(self.mapFn);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    };</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">template</span>&lt;CXXIterExactSizeIterator TChainInput, <span class="keyword">typename</span> TMapFn, <span class="keyword">typename</span> TItem&gt;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">struct </span>trait::ExactSizeIterator&lt;op::Map&lt;TChainInput, TMapFn, TItem&gt;&gt; {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Map&lt;TChainInput, TMapFn, TItem&gt;&amp; self) { <span class="keywordflow">return</span> trait::ExactSizeIterator&lt;TChainInput&gt;::size(self.input); }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> size(<span class="keyword">const</span> op::Map&lt;TChainInput, TMapFn, TItem&gt;&amp; self) { <span class="keywordflow">return</span> trait::ExactSizeIterator&lt;TChainInput&gt;::size(self.input); }</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    };</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>

@@ -1,0 +1,4 @@
+<map id="CXXIter::IterApi::collect" name="CXXIter::IterApi::collect">
+<area shape="rect" id="node1" title="Consumer that collects all elements from this iterator in a new container of type TTargetContainer." alt="" coords="5,29,179,55"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a04aad46c9bc5467092b5c9cfd547b7d0" title="Consumer that collects all elements from this iterator into the given container." alt="" coords="227,29,425,55"/>
+</map>
