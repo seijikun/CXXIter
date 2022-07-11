@@ -80,7 +80,13 @@ namespace CXXIter {
 		 * @brief Get whether this optional IteratorValue contains a value.
 		 * @return @c true when this IterValue contains a value, @c false otherwise.
 		 */
-		bool has_value() const noexcept { return this->inner.has_value(); }
+		bool has_value() const noexcept { return inner.has_value(); }
+
+		/**
+		 * @brief Swap the values within this and another IterValue container.
+		 * @param o Other IterValue container to swap contents with.
+		 */
+		void swap(IterValue<TValue>& o) noexcept { inner.swap(o.inner); }
 
 		/**
 		 * @brief Convert this IterValue to a @c std::optional<> on the owned (no-reference) type.

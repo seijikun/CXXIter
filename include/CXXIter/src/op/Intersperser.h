@@ -48,7 +48,8 @@ namespace CXXIter {
 
 			if(self.intersperserState == Self::IntersperserState::Item) {
 				self.intersperserState = Self::IntersperserState::Separator;
-				auto item = std::move(self.nextItem);
+				IterValue<Item> item;
+				item.swap(self.nextItem);
 				self.nextItem = ChainInputIterator::next(self.input);
 				return item;
 			} else {
