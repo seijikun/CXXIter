@@ -4,32 +4,18 @@ on: [push, pull_request]
 
 jobs:
   build_and_test:
-    name: ${{ matrix.config.name }}
+    name: "${{ matrix.config.type }} - ${{ matrix.config.version }} (${{ matrix.config.buildType }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         config:
-        - {
-            name: "GCC (Release)",
-            cc: "gcc", cxx: "g++",
-            buildType: "Release"
-          }
-        - {
-            name: "GCC (Debug)",
-            cc: "gcc", cxx: "g++",
-            buildType: "Debug"
-          }
-        - {
-            name: "CLANG (Release)",
-            cc: "clang", cxx: "clang++",
-            buildType: "Release"
-          }
-        - {
-            name: "CLANG (Debug)",
-            cc: "clang", cxx: "clang++",
-            buildType: "Debug"
-          }
+        - { type: "gcc", cc: "gcc", cxx: "g++", buildType: "Release", version: 11, platform: x64 }
+        - { type: "gcc", cc: "gcc", cxx: "g++", buildType: "Debug", version: 11, platform: x64 }
+        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Release", version: 13, platform: x64 }
+        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Debug", version: 13, platform: x64 }
+        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Release", version: 14, platform: x64 }
+        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Debug", version: 14, platform: x64 }
 
     steps:
     - uses: actions/checkout@v2
@@ -38,14 +24,16 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -yq libgtest-dev libgmock-dev libbenchmark-dev cmake ninja-build
     - name: Setup GCC
       uses: egor-tensin/setup-gcc@v1
+      if: matrix.config.type == 'gcc'
       with:
-        version: 11
-        platform: x64
+        version: ${{ matrix.config.version }}
+        platform: ${{ matrix.config.platform }}
     - name: Setup CLANG
       uses: egor-tensin/setup-clang@v1
+      if: matrix.config.type == 'clang'
       with:
-        version: 13
-        platform: x64
+        version: ${{ matrix.config.version }}
+        platform: ${{ matrix.config.platform }}
       
     - name: Configure
       run: |
