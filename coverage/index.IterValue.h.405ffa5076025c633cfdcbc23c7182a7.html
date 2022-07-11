@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-07-11 11:31:13</td>
+      <td>2022-07-11 13:45:40</td>
     </tr>
   </table>
 </div>
@@ -1423,7 +1423,7 @@
         <a href="#l33">33</a>
       </td>
       <td>
-        <a href="#l33"> called 80 times</a>
+        <a href="#l33"> called 54 times</a>
       </td>
     </tr>
     <tr>
@@ -1511,7 +1511,7 @@
         <a href="#l33">33</a>
       </td>
       <td>
-        <a href="#l33"> called 54 times</a>
+        <a href="#l33"> called 43 times</a>
       </td>
     </tr>
     <tr>
@@ -1599,7 +1599,7 @@
         <a href="#l33">33</a>
       </td>
       <td>
-        <a href="#l33"> called 54 times</a>
+        <a href="#l33"> called 51 times</a>
       </td>
     </tr>
     <tr>
@@ -2985,7 +2985,7 @@
         <a href="#l39">39</a>
       </td>
       <td>
-        <a href="#l39"> called 173 times</a>
+        <a href="#l39"> called 171 times</a>
       </td>
     </tr>
     <tr>
@@ -3285,8 +3285,8 @@
       <td class="lineno"><a id="l33" href="#l33">33</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1132</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{}</span></td>
+      <td class="linecount coveredLine">1052</td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3302,7 +3302,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">1974</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="n">TValue</span> <span class="n">value</span><span class="p">)</span> <span class="n">noexcept</span> <span class="n">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="p">(</span><span class="n">TValue</span> <span class="n">value</span><span class="p">)</span> <span class="n">noexcept</span> <span class="n">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3318,7 +3318,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">250</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="n">noexcept</span> <span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="p">(</span><span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="n">noexcept</span> <span class="n">requires</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_reference_v</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3333,8 +3333,8 @@
       <td class="lineno"><a id="l39" href="#l39">39</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">1460</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="nl">noexcept</span> <span class="p">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">TValueDeref</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="p">{}</span></td>
+      <td class="linecount coveredLine">1456</td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="nl">noexcept</span> <span class="p">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">TValueDeref</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="p">{}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3358,7 +3358,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">11</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3374,7 +3374,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">732</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">))</span> <span class="p">{</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="nf">IterValue</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="o">:</span> <span class="n">inner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">))</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3414,7 +3414,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">auto</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3494,7 +3494,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">inline</span> <span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="p">}</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kr">inline</span> <span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3542,7 +3542,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">3922</td>
-      <td class="src coveredLine">		<span class="kr">inline</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="p">}</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="kr">inline</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3590,7 +3590,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">inline</span> <span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value_or</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">def</span><span class="p">)</span> <span class="k">const</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">def</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kr">inline</span> <span class="k">const</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value_or</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">def</span><span class="p">)</span> <span class="k">const</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">def</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3638,7 +3638,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">inline</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value_or</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">def</span><span class="p">)</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">def</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="kr">inline</span> <span class="n">TValueDeref</span><span class="o">&amp;</span> <span class="n">value_or</span><span class="p">(</span><span class="n">TValueDeref</span><span class="o">&amp;&amp;</span> <span class="n">def</span><span class="p">)</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">value_or</span><span class="p">(</span><span class="n">def</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3686,7 +3686,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">5156</td>
-      <td class="src coveredLine">		<span class="kt">bool</span> <span class="n">has_value</span><span class="p">()</span> <span class="k">const</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">has_value</span><span class="p">();</span> <span class="p">}</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="kt">bool</span> <span class="n">has_value</span><span class="p">()</span> <span class="k">const</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inner</span><span class="p">.</span><span class="n">has_value</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3734,7 +3734,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">28</td>
-      <td class="src coveredLine">		<span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="n">inner</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TValue</span><span class="o">&gt;&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="n">inner</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">inner</span><span class="p">);</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3790,7 +3790,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">34</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TValueStore</span><span class="o">&gt;</span> <span class="n">toStdOptional</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TValueStore</span><span class="o">&gt;</span> <span class="n">toStdOptional</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3838,7 +3838,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">operator</span> <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TValueStore</span><span class="o">&gt;</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">toStdOptional</span><span class="p">();</span> <span class="p">}</span></td>
+      <td class="src ">		<span class="n">constexpr</span> <span class="n">operator</span> <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TValueStore</span><span class="o">&gt;</span><span class="p">()</span> <span class="n">noexcept</span> <span class="p">{</span> <span class="k">return</span> <span class="n">toStdOptional</span><span class="p">();</span> <span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -3918,7 +3918,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">108</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TOutValue</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">TMapFn</span> <span class="n">mapFn</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TOutValue</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">TMapFn</span> <span class="n">mapFn</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -4036,7 +4036,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">435</td>
-      <td class="src coveredLine">		<span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TOutValue</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">TMapFn</span> <span class="n">mapFn</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src coveredLine">		<span class="n">constexpr</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">TOutValue</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">TMapFn</span> <span class="n">mapFn</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">

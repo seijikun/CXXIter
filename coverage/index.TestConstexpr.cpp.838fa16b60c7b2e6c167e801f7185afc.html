@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <th scope="row">File:</th>
-      <td>include/CXXIter/src/util/SaturatingArithmetic.h</td>
+      <td>tests/TestConstexpr.cpp</td>
     </tr>
     <tr>
       <th scope="row">Date:</th>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>3</td>
-      <td>3</td>
+      <td>2</td>
+      <td>2</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -75,35 +75,24 @@
     </tr>
     <tr>
       <td>
-        <a href="#l12">CXXIter::util::SaturatingArithmetic&lt;unsigned long&gt;::SaturatingArithmetic(unsigned long)</a>
+        <a href="#l18">CXXIter_constexprCorrectness_Test::CXXIter_constexprCorrectness_Test()</a>
       </td>
       <td>
-        <a href="#l12">12</a>
+        <a href="#l18">18</a>
       </td>
       <td>
-        <a href="#l12"> called 72 times</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="#l13">CXXIter::util::SaturatingArithmetic&lt;unsigned long&gt;::get() const</a>
-      </td>
-      <td>
-        <a href="#l13">13</a>
-      </td>
-      <td>
-        <a href="#l13"> called 24 times</a>
+        <a href="#l18"> called 1 time</a>
       </td>
     </tr>
     <tr>
       <td>
-        <a href="#l15">CXXIter::util::SaturatingArithmetic&lt;unsigned long&gt;::operator+(unsigned long)</a>
+        <a href="#l18">CXXIter_constexprCorrectness_Test::TestBody()</a>
       </td>
       <td>
-        <a href="#l15">15</a>
+        <a href="#l18">18</a>
       </td>
       <td>
-        <a href="#l15"> called 48 times</a>
+        <a href="#l18"> called 1 time</a>
       </td>
     </tr>
   </table>
@@ -126,7 +115,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#pragma once</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -134,7 +123,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -142,7 +131,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cm">/** @private */</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -150,7 +139,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">namespace</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">util</span> <span class="p">{</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -158,7 +147,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;optional&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -166,7 +155,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">//TODO: unit-tests</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -174,7 +163,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -182,7 +171,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -190,7 +179,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;deque&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -198,7 +187,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">SaturatingArithmetic</span> <span class="p">{</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;unordered_set&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -206,23 +195,23 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">T</span> <span class="n">value</span><span class="p">;</span></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l12" href="#l12">12</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">72</td>
-      <td class="src coveredLine">		<span class="n">SaturatingArithmetic</span><span class="p">(</span><span class="n">T</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span> <span class="n">value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="linecount "></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l13" href="#l13">13</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">24</td>
-      <td class="src coveredLine">		<span class="n">T</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">#include</span> <span class="cpf">&quot;TestCommon.h&quot;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -237,32 +226,32 @@
       <td class="lineno"><a id="l15" href="#l15">15</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">		<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">+</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="c1">// ################################################################################################</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l16" href="#l16">16</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">			<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="c1">// CONSTEXPR</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l17" href="#l17">17</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">			<span class="n">res</span> <span class="o">|=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">);</span></td>
+      <td class="linecount "></td>
+      <td class="src "><span class="c1">// ################################################################################################</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l18" href="#l18">18</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">48</td>
-      <td class="src coveredLine">			<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
+      <td class="linecount coveredLine">4</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">constexprCorrectness</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -270,15 +259,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src ">	<span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l20" href="#l20">20</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">-</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="k">constexpr</span> <span class="kt">size_t</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">size</span><span class="p">();</span></td>
     </tr>
 
     <tr class="source-line">
@@ -286,7 +275,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="src ">		<span class="k">static_assert</span><span class="p">(</span><span class="n">output</span> <span class="o">==</span> <span class="mi">6</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -294,7 +283,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">res</span> <span class="o">&amp;=</span> <span class="o">-</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">);</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -302,15 +291,15 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">return</span> <span class="n">res</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l24" href="#l24">24</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="k">constexpr</span> <span class="kt">size_t</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="n">sum</span><span class="p">();</span></td>
     </tr>
 
     <tr class="source-line">
@@ -318,7 +307,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">SaturatingArithmetic</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">operator</span><span class="o">/</span><span class="p">(</span><span class="n">T</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="k">static_assert</span><span class="p">(</span><span class="n">output</span> <span class="o">==</span> <span class="mi">15</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
@@ -326,7 +315,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="n">o</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -334,23 +323,23 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src ">	<span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l28" href="#l28">28</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="k">constexpr</span> <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="mi">42</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">1337</span><span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l29" href="#l29">29</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine">		<span class="k">constexpr</span> <span class="kt">size_t</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">mean</span><span class="p">().</span><span class="n">value</span><span class="p">();</span></td>
     </tr>
 
     <tr class="source-line">
@@ -358,11 +347,27 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src ">		<span class="k">static_assert</span><span class="p">(</span><span class="n">output</span> <span class="o">==</span> <span class="mi">381</span><span class="p">);</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l31" href="#l31">31</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l32" href="#l32">32</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">2</td>
+      <td class="src coveredLine"><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l33" href="#l33">33</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
