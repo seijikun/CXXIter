@@ -18,15 +18,15 @@ namespace CXXIter {
 		size_t lowerBound;
 		std::optional<size_t> upperBound;
 
-		size_t expectedResultSize(size_t min = 0) const { return std::min(min, upperBound.value_or(lowerBound)); }
+		constexpr size_t expectedResultSize(size_t min = 0) const { return std::min(min, upperBound.value_or(lowerBound)); }
 
-		SizeHint(size_t lowerBound = 0, std::optional<size_t> upperBound = {}) : lowerBound(lowerBound), upperBound(upperBound) {}
+		constexpr SizeHint(size_t lowerBound = 0, std::optional<size_t> upperBound = {}) : lowerBound(lowerBound), upperBound(upperBound) {}
 
-		static std::optional<size_t> upperBoundMax(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
+		static constexpr std::optional<size_t> upperBoundMax(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
 			if(!upperBound1.has_value() || !upperBound2.has_value()) { return {}; } // no upperbound is like Infinity -> higher
 			return std::max(upperBound1.value(), upperBound2.value());
 		}
-		static std::optional<size_t> upperBoundMin(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
+		static constexpr std::optional<size_t> upperBoundMin(std::optional<size_t> upperBound1, std::optional<size_t> upperBound2) {
 			if(!upperBound1.has_value()) { return upperBound2; }
 			if(!upperBound2.has_value()) { return upperBound1; }
 			return std::min(upperBound1.value(), upperBound2.value());

@@ -18,7 +18,8 @@ namespace CXXIter {
 	requires util::BackInsertableContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
-		static void collectInto(TChainInput& input, TContainer& container) {
+
+		static constexpr void collectInto(TChainInput& input, TContainer& container) {
 			if constexpr(util::ReservableContainer<TContainer>) {
 				container.reserve( container.size() + input.sizeHint().expectedResultSize() );
 			}
@@ -31,7 +32,8 @@ namespace CXXIter {
 		&& util::InsertableContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
-		static void collectInto(TChainInput& input, TContainer& container) {
+
+		static constexpr void collectInto(TChainInput& input, TContainer& container) {
 			if constexpr(util::ReservableContainer<TContainer>) {
 				container.reserve( container.size() + input.sizeHint().expectedResultSize() );
 			}
@@ -43,7 +45,8 @@ namespace CXXIter {
 	requires util::StdArrayContainer<TContainer, typename TChainInput::ItemOwned>
 	struct IntoCollector<TChainInput, TContainer> {
 		using Item = typename TChainInput::Item;
-		static void collectInto(TChainInput& input, TContainer& container) {
+
+		static constexpr void collectInto(TChainInput& input, TContainer& container) {
 			size_t idx = 0;
 			input
 				.take(container.max_size())
@@ -64,7 +67,7 @@ namespace CXXIter {
 		|| util::InsertableContainerTemplate<TContainer, typename TChainInput::ItemOwned, TContainerArgs...>
 	struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		template<typename Item, typename ItemOwned>
-		static TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
+		static constexpr TContainer<ItemOwned, TContainerArgs...> collect(TChainInput& input) {
 			TContainer<ItemOwned, TContainerArgs...> container;
 			IntoCollector<TChainInput, decltype(container)>::collectInto(input, container);
 			return container;
@@ -77,7 +80,7 @@ namespace CXXIter {
 		&& util::AssocContainerTemplate<TContainer, std::tuple_element_t<0, typename TChainInput::ItemOwned>, std::tuple_element_t<1, typename TChainInput::ItemOwned>, TContainerArgs...>
 	struct Collector<TChainInput, TContainer, TContainerArgs...> {
 		template<typename Item, typename ItemOwned>
-		static auto collect(TChainInput& input) {
+		static constexpr auto collect(TChainInput& input) {
 			using TKey = std::remove_const_t<std::tuple_element_t<0, typename TChainInput::ItemOwned>>;
 			using TValue = std::tuple_element_t<1, typename TChainInput::ItemOwned>;
 			TContainer<TKey, TValue, TContainerArgs...> container;

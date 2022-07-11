@@ -24,7 +24,7 @@ namespace CXXIter {
 			bool initialized = false;
 			IterValue<InputItem> nextValue;
 		public:
-			FlagLast(TChainInput&& input) : input(std::move(input)) {}
+			constexpr FlagLast(TChainInput&& input) : input(std::move(input)) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace CXXIter {
 		using Self = op::FlagLast<TChainInput>;
 		using Item = std::pair<InputItem, bool>;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!self.initialized) [[unlikely]] {
 				// initialize by populating nextValue with the first element from the input iterator
 				self.nextValue = ChainInputIterator::next(self.input);
@@ -53,13 +53,13 @@ namespace CXXIter {
 			item.second = !self.nextValue.has_value();
 			return item;
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>
 	struct trait::ExactSizeIterator<op::FlagLast<TChainInput>> {
-		static inline size_t size(const op::FlagLast<TChainInput>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
+		static constexpr inline size_t size(const op::FlagLast<TChainInput>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
 	};
 
 }

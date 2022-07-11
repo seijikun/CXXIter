@@ -21,7 +21,7 @@ namespace CXXIter {
 			TSkipPredicate skipPredicate;
 			bool skipEnded = false;
 		public:
-			SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}
+			constexpr SkipWhile(TChainInput&& input, TSkipPredicate skipPredicate) : input(std::move(input)), skipPredicate(skipPredicate) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ namespace CXXIter {
 		using Self = op::SkipWhile<TChainInput, TSkipPredicate>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; }
@@ -45,11 +45,11 @@ namespace CXXIter {
 				}
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

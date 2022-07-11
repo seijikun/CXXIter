@@ -24,7 +24,7 @@ namespace CXXIter {
 			TChainInput input;
 			TModifierFn modifierFn;
 		public:
-			InplaceModifier(TChainInput&& input, TModifierFn modifierFn) : input(std::move(input)), modifierFn(modifierFn) {}
+			constexpr InplaceModifier(TChainInput&& input, TModifierFn modifierFn) : input(std::move(input)), modifierFn(modifierFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -36,14 +36,14 @@ namespace CXXIter {
 		using Self = op::InplaceModifier<TChainInput, TModifierFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			auto item = ChainInputIterator::next(self.input);
 			if(!item.has_value()) [[unlikely]] { return {}; }
 			self.modifierFn(item.value());
 			return item;
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return ChainInputIterator::advanceBy(self.input, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return ChainInputIterator::advanceBy(self.input, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TModifierFn>
@@ -53,7 +53,7 @@ namespace CXXIter {
 		using Self = op::InplaceModifier<TChainInput, TModifierFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			auto item = ChainInputIterator::nextBack(self.input);
 			if(!item.has_value()) [[unlikely]] { return {}; }
 			self.modifierFn(item.value());
@@ -63,7 +63,7 @@ namespace CXXIter {
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TItem>
 	struct trait::ExactSizeIterator<op::InplaceModifier<TChainInput, TItem>> {
-		static inline size_t size(const op::InplaceModifier<TChainInput, TItem>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
+		static constexpr inline size_t size(const op::InplaceModifier<TChainInput, TItem>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
 	};
 
 }

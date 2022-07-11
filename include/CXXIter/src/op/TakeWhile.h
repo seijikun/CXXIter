@@ -21,7 +21,7 @@ namespace CXXIter {
 			TChainInput input;
 			TTakePredicate takePredicate;
 		public:
-			TakeWhile(TChainInput&& input, TTakePredicate takePredicate) : input(std::move(input)), takePredicate(takePredicate) {}
+			constexpr TakeWhile(TChainInput&& input, TTakePredicate takePredicate) : input(std::move(input)), takePredicate(takePredicate) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -34,18 +34,18 @@ namespace CXXIter {
 		using Self = op::TakeWhile<TChainInput, TTakePredicate>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			auto item = ChainInputIterator::next(self.input);
 			if(!item.has_value()) [[unlikely]] { return {}; }
 			// end iterator directly after takePredicate returned false the first time
 			if(self.takePredicate(item.value()) == false) { return {}; }
 			return item;
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

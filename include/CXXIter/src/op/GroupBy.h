@@ -27,7 +27,7 @@ namespace CXXIter {
 			TGroupIdentifierFn groupIdentFn;
 			std::optional<GroupCache> groupCache;
 		public:
-			GroupBy(TChainInput&& input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
+			constexpr GroupBy(TChainInput&& input, TGroupIdentifierFn groupIdentFn) : input(std::move(input)), groupIdentFn(groupIdentFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ namespace CXXIter {
 		using Self = op::GroupBy<TChainInput, TGroupIdentifierFn, TGroupIdent>;
 		using Item = std::pair<const TGroupIdent, std::vector<OwnedInputItem>>;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			// we have to drain the input in order to be able to calculate the groups
 			// so we do that on the first invocation, and then yield from the calculated result.
 			if(!self.groupCache.has_value()) [[unlikely]] {
@@ -62,11 +62,11 @@ namespace CXXIter {
 			typename Self::GroupCache& groupedItems = self.groupCache.value();
 			return GroupCacheIterator::next(groupedItems);
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(1, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

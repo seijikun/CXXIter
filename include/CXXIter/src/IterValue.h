@@ -30,23 +30,23 @@ namespace CXXIter {
 
 	public:
 		/** ctor */
-		IterValue() noexcept {}
+		constexpr IterValue() noexcept {}
 		/** ctor */
-		IterValue(TValue value) noexcept requires std::is_reference_v<TValue> : inner(value) {}
+		constexpr IterValue(TValue value) noexcept requires std::is_reference_v<TValue> : inner(value) {}
 		/** ctor */
-		IterValue(const TValueDeref& value) noexcept requires (!std::is_reference_v<TValue>) : inner(value) {}
+		constexpr IterValue(const TValueDeref& value) noexcept requires (!std::is_reference_v<TValue>) : inner(value) {}
 		/** ctor */
-		IterValue(TValueDeref&& value) noexcept : inner(std::forward<TValueDeref>(value)) {}
+		constexpr IterValue(TValueDeref&& value) noexcept : inner(std::forward<TValueDeref>(value)) {}
 
 		/** Assignment from another IterValue instance. */
-		IterValue& operator=(IterValue&& o) = default;
+		constexpr IterValue& operator=(IterValue&& o) = default;
 		/** Assignment from another IterValue instance. */
-		IterValue(IterValue&& o) : inner(std::move(o.inner)) {
+		constexpr IterValue(IterValue&& o) : inner(std::move(o.inner)) {
 			o.inner.reset();
 		};
 
 		/** Assignment from an instance of the stored type. */
-		auto& operator=(TValueDeref&& o) {
+		constexpr auto& operator=(TValueDeref&& o) {
 			this->inner = std::forward<decltype(o)>(o);
 			return *this;
 		}
@@ -56,50 +56,50 @@ namespace CXXIter {
 		 * @throws If this is called when no value is contained.
 		 * @return const reference to the contained value.
 		 */
-		inline const TValueDeref& value() const { return inner.value(); }
+		constexpr inline const TValueDeref& value() const { return inner.value(); }
 		/**
 		 * @brief Get the contained value (if any).
 		 * @throws If this is called when no value is contained.
 		 * @return reference to the contained value.
 		 */
-		inline TValueDeref& value() { return inner.value(); }
+		constexpr inline TValueDeref& value() { return inner.value(); }
 		/**
 		 * @brief Get the contained value, or alternatively the given @p def if none is present.
 		 * @param def Default value to return when this optional does not contain a value.
 		 * @return const reference to the contained value (if any), or alternatively the given @p def value.
 		 */
-		inline const TValueDeref& value_or(TValueDeref&& def) const noexcept { return inner.value_or(def); }
+		constexpr inline const TValueDeref& value_or(TValueDeref&& def) const noexcept { return inner.value_or(def); }
 		/**
 		 * @brief Get the contained value, or alternatively the given @p def if none is present.
 		 * @param def Default value to return when this optional does not contain a value.
 		 * @return reference to the contained value (if any), or alternatively the given @p def value.
 		 */
-		inline TValueDeref& value_or(TValueDeref&& def) noexcept { return inner.value_or(def); }
+		constexpr inline TValueDeref& value_or(TValueDeref&& def) noexcept { return inner.value_or(def); }
 
 		/**
 		 * @brief Get whether this optional IteratorValue contains a value.
 		 * @return @c true when this IterValue contains a value, @c false otherwise.
 		 */
-		bool has_value() const noexcept { return inner.has_value(); }
+		constexpr bool has_value() const noexcept { return inner.has_value(); }
 
 		/**
 		 * @brief Swap the values within this and another IterValue container.
 		 * @param o Other IterValue container to swap contents with.
 		 */
-		void swap(IterValue<TValue>& o) noexcept { inner.swap(o.inner); }
+		constexpr void swap(IterValue<TValue>& o) noexcept { inner.swap(o.inner); }
 
 		/**
 		 * @brief Convert this IterValue to a @c std::optional<> on the owned (no-reference) type.
 		 * @details If the contained value is a reference, the value will be copied into the returned @c std::optional<>.
 		 * @return @c std::optional<> containing an owned version of the value contained by this IterValue.
 		 */
-		std::optional<TValueStore> toStdOptional() noexcept {
+		constexpr std::optional<TValueStore> toStdOptional() noexcept {
 			return std::optional<TValueStore>(std::move(this->inner));
 		}
 		/**
 		 * @brief Cast to @c std::optional<>.
 		 */
-		operator std::optional<TValueStore>() noexcept { return toStdOptional(); }
+		constexpr operator std::optional<TValueStore>() noexcept { return toStdOptional(); }
 
 		/**
 		 * @brief Map this IterValue's contained value (if any) to the requested new @p TOutValue type, using the given @p mapFn
@@ -109,7 +109,7 @@ namespace CXXIter {
 		 */
 		template<typename TOutValue, std::invocable<TValueDeref&&> TMapFn>
 		requires (!std::is_reference_v<TValue>)
-		IterValue<TOutValue> map(TMapFn mapFn) {
+		constexpr IterValue<TOutValue> map(TMapFn mapFn) {
 			if(!has_value()) { return {}; }
 			return mapFn(std::forward<TValueDeref>(value()));
 		}
@@ -122,7 +122,7 @@ namespace CXXIter {
 		 */
 		template<typename TOutValue, std::invocable<TValue> TMapFn>
 		requires std::is_reference_v<TValue>
-		IterValue<TOutValue> map(TMapFn mapFn) {
+		constexpr IterValue<TOutValue> map(TMapFn mapFn) {
 			if(!this->has_value()) { return {}; }
 			return mapFn(this->value());
 		}

@@ -36,14 +36,14 @@ namespace CXXIter::trait {
 		* @param self Reference to the instance of the class for which trait::Iterator is being specialized.
 		* @return An element (if any) wrapped in the CXXIter::IterValue.
 		*/
-		static inline IterValue<Item> next(Self& self) = delete;
+		static constexpr inline IterValue<Item> next(Self& self) = delete;
 
 		/**
 		* @brief Get the bounds on the remaining length of the iterator pipeline until this pipeline-element,
 		* estimated from the source and all of the chained iterations until after this pipeline-element.
 		* @return The estimated bounds on the remaining length of the iterator pipeline until after this pipeline-element.
 		*/
-		static inline SizeHint sizeHint(const Self& self) = delete;
+		static constexpr inline SizeHint sizeHint(const Self& self) = delete;
 
 		/**
 		 * @brief Advance the iterator by n elements.
@@ -53,7 +53,7 @@ namespace CXXIter::trait {
 		 * @return The amount of elements by which the iterator was actually advanced (e.g. if the iterator
 		 * did have less than @p n elements remaining)
 		 */
-		static inline size_t advanceBy(Self& self, size_t n) = delete;
+		static constexpr inline size_t advanceBy(Self& self, size_t n) = delete;
 	};
 
 	/**
@@ -66,7 +66,7 @@ namespace CXXIter::trait {
 		* @param self Reference to the instance of the class for which trait::ExactSizeIterator is being specialized.
 		* @return This iterator's exact number of elements.
 		*/
-		static inline size_t size(const typename trait::Iterator<T>::Self& self) = delete;
+		static constexpr inline size_t size(const typename trait::Iterator<T>::Self& self) = delete;
 	};
 
 	/**
@@ -83,7 +83,7 @@ namespace CXXIter::trait {
 		* @param self Reference to the instance of the class for which trait::DoubleEndedIterator is being specialized.
 		* @return An element (if any) wrapped in the CXXIter::IterValue.
 		*/
-		static inline IterValue<typename Iterator<T>::Item> nextBack(Self& self) = delete;
+		static constexpr inline IterValue<typename Iterator<T>::Item> nextBack(Self& self) = delete;
 	};
 
 
@@ -140,7 +140,7 @@ namespace CXXIter::trait {
 		 * @param container Container for which to generate a size hint.
 		 * @return A size hint for the given @p container.
 		 */
-		static inline SizeHint sizeHint(const TContainer& container) { return SizeHint(container.size(), container.size()); }
+		static constexpr inline SizeHint sizeHint(const TContainer& container) { return SizeHint(container.size(), container.size()); }
 
 		/**
 		 * @brief Return an initial @c IteratorState instance for iteration on the given @p container.
@@ -149,7 +149,7 @@ namespace CXXIter::trait {
 		 * @param container Container on which the source runs.
 		 * @return Instance of @c IteratorState
 		 */
-		static inline IteratorState initIterator(TContainer& container) { return {container.begin(), container.end()}; }
+		static constexpr inline IteratorState initIterator(TContainer& container) { return {container.begin(), container.end()}; }
 		/**
 		 * @brief Return an initial @c IteratorState instance for iteration on the given @p container.
 		 * @details This is stored within CXXIter's source classes, to hold the iteration's state.
@@ -157,7 +157,7 @@ namespace CXXIter::trait {
 		 * @param container Container on which the source runs.
 		 * @return Instance of @c ConstIteratorState
 		 */
-		static inline ConstIteratorState initIterator(const TContainer& container) { return {container.begin(), container.end()}; }
+		static constexpr inline ConstIteratorState initIterator(const TContainer& container) { return {container.begin(), container.end()}; }
 
 		/**
 		 * @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
@@ -166,7 +166,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return @c true when there is another item available, @c false otherwise.
 		 */
-		static inline bool hasNext([[maybe_unused]] TContainer& container, IteratorState& iter) { return (iter.left != iter.right); }
+		static constexpr inline bool hasNext([[maybe_unused]] TContainer& container, IteratorState& iter) { return (iter.left != iter.right); }
 		/**
 		 * @brief Checks whether there is a next item in the iteration with the given @p iter state on the given @p container.
 		 * @details This is used for @c CXXIter::SrcCRef
@@ -174,7 +174,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return @c true when there is another item available, @c false otherwise.
 		 */
-		static inline bool hasNext([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (iter.left != iter.right); }
+		static constexpr inline bool hasNext([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (iter.left != iter.right); }
 
 		/**
 		 * @brief Return the next item in the iteration with the given @p iter state on the given @p container.
@@ -183,7 +183,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return The next item from the current iteration.
 		 */
-		static inline ItemRef next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter.left++); }
+		static constexpr inline ItemRef next([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter.left++); }
 		/**
 		 * @brief Return the next item in the iteration with the given @p iter state on the given @p container.
 		 * @details This is used for @c CXXIter::SrcCRef
@@ -191,7 +191,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return The next item from the current iteration.
 		 */
-		static inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter.left++); }
+		static constexpr inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter.left++); }
 
 		/**
 		 * @brief Skip the next @p n elements from the container.
@@ -201,7 +201,7 @@ namespace CXXIter::trait {
 		 * @param n The amount of elements to skip.
 		 * @return The amount of actually skipped elements (e.g. if there were less than @p n elements remaining).
 		 */
-		static inline size_t skipN([[maybe_unused]] const TContainer& container, IteratorState& iter, size_t n) {
+		static constexpr inline size_t skipN([[maybe_unused]] const TContainer& container, IteratorState& iter, size_t n) {
 			size_t skipN = std::min(n, static_cast<size_t>(std::distance(iter.left, iter.right)));
 			iter.left += skipN;
 			return skipN;
@@ -214,7 +214,7 @@ namespace CXXIter::trait {
 		 * @param n The amount of elements to skip.
 		 * @return The amount of actually skipped elements (e.g. if there were less than @p n elements remaining).
 		 */
-		static inline size_t skipN([[maybe_unused]] const TContainer& container, ConstIteratorState& iter, size_t n) {
+		static constexpr inline size_t skipN([[maybe_unused]] const TContainer& container, ConstIteratorState& iter, size_t n) {
 			size_t skipN = std::min(n, static_cast<size_t>(std::distance(iter.left, iter.right)));
 			iter.left += skipN;
 			return skipN;
@@ -232,7 +232,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return The next item from the back of the current iteration.
 		 */
-		static inline ItemRef nextBack([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*--iter.right); }
+		static constexpr inline ItemRef nextBack([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*--iter.right); }
 		/**
 		 * @brief Return the next item from the back of the iteration with the given @p iter state on the given @p container.
 		 * @note Implementing this is optional, since not all containers can support this.
@@ -241,7 +241,7 @@ namespace CXXIter::trait {
 		 * @param iter The current iteration's state structure.
 		 * @return The next item from the back of the current iteration.
 		 */
-		static inline ItemConstRef nextBack([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*--iter.right); }
+		static constexpr inline ItemConstRef nextBack([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*--iter.right); }
 
 		/**
 		 * @brief Skip the next n elements from the back of this iterator.
@@ -251,7 +251,7 @@ namespace CXXIter::trait {
 		 * @param n The amount of elements to skip.
 		 * @return The amount of actually skipped elements (e.g. if there were less than @p n elements remaining).
 		 */
-		static inline size_t skipNBack([[maybe_unused]] const TContainer& container, IteratorState& iter, size_t n) {
+		static constexpr inline size_t skipNBack([[maybe_unused]] const TContainer& container, IteratorState& iter, size_t n) {
 			size_t skipN = std::min(n, static_cast<size_t>(std::distance(iter.left, iter.right)));
 			iter.right -= skipN;
 			return skipN;
@@ -264,7 +264,7 @@ namespace CXXIter::trait {
 		 * @param n The amount of elements to skip.
 		 * @return The amount of actually skipped elements (e.g. if there were less than @p n elements remaining).
 		 */
-		static inline size_t skipNBack([[maybe_unused]] const TContainer& container, ConstIteratorState& iter, size_t n) {
+		static constexpr inline size_t skipNBack([[maybe_unused]] const TContainer& container, ConstIteratorState& iter, size_t n) {
 			size_t skipN = std::min(n, static_cast<size_t>(std::distance(iter.left, iter.right)));
 			iter.right -= skipN;
 			return skipN;

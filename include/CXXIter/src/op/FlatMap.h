@@ -23,7 +23,7 @@ namespace CXXIter {
 			std::optional<SrcMov<TItemContainer>> current;
 			TFlatMapFn mapFn;
 		public:
-			FlatMap(TChainInput&& input, TFlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+			constexpr FlatMap(TChainInput&& input, TFlatMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace CXXIter {
 		using Self = op::FlatMap<TChainInput, TFlatMapFn, TItemContainer>;
 		using Item = typename TItemContainer::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				if(!self.current) { // pull new container from the outer iterator
 					auto item = ChainInputIterator::next(self.input);
@@ -56,8 +56,8 @@ namespace CXXIter {
 				}
 			}
 		}
-		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

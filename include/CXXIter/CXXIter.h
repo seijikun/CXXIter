@@ -70,12 +70,9 @@ public: // Associated types
 	using ItemOwned = std::remove_cvref_t<Item>;
 
 private:
-	TSelf* self() { return static_cast<TSelf*>(this); }
-	const TSelf* self() const { return static_cast<const TSelf*>(this); }
+	constexpr TSelf* self() { return static_cast<TSelf*>(this); }
+	constexpr const TSelf* self() const { return static_cast<const TSelf*>(this); }
 	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
-
-public: // Lifecycle Management
-	virtual ~IterApi() {}
 
 public: // C++ Iterator API-Surface
 
@@ -127,7 +124,7 @@ public: // CXXIter API-Surface
 	 * and all of the chained iterations on it.
 	 * @return The estimated bounds on the remaining length of this iterator.
 	 */
-	SizeHint sizeHint() const {
+	constexpr SizeHint sizeHint() const {
 		return Iterator::sizeHint(*self());
 	}
 
@@ -157,7 +154,7 @@ public: // CXXIter API-Surface
 	 * 		.size();
 	 * @endcode
 	 */
-	size_t size() const requires CXXIterExactSizeIterator<TSelf> {
+	constexpr size_t size() const requires CXXIterExactSizeIterator<TSelf> {
 		return trait::ExactSizeIterator<TSelf>::size(*self());
 	}
 
@@ -174,7 +171,7 @@ public: // CXXIter API-Surface
 	 *  // output == Some(1.337f);
 	 * @endcode
 	 */
-	IterValue<Item> next() {
+	constexpr IterValue<Item> next() {
 		return Iterator::next(*self());
 	}
 
@@ -194,7 +191,7 @@ public: // CXXIter API-Surface
 	 *  // output == Some(5.0f);
 	 * @endcode
 	 */
-	void advanceBy(size_t n) {
+	constexpr void advanceBy(size_t n) {
 		Iterator::advanceBy(*self(), n);
 	}
 
@@ -212,7 +209,7 @@ public: // CXXIter API-Surface
 	 *  // output == Some(0.25f);
 	 * @endcode
 	 */
-	IterValue<Item> nextBack() requires CXXIterDoubleEndedIterator<TSelf> {
+	constexpr IterValue<Item> nextBack() requires CXXIterDoubleEndedIterator<TSelf> {
 		return trait::DoubleEndedIterator<TSelf>::nextBack(*self());
 	}
 
@@ -240,7 +237,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TUseFn>
-	void forEach(TUseFn useFn) {
+	constexpr void forEach(TUseFn useFn) {
 		while(true) {
 			auto item = Iterator::next(*self());
 			if(!item.has_value()) [[unlikely]] { return; }
@@ -272,7 +269,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<template <typename...> typename TTargetContainer, typename... TTargetContainerArgs>
-	auto collect() {
+	constexpr auto collect() {
 		return Collector<TSelf, TTargetContainer, TTargetContainerArgs...>::template collect<Item, ItemOwned>(*self());
 	}
 
@@ -305,7 +302,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TTargetContainer>
-	TTargetContainer collect() {
+	constexpr TTargetContainer collect() {
 		TTargetContainer container;
 		collectInto(container);
 		return container;
@@ -328,7 +325,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TTargetContainer>
-	void collectInto(TTargetContainer& container) {
+	constexpr void collectInto(TTargetContainer& container) {
 		IntoCollector<TSelf, TTargetContainer>::collectInto(*self(), container);
 	}
 
@@ -352,7 +349,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TResult, std::invocable<TResult&, Item&&> FoldFn>
-	TResult fold(TResult startValue, FoldFn foldFn) {
+	constexpr TResult fold(TResult startValue, FoldFn foldFn) {
 		TResult result = startValue;
 		forEach([&result, &foldFn](Item&& item) { foldFn(result, std::forward<Item>(item)); });
 		return result;
@@ -395,7 +392,7 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<const ItemOwned&> TPredicateFn>
 	requires std::same_as<std::invoke_result_t<TPredicateFn, const ItemOwned&>, bool>
-	bool all(TPredicateFn predicateFn) {
+	constexpr bool all(TPredicateFn predicateFn) {
 		return !skipWhile(predicateFn).next().has_value();
 	}
 
@@ -430,7 +427,7 @@ public: // CXXIter API-Surface
 	 * 	// output == true
 	 * @endcode
 	 */
-	bool all() requires requires(const ItemOwned& item) {
+	constexpr bool all() requires requires(const ItemOwned& item) {
 		{static_cast<bool>(item)};
 	} {
 		return all([](const auto& item) -> bool { return item; });
@@ -471,7 +468,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TPredicateFn>
-	bool any(TPredicateFn predicateFn) {
+	constexpr bool any(TPredicateFn predicateFn) {
 		return filter(predicateFn).next().has_value();
 	}
 
@@ -506,7 +503,7 @@ public: // CXXIter API-Surface
 	 * 	// output == true
 	 * @endcode
 	 */
-	bool any() requires requires(const ItemOwned& item) {
+	constexpr bool any() requires requires(const ItemOwned& item) {
 		{static_cast<bool>(item)};
 	} {
 		return any([](const auto& item) -> bool { return item; });
@@ -532,7 +529,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	std::optional<size_t> findIdx(const ItemOwned& searchItem) 	requires requires(const ItemOwned& searchItem, const Item& item) {
+	constexpr std::optional<size_t> findIdx(const ItemOwned& searchItem) 	requires requires(const ItemOwned& searchItem, const Item& item) {
 		{searchItem == item} -> std::same_as<bool>;
 	} {
 		return findIdx([&searchItem](const ItemOwned& item) {
@@ -564,7 +561,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TFindFn>
-	std::optional<size_t> findIdx(TFindFn findFn) {
+	constexpr std::optional<size_t> findIdx(TFindFn findFn) {
 		size_t idx = 0;
 		while(true) {
 			auto item = Iterator::next(*self());
@@ -601,7 +598,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TFindFn>
-	IterValue<Item> find(TFindFn findFn) {
+	constexpr IterValue<Item> find(TFindFn findFn) {
 		return filter(findFn).next();
 	}
 
@@ -620,7 +617,7 @@ public: // CXXIter API-Surface
 	 * 	// output == 0
 	 * @endcode
 	 */
-	size_t count() {
+	constexpr size_t count() {
 		return fold((size_t)0, [](size_t& cnt, auto&&) { cnt += 1; });
 	}
 
@@ -641,7 +638,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TPredicateFn>
-	size_t count(TPredicateFn predicateFn) {
+	constexpr size_t count(TPredicateFn predicateFn) {
 		return fold((size_t)0, [&predicateFn](size_t& cnt, auto&& item) {
 			if(predicateFn(item)) { cnt += 1; }
 		});
@@ -662,7 +659,7 @@ public: // CXXIter API-Surface
 	 * 	// output == 5
 	 * @endcode
 	 */
-	size_t count(const ItemOwned& countItem)
+	constexpr size_t count(const ItemOwned& countItem)
 	requires requires(const ItemOwned& countItem, Item&& item) {
 		{countItem == item};
 	} {
@@ -707,7 +704,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename TResult = ItemOwned>
 	requires requires(TResult res, Item item) { { res += item }; }
-	TResult sum(TResult startValue = TResult()) {
+	constexpr TResult sum(TResult startValue = TResult()) {
 		return fold(startValue, [](TResult& res, Item&& item) { res += item; });
 	}
 
@@ -745,7 +742,7 @@ public: // CXXIter API-Surface
 	 * 	// output == 31337
 	 * @endcode
 	 */
-	std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
+	constexpr std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
 		std::string result;
 		forEach([&result, &separator](const std::string& item) {
 			if(result.size() > 0) [[likely]] { result += separator + item; }
@@ -784,7 +781,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
-	std::optional<TResult> mean(TResult sumStart = TResult()) {
+	constexpr std::optional<TResult> mean(TResult sumStart = TResult()) {
 		size_t cnt = 0;
 		TResult result = fold(sumStart, [&cnt](TResult& res, Item&& item) {
 			cnt += 1;
@@ -838,7 +835,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
-	std::optional<TResult> variance() {
+	constexpr std::optional<TResult> variance() {
 		TResult sumSquare = TResult();
 		TResult sum = TResult();
 		size_t cnt = 0;
@@ -895,7 +892,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<StatisticNormalization NORM = StatisticNormalization::N, typename TResult = ItemOwned, typename TCount = ItemOwned>
-	std::optional<TResult> stddev() {
+	constexpr std::optional<TResult> stddev() {
 		std::optional<TResult> result = variance<NORM, TResult, TCount>();
 		if(result.has_value()) { return std::sqrt(result.value()); }
 		return {};
@@ -923,7 +920,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	IterValue<Item> min() {
+	constexpr IterValue<Item> min() {
 		return minBy([](auto&& item) { return item; });
 	}
 
@@ -946,7 +943,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	std::optional<size_t> minIdx() {
+	constexpr std::optional<size_t> minIdx() {
 		return minIdxBy([](auto&& item) { return item; });
 	}
 
@@ -972,7 +969,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	IterValue<Item> max() {
+	constexpr IterValue<Item> max() {
 		return maxBy([](auto&& item) { return item; });
 	}
 
@@ -995,7 +992,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	std::optional<size_t> maxIdx() {
+	constexpr std::optional<size_t> maxIdx() {
 		return maxIdxBy([](auto&& item) { return item; });
 	}
 
@@ -1031,7 +1028,7 @@ public: // CXXIter API-Surface
 		{ a < a };
 		{ ownedA = ownedA };
 	}
-	IterValue<Item> minBy(TCompValueExtractFn compValueExtractFn) {
+	constexpr IterValue<Item> minBy(TCompValueExtractFn compValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
 		auto resultValue = compValueExtractFn(std::forward<Item>(result.value()));
@@ -1073,7 +1070,7 @@ public: // CXXIter API-Surface
 	requires requires(const std::invoke_result_t<TCompValueExtractFn, Item&&>& a) {
 		{ a < a };
 	}
-	std::optional<size_t> minIdxBy(TCompValueExtractFn compValueExtractFn) {
+	constexpr std::optional<size_t> minIdxBy(TCompValueExtractFn compValueExtractFn) {
 		IterValue<Item> tmp = Iterator::next(*self());
 		if(!tmp.has_value()) { return {}; }
 		size_t iterationIdx = 1, minIdx = 0;
@@ -1121,7 +1118,7 @@ public: // CXXIter API-Surface
 		{ a > a };
 		{ ownedA = ownedA };
 	}
-	IterValue<Item> maxBy(TMaxValueExtractFn compValueExtractFn) {
+	constexpr IterValue<Item> maxBy(TMaxValueExtractFn compValueExtractFn) {
 		IterValue<Item> result = Iterator::next(*self());
 		if(!result.has_value()) { return {}; }
 		auto resultValue = compValueExtractFn(std::forward<Item>(result.value()));
@@ -1164,7 +1161,7 @@ public: // CXXIter API-Surface
 		{ a > a };
 		{ ownedA = ownedA };
 	}
-	std::optional<size_t> maxIdxBy(TMaxValueExtractFn compValueExtractFn) {
+	constexpr std::optional<size_t> maxIdxBy(TMaxValueExtractFn compValueExtractFn) {
 		IterValue<Item> tmp = Iterator::next(*self());
 		if(!tmp.has_value()) { return {}; }
 		size_t iterationIdx = 1, maxIdx = 0;
@@ -1203,7 +1200,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	IterValue<Item> last() {
+	constexpr IterValue<Item> last() {
 		IterValue<Item> tmp;
 		forEach([&tmp](Item&& item) { tmp = item; });
 		return tmp;
@@ -1228,7 +1225,7 @@ public: // CXXIter API-Surface
 	 *	// output == None
 	 * @endcode
 	 */
-	IterValue<Item> nth(size_t n) {
+	constexpr IterValue<Item> nth(size_t n) {
 		return skip(n).next();
 	}
 //@}
@@ -1257,7 +1254,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TItemOutput>
-	op::Caster<TSelf, TItemOutput> cast() {
+	constexpr op::Caster<TSelf, TItemOutput> cast() {
 		return op::Caster<TSelf, TItemOutput>(std::move(*self()));
 	}
 
@@ -1276,7 +1273,7 @@ public: // CXXIter API-Surface
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	auto copied() {
+	constexpr auto copied() {
 		return map([](const ItemOwned& item) -> ItemOwned {
 			ItemOwned copy = item;
 			return copy;
@@ -1298,7 +1295,7 @@ public: // CXXIter API-Surface
 	 *	// output == {{0, "1337"}, {1, "42"}, {2, "64"}}
 	 * @endcode
 	 */
-	auto indexed() {
+	constexpr auto indexed() {
 		size_t idx = 0;
 		return map([idx](Item&& item) mutable -> std::pair<size_t, Item> {
 			return std::pair<size_t, Item>(idx++, std::forward<Item>(item));
@@ -1331,7 +1328,7 @@ public: // CXXIter API-Surface
 	 *	// output == {{"1337", false}, {"42", false}}
 	 * @endcode
 	 */
-	op::FlagLast<TSelf> flagLast() {
+	constexpr op::FlagLast<TSelf> flagLast() {
 		return op::FlagLast<TSelf>(std::move(*self()));
 	}
 
@@ -1351,7 +1348,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const ItemOwned&> TFilterFn>
-	op::Filter<TSelf, TFilterFn> filter(TFilterFn filterFn) {
+	constexpr op::Filter<TSelf, TFilterFn> filter(TFilterFn filterFn) {
 		return op::Filter<TSelf, TFilterFn>(std::move(*self()), filterFn);
 	}
 
@@ -1376,7 +1373,7 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<const ItemOwned&> TMapFn>
 	requires util::is_hashable<std::invoke_result_t<TMapFn, const ItemOwned&>>
-	op::Unique<TSelf, TMapFn> unique(TMapFn mapFn) {
+	constexpr op::Unique<TSelf, TMapFn> unique(TMapFn mapFn) {
 		return op::Unique<TSelf, TMapFn>(std::move(*self()), mapFn);
 	}
 
@@ -1398,7 +1395,7 @@ public: // CXXIter API-Surface
 	 *  // output == { 1.0, 1.5, 1.4, 2.0, 2.1, 2.99, 3.25, 4.5 }
 	 * @endcode
 	 */
-	auto unique() {
+	constexpr auto unique() {
 		return unique([](const auto& item) { return item; });
 	}
 
@@ -1419,7 +1416,7 @@ public: // CXXIter API-Surface
 	 *  // output == { 5, 6, 5, 69, 4, 3, 1337, 2, 42, 1 }
 	 * @endcode
 	 */
-	op::Reverse<TSelf> reverse() {
+	constexpr op::Reverse<TSelf> reverse() {
 		return op::Reverse<TSelf>(std::move(*self()));
 	}
 
@@ -1452,7 +1449,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<const size_t CHUNK_SIZE>
-	op::Chunked<TSelf, CHUNK_SIZE> chunked() {
+	constexpr op::Chunked<TSelf, CHUNK_SIZE> chunked() {
 		return op::Chunked<TSelf, CHUNK_SIZE>(std::move(*self()));
 	}
 
@@ -1507,7 +1504,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
-	op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExact() {
+	constexpr op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExact() {
 		return op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
 	}
 
@@ -1530,7 +1527,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<Item&&> TMapFn>
-	auto map(TMapFn mapFn) {
+	constexpr auto map(TMapFn mapFn) {
 		using TMapFnResult = std::invoke_result_t<TMapFn, Item&&>;
 		return op::Map<TSelf, TMapFn, TMapFnResult>(std::move(*self()), mapFn);
 	}
@@ -1556,7 +1553,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<Item&&> TFlatMapFn>
-	auto flatMap(TFlatMapFn mapFn) {
+	constexpr auto flatMap(TFlatMapFn mapFn) {
 		using TFlatMapFnResult = std::invoke_result_t<TFlatMapFn, Item&&>;
 		return op::FlatMap<TSelf, TFlatMapFn, TFlatMapFnResult>(std::move(*self()), mapFn);
 	}
@@ -1634,7 +1631,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<GeneratorFromFunction<Item> TGeneratorFn>
-	auto generateFrom(TGeneratorFn generatorFn) {
+	constexpr auto generateFrom(TGeneratorFn generatorFn) {
 		using TGeneratorFnResult = std::invoke_result_t<TGeneratorFn, Item>;
 		return op::GenerateFrom<TSelf, TGeneratorFn, TGeneratorFnResult>(std::move(*self()), generatorFn);
 	}
@@ -1657,7 +1654,7 @@ public: // CXXIter API-Surface
 	 * 		.collect<std::vector>(); // collect into vector containing {1337, 42, 6, 123, 7888}
 	 * @endcode
 	 */
-	auto flatMap() {
+	constexpr auto flatMap() {
 		return flatMap([](Item&& item) { return item; });
 	}
 
@@ -1677,7 +1674,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<Item&> TModifierFn>
-	op::InplaceModifier<TSelf, TModifierFn> modify(TModifierFn modifierFn) {
+	constexpr op::InplaceModifier<TSelf, TModifierFn> modify(TModifierFn modifierFn) {
 		return op::InplaceModifier<TSelf, TModifierFn>(std::move(*self()), modifierFn);
 	}
 
@@ -1702,7 +1699,7 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<ItemOwned&&> TFilterMapFn>
 	requires util::is_optional<std::invoke_result_t<TFilterMapFn, ItemOwned&&>>
-	auto filterMap(TFilterMapFn filterMapFn) {
+	constexpr auto filterMap(TFilterMapFn filterMapFn) {
 		using TFilterMapFnResult = typename std::invoke_result_t<TFilterMapFn, ItemOwned&&>::value_type;
 		return op::FilterMap<TSelf, TFilterMapFn, TFilterMapFnResult>(std::move(*self()), filterMapFn);
 	}
@@ -1721,7 +1718,7 @@ public: // CXXIter API-Surface
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	op::SkipN<TSelf> skip(size_t cnt) {
+	constexpr op::SkipN<TSelf> skip(size_t cnt) {
 		return op::SkipN<TSelf>(std::move(*self()), cnt);
 	}
 
@@ -1746,7 +1743,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<std::invocable<const Item&> TSkipPredicate>
-	op::SkipWhile<TSelf, TSkipPredicate> skipWhile(TSkipPredicate skipPredicate) {
+	constexpr op::SkipWhile<TSelf, TSkipPredicate> skipWhile(TSkipPredicate skipPredicate) {
 		return op::SkipWhile<TSelf, TSkipPredicate>(std::move(*self()), skipPredicate);
 	}
 
@@ -1763,7 +1760,7 @@ public: // CXXIter API-Surface
 	 * 		.collect<std::vector>();
 	 * @endcode
 	 */
-	op::TakeN<TSelf> take(size_t cnt) {
+	constexpr op::TakeN<TSelf> take(size_t cnt) {
 		return op::TakeN<TSelf>(std::move(*self()), cnt);
 	}
 
@@ -1787,7 +1784,7 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<const Item&> TTakePredicate>
 	requires std::is_same_v<std::invoke_result_t<TTakePredicate, const Item&>, bool>
-	auto takeWhile(TTakePredicate takePredicate) {
+	constexpr auto takeWhile(TTakePredicate takePredicate) {
 		return op::TakeWhile<TSelf, TTakePredicate>(std::move(*self()), takePredicate);
 	}
 
@@ -1816,7 +1813,7 @@ public: // CXXIter API-Surface
 	 *	// output == {0, 2, 4, 6, 8, 10}
 	 * @endcode
 	 */
-	auto stepBy(size_t stepWidth) {
+	constexpr auto stepBy(size_t stepWidth) {
 		//TODO: better SizeHints?
 		size_t idx = 0;
 		return filter([idx, stepWidth](const ItemOwned&) mutable {
@@ -1843,7 +1840,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<typename TOtherIterator>
-	op::Zipper<TSelf, std::pair, TOtherIterator> zip(TOtherIterator&& otherIterator) {
+	constexpr op::Zipper<TSelf, std::pair, TOtherIterator> zip(TOtherIterator&& otherIterator) {
 		return op::Zipper<TSelf, std::pair, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
 
@@ -1870,7 +1867,7 @@ public: // CXXIter API-Surface
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
 			&& (!std::disjunction_v< std::is_reference<typename trait::Iterator<TOtherIterators>::Item>... > && !IS_REFERENCE)
-	op::Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
+	constexpr op::Zipper<TSelf, std::tuple, TOtherIterators...> zipTuple(TOtherIterators&&... otherIterators) {
 		return op::Zipper<TSelf, std::tuple, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
 
@@ -1893,7 +1890,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename TOtherIterator>
 	requires std::is_same_v<Item, typename TOtherIterator::Item>
-	op::Chainer<TSelf, TOtherIterator> chain(TOtherIterator&& otherIterator) {
+	constexpr op::Chainer<TSelf, TOtherIterator> chain(TOtherIterator&& otherIterator) {
 		return op::Chainer<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
 
@@ -1919,7 +1916,7 @@ public: // CXXIter API-Surface
 	template<typename... TOtherIterators>
 	requires (CXXIterIterator<TOtherIterators> && ...)
 			&& (util::are_same_v<Item, typename TOtherIterators::Item...>)
-	op::Alternater<TSelf, TOtherIterators...> alternate(TOtherIterators&&... otherIterators) {
+	constexpr op::Alternater<TSelf, TOtherIterators...> alternate(TOtherIterators&&... otherIterators) {
 		return op::Alternater<TSelf, TOtherIterators...>(std::move(*self()), std::forward<TOtherIterators>(otherIterators)...);
 	}
 
@@ -1963,7 +1960,7 @@ public: // CXXIter API-Surface
 	 */
 	template<typename TOtherIterator>
 	requires (std::is_same_v<Item, typename TOtherIterator::Item>)
-	op::Intersperser<TSelf, TOtherIterator> intersperse(TOtherIterator&& otherIterator) {
+	constexpr op::Intersperser<TSelf, TOtherIterator> intersperse(TOtherIterator&& otherIterator) {
 		return op::Intersperser<TSelf, TOtherIterator>(std::move(*self()), std::forward<TOtherIterator>(otherIterator));
 	}
 
@@ -1995,7 +1992,7 @@ public: // CXXIter API-Surface
 	 */
 	template<std::invocable<const Item&> TGroupIdentifierFn>
 	requires util::is_hashable<std::invoke_result_t<TGroupIdentifierFn, const Item&>>
-	auto groupBy(TGroupIdentifierFn groupIdentFn) {
+	constexpr auto groupBy(TGroupIdentifierFn groupIdentFn) {
 		using TGroupIdent = std::remove_cvref_t<std::invoke_result_t<TGroupIdentifierFn, const ItemOwned&>>;
 		return op::GroupBy<TSelf, TGroupIdentifierFn, TGroupIdent>(std::move(*self()), groupIdentFn);
 	}
@@ -2030,7 +2027,7 @@ public: // CXXIter API-Surface
 	 * @endcode
 	 */
 	template<bool STABLE, std::invocable<const ItemOwned&, const ItemOwned&> TCompareFn>
-	auto sort(TCompareFn compareFn) {
+	constexpr auto sort(TCompareFn compareFn) {
 		return op::Sorter<TSelf, TCompareFn, STABLE>(std::move(*self()), compareFn);
 	}
 
@@ -2061,7 +2058,7 @@ public: // CXXIter API-Surface
 	 */
 	template<SortOrder ORDER = SortOrder::ASCENDING, bool STABLE = false>
 	requires requires(const ItemOwned& a) { { a < a }; { a > a }; }
-	auto sort() {
+	constexpr auto sort() {
 		return sort<STABLE>([](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
 				return (a < b);
@@ -2102,7 +2099,7 @@ public: // CXXIter API-Surface
 	requires requires(const std::invoke_result_t<TSortValueExtractFn, const ItemOwned&>& a) {
 		{ a < a }; { a > a };
 	}
-	auto sortBy(TSortValueExtractFn sortValueExtractFn) {
+	constexpr auto sortBy(TSortValueExtractFn sortValueExtractFn) {
 		return sort<STABLE>([sortValueExtractFn](const ItemOwned& a, const ItemOwned& b) {
 			if constexpr(ORDER == SortOrder::ASCENDING) {
 				return (sortValueExtractFn(a) < sortValueExtractFn(b));
@@ -2129,7 +2126,7 @@ public: // CXXIter API-Surface
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
+constexpr SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
 	return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
 }
 
@@ -2142,7 +2139,7 @@ SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
+constexpr SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
 	return SrcRef<std::remove_cvref_t<TContainer>>(container);
 }
 
@@ -2155,7 +2152,7 @@ SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
  */
 template<typename TContainer>
 requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
-SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
+constexpr SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
 	return SrcCRef<std::remove_cvref_t<TContainer>>(container);
 }
 
@@ -2171,7 +2168,7 @@ SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
  * @endcode
  */
 template<typename TItem>
-Empty<TItem> empty() { return Empty<TItem>(); }
+constexpr Empty<TItem> empty() { return Empty<TItem>(); }
 
 /**
  * @brief Generator source that takes a @p generatorFn, each invocation of which produces one
@@ -2196,7 +2193,7 @@ Empty<TItem> empty() { return Empty<TItem>(); }
  */
 template<std::invocable<> TGeneratorFn>
 requires util::is_optional<std::invoke_result_t<TGeneratorFn>>
-auto fromFn(TGeneratorFn generatorFn) {
+constexpr auto fromFn(TGeneratorFn generatorFn) {
 	using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
 	return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);
 }
@@ -2248,7 +2245,7 @@ auto generate(TGeneratorFn generatorFn) {
  * @endcode
  */
 template<typename TItem>
-Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
+constexpr Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
 	return Repeater<TItem>(item, cnt);
 }
 
@@ -2276,7 +2273,7 @@ Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
  * @endcode
  */
 template<typename TValue>
-Range<TValue> range(TValue from, TValue to, TValue step = 1) {
+constexpr Range<TValue> range(TValue from, TValue to, TValue step = 1) {
 	return Range<TValue>(from, to, step);
 }
 

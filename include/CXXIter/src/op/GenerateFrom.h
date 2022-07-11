@@ -26,7 +26,7 @@ namespace CXXIter {
 			TGeneratorFn generatorFn;
 			std::optional<TGenerator> currentGenerator;
 		public:
-			GenerateFrom(TChainInput&& input, TGeneratorFn& generatorFn) : input(std::move(input)), generatorFn(generatorFn) {}
+			constexpr GenerateFrom(TChainInput&& input, TGeneratorFn& generatorFn) : input(std::move(input)), generatorFn(generatorFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ namespace CXXIter {
 		using Self = op::GenerateFrom<TChainInput, TGeneratorFn, TGenerator>;
 		using Item = typename TGenerator::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				if(!self.currentGenerator.has_value()) {
 					auto item = ChainInputIterator::next(self.input);
@@ -56,8 +56,8 @@ namespace CXXIter {
 				return item;
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

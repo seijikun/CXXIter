@@ -25,14 +25,14 @@ namespace CXXIter {
 		using Self = Empty<TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self&) { return {}; }
-		static inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
-		static inline size_t advanceBy(Self& self, size_t n) { return 0; }
+		static constexpr inline IterValue<Item> next(Self&) { return {}; }
+		static constexpr inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return 0; }
 	};
 	/** @private */
 	template<typename TItem>
 	struct trait::ExactSizeIterator<Empty<TItem>> {
-		static inline size_t size(const Empty<TItem>&) { return 0; }
+		static constexpr inline size_t size(const Empty<TItem>&) { return 0; }
 	};
 
 
@@ -57,13 +57,13 @@ namespace CXXIter {
 		using Self = FunctionGenerator<TItem, TGeneratorFn>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			auto item = self.generatorFn();
 			if(!item.has_value()) [[unlikely]] { return {}; }
 			return item.value();
 		}
-		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 
@@ -91,25 +91,25 @@ namespace CXXIter {
 		using Self = Repeater<TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(self.repetitions.has_value()) {
 				if(self.repetitionsRemaining == 0) { return {}; }
 				self.repetitionsRemaining -= 1;
 			}
 			return self.item;
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			return SizeHint(
 				self.repetitions.value_or(SizeHint::INFINITE),
 				self.repetitions
 			);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<typename TItem>
 	struct trait::ExactSizeIterator<Repeater<TItem>> {
-		static inline size_t size(const Repeater<TItem>& self) { return trait::Iterator<Repeater<TItem>>::sizeHint(self).lowerBound; }
+		static constexpr inline size_t size(const Repeater<TItem>& self) { return trait::Iterator<Repeater<TItem>>::sizeHint(self).lowerBound; }
 	};
 
 
@@ -128,7 +128,7 @@ namespace CXXIter {
 		TValue to;
 		TValue step;
 	public:
-		Range(TValue from, TValue to, TValue step) : current(from), from(from), to(to), step(step) {}
+		constexpr Range(TValue from, TValue to, TValue step) : current(from), from(from), to(to), step(step) {}
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
@@ -138,22 +138,22 @@ namespace CXXIter {
 		using Self = Range<TValue>;
 		using Item = TValue;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(self.current > self.to) [[unlikely]] { return {}; }
 			TValue current = self.current;
 			self.current += self.step;
 			return current;
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			size_t cnt = static_cast<size_t>((self.to - self.from) / self.step) + 1;
 			return SizeHint(cnt, cnt);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<typename TItem>
 	struct trait::ExactSizeIterator<Range<TItem>> {
-		static inline size_t size(const Range<TItem>& self) { return trait::Iterator<Range<TItem>>::sizeHint(self).lowerBound; }
+		static constexpr inline size_t size(const Range<TItem>& self) { return trait::Iterator<Range<TItem>>::sizeHint(self).lowerBound; }
 	};
 
 
@@ -180,11 +180,11 @@ namespace CXXIter {
 		using Self = CoroutineGenerator<TGeneratorFn>;
 		using Item = typename TGeneratorFn::value_type;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			return self.generator.next();
 		}
-		static inline SizeHint sizeHint(const Self&) { return SizeHint(); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self&) { return SizeHint(); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 #endif
 

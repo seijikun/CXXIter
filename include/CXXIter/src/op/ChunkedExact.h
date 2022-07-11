@@ -29,7 +29,7 @@ namespace CXXIter {
 			TChainInput input;
 			std::optional<ExactChunk<typename TChainInput::Item, CHUNK_SIZE>> chunk;
 		public:
-			ChunkedExact(TChainInput&& input) : input(std::move(input)) {}
+			constexpr ChunkedExact(TChainInput&& input) : input(std::move(input)) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ namespace CXXIter {
 		using Self = op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>;
 		using Item = ExactChunk<InputItem, CHUNK_SIZE>;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!self.chunk.has_value()) [[unlikely]] {
 				// initial loading
 				self.chunk = Item();
@@ -78,7 +78,7 @@ namespace CXXIter {
 			}
 			return *self.chunk;
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint result = ChainInputIterator::sizeHint(self.input);
 			result.lowerBound = (result.lowerBound >= CHUNK_SIZE) ? ((result.lowerBound - CHUNK_SIZE) / STEP_SIZE + 1) : 0;
 			if(result.upperBound.has_value()) {
@@ -86,12 +86,12 @@ namespace CXXIter {
 			}
 			return result;
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, const size_t CHUNK_SIZE, const size_t STEP_SIZE>
 	struct trait::ExactSizeIterator<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>> {
-		static inline size_t size(const op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>& self) {
+		static constexpr inline size_t size(const op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>& self) {
 			return trait::Iterator<op::ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>::sizeHint(self).lowerBound;
 		}
 	};

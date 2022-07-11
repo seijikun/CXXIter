@@ -20,7 +20,7 @@ namespace CXXIter {
 			TChainInput input;
 			TFilterFn filterFn;
 		public:
-			Filter(TChainInput&& input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
+			constexpr Filter(TChainInput&& input, TFilterFn filterFn) : input(std::move(input)), filterFn(filterFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -32,18 +32,18 @@ namespace CXXIter {
 		using Self = op::Filter<TChainInput, TFilterFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; }
 				if(self.filterFn(item.value())) { return item; }
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TFilterFn>
@@ -53,7 +53,7 @@ namespace CXXIter {
 		using Self = op::Filter<TChainInput, TFilterFn>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::nextBack(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; }

@@ -25,7 +25,7 @@ namespace CXXIter {
 			std::array<IterValue<typename TChainInput1::Item>, BATCH_SIZE> currentBatch;
 			size_t batchElementIdx = BATCH_SIZE;
 		public:
-			Alternater(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
+			constexpr Alternater(TChainInput1&& input1, TChainInputs&&... inputs) : inputs( std::forward_as_tuple(std::move(input1), std::move(inputs)...) ) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ namespace CXXIter {
 		using Self = op::Alternater<TChainInput1, TChainInputs...>;
 		using Item = typename TChainInput1::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(self.batchElementIdx == Self::BATCH_SIZE) [[unlikely]] { // returned all elements from the batch -> retrieve new batch
 				constexpr_for<0, INPUT_CNT>([&](auto idx) {
 					self.currentBatch[idx] = std::tuple_element_t<idx, ChainInputIterators>::next( std::get<idx>(self.inputs) );
@@ -48,7 +48,7 @@ namespace CXXIter {
 			}
 			return std::move(self.currentBatch[self.batchElementIdx++]);
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			size_t lowerBoundMin = std::numeric_limits<size_t>::max();
 			std::optional<size_t> upperBoundMin = {};
 			size_t minIdx = 0;
@@ -70,12 +70,12 @@ namespace CXXIter {
 			);
 			return result;
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator... TChainInputs>
 	struct trait::ExactSizeIterator<op::Alternater<TChainInput1, TChainInputs...>> {
-		static inline size_t size(const op::Alternater<TChainInput1, TChainInputs...>& self) {
+		static constexpr inline size_t size(const op::Alternater<TChainInput1, TChainInputs...>& self) {
 			return trait::Iterator<op::Alternater<TChainInput1, TChainInputs...>>::sizeHint(self).lowerBound;
 		}
 	};

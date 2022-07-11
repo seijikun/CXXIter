@@ -23,7 +23,7 @@ namespace CXXIter {
 			bool input1Ended = false;
 			bool input2Ended = false;
 		public:
-			Chainer(TChainInput1&& input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}
+			constexpr Chainer(TChainInput1&& input1, TChainInput2 input2) : input1(std::move(input1)), input2(std::move(input2)) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace CXXIter {
 		using Self = op::Chainer<TChainInput1, TChainInput2>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				if(self.input1Ended == false) {
 					auto item = ChainInputIterator1::next(self.input1);
@@ -53,12 +53,12 @@ namespace CXXIter {
 				}
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint result = ChainInputIterator1::sizeHint(self.input1);
 			result.add(ChainInputIterator2::sizeHint(self.input2));
 			return result;
 		}
-		static inline size_t advanceBy(Self& self, size_t n) {
+		static constexpr inline size_t advanceBy(Self& self, size_t n) {
 			size_t skipped = 0;
 			if(!self.input1Ended) {
 				skipped += ChainInputIterator1::advanceBy(self.input1, n);
@@ -79,7 +79,7 @@ namespace CXXIter {
 		using Self = op::Chainer<TChainInput1, TChainInput2>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			while(true) {
 				if(self.input2Ended == false) {
 					auto item = ChainInputIterator2::nextBack(self.input2);
@@ -99,7 +99,7 @@ namespace CXXIter {
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput1, CXXIterExactSizeIterator TChainInput2>
 	struct trait::ExactSizeIterator<op::Chainer<TChainInput1, TChainInput2>> {
-		static inline size_t size(const op::Chainer<TChainInput1, TChainInput2>& self) {
+		static constexpr inline size_t size(const op::Chainer<TChainInput1, TChainInput2>& self) {
 			return trait::Iterator<op::Chainer<TChainInput1, TChainInput2>>::sizeHint(self).lowerBound;
 		}
 	};

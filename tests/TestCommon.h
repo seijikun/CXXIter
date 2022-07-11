@@ -96,18 +96,18 @@ namespace CXXIter {
 		using IteratorState = size_t;
 		using ConstIteratorState = size_t;
 
-		static inline SizeHint sizeHint(const CustomContainer<TItem>& container) { return SizeHint(container.size(), container.size()); }
+		static constexpr inline SizeHint sizeHint(const CustomContainer<TItem>& container) { return SizeHint(container.size(), container.size()); }
 
-		static inline IteratorState initIterator(CustomContainer<TItem>&) { return 0; }
-		static inline ConstIteratorState initIterator(const CustomContainer<TItem>&) { return 0; }
+		static constexpr inline IteratorState initIterator(CustomContainer<TItem>&) { return 0; }
+		static constexpr inline ConstIteratorState initIterator(const CustomContainer<TItem>&) { return 0; }
 
-		static inline bool hasNext(CustomContainer<TItem>& container, IteratorState& iter) { return iter < container.size(); }
-		static inline bool hasNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return iter < container.size(); }
+		static constexpr inline bool hasNext(CustomContainer<TItem>& container, IteratorState& iter) { return iter < container.size(); }
+		static constexpr inline bool hasNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return iter < container.size(); }
 
-		static inline ItemRef next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
-		static inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
+		static constexpr inline ItemRef next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
+		static constexpr inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
 
-		static inline size_t skipN(CustomContainer<TItem>& container, IteratorState& iter, size_t n) {
+		static constexpr inline size_t skipN(CustomContainer<TItem>& container, IteratorState& iter, size_t n) {
 			size_t skipN = std::min(container.cnt - iter, n);
 			iter += skipN;
 			return skipN;

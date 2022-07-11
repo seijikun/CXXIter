@@ -18,7 +18,7 @@ namespace CXXIter {
 			TChainInput input;
 			TFilterMapFn filterMapFn;
 		public:
-			FilterMap(TChainInput&& input, TFilterMapFn filterMapFn) : input(std::move(input)), filterMapFn(filterMapFn) {}
+			constexpr FilterMap(TChainInput&& input, TFilterMapFn filterMapFn) : input(std::move(input)), filterMapFn(filterMapFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ namespace CXXIter {
 		using Self = op::FilterMap<TChainInput, TFilterMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; }
@@ -40,11 +40,11 @@ namespace CXXIter {
 				return *value;
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TFilterMapFn, typename TItem>
@@ -55,7 +55,7 @@ namespace CXXIter {
 		using Self = op::FilterMap<TChainInput, TFilterMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::nextBack(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; }

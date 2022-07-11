@@ -27,7 +27,7 @@ namespace CXXIter {
 			TCompareFn compareFn;
 			std::optional<SortCache> sortCache;
 		public:
-			Sorter(TChainInput&& input, TCompareFn compareFn) : input(std::move(input)), compareFn(compareFn) {}
+			constexpr Sorter(TChainInput&& input, TCompareFn compareFn) : input(std::move(input)), compareFn(compareFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ namespace CXXIter {
 		using Self = op::Sorter<TChainInput, TCompareFn, STABLE>;
 		using Item = OwnedInputItem;
 
-		static inline void initSortCache(Self& self) {
+		static constexpr inline void initSortCache(Self& self) {
 			// drain input iterator into sortCache
 			std::vector<OwnedInputItem> sortCache;
 			while(true) {
@@ -58,15 +58,15 @@ namespace CXXIter {
 			self.sortCache.emplace(std::move(sortCache));
 		}
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!self.sortCache.has_value()) [[unlikely]] { initSortCache(self); }
 
 			using SortCacheIterator = trait::Iterator<typename Self::SortCache>;
 			typename Self::SortCache& sortedItems = self.sortCache.value();
 			return SortCacheIterator::next(sortedItems);
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TCompareFn, bool STABLE>
@@ -78,7 +78,7 @@ namespace CXXIter {
 		using Self = op::Sorter<TChainInput, TCompareFn, STABLE>;
 		using Item = OwnedInputItem;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			if(!self.sortCache.has_value()) [[unlikely]] { trait::Iterator<Self>::initSortCache(self); }
 
 			using SortCacheIterator = trait::DoubleEndedIterator<typename Self::SortCache>;
@@ -89,7 +89,7 @@ namespace CXXIter {
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TCompareFn, bool STABLE>
 	struct trait::ExactSizeIterator<op::Sorter<TChainInput, TCompareFn, STABLE>> {
-		static inline size_t size(const op::Sorter<TChainInput, TCompareFn, STABLE>& self) {
+		static constexpr inline size_t size(const op::Sorter<TChainInput, TCompareFn, STABLE>& self) {
 			return trait::ExactSizeIterator<TChainInput>::size(self.input);
 		}
 	};

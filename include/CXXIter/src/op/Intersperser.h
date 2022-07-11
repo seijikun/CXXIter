@@ -26,7 +26,7 @@ namespace CXXIter {
 			IterValue<typename TChainInput::Item> nextItem;
 			IntersperserState intersperserState = IntersperserState::Uninitialized;
 		public:
-			Intersperser(TChainInput&& input, TSeparatorInput&& separatorInput) : input(std::move(input)), separatorInput(std::move(separatorInput)) {}
+			constexpr Intersperser(TChainInput&& input, TSeparatorInput&& separatorInput) : input(std::move(input)), separatorInput(std::move(separatorInput)) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ namespace CXXIter {
 		using Self = op::Intersperser<TChainInput, TSeparatorInput>;
 		using Item = typename ChainInputIterator::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(self.intersperserState == Self::IntersperserState::Uninitialized) [[unlikely]] {
 				self.nextItem = ChainInputIterator::next(self.input);
 				self.intersperserState = Self::IntersperserState::Item;
@@ -57,7 +57,7 @@ namespace CXXIter {
 				return SeparatorInputIterator::next(self.separatorInput);
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			SizeHint separator = SeparatorInputIterator::sizeHint(self.separatorInput);
 
@@ -72,12 +72,12 @@ namespace CXXIter {
 			}
 			return result;
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, CXXIterExactSizeIterator TSeparatorInput>
 	struct trait::ExactSizeIterator<op::Intersperser<TChainInput, TSeparatorInput>> {
-		static inline size_t size(const op::Intersperser<TChainInput, TSeparatorInput>& self) {
+		static constexpr inline size_t size(const op::Intersperser<TChainInput, TSeparatorInput>& self) {
 			return trait::Iterator<op::Intersperser<TChainInput, TSeparatorInput>>::sizeHint(self).lowerBound;
 		}
 	};

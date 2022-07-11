@@ -23,7 +23,7 @@ namespace CXXIter {
 			TMapFn mapFn;
 			std::unordered_set<OwnedInputItem> uniqueCache;
 		public:
-			Unique(TChainInput&& input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {
+			constexpr Unique(TChainInput&& input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {
 				uniqueCache.reserve(this->input.sizeHint().expectedResultSize());
 			}
 		};
@@ -39,7 +39,7 @@ namespace CXXIter {
 		using Self = op::Unique<TChainInput, TMapFn>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			while(true) {
 				auto item = ChainInputIterator::next(self.input);
 				if(!item.has_value()) [[unlikely]] { return {}; } // reached end of input
@@ -50,11 +50,11 @@ namespace CXXIter {
 				return item;
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) {
+		static constexpr inline SizeHint sizeHint(const Self& self) {
 			SizeHint input = ChainInputIterator::sizeHint(self.input);
 			return SizeHint(0, input.upperBound);
 		}
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 
 }

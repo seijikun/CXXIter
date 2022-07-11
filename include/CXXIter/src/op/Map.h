@@ -21,7 +21,7 @@ namespace CXXIter {
 			TChainInput input;
 			TMapFn mapFn;
 		public:
-			Map(TChainInput&& input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
+			constexpr Map(TChainInput&& input, TMapFn mapFn) : input(std::move(input)), mapFn(mapFn) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -34,12 +34,12 @@ namespace CXXIter {
 		using Self = op::Map<TChainInput, TMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			auto item = ChainInputIterator::next(self.input);
 			return item.template map<Item, TMapFn&>(self.mapFn);
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPull(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput, typename TMapFn, typename TItem>
@@ -50,7 +50,7 @@ namespace CXXIter {
 		using Self = op::Map<TChainInput, TMapFn, TItem>;
 		using Item = TItem;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			auto item = ChainInputIterator::nextBack(self.input);
 			return item.template map<Item, TMapFn&>(self.mapFn);
 		}
@@ -58,7 +58,7 @@ namespace CXXIter {
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput, typename TMapFn, typename TItem>
 	struct trait::ExactSizeIterator<op::Map<TChainInput, TMapFn, TItem>> {
-		static inline size_t size(const op::Map<TChainInput, TMapFn, TItem>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
+		static constexpr inline size_t size(const op::Map<TChainInput, TMapFn, TItem>& self) { return trait::ExactSizeIterator<TChainInput>::size(self.input); }
 	};
 
 }

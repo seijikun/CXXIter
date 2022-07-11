@@ -36,12 +36,12 @@ namespace CXXIter {
 		using Self = SrcMov<TContainer>;
 		using Item = typename Src::Item;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!Src::hasNext(*self.container, self.iter)) [[unlikely]] { return {}; }
 			return std::move(Src::next(*self.container, self.iter));
 		}
-		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(*self.container); }
-		static inline size_t advanceBy(Self& self, size_t n) {
+		static constexpr inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(*self.container); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) {
 			return Src::skipN(*self.container, self.iter, n);
 		}
 	};
@@ -53,7 +53,7 @@ namespace CXXIter {
 		using Item = typename Src::Item;
 
 		// CXXIter Interface
-		static inline IterValue<Item> nextBack(SrcMov<TContainer>& self) {
+		static constexpr inline IterValue<Item> nextBack(SrcMov<TContainer>& self) {
 			if(!Src::hasNext(*self.container, self.iter)) [[unlikely]] { return {}; }
 			return std::move(Src::nextBack(*self.container, self.iter));
 		}
@@ -61,7 +61,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::ExactSizeIterator<SrcMov<TContainer>> {
-		static inline size_t size(const SrcMov<TContainer>& self) { return self.container->size(); }
+		static constexpr inline size_t size(const SrcMov<TContainer>& self) { return self.container->size(); }
 	};
 
 
@@ -98,12 +98,12 @@ namespace CXXIter {
 		using Self = SrcRef<TContainer>;
 		using Item = typename Src::ItemRef;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 			return Src::next(self.container, self.iter);
 		}
-		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
-		static inline size_t advanceBy(Self& self, size_t n) {
+		static constexpr inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) {
 			return Src::skipN(self.container, self.iter, n);
 		}
 	};
@@ -115,7 +115,7 @@ namespace CXXIter {
 		using Item = typename Src::ItemRef;
 
 		// CXXIter Interface
-		static inline IterValue<Item> nextBack(SrcRef<TContainer>& self) {
+		static constexpr inline IterValue<Item> nextBack(SrcRef<TContainer>& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 			return Src::nextBack(self.container, self.iter);
 		}
@@ -123,7 +123,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::ExactSizeIterator<SrcRef<TContainer>> {
-		static inline size_t size(const SrcRef<TContainer>& self) { return self.container.size(); }
+		static constexpr inline size_t size(const SrcRef<TContainer>& self) { return self.container.size(); }
 	};
 
 
@@ -148,7 +148,7 @@ namespace CXXIter {
 		const TContainer& container;
 		typename Src::ConstIteratorState iter;
 	public:
-		SrcCRef(const TContainer& container) : container(container), iter(Src::initIterator(this->container)) {}
+		constexpr SrcCRef(const TContainer& container) : container(container), iter(Src::initIterator(this->container)) {}
 	};
 	// ------------------------------------------------------------------------------------------------
 	/** @private */
@@ -159,12 +159,12 @@ namespace CXXIter {
 		using Self = SrcCRef<TContainer>;
 		using Item = typename Src::ItemConstRef;
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 			return Src::next(self.container, self.iter);
 		}
-		static inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
-		static inline size_t advanceBy(Self& self, size_t n) {
+		static constexpr inline SizeHint sizeHint(const Self& self) { return Src::sizeHint(self.container); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) {
 			return Src::skipN(self.container, self.iter, n);
 		}
 	};
@@ -176,7 +176,7 @@ namespace CXXIter {
 		using Item = typename Src::ItemConstRef;
 
 		// CXXIter Interface
-		static inline IterValue<Item> nextBack(SrcCRef<TContainer>& self) {
+		static constexpr inline IterValue<Item> nextBack(SrcCRef<TContainer>& self) {
 			if(!Src::hasNext(self.container, self.iter)) [[unlikely]] { return {}; }
 			return Src::nextBack(self.container, self.iter);
 		}
@@ -184,7 +184,7 @@ namespace CXXIter {
 	/** @private */
 	template<typename TContainer>
 	struct trait::ExactSizeIterator<SrcCRef<TContainer>> {
-		static inline size_t size(const SrcCRef<TContainer>& self) { return self.container.size(); }
+		static constexpr inline size_t size(const SrcCRef<TContainer>& self) { return self.container.size(); }
 	};
 
 }

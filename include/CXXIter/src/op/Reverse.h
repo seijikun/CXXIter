@@ -36,7 +36,7 @@ namespace CXXIter {
 			std::conditional_t<USE_CACHE, std::optional<ReverseCache>, NoReverseCache> reverseCache;
 
 		public:
-			Reverse(TChainInput&& input) : input(std::move(input)) {}
+			constexpr Reverse(TChainInput&& input) : input(std::move(input)) {}
 		};
 	}
 	// ------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ namespace CXXIter {
 			self.reverseCache = typename Self::ReverseCache(std::move(reverseCache));
 		}
 
-		static inline IterValue<Item> next(Self& self) {
+		static constexpr inline IterValue<Item> next(Self& self) {
 			if constexpr(Self::USE_CACHE) {
 				if(!self.reverseCache.has_value()) [[unlikely]] { initReverseCache(self); }
 				return trait::DoubleEndedIterator<typename Self::ReverseCache>::nextBack(self.reverseCache.value());
@@ -69,8 +69,8 @@ namespace CXXIter {
 				return trait::DoubleEndedIterator<TChainInput>::nextBack(self.input);
 			}
 		}
-		static inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
-		static inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPullBack(self, n); }
+		static constexpr inline SizeHint sizeHint(const Self& self) { return ChainInputIterator::sizeHint(self.input); }
+		static constexpr inline size_t advanceBy(Self& self, size_t n) { return util::advanceByPullBack(self, n); }
 	};
 	/** @private */
 	template<CXXIterDoubleEndedIterator TChainInput>
@@ -81,7 +81,7 @@ namespace CXXIter {
 		using Self = op::Reverse<TChainInput>;
 		using Item = InputItem;
 
-		static inline IterValue<Item> nextBack(Self& self) {
+		static constexpr inline IterValue<Item> nextBack(Self& self) {
 			if constexpr(Self::USE_CACHE) {
 				if(!self.reverseCache.has_value()) [[unlikely]] { initReverseCache(self); }
 				return trait::Iterator<typename Self::ReverseCache>::next(self.reverseCache.value());
@@ -93,7 +93,7 @@ namespace CXXIter {
 	/** @private */
 	template<CXXIterExactSizeIterator TChainInput>
 	struct trait::ExactSizeIterator<op::Reverse<TChainInput>> {
-		static inline size_t size(const op::Reverse<TChainInput>& self) {
+		static constexpr inline size_t size(const op::Reverse<TChainInput>& self) {
 			return trait::ExactSizeIterator<TChainInput>::size(self.input);
 		}
 	};
