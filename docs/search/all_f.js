@@ -20,5 +20,6 @@ var searchData=
   ['stddev_17',['stddev',['../classCXXIter_1_1IterApi.html#a83370ed3a2770da9e4b5aa7317534487',1,'CXXIter::IterApi']]],
   ['stepby_18',['stepBy',['../classCXXIter_1_1IterApi.html#aa4cf427f53b7c5916727fe253589b817',1,'CXXIter::IterApi']]],
   ['stringjoin_19',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
-  ['sum_20',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]]
+  ['sum_20',['sum',['../classCXXIter_1_1IterApi.html#a69c182f266a918168975a3764a1fc8eb',1,'CXXIter::IterApi']]],
+  ['swap_21',['swap',['../classCXXIter_1_1IterValue.html#a34cabe7471c00c485d5256d92bb945ea',1,'CXXIter::IterValue']]]
 ];

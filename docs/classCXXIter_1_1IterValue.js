@@ -11,6 +11,7 @@ var classCXXIter_1_1IterValue =
     [ "operator std::optional< TValueStore >", "classCXXIter_1_1IterValue.html#a09b54da1eb51a4001fa5e01e725fdfee", null ],
     [ "operator=", "classCXXIter_1_1IterValue.html#a487f65c0192a5a2df1d3f0752afea0a8", null ],
     [ "operator=", "classCXXIter_1_1IterValue.html#aefff278b7685113730f6ae9e986e094b", null ],
+    [ "swap", "classCXXIter_1_1IterValue.html#a34cabe7471c00c485d5256d92bb945ea", null ],
     [ "toStdOptional", "classCXXIter_1_1IterValue.html#a1843fa4bcf33055f287f4d43c300b575", null ],
     [ "value", "classCXXIter_1_1IterValue.html#a2226488f644e4bf2df04979662c1ab1e", null ],
     [ "value", "classCXXIter_1_1IterValue.html#a10232ef74599e80b16cafe0b0a0dcc6a", null ],

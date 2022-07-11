@@ -131,6 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a152e5d33392c8437ab8a72707f8acdf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterValue.html#a152e5d33392c8437ab8a72707f8acdf2">has_value</a> () const noexcept</td></tr>
 <tr class="memdesc:a152e5d33392c8437ab8a72707f8acdf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether this optional IteratorValue contains a value.  <a href="classCXXIter_1_1IterValue.html#a152e5d33392c8437ab8a72707f8acdf2">More...</a><br /></td></tr>
 <tr class="separator:a152e5d33392c8437ab8a72707f8acdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cabe7471c00c485d5256d92bb945ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterValue.html#a34cabe7471c00c485d5256d92bb945ea">swap</a> (<a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; TValue &gt; &amp;o) noexcept</td></tr>
+<tr class="memdesc:a34cabe7471c00c485d5256d92bb945ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap the values within this and another <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> container.  <a href="classCXXIter_1_1IterValue.html#a34cabe7471c00c485d5256d92bb945ea">More...</a><br /></td></tr>
+<tr class="separator:a34cabe7471c00c485d5256d92bb945ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1843fa4bcf33055f287f4d43c300b575"><td class="memItemLeft" align="right" valign="top">std::optional&lt; TValueStore &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterValue.html#a1843fa4bcf33055f287f4d43c300b575">toStdOptional</a> () noexcept</td></tr>
 <tr class="memdesc:a1843fa4bcf33055f287f4d43c300b575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> to a <code>std::optional&lt;&gt;</code> on the owned (no-reference) type.  <a href="classCXXIter_1_1IterValue.html#a1843fa4bcf33055f287f4d43c300b575">More...</a><br /></td></tr>
 <tr class="separator:a1843fa4bcf33055f287f4d43c300b575"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -386,7 +389,7 @@ requires (!std::is_reference_v&lt;TValue&gt;)</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> containing the mapped value if this instance contained a value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00106">106</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00112">112</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -440,7 +443,7 @@ requires std::is_reference_v&lt;TValue&gt;</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> containing the mapped value if this instance contained a value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00119">119</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00125">125</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -477,7 +480,7 @@ template&lt;typename TValue &gt; </div>
 
 <p>Cast to <code>std::optional&lt;&gt;</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00096">96</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00102">102</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -547,6 +550,44 @@ template&lt;typename TValue &gt; </div>
 
 </div>
 </div>
+<a id="a34cabe7471c00c485d5256d92bb945ea" name="a34cabe7471c00c485d5256d92bb945ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34cabe7471c00c485d5256d92bb945ea">&#9670;&nbsp;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TValue &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCXXIter_1_1IterValue.html">CXXIter::IterValue</a>&lt; TValue &gt;::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCXXIter_1_1IterValue.html">IterValue</a>&lt; TValue &gt; &amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Swap the values within this and another <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> container. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>Other <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> container to swap contents with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00089">89</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
+
+</div>
+</div>
 <a id="a1843fa4bcf33055f287f4d43c300b575" name="a1843fa4bcf33055f287f4d43c300b575"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1843fa4bcf33055f287f4d43c300b575">&#9670;&nbsp;</a></span>toStdOptional()</h2>
 
@@ -575,7 +616,7 @@ template&lt;typename TValue &gt; </div>
 <p>Convert this <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a> to a <code>std::optional&lt;&gt;</code> on the owned (no-reference) type. </p>
 <p >If the contained value is a reference, the value will be copied into the returned <code>std::optional&lt;&gt;</code>. </p><dl class="section return"><dt>Returns</dt><dd><code>std::optional&lt;&gt;</code> containing an owned version of the value contained by this <a class="el" href="classCXXIter_1_1IterValue.html" title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">IterValue</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00090">90</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="IterValue_8h_source.html#l00096">96</a> of file <a class="el" href="IterValue_8h_source.html">IterValue.h</a>.</p>
 
 </div>
 </div>
