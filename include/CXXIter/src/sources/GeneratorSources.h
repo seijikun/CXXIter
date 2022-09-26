@@ -27,7 +27,7 @@ namespace CXXIter {
 
 		static constexpr inline IterValue<Item> next(Self&) { return {}; }
 		static constexpr inline SizeHint sizeHint(const Self&) { return SizeHint(0, 0); }
-		static constexpr inline size_t advanceBy(Self& self, size_t n) { return 0; }
+		static constexpr inline size_t advanceBy(Self&, size_t) { return 0; }
 	};
 	/** @private */
 	template<typename TItem>

@@ -13,9 +13,6 @@ jobs:
         - { type: "gcc", cc: "gcc", cxx: "g++", buildType: "Release", version: 11, platform: x64 }
         - { type: "gcc", cc: "gcc", cxx: "g++", buildType: "RelWithDebug", version: 11, platform: x64 }
         - { type: "gcc", cc: "gcc", cxx: "g++", buildType: "Debug", version: 11, platform: x64 }
-        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Release", version: 13, platform: x64 }
-        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "RelWithDebug", version: 13, platform: x64 }
-        - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Debug", version: 13, platform: x64 }
         - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Release", version: 14, platform: x64 }
         - { type: "clang", cc: "clang", cxx: "clang++", buildType: "RelWithDebug", version: 14, platform: x64 }
         - { type: "clang", cc: "clang", cxx: "clang++", buildType: "Debug", version: 14, platform: x64 }
@@ -32,11 +29,12 @@ jobs:
         version: ${{ matrix.config.version }}
         platform: ${{ matrix.config.platform }}
     - name: Setup CLANG
-      uses: egor-tensin/setup-clang@v1
+      uses: aminya/setup-cpp@v1
       if: matrix.config.type == 'clang'
       with:
-        version: ${{ matrix.config.version }}
-        platform: ${{ matrix.config.platform }}
+        compiler: llvm-${{ matrix.config.version }}.0.0
+        cmake: true
+        ninja: true
       
     - name: Configure
       run: |
@@ -45,7 +43,7 @@ jobs:
         if [ -d "build" ]; then rm -rf ./build; fi
         mkdir -p build
         cd build
-        cmake -GNinja ../ -DCXXITER_WITH_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.config.buildType }}
+        cmake -GNinja ../ -DCMAKE_VERBOSE_MAKEFILE=ON -DCXXITER_WITH_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.config.buildType }}
     
     - name: Build
       run: |
