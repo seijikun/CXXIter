@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Consumer that yields the smallest element from this iterator." alt="" coords="5,85,160,111"/>
 <area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a17745e6efd608be5bba03e67b252c02d" title="Consumer that yields the smallest element from this iterator. Comparison of items is done using the c..." alt="" coords="208,85,380,111"/>
 <area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="428,5,607,31"/>
-<area shape="rect" id="node4" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="655,31,813,56"/>
+<area shape="rect" id="node4" href="$structCXXIter_1_1trait_1_1Iterator.html#a24ea296105d53bf6a4455c6f818715c2" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="655,23,817,63"/>
 <area shape="rect" id="node5" href="$classCXXIter_1_1IterValue.html#a1328a0235310a7b0610f2ca7f0f08d4d" title="Get whether this optional IteratorValue contains a value." alt="" coords="449,106,586,146"/>
 <area shape="rect" id="node6" href="$classCXXIter_1_1IterValue.html#ae90e2e32a4cf74ed8cc186086abbab82" title="Get the contained value (if any)." alt="" coords="449,170,586,210"/>
 </map>

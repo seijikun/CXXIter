@@ -46,9 +46,9 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 650;
+var viewWidth = 653;
 var viewHeight = 162;
-var sectionId = 'dynsection-19';
+var sectionId = 'dynsection-18';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -58,7 +58,7 @@ var sectionId = 'dynsection-19';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Consumer that yields the index of the largest element within this iterator.">
-<polygon fill="#bfbfbf" stroke="black" points="134,-93.5 0,-93.5 0,-74.5 134,-74.5 134,-93.5"/>
+<polygon fill="#999999" stroke="#666666" points="134,-93.5 0,-93.5 0,-74.5 134,-74.5 134,-93.5"/>
 <text text-anchor="middle" x="67" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::maxIdx</text>
 </a>
 </g>
@@ -67,7 +67,7 @@ var sectionId = 'dynsection-19';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="classCXXIter_1_1IterApi.html#afba204597790ab6bb56f6f0c0af022fc" target="_top" xlink:title="Consumer that yields the index of the largest element from this iterator. Comparison of items is done...">
-<polygon fill="none" stroke="black" points="317,-93.5 170,-93.5 170,-74.5 317,-74.5 317,-93.5"/>
+<polygon fill="white" stroke="#666666" points="317,-93.5 170,-93.5 170,-74.5 317,-74.5 317,-93.5"/>
 <text text-anchor="middle" x="243.5" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::maxIdxBy</text>
 </a>
 </g>
@@ -75,20 +75,20 @@ var sectionId = 'dynsection-19';
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M134.47,-77.42C142.69,-77.28 151.16,-77.23 159.59,-77.26"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="159.79,-80.76 169.82,-77.33 159.84,-73.76 159.79,-80.76"/>
+<path fill="none" stroke="#63b8ff" d="M134.47,-77.42C142.69,-77.28 151.16,-77.23 159.59,-77.26"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="159.79,-80.76 169.82,-77.33 159.84,-73.76 159.79,-80.76"/>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
-<g id="edge6" class="edge">
+<g id="edge5" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M169.82,-90.67C161.49,-90.76 152.98,-90.78 144.6,-90.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="144.51,-87.2 134.47,-90.58 144.42,-94.2 144.51,-87.2"/>
+<path fill="none" stroke="#63b8ff" d="M169.82,-90.67C161.49,-90.76 152.98,-90.78 144.6,-90.71"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="144.51,-87.2 134.47,-90.58 144.42,-94.2 144.51,-87.2"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" target="_top" xlink:title="Consumer that calls the given function useFn for each of the elements in this iterator.">
-<polygon fill="none" stroke="black" points="487,-153.5 353,-153.5 353,-134.5 487,-134.5 487,-153.5"/>
+<polygon fill="white" stroke="#666666" points="487,-153.5 353,-153.5 353,-134.5 487,-134.5 487,-153.5"/>
 <text text-anchor="middle" x="420" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::forEach</text>
 </a>
 </g>
@@ -96,67 +96,62 @@ var sectionId = 'dynsection-19';
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M272.15,-93.51C301.67,-103.66 348.64,-119.81 381.49,-131.1"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="380.6,-134.5 391.19,-134.44 382.87,-127.88 380.6,-134.5"/>
+<path fill="none" stroke="#63b8ff" d="M272.15,-93.51C301.67,-103.66 348.64,-119.81 381.49,-131.1"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="380.6,-134.5 391.19,-134.44 382.87,-127.88 380.6,-134.5"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" target="_top" xlink:title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;.">
-<polygon fill="none" stroke="black" points="642,-134.5 523,-134.5 523,-115.5 642,-115.5 642,-134.5"/>
-<text text-anchor="middle" x="582.5" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::next</text>
+<g id="a_node4"><a xlink:href="structCXXIter_1_1trait_1_1Iterator.html#a24ea296105d53bf6a4455c6f818715c2" target="_top" xlink:title="Pull one element from the iterator pipeline previous to this pipeline&#45;element.">
+<polygon fill="white" stroke="#666666" points="645,-140 523,-140 523,-110 645,-110 645,-140"/>
+<text text-anchor="start" x="531" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::trait::Iterator</text>
+<text text-anchor="middle" x="584" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">::next</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
-<g id="edge7" class="edge">
+<g id="edge6" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M317.21,-92.85C375.25,-99.91 456.01,-109.73 512.94,-116.66"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="512.57,-120.14 522.92,-117.87 513.42,-113.19 512.57,-120.14"/>
+<path fill="none" stroke="#63b8ff" d="M317.12,-92.8C375.03,-99.81 455.64,-109.57 512.88,-116.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="512.58,-120 522.93,-117.72 513.42,-113.05 512.58,-120"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="classCXXIter_1_1IterValue.html#a1328a0235310a7b0610f2ca7f0f08d4d" target="_top" xlink:title="Get whether this optional IteratorValue contains a value.">
-<polygon fill="none" stroke="black" points="471.5,-78 368.5,-78 368.5,-48 471.5,-48 471.5,-78"/>
+<polygon fill="white" stroke="#666666" points="471.5,-78 368.5,-78 368.5,-48 471.5,-48 471.5,-78"/>
 <text text-anchor="start" x="376.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterValue</text>
 <text text-anchor="middle" x="420" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">::has_value</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node5 -->
-<g id="edge5" class="edge">
+<g id="edge4" class="edge">
 <title>Node2&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M317.24,-75.25C330.95,-73.6 345.16,-71.89 358.45,-70.29"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="358.9,-73.76 368.41,-69.09 358.06,-66.81 358.9,-73.76"/>
+<path fill="none" stroke="#63b8ff" d="M317.24,-75.25C330.95,-73.6 345.16,-71.89 358.45,-70.29"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="358.9,-73.76 368.41,-69.09 358.06,-66.81 358.9,-73.76"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="classCXXIter_1_1IterValue.html#ae90e2e32a4cf74ed8cc186086abbab82" target="_top" xlink:title="Get the contained value (if any).">
-<polygon fill="none" stroke="black" points="471.5,-30 368.5,-30 368.5,0 471.5,0 471.5,-30"/>
+<polygon fill="white" stroke="#666666" points="471.5,-30 368.5,-30 368.5,0 471.5,0 471.5,-30"/>
 <text text-anchor="start" x="376.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterValue</text>
 <text text-anchor="middle" x="420" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::value</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node6 -->
-<g id="edge8" class="edge">
+<g id="edge7" class="edge">
 <title>Node2&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M266.83,-74.4C288.68,-65.08 322.97,-50.68 353,-39 357.52,-37.24 362.23,-35.45 366.96,-33.68"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="368.49,-36.85 376.65,-30.09 366.05,-30.28 368.49,-36.85"/>
+<path fill="none" stroke="#63b8ff" d="M266.83,-74.4C288.68,-65.08 322.97,-50.68 353,-39 357.52,-37.24 362.23,-35.45 366.96,-33.68"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="368.49,-36.85 376.65,-30.09 366.05,-30.28 368.49,-36.85"/>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M487.21,-136.16C495.62,-135.17 504.24,-134.15 512.69,-133.15"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="513.37,-136.59 522.89,-131.94 512.54,-129.64 513.37,-136.59"/>
-</g>
-<!-- Node4&#45;&gt;Node4 -->
-<g id="edge4" class="edge">
-<title>Node4&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M557.53,-134.58C545.38,-143.23 553.71,-152.5 582.5,-152.5 601.4,-152.5 611.48,-148.51 612.74,-143.32"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="615.63,-141.34 607.47,-134.58 609.64,-144.95 615.63,-141.34"/>
+<path fill="none" stroke="#63b8ff" d="M487.36,-136.22C495.75,-135.23 504.35,-134.22 512.79,-133.23"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="513.46,-136.68 522.99,-132.04 512.65,-129.73 513.46,-136.68"/>
 </g>
 </g>
 </svg>

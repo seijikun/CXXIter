@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Advance the iterator by n elements.">
-<polygon fill="#bfbfbf" stroke="black" points="152,-24.5 0,-24.5 0,-5.5 152,-5.5 152,-24.5"/>
+<polygon fill="#999999" stroke="#666666" points="152,-24.5 0,-24.5 0,-5.5 152,-5.5 152,-24.5"/>
 <text text-anchor="middle" x="76" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::advanceBy</text>
 </a>
 </g>
@@ -21,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="structCXXIter_1_1trait_1_1Iterator.html#ade89efc424a0555bd2d2fd2c654ab09d" target="_top" xlink:title="Advance the iterator by n elements.">
-<polygon fill="none" stroke="black" points="310,-30 188,-30 188,0 310,0 310,-30"/>
+<polygon fill="white" stroke="#666666" points="310,-30 188,-30 188,0 310,0 310,-30"/>
 <text text-anchor="start" x="196" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::trait::Iterator</text>
 <text text-anchor="middle" x="249" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::advanceBy</text>
 </a>
@@ -30,8 +30,8 @@
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M152,-15C160.55,-15 169.24,-15 177.73,-15"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="177.95,-18.5 187.95,-15 177.95,-11.5 177.95,-18.5"/>
+<path fill="none" stroke="#63b8ff" d="M152,-15C160.55,-15 169.24,-15 177.73,-15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="177.95,-18.5 187.95,-15 177.95,-11.5 177.95,-18.5"/>
 </g>
 </g>
 </svg>

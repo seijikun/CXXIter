@@ -1,5 +1,5 @@
 <map id="CXXIter::IterApi::fold" name="CXXIter::IterApi::fold">
-<area shape="rect" id="node1" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="5,29,160,55"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="208,29,387,55"/>
-<area shape="rect" id="node3" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="435,29,593,55"/>
+<area shape="rect" id="node1" title="Consumer that executes the given foldFn for each item in this iterator, to apply to a working value,..." alt="" coords="5,13,160,38"/>
+<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#a79fda2fe3278009952d9eb1d73e2545e" title="Consumer that calls the given function useFn for each of the elements in this iterator." alt="" coords="208,13,387,38"/>
+<area shape="rect" id="node3" href="$structCXXIter_1_1trait_1_1Iterator.html#a24ea296105d53bf6a4455c6f818715c2" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="435,5,597,45"/>
 </map>

@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node0</title>
 <g id="a_node1"><a xlink:href="classCXXIter_1_1IterValue.html" target="_top" xlink:title="Container that is used to pass elements through CXXIter&#39;s iterator pipelines.">
-<polygon fill="none" stroke="black" points="103,-30 0,-30 0,0 103,0 103,-30"/>
+<polygon fill="white" stroke="#666666" points="103,-30 0,-30 0,0 103,0 103,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterValue</text>
 <text text-anchor="middle" x="51.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; TValue &gt;</text>
 </a>

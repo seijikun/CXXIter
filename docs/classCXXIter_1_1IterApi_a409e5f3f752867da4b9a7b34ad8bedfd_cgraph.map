@@ -1,3 +1,4 @@
 <map id="CXXIter::IterApi::size" name="CXXIter::IterApi::size">
-<area shape="rect" id="node1" title="Get this iterator&#39;s exact size." alt="" coords="5,29,161,55"/>
+<area shape="rect" id="node1" title="Get this iterator&#39;s exact size." alt="" coords="5,13,161,38"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1ExactSizeIterator.html#a3cd2bf8908a2201e2e1cc095a6991fff" title="Get the iterator&#39;s exact number of elements." alt="" coords="209,5,387,45"/>
 </map>

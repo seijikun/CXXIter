@@ -1,3 +1,4 @@
 <map id="CXXIter::IterApi::nextBack" name="CXXIter::IterApi::nextBack">
-<area shape="rect" id="node1" title="Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="5,29,196,55"/>
+<area shape="rect" id="node1" title="Get the next element from the back of this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="5,13,196,38"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1DoubleEndedIterator.html#ad2b1efc3294610c1a8951a7dfca1ed6a" title="Pull the next last element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="244,5,444,45"/>
 </map>

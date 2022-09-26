@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node0</title>
 <g id="a_node1"><a xlink:href="classCXXIter_1_1IterApi.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="138,-41 0,-41 0,0 138,0 138,-41"/>
+<polygon fill="white" stroke="#666666" points="138,-41 0,-41 0,0 138,0 138,-41"/>
 <text text-anchor="start" x="8" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi&lt; Inplace</text>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">Modifier&lt; TChainInput,</text>
 <text text-anchor="middle" x="69" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> TModifierFn &gt; &gt;</text>

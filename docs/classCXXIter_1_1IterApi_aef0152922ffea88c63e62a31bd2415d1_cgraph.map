@@ -1,3 +1,4 @@
 <map id="CXXIter::IterApi::next" name="CXXIter::IterApi::next">
-<area shape="rect" id="node1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="5,29,164,55"/>
+<area shape="rect" id="node1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="5,13,164,38"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1Iterator.html#a24ea296105d53bf6a4455c6f818715c2" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="212,5,375,45"/>
 </map>

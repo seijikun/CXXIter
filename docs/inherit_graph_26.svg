@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node0</title>
 <g id="a_node1"><a xlink:href="classCXXIter_1_1IterApi.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="139,-30 0,-30 0,0 139,0 139,-30"/>
+<polygon fill="white" stroke="#666666" points="139,-30 0,-30 0,0 139,0 139,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi&lt; SrcMov</text>
 <text text-anchor="middle" x="69.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; TContainer &gt; &gt;</text>
 </a>
@@ -22,7 +22,7 @@
 <g id="node2" class="node">
 <title>Node1</title>
 <g id="a_node2"><a xlink:href="classCXXIter_1_1SrcMov.html" target="_top" xlink:title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">
-<polygon fill="none" stroke="black" points="345,-24.5 175,-24.5 175,-5.5 345,-5.5 345,-24.5"/>
+<polygon fill="white" stroke="#666666" points="345,-24.5 175,-24.5 175,-5.5 345,-5.5 345,-24.5"/>
 <text text-anchor="middle" x="260" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::SrcMov&lt; TContainer &gt;</text>
 </a>
 </g>
@@ -30,8 +30,8 @@
 <!-- Node0&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node0&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M149.25,-15C157.67,-15 166.25,-15 174.73,-15"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="149.09,-11.5 139.09,-15 149.09,-18.5 149.09,-11.5"/>
+<path fill="none" stroke="#63b8ff" d="M149.25,-15C157.67,-15 166.25,-15 174.73,-15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="149.09,-11.5 139.09,-15 149.09,-18.5 149.09,-11.5"/>
 </g>
 </g>
 </svg>

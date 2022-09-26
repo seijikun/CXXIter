@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both...">
-<polygon fill="#bfbfbf" stroke="black" points="87,-19 0,-19 0,0 87,0 87,-19"/>
+<polygon fill="#999999" stroke="#666666" points="87,-19 0,-19 0,0 87,0 87,-19"/>
 <text text-anchor="middle" x="43.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::range</text>
 </a>
 </g>
@@ -21,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8" target="_top" xlink:title="Construct a CXXIter move source from the given container.">
-<polygon fill="none" stroke="black" points="206,-19 123,-19 123,0 206,0 206,-19"/>
+<polygon fill="white" stroke="#666666" points="206,-19 123,-19 123,0 206,0 206,-19"/>
 <text text-anchor="middle" x="164.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::from</text>
 </a>
 </g>
@@ -29,8 +29,8 @@
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M87.13,-9.5C95.38,-9.5 104.1,-9.5 112.58,-9.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="112.76,-13 122.76,-9.5 112.76,-6 112.76,-13"/>
+<path fill="none" stroke="#63b8ff" d="M87.13,-9.5C95.38,-9.5 104.1,-9.5 112.58,-9.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="112.76,-13 122.76,-9.5 112.76,-6 112.76,-13"/>
 </g>
 </g>
 </svg>

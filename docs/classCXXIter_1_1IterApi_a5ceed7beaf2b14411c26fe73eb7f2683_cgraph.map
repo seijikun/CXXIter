@@ -1,4 +1,4 @@
 <map id="CXXIter::IterApi::findIdx" name="CXXIter::IterApi::findIdx">
-<area shape="rect" id="node1" title="Search for the iterator with the given findFn, and return the index of the element from this iterator..." alt="" coords="5,29,180,55"/>
-<area shape="rect" id="node2" href="$classCXXIter_1_1IterApi.html#aef0152922ffea88c63e62a31bd2415d1" title="Get the next element from this iterator (if any), wrapped in a CXXIter::IterValue&lt;&gt;." alt="" coords="228,29,387,55"/>
+<area shape="rect" id="node1" title="Search for the iterator with the given findFn, and return the index of the element from this iterator..." alt="" coords="5,13,180,38"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1Iterator.html#a24ea296105d53bf6a4455c6f818715c2" title="Pull one element from the iterator pipeline previous to this pipeline&#45;element." alt="" coords="228,5,391,45"/>
 </map>

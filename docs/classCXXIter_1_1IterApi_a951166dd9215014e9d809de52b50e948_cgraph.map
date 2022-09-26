@@ -1,3 +1,4 @@
 <map id="CXXIter::IterApi::sizeHint" name="CXXIter::IterApi::sizeHint">
-<area shape="rect" id="node1" title="Get the bounds on the remaining length of this iterator, estimated from the source and all of the cha..." alt="" coords="5,29,188,55"/>
+<area shape="rect" id="node1" title="Get the bounds on the remaining length of this iterator, estimated from the source and all of the cha..." alt="" coords="5,13,188,38"/>
+<area shape="rect" id="node2" href="$structCXXIter_1_1trait_1_1Iterator.html#aca229c57c86a8180293aee7c96cd4c64" title="Get the bounds on the remaining length of the iterator pipeline until this pipeline&#45;element,..." alt="" coords="236,5,399,45"/>
 </map>

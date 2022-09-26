@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Constructs a new iterator that only contains every element of the input iterator only once.">
-<polygon fill="#bfbfbf" stroke="black" points="131,-19 0,-19 0,0 131,0 131,-19"/>
+<polygon fill="#999999" stroke="#666666" points="131,-19 0,-19 0,0 131,0 131,-19"/>
 <text text-anchor="middle" x="65.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">CXXIter::IterApi::unique</text>
 </a>
 </g>
@@ -20,8 +20,8 @@
 <!-- Node1&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M45.46,-19.08C35.72,-27.73 42.39,-37 65.5,-37 80.3,-37 88.36,-33.2 89.68,-28.19"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="92.86,-26.73 85.54,-19.08 86.49,-29.63 92.86,-26.73"/>
+<path fill="none" stroke="#63b8ff" d="M45.46,-19.08C35.72,-27.73 42.39,-37 65.5,-37 80.3,-37 88.36,-33.2 89.68,-28.19"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="92.86,-26.73 85.54,-19.08 86.49,-29.63 92.86,-26.73"/>
 </g>
 </g>
 </svg>
