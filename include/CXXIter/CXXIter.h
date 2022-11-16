@@ -742,7 +742,7 @@ public: // CXXIter API-Surface
 	 * 	// output == 31337
 	 * @endcode
 	 */
-	constexpr std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
+	std::string stringJoin(const std::string& separator) requires std::is_same_v<ItemOwned, std::string> {
 		std::string result;
 		forEach([&result, &separator](const std::string& item) {
 			if(result.size() > 0) [[likely]] { result += separator + item; }
