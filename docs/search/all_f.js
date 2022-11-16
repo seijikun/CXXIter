@@ -19,7 +19,7 @@ var searchData=
   ['statisticnormalization_16',['StatisticNormalization',['../namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58ec',1,'CXXIter']]],
   ['stddev_17',['stddev',['../classCXXIter_1_1IterApi.html#aea2aaca3bb7471a56f3a0b73ed65768c',1,'CXXIter::IterApi']]],
   ['stepby_18',['stepBy',['../classCXXIter_1_1IterApi.html#a2c0b960ae5079d9f3652c61db53ba98e',1,'CXXIter::IterApi']]],
-  ['stringjoin_19',['stringJoin',['../classCXXIter_1_1IterApi.html#a6001750231031f838577f53759c5f671',1,'CXXIter::IterApi']]],
+  ['stringjoin_19',['stringJoin',['../classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437',1,'CXXIter::IterApi']]],
   ['sum_20',['sum',['../classCXXIter_1_1IterApi.html#a6550edb66c35b4a1d693a9677e750fa0',1,'CXXIter::IterApi']]],
   ['swap_21',['swap',['../classCXXIter_1_1IterValue.html#a2783caafb808b4be78ab7f5800ff961b',1,'CXXIter::IterValue']]]
 ];

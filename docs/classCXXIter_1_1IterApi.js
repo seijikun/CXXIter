@@ -62,7 +62,7 @@ var classCXXIter_1_1IterApi =
     [ "sortBy", "classCXXIter_1_1IterApi.html#aa71171aa54da03b8e32f06028a40d122", null ],
     [ "stddev", "classCXXIter_1_1IterApi.html#aea2aaca3bb7471a56f3a0b73ed65768c", null ],
     [ "stepBy", "classCXXIter_1_1IterApi.html#a2c0b960ae5079d9f3652c61db53ba98e", null ],
-    [ "stringJoin", "classCXXIter_1_1IterApi.html#a6001750231031f838577f53759c5f671", null ],
+    [ "stringJoin", "classCXXIter_1_1IterApi.html#ab5674bb7c86728cc2520d7b3bebea437", null ],
     [ "sum", "classCXXIter_1_1IterApi.html#a6550edb66c35b4a1d693a9677e750fa0", null ],
     [ "take", "classCXXIter_1_1IterApi.html#a663d0b815e3d2835ccdc4f8d123d5df6", null ],
     [ "takeWhile", "classCXXIter_1_1IterApi.html#a1d7c54dcc09e1209216640fa276a7f9d", null ],
