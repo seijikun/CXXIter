@@ -13,13 +13,13 @@ using ::testing::Pair;
 // ################################################################################################
 
 template <size_t CNT, typename T>
-class RawArrayElementsAreMatcher {
+class RawArrayElementsAreMatcher : public ::testing::MatcherInterface<const T*> {
 public:
 	using is_gtest_matcher = void;
 
 	explicit RawArrayElementsAreMatcher(std::array<T, CNT> elements) : elements(elements) {}
 
-	bool MatchAndExplain(const T* value, ::testing::MatchResultListener* listener) const {
+	bool MatchAndExplain(const T* value, ::testing::MatchResultListener* listener) const override {
 		for(size_t i = 0; i < CNT; ++i) {
 			if(elements[i] != value[i]) {
 				if(listener->IsInterested()) {
@@ -32,17 +32,13 @@ public:
 		return true;
 	}
 
-	void DescribeTo(std::ostream* os) const {
+	void DescribeTo(std::ostream* os) const override {
 		*os << "Expected array to have elements: [";
 		for(size_t i = 0; i < elements.size(); ++i) {
 			if(i > 0) { *os << ", "; }
 			*os << elements[i];
 		}
 		std::cout << "]" << std::endl;
-	}
-
-	void DescribeNegationTo(std::ostream*) const {
-		throw std::runtime_error("Not implemented");
 	}
 private:
 	std::array<T, CNT> elements;
@@ -51,7 +47,7 @@ private:
 template<typename T, typename... TRest>
 ::testing::Matcher<const T*> RawArrayElementsAre(T el0, TRest... els) {
 	static constexpr size_t ELEMENT_CNT = 1 + sizeof...(els);
-	return RawArrayElementsAreMatcher<ELEMENT_CNT, T>({el0, static_cast<T>(els)...});
+	return ::testing::MakeMatcher(new RawArrayElementsAreMatcher<ELEMENT_CNT, T>({el0, static_cast<T>(els)...}));
 }
 
 
