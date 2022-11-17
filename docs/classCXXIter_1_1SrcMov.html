@@ -260,6 +260,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr op::ChunkedExact&lt; TSelf, CHUNK_SIZE, STEP_SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1ed3a6a0c06aa6c5f3603b905128dc10">chunkedExact</a> ()</td></tr>
 <tr class="memdesc:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that collects elements from this iterator in exact-sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <br /></td></tr>
 <tr class="separator:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr op::ChunkedExactPtr&lt; TSelf, CHUNK_SIZE, STEP_SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab3b5268e9ab4122a92787def949c96f2">chunkedExactPtr</a> ()</td></tr>
+<tr class="memdesc:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that partitions this iterator into equally sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <br /></td></tr>
+<tr class="separator:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a43378f096e81b660ea0fb80dcdeeb5ff">map</a> (TMapFn mapFn)</td></tr>
 <tr class="memdesc:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that uses the given <code>mapFn</code> to map each element from this iterator to elements of the new iterator.  <br /></td></tr>
 <tr class="separator:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,6 +332,8 @@ Friends</h2></td></tr>
 <tr class="separator:aa11a8384f235e304c918f4224d0839ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59561683dd9f101589992c31def61257"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcMov.html#a59561683dd9f101589992c31def61257">trait::ExactSizeIterator&lt; SrcMov&lt; TContainer &gt; &gt;</a></td></tr>
 <tr class="separator:a59561683dd9f101589992c31def61257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017e2898d8091f0cc5be233e472d7bad"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1SrcMov.html#a017e2898d8091f0cc5be233e472d7bad">trait::ContiguousMemoryIterator&lt; SrcMov&lt; TContainer &gt; &gt;</a></td></tr>
+<tr class="separator:a017e2898d8091f0cc5be233e472d7bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -345,10 +350,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TContainer&gt;<br />
-requires SourceContainer&lt;std::remove_cvref_t&lt;TContainer&gt;&gt;<br />
+requires concepts::SourceContainer&lt;std::remove_cvref_t&lt;TContainer&gt;&gt;<br />
 class CXXIter::SrcMov&lt; TContainer &gt;</div><p><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator source that takes over the input item source, and moves its items through the element stream, essentially "consuming" them. </p>
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00019">19</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00020">20</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab6c977c5567eb868a569df7f2538bb92" name="ab6c977c5567eb868a569df7f2538bb92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6c977c5567eb868a569df7f2538bb92">&#9670;&#160;</a></span>SrcMov()</h2>
@@ -376,11 +381,37 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00028">28</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00030">30</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a017e2898d8091f0cc5be233e472d7bad" name="a017e2898d8091f0cc5be233e472d7bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017e2898d8091f0cc5be233e472d7bad">&#9670;&#160;</a></span>trait::ContiguousMemoryIterator&lt; SrcMov&lt; TContainer &gt; &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TContainer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend struct <a class="el" href="structCXXIter_1_1trait_1_1ContiguousMemoryIterator.html">trait::ContiguousMemoryIterator</a>&lt; <a class="el" href="classCXXIter_1_1SrcMov.html">SrcMov</a>&lt; TContainer &gt; &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00001">1</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+
+</div>
+</div>
 <a id="aa11a8384f235e304c918f4224d0839ee" name="aa11a8384f235e304c918f4224d0839ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa11a8384f235e304c918f4224d0839ee">&#9670;&#160;</a></span>trait::DoubleEndedIterator&lt; SrcMov&lt; TContainer &gt; &gt;</h2>
 

@@ -1,4 +1,4 @@
 <map id="CXXIter::range" name="CXXIter::range">
 <area shape="rect" id="node1" title="Construct a CXXIter iterator that yields all elements in the range between [from, to] (inclusive both..." alt="" coords="5,5,121,31"/>
-<area shape="rect" id="node2" href="$namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8" title="Construct a CXXIter move source from the given container." alt="" coords="169,5,280,31"/>
+<area shape="rect" id="node2" href="$namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4" title="Construct a CXXIter move source from the given container." alt="" coords="169,5,280,31"/>
 </map>

@@ -160,13 +160,13 @@ template&lt;typename TItem &gt; </div>
 <div class="line">   { CakeType::StrawberryCake, 1.6f }, { CakeType::ChocolateCake, 55.0f },</div>
 <div class="line">   { CakeType::Sacher, 3.63f }, { CakeType::StrawberryCake, 14.0f }</div>
 <div class="line">};</div>
-<div class="line">std::vector&lt;CakeType&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a>(input)</div>
+<div class="line">std::vector&lt;CakeType&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a>(input)</div>
 <div class="line">       .map([](<span class="keyword">const</span> Cake&amp; cake) { <span class="keywordflow">return</span> cake.type; })</div>
 <div class="line">       .filter(<a class="code hl_function" href="namespaceCXXIter_1_1fn.html#ab4b7df35d2cb7efa64c5c9e6936195c8">CXXIter::fn::filterIsOneOf</a>({CakeType::Sacher, CakeType::ChocolateCake}))</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output == {CakeType::Sacher, CakeType::Sacher, CakeType::ChocolateCake, CakeType::Sacher};</span></div>
 <div class="ttc" id="anamespaceCXXIter_1_1fn_html_ab4b7df35d2cb7efa64c5c9e6936195c8"><div class="ttname"><a href="namespaceCXXIter_1_1fn.html#ab4b7df35d2cb7efa64c5c9e6936195c8">CXXIter::fn::filterIsOneOf</a></div><div class="ttdeci">auto filterIsOneOf(TFilterExtractFn filterExtractFn, const std::initializer_list&lt; TItem &gt; &amp;acceptedValues)</div><div class="ttdoc">Helper that constructs a filter() lambda that filters the iterator elements by calling the given filt...</div><div class="ttdef"><b>Definition:</b> <a href="Helpers_8h_source.html#l00120">Helpers.h:120</a></div></div>
-<div class="ttc" id="anamespaceCXXIter_html_a16947bc06c8ede74d5590b7fab2404c8"><div class="ttname"><a href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a></div><div class="ttdeci">constexpr SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02129">CXXIter.h:2129</a></div></div>
+<div class="ttc" id="anamespaceCXXIter_html_a904af85f663391f984b822ccee0903d4"><div class="ttname"><a href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a></div><div class="ttdeci">constexpr SrcMov&lt; std::remove_cvref_t&lt; TContainer &gt; &gt; from(TContainer &amp;&amp;container)</div><div class="ttdoc">Construct a CXXIter move source from the given container.</div><div class="ttdef"><b>Definition:</b> <a href="CXXIter_8h_source.html#l02200">CXXIter.h:2200</a></div></div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="Helpers_8h_source.html#l00157">157</a> of file <a class="el" href="Helpers_8h_source.html">Helpers.h</a>.</p>
 
@@ -222,7 +222,7 @@ template&lt;typename TItem , typename TFilterExtractFn &gt; </div>
 <div class="line">   { CakeType::StrawberryCake, 1.6f }, { CakeType::ChocolateCake, 55.0f },</div>
 <div class="line">   { CakeType::Sacher, 3.63f }, { CakeType::StrawberryCake, 14.0f }</div>
 <div class="line">};</div>
-<div class="line">std::vector&lt;Cake&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a>(input)</div>
+<div class="line">std::vector&lt;Cake&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a>(input)</div>
 <div class="line">   .filter(<a class="code hl_function" href="namespaceCXXIter_1_1fn.html#ab4b7df35d2cb7efa64c5c9e6936195c8">CXXIter::fn::filterIsOneOf</a>(</div>
 <div class="line">       [](<span class="keyword">const</span> Cake&amp; cake) { <span class="keywordflow">return</span> cake.type; },</div>
 <div class="line">       {CakeType::Sacher, CakeType::ChocolateCake}</div>
@@ -270,13 +270,13 @@ template&lt;typename TDynCastTarget &gt; </div>
 <div class="line"><span class="keyword">struct </span>Child2 : <span class="keyword">public</span> Parent {};</div>
 <div class="line"> </div>
 <div class="line">std::vector&lt;Parent*&gt; input = { <span class="keyword">new</span> Parent(), <span class="keyword">new</span> Child1(<span class="stringliteral">&quot;0&quot;</span>), <span class="keyword">new</span> Child1(<span class="stringliteral">&quot;1&quot;</span>), <span class="keyword">new</span> Child2() };</div>
-<div class="line">std::vector&lt;Child1*&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a>(input)</div>
+<div class="line">std::vector&lt;Child1*&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a>(input)</div>
 <div class="line">       .filterMap(CXXIter::tryDynCast&lt;Child1*&gt;())</div>
 <div class="line">       .collect&lt;std::vector&gt;();</div>
 <div class="line"><span class="comment">// output.size() == 2</span></div>
 <div class="line"><span class="comment">// output[0]-&gt;id == &quot;0&quot;</span></div>
 <div class="line"><span class="comment">// output[1]-&gt;id == &quot;1&quot;</span></div>
-<div class="line"><a class="code hl_function" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a>(output).forEach([](<span class="keyword">auto</span> ptr) { <span class="keyword">delete</span> ptr; });</div>
+<div class="line"><a class="code hl_function" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a>(output).forEach([](<span class="keyword">auto</span> ptr) { <span class="keyword">delete</span> ptr; });</div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="Helpers_8h_source.html#l00076">76</a> of file <a class="el" href="Helpers_8h_source.html">Helpers.h</a>.</p>
 
@@ -309,7 +309,7 @@ template&lt;size_t FIELD_IDX&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Lambda that, given an arbitrary tuple or pair, extracts its <code>FIELD_IDX</code>-th element.</dd></dl>
 <p>Usage Example:</p><ul>
 <li>Use the tuple's second (idx = 1) field to sort by. <div class="fragment"><div class="line">std::vector&lt;float&gt; input = {1.0f, 2.0f, 0.5f, 3.0f, -42.0f};</div>
-<div class="line">std::vector&lt;std::pair&lt;size_t, float&gt;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8">CXXIter::from</a>(input).copied()</div>
+<div class="line">std::vector&lt;std::pair&lt;size_t, float&gt;&gt; output = <a class="code hl_function" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4">CXXIter::from</a>(input).copied()</div>
 <div class="line">   .indexed()</div>
 <div class="line">   .sortBy&lt;CXXIter::DESCENDING&gt;(CXXIter::unzip&lt;1&gt;())</div>
 <div class="line">   .collect&lt;std::vector&gt;();</div>

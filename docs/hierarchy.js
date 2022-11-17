@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "CXXIter::trait::Source< TContainer >::ConstIteratorState", "structCXXIter_1_1trait_1_1Source_1_1ConstIteratorState.html", null ],
+    [ "CXXIter::trait::ContiguousMemoryIterator< T >", "structCXXIter_1_1trait_1_1ContiguousMemoryIterator.html", null ],
     [ "CXXIter::trait::DoubleEndedIterator< T >", "structCXXIter_1_1trait_1_1DoubleEndedIterator.html", null ],
     [ "CXXIter::trait::ExactSizeIterator< T >", "structCXXIter_1_1trait_1_1ExactSizeIterator.html", null ],
     [ "CXXIter::Generator< T >", "classCXXIter_1_1Generator.html", null ],
@@ -10,6 +11,7 @@ var hierarchy =
     [ "CXXIter::IterApi< Chainer< TChainInput1, TChainInput2 > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Chunked< TChainInput, CHUNK_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< ChunkedExact< TChainInput, CHUNK_SIZE, STEP_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
+    [ "CXXIter::IterApi< ChunkedExactPtr< TChainInput, CHUNK_SIZE, STEP_SIZE > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< CoroutineGenerator< TGenerator > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Empty< TItem > >", "classCXXIter_1_1IterApi.html", null ],
     [ "CXXIter::IterApi< Filter< TChainInput, TFilterFn > >", "classCXXIter_1_1IterApi.html", null ],

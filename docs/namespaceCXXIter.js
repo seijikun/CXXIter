@@ -17,8 +17,7 @@ var namespaceCXXIter =
     [ "CXXIterIterator", "conceptCXXIter_1_1CXXIterIterator.html", null ],
     [ "CXXIterDoubleEndedIterator", "conceptCXXIter_1_1CXXIterDoubleEndedIterator.html", null ],
     [ "CXXIterExactSizeIterator", "conceptCXXIter_1_1CXXIterExactSizeIterator.html", null ],
-    [ "SourceContainer", "conceptCXXIter_1_1SourceContainer.html", null ],
-    [ "DoubleEndedSourceContainer", "conceptCXXIter_1_1DoubleEndedSourceContainer.html", null ],
+    [ "CXXIterContiguousMemoryIterator", "conceptCXXIter_1_1CXXIterContiguousMemoryIterator.html", null ],
     [ "GeneratorFunction", "conceptCXXIter_1_1GeneratorFunction.html", null ],
     [ "GeneratorFromFunction", "conceptCXXIter_1_1GeneratorFromFunction.html", null ],
     [ "SortOrder", "namespaceCXXIter.html#a36594d1d501e0f5fc7d80174fc82e42c", [
@@ -30,9 +29,9 @@ var namespaceCXXIter =
       [ "N_MINUS_ONE", "namespaceCXXIter.html#a4e698a5b11eca24990a5db359a5e58eca9c56dab0df559e59d13a9b7da360c7b8", null ]
     ] ],
     [ "empty", "namespaceCXXIter.html#a6813c9c63b1580e89b28bdf2b6805abc", null ],
-    [ "from", "namespaceCXXIter.html#a83329cada9fbc2653193766fd4f34aa9", null ],
-    [ "from", "namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8", null ],
-    [ "from", "namespaceCXXIter.html#a36db5a17a125f4ced8e95cefb63baf16", null ],
+    [ "from", "namespaceCXXIter.html#a4e1062af89440d281911a3cc0ee11aef", null ],
+    [ "from", "namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4", null ],
+    [ "from", "namespaceCXXIter.html#a8a482793d0f83f98d1f1f62fd8d6648f", null ],
     [ "fromFn", "namespaceCXXIter.html#ac19b6759a5ff6bfc571d857258b4cb84", null ],
     [ "generate", "namespaceCXXIter.html#a3e7ee4115ed01f2665c01e65b94687c1", null ],
     [ "range", "namespaceCXXIter.html#a1b6b98e81805de0ccce287caa2990210", null ],

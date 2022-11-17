@@ -15,6 +15,7 @@ var classCXXIter_1_1IterApi =
     [ "chain", "classCXXIter_1_1IterApi.html#ae2fafd3b3bfa6a8afde529871c9ef2c9", null ],
     [ "chunked", "classCXXIter_1_1IterApi.html#a9b1ab30441863c58e4cc43baf1cc7c0c", null ],
     [ "chunkedExact", "classCXXIter_1_1IterApi.html#a1ed3a6a0c06aa6c5f3603b905128dc10", null ],
+    [ "chunkedExactPtr", "classCXXIter_1_1IterApi.html#ab3b5268e9ab4122a92787def949c96f2", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#a0420b1199895b59678d5d38ec75e9b34", null ],
     [ "collect", "classCXXIter_1_1IterApi.html#acbfb7469c7cb5940a0318bced013e3cb", null ],
     [ "collectInto", "classCXXIter_1_1IterApi.html#a04aad46c9bc5467092b5c9cfd547b7d0", null ],

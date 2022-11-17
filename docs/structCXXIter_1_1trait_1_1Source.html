@@ -176,10 +176,10 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TContainer&gt;<br />
 struct CXXIter::trait::Source&lt; TContainer &gt;</div><p>SourceTrait, that is used by <a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a>'s standard source classes <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code>, <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> and <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code>. </p>
-<p>If you want to add support for your own containers to these sources, and thus to <code><a class="el" href="namespaceCXXIter.html#a16947bc06c8ede74d5590b7fab2404c8" title="Construct a CXXIter move source from the given container.">CXXIter::from()</a></code> calls, create a template specialization of <code>CXXIter::SourceTrait</code>, for your container class.</p>
+<p>If you want to add support for your own containers to these sources, and thus to <code><a class="el" href="namespaceCXXIter.html#a904af85f663391f984b822ccee0903d4" title="Construct a CXXIter move source from the given container.">CXXIter::from()</a></code> calls, create a template specialization of <code>CXXIter::SourceTrait</code>, for your container class.</p>
 <p>This is the default implementation supporting all STL containers. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00101">101</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00121">121</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a1b53a018f1cd74c1a85771f52c29e472" name="a1b53a018f1cd74c1a85771f52c29e472"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b53a018f1cd74c1a85771f52c29e472">&#9670;&#160;</a></span>Item</h2>
@@ -197,7 +197,7 @@ template&lt;typename TContainer &gt; </div>
 
 <p>Type of the item <code>TContainer</code> holds and provides for the iterator. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00105">105</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00125">125</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -217,7 +217,7 @@ template&lt;typename TContainer &gt; </div>
 
 <p>Type of the item <code>TContainer</code> holds and provides for the iterator, in const referenced form. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00113">113</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00133">133</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ template&lt;typename TContainer &gt; </div>
 
 <p>Type of the item <code>TContainer</code> holds and provides for the iterator, in referenced form. </p>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00109">109</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00129">129</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +288,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when there is another item available, <code>false</code> otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00177">177</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00197">197</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +338,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when there is another item available, <code>false</code> otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00169">169</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00189">189</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instance of <code><a class="el" href="structCXXIter_1_1trait_1_1Source_1_1ConstIteratorState.html" title="Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration p...">ConstIteratorState</a></code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00160">160</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00180">180</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -416,7 +416,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instance of <code><a class="el" href="structCXXIter_1_1trait_1_1Source_1_1IteratorState.html" title="Type of the state structure stored in CXXIter&#39;s source classes, used to keep track of the iteration p...">IteratorState</a></code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00152">152</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00172">172</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +466,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00194">194</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00214">214</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -516,7 +516,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00186">186</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00206">206</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -567,7 +567,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the back of the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00244">244</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00264">264</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +618,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the back of the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00235">235</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00255">255</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -657,7 +657,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A size hint for the given <code>container</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00143">143</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00163">163</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -714,7 +714,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00217">217</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00237">237</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -777,7 +777,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00204">204</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00224">224</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -840,7 +840,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00267">267</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00287">287</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -903,7 +903,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00254">254</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00274">274</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
