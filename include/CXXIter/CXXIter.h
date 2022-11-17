@@ -2185,167 +2185,177 @@ public: // CXXIter API-Surface
 
 
 // ################################################################################################
-// CONVENIENT ENTRY POINTS
+// ENTRY POINTS
 // ################################################################################################
 
 /**
- * @brief Construct a CXXIter move source from the given container.
- * @details This constructs a move source, which will move the items from the
- * given @p container into the iterator.
- * @param container Container to construct a CXXIter source from.
- * @return CXXIter move source from the given container.
+ * @name Source Entry Points
  */
-template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
-constexpr SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
-	return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
-}
+//@{
+	/**
+	 * @brief Construct a CXXIter move source from the given container.
+	 * @details This constructs a move source, which will move the items from the
+	 * given @p container into the iterator.
+	 * @param container Container to construct a CXXIter source from.
+	 * @return CXXIter move source from the given container.
+	 */
+	template<typename TContainer>
+	requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
+	constexpr SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
+		return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
+	}
+
+	/**
+	 * @brief Construct a CXXIter mutable-reference source from the given container.
+	 * @details This constructs a mutable-reference source. This allows the iterator
+	 * to modify the elements in the given @p container.
+	 * @param container Container to construct a CXXIter source from.
+	 * @return CXXIter mutable-reference source from the given container.
+	 */
+	template<typename TContainer>
+	requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
+	constexpr SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
+		return SrcRef<std::remove_cvref_t<TContainer>>(container);
+	}
+
+	/**
+	 * @brief Construct a CXXIter const-reference source from the given container.
+	 * @details This constructs a const-reference source. This guarantees the
+	 * given @p container to stay untouched.
+	 * @param container Container to construct a CXXIter source from.
+	 * @return CXXIter const-reference source from the given container.
+	 */
+	template<typename TContainer>
+	requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
+	constexpr SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
+		return SrcCRef<std::remove_cvref_t<TContainer>>(container);
+	}
+//@}
+
 
 /**
- * @brief Construct a CXXIter mutable-reference source from the given container.
- * @details This constructs a mutable-reference source. This allows the iterator
- * to modify the elements in the given @p container.
- * @param container Container to construct a CXXIter source from.
- * @return CXXIter mutable-reference source from the given container.
+ * @name Generator Entry Points
  */
-template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
-constexpr SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
-	return SrcRef<std::remove_cvref_t<TContainer>>(container);
-}
+//@{
+	/**
+	 * @brief Constructs an empty iterator yielding no items.
+	 * @return An empty iterator that yields no items.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	CXXIter::IterValue<std::string> output = CXXIter::empty<std::string>()
+	 * 		.next();
+	 * 	// output == None
+	 * @endcode
+	 */
+	template<typename TItem>
+	constexpr Empty<TItem> empty() { return Empty<TItem>(); }
 
-/**
- * @brief Construct a CXXIter const-reference source from the given container.
- * @details This constructs a const-reference source. This guarantees the
- * given @p container to stay untouched.
- * @param container Container to construct a CXXIter source from.
- * @return CXXIter const-reference source from the given container.
- */
-template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
-constexpr SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
-	return SrcCRef<std::remove_cvref_t<TContainer>>(container);
-}
+	/**
+	 * @brief Generator source that takes a @p generatorFn, each invocation of which produces one
+	 * element for the resulting iterator.
+	 * @param generatorFn Generator that returns an optional value. If the optional is None, the resulting
+	 * iterator ends.
+	 * @return CXXIter iterator whose elements are produced by the calls to the given @p generatorFn.
+	 * @details You could for example also use this to pull messages from a socket.
+	 *
+	 * Usage Example:
+	 * - Simple endless generator producing monotonically increasing numbers
+	 * @code
+	 * 	size_t generatorState = 0;
+	 * 	std::function<std::optional<size_t>()> generatorFn = [generatorState]() mutable {
+	 * 		return (generatorState++);
+	 * 	};
+	 * 	std::vector<size_t> output = CXXIter::fromFn(generatorFn)
+	 * 		.take(100)
+	 * 		.collect<std::vector>();
+	 *	// output == {0, 1, 2, 3, ..., 99}
+	 * @endcode
+	 */
+	template<std::invocable<> TGeneratorFn>
+	requires util::is_optional<std::invoke_result_t<TGeneratorFn>>
+	constexpr auto fromFn(TGeneratorFn generatorFn) {
+		using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
+		return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);
+	}
 
-/**
- * @brief Constructs an empty iterator yielding no items.
- * @return An empty iterator that yields no items.
- *
- * Usage Example:
- * @code
- * 	CXXIter::IterValue<std::string> output = CXXIter::empty<std::string>()
- * 		.next();
- * 	// output == None
- * @endcode
- */
-template<typename TItem>
-constexpr Empty<TItem> empty() { return Empty<TItem>(); }
+	#ifdef CXXITER_HAS_COROUTINE
+	/**
+	 * @brief Generator source that produces a new iterator over the elements produced by the
+	 * given @p generatorFn - which is a c++20 coroutine yielding elements using @c co_yield.
+	 * @param generatorFn C++20 generator coroutine function yielding elements using @c co_yield.
+	 * The function must produces a generator of type CXXIter::Generator whose template parameter
+	 * is set to the produced element type.
+	 * @return CXXIter iterator over the elements produced by the c++20 coroutine given in @p generatorFn.
+	 *
+	 * Usage Example:
+	 * - Simple generator example producing all integer numbers from 0 to 1000 as @p std::string
+	 * @code
+	 * 	std::vector<std::string> output = CXXIter::generate(
+	 * 		[]() -> CXXIter::Generator<std::string> {
+	 * 			for(size_t i = 0; i < 1000; ++i) {
+	 * 				co_yield std::to_string(i);
+	 * 			}
+	 * 		}
+	 * 	).collect<std::vector>();
+	 *	// output == {0, 1, 2, ..., 1000}
+	 * @endcode
+	 */
+	template<GeneratorFunction TGeneratorFn>
+	auto generate(TGeneratorFn generatorFn) {
+		using TGenerator = typename std::invoke_result_t<TGeneratorFn>;
+		TGenerator generator = generatorFn();
+		return CoroutineGenerator<TGenerator>(std::forward<TGenerator>(generator));
+	}
+	#endif
 
-/**
- * @brief Generator source that takes a @p generatorFn, each invocation of which produces one
- * element for the resulting iterator.
- * @param generatorFn Generator that returns an optional value. If the optional is None, the resulting
- * iterator ends.
- * @return CXXIter iterator whose elements are produced by the calls to the given @p generatorFn.
- * @details You could for example also use this to pull messages from a socket.
- *
- * Usage Example:
- * - Simple endless generator producing monotonically increasing numbers
- * @code
- * 	size_t generatorState = 0;
- * 	std::function<std::optional<size_t>()> generatorFn = [generatorState]() mutable {
- * 		return (generatorState++);
- * 	};
- * 	std::vector<size_t> output = CXXIter::fromFn(generatorFn)
- * 		.take(100)
- * 		.collect<std::vector>();
- *	// output == {0, 1, 2, 3, ..., 99}
- * @endcode
- */
-template<std::invocable<> TGeneratorFn>
-requires util::is_optional<std::invoke_result_t<TGeneratorFn>>
-constexpr auto fromFn(TGeneratorFn generatorFn) {
-	using TGeneratorFnResult = typename std::invoke_result_t<TGeneratorFn>::value_type;
-	return FunctionGenerator<TGeneratorFnResult, TGeneratorFn>(generatorFn);
-}
+	/**
+	 * @brief Construct a CXXIter iterator, by repeating the given @p item @p cnt times.
+	 * @param item Item to use as repeated element of the generated element.
+	 * @param cnt Optional amount of repetitions of @p item the generated iterator should consist of.
+	 * If none, the iterator will repeat the item forever.
+	 * @return CXXIter iterator that returns the given @p item @p cnt times.
+	 *
+	 * Usage Example:
+	 * @code
+	 * 	std::vector<int> item = {1, 3, 3, 7};
+	 * 	std::vector<int> output = CXXIter::repeat(item, 3)
+	 * 		.flatMap()
+	 * 		.collect<std::vector>();
+	 *	// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
+	 * @endcode
+	 */
+	template<typename TItem>
+	constexpr Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
+		return Repeater<TItem>(item, cnt);
+	}
 
-#ifdef CXXITER_HAS_COROUTINE
-/**
- * @brief Generator source that produces a new iterator over the elements produced by the
- * given @p generatorFn - which is a c++20 coroutine yielding elements using @c co_yield.
- * @param generatorFn C++20 generator coroutine function yielding elements using @c co_yield.
- * The function must produces a generator of type CXXIter::Generator whose template parameter
- * is set to the produced element type.
- * @return CXXIter iterator over the elements produced by the c++20 coroutine given in @p generatorFn.
- *
- * Usage Example:
- * - Simple generator example producing all integer numbers from 0 to 1000 as @p std::string
- * @code
- * 	std::vector<std::string> output = CXXIter::generate(
- * 		[]() -> CXXIter::Generator<std::string> {
- * 			for(size_t i = 0; i < 1000; ++i) {
- * 				co_yield std::to_string(i);
- * 			}
- * 		}
- * 	).collect<std::vector>();
- *	// output == {0, 1, 2, ..., 1000}
- * @endcode
- */
-template<GeneratorFunction TGeneratorFn>
-auto generate(TGeneratorFn generatorFn) {
-	using TGenerator = typename std::invoke_result_t<TGeneratorFn>;
-	TGenerator generator = generatorFn();
-	return CoroutineGenerator<TGenerator>(std::forward<TGenerator>(generator));
-}
-#endif
-
-/**
- * @brief Construct a CXXIter iterator, by repeating the given @p item @p cnt times.
- * @param item Item to use as repeated element of the generated element.
- * @param cnt Optional amount of repetitions of @p item the generated iterator should consist of.
- * If none, the iterator will repeat the item forever.
- * @return CXXIter iterator that returns the given @p item @p cnt times.
- *
- * Usage Example:
- * @code
- * 	std::vector<int> item = {1, 3, 3, 7};
- * 	std::vector<int> output = CXXIter::repeat(item, 3)
- * 		.flatMap()
- * 		.collect<std::vector>();
- *	// output == {1, 3, 3, 7, 1, 3, 3, 7, 1, 3, 3, 7}
- * @endcode
- */
-template<typename TItem>
-constexpr Repeater<TItem> repeat(const TItem& item, std::optional<size_t> cnt = {}) {
-	return Repeater<TItem>(item, cnt);
-}
-
-/**
- * @brief Construct a CXXIter iterator that yields all elements in the range between
- * [@p from, @p to] (inclusive both edges), using the given @p step between elements.
- * @param from Start of the range of elements to generate.
- * @param to End of the range of elements to generate.
- * @param step Stepwidth to use between the generated elements.
- * @return CXXIter iterator returning elements from the requested range [@p from, @p to]
- * using the given @p step width.
- *
- * Usage Example:
- * - For an integer type:
- * @code
- * 	std::vector<int> output = CXXIter::range(1, 7, 2)
- * 		.collect<std::vector>();
- * 	// output == {1, 3, 5, 7}
- * @endcode
- * - For a float type
- * @code
- * 	std::vector<float> output = CXXIter::range(0.0f, 1.1f, 0.25f)
- * 		.collect<std::vector>();
- * 	// output == {0.0f, 0.25f, 0.5f, 0.75f, 1.0f}
- * @endcode
- */
-template<typename TValue>
-constexpr Range<TValue> range(TValue from, TValue to, TValue step = 1) {
-	return Range<TValue>(from, to, step);
-}
-
+	/**
+	 * @brief Construct a CXXIter iterator that yields all elements in the range between
+	 * [@p from, @p to] (inclusive both edges), using the given @p step between elements.
+	 * @param from Start of the range of elements to generate.
+	 * @param to End of the range of elements to generate.
+	 * @param step Stepwidth to use between the generated elements.
+	 * @return CXXIter iterator returning elements from the requested range [@p from, @p to]
+	 * using the given @p step width.
+	 *
+	 * Usage Example:
+	 * - For an integer type:
+	 * @code
+	 * 	std::vector<int> output = CXXIter::range(1, 7, 2)
+	 * 		.collect<std::vector>();
+	 * 	// output == {1, 3, 5, 7}
+	 * @endcode
+	 * - For a float type
+	 * @code
+	 * 	std::vector<float> output = CXXIter::range(0.0f, 1.1f, 0.25f)
+	 * 		.collect<std::vector>();
+	 * 	// output == {0.0f, 0.25f, 0.5f, 0.75f, 1.0f}
+	 * @endcode
+	 */
+	template<typename TValue>
+	constexpr Range<TValue> range(TValue from, TValue to, TValue step = 1) {
+		return Range<TValue>(from, to, step);
+	}
+//@}
 }
