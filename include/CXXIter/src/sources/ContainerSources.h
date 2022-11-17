@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../Common.h"
+#include "Concepts.h"
 
 namespace CXXIter {
 
@@ -15,11 +16,12 @@ namespace CXXIter {
 	 * through the element stream, essentially "consuming" them.
 	 */
 	template<typename TContainer>
-	requires SourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcMov : public IterApi<SrcMov<TContainer>> {
 		friend struct trait::Iterator<SrcMov<TContainer>>;
 		friend struct trait::DoubleEndedIterator<SrcMov<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcMov<TContainer>>;
+		friend struct trait::ContiguousMemoryIterator<SrcMov<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
 		std::unique_ptr<TContainer> container;
@@ -47,7 +49,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
 	struct trait::DoubleEndedIterator<SrcMov<TContainer>> {
 		using Src = trait::Source<TContainer>;
 		using Item = typename Src::Item;
@@ -63,6 +65,13 @@ namespace CXXIter {
 	struct trait::ExactSizeIterator<SrcMov<TContainer>> {
 		static constexpr inline size_t size(const SrcMov<TContainer>& self) { return self.container->size(); }
 	};
+	/** @private */
+	template<typename TContainer>
+	requires util::ContiguousMemoryContainer<TContainer>
+	struct trait::ContiguousMemoryIterator<SrcMov<TContainer>> {
+		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcMov<TContainer>::Item>>;
+		static constexpr inline ItemPtr currentPtr(SrcMov<TContainer>& self) { return self.iter; }
+	};
 
 
 
@@ -77,11 +86,12 @@ namespace CXXIter {
 	 * item source.
 	 */
 	template<typename TContainer>
-	requires SourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcRef : public IterApi<SrcRef<TContainer>> {
 		friend struct trait::Iterator<SrcRef<TContainer>>;
 		friend struct trait::DoubleEndedIterator<SrcRef<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcRef<TContainer>>;
+		friend struct trait::ContiguousMemoryIterator<SrcRef<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
 		TContainer& container;
@@ -109,7 +119,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
 	struct trait::DoubleEndedIterator<SrcRef<TContainer>> {
 		using Src = trait::Source<TContainer>;
 		using Item = typename Src::ItemRef;
@@ -125,6 +135,13 @@ namespace CXXIter {
 	struct trait::ExactSizeIterator<SrcRef<TContainer>> {
 		static constexpr inline size_t size(const SrcRef<TContainer>& self) { return self.container.size(); }
 	};
+	/** @private */
+	template<typename TContainer>
+	requires util::ContiguousMemoryContainer<TContainer>
+	struct trait::ContiguousMemoryIterator<SrcRef<TContainer>> {
+		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcRef<TContainer>::Item>>;
+		static constexpr inline ItemPtr currentPtr(SrcRef<TContainer>& self) { return self.iter; }
+	};
 
 
 
@@ -138,11 +155,12 @@ namespace CXXIter {
 	 * @details This guarantees the original source to stay untouched & unmodified.
 	 */
 	template<typename TContainer>
-	requires SourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::SourceContainer<std::remove_cvref_t<TContainer>>
 	class SrcCRef : public IterApi<SrcCRef<TContainer>> {
 		friend struct trait::Iterator<SrcCRef<TContainer>>;
 		friend struct trait::DoubleEndedIterator<SrcCRef<TContainer>>;
 		friend struct trait::ExactSizeIterator<SrcCRef<TContainer>>;
+		friend struct trait::ContiguousMemoryIterator<SrcCRef<TContainer>>;
 		using Src = trait::Source<TContainer>;
 	private:
 		const TContainer& container;
@@ -170,7 +188,7 @@ namespace CXXIter {
 	};
 	/** @private */
 	template<typename TContainer>
-	requires DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
+	requires concepts::DoubleEndedSourceContainer<std::remove_cvref_t<TContainer>>
 	struct trait::DoubleEndedIterator<SrcCRef<TContainer>> {
 		using Src = trait::Source<TContainer>;
 		using Item = typename Src::ItemConstRef;
@@ -185,6 +203,13 @@ namespace CXXIter {
 	template<typename TContainer>
 	struct trait::ExactSizeIterator<SrcCRef<TContainer>> {
 		static constexpr inline size_t size(const SrcCRef<TContainer>& self) { return self.container.size(); }
+	};
+	/** @private */
+	template<typename TContainer>
+	requires util::ContiguousMemoryContainer<TContainer>
+	struct trait::ContiguousMemoryIterator<SrcCRef<TContainer>> {
+		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcCRef<TContainer>::Item>>;
+		static constexpr inline ItemPtr currentPtr(SrcCRef<TContainer>& self) { return self.iter; }
 	};
 
 }

@@ -70,6 +70,26 @@ namespace CXXIter::trait {
 	};
 
 	/**
+	 * @brief Trait, that iterators implement whose elements are stored in a contiguous block of memory.
+	 * @details This trait allows downstream elements to assume that it is valid to access following
+	 * elements by reading from the current element onward.
+	 */
+	template<typename T>
+	struct ContiguousMemoryIterator {
+		/**
+		 * @brief Pointer type to an item of this iterator.
+		 * @details This keeps the const specifier.
+		 */
+		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename Iterator<T>::Item>>;
+		/**
+		 * @brief Get the pointer of the current element.
+		 * @param self Reference to the instance of the class for which trait::ExactSizeIterator is being specialized.
+		 * @return Pointer of the element that would be returned by the next call to next().
+		 */
+		static constexpr inline ItemPtr currentPtr(typename trait::Iterator<T>::Self& self) = delete;
+	};
+
+	/**
 	* @brief Trait that extends the Iterator trait with double-ended functionality.
 	* @details Implementing this trait extends the iterator with the functionality to pull elements from the back.
 	* This can be arbitrarily mixed. Elements can e.g. be retrieved from front and back alternatingly.

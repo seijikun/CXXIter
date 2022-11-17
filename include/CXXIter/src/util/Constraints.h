@@ -125,5 +125,16 @@ namespace CXXIter::util {
 			{container.fill(item)};
 		} && !InsertableContainer<TContainer, TItem> && !BackInsertableContainer<TContainer, TItem>;
 
+		/**
+		 * @brief Concept enforcing TContainer to be a container based on a contiguous chunk of memory containing
+		 * all elements.
+		 */
+		template<typename TContainer>
+		concept ContiguousMemoryContainer = requires(TContainer& container) {
+			typename TContainer::value_type;
+			typename TContainer::size_type;
+			{container.data()} -> std::same_as<typename TContainer::value_type*>;
+		};
+
 	}
 }

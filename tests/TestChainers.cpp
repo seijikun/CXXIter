@@ -464,7 +464,195 @@ TEST(CXXIter, chunkedExact) {
 			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512, 31337, 69));
 		}
 	}
+}
 
+TEST(CXXIter, chunkedExactPtr) {
+	{ // non-interleaved
+		{ // sizeHint
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 3);
+				ASSERT_EQ(sizeHint.upperBound.value(), 3);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+		}
+
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 3);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5));
+			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(1, 2, 3));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 2);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<5>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 1);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
+		}
+	}
+
+	{ // overlapping, step width 2
+		{ // sizeHint
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 2>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 4);
+				ASSERT_EQ(sizeHint.upperBound.value(), 4);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 2>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 3);
+				ASSERT_EQ(sizeHint.upperBound.value(), 3);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 2>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 3);
+				ASSERT_EQ(sizeHint.upperBound.value(), 3);
+			}
+		}
+
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3, 2>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 4);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(512, 31337, 69));
+			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(69, 5, 1));
+			ASSERT_THAT(output[3], RawArrayElementsAre<size_t>(1, 2, 3));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3, 2>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 3);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(512, 31337, 69));
+			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(69, 5, 1));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<5, 3>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 2);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5, 1, 2));
+		}
+	}
+
+
+	{ // step width > context-size
+		{ //sizeHint
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 4>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 4>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.chunkedExactPtr<3, 4>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+		}
+
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3, 4>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 2);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(69, 5, 1));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<3, 4>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 2);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
+			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(69, 5, 1));
+		}
+		{
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto output = CXXIter::from(input)
+					.chunkedExactPtr<5, 6>()
+					.collect<std::vector>();
+			ASSERT_EQ(output.size(), 1);
+			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
+		}
+	}
+
+	{ // etc
+		const std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+		auto output = CXXIter::from(input)
+						  .chunkedExactPtr<2, 1>()
+						  .filter([](const size_t chunk[2]) {
+							  return (chunk[0] + chunk[1]) > 5000;
+						  })
+						  .collect<std::vector>();
+		ASSERT_EQ(output.size(), 2);
+		ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(512, 31337));
+		ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69));
+	}
 }
 
 TEST(CXXIter, chunked) {

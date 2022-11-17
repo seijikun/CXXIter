@@ -60,6 +60,7 @@ static void FilterMap_Native(benchmark::State& state, const std::vector<std::str
 				output.push_back(res.value());
 			}
 		}
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(FilterMap_Native, Large, INPUT1)->MinTime(10);
@@ -81,6 +82,7 @@ static void FilterMap_CXX20Ranges(benchmark::State& state, const std::vector<std
 		std::vector<std::string> output;
 		auto range = input | std::views::filter(filterFn) | std::views::transform(mapFn);
 		for(const auto& item : range) { output.push_back(item); }
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(FilterMap_CXX20Ranges, Large, INPUT1)->MinTime(10);
@@ -92,6 +94,7 @@ static void FilterMap_CXXIter(benchmark::State& state, const std::vector<std::st
 		std::vector<std::string> output = CXXIter::from(input)
 			.filterMap(FILTERMAP_FN)
 			.collect<std::vector>();
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(FilterMap_CXXIter, Large, INPUT1)->MinTime(10);
@@ -106,6 +109,7 @@ static void Filter_Native(benchmark::State& state, const std::vector<double>& in
 		std::vector<double> output;
 		auto outputInserter = std::back_inserter(output);
 		std::copy_if(input.begin(), input.end(), outputInserter, FILTER_FN);
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Filter_Native, Large, INPUT2)->MinTime(10);
@@ -117,6 +121,7 @@ static void Filter_CXX20Ranges(benchmark::State& state, const std::vector<double
 		std::vector<double> output;
 		auto range = input | std::views::filter(FILTER_FN);
 		for(const auto& item : range) { output.push_back(item); }
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Filter_CXX20Ranges, Large, INPUT2)->MinTime(10);
@@ -128,6 +133,7 @@ static void Filter_CXXIter(benchmark::State& state, const std::vector<double>& i
 		std::vector<double> output = CXXIter::from(input)
 				.filter(FILTER_FN)
 				.collect<std::vector>();
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Filter_CXXIter, Large, INPUT2)->MinTime(10);
@@ -143,6 +149,7 @@ static void Map_Native(benchmark::State& state, const std::vector<double>& input
 		for(size_t i = 0; i < input.size(); ++i) {
 			output.push_back(MAP_FN(input[i]));
 		}
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Map_Native, Large, INPUT2)->MinTime(10);
@@ -154,6 +161,7 @@ static void Map_CXX20Ranges(benchmark::State& state, const std::vector<double>& 
 		std::vector<double> output;
 		auto range = input | std::views::transform([](double item) { return MAP_FN(item); });
 		for(const auto& item : range) { output.push_back(item); }
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Map_CXX20Ranges, Large, INPUT2)->MinTime(10);
@@ -165,6 +173,7 @@ static void Map_CXXIter(benchmark::State& state, const std::vector<double>& inpu
 		std::vector<double> output = CXXIter::from(input)
 				.map([](double val) { return std::sqrt(val); })
 				.collect<std::vector>();
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Map_CXXIter, Large, INPUT2)->MinTime(10);
@@ -180,6 +189,7 @@ static void Cast_Native(benchmark::State& state, const std::vector<double>& inpu
 		for(size_t i = 0; i < input.size(); ++i) {
 			output.push_back(static_cast<float>(input[i]));
 		}
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Cast_Native, Large, INPUT2)->MinTime(10);
@@ -191,6 +201,7 @@ static void Cast_CXX20Ranges(benchmark::State& state, const std::vector<double>&
 		std::vector<float> output;
 		auto range = input | std::views::transform([](double item) { return static_cast<float>(item); });
 		for(const auto& item : range) { output.push_back(item); }
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Cast_CXX20Ranges, Large, INPUT2)->MinTime(10);
@@ -200,6 +211,7 @@ BENCHMARK_CAPTURE(Cast_CXX20Ranges, Small, INPUT2_BURST)->MinTime(10);
 static void Cast_CXXIter(benchmark::State& state, const std::vector<double>& input) {
 	for (auto _ : state) {
 		std::vector<float> output = CXXIter::from(input).cast<float>().collect<std::vector>();
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(Cast_CXXIter, Large, INPUT2)->MinTime(10);
@@ -220,6 +232,7 @@ static void GroupBy_Native(benchmark::State& state, const std::vector<std::strin
 				output[groupIdent].push_back(input[i]);
 			}
 		}
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(GroupBy_Native, Large, INPUT1)->MinTime(10);
@@ -233,10 +246,139 @@ static void GroupBy_CXXIter(benchmark::State& state, const std::vector<std::stri
 		std::unordered_map<size_t, std::vector<std::string>> output = CXXIter::from(input)
 				.groupBy([](const std::string& item) { return item.size(); })
 				.collect<std::unordered_map>();
+		benchmark::DoNotOptimize(output);
 	}
 }
 BENCHMARK_CAPTURE(GroupBy_CXXIter, Large, INPUT1)->MinTime(10);
 BENCHMARK_CAPTURE(GroupBy_CXXIter, Small, INPUT1_BURST)->MinTime(10);
+
+
+
+// CHUNKEDEXACT MATH (NON-OVERLAPPING)
+// ==========
+static constexpr size_t CHUNKEDEXACTMATH_CHUNK_SIZE = 8;
+
+static void ChunkedExactMath_CXXIter(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(input)
+										 .copied()
+										 .chunkedExact<CHUNKEDEXACTMATH_CHUNK_SIZE>()
+										 .map([](std::array<double, CHUNKEDEXACTMATH_CHUNK_SIZE> data){
+											 double result = 0;
+											 for(size_t i = 0; i < data.size(); ++i) {
+												 double tmp = (data[i] - 1.0);
+												 result += tmp * (0.3 + tmp) * tmp * 5.0;
+											 }
+											 return result;
+										 })
+										 .collect<std::vector>();
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(ChunkedExactMath_CXXIter, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(ChunkedExactMath_CXXIter, Small, INPUT2_BURST)->MinTime(10);
+
+
+static void ChunkedExactPtrMath_Native(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		for(size_t chunkStartIdx = 0; chunkStartIdx < (input.size() - CHUNKEDEXACTMATH_CHUNK_SIZE + 1); chunkStartIdx += CHUNKEDEXACTMATH_CHUNK_SIZE) {
+			const double* view = &input[chunkStartIdx];
+			double chunkResult = 0;
+			for(size_t i = 0; i < CHUNKEDEXACTMATH_CHUNK_SIZE; ++i) {
+				double tmp = (view[i] - 1.0);
+				chunkResult += tmp * (0.3 + tmp) * tmp * 5.0;
+			}
+			output.push_back(chunkResult);
+		}
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(ChunkedExactPtrMath_Native, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(ChunkedExactPtrMath_Native, Small, INPUT2_BURST)->MinTime(10);
+
+static void ChunkedExactPtrMath_CXXIter(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(input)
+										 .chunkedExactPtr<CHUNKEDEXACTMATH_CHUNK_SIZE>()
+										 .map([](const double data[CHUNKEDEXACTMATH_CHUNK_SIZE]) {
+											 double result = 0;
+											 for(size_t i = 0; i < CHUNKEDEXACTMATH_CHUNK_SIZE; ++i) {
+												 double tmp = (data[i] - 1.0);
+												 result += tmp * (0.3 + tmp) * tmp * 5.0;
+											 }
+											 return result;
+										 })
+										 .collect<std::vector>();
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(ChunkedExactPtrMath_CXXIter, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(ChunkedExactPtrMath_CXXIter, Small, INPUT2_BURST)->MinTime(10);
+
+
+
+// CHUNKEDEXACT MATH (OVERLAPPING)
+// ==========
+static constexpr size_t CHUNKEDEXACTMATH_OVERLAP_STEP_SIZE = 2;
+
+static void OverlappingChunkedExactMath_CXXIter(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(input)
+										 .copied()
+										 .chunkedExact<CHUNKEDEXACTMATH_CHUNK_SIZE, CHUNKEDEXACTMATH_OVERLAP_STEP_SIZE>()
+										 .map([](std::array<double, CHUNKEDEXACTMATH_CHUNK_SIZE> data){
+											 double result = 0;
+											 for(size_t i = 0; i < data.size(); ++i) {
+												 double tmp = (data[i] - 1.0);
+												 result += tmp * (0.3 + tmp) * tmp * 5.0;
+											 }
+											 return result;
+										 })
+										 .collect<std::vector>();
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(OverlappingChunkedExactMath_CXXIter, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(OverlappingChunkedExactMath_CXXIter, Small, INPUT2_BURST)->MinTime(10);
+
+
+static void OverlappingChunkedExactPtrMath_Native(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output;
+		for(size_t chunkStartIdx = 0; chunkStartIdx < (input.size() - CHUNKEDEXACTMATH_CHUNK_SIZE + 1); chunkStartIdx += CHUNKEDEXACTMATH_OVERLAP_STEP_SIZE) {
+			const double* view = &input[chunkStartIdx];
+			double chunkResult = 0;
+			for(size_t i = 0; i < CHUNKEDEXACTMATH_CHUNK_SIZE; ++i) {
+				double tmp = (view[i] - 1.0);
+				chunkResult += tmp * (0.3 + tmp) * tmp * 5.0;
+			}
+			output.push_back(chunkResult);
+		}
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(OverlappingChunkedExactPtrMath_Native, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(OverlappingChunkedExactPtrMath_Native, Small, INPUT2_BURST)->MinTime(10);
+
+static void OverlappingChunkedExactPtrMath_CXXIter(benchmark::State& state, const std::vector<double>& input) {
+	for (auto _ : state) {
+		std::vector<double> output = CXXIter::from(input)
+										 .chunkedExactPtr<CHUNKEDEXACTMATH_CHUNK_SIZE, CHUNKEDEXACTMATH_OVERLAP_STEP_SIZE>()
+										 .map([](const double data[CHUNKEDEXACTMATH_CHUNK_SIZE]) {
+											 double result = 0;
+											 for(size_t i = 0; i < CHUNKEDEXACTMATH_CHUNK_SIZE; ++i) {
+												 double tmp = (data[i] - 1.0);
+												 result += tmp * (0.3 + tmp) * tmp * 5.0;
+											 }
+											 return result;
+										 })
+										 .collect<std::vector>();
+		benchmark::DoNotOptimize(output);
+	}
+}
+BENCHMARK_CAPTURE(OverlappingChunkedExactPtrMath_CXXIter, Large, INPUT2)->MinTime(10);
+BENCHMARK_CAPTURE(OverlappingChunkedExactPtrMath_CXXIter, Small, INPUT2_BURST)->MinTime(10);
 
 
 BENCHMARK_MAIN();

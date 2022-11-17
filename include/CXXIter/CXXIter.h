@@ -13,6 +13,7 @@
 
 #include "src/Common.h"
 #include "src/Generator.h"
+#include "src/sources/Concepts.h"
 #include "src/sources/ContainerSources.h"
 #include "src/sources/GeneratorSources.h"
 #include "src/Collector.h"
@@ -21,6 +22,7 @@
 #include "src/op/Chainer.h"
 #include "src/op/Chunked.h"
 #include "src/op/ChunkedExact.h"
+#include "src/op/ChunkedExactPtr.h"
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
 #include "src/op/FlagLast.h"
@@ -1456,7 +1458,9 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Create new iterator that collects elements from this iterator in exact-sized chunks of @p CHUNK_SIZE, which then
 	 * constitue the elements of the new iterator.
-	 * @details A chunk is only committed in the new iterator, after it was filled completely. That means, that if the amount
+	 * @details This creates a temporary buffer able to hold an entire chunk that is filled by pulling elements from this iterator
+	 * and copying them over into the buffer before the buffer is passed onwards.
+	 * A chunk is only committed in the new iterator, after it was filled completely. That means, that if the amount
 	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
 	 * fail to fill a complete chunk will be dropped.
 	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
@@ -1464,6 +1468,9 @@ public: // CXXIter API-Surface
 	 * chunks are directly adjacent. If this is set to a value smaler than @p CHUNK_SIZE, the generated chunks will overlap. If
 	 * this is set to a value higher than @p CHUNK_SIZE, the generated chunks will have gaps in between (those items are dropped).
 	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
+	 * @attention Due to the internal chunk buffer and the copies from this iterator into the buffer, this method can cause
+	 * an additional strain on memory. If your source consists of a contiguous chunk of memory, you may be able to instead use
+	 * the chunkedExactPtr() variant, which doesn't create unnecessary copies.
 	 *
 	 * Usage Example:
 	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
@@ -1506,6 +1513,70 @@ public: // CXXIter API-Surface
 	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
 	constexpr op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExact() {
 		return op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
+	}
+
+	/**
+	 * @brief Create new iterator that partitions this iterator into equally sized chunks of @p CHUNK_SIZE, which then
+	 * constitue the elements of the new iterator.
+	 * @details A chunk is only committed in the new iterator, if it is filled completely. That means, that if the amount
+	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
+	 * fail to fill a complete chunk will be dropped.
+	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
+	 * @tparam STEP_SIZE Controls the step-size between chunks. Per default, this is set to the same as @p CHUNK_SIZE, so the produced
+	 * chunks are directly adjacent. If this is set to a value smaler than @p CHUNK_SIZE, the generated chunks will overlap. If
+	 * this is set to a value higher than @p CHUNK_SIZE, the generated chunks will have gaps in between (those items are dropped).
+	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
+	 * @attention This requires this iterator to be an exact-sized contiguous memory iterator, that guarantees all elements to
+	 * be stored in a contiguous block of memory (as is for example the case for Sources based on @c std::vector<>).
+	 *
+	 * Usage Example:
+	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+	 * 	std::vector<size_t*> output = CXXIter::from(input)
+	 * 			.chunkedExactPtr<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { &input[0], &input[3], &input[6] }
+	 * @endcode
+	 * - If the amount of elements of the input can **not** be evenly divided up into the requested @p CHUNK_SIZE :
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+	 * 	std::vector<size_t*> output = CXXIter::from(input)
+	 * 			.chunkedExactPtr<3>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { &input[0], &input[3] }
+	 * @endcode
+	 * - Overlapping chunks (STEP_SIZE < CHUNK_SIZE):
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5};
+	 * 	std::vector<size_t*> output = CXXIter::from(input)
+	 * 			.chunkedExactPtr<3, 1>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { &input[0], &input[1], &input[2], &input[3] }
+	 * @endcode
+	 * - Gapped Chunks (STEP_SIZE > CHUNK_SIZE):
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+	 * 	std::vector<const size_t*> output = CXXIter::from(input)
+	 * 			.chunkedExactPtr<3, 4>()
+	 * 			.collect<std::vector>();
+	 * 	// output == { &input[0], &input[4] }
+	 * @endcode
+	 * - Working with Chunks:
+	 * @code
+	 * 	const std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+	 * 	std::vector<const size_t*> output = CXXIter::from(input)
+	 * 			.chunkedExactPtr<2, 1>()
+	 * 			.filter([](const size_t chunk[2]) {
+	 * 				return (chunk[0] + chunk[1]) > 5000;
+	 * 			})
+	 * 			.collect<std::vector>();
+	 * 	// output == { &input[2], &input[3] }
+	 * @endcode
+	 */
+	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
+	constexpr op::ChunkedExactPtr<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExactPtr() requires CXXIterExactSizeIterator<TSelf> {
+		return op::ChunkedExactPtr<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
 	}
 
 	/**
@@ -2125,7 +2196,7 @@ public: // CXXIter API-Surface
  * @return CXXIter move source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
 constexpr SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
 	return SrcMov<std::remove_cvref_t<TContainer>>(std::forward<TContainer>(container));
 }
@@ -2138,7 +2209,7 @@ constexpr SrcMov<std::remove_cvref_t<TContainer>> from(TContainer&& container) {
  * @return CXXIter mutable-reference source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
 constexpr SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
 	return SrcRef<std::remove_cvref_t<TContainer>>(container);
 }
@@ -2151,7 +2222,7 @@ constexpr SrcRef<std::remove_cvref_t<TContainer>> from(TContainer& container) {
  * @return CXXIter const-reference source from the given container.
  */
 template<typename TContainer>
-requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && SourceContainer<TContainer>)
+requires (!std::is_reference_v<TContainer> && !util::is_const_reference_v<TContainer> && concepts::SourceContainer<TContainer>)
 constexpr SrcCRef<std::remove_cvref_t<TContainer>> from(const TContainer& container) {
 	return SrcCRef<std::remove_cvref_t<TContainer>>(container);
 }

@@ -8,6 +8,52 @@
 using ::testing::ElementsAre;
 using ::testing::Pair;
 
+// ################################################################################################
+// CUSTOM MATCHERS
+// ################################################################################################
+
+template <size_t CNT, typename T>
+class RawArrayElementsAreMatcher {
+public:
+	using is_gtest_matcher = void;
+
+	explicit RawArrayElementsAreMatcher(std::array<T, CNT> elements) : elements(elements) {}
+
+	bool MatchAndExplain(const T* value, ::testing::MatchResultListener* listener) const {
+		for(size_t i = 0; i < CNT; ++i) {
+			if(elements[i] != value[i]) {
+				if(listener->IsInterested()) {
+					*listener->stream() << "Array element mismatch at index: " << i << ". Should have been: "
+										<< elements[i] << " but was: " << value[i] << std::endl;
+				}
+				return false;
+			}
+		}
+		return true;
+	}
+
+	void DescribeTo(std::ostream* os) const {
+		*os << "Expected array to have elements: [";
+		for(size_t i = 0; i < elements.size(); ++i) {
+			if(i > 0) { *os << ", "; }
+			*os << elements[i];
+		}
+		std::cout << "]" << std::endl;
+	}
+
+	void DescribeNegationTo(std::ostream*) const {
+		throw std::runtime_error("Not implemented");
+	}
+private:
+	std::array<T, CNT> elements;
+};
+
+template<typename T, typename... TRest>
+::testing::Matcher<const T*> RawArrayElementsAre(T el0, TRest... els) {
+	static constexpr size_t ELEMENT_CNT = 1 + sizeof...(els);
+	return RawArrayElementsAreMatcher<ELEMENT_CNT, T>({el0, static_cast<T>(els)...});
+}
+
 
 // ################################################################################################
 // TEST STRUCTURES
