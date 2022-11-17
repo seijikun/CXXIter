@@ -81,51 +81,70 @@ For a large list of examples, have a look at the unit-tests in `tests/`.
 ## Benchmarks
 CXXIter's design tries to avoid any structural slowdowns. As such, it does avoid using virtual dispatch in hot paths, as well as the usage of `std::function<>`.
 Here are the benchmark results from the simple benchmark in the `tests/` folder on my machine (Ryzen 5800X), comparing a native, a C++20 ranges and a CXXIter implementation of each micro-benchmark.
+Compiler: `gcc version 12.2.1 20221020`
 ```
------------------------------------------------------------------------------------------
-Benchmark                                               Time             CPU   Iterations
------------------------------------------------------------------------------------------
-FilterMap_Native/Large/min_time:10.000      2901615173 ns   2901558802 ns            5
-FilterMap_CXX20Ranges/Large/min_time:10.000 2947774570 ns   2946858702 ns            5
-FilterMap_CXXIter/Large/min_time:10.000     2986734484 ns   2986205047 ns            5
-
-FilterMap_Native/Small/min_time:10.000             204 ns          204 ns     68795396
-FilterMap_CXX20Ranges/Small/min_time:10.000        197 ns          197 ns     71459697
-FilterMap_CXXIter/Small/min_time:10.000            204 ns          204 ns     69366238
-
-
-Filter_Native/Large/min_time:10.000          391584224 ns    391479324 ns           36
-Filter_CXX20Ranges/Large/min_time:10.000     435718595 ns    435689028 ns           32
-Filter_CXXIter/Large/min_time:10.000         405839687 ns    405818030 ns           35
-
-Filter_Native/Small/min_time:10.000               62.1 ns         62.1 ns    228092966
-Filter_CXX20Ranges/Small/min_time:10.000          66.3 ns         66.3 ns    211273332
-Filter_CXXIter/Small/min_time:10.000              62.2 ns         62.2 ns    223274566
-
-
-Map_Native/Large/min_time:10.000             827658901 ns    827441763 ns           17
-Map_CXX20Ranges/Large/min_time:10.000        830283730 ns    830172863 ns           17
-Map_CXXIter/Large/min_time:10.000            832004965 ns    831876755 ns           17
-
-Map_Native/Small/min_time:10.000                  73.5 ns         73.5 ns    190828412
-Map_CXX20Ranges/Small/min_time:10.000             75.3 ns         75.3 ns    186357996
-Map_CXXIter/Small/min_time:10.000                 72.6 ns         72.6 ns    194156850
-
-
-Cast_Native/Large/min_time:10.000            328406589 ns    328362799 ns           43
-Cast_CXX20Ranges/Large/min_time:10.000       325023974 ns    324994770 ns           43
-Cast_CXXIter/Large/min_time:10.000           482944749 ns    482808030 ns           29
-
-Cast_Native/Small/min_time:10.000                 64.6 ns         64.6 ns    217301590
-Cast_CXX20Ranges/Small/min_time:10.000            63.4 ns         63.4 ns    221671894
-Cast_CXXIter/Small/min_time:10.000                72.0 ns         72.0 ns    194525183
-
-
-GroupBy_Native/Large/min_time:10.000        1630731999 ns   1630347772 ns            9
-GroupBy_CXXIter/Large/min_time:10.000       2114174670 ns   2114070369 ns            7
-
-GroupBy_Native/Small/min_time:10.000               205 ns          205 ns     67938042
-GroupBy_CXXIter/Small/min_time:10.000              275 ns          275 ns     50986762
+--------------------------------------------------------------------------------------------
+Benchmark                                                  Time             CPU   Iterations
+--------------------------------------------------------------------------------------------
+FilterMap_Native/Small                                   198 ns          198 ns     71457425
+FilterMap_CXX20Ranges/Small                              182 ns          182 ns     67359112
+FilterMap_CXXIter/Small                                  233 ns          233 ns     63686125
+                                                  
+FilterMap_Native/Large                            2883871358 ns   2883876073 ns            5
+FilterMap_CXX20Ranges/Large                       3255969494 ns   3255896584 ns            5
+FilterMap_CXXIter/Large                           3323312771 ns   3323321153 ns            4
+                                                  
+                                                  
+Filter_Native/Large                                416454279 ns    416454614 ns           35
+Filter_CXX20Ranges/Large                           381753661 ns    381728809 ns           37
+Filter_CXXIter/Large                               480220190 ns    480220984 ns           29
+                                                  
+Filter_Native/Small                                     64.2 ns         64.2 ns    262228564
+Filter_CXX20Ranges/Small                                65.6 ns         65.6 ns    212019379
+Filter_CXXIter/Small                                    66.6 ns         66.6 ns    210251620
+                                                  
+                                                  
+Map_Native/Large                                   726392652 ns    726391678 ns           19
+Map_CXX20Ranges/Large                              709160787 ns    709064098 ns           20
+Map_CXXIter/Large                                  730594430 ns    730572539 ns           19
+                                                  
+Map_Native/Small                                        68.6 ns         68.6 ns    167033097
+Map_CXX20Ranges/Small                                   64.6 ns         64.6 ns    169229151
+Map_CXXIter/Small                                       67.6 ns         67.6 ns    207433543
+                                                  
+                                                  
+Cast_Native/Large                                  301692473 ns    301692325 ns           47
+Cast_CXX20Ranges/Large                             300917110 ns    300850142 ns           47
+Cast_CXXIter/Large                                 306349150 ns    306340990 ns           47
+                                                  
+Cast_Native/Small                                       80.4 ns         80.4 ns    173120146
+Cast_CXX20Ranges/Small                                  66.7 ns         66.7 ns    208613349
+Cast_CXXIter/Small                                      67.2 ns         67.2 ns    193698681
+                                                  
+                                                  
+GroupBy_Native/Large                              1566267584 ns   1566269799 ns            9
+GroupBy_CXXIter/Large                             1742169188 ns   1741891872 ns            8
+                                                  
+GroupBy_Native/Small                                     202 ns          202 ns     69780765
+GroupBy_CXXIter/Small                                    274 ns          274 ns     51176489
+                                                  
+                                                  
+ChunkedExactMath_CXXIter/Large                     113857930 ns    113858127 ns          125
+ChunkedExactPtrMath_Native/Large                   110339030 ns    110290451 ns          127
+ChunkedExactPtrMath_CXXIter/Large                  110315922 ns    110316119 ns          133
+                                                  
+ChunkedExactMath_CXXIter/Small                          13.5 ns         13.5 ns   1000000000
+ChunkedExactPtrMath_Native/Small                        13.8 ns         13.8 ns    968896485
+ChunkedExactPtrMath_CXXIter/Small                       15.1 ns         15.1 ns    927411168
+                                                  
+                                                  
+OverlappingChunkedExactMath_CXXIter/Large          740346495 ns    740250478 ns           19
+OverlappingChunkedExactPtrMath_Native/Large        300844689 ns    300844205 ns           46
+OverlappingChunkedExactPtrMath_CXXIter/Large       330140465 ns    330066006 ns           44
+                                                  
+OverlappingChunkedExactMath_CXXIter/Small               37.3 ns         37.3 ns    385042581
+OverlappingChunkedExactPtrMath_Native/Small             26.5 ns         26.5 ns    532771173
+OverlappingChunkedExactPtrMath_CXXIter/Small            31.8 ns         31.8 ns    440700725
 ```
 Time: lower is better,
 Iterations: higher is better
