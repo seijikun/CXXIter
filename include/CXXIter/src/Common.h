@@ -61,6 +61,12 @@ namespace CXXIter {
 			return true;
 		}
 
+		template<typename TConstSrc, typename TOut>
+		using copy_const_from = std::conditional_t<
+			std::is_const_v<std::remove_reference_t<TConstSrc>>,
+			std::add_const_t<TOut>,
+			std::remove_const_t<TOut>
+		>;
 	}
 
 	template<typename T>

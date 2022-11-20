@@ -70,7 +70,9 @@ namespace CXXIter {
 	requires util::ContiguousMemoryContainer<TContainer>
 	struct trait::ContiguousMemoryIterator<SrcMov<TContainer>> {
 		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcMov<TContainer>::Item>>;
-		static constexpr inline ItemPtr currentPtr(SrcMov<TContainer>& self) { return self.iter; }
+		static constexpr inline ItemPtr currentPtr(SrcMov<TContainer>& self) {
+			return &trait::Source<TContainer>::peekNext(*self.container, self.iter);
+		}
 	};
 
 
@@ -140,7 +142,9 @@ namespace CXXIter {
 	requires util::ContiguousMemoryContainer<TContainer>
 	struct trait::ContiguousMemoryIterator<SrcRef<TContainer>> {
 		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcRef<TContainer>::Item>>;
-		static constexpr inline ItemPtr currentPtr(SrcRef<TContainer>& self) { return self.iter; }
+		static constexpr inline ItemPtr currentPtr(SrcRef<TContainer>& self) {
+			return &trait::Source<TContainer>::peekNext(self.container, self.iter);
+		}
 	};
 
 
@@ -209,7 +213,9 @@ namespace CXXIter {
 	requires util::ContiguousMemoryContainer<TContainer>
 	struct trait::ContiguousMemoryIterator<SrcCRef<TContainer>> {
 		using ItemPtr = std::add_pointer_t<std::remove_reference_t<typename SrcCRef<TContainer>::Item>>;
-		static constexpr inline ItemPtr currentPtr(SrcCRef<TContainer>& self) { return self.iter; }
+		static constexpr inline ItemPtr currentPtr(SrcCRef<TContainer>& self) {
+			return &trait::Source<TContainer>::peekNext(self.container, self.iter);
+		}
 	};
 
 }

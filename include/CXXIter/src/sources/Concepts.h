@@ -35,6 +35,9 @@ namespace CXXIter::concepts {
 		{trait::Source<TContainer>::next(container, iterState)} -> std::same_as<typename trait::Source<TContainer>::ItemRef>;
 		{trait::Source<TContainer>::next(constContainer, constIterState)} -> std::same_as<typename trait::Source<TContainer>::ItemConstRef>;
 
+		{trait::Source<TContainer>::peekNext(container, iterState)} -> std::same_as<typename trait::Source<TContainer>::ItemRef>;
+		{trait::Source<TContainer>::peekNext(constContainer, constIterState)} -> std::same_as<typename trait::Source<TContainer>::ItemConstRef>;
+
 		{trait::Source<TContainer>::skipN(container, iterState, n)} -> std::same_as<size_t>;
 		{trait::Source<TContainer>::skipN(container, constIterState, n)} -> std::same_as<size_t>;
 	};

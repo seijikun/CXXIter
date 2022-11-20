@@ -214,6 +214,25 @@ namespace CXXIter::trait {
 		static constexpr inline ItemConstRef next([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter.left++); }
 
 		/**
+		 * @brief Return the next item in the iteration with the given @p iter state on the given @p container, without advancing.
+		 * @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
+		 * @param container Container on which the current iteration is running.
+		 * @param iter The current iteration's state structure.
+		 * @return The next item from the current iteration.
+		 * @attention Calling this when @c hasNext() returns @c false is undefined behavior!
+		 */
+		static constexpr inline ItemRef peekNext([[maybe_unused]] TContainer& container, IteratorState& iter) { return (*iter.left); }
+		/**
+		 * @brief Return the next item in the iteration with the given @p iter state on the given @p container, without advancing.
+		 * @details This is used for @c CXXIter::SrcCRef
+		 * @param container Container on which the current iteration is running.
+		 * @param iter The current iteration's state structure.
+		 * @return The next item from the current iteration.
+		 * @attention Calling this when @c hasNext() returns @c false is undefined behavior!
+		 */
+		static constexpr inline ItemConstRef peekNext([[maybe_unused]] const TContainer& container, ConstIteratorState& iter) { return (*iter.left); }
+
+		/**
 		 * @brief Skip the next @p n elements from the container.
 		 * @details This is used for @c CXXIter::SrcMov and @c CXXIter::SrcRef
 		 * @param container Container on which the current iteration is running.

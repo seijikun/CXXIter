@@ -22,7 +22,6 @@
 #include "src/op/Chainer.h"
 #include "src/op/Chunked.h"
 #include "src/op/ChunkedExact.h"
-#include "src/op/ChunkedExactPtr.h"
 #include "src/op/Filter.h"
 #include "src/op/FilterMap.h"
 #include "src/op/FlagLast.h"
@@ -74,7 +73,7 @@ public: // Associated types
 private:
 	constexpr TSelf* self() { return static_cast<TSelf*>(this); }
 	constexpr const TSelf* self() const { return static_cast<const TSelf*>(this); }
-	static constexpr bool IS_REFERENCE = std::is_lvalue_reference<Item>::value;
+	static constexpr bool IS_REFERENCE = std::is_lvalue_reference_v<Item>;
 
 public: // C++ Iterator API-Surface
 
@@ -1280,6 +1279,7 @@ public: // CXXIter API-Surface
 			ItemOwned copy = item;
 			return copy;
 		});
+
 	}
 
 	/**
@@ -1458,125 +1458,109 @@ public: // CXXIter API-Surface
 	/**
 	 * @brief Create new iterator that collects elements from this iterator in exact-sized chunks of @p CHUNK_SIZE, which then
 	 * constitue the elements of the new iterator.
-	 * @details This creates a temporary buffer able to hold an entire chunk that is filled by pulling elements from this iterator
-	 * and copying them over into the buffer before the buffer is passed onwards.
-	 * A chunk is only committed in the new iterator, after it was filled completely. That means, that if the amount
+	 * @details A chunk is only committed in the new iterator, after it was filled completely. That means, that if the amount
 	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
 	 * fail to fill a complete chunk will be dropped.
+	 *
+	 * Where possible (for contiguous memory sources, such as @c std::vector<> or @c std::array<>), this method avoids creating
+	 * copies of the elements, and instead forwards an @c std::array<>& pointing at the memory position of the current chunk's
+	 * start. This essentially allows working directly on the source's memory region.
+	 * If this isn't possible because the source or any previous chainer method calls make direct source memory inaccessible,
+	 * this will fallback to using a temporary buffer, able to hold an entire chunk, that is filled by pulling elements from
+	 * this iterator into the buffer, before a const reference to the buffer is passed onwards.
+	 *
 	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
 	 * @tparam STEP_SIZE Controls the step-size between chunks. Per default, this is set to the same as @p CHUNK_SIZE, so the produced
 	 * chunks are directly adjacent. If this is set to a value smaler than @p CHUNK_SIZE, the generated chunks will overlap. If
 	 * this is set to a value higher than @p CHUNK_SIZE, the generated chunks will have gaps in between (those items are dropped).
 	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
-	 * @attention Due to the internal chunk buffer and the copies from this iterator into the buffer, this method can cause
-	 * an additional strain on memory. If your source consists of a contiguous chunk of memory, you may be able to instead use
-	 * the chunkedExactPtr() variant, which doesn't create unnecessary copies.
+	 * - If this iterator supports contiguous memory access:
+	 *		- the resulting iterator's elements will be of type @c std::array<...>& where the reference points directly to the contiguous memory
+	 * 			source's memory region - irrespecting of whether this iterator's elements are referenced or owned/copied. Changing the
+	 *			elements in these chunk references will thus directly change the elements in the source.
+	 * - If this iterator doesn't support contiguous memory access (e.g. because of another chainer method between source and @c chunkedExact())
+	 *		- ... and this iterator's elements are references, the resulting iterator's elements will be
+	 *			of type @c std::array<std::reference_wrapper<...>>& , in order to preserve the ability to modify the elements in-place.
+	 *			In case this is unwanted, prepend the call to @c chunkedExact() with a call to the @c copied() chainer method.
+	 *		- ... and this iterator's elements are not references, the resulting iterator's elements will be of type @c const std::array<...>&
 	 *
-	 * Usage Example:
+	 * @attention ChunkedExact tries to avoid making unnecessary copies, but that only works if this iterator is sourced
+	 * by a contiguous source of memory, without any obstructing chainer methods before the call to chunkedExact().
+	 * If this isn't possible, the internal chunk buffer and the copies from this iterator into the buffer, can cause
+	 * an additional strain on memory.
+	 *
+	 * <h3>Usage Examples:</h3>
+	 * <b>Contiguous Memory</b>
+	 * <hr/>
 	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
 	 * @code
 	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
-	 * 	auto output = CXXIter::from(input)
-	 * 			.copied()
-	 * 			.chunkedExact<3>()
-	 * 			.collect<std::vector>();
+	 * 	std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+	 *			.chunkedExact<3>()
+	 *			.collect<std::vector>();
 	 * 	// output == { {1337, 42, 512}, {31337, 69, 5}, {1, 2, 3} }
 	 * @endcode
 	 * - If the amount of elements of the input can **not** be evenly divided up into the requested @p CHUNK_SIZE :
 	 * @code
 	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
-	 * 	auto output = CXXIter::from(input)
-	 * 			.copied()
-	 * 			.chunkedExact<3>()
-	 * 			.collect<std::vector>();
+	 * 	std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+	 *			.chunkedExact<3>()
+	 *			.collect<std::vector>();
 	 * 	// output == { {1337, 42, 512}, {31337, 69, 5} }
 	 * @endcode
 	 * - Overlapping chunks (STEP_SIZE < CHUNK_SIZE):
 	 * @code
 	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5};
-	 * 	auto output = CXXIter::from(input)
-	 * 			.copied()
-	 * 			.chunkedExact<3, 1>()
-	 * 			.collect<std::vector>();
+	 * 	std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+	 *			.chunkedExact<3, 1>()
+	 *			.collect<std::vector>();
 	 * 	// output == { {1337, 42, 512}, {42, 512, 31337}, {512, 31337, 69}, {31337, 69, 5} }
 	 * @endcode
 	 * - Gapped Chunks (STEP_SIZE > CHUNK_SIZE):
 	 * @code
 	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
-	 * 	auto output = CXXIter::from(input)
-	 * 			.copied()
-	 * 			.chunkedExact<3, 4>()
-	 * 			.collect<std::vector>();
+	 * 	std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+	 *			.chunkedExact<3, 4>()
+	 *			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {69, 5, 1} }
+	 * @endcode
+	 * - In-Place source editing
+	 * @code
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+	 * 	CXXIter::from(input)
+	 *			.chunkedExact<3, 4>()
+	 *			.forEach([](std::array<size_t, 3>& chunkRef) {
+	 *				chunkRef[0] += 1; chunkRef[1] += 2; chunkRef[2] += 3;
+	 *			});
+	 * 	// input == { 1337+1, 42+2, 512+3, 31337, 69+1, 5+2, 1+3 }
+	 * @endcode
+	 *
+	 * <b>Non-Contiguous Memory</b>
+	 * <hr/>
+	 * - Container that doesn't store its elements in a contiguous region in memory:
+	 * @code
+	 * 	std::deque<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+	 * 	std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+	 *			.copied() // required to avoid std::reference_wrapper<...> in elements produced by chunkedExact()
+	 *			.chunkedExact<3, 4>()
+	 *			.collect<std::vector>();
+	 * 	// output == { {1337, 42, 512}, {69, 5, 1} }
+	 * @endcode
+	 * - Using chunkedExact() with preceding chainers that prevent contiguous memory access:
+	 * @code
+	 *  // container would normally support contiguous memory access
+	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+	 *  // CXXIter::ExactChunk<size_t&, 3> resolves to std::array<std::reference_wrapper<size_t>, 3>
+	 * 	std::vector<CXXIter::ExactChunk<size_t&, 3>> output = CXXIter::from(input)
+	 *			.filter([](const auto&) { return true; })
+	 *			.chunkedExact<3, 4>()
+	 *			.collect<std::vector>();
 	 * 	// output == { {1337, 42, 512}, {69, 5, 1} }
 	 * @endcode
 	 */
 	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
 	constexpr op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExact() {
 		return op::ChunkedExact<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
-	}
-
-	/**
-	 * @brief Create new iterator that partitions this iterator into equally sized chunks of @p CHUNK_SIZE, which then
-	 * constitue the elements of the new iterator.
-	 * @details A chunk is only committed in the new iterator, if it is filled completely. That means, that if the amount
-	 * of elements in this iterator do not evenly divide up to @p CHUNK_SIZE sized chunks, the last couple of elements that
-	 * fail to fill a complete chunk will be dropped.
-	 * @tparam CHUNK_SIZE Amount of elements from this iterator, that get collected to one chunk.
-	 * @tparam STEP_SIZE Controls the step-size between chunks. Per default, this is set to the same as @p CHUNK_SIZE, so the produced
-	 * chunks are directly adjacent. If this is set to a value smaler than @p CHUNK_SIZE, the generated chunks will overlap. If
-	 * this is set to a value higher than @p CHUNK_SIZE, the generated chunks will have gaps in between (those items are dropped).
-	 * @return New iterator that contains exact-sized (@p CHUNK_SIZE) chunks of elements from this iterator as elements.
-	 * @attention This requires this iterator to be an exact-sized contiguous memory iterator, that guarantees all elements to
-	 * be stored in a contiguous block of memory (as is for example the case for Sources based on @c std::vector<>).
-	 *
-	 * Usage Example:
-	 * - If the amount of elements of the input can be evenly divided up into the requested @p CHUNK_SIZE :
-	 * @code
-	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
-	 * 	std::vector<size_t*> output = CXXIter::from(input)
-	 * 			.chunkedExactPtr<3>()
-	 * 			.collect<std::vector>();
-	 * 	// output == { &input[0], &input[3], &input[6] }
-	 * @endcode
-	 * - If the amount of elements of the input can **not** be evenly divided up into the requested @p CHUNK_SIZE :
-	 * @code
-	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
-	 * 	std::vector<size_t*> output = CXXIter::from(input)
-	 * 			.chunkedExactPtr<3>()
-	 * 			.collect<std::vector>();
-	 * 	// output == { &input[0], &input[3] }
-	 * @endcode
-	 * - Overlapping chunks (STEP_SIZE < CHUNK_SIZE):
-	 * @code
-	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5};
-	 * 	std::vector<size_t*> output = CXXIter::from(input)
-	 * 			.chunkedExactPtr<3, 1>()
-	 * 			.collect<std::vector>();
-	 * 	// output == { &input[0], &input[1], &input[2], &input[3] }
-	 * @endcode
-	 * - Gapped Chunks (STEP_SIZE > CHUNK_SIZE):
-	 * @code
-	 * 	std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
-	 * 	std::vector<const size_t*> output = CXXIter::from(input)
-	 * 			.chunkedExactPtr<3, 4>()
-	 * 			.collect<std::vector>();
-	 * 	// output == { &input[0], &input[4] }
-	 * @endcode
-	 * - Working with Chunks:
-	 * @code
-	 * 	const std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
-	 * 	std::vector<const size_t*> output = CXXIter::from(input)
-	 * 			.chunkedExactPtr<2, 1>()
-	 * 			.filter([](const size_t chunk[2]) {
-	 * 				return (chunk[0] + chunk[1]) > 5000;
-	 * 			})
-	 * 			.collect<std::vector>();
-	 * 	// output == { &input[2], &input[3] }
-	 * @endcode
-	 */
-	template<const size_t CHUNK_SIZE, const size_t STEP_SIZE = CHUNK_SIZE>
-	constexpr op::ChunkedExactPtr<TSelf, CHUNK_SIZE, STEP_SIZE> chunkedExactPtr() requires CXXIterExactSizeIterator<TSelf> {
-		return op::ChunkedExactPtr<TSelf, CHUNK_SIZE, STEP_SIZE>(std::move(*self()));
 	}
 
 	/**

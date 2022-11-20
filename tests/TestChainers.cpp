@@ -242,7 +242,7 @@ TEST(CXXIter, reverse) {
 	}
 }
 
-TEST(CXXIter, chunkedExact) {
+TEST(CXXIter, chunkedExact_buffered) {
 	{ // non-interleaved
 		{ // sizeHint
 			{
@@ -466,13 +466,13 @@ TEST(CXXIter, chunkedExact) {
 	}
 }
 
-TEST(CXXIter, chunkedExactPtr) {
+TEST(CXXIter, chunkedExact_directAccess) {
 	{ // non-interleaved
 		{ // sizeHint
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3>()
+						.chunkedExact<3>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 3);
 				ASSERT_EQ(sizeHint.upperBound.value(), 3);
@@ -480,7 +480,7 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3>()
+						.chunkedExact<3>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 2);
 				ASSERT_EQ(sizeHint.upperBound.value(), 2);
@@ -488,9 +488,18 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3>()
+						.chunkedExact<3>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.filter([](size_t) { return true; })
+						.chunkedExact<3>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 0);
 				ASSERT_EQ(sizeHint.upperBound.value(), 2);
 			}
 		}
@@ -498,29 +507,29 @@ TEST(CXXIter, chunkedExactPtr) {
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3>()
+					.chunkedExact<3>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 3);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5));
-			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(1, 2, 3));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(31337, 69, 5));
+			ASSERT_THAT(output[2], ElementsAre(1, 2, 3));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3>()
+					.chunkedExact<3>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 2);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(31337, 69, 5));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<5>()
+					.chunkedExact<5>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 1);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512, 31337, 69));
 		}
 	}
 
@@ -529,7 +538,7 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 2>()
+						.chunkedExact<3, 2>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 4);
 				ASSERT_EQ(sizeHint.upperBound.value(), 4);
@@ -537,7 +546,7 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 2>()
+						.chunkedExact<3, 2>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 3);
 				ASSERT_EQ(sizeHint.upperBound.value(), 3);
@@ -545,9 +554,18 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 2>()
+						.chunkedExact<3, 2>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 3);
+				ASSERT_EQ(sizeHint.upperBound.value(), 3);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.filter([](size_t) { return true; })
+						.chunkedExact<3, 2>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 0);
 				ASSERT_EQ(sizeHint.upperBound.value(), 3);
 			}
 		}
@@ -555,32 +573,32 @@ TEST(CXXIter, chunkedExactPtr) {
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3, 2>()
+					.chunkedExact<3, 2>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 4);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(512, 31337, 69));
-			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(69, 5, 1));
-			ASSERT_THAT(output[3], RawArrayElementsAre<size_t>(1, 2, 3));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(512, 31337, 69));
+			ASSERT_THAT(output[2], ElementsAre(69, 5, 1));
+			ASSERT_THAT(output[3], ElementsAre(1, 2, 3));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3, 2>()
+					.chunkedExact<3, 2>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 3);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(512, 31337, 69));
-			ASSERT_THAT(output[2], RawArrayElementsAre<size_t>(69, 5, 1));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(512, 31337, 69));
+			ASSERT_THAT(output[2], ElementsAre(69, 5, 1));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<5, 3>()
+					.chunkedExact<5, 3>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 2);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69, 5, 1, 2));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512, 31337, 69));
+			ASSERT_THAT(output[1], ElementsAre(31337, 69, 5, 1, 2));
 		}
 	}
 
@@ -590,7 +608,7 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 4>()
+						.chunkedExact<3, 4>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 2);
 				ASSERT_EQ(sizeHint.upperBound.value(), 2);
@@ -598,7 +616,7 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 4>()
+						.chunkedExact<3, 4>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 2);
 				ASSERT_EQ(sizeHint.upperBound.value(), 2);
@@ -606,9 +624,18 @@ TEST(CXXIter, chunkedExactPtr) {
 			{
 				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
 				SizeHint sizeHint = CXXIter::from(input)
-						.chunkedExactPtr<3, 4>()
+						.chunkedExact<3, 4>()
 						.sizeHint();
 				ASSERT_EQ(sizeHint.lowerBound, 2);
+				ASSERT_EQ(sizeHint.upperBound.value(), 2);
+			}
+			{
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+				SizeHint sizeHint = CXXIter::from(input)
+						.filter([](size_t) { return true; })
+						.chunkedExact<3, 4>()
+						.sizeHint();
+				ASSERT_EQ(sizeHint.lowerBound, 0);
 				ASSERT_EQ(sizeHint.upperBound.value(), 2);
 			}
 		}
@@ -616,42 +643,149 @@ TEST(CXXIter, chunkedExactPtr) {
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3, 4>()
+					.chunkedExact<3, 4>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 2);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(69, 5, 1));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(69, 5, 1));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<3, 4>()
+					.chunkedExact<3, 4>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 2);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512));
-			ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(69, 5, 1));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512));
+			ASSERT_THAT(output[1], ElementsAre(69, 5, 1));
 		}
 		{
 			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
 			auto output = CXXIter::from(input)
-					.chunkedExactPtr<5, 6>()
+					.chunkedExact<5, 6>()
 					.collect<std::vector>();
 			ASSERT_EQ(output.size(), 1);
-			ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(1337, 42, 512, 31337, 69));
+			ASSERT_THAT(output[0], ElementsAre(1337, 42, 512, 31337, 69));
 		}
 	}
+}
 
-	{ // etc
-		const std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
-		auto output = CXXIter::from(input)
-						  .chunkedExactPtr<2, 1>()
-						  .filter([](const size_t chunk[2]) {
-							  return (chunk[0] + chunk[1]) > 5000;
-						  })
-						  .collect<std::vector>();
-		ASSERT_EQ(output.size(), 2);
-		ASSERT_THAT(output[0], RawArrayElementsAre<size_t>(512, 31337));
-		ASSERT_THAT(output[1], RawArrayElementsAre<size_t>(31337, 69));
+TEST(CXXIter, chunkedExact_elementTypeSelection) {
+	{ // contiguous
+		{ // references
+			{ // mutable
+				std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				auto iter = CXXIter::from(input).chunkedExact<3, 2>();
+				CXXIter::ExactChunk<size_t, 3>& output0 = iter.next().value();
+				CXXIter::ExactChunk<size_t, 3>& output1 = iter.next().value();
+				ASSERT_EQ(output0.data(), &input[0]);
+				ASSERT_EQ(output1.data(), &input[2]);
+				output1[1] = 9999;
+				ASSERT_EQ(input[3], 9999);
+			}
+			{ // const
+				const std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				auto iter = CXXIter::from(input).chunkedExact<3, 2>();
+				const CXXIter::ExactChunk<size_t, 3>& output0 = iter.next().value();
+				const CXXIter::ExactChunk<size_t, 3>& output1 = iter.next().value();
+				ASSERT_EQ(output0.data(), &input[0]);
+				ASSERT_EQ(output1.data(), &input[2]);
+			}
+		}
+		{ // owned
+			std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto iter = CXXIter::from(input).copied().chunkedExact<3, 2>();
+			const CXXIter::ExactChunk<size_t, 3>& output0 = iter.next().value();
+			const CXXIter::ExactChunk<size_t, 3>& output1 = iter.next().value();
+			ASSERT_NE(output0.data(), &input[0]);
+			ASSERT_NE(output1.data(), &input[2]);
+		}
+	}
+	{ // non-contiguous
+		{ // references
+			{ // mutable
+				std::deque<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				auto iter = CXXIter::from(input).chunkedExact<3, 2>();
+				const CXXIter::ExactChunk<size_t&, 3>& output0 = iter.next().value();
+				ASSERT_EQ(&output0[0].get(), &input[0]);
+				const CXXIter::ExactChunk<size_t&, 3>& output1 = iter.next().value();
+				ASSERT_EQ(&output1[0].get(), &input[2]);
+				output1[1].get() = 9999;
+				ASSERT_EQ(input[3], 9999);
+			}
+			{ // const
+				const std::deque<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+				auto iter = CXXIter::from(input).chunkedExact<3, 2>();
+				const CXXIter::ExactChunk<const size_t&, 3>& output0 = iter.next().value();
+				ASSERT_EQ(&output0[0].get(), &input[0]);
+				const CXXIter::ExactChunk<const size_t&, 3>& output1 = iter.next().value();
+				ASSERT_EQ(&output1[0].get(), &input[2]);
+			}
+		}
+		{ // owned
+			std::deque<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+			auto iter = CXXIter::from(input).copied().chunkedExact<3, 2>();
+			const CXXIter::ExactChunk<size_t, 3>& output0 = iter.next().value();
+			const CXXIter::ExactChunk<size_t, 3>& output1 = iter.next().value();
+			ASSERT_NE(output0.data(), &input[0]);
+			ASSERT_NE(output1.data(), &input[2]);
+		}
+	}
+}
+
+TEST(CXXIter, chunkedExact_usage) {
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2, 3};
+		std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+			.chunkedExact<3>()
+			.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(ElementsAre(1337, 42, 512), ElementsAre(31337, 69, 5), ElementsAre(1, 2, 3)));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1, 2};
+		std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+			.chunkedExact<3>()
+			.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(ElementsAre(1337, 42, 512), ElementsAre(31337, 69, 5)));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5};
+		std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+			.chunkedExact<3, 1>()
+			.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(ElementsAre(1337, 42, 512), ElementsAre(42, 512, 31337), ElementsAre(512, 31337, 69), ElementsAre(31337, 69, 5)));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+		std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+			.chunkedExact<3, 4>()
+			.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(ElementsAre(1337, 42, 512), ElementsAre(69, 5, 1)));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+		CXXIter::from(input)
+			.chunkedExact<3, 4>()
+			.forEach([](std::array<size_t, 3>& chunkRef) {
+				chunkRef[0] += 1; chunkRef[1] += 2; chunkRef[2] += 3;
+			});
+		ASSERT_THAT(input, ElementsAre(1337+1, 42+2, 512+3, 31337, 69+1, 5+2, 1+3));
+	}
+	{
+		std::deque<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+		std::vector<CXXIter::ExactChunk<size_t, 3>> output = CXXIter::from(input)
+			.copied() // required to avoid std::reference_wrapper<...> in elements produced by chunkedExact()
+			.chunkedExact<3, 4>()
+			.collect<std::vector>();
+		ASSERT_THAT(output, ElementsAre(ElementsAre(1337, 42, 512), ElementsAre(69, 5, 1)));
+	}
+	{
+		std::vector<size_t> input = {1337, 42, 512, 31337, 69, 5, 1};
+		// CXXIter::ExactChunk<size_t&, 3> resolves to std::array<std::reference_wrapper<size_t>, 3>
+		std::vector<CXXIter::ExactChunk<size_t&, 3>> output = CXXIter::from(input)
+			.filter([](const auto&) { return true; })
+			.chunkedExact<3, 4>()
+			.collect<std::vector>();
+		// output == { {1337, 42, 512}, {69, 5, 1} }
 	}
 }
 

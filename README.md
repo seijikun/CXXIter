@@ -129,22 +129,18 @@ GroupBy_Native/Small                                     202 ns          202 ns 
 GroupBy_CXXIter/Small                                    274 ns          274 ns     51176489
                                                   
                                                   
-ChunkedExactMath_CXXIter/Large                     113857930 ns    113858127 ns          125
-ChunkedExactPtrMath_Native/Large                   110339030 ns    110290451 ns          127
-ChunkedExactPtrMath_CXXIter/Large                  110315922 ns    110316119 ns          133
+ChunkedExactMath_CXXIter/Large                     101300921 ns    101301257 ns          138
+ChunkedExactMath_Native/Large                      101656993 ns    101657235 ns          138
                                                   
-ChunkedExactMath_CXXIter/Small                          13.5 ns         13.5 ns   1000000000
-ChunkedExactPtrMath_Native/Small                        13.8 ns         13.8 ns    968896485
-ChunkedExactPtrMath_CXXIter/Small                       15.1 ns         15.1 ns    927411168
+ChunkedExactMath_CXXIter/Small                          11.8 ns         11.8 ns   1000000000
+ChunkedExactMath_Native/Small                           12.0 ns         12.0 ns   1000000000
                                                   
                                                   
-OverlappingChunkedExactMath_CXXIter/Large          740346495 ns    740250478 ns           19
-OverlappingChunkedExactPtrMath_Native/Large        300844689 ns    300844205 ns           46
-OverlappingChunkedExactPtrMath_CXXIter/Large       330140465 ns    330066006 ns           44
+OverlappingChunkedExactMath_CXXIter/Large          297710325 ns    297709856 ns           47
+OverlappingChunkedExactMath_Native/Large           293148257 ns    293149023 ns           48
                                                   
-OverlappingChunkedExactMath_CXXIter/Small               37.3 ns         37.3 ns    385042581
-OverlappingChunkedExactPtrMath_Native/Small             26.5 ns         26.5 ns    532771173
-OverlappingChunkedExactPtrMath_CXXIter/Small            31.8 ns         31.8 ns    440700725
+OverlappingChunkedExactMath_CXXIter/Small               25.5 ns         25.5 ns    551919955
+OverlappingChunkedExactMath_Native/Small                25.7 ns         25.7 ns    542539508
 ```
 Time: lower is better,
 Iterations: higher is better

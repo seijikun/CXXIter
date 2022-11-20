@@ -1,0 +1,35 @@
+digraph {
+	rankdir="LR"
+	elementType [shape=Mdiamond, label="Element\nType"];
+	elementType -> contiguousSplit;
+	elementType -> noncontiguousSplit;
+
+	subgraph cluster_contiguous {
+		style=filled; color=lightgrey; label="contiguous memory"; node [style=filled,color=white];
+		contiguousSplit [shape=diamond, label=""];
+		contiguousConstType [shape=M, label="const std::array<...>&"];
+		contiguousMutableType [shape=M, label="std::array<...>&"];
+
+		contiguousSplit -> contiguousConstType [label="const"];
+		contiguousSplit -> contiguousMutableType [label="mutable"];
+	}
+	subgraph cluster_noncontiguous {
+		style=filled; color=lightgrey; label="non-contiguous memory"; node [style=filled,color=white];
+		noncontiguousSplit [shape=diamond, label=""];
+
+		subgraph cluster_referenced {
+			style=filled; color=white; label="referenced"; node [style=filled,color=lightgray];
+			noncontiguousConstRefType [shape=M, label="const std::array<std::reference_wrapper<...>>&"];
+			noncontiguousMutableRefType [shape=M, label="std::array<std::reference_wrapper<...>>&"];
+		}
+		subgraph cluster_owned {
+			style=filled; color=white; label="owned"; node [style=filled,color=lightgray];
+			noncontiguousConstOwnedType [shape=M, label="const std::array<...>&"];
+			noncontiguousMutableOwnedType [shape=M, label="std::array<...>&"];
+		}
+		noncontiguousSplit -> noncontiguousConstRefType;
+		noncontiguousSplit -> noncontiguousMutableRefType;
+		noncontiguousSplit -> noncontiguousConstOwnedType;
+		noncontiguousSplit -> noncontiguousMutableOwnedType;
+	}
+}

@@ -149,6 +149,9 @@ namespace CXXIter {
 		static constexpr inline ItemRef next(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter++); }
 		static constexpr inline ItemConstRef next(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter++); }
 
+		static constexpr inline ItemRef peekNext(CustomContainer<TItem>& container, IteratorState& iter) { return container.get(iter); }
+		static constexpr inline ItemConstRef peekNext(const CustomContainer<TItem>& container, ConstIteratorState& iter) { return container.get(iter); }
+
 		static constexpr inline size_t skipN(CustomContainer<TItem>& container, IteratorState& iter, size_t n) {
 			size_t skipN = std::min(container.cnt - iter, n);
 			iter += skipN;
