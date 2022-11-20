@@ -5,7 +5,6 @@ var dir_94e28e050ec962af1417912038263e19 =
     [ "Chainer.h", "Chainer_8h_source.html", null ],
     [ "Chunked.h", "Chunked_8h_source.html", null ],
     [ "ChunkedExact.h", "ChunkedExact_8h_source.html", null ],
-    [ "ChunkedExactPtr.h", "ChunkedExactPtr_8h_source.html", null ],
     [ "Filter.h", "Filter_8h_source.html", null ],
     [ "FilterMap.h", "FilterMap_8h_source.html", null ],
     [ "FlagLast.h", "FlagLast_8h_source.html", null ],

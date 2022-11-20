@@ -105,7 +105,7 @@ var sectionId = 'dynsection-1';
 <text text-anchor="start" x="24" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ reverse()</text>
 <text text-anchor="start" x="24" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ chunked()</text>
 <text text-anchor="start" x="24" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ chunkedExact()</text>
-<text text-anchor="start" x="24" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 21 more...</text>
+<text text-anchor="start" x="24" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 20 more...</text>
 <text text-anchor="start" x="24" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00">* forEach()</text>
 <text text-anchor="start" x="24" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collect()</text>
 <text text-anchor="start" x="24" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00">* collect()</text>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-1';
 <text text-anchor="start" x="24" y="-134.5" font-family="Helvetica,sans-Serif" font-size="10.00">* reverse()</text>
 <text text-anchor="start" x="24" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00">* chunked()</text>
 <text text-anchor="start" x="24" y="-112.5" font-family="Helvetica,sans-Serif" font-size="10.00">* chunkedExact()</text>
-<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 21 more...</text>
+<text text-anchor="start" x="24" y="-101.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 20 more...</text>
 </a>
 </g>
 </g>

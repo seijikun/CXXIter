@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['value_0',['value',['../classCXXIter_1_1IterValue.html#ae90e2e32a4cf74ed8cc186086abbab82',1,'CXXIter::IterValue::value() const'],['../classCXXIter_1_1IterValue.html#a941a12db30db65df8a44512010440d7f',1,'CXXIter::IterValue::value()']]],
-  ['value_5for_1',['value_or',['../classCXXIter_1_1IterValue.html#a31c0db301d8125df419841576a251a3c',1,'CXXIter::IterValue::value_or(TValueDeref &amp;&amp;def) const noexcept'],['../classCXXIter_1_1IterValue.html#a7ca7061579e62c30521b857c2eab521f',1,'CXXIter::IterValue::value_or(TValueDeref &amp;&amp;def) noexcept']]],
-  ['variance_2',['variance',['../classCXXIter_1_1IterApi.html#a95bde2c40c9a03fdd1edefac1dabae99',1,'CXXIter::IterApi']]]
+  ['unique_0',['unique',['../classCXXIter_1_1IterApi.html#a2280c98f3eeb930fc5e4736bb1511565',1,'CXXIter::IterApi::unique(TMapFn mapFn)'],['../classCXXIter_1_1IterApi.html#a3dbbf647555955d2cc96fc9117b7793b',1,'CXXIter::IterApi::unique()']]],
+  ['unzip_1',['unzip',['../namespaceCXXIter_1_1fn.html#a5e4b65a152cc2fbb285198bbae167602',1,'CXXIter::fn']]]
 ];

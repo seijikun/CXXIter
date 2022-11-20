@@ -260,9 +260,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr op::ChunkedExact&lt; TSelf, CHUNK_SIZE, STEP_SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a1ed3a6a0c06aa6c5f3603b905128dc10">chunkedExact</a> ()</td></tr>
 <tr class="memdesc:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that collects elements from this iterator in exact-sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <br /></td></tr>
 <tr class="separator:a1ed3a6a0c06aa6c5f3603b905128dc10 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr op::ChunkedExactPtr&lt; TSelf, CHUNK_SIZE, STEP_SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#ab3b5268e9ab4122a92787def949c96f2">chunkedExactPtr</a> ()</td></tr>
-<tr class="memdesc:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new iterator that partitions this iterator into equally sized chunks of <code>CHUNK_SIZE</code>, which then constitue the elements of the new iterator.  <br /></td></tr>
-<tr class="separator:ab3b5268e9ab4122a92787def949c96f2 inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCXXIter_1_1IterApi.html#a43378f096e81b660ea0fb80dcdeeb5ff">map</a> (TMapFn mapFn)</td></tr>
 <tr class="memdesc:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an iterator that uses the given <code>mapFn</code> to map each element from this iterator to elements of the new iterator.  <br /></td></tr>
 <tr class="separator:a43378f096e81b660ea0fb80dcdeeb5ff inherit pub_methods_classCXXIter_1_1IterApi"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,7 +351,7 @@ requires concepts::SourceContainer&lt;std::remove_cvref_t&lt;TContainer&gt;&gt;<
 class CXXIter::SrcRef&lt; TContainer &gt;</div><p><a class="el" href="namespaceCXXIter.html" title="CXXIter.">CXXIter</a> iterator source that mutably borrows the input item source, and passes mutable references to the items of the source through the iterator. </p>
 <p>This allows the iterator to modify the items while leaving them in the original item source. </p>
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00090">90</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00092">92</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae12c6c2430fbfcee5996bc0d34efea01" name="ae12c6c2430fbfcee5996bc0d34efea01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae12c6c2430fbfcee5996bc0d34efea01">&#9670;&#160;</a></span>SrcRef()</h2>
@@ -382,7 +379,7 @@ template&lt;typename TContainer &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00100">100</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ContainerSources_8h_source.html#l00102">102</a> of file <a class="el" href="ContainerSources_8h_source.html">ContainerSources.h</a>.</p>
 
 </div>
 </div>

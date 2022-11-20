@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('structCXXIter_1_1trait_1_1Source.html'
 <div class="dynheader">
 Collaboration diagram for CXXIter::trait::Source&lt; TContainer &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1Source__coll__graph.svg" width="170" height="338"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structCXXIter_1_1trait_1_1Source__coll__graph.svg" width="170" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -153,6 +153,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a248ba4ad1251846721675d71eba89ecc"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a248ba4ad1251846721675d71eba89ecc">next</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source_1_1ConstIteratorState.html">ConstIteratorState</a> &amp;iter)</td></tr>
 <tr class="memdesc:a248ba4ad1251846721675d71eba89ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>.  <br /></td></tr>
 <tr class="separator:a248ba4ad1251846721675d71eba89ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eee59684b24cf02d548d7cf1d3ba7f1"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">ItemRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a3eee59684b24cf02d548d7cf1d3ba7f1">peekNext</a> (TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source_1_1IteratorState.html">IteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:a3eee59684b24cf02d548d7cf1d3ba7f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>, without advancing.  <br /></td></tr>
+<tr class="separator:a3eee59684b24cf02d548d7cf1d3ba7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9bb09b3dfa880045ca002162a11e888"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#aa9bb09b3dfa880045ca002162a11e888">peekNext</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source_1_1ConstIteratorState.html">ConstIteratorState</a> &amp;iter)</td></tr>
+<tr class="memdesc:aa9bb09b3dfa880045ca002162a11e888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>, without advancing.  <br /></td></tr>
+<tr class="separator:aa9bb09b3dfa880045ca002162a11e888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5e34ed017448c8e3a073585737e9ab4"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCXXIter_1_1trait_1_1Source.html#aa5e34ed017448c8e3a073585737e9ab4">skipN</a> (const TContainer &amp;container, <a class="el" href="structCXXIter_1_1trait_1_1Source_1_1IteratorState.html">IteratorState</a> &amp;iter, size_t n)</td></tr>
 <tr class="memdesc:aa5e34ed017448c8e3a073585737e9ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip the next <code>n</code> elements from the container.  <br /></td></tr>
 <tr class="separator:aa5e34ed017448c8e3a073585737e9ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -567,7 +573,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the back of the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00264">264</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00283">283</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +624,109 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next item from the back of the current iteration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00255">255</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00274">274</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+
+</div>
+</div>
+<a id="aa9bb09b3dfa880045ca002162a11e888" name="aa9bb09b3dfa880045ca002162a11e888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9bb09b3dfa880045ca002162a11e888">&#9670;&#160;</a></span>peekNext() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TContainer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr <a class="el" href="structCXXIter_1_1trait_1_1Source.html#add956d6babfe5823bc784e3ad9790563">ItemConstRef</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::peekNext </td>
+          <td>(</td>
+          <td class="paramtype">const TContainer &amp;&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source_1_1ConstIteratorState.html">ConstIteratorState</a> &amp;&#160;</td>
+          <td class="paramname"><em>iter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>, without advancing. </p>
+<p>This is used for <code><a class="el" href="classCXXIter_1_1SrcCRef.html" title="CXXIter iterator source that immutably borrows the input item source, and passes immutable references...">CXXIter::SrcCRef</a></code> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>Container on which the current iteration is running. </td></tr>
+    <tr><td class="paramname">iter</td><td>The current iteration's state structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Calling this when <code><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a6a101445353bdaddf747e2a33d21c9ae" title="Checks whether there is a next item in the iteration with the given iter state on the given container...">hasNext()</a></code> returns <code>false</code> is undefined behavior! </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00233">233</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+
+</div>
+</div>
+<a id="a3eee59684b24cf02d548d7cf1d3ba7f1" name="a3eee59684b24cf02d548d7cf1d3ba7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eee59684b24cf02d548d7cf1d3ba7f1">&#9670;&#160;</a></span>peekNext() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TContainer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr <a class="el" href="structCXXIter_1_1trait_1_1Source.html#aad117e6f0003005dbfaf01f845091536">ItemRef</a> <a class="el" href="structCXXIter_1_1trait_1_1Source.html">CXXIter::trait::Source</a>&lt; TContainer &gt;::peekNext </td>
+          <td>(</td>
+          <td class="paramtype">TContainer &amp;&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCXXIter_1_1trait_1_1Source_1_1IteratorState.html">IteratorState</a> &amp;&#160;</td>
+          <td class="paramname"><em>iter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the next item in the iteration with the given <code>iter</code> state on the given <code>container</code>, without advancing. </p>
+<p>This is used for <code><a class="el" href="classCXXIter_1_1SrcMov.html" title="CXXIter iterator source that takes over the input item source, and moves its items through the elemen...">CXXIter::SrcMov</a></code> and <code><a class="el" href="classCXXIter_1_1SrcRef.html" title="CXXIter iterator source that mutably borrows the input item source, and passes mutable references to ...">CXXIter::SrcRef</a></code> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>Container on which the current iteration is running. </td></tr>
+    <tr><td class="paramname">iter</td><td>The current iteration's state structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next item from the current iteration. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Calling this when <code><a class="el" href="structCXXIter_1_1trait_1_1Source.html#a6a101445353bdaddf747e2a33d21c9ae" title="Checks whether there is a next item in the iteration with the given iter state on the given container...">hasNext()</a></code> returns <code>false</code> is undefined behavior! </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00224">224</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 
 </div>
 </div>
@@ -714,7 +822,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00237">237</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00256">256</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -777,7 +885,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00224">224</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00243">243</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -840,7 +948,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00287">287</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00306">306</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -903,7 +1011,7 @@ template&lt;typename TContainer &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of actually skipped elements (e.g. if there were less than <code>n</code> elements remaining). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00274">274</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Traits_8h_source.html#l00293">293</a> of file <a class="el" href="Traits_8h_source.html">Traits.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
