@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-11-17 23:00:21</td>
+      <td>2022-11-20 03:48:50</td>
     </tr>
   </table>
 </div>
@@ -587,7 +587,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">}</span></td>
+      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TConstSrc</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TOut</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -595,7 +595,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="n">using</span> <span class="n">copy_const_from</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">conditional_t</span><span class="o">&lt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -603,7 +603,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="n">std</span><span class="o">::</span><span class="n">is_const_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_reference_t</span><span class="o">&lt;</span><span class="n">TConstSrc</span><span class="o">&gt;&gt;</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -611,7 +611,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterIterator</span> <span class="o">=</span></td>
+      <td class="src ">			<span class="n">std</span><span class="o">::</span><span class="n">add_const_t</span><span class="o">&lt;</span><span class="n">TOut</span><span class="o">&gt;</span><span class="p">,</span></td>
     </tr>
 
     <tr class="source-line">
@@ -619,7 +619,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span></td>
+      <td class="src ">			<span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">TOut</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -627,7 +627,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">constSelf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">		<span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -635,7 +635,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">}</span></td>
     </tr>
 
     <tr class="source-line">
@@ -643,7 +643,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -651,7 +651,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -659,7 +659,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">constSelf</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">SizeHint</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterIterator</span> <span class="o">=</span></td>
     </tr>
 
     <tr class="source-line">
@@ -667,7 +667,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">advanceBy</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&amp;&amp;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -675,7 +675,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">		<span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">constSelf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -683,7 +683,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -691,7 +691,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">			<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -699,7 +699,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterDoubleEndedIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -707,7 +707,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">constSelf</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">SizeHint</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -715,7 +715,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">			<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">advanceBy</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">n</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -723,7 +723,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -731,7 +731,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -739,7 +739,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -747,7 +747,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterDoubleEndedIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -755,7 +755,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">IterValue</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -763,7 +763,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -771,7 +771,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -779,7 +779,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterContiguousMemoryIterator</span> <span class="o">=</span> <span class="n">CXXIterExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -787,7 +787,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterExactSizeIterator</span> <span class="o">=</span> <span class="n">CXXIterIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="k">const</span> <span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -795,7 +795,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">ItemPtr</span><span class="p">;</span></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -803,7 +803,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">currentPtr</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">ItemPtr</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src ">	<span class="p">};</span></td>
     </tr>
 
     <tr class="source-line">
@@ -811,7 +811,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "></td>
     </tr>
 
     <tr class="source-line">
@@ -819,7 +819,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -827,7 +827,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
+      <td class="src ">	<span class="n">concept</span> <span class="n">CXXIterContiguousMemoryIterator</span> <span class="o">=</span> <span class="n">CXXIterExactSizeIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></td>
     </tr>
 
     <tr class="source-line">
@@ -835,7 +835,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src ">		<span class="o">&amp;&amp;</span> <span class="n">requires</span><span class="p">(</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
     </tr>
 
     <tr class="source-line">
@@ -843,11 +843,59 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src ">		<span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">ItemPtr</span><span class="p">;</span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l97" href="#l97">97</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">		<span class="p">{</span><span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">currentPtr</span><span class="p">(</span><span class="n">self</span><span class="p">)}</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">ContiguousMemoryIterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">ItemPtr</span><span class="o">&gt;</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l98" href="#l98">98</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="p">};</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l99" href="#l99">99</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l100" href="#l100">100</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterIterator</span> <span class="n">TSelf</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">IterApi</span><span class="p">;</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l101" href="#l101">101</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l102" href="#l102">102</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l103" href="#l103">103</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
