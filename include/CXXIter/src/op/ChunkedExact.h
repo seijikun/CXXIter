@@ -7,7 +7,6 @@
 
 #include "../Common.h"
 #include "../util/TraitImpl.h"
-#include "../util/MaybeUninitialized.h"
 
 namespace CXXIter {
 
@@ -37,8 +36,9 @@ namespace CXXIter {
 			friend struct trait::Iterator<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
 			friend struct trait::ExactSizeIterator<ChunkedExact<TChainInput, CHUNK_SIZE, STEP_SIZE>>;
 		private:
+			struct source_ended_exception {};
 			TChainInput input;
-			util::MaybeUninitialized<ExactChunk<typename TChainInput::Item, CHUNK_SIZE>> chunk;
+			std::optional<ExactChunk<typename TChainInput::Item, CHUNK_SIZE>> chunk;
 		public:
 			constexpr ChunkedExact(TChainInput&& input) : input(std::move(input)) {}
 		};
@@ -87,23 +87,31 @@ namespace CXXIter {
 		// If the source is contiguous, copy the const specifier from the InputItem
 		// If the source is non-contiguous, always add a const specifier, since we pass a reference
 		//    to our internal chunk buffer, and changing that doesn't make much sense.
-		using Item = std::conditional_t<IS_CONTIGUOUS,
-			copy_const_from<InputItem, ExactChunk<InputItemOwned, CHUNK_SIZE>>&,
-			const ExactChunk<InputItem, CHUNK_SIZE>&>;
+		using ItemOwned = std::conditional_t<IS_CONTIGUOUS,
+		copy_const_from<InputItem, ExactChunk<InputItemOwned, CHUNK_SIZE>>,
+		const ExactChunk<InputItem, CHUNK_SIZE>>;
+		using Item = ItemOwned&;
 
 		// non-contiguous
 		static constexpr inline IterValue<Item> next(Self& self) requires (!IS_CONTIGUOUS) {
-			auto& chunk = self.chunk.get();
-			if(!self.chunk.isInitialized()) [[unlikely]] {
-				// initial loading
-				for(size_t i = 0; i < CHUNK_SIZE; ++i) {
-					auto item = ChainInputIterator::next(self.input);
-					if(!item.has_value()) [[unlikely]] { return {}; } // reached end. Chunk needs to be full to commit!
-					chunk[i] = item.value();
+			auto getElementFromChainInput = [&]<size_t IDX>(std::integral_constant<size_t, IDX>) -> typename ItemOwned::value_type {
+				auto input = ChainInputIterator::next(self.input);
+				if(!input.has_value()) [[unlikely]] {
+					throw typename Self::source_ended_exception{};
 				}
-				self.chunk.setInitialized();
-				return chunk;
+				return input.value();
+			};
+			auto initializeChunk = [&]<size_t... IDX>(auto& chunkOptional, std::integer_sequence<size_t, IDX...>) {
+				chunkOptional = { getElementFromChainInput(std::integral_constant<size_t, IDX>())... };
+			};
+
+			if(!self.chunk.has_value()) [[unlikely]] {
+				// initial loading
+				initializeChunk(self.chunk, std::make_index_sequence<CHUNK_SIZE>{});
+				return *self.chunk;
 			}
+
+			auto& chunk = *self.chunk;
 
 			// if step-size is greater than chunk-size, we need to skip some values
 			ChainInputIterator::advanceBy(self.input, SKIP_SIZE);
