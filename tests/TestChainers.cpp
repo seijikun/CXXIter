@@ -1009,6 +1009,38 @@ TEST(CXXIter, skip) {
 		ASSERT_EQ(output.size(), input.size());
 		ASSERT_THAT(output, ElementsAre(42, 42, 42, 42, 1337));
 	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 69, 69, 31337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(3)
+				.skip(1)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 4);
+		ASSERT_THAT(output, ElementsAre(1337, 69, 69, 31337));
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 69, 69, 31337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(99)
+				.skip(1)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 0);
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 69, 69, 31337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(1)
+				.skip(99)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 0);
+	}
+	{
+		std::vector<int> input = {42, 42, 42, 42, 1337, 69, 69, 31337};
+		std::vector<int> output = CXXIter::from(input)
+				.skip(8)
+				.collect<std::vector>();
+		ASSERT_EQ(output.size(), 0);
+	}
 }
 
 TEST(CXXIter, skipWhile) {
