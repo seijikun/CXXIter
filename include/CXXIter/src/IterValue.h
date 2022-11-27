@@ -34,14 +34,17 @@ namespace CXXIter {
 		/** ctor */
 		constexpr IterValue(TValue value) noexcept requires std::is_reference_v<TValue> : inner(value) {}
 		/** ctor */
-		constexpr IterValue(const TValueDeref& value) noexcept requires (!std::is_reference_v<TValue>) : inner(value) {}
+		constexpr IterValue(const TValueDeref& value) noexcept(std::is_nothrow_copy_constructible_v<TValueDeref>)
+				requires (!std::is_reference_v<TValue>) : inner(value) {}
 		/** ctor */
-		constexpr IterValue(TValueDeref&& value) noexcept : inner(std::forward<TValueDeref>(value)) {}
+		constexpr IterValue(TValueDeref&& value) noexcept(std::is_nothrow_move_constructible_v<TValueDeref>)
+				: inner(std::forward<TValueDeref>(value)) {}
 
 		/** Assignment from another IterValue instance. */
 		constexpr IterValue& operator=(IterValue&& o) = default;
 		/** Assignment from another IterValue instance. */
-		constexpr IterValue(IterValue&& o) : inner(std::move(o.inner)) {
+		constexpr IterValue(IterValue&& o) noexcept(std::is_nothrow_move_constructible_v<TValueDeref>)
+				: inner(std::move(o.inner)) {
 			o.inner.reset();
 		};
 
