@@ -17,16 +17,12 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -yq cmake graphviz ninja-build
-      
-    - name: Download and Build Doxygen from source
-      run: |
-        cd ../
-        git clone https://github.com/doxygen/doxygen.git
-        mkdir -p doxygen/build
-        cd doxygen/build
-        cmake -GNinja ..
-        cmake --build . --target install
+      uses: aminya/setup-cpp@v1
+      with:
+        cmake: true
+        ninja: true
+        doxygen: true
+        graphviz: true
       
     - name: Configure
       run: |
