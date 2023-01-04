@@ -11,11 +11,16 @@ jobs:
       matrix:
         compiler:
           - gcc-11
+          - gcc-12
           - llvm-14
+          - llvm-15
         buildType:
           - Release
           - RelWithDebug
           - Debug
+          - Asan
+          - AsanDebug
+          - Tsan
 
     steps:
     - uses: actions/checkout@v2
@@ -44,4 +49,6 @@ jobs:
     - name: Test
       run: |
         cd build/
+        export ASAN_OPTIONS=detect_leaks=0
+        export TSAN_OPTIONS=ignore_noninstrumented_modules=1
         ctest -j4 --output-on-failure

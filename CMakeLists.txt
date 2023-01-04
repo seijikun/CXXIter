@@ -23,6 +23,7 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
 
 # UNIT-TESTS
 if(${CXXITER_WITH_TESTS})
+	include(SanitizerBuildtypes)
 	enable_testing() # has to be done in main CMakeLists file
 	add_subdirectory(tests)
 endif()
