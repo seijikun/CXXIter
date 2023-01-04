@@ -109,7 +109,7 @@
 <title>Node17&#45;&gt;Node16</title>
 <path fill="none" stroke="orange" stroke-dasharray="5,2" d="M436,-121.58C436,-109.63 436,-94.72 436,-85.41"/>
 <polygon fill="orange" stroke="orange" points="432.5,-121.87 436,-131.87 439.5,-121.87 432.5,-121.87"/>
-<text text-anchor="middle" x="454" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">&lt; int &gt;</text>
+<text text-anchor="middle" x="454" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int &gt;</text>
 </g>
 <!-- Node18 -->
 <g id="node9" class="node">
@@ -122,7 +122,7 @@
 <title>Node18&#45;&gt;Node9</title>
 <path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M484.52,-65.62C417.32,-46.74 349.44,-28.6 311.27,-18.49"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="483.85,-69.07 494.42,-68.41 485.74,-62.33 483.85,-69.07"/>
-<text text-anchor="middle" x="450.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">m_usedClass</text>
+<text text-anchor="middle" x="450.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">m_usedClass</text>
 </g>
 </g>
 </svg>
