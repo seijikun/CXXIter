@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-11-27 18:56:59</td>
+      <td>2023-01-04 15:54:31</td>
     </tr>
   </table>
 </div>
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <th scope="row">Functions:</th>
-      <td>6</td>
-      <td>6</td>
+      <td>9</td>
+      <td>9</td>
       <td class="coverage-high">100.0%</td>
     </tr>
     <tr>
@@ -97,6 +97,17 @@
     </tr>
     <tr>
       <td>
+        <a href="#l60">CXXIter_filterIsOneOf_Test::~CXXIter_filterIsOneOf_Test()</a>
+      </td>
+      <td>
+        <a href="#l60">60</a>
+      </td>
+      <td>
+        <a href="#l60"> called 2 times</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="#l18">CXXIter_tryDynCast_Test::CXXIter_tryDynCast_Test()</a>
       </td>
       <td>
@@ -115,6 +126,17 @@
       </td>
       <td>
         <a href="#l18"> called 1 time</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#l18">CXXIter_tryDynCast_Test::~CXXIter_tryDynCast_Test()</a>
+      </td>
+      <td>
+        <a href="#l18">18</a>
+      </td>
+      <td>
+        <a href="#l18"> called 2 times</a>
       </td>
     </tr>
     <tr>
@@ -139,6 +161,17 @@
         <a href="#l8"> called 1 time</a>
       </td>
     </tr>
+    <tr>
+      <td>
+        <a href="#l8">CXXIter_unzip_Test::~CXXIter_unzip_Test()</a>
+      </td>
+      <td>
+        <a href="#l8">8</a>
+      </td>
+      <td>
+        <a href="#l8"> called 2 times</a>
+      </td>
+    </tr>
   </table>
 </details>
     </nav>
@@ -159,7 +192,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -175,7 +208,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span> <span class="cpf">&quot;TestCommon.h&quot;</span><span class="cp"></span></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestCommon.h&quot;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -214,8 +247,8 @@
       <td class="lineno"><a id="l8" href="#l8">8</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">unzip</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">8</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span><span class="w"> </span><span class="n">unzip</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -230,7 +263,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">3.0f</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.0f</span><span class="p">};</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-42.0f</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -247,7 +280,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">copied</span><span class="p">()</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="n">copied</span><span class="p">()</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -262,7 +295,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="p">.</span><span class="n">indexed</span><span class="p">()</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="p">.</span><span class="n">indexed</span><span class="p">()</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -277,7 +310,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="p">.</span><span class="n">sortBy</span><span class="o">&lt;</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">DESCENDING</span><span class="o">&gt;</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">unzip</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">())</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="p">.</span><span class="n">sortBy</span><span class="o">&lt;</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">DESCENDING</span><span class="o">&gt;</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">unzip</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">())</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -292,7 +325,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -317,7 +350,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">());</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -356,7 +389,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span><span class="n">Pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.0f</span><span class="p">),</span> <span class="n">Pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">),</span> <span class="n">Pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="n">Pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">),</span> <span class="n">Pair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.0f</span><span class="p">)));</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">ElementsAre</span><span class="p">(</span><span class="n">Pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0f</span><span class="p">),</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">),</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">),</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">),</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mf">-42.0f</span><span class="p">)));</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -373,7 +406,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine"><span class="p">}</span></td>
+      <td class="src coveredLine"><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -388,8 +421,8 @@
       <td class="lineno"><a id="l18" href="#l18">18</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">tryDynCast</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">8</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span><span class="w"> </span><span class="n">tryDynCast</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -397,7 +430,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">Parent</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">Parent</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -405,7 +438,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">6</td>
-      <td class="src coveredLine">		<span class="k">virtual</span> <span class="o">~</span><span class="n">Parent</span><span class="p">()</span> <span class="p">{}</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Parent</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -413,7 +446,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -421,7 +454,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="nl">Child1</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Parent</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">Child1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Parent</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -429,7 +462,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">id</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -444,7 +477,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">6</td>
-      <td class="src coveredLine">		<span class="n">Child1</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">id</span><span class="p">)</span> <span class="o">:</span> <span class="n">id</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">Child1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -452,7 +485,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -460,7 +493,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="nl">Child2</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Parent</span> <span class="p">{};</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">Child2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Parent</span><span class="w"> </span><span class="p">{};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -476,7 +509,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span> <span class="c1">// normal</span></td>
+      <td class="src "><span class="w">	</span><span class="p">{</span><span class="w"> </span><span class="c1">// normal</span></td>
     </tr>
 
     <tr class="source-line">
@@ -507,7 +540,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Parent</span><span class="o">*&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Parent</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child2</span><span class="p">()</span> <span class="p">};</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Parent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Parent</span><span class="p">(),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child2</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -522,7 +555,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Child1</span><span class="o">*&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Child1</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -537,7 +570,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -552,7 +585,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -577,7 +610,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -602,7 +635,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -627,7 +660,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -645,7 +678,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">delete</span> <span class="n">ptr</span><span class="p">;</span> <span class="p">});</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -662,7 +695,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -670,7 +703,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span> <span class="c1">// const</span></td>
+      <td class="src "><span class="w">	</span><span class="p">{</span><span class="w"> </span><span class="c1">// const</span></td>
     </tr>
 
     <tr class="source-line">
@@ -701,7 +734,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Parent</span><span class="o">*&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Parent</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child2</span><span class="p">()</span> <span class="p">};</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Parent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Parent</span><span class="p">(),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child2</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -716,7 +749,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Child1</span><span class="o">*&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Child1</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -731,7 +764,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -746,7 +779,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -771,7 +804,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -796,7 +829,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -821,7 +854,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -839,7 +872,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">delete</span> <span class="n">ptr</span><span class="p">;</span> <span class="p">});</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -856,7 +889,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -864,7 +897,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span> <span class="c1">// volatile</span></td>
+      <td class="src "><span class="w">	</span><span class="p">{</span><span class="w"> </span><span class="c1">// volatile</span></td>
     </tr>
 
     <tr class="source-line">
@@ -895,7 +928,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">volatile</span> <span class="n">Parent</span><span class="o">*&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Parent</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">Child2</span><span class="p">()</span> <span class="p">};</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">volatile</span><span class="w"> </span><span class="n">Parent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Parent</span><span class="p">(),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child1</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Child2</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -910,7 +943,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">volatile</span> <span class="n">Child1</span><span class="o">*&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">volatile</span><span class="w"> </span><span class="n">Child1</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -925,7 +958,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="k">volatile</span> <span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">filterMap</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">tryDynCast</span><span class="o">&lt;</span><span class="k">volatile</span><span class="w"> </span><span class="n">Child1</span><span class="o">*&gt;</span><span class="p">())</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -940,7 +973,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -965,7 +998,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -990,7 +1023,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">),</span> <span class="s">&quot;0&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1015,7 +1048,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">),</span> <span class="s">&quot;1&quot;</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1033,7 +1066,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">delete</span> <span class="n">ptr</span><span class="p">;</span> <span class="p">});</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">output</span><span class="p">).</span><span class="n">forEach</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1050,7 +1083,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1058,7 +1091,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src "><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1073,8 +1106,8 @@
       <td class="lineno"><a id="l60" href="#l60">60</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span> <span class="n">filterIsOneOf</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="linecount coveredLine">8</td>
+      <td class="src coveredLine"><span class="n">TEST</span><span class="p">(</span><span class="n">CXXIter</span><span class="p">,</span><span class="w"> </span><span class="n">filterIsOneOf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1082,7 +1115,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">enum</span> <span class="k">class</span> <span class="nc">CakeType</span> <span class="p">{</span> <span class="n">Sacher</span><span class="p">,</span> <span class="n">ButterCake</span><span class="p">,</span> <span class="n">CheeseCake</span><span class="p">,</span> <span class="n">ChocolateCake</span><span class="p">,</span> <span class="n">StrawberryCake</span> <span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CakeType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="n">ButterCake</span><span class="p">,</span><span class="w"> </span><span class="n">CheeseCake</span><span class="p">,</span><span class="w"> </span><span class="n">ChocolateCake</span><span class="p">,</span><span class="w"> </span><span class="n">StrawberryCake</span><span class="w"> </span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1090,7 +1123,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">Cake</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">Cake</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1098,7 +1131,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">CakeType</span> <span class="n">type</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">CakeType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1106,7 +1139,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="kt">float</span> <span class="n">volume</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="kt">float</span><span class="w"> </span><span class="n">volume</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1123,7 +1156,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">		<span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">Cake</span><span class="o">&amp;</span> <span class="n">o</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">o</span><span class="p">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">type</span> <span class="o">&amp;&amp;</span> <span class="n">o</span><span class="p">.</span><span class="n">volume</span> <span class="o">==</span> <span class="n">volume</span><span class="p">;</span> <span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">volume</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">volume</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1131,7 +1164,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1147,7 +1180,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Cake</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Cake</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1155,7 +1188,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">1.33f</span> <span class="p">},</span> <span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">CheeseCake</span><span class="p">,</span> <span class="mf">5.0f</span> <span class="p">},</span></td>
+      <td class="src "><span class="w">		</span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">1.33f</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">CheeseCake</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0f</span><span class="w"> </span><span class="p">},</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1163,7 +1196,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">ButterCake</span><span class="p">,</span> <span class="mf">2.33f</span> <span class="p">},</span> <span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">42.0f</span> <span class="p">},</span></td>
+      <td class="src "><span class="w">		</span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">ButterCake</span><span class="p">,</span><span class="w"> </span><span class="mf">2.33f</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">42.0f</span><span class="w"> </span><span class="p">},</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1171,7 +1204,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">StrawberryCake</span><span class="p">,</span> <span class="mf">1.6f</span> <span class="p">},</span> <span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span> <span class="mf">55.0f</span> <span class="p">},</span></td>
+      <td class="src "><span class="w">		</span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">StrawberryCake</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6f</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span><span class="w"> </span><span class="mf">55.0f</span><span class="w"> </span><span class="p">},</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1179,7 +1212,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">3.63f</span> <span class="p">},</span> <span class="p">{</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">StrawberryCake</span><span class="p">,</span> <span class="mf">14.0f</span> <span class="p">}</span></td>
+      <td class="src "><span class="w">		</span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">3.63f</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">StrawberryCake</span><span class="p">,</span><span class="w"> </span><span class="mf">14.0f</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1194,7 +1227,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">};</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1202,7 +1235,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1217,7 +1250,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Cake</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Cake</span><span class="o">&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1234,7 +1267,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">filterIsOneOf</span><span class="p">(</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">filterIsOneOf</span><span class="p">(</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1242,7 +1275,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">8</td>
-      <td class="src coveredLine">					<span class="p">[](</span><span class="k">const</span> <span class="n">Cake</span><span class="o">&amp;</span> <span class="n">cake</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">cake</span><span class="p">.</span><span class="n">type</span><span class="p">;</span> <span class="p">},</span></td>
+      <td class="src coveredLine"><span class="w">					</span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">Cake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cake</span><span class="p">.</span><span class="n">type</span><span class="p">;</span><span class="w"> </span><span class="p">},</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1250,7 +1283,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">					<span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">}</span></td>
+      <td class="src "><span class="w">					</span><span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1258,7 +1291,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">				<span class="p">))</span></td>
+      <td class="src "><span class="w">				</span><span class="p">))</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1273,7 +1306,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1298,7 +1331,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1325,7 +1358,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span> <span class="n">Cake</span> <span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">1.33f</span><span class="p">},</span> <span class="n">Cake</span> <span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">42.0f</span><span class="p">},</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">ElementsAre</span><span class="p">(</span><span class="w"> </span><span class="n">Cake</span><span class="w"> </span><span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">1.33f</span><span class="p">},</span><span class="w"> </span><span class="n">Cake</span><span class="w"> </span><span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">42.0f</span><span class="p">},</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1340,7 +1373,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">										 <span class="n">Cake</span> <span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span> <span class="mf">55.0f</span><span class="p">},</span> <span class="n">Cake</span> <span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="mf">3.63f</span><span class="p">}</span> <span class="p">));</span></td>
+      <td class="src coveredLine"><span class="w">										 </span><span class="n">Cake</span><span class="w"> </span><span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span><span class="w"> </span><span class="mf">55.0f</span><span class="p">},</span><span class="w"> </span><span class="n">Cake</span><span class="w"> </span><span class="p">{</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="mf">3.63f</span><span class="p">}</span><span class="w"> </span><span class="p">));</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1355,7 +1388,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1363,7 +1396,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1378,7 +1411,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">CakeType</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">CakeType</span><span class="o">&gt;</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CXXIter</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1393,7 +1426,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">map</span><span class="p">([](</span><span class="k">const</span> <span class="n">Cake</span><span class="o">&amp;</span> <span class="n">cake</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">cake</span><span class="p">.</span><span class="n">type</span><span class="p">;</span> <span class="p">})</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">map</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">Cake</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cake</span><span class="p">.</span><span class="n">type</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1410,7 +1443,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">filterIsOneOf</span><span class="p">({</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">}))</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CXXIter</span><span class="o">::</span><span class="n">fn</span><span class="o">::</span><span class="n">filterIsOneOf</span><span class="p">({</span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">}))</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1425,7 +1458,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">				<span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span></td>
+      <td class="src coveredLine"><span class="w">				</span><span class="p">.</span><span class="n">collect</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1450,7 +1483,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1479,7 +1512,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">		<span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ElementsAre</span><span class="p">(</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span> <span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span> <span class="p">));</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="n">ASSERT_THAT</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">ElementsAre</span><span class="p">(</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="p">,</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">ChocolateCake</span><span class="p">,</span><span class="w"> </span><span class="n">CakeType</span><span class="o">::</span><span class="n">Sacher</span><span class="w"> </span><span class="p">));</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1494,7 +1527,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine">	<span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -1509,7 +1542,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">2</td>
-      <td class="src coveredLine"><span class="p">}</span></td>
+      <td class="src coveredLine"><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">

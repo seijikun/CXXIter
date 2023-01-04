@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2022-11-27 18:56:59</td>
+      <td>2023-01-04 15:54:31</td>
     </tr>
   </table>
 </div>
@@ -329,7 +329,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -337,7 +337,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span> <span class="cpf">&lt;type_traits&gt;</span><span class="cp"></span></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;type_traits&gt;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -353,7 +353,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span> <span class="cpf">&quot;../Common.h&quot;</span><span class="cp"></span></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../Common.h&quot;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -369,7 +369,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="n">namespace</span> <span class="n">CXXIter</span> <span class="p">{</span></td>
+      <td class="src "><span class="n">namespace</span><span class="w"> </span><span class="n">CXXIter</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -385,7 +385,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ################################################################################################</span></td>
+      <td class="src "><span class="w">	</span><span class="c1">// ################################################################################################</span></td>
     </tr>
 
     <tr class="source-line">
@@ -393,7 +393,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// INPLACE MODIFIER</span></td>
+      <td class="src "><span class="w">	</span><span class="c1">// INPLACE MODIFIER</span></td>
     </tr>
 
     <tr class="source-line">
@@ -401,7 +401,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ################################################################################################</span></td>
+      <td class="src "><span class="w">	</span><span class="c1">// ################################################################################################</span></td>
     </tr>
 
     <tr class="source-line">
@@ -409,7 +409,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">namespace</span> <span class="n">op</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="n">namespace</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -417,7 +417,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="cm">/** @private */</span></td>
+      <td class="src "><span class="w">		</span><span class="cm">/** @private */</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -425,7 +425,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TModifierFn</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">template</span><span class="o">&lt;</span><span class="n">typename</span><span class="w"> </span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -433,7 +433,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">is_object_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span> <span class="o">||</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_const_v</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">)</span></td>
+      <td class="src "><span class="w">		</span><span class="n">requires</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_object_v</span><span class="o">&lt;</span><span class="n">typename</span><span class="w"> </span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">is_const_v</span><span class="o">&lt;</span><span class="n">typename</span><span class="w"> </span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">)</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -441,7 +441,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">class</span> <span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span> <span class="nl">InplaceModifier</span> <span class="p">:</span> <span class="n">public</span> <span class="n">IterApi</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">		</span><span class="n">class</span><span class="w"> </span><span class="p">[[</span><span class="n">nodiscard</span><span class="p">(</span><span class="n">CXXITER_CHAINER_NODISCARD_WARNING</span><span class="p">)]]</span><span class="w"> </span><span class="n">InplaceModifier</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">IterApi</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -449,7 +449,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">friend</span> <span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">friend</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -457,7 +457,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">friend</span> <span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">friend</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -465,7 +465,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">friend</span> <span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">friend</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -473,7 +473,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="nl">private</span><span class="p">:</span></td>
+      <td class="src "><span class="w">		</span><span class="n">private</span><span class="o">:</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -481,7 +481,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">using</span> <span class="n">InputItem</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">using</span><span class="w"> </span><span class="n">InputItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">TChainInput</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -497,7 +497,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">TChainInput</span> <span class="n">input</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">TChainInput</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -505,7 +505,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">			<span class="n">TModifierFn</span> <span class="n">modifierFn</span><span class="p">;</span></td>
+      <td class="src "><span class="w">			</span><span class="n">TModifierFn</span><span class="w"> </span><span class="n">modifierFn</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -513,7 +513,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="nl">public</span><span class="p">:</span></td>
+      <td class="src "><span class="w">		</span><span class="n">public</span><span class="o">:</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -521,7 +521,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">12</td>
-      <td class="src coveredLine">			<span class="n">constexpr</span> <span class="n">InplaceModifier</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">TModifierFn</span> <span class="n">modifierFn</span><span class="p">)</span> <span class="o">:</span> <span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span> <span class="n">modifierFn</span><span class="p">(</span><span class="n">modifierFn</span><span class="p">)</span> <span class="p">{}</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="n">constexpr</span><span class="w"> </span><span class="n">InplaceModifier</span><span class="p">(</span><span class="n">TChainInput</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="w"> </span><span class="n">modifierFn</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)),</span><span class="w"> </span><span class="n">modifierFn</span><span class="p">(</span><span class="n">modifierFn</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -529,7 +529,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">};</span></td>
+      <td class="src "><span class="w">		</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -537,7 +537,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">}</span></td>
+      <td class="src "><span class="w">	</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -545,7 +545,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
+      <td class="src "><span class="w">	</span><span class="c1">// ------------------------------------------------------------------------------------------------</span></td>
     </tr>
 
     <tr class="source-line">
@@ -553,7 +553,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src "><span class="w">	</span><span class="cm">/** @private */</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -561,7 +561,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TModifierFn</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="w">	</span><span class="n">template</span><span class="o">&lt;</span><span class="n">typename</span><span class="w"> </span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -569,7 +569,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -577,7 +577,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trait</span><span class="o">::</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -585,7 +585,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
+      <td class="src "><span class="w">		</span><span class="c1">// CXXIter Interface</span></td>
     </tr>
 
     <tr class="source-line">
@@ -593,7 +593,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">Self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -601,7 +601,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -617,7 +617,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">28</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="n">constexpr</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="k">static</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -632,7 +632,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">28</td>
-      <td class="src coveredLine">			<span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">auto</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -647,7 +647,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">28</td>
-      <td class="src coveredLine">			<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span> <span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{};</span> <span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -664,7 +664,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">18</td>
-      <td class="src coveredLine">			<span class="n">self</span><span class="p">.</span><span class="n">modifierFn</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">());</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="n">self</span><span class="p">.</span><span class="n">modifierFn</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">());</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -672,7 +672,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">18</td>
-      <td class="src coveredLine">			<span class="k">return</span> <span class="n">item</span><span class="p">;</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -680,7 +680,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src "><span class="w">		</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -688,7 +688,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">10</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="n">constexpr</span> <span class="kr">inline</span> <span class="n">SizeHint</span> <span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span> <span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="k">static</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">SizeHint</span><span class="w"> </span><span class="n">sizeHint</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Self</span><span class="o">&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">sizeHint</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -696,7 +696,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">1</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="n">constexpr</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">advanceBy</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">advanceBy</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="k">static</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">advanceBy</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">advanceBy</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -704,7 +704,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -712,7 +712,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src "><span class="w">	</span><span class="cm">/** @private */</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -720,7 +720,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterDoubleEndedIterator</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TModifierFn</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="w">	</span><span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterDoubleEndedIterator</span><span class="w"> </span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -728,7 +728,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -736,7 +736,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">ChainInputIterator</span> <span class="o">=</span> <span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trait</span><span class="o">::</span><span class="n">DoubleEndedIterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -744,7 +744,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="c1">// CXXIter Interface</span></td>
+      <td class="src "><span class="w">		</span><span class="c1">// CXXIter Interface</span></td>
     </tr>
 
     <tr class="source-line">
@@ -752,7 +752,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Self</span> <span class="o">=</span> <span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TModifierFn</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">Self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TModifierFn</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -760,7 +760,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="n">using</span> <span class="n">Item</span> <span class="o">=</span> <span class="kr">typename</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span></td>
+      <td class="src "><span class="w">		</span><span class="n">using</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">Item</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -776,7 +776,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">5</td>
-      <td class="src coveredLine">		<span class="k">static</span> <span class="n">constexpr</span> <span class="kr">inline</span> <span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">nextBack</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span></td>
+      <td class="src coveredLine"><span class="w">		</span><span class="k">static</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">IterValue</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nextBack</span><span class="p">(</span><span class="n">Self</span><span class="o">&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -791,7 +791,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">5</td>
-      <td class="src coveredLine">			<span class="k">auto</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">auto</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChainInputIterator</span><span class="o">::</span><span class="n">nextBack</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -806,7 +806,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">5</td>
-      <td class="src coveredLine">			<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span> <span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{};</span> <span class="p">}</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">[[</span><span class="n">unlikely</span><span class="p">]]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -823,7 +823,7 @@
         </details>
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">			<span class="n">self</span><span class="p">.</span><span class="n">modifierFn</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">());</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="n">self</span><span class="p">.</span><span class="n">modifierFn</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">());</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -831,7 +831,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">4</td>
-      <td class="src coveredLine">			<span class="k">return</span> <span class="n">item</span><span class="p">;</span></td>
+      <td class="src coveredLine"><span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -839,7 +839,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="p">}</span></td>
+      <td class="src "><span class="w">		</span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -847,7 +847,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -855,7 +855,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="cm">/** @private */</span></td>
+      <td class="src "><span class="w">	</span><span class="cm">/** @private */</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -863,7 +863,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span> <span class="n">TChainInput</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TItem</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="w">	</span><span class="n">template</span><span class="o">&lt;</span><span class="n">CXXIterExactSizeIterator</span><span class="w"> </span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">typename</span><span class="w"> </span><span class="n">TItem</span><span class="o">&gt;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -871,7 +871,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="k">struct</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&gt;</span> <span class="p">{</span></td>
+      <td class="src "><span class="w">	</span><span class="k">struct</span><span class="w"> </span><span class="nc">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TItem</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -879,7 +879,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">		<span class="k">static</span> <span class="n">constexpr</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">(</span><span class="k">const</span> <span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span> <span class="n">TItem</span><span class="o">&gt;&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span> <span class="p">}</span></td>
+      <td class="src "><span class="w">		</span><span class="k">static</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">op</span><span class="o">::</span><span class="n">InplaceModifier</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="p">,</span><span class="w"> </span><span class="n">TItem</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">trait</span><span class="o">::</span><span class="n">ExactSizeIterator</span><span class="o">&lt;</span><span class="n">TChainInput</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">input</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -887,7 +887,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src ">	<span class="p">};</span></td>
+      <td class="src "><span class="w">	</span><span class="p">};</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -903,7 +903,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="p">}</span></td>
+      <td class="src "><span class="p">}</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
